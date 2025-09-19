@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "build": "tsup src/app.ts",
+    "build": "tsup --config src/config/tsup.config.ts",
     "test": "echo 'Error: no test specified' && exit 1",
     "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts"
