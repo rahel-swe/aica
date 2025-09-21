@@ -3,6 +3,7 @@ import ENV from "./config/env.config";
 import connectDB from "./services/mongo-connection";
 import cors from "cors";
 import errorMiddleware from "./middleware/error.middleware";
+import arcjectMiddleware from "./middleware/arcjet.middleware";
 
 const app = express();
 
