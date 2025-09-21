@@ -2,12 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app.js",
+  "main": "dist/server.js",
   "scripts": {
     "build": "tsup --config src/config/tsup.config.ts",
     "test": "echo 'Error: no test specified' && exit 1",
-    "start": "node dist/app.js",
-    "dev": "tsx watch src/app.ts"
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts"
   },
   "keywords": [],
   "author": "",
