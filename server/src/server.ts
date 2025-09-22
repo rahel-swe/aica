@@ -4,6 +4,10 @@ import connectDB from "./services/mongo-connection";
 import cors from "cors";
 import errorMiddleware from "./middleware/error.middleware";
 import arcjectMiddleware from "./middleware/arcjet.middleware";
+import onboardRouter from "./routes/onboarding.route";
+import processRouter from "./routes/processing.route";
+import dashboardRouter from "./routes/dashboard.route";
+import careerRouter from "./routes/career.route";
 
 const app = express();
 
@@ -14,6 +18,12 @@ app.use(
     credentials: true,
   })
 );
+app.use(arcjectMiddleware);
+
+app.use("/api/v1/onboarding", onboardRouter);
+app.use("/api/v1/processing", processRouter);
+app.use("/api/v1/dashboard", dashboardRouter);
+app.use("/api/v1/careers", careerRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send({ success: true, message: "Hello, World!" });

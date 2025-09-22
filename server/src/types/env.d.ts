@@ -7,6 +7,6 @@ declare namespace NodeJS {
     JWT_EXPIRES_IN: string;
     PYTHON_AI_SERVER_URL: string;
     CLIENT_URL: string;
-    AECJET_KEY: string;
+    ARCJET_KEY: string;
   }
 }
