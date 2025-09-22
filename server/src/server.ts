@@ -8,6 +8,11 @@ import onboardRouter from "./routes/onboarding.route";
 import processRouter from "./routes/processing.route";
 import dashboardRouter from "./routes/dashboard.route";
 import careerRouter from "./routes/career.route";
+import authRouter from "./routes/auth.route";
+import profileRouter from "./routes/profile.route";
+import recommendRouter from "./routes/recommendation.route";
+import uniRouter from "./routes/universities.route";
+import chatRouter from "./routes/ai.route";
 
 const app = express();
 
@@ -20,10 +25,16 @@ app.use(
 );
 app.use(arcjectMiddleware);
 
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/profile", profileRouter);
+app.use("/api/v1/recommendations", recommendRouter);
 app.use("/api/v1/onboarding", onboardRouter);
 app.use("/api/v1/processing", processRouter);
 app.use("/api/v1/dashboard", dashboardRouter);
 app.use("/api/v1/careers", careerRouter);
+app.use("/api/v1/universities", uniRouter);
+app.use("/api/v1/chat/why", chatRouter);
+app.use("/api/v1/chat/why", chatRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send({ success: true, message: "Hello, World!" });

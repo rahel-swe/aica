@@ -29,3 +29,5 @@ chatRouter.post("/session/:sessionId/rating", (req: Request, res: Response) => {
   //   Purpose: training data / improvem
   res.send({ success: true, message: "user rates an answer" });
 });
+
+export default chatRouter;

@@ -26,3 +26,4 @@ uniRouter.post("/", (req: Request, res: Response) => {
 });
 
 // This is the data source your AI job will query for stepwise matching described in your process.
+export default uniRouter;
