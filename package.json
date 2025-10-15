@@ -1,0 +1,25 @@
+{
+  "name": "academic-career-ai-advisor",
+  "version": "1.0.0",
+  "description": "AI-powered academic and career advisory platform",
+  "scripts": {
+    "install:all": "npm install && npm run install:client && npm run install:server && npm run install:ai",
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "install:ai": "cd ai && pip install -r requirements.txt",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "dev:ai": "cd ai && python -m flask run --port=5001",
+    "build:client": "cd client && npm run build",
+    "dev:fullstack": "concurrently \"npm run dev:server\" \"npm run dev:client\" \"npm run dev:ai\"",
+    "start:server": "cd server && npm start",
+    "start:ai": "cd ai && python app.py"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  }
+}
