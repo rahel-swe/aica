@@ -1,19 +1,44 @@
-# academic-career-ai-guidance
+# Academic Career AI Advisor
 
-AI-powered assistant to help students and professionals explore academic paths, plan careers, and get personalized, actionable guidance.
+AI-powered academic and career advisory platform
 
-## Features
-- Personalized academic & career pathway suggestions
-- Goal planning and milestone tracking
-- CV / statement-of-purpose tips and feedback
-- Resource recommendations (courses, papers, mentors)
+## Development Setup
 
-## Quick start
-```bash
-git clone https://github.com/yourname/academic-career-ai-guidance.git
-cd academic-career-ai-guidance
-cd server
-npm install
-cd ../client
-npm install
-```
+1. Run To install all dependencies
+  ```
+  npm run install:all
+  ``` 
+3. Make sure MongoDB is installed and running on your system
+4. Run to start all services
+ ```
+  npm run dev:fullstack
+  ``` 
+6. Or run services individually:
+
+  
+  ```
+  # API Server: 
+   npm run dev:server
+  ```
+   ```
+   # Web Client
+  npm run dev:client
+   ```
+  ```
+  # AI Service 
+  npm run dev:ai
+  ```
+
+
+## Access Points
+
+- Web Client: http://localhost:5173
+- API Server: http://localhost:5000
+- AI Service: http://localhost:5001
+- MongoDB: localhost:27017
+
+## MongoDB Setup
+
+If you don't have MongoDB installed, you can:
+1. Install MongoDB Community Edition, or
+2. Use MongoDB Atlas (cloud)
