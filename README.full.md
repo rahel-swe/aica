@@ -1,14 +1,13 @@
-````markdown
 # Academic Career AI Advisor
 
 AI-powered academic and career advisory platform.
-````
+
 This repository contains three main folders:
 
 - `ai/` — Flask-based AI microservice (Python)
 - `client/` — Vite + React frontend
 - `server/` — Node + TypeScript API server
-````
+
 ## Quick start
 
 1. Install dependencies for all parts:
@@ -128,48 +127,3 @@ Check `server/src/routes` for API endpoints and required payloads.
 - Add a `docker-compose.yml` to orchestrate MongoDB, server and ai for easy local development.
 
 If you want, I can create `.env.example` files or a `docker-compose.yml` next — tell me which and I'll add them.
-````
-# Academic Career AI Advisor
-
-AI-powered academic and career advisory platform
-
-## Development Setup
-
-1. Run To install all dependencies
-  ```
-  npm run install:all
-  ``` 
-3. Make sure MongoDB is installed and running on your system
-4. Run to start all services
- ```
-  npm run dev:fullstack
-  ``` 
-6. Or run services individually:
-
-  
-  ```
-  # API Server: 
-   npm run dev:server
-  ```
-   ```
-   # Web Client
-  npm run dev:client
-   ```
-  ```
-  # AI Service 
-  npm run dev:ai
-  ```
-
-
-## Access Points
-
-- Web Client: http://localhost:5173
-- API Server: http://localhost:5000
-- AI Service: http://localhost:5001
-- MongoDB: localhost:27017
-
-## MongoDB Setup
-
-If you don't have MongoDB installed, you can:
-1. Install MongoDB Community Edition, or
-2. Use MongoDB Atlas (cloud)
