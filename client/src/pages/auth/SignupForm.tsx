@@ -1,3 +1,6 @@
+import Email from '@/components/EmailInput';
+import FormHeader from '@/components/FormHeader';
+import OAuthGoogle from '@/components/OAuthGoogle';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -8,9 +11,6 @@ import {
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import Email from './EmailInput';
-import CardHeader from './FormHeader';
-import OAuthGoogle from './OAuthGoogle';
 
 export function SignupForm({
   className,
@@ -18,11 +18,11 @@ export function SignupForm({
 }: React.ComponentProps<'div'>) {
   return (
     <div
-      className={cn('flex flex-col gap-6 max-w-xl mx-auto', className)}
+      className={cn('flex flex-col gap-6 max-w-lg mx-auto', className)}
       {...props}
     >
       <Card>
-        <CardHeader
+        <FormHeader
           title="Create your account"
           description=" Enter your email below to create your account"
         />
