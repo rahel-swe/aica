@@ -81,7 +81,7 @@ const routes: RouteObject[] = [
         // loader: requireAuthLoader, // protect entire app
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> }, // example helper
-          { path: 'dashboard', element: <App /> },
+          { path: 'dashboard', element: <h1>Dashboard</h1> },
           { path: 'chatbot', element: <h1>Why chat bot</h1> },
           { path: 'profile', element: <h1>Profile</h1> },
         ],

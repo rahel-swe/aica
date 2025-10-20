@@ -1,5 +1,3 @@
-'use client';
-
 import { type LucideIcon } from 'lucide-react';
 
 import {
@@ -7,6 +5,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 export function NavMain({
   items,
@@ -18,15 +18,17 @@ export function NavMain({
     isActive?: boolean;
   }[];
 }) {
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <SidebarMenu>
       {items.map((item) => (
         <SidebarMenuItem key={item.title}>
-          <SidebarMenuButton asChild isActive={item.isActive}>
-            <a href={item.url}>
+          <SidebarMenuButton tooltip={item.title} asChild isActive={isActive}>
+            <NavLink to={item.url}>
               <item.icon />
               <span>{item.title}</span>
-            </a>
+            </NavLink>
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}
