@@ -11,11 +11,11 @@ import {
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { Link, NavLink, useFetcher } from 'react-router-dom';
 
-export function SignupForm({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+function SignupForm({ className, ...props }: React.ComponentProps<'div'>) {
+  const { Form, state } = useFetcher();
+
   return (
     <div
       className={cn('flex flex-col gap-6 max-w-lg mx-auto', className)}
@@ -27,7 +27,7 @@ export function SignupForm({
           description=" Enter your email below to create your account"
         />
         <CardContent>
-          <form>
+          <Form>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="name">Full Name</FieldLabel>
@@ -52,14 +52,16 @@ export function SignupForm({
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit">Create Account</Button>
+                <Button type="submit">
+                  {state !== 'idle' ? 'Creating Account...' : 'Create Account'}
+                </Button>
                 <OAuthGoogle />
                 <FieldDescription className="text-center">
-                  Already have an account? <a href="#">Sign in</a>
+                  Already have an account? <Link to="/auth/login">Sign in</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>
-          </form>
+          </Form>
         </CardContent>
       </Card>
       <FieldDescription className="px-6 text-center">
@@ -69,3 +71,4 @@ export function SignupForm({
     </div>
   );
 }
+export default SignupForm;

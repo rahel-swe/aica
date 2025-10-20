@@ -1,5 +1,6 @@
 import { Link, Outlet, useLoaderData } from 'react-router-dom'
 import './App.css'
+import { Button } from './components/ui/button'
 
 export const rootLoader = async () => {
   return { now: Date.now() }
@@ -11,8 +12,12 @@ function App () {
     <div>
       <header>
         <nav>
-          <Link to={'/'}>Home</Link>
-          <Link to={'/dashboard'}>Dashboard</Link>
+          <Button variant='link'>
+            <Link to={'/app'}>Home</Link>
+          </Button>
+          <Button variant='link'>
+            <Link to={'/app/dashboard'}>Dashboard</Link>
+          </Button>
         </nav>
       </header>
       <main>
