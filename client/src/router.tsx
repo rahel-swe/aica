@@ -5,6 +5,7 @@ import RootLayout from './RootLayout';
 import ErrorPage from './pages/ErrorPage';
 import OnBoardingLayout from './pages/onboarding/OnBoardingLayout';
 import { lazy } from 'react';
+import LoginForm from './pages/auth/LoginForm';
 
 const Landing = lazy(() => import('@/pages/Landing'));
 const SignupForm = lazy(() => import('@/pages/auth/SignupForm'));
@@ -28,8 +29,12 @@ const routes: RouteObject[] = [
         element: <AuthLayout />,
         children: [
           {
+            index: true,
+            element: <Navigate to="login" replace />,
+          },
+          {
             path: 'login',
-            element: <div>Login Form</div>,
+            element: <LoginForm />,
           },
           {
             path: 'signup',

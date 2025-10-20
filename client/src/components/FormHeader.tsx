@@ -7,9 +7,11 @@ type Props = {
 
 const FormHeader = ({ title, description }: Props) => {
   return (
-    <CardHeader className="text-center">
-      <CardTitle className="text-xl">{title}</CardTitle>
-      <CardDescription>{description}</CardDescription>
+    <CardHeader className="text-center p-0">
+      <CardTitle className="text-2xl font-bold">{title}</CardTitle>
+      <CardDescription className="text-muted-foreground text-balance">
+        {description}
+      </CardDescription>
     </CardHeader>
   );
 };
