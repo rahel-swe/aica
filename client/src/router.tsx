@@ -1,10 +1,11 @@
 import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
-import App, { rootLoader } from './App';
+import App from './App';
 import AuthLayout from './pages/auth/AuthLayout';
 import RootLayout from './RootLayout';
 import ErrorPage from './pages/ErrorPage';
 import OnBoardingLayout from './pages/onboarding/OnBoardingLayout';
 import { lazy } from 'react';
+import LoginForm from './pages/auth/LoginForm';
 
 const Landing = lazy(() => import('@/pages/Landing'));
 const SignupForm = lazy(() => import('@/pages/auth/SignupForm'));
@@ -28,8 +29,12 @@ const routes: RouteObject[] = [
         element: <AuthLayout />,
         children: [
           {
+            index: true,
+            element: <Navigate to="login" replace />,
+          },
+          {
             path: 'login',
-            element: <div>Login Form</div>,
+            element: <LoginForm />,
           },
           {
             path: 'signup',
@@ -77,13 +82,13 @@ const routes: RouteObject[] = [
       {
         path: 'app',
         element: <App />,
-        loader: rootLoader,
+        // loader: rootLoader,
         // loader: requireAuthLoader, // protect entire app
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> }, // example helper
-          { path: 'dashboard', element: <div>Dashboard</div> },
-          { path: 'chatbot', element: <div>Why chat bot</div> },
-          { path: 'profile', element: <div>Profile</div> },
+          { path: 'dashboard', element: <h1>Dashboard</h1> },
+          { path: 'chatbot', element: <h1>Why chat bot</h1> },
+          { path: 'profile', element: <h1>Profile</h1> },
         ],
       },
     ],
