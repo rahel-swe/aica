@@ -1,20 +1,51 @@
-import Email from '@/components/EmailInput';
-import FormHeader from '@/components/FormHeader';
-import OAuthGoogle from '@/components/OAuthGoogle';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import Email from '@/components/EmailInput'
+import FormHeader from '@/components/FormHeader'
+import OAuthGoogle from '@/components/OAuthGoogle'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   Field,
   FieldDescription,
   FieldGroup,
-  FieldLabel,
-} from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
-import { Link, NavLink, useFetcher } from 'react-router-dom';
+  FieldLabel
+} from '@/components/ui/field'
+import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
+import { Link, NavLink, useFetcher } from 'react-router-dom'
+import { Controller, useForm } from 'react-hook-form'
+import z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-function SignupForm({ className, ...props }: React.ComponentProps<'div'>) {
-  const { Form, state } = useFetcher();
+const formSchema = z
+  .object({
+    fullname: z
+      .string()
+      .min(3, ' Full Name must be at least 3 charecters.')
+      .max(20, 'full name must be at most 20 charecters.'),
+    email: z.string().email('Invalid email address.'),
+    password: z
+      .string()
+      .min(8, 'Password must be at least 8 charecters.')
+      .max(20, 'Password must be at most 20 characters.'),
+    confirmPassword: z.string()
+  })
+  .refine(data => data.password === data.confirmPassword, {
+    message: 'Passwords do not match',
+    path: ['confirmPassword']
+  })
+
+function SignupForm ({ className, ...props }: React.ComponentProps<'div'>) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: zodResolver(formSchema)
+  })
+
+  const onSubmit = (data: any) => {
+    console.log('Form Data:', data)
+  }
 
   return (
     <div
@@ -24,30 +55,56 @@ function SignupForm({ className, ...props }: React.ComponentProps<'div'>) {
       )}
       {...props}
     >
-      <Card className="overflow-hidden p-0">
-        <CardContent className="grid p-0 md:grid-cols-2">
-          <Form className="p-6 md:p-8">
+      <Card className='overflow-hidden p-0'>
+        <CardContent className='grid p-0 md:grid-cols-2'>
+          <form onSubmit={handleSubmit(onSubmit)} className='p-6 md:p-8'>
             <FieldGroup>
               <FormHeader
-                title="Create your account"
-                description=" Enter your email below to create your account"
+                title='Create your account'
+                description=' Enter your email below to create your account'
               />
               <Field>
-                <FieldLabel htmlFor="name">Full Name</FieldLabel>
-                <Input id="name" type="text" placeholder="John Doe" required />
+                <FieldLabel htmlFor='name'>Full Name</FieldLabel>
+                <Input
+                  {...register('fullname')}
+                  id='fullname'
+                  type='text'
+                  placeholder='John Doe'
+                  required
+                />
               </Field>
-              <Email />
+              <Email>
+                {
+                  <Input
+                    {...register('email')}
+                    id='email'
+                    type='email'
+                    placeholder='m@example.com'
+                    required
+                  />
+                }
+              </Email>
               <Field>
-                <Field className="grid grid-cols-2 gap-4">
+                <Field className='grid grid-cols-2 gap-4'>
                   <Field>
-                    <FieldLabel htmlFor="password">Password</FieldLabel>
-                    <Input id="password" type="password" required />
+                    <FieldLabel htmlFor='password'>Password</FieldLabel>
+                    <Input
+                      {...register('password')}
+                      id='password'
+                      type='password'
+                      required
+                    />
                   </Field>
                   <Field>
-                    <FieldLabel htmlFor="confirm-password">
+                    <FieldLabel htmlFor='confirm-password'>
                       Confirm Password
                     </FieldLabel>
-                    <Input id="confirm-password" type="password" required />
+                    <Input
+                      {...register('confirmPassword')}
+                      id='confirm-password'
+                      type='password'
+                      required
+                    />
                   </Field>
                 </Field>
                 <FieldDescription>
@@ -55,27 +112,25 @@ function SignupForm({ className, ...props }: React.ComponentProps<'div'>) {
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit">
-                  {state !== 'idle' ? 'Creating Account...' : 'Create Account'}
-                </Button>
+                <Button type='submit'>Create Account</Button>
                 <OAuthGoogle />
-                <FieldDescription className="text-center">
-                  Already have an account? <Link to="/auth/login">Sign in</Link>
+                <FieldDescription className='text-center'>
+                  Already have an account? <Link to='/auth/login'>Sign in</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>
-          </Form>
+          </form>
 
-          <div className="bg-muted relative hidden md:block">
+          <div className='bg-muted relative hidden md:block'>
             <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+              src='/placeholder.svg'
+              alt='Image'
+              className='absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale'
             />
           </div>
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }
-export default SignupForm;
+export default SignupForm

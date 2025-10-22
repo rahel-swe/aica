@@ -1,13 +1,18 @@
-import { Input } from '@/components/ui/input';
-import { Field, FieldLabel } from './ui/field';
+import { Input } from '@/components/ui/input'
+import { Field, FieldLabel } from './ui/field'
+import type { UseFormRegisterReturn } from 'react-hook-form'
+import { ReactNode } from 'react'
 
-const Email = () => {
+type Props = {
+  children: ReactNode
+}
+const Email = ({ children }: Props) => {
   return (
     <Field>
-      <FieldLabel htmlFor="email">Email</FieldLabel>
-      <Input id="email" type="email" placeholder="m@example.com" required />
+      <FieldLabel htmlFor='email'>Email</FieldLabel>
+      {children}
     </Field>
-  );
-};
+  )
+}
 
-export default Email;
+export default Email
