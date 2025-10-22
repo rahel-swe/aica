@@ -9,5 +9,7 @@ declare namespace NodeJS {
     CLIENT_URL: string;
     ARCJET_KEY: string;
     DB_NAME: string;
+    BETTER_AUTH_SECRET: string;
+    BETTER_AUTH_URL: string;
   }
 }

@@ -16,3 +16,13 @@ declare module '*.woff2';
 declare module '*.eot';
 declare module '*.ttf';
 declare module '*.otf';
+
+// <reference types="vite/clien" />
+interface ImportMetaEnv {
+  readonly VITE_SERVER_BASE_URL: string;
+  // add more environment variables here
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

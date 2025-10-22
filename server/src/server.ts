@@ -17,9 +17,6 @@ import { auth } from './utils/auth';
 
 const app = express();
 
-app.all('/api/auth/*splat', toNodeHandler(auth));
-
-app.use(express.json());
 app.use(
   cors({
     origin: ENV.CLIENT_URL,
@@ -27,6 +24,10 @@ app.use(
     credentials: true,
   })
 );
+
+app.all('/api/auth/*splat', toNodeHandler(auth));
+
+app.use(express.json());
 app.use(arcjectMiddleware);
 
 app.use('/api/v1/auth', authRouter);

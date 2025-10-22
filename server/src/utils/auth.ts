@@ -7,11 +7,9 @@ const client = await getClient();
 
 export const auth = betterAuth({
   database: mongodbAdapter(client),
-  trustedOrigins: [ENV.CLIENT_URL || 'http://localhost:5173'],
+  secret: ENV.BETTER_AUTH_SECRET,
+  trustedOrigins: [ENV.CLIENT_URL],
   emailAndPassword: {
     enabled: true,
-  },
-  advanced: {
-    useSecureCookies: true,
   },
 });
