@@ -8,5 +8,6 @@ declare namespace NodeJS {
     PYTHON_AI_SERVER_URL: string;
     CLIENT_URL: string;
     ARCJET_KEY: string;
+    DB_NAME: string;
   }
 }
