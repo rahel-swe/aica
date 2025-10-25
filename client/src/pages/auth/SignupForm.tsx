@@ -6,23 +6,29 @@ import { Card, CardContent } from '@/components/ui/card'
 import {
   Field,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLabel
 } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
-import { Link, NavLink, useFetcher } from 'react-router-dom'
-import { Controller, useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { authClient } from '@/lib/better-auth'
+import { useEffect, useState } from 'react'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 
 const formSchema = z
   .object({
     fullname: z
       .string()
+      .trim()
       .min(3, ' Full Name must be at least 3 charecters.')
-      .max(20, 'full name must be at most 20 charecters.'),
-    email: z.string().email('Invalid email address.'),
+      .max(27, 'full name must be at most 27 charecters.'),
+    email: z.string().trim().email('Invalid email address.'),
     password: z
       .string()
       .min(8, 'Password must be at least 8 charecters.')
@@ -38,12 +44,15 @@ function SignupForm ({ className, ...props }: React.ComponentProps<'div'>) {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+
+    formState: { errors, isLoading }
   } = useForm({
     resolver: zodResolver(formSchema)
   })
 
-  const onSubmit = (data: any) => {
+  const [showPasswords, setShowPasswords] = useState(false)
+
+  const onSubmit = async (data: any) => {
     console.log('Form Data:', data)
   }
 
@@ -72,6 +81,7 @@ function SignupForm ({ className, ...props }: React.ComponentProps<'div'>) {
                   placeholder='John Doe'
                   required
                 />
+                {errors && <FieldError errors={[errors.fullname]} />}
               </Field>
               <Email>
                 {
@@ -83,17 +93,20 @@ function SignupForm ({ className, ...props }: React.ComponentProps<'div'>) {
                     required
                   />
                 }
+                {errors && <FieldError errors={[errors.email]} />}
               </Email>
               <Field>
                 <Field className='grid grid-cols-2 gap-4'>
                   <Field>
                     <FieldLabel htmlFor='password'>Password</FieldLabel>
                     <Input
+                      aria-invalid={errors.password && 'true'}
                       {...register('password')}
                       id='password'
-                      type='password'
+                      type={showPasswords ? 'text' : 'password'}
                       required
                     />
+                    {errors && <FieldError errors={[errors.password]} />}
                   </Field>
                   <Field>
                     <FieldLabel htmlFor='confirm-password'>
@@ -102,11 +115,24 @@ function SignupForm ({ className, ...props }: React.ComponentProps<'div'>) {
                     <Input
                       {...register('confirmPassword')}
                       id='confirm-password'
-                      type='password'
+                      type={showPasswords ? 'text' : 'password'}
+                      aria-invalid={errors.confirmPassword && 'true'}
                       required
                     />
+                    {errors && <FieldError errors={[errors.confirmPassword]} />}
                   </Field>
                 </Field>
+                <div className=' flex items-center gap-2'>
+                  <Label htmlFor='show-password' className='ml-auto'>
+                    Show password
+                  </Label>
+                  <Checkbox
+                    className=''
+                    id='show-passwords'
+                    checked={showPasswords}
+                    onCheckedChange={v => setShowPasswords(Boolean(v))}
+                  />
+                </div>
                 <FieldDescription>
                   Must be at least 8 characters long.
                 </FieldDescription>
