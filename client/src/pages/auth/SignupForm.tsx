@@ -20,6 +20,13 @@ import z from 'zod';
 import { useEffect, useState } from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { toast } from 'sonner';
+import {
+  CircleCheck,
+  CloudAlert,
+  FileWarning,
+  MessageCircleWarning,
+} from 'lucide-react';
 
 const formSchema = z
   .object({
@@ -55,21 +62,26 @@ function SignupForm({ className }: { className?: string }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (formData: any) => {
-    const { data, error } = await authClient.signUp.email(formData, {
-      onRequest: (ctx) => {
+    await authClient.signUp.email(formData, {
+      onRequest: () => {
         setIsLoading(true);
-        console.log('On Request:', ctx);
       },
-      onSuccess: (ctx) => {
+      onSuccess: () => {
         navigate('/app/dashboard');
-        console.log('On Success:', ctx);
+        toast.error('Account created successfully', {
+          closeButton: true,
+          dismissible: true,
+          icon: <CircleCheck className="text-green-500 pr-1" />,
+        });
       },
       onError: (ctx) => {
-        console.log('On Error:', ctx);
+        toast.error(ctx.error.message, {
+          closeButton: true,
+          dismissible: true,
+          icon: <MessageCircleWarning className="text-red-500 pr-1" />,
+        });
       },
     });
-
-    console.log('sing up data', data, error);
   };
 
   return (
