@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
 import App from './App';
 import AuthLayout from './pages/auth/AuthLayout';
-import RootLayout from './RootLayout';
+import RootLayout from './LandingPage';
 import ErrorPage from './pages/ErrorPage';
 import OnBoardingLayout from './pages/onboarding/OnBoardingLayout';
 import { lazy } from 'react';
@@ -9,9 +9,6 @@ import LoginForm from './pages/auth/LoginForm';
 
 const Landing = lazy(() => import('@/pages/Landing'));
 const SignupForm = lazy(() => import('@/pages/auth/SignupForm'));
-
-// --- Loaders / guards (pseudo implementation; We will add it later) ---
-// import { requireAuthLoader, requireOnboardingNotCompletedLoader, requireOnboardingCompletedLoader } from './loaders';
 
 const routes: RouteObject[] = [
   {

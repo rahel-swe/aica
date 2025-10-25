@@ -8,6 +8,16 @@ import {
   FieldDescription,
   FieldError,
   FieldGroup,
+  FieldLabel,
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import { authClient } from '@/lib/better-auth';
+import { cn } from '@/lib/utils';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import z from 'zod';
   FieldLabel
 } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
@@ -23,10 +33,10 @@ import { Label } from '@/components/ui/label'
 
 const formSchema = z
   .object({
-    fullname: z
+    name: z
       .string()
       .trim()
-      .min(3, ' Full Name must be at least 3 charecters.')
+      .min(2, ' Full Name must be at least 2 charecters.')
       .max(27, 'full name must be at most 27 charecters.'),
     email: z.string().trim().email('Invalid email address.'),
     password: z
@@ -40,18 +50,39 @@ const formSchema = z
     path: ['confirmPassword']
   })
 
+function SignupForm({ className }: { className?: string }) {
 function SignupForm ({ className, ...props }: React.ComponentProps<'div'>) {
   const {
     register,
     handleSubmit,
 
-    formState: { errors, isLoading }
+    formState: { errors }
   } = useForm({
     resolver: zodResolver(formSchema)
   })
 
   const [showPasswords, setShowPasswords] = useState(false)
 
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (formData: any) => {
+    const { data, error } = await authClient.signUp.email(formData, {
+      onRequest: (ctx) => {
+        setIsLoading(true);
+        console.log('On Request:', ctx);
+      },
+      onSuccess: (ctx) => {
+        navigate('/app/dashboard');
+        console.log('On Success:', ctx);
+      },
+      onError: (ctx) => {
+        console.log('On Error:', ctx);
+      },
+    });
+
+    console.log('sing up data', data, error);
+  };
   const onSubmit = async (data: any) => {
     console.log('Form Data:', data)
   }
@@ -62,7 +93,6 @@ function SignupForm ({ className, ...props }: React.ComponentProps<'div'>) {
         'flex flex-col gap-6 max-w-4xl mx-auto max-md:max-w-lg',
         className
       )}
-      {...props}
     >
       <Card className='overflow-hidden p-0'>
         <CardContent className='grid p-0 md:grid-cols-2'>
@@ -81,15 +111,16 @@ function SignupForm ({ className, ...props }: React.ComponentProps<'div'>) {
                   placeholder='John Doe'
                   required
                 />
-                {errors && <FieldError errors={[errors.fullname]} />}
+                {errors && <FieldError errors={[errors.name]} />}
               </Field>
               <Email>
                 {
                   <Input
                     {...register('email')}
-                    id='email'
-                    type='email'
-                    placeholder='m@example.com'
+                    id="email"
+                    type="email"
+                    placeholder="m@example.com"
+                    aria-invalid={errors.email && 'true'}
                     required
                   />
                 }
