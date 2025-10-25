@@ -14,10 +14,10 @@ import { authClient } from '@/lib/better-auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import z from 'zod';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
+import z from 'zod';
+import { useEffect, useState } from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 
@@ -44,7 +44,6 @@ function SignupForm({ className }: { className?: string }) {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchema),
