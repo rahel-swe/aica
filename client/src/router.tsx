@@ -1,11 +1,11 @@
+import { requireAuthLoader } from '@/loaders/loaders';
+import { lazy } from 'react';
 import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
 import App from './App';
 import AuthLayout from './pages/auth/AuthLayout';
+import LoginForm from './pages/auth/LoginForm';
 import ErrorPage from './pages/ErrorPage';
 import OnBoardingLayout from './pages/onboarding/OnBoardingLayout';
-import { lazy } from 'react';
-import LoginForm from './pages/auth/LoginForm';
-import { requireAuthLoader } from '@/loaders/loaders';
 
 const Landing = lazy(() => import('@/pages/LandingPage'));
 const SignupForm = lazy(() => import('@/pages/auth/SignupForm'));
@@ -80,10 +80,22 @@ const routes: RouteObject[] = [
         element: <App />,
         loader: requireAuthLoader,
         children: [
-          { index: true, element: <Navigate to="dashboard" replace /> }, // example helper
-          { path: 'dashboard', element: <h1>Dashboard</h1> },
-          { path: 'chatbot', element: <h1>Why chat bot</h1> },
-          { path: 'profile', element: <h1>Profile</h1> },
+          { index: true, element: <Navigate to="dashboard" replace /> },
+          {
+            path: 'dashboard',
+            element: <h1>Dashboard</h1>,
+            loader: requireAuthLoader,
+          },
+          {
+            path: 'chatbot',
+            element: <h1>Why chat bot</h1>,
+            loader: requireAuthLoader,
+          },
+          {
+            path: 'profile',
+            element: <h1>Profile</h1>,
+            loader: requireAuthLoader,
+          },
         ],
       },
     ],

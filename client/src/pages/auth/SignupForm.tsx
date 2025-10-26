@@ -15,14 +15,13 @@ import { Form } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
+import useToast from '@/hooks/use-toast';
 import { authClient } from '@/lib/better-auth';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CircleCheck, MessageCircleWarning } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
 import z from 'zod';
 
 const formSchema = z
@@ -57,6 +56,7 @@ function SignupForm({ className }: { className?: string }) {
     formState: { errors },
   } = form;
 
+  const { toastNotification: toast } = useToast();
   const [showPasswords, setShowPasswords] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -68,30 +68,18 @@ function SignupForm({ className }: { className?: string }) {
         },
         onSuccess: () => {
           navigate('/app/dashboard');
-          toast.error('Account created successfully', {
-            closeButton: true,
-            dismissible: true,
-            icon: <CircleCheck className="text-green-500 pr-1" />,
-          });
+          toast('success', 'Account created successfully');
           setIsLoading(false);
           reset();
         },
         onError: (ctx) => {
-          toast.error(ctx.error.message, {
-            closeButton: true,
-            dismissible: true,
-            icon: <MessageCircleWarning className="text-red-500 pr-1" />,
-          });
+          toast('error', ctx.error.message);
           setIsLoading(false);
         },
       })
       .catch((error) => {
+        toast('error', error.message);
         setIsLoading(false);
-        toast.error(error.message, {
-          closeButton: true,
-          dismissible: true,
-          icon: <MessageCircleWarning className="text-red-500 pr-1" />,
-        });
       });
   };
 
