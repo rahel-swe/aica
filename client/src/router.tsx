@@ -1,19 +1,18 @@
 import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
 import App from './App';
 import AuthLayout from './pages/auth/AuthLayout';
-import RootLayout from './LandingPage';
 import ErrorPage from './pages/ErrorPage';
 import OnBoardingLayout from './pages/onboarding/OnBoardingLayout';
 import { lazy } from 'react';
 import LoginForm from './pages/auth/LoginForm';
+import { requireAuthLoader } from '@/loaders/loaders';
 
-const Landing = lazy(() => import('@/pages/Landing'));
+const Landing = lazy(() => import('@/pages/LandingPage'));
 const SignupForm = lazy(() => import('@/pages/auth/SignupForm'));
 
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
       // public landing page
@@ -79,8 +78,7 @@ const routes: RouteObject[] = [
       {
         path: 'app',
         element: <App />,
-        // loader: rootLoader,
-        // loader: requireAuthLoader, // protect entire app
+        loader: requireAuthLoader,
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> }, // example helper
           { path: 'dashboard', element: <h1>Dashboard</h1> },
