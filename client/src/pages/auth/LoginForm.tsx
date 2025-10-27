@@ -1,35 +1,27 @@
-import { cn } from '@/lib/utils';
+import Email from '@/components/EmailInput';
+import FormHeader from '@/components/FormHeader';
+import OAuthGoogle from '@/components/OAuthGoogle';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Field,
   FieldDescription,
   FieldError,
-  FieldGroup,
   FieldLabel,
   FieldSeparator,
   FieldSet,
 } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import OAuthGoogle from '@/components/OAuthGoogle';
-import Email from '@/components/EmailInput';
-import FormHeader from '@/components/FormHeader';
-import { Link, useNavigate } from 'react-router-dom';
-import z from 'zod';
-import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from 'sonner';
-import {
-  CircleCheck,
-  CloudAlert,
-  FileWarning,
-  MessageCircleWarning,
-} from 'lucide-react';
-import { authClient } from '@/lib/better-auth';
 import { Form } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { Spinner } from '@/components/ui/spinner';
 import useToast from '@/hooks/use-toast';
+import { authClient } from '@/lib/better-auth';
+import { cn } from '@/lib/utils';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import z from 'zod';
 
 const formSchema = z.object({
   email: z.string().trim().email('Invalid email address.'),
@@ -59,7 +51,7 @@ export function LoginForm({ className }: { className?: string }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (formData: z.infer<typeof formSchema>) => {
-    await authClient.signIn
+    const res = await authClient.signIn
       .email(formData, {
         onRequest: () => {
           setIsLoading(true);
@@ -73,6 +65,7 @@ export function LoginForm({ className }: { className?: string }) {
         onError: (ctx) => {
           toast('error', ctx.error.message);
           setIsLoading(false);
+          console.log(ctx);
         },
       })
       .catch((error) => {

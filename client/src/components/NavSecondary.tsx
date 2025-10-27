@@ -13,6 +13,8 @@ import { NavLink } from 'react-router-dom';
 
 export function NavSecondary({
   items,
+  isRouteAcitve,
+
   ...props
 }: {
   items: {
@@ -21,6 +23,7 @@ export function NavSecondary({
     icon: LucideIcon;
     badge?: React.ReactNode;
   }[];
+  isRouteAcitve: (itemUrl: string) => boolean;
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
   return (
     <SidebarGroup {...props}>
@@ -28,7 +31,11 @@ export function NavSecondary({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
+              <SidebarMenuButton
+                isActive={isRouteAcitve(item.url)}
+                tooltip={item.title}
+                asChild
+              >
                 <NavLink to={item.url}>
                   <item.icon />
                   <span>{item.title}</span>

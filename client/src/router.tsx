@@ -84,17 +84,30 @@ const routes: RouteObject[] = [
           {
             path: 'dashboard',
             element: <h1>Dashboard</h1>,
-            loader: requireAuthLoader,
           },
           {
             path: 'chatbot',
             element: <h1>Why chat bot</h1>,
-            loader: requireAuthLoader,
+          },
+          {
+            path: 'roadmap',
+            element: <h1>Roadmap</h1>,
+          },
+          {
+            path: 'inbox',
+            element: <h1>Inbox</h1>,
+          },
+          {
+            path: 'settings',
+            element: <h1>App settings</h1>,
+          },
+          {
+            path: 'help',
+            element: <h1>Help</h1>,
           },
           {
             path: 'profile',
             element: <h1>Profile</h1>,
-            loader: requireAuthLoader,
           },
         ],
       },
@@ -103,7 +116,7 @@ const routes: RouteObject[] = [
 
   {
     path: '*',
-    element: <ErrorPage />,
+    // element: <ErrorPage />,
     errorElement: <ErrorPage />,
   },
 ];
