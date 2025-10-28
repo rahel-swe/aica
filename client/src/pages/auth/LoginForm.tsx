@@ -18,6 +18,7 @@ import useToast from '@/hooks/use-toast';
 import { authClient } from '@/lib/better-auth';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Eye, EyeClosed } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -49,6 +50,7 @@ export function LoginForm({ className }: { className?: string }) {
   const { toastNotification: toast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isShowPassword, setIsShowPassword] = useState(false);
 
   const onSubmit = async (formData: z.infer<typeof formSchema>) => {
     const res = await authClient.signIn
@@ -64,8 +66,9 @@ export function LoginForm({ className }: { className?: string }) {
         },
         onError: (ctx) => {
           toast('error', ctx.error.message);
+          toast('success', 'You have Login to your account successfully');
           setIsLoading(false);
-          console.log(ctx);
+          reset();
         },
       })
       .catch((error) => {
@@ -113,13 +116,25 @@ export function LoginForm({ className }: { className?: string }) {
                       Forgot your password?
                     </a>
                   </div>
-                  <Input
-                    aria-invalid={errors.password && 'true'}
-                    {...register('password')}
-                    id="password"
-                    type="password"
-                    required
-                  />
+                  <div className="relative">
+                    <Input
+                      aria-invalid={errors.password && 'true'}
+                      {...register('password')}
+                      id="password"
+                      type={isShowPassword ? 'text' : 'password'}
+                      placeholder="********"
+                      required
+                    />
+                    <Button
+                      className="flex justify-end absolute top-0 right-3"
+                      variant="ghost"
+                      size="icon"
+                      type="button"
+                      onClick={() => setIsShowPassword(!isShowPassword)}
+                    >
+                      {isShowPassword ? <Eye /> : <EyeClosed />}
+                    </Button>
+                  </div>
                   {errors && <FieldError errors={[errors.password]} />}
                 </Field>
                 <Field>
