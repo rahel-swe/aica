@@ -2,31 +2,37 @@ import React from 'react';
 
 import { NavMain } from '@/components/NavMain';
 import { NavSecondary } from '@/components/NavSecondary';
-import SidebarLogo from '@/components/SidebarLogo';
+import SidebarHeaderLogo from '@/components/SidebarLogo';
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
-import data from '@/data/const-data';
-import { DropdownMenuSeparator } from './ui/dropdown-menu';
+import { navData } from '@/data/const-data';
+import { useLocation } from 'react-router-dom';
+import { Separator } from './ui/separator';
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const location = useLocation();
+
+  const isRouteActive = (itemUrl: string) =>
+    itemUrl === location.pathname.split('/', 3)[2] ? true : false;
+
   return (
-    <Sidebar
-      className="border-r-0"
-      {...props}
-      collapsible="icon"
-      variant="inset"
-    >
+    <Sidebar {...props} collapsible="icon" variant="sidebar">
       <SidebarHeader>
-        <SidebarLogo />
-        <DropdownMenuSeparator />
-        <NavMain items={data.navMain} />
+        <SidebarHeaderLogo />
+        <Separator />
+
+        <NavMain isRouteAcitve={isRouteActive} items={navData.navMain} />
       </SidebarHeader>
       <SidebarContent>
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavSecondary
+          isRouteAcitve={isRouteActive}
+          items={navData.navSecondary}
+          className="mt-auto"
+        />
       </SidebarContent>
       <SidebarRail />
     </Sidebar>

@@ -1,19 +1,18 @@
+import { requireAuthLoader } from '@/loaders/loaders';
+import { lazy } from 'react';
 import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
 import App from './App';
 import AuthLayout from './pages/auth/AuthLayout';
-import RootLayout from './LandingPage';
+import LoginForm from './pages/auth/LoginForm';
 import ErrorPage from './pages/ErrorPage';
 import OnBoardingLayout from './pages/onboarding/OnBoardingLayout';
-import { lazy } from 'react';
-import LoginForm from './pages/auth/LoginForm';
 
-const Landing = lazy(() => import('@/pages/Landing'));
+const Landing = lazy(() => import('@/pages/LandingPage'));
 const SignupForm = lazy(() => import('@/pages/auth/SignupForm'));
 
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
       // public landing page
@@ -79,13 +78,37 @@ const routes: RouteObject[] = [
       {
         path: 'app',
         element: <App />,
-        // loader: rootLoader,
-        // loader: requireAuthLoader, // protect entire app
+        loader: requireAuthLoader,
         children: [
-          { index: true, element: <Navigate to="dashboard" replace /> }, // example helper
-          { path: 'dashboard', element: <h1>Dashboard</h1> },
-          { path: 'chatbot', element: <h1>Why chat bot</h1> },
-          { path: 'profile', element: <h1>Profile</h1> },
+          { index: true, element: <Navigate to="dashboard" replace /> },
+          {
+            path: 'dashboard',
+            element: <h1>Dashboard</h1>,
+          },
+          {
+            path: 'chatbot',
+            element: <h1>Why chat bot</h1>,
+          },
+          {
+            path: 'roadmap',
+            element: <h1>Roadmap</h1>,
+          },
+          {
+            path: 'inbox',
+            element: <h1>Inbox</h1>,
+          },
+          {
+            path: 'settings',
+            element: <h1>App settings</h1>,
+          },
+          {
+            path: 'help',
+            element: <h1>Help</h1>,
+          },
+          {
+            path: 'profile',
+            element: <h1>Profile</h1>,
+          },
         ],
       },
     ],
@@ -93,7 +116,7 @@ const routes: RouteObject[] = [
 
   {
     path: '*',
-    element: <ErrorPage />,
+    // element: <ErrorPage />,
     errorElement: <ErrorPage />,
   },
 ];

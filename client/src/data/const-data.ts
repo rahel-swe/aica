@@ -1,51 +1,29 @@
 import {
-  AudioWaveform,
-  Blocks,
-  Calendar,
-  Command,
-  Home,
+  FlaskRound,
   Inbox,
+  Map,
   MessageCircleQuestion,
-  Search,
   Settings2,
-  Sparkles,
-  Trash2,
 } from 'lucide-react';
+import { TiChartBar } from 'react-icons/ti';
 
 // This is sample data.
-export default {
-  teams: [
-    {
-      name: 'Acme Inc',
-      logo: Command,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
-    },
-    {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free',
-    },
-  ],
+export const navData = {
   navMain: [
     {
-      title: 'Search',
-      url: 'search',
-      icon: Search,
+      title: 'Dashboard',
+      url: 'dashboard',
+      icon: TiChartBar,
     },
     {
       title: 'Ask AI',
       url: 'chatbot',
-      icon: Sparkles,
+      icon: FlaskRound,
     },
     {
-      title: 'Home',
-      url: 'dashboard',
-      icon: Home,
+      title: 'Roadmap',
+      url: 'roadmap',
+      icon: Map,
     },
     {
       title: 'Inbox',
@@ -56,21 +34,11 @@ export default {
   ],
   navSecondary: [
     {
-      title: 'Calendar',
-      url: 'calender',
-      icon: Calendar,
-    },
-    {
       title: 'Settings',
-      url: '#',
+      url: 'settings',
       icon: Settings2,
     },
-    {
-      title: 'Templates',
-      url: '#',
-      icon: Blocks,
-      badge: 10,
-    },
+
     {
       title: 'Help',
       url: 'help',
@@ -127,113 +95,6 @@ export default {
       name: 'Daily Habit Tracker & Goal Setting',
       url: '#',
       emoji: '✅',
-    },
-  ],
-  workspaces: [
-    {
-      name: 'Personal Life Management',
-      emoji: '🏠',
-      pages: [
-        {
-          name: 'Daily Journal & Reflection',
-          url: '#',
-          emoji: '📔',
-        },
-        {
-          name: 'Health & Wellness Tracker',
-          url: '#',
-          emoji: '🍏',
-        },
-        {
-          name: 'Personal Growth & Learning Goals',
-          url: '#',
-          emoji: '🌟',
-        },
-      ],
-    },
-    {
-      name: 'Professional Development',
-      emoji: '💼',
-      pages: [
-        {
-          name: 'Career Objectives & Milestones',
-          url: '#',
-          emoji: '🎯',
-        },
-        {
-          name: 'Skill Acquisition & Training Log',
-          url: '#',
-          emoji: '🧠',
-        },
-        {
-          name: 'Networking Contacts & Events',
-          url: '#',
-          emoji: '🤝',
-        },
-      ],
-    },
-    {
-      name: 'Creative Projects',
-      emoji: '🎨',
-      pages: [
-        {
-          name: 'Writing Ideas & Story Outlines',
-          url: '#',
-          emoji: '✍️',
-        },
-        {
-          name: 'Art & Design Portfolio',
-          url: '#',
-          emoji: '🖼️',
-        },
-        {
-          name: 'Music Composition & Practice Log',
-          url: '#',
-          emoji: '🎵',
-        },
-      ],
-    },
-    {
-      name: 'Home Management',
-      emoji: '🏡',
-      pages: [
-        {
-          name: 'Household Budget & Expense Tracking',
-          url: '#',
-          emoji: '💰',
-        },
-        {
-          name: 'Home Maintenance Schedule & Tasks',
-          url: '#',
-          emoji: '🔧',
-        },
-        {
-          name: 'Family Calendar & Event Planning',
-          url: '#',
-          emoji: '📅',
-        },
-      ],
-    },
-    {
-      name: 'Travel & Adventure',
-      emoji: '🧳',
-      pages: [
-        {
-          name: 'Trip Planning & Itineraries',
-          url: '#',
-          emoji: '🗺️',
-        },
-        {
-          name: 'Travel Bucket List & Inspiration',
-          url: '#',
-          emoji: '🌎',
-        },
-        {
-          name: 'Travel Journal & Photo Gallery',
-          url: '#',
-          emoji: '📸',
-        },
-      ],
     },
   ],
 };

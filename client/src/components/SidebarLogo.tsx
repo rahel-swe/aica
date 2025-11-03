@@ -1,14 +1,16 @@
-import { SidebarMenuItem } from '@/components/ui/sidebar';
+import { Link } from 'react-router-dom';
 
-function SidebarLogo() {
+function SidebarHeaderLogo() {
   return (
-    <div className="flex items-center gap-3 cursor-pointer ml-1 mt-2">
-      <div className="bg-sidebar-primary flex aspect-square size-7 items-center justify-center rounded-md">
-        <span className="text-xl pb-1">⌘</span>
+    <div className="flex items-center gap-3 cursor-pointer my-2">
+      <div className="flex aspect-square size-8 items-center justify-center rounded-md hover:bg-accent">
+        <Link to="/" className="text-[1.8rem] pb-0.5">
+          ⌘
+        </Link>
       </div>
-      <span className="truncate font-bold">Academ AI</span>
+      <span className="truncate font-semibold">Academ AI</span>
     </div>
   );
 }
 
-export default SidebarLogo;
+export default SidebarHeaderLogo;
