@@ -1,28 +1,28 @@
-import Email from '@/components/EmailInput'
-import FormHeader from '@/components/FormHeader'
-import OAuthGoogle from '@/components/OAuthGoogle'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Checkbox } from '@/components/ui/checkbox'
+import Email from '@/components/EmailInput';
+import FormHeader from '@/components/FormHeader';
+import OAuthGoogle from '@/components/OAuthGoogle';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-  FieldSet
-} from '@/components/ui/field'
-import { Form } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Spinner } from '@/components/ui/spinner'
-import useToast from '@/hooks/use-toast'
-import { authClient } from '@/lib/better-auth'
-import { cn } from '@/lib/utils'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
-import z from 'zod'
+  FieldSet,
+} from '@/components/ui/field';
+import { Form } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Spinner } from '@/components/ui/spinner';
+import useToast from '@/hooks/use-toast';
+import { authClient } from '@/lib/better-auth';
+import { cn } from '@/lib/utils';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import z from 'zod';
 
 const formSchema = z
   .object({
@@ -36,52 +36,42 @@ const formSchema = z
       .string()
       .min(8, 'Password must be at least 8 charecters.')
       .max(20, 'Password must be at most 20 characters.'),
-    confirmPassword: z.string()
+    confirmPassword: z.string(),
   })
-  .refine(data => data.password === data.confirmPassword, {
+  .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match',
-    path: ['confirmPassword']
-  })
+    path: ['confirmPassword'],
+  });
 
-function SignupForm ({ className }: { className?: string }) {
-  const navigate = useNavigate()
+function SignupForm({ className }: { className?: string }) {
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema)
-  })
+    resolver: zodResolver(formSchema),
+  });
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors }
-  } = form
+    formState: { errors: formErrors, isSubmitting },
+  } = form;
 
-  const { toastNotification: toast } = useToast()
-  const [showPasswords, setShowPasswords] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const { toastNotification: toast } = useToast();
+  const [showPasswords, setShowPasswords] = useState(false);
 
-  const onSubmit = (formData: z.infer<typeof formSchema>) => {
-    authClient.signUp
+  const onSubmit = async (formData: z.infer<typeof formSchema>) => {
+    await authClient.signUp
       .email(formData, {
-        onRequest: () => {
-          setIsLoading(true)
+        onSuccess: () => navigate('/app/dashboard'),
+
+        onError: (ctx) => {
+          toast('error', ctx.error.message);
         },
-        onSuccess: () => {
-          navigate('/app/dashboard')
-          toast('success', 'Account created successfully')
-          setIsLoading(false)
-          reset()
-        },
-        onError: ctx => {
-          toast('error', ctx.error.message)
-          setIsLoading(false)
-        }
       })
-      .catch(error => {
-        toast('error', error.message)
-        setIsLoading(false)
-      })
-  }
+      .catch((error) => {
+        console.error(error);
+        toast('error', error.message);
+      });
+  };
 
   return (
     <div
@@ -90,110 +80,111 @@ function SignupForm ({ className }: { className?: string }) {
         className
       )}
     >
-      <Card className='overflow-hidden p-0'>
-        <CardContent className='grid p-0 md:grid-cols-2'>
+      <Card className="overflow-hidden p-0">
+        <CardContent className="grid p-0 md:grid-cols-2">
           <Form {...form}>
-            <form onSubmit={handleSubmit(onSubmit)} className='p-6 md:p-8'>
-              <FieldSet disabled={isLoading && true}>
+            <form onSubmit={handleSubmit(onSubmit)} className="p-6 md:p-8">
+              <FieldSet disabled={isSubmitting}>
                 <FormHeader
-                  title='Create your account'
-                  description=' Enter your email below to create your account'
+                  title="Create your account"
+                  description=" Enter your email below to create your account"
                 />
                 <Field>
-                  <FieldLabel htmlFor='name'>Full Name</FieldLabel>
+                  <FieldLabel htmlFor="name">Full Name</FieldLabel>
                   <Input
                     {...register('name')}
-                    id='name'
-                    type='text'
-                    placeholder='John Doe'
-                    aria-invalid={errors.name && true}
+                    id="name"
+                    type="text"
+                    placeholder="John Doe"
+                    aria-invalid={formErrors.name && true}
                     required
                   />
-                  {errors && <FieldError errors={[errors.name]} />}
+                  {formErrors.name && <FieldError errors={[formErrors.name]} />}
                 </Field>
                 <Email>
                   {
                     <Input
                       {...register('email')}
-                      id='email'
-                      type='email'
-                      placeholder='m@example.com'
-                      aria-invalid={errors.email && 'true'}
+                      id="email"
+                      type="email"
+                      placeholder="m@example.com"
+                      aria-invalid={formErrors.email && 'true'}
                       required
                     />
                   }
-                  {errors && <FieldError errors={[errors.email]} />}
+                  {formErrors.email && (
+                    <FieldError errors={[formErrors.email]} />
+                  )}
                 </Email>
                 <Field>
-                  <Field className='grid grid-cols-2 gap-4'>
+                  <Field className="grid grid-cols-2 gap-4">
                     <Field>
-                      <FieldLabel htmlFor='password'>Password</FieldLabel>
+                      <FieldLabel htmlFor="password">Password</FieldLabel>
                       <Input
-                        aria-invalid={errors.password && 'true'}
+                        aria-invalid={formErrors.password && 'true'}
                         {...register('password')}
-                        id='password'
+                        id="password"
                         type={showPasswords ? 'text' : 'password'}
-                        placeholder='********'
+                        placeholder="********"
                         required
                       />
-                      {errors && <FieldError errors={[errors.password]} />}
+                      {formErrors.password && (
+                        <FieldError errors={[formErrors.password]} />
+                      )}
                     </Field>
                     <Field>
-                      <FieldLabel htmlFor='confirm-password'>
+                      <FieldLabel htmlFor="confirm-password">
                         Confirm Password
                       </FieldLabel>
                       <Input
                         {...register('confirmPassword')}
-                        id='confirm-password'
+                        id="confirm-password"
                         type={showPasswords ? 'text' : 'password'}
-                        aria-invalid={errors.confirmPassword && 'true'}
-                        placeholder='********'
+                        aria-invalid={formErrors.confirmPassword && 'true'}
+                        placeholder="********"
                         required
                       />
-                      {errors && (
-                        <FieldError errors={[errors.confirmPassword]} />
+                      {formErrors.confirmPassword && (
+                        <FieldError errors={[formErrors.confirmPassword]} />
                       )}
                     </Field>
                   </Field>
-                  <div className=' flex items-center gap-2'>
-                    <Label htmlFor='show-password' className='ml-auto'>
+                  <div className=" flex items-center gap-2">
+                    <Label htmlFor="show-password" className="ml-auto">
                       Show password
                     </Label>
                     <Checkbox
-                      className=''
-                      id='show-passwords'
+                      className=""
+                      id="show-passwords"
                       checked={showPasswords}
                       onCheckedChange={() => setShowPasswords(!showPasswords)}
                     />
                   </div>
-                  <FieldDescription>
-                    Must be at least 8 characters long.
-                  </FieldDescription>
                 </Field>
                 <Field>
-                  <Button type='submit'>
-                    {isLoading && <Spinner />} Create Account
+                  <Button type="submit">
+                    {isSubmitting && <Spinner />} Create Account
                   </Button>
                   <OAuthGoogle />
-                  <FieldDescription className='text-center'>
+                  <FieldDescription className="text-center">
                     Already have an account?{' '}
-                    <Link to='/auth/login'>Sign in</Link>
+                    <Link to="/auth/login">Sign in</Link>
                   </FieldDescription>
                 </Field>
               </FieldSet>
             </form>
           </Form>
 
-          <div className='bg-muted relative hidden md:block'>
+          <div className="bg-muted relative hidden md:block">
             <img
-              src='/placeholder.svg'
-              alt='Image'
-              className='absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale'
+              src="/placeholder.svg"
+              alt="Image"
+              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </div>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
-export default SignupForm
+export default SignupForm;

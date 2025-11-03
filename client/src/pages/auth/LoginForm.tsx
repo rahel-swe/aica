@@ -35,44 +35,29 @@ const formSchema = z.object({
 export function LoginForm({ className }: { className?: string }) {
   const navigate = useNavigate();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-  });
   const {
-    register,
     handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
+    register,
+    formState: { errors: formErrors, isSubmitting },
+  } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
   const { toastNotification: toast } = useToast();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   const onSubmit = async (formData: z.infer<typeof formSchema>) => {
-    const res = await authClient.signIn
+    await authClient.signIn
       .email(formData, {
-        onRequest: () => {
-          setIsLoading(true);
-        },
-        onSuccess: () => {
-          navigate('/app/dashboard');
-          toast('success', 'You have Login to your account successfully');
-          setIsLoading(false);
-          reset();
-        },
+        redirect: 'follow',
+        onSuccess: () => navigate('/app/dashboard'),
         onError: (ctx) => {
           toast('error', ctx.error.message);
-          toast('success', 'You have Login to your account successfully');
-          setIsLoading(false);
-          reset();
         },
       })
       .catch((error) => {
-        setIsLoading(false);
+        console.error(error);
         toast('error', error.message);
       });
   };
@@ -85,77 +70,76 @@ export function LoginForm({ className }: { className?: string }) {
     >
       <Card className="overflow-hidden p-0 ">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <Form {...form}>
-            <form onSubmit={handleSubmit(onSubmit)} className="p-6 md:p-8">
-              <FieldSet disabled={isLoading && true}>
-                <FormHeader
-                  title="Welcome back"
-                  description="Login to your Academ AI account"
-                />
-                <Email>
-                  {
-                    <Input
-                      {...register('email')}
-                      id="email"
-                      type="email"
-                      placeholder="m@example.com"
-                      required
-                    />
-                  }
-                  {errors && <FieldError errors={[errors.email]} />}
-                </Email>
+          <form onSubmit={handleSubmit(onSubmit)} className="p-6 md:p-8">
+            <FieldSet disabled={isSubmitting && true}>
+              <FormHeader
+                title="Welcome back"
+                description="Login to your Academ AI account"
+              />
+              <Email>
+                {
+                  <Input
+                    {...register('email')}
+                    id="email"
+                    type="email"
+                    aria-invalid={formErrors.email && 'true'}
+                    placeholder="m@example.com"
+                    required
+                  />
+                }
+                {formErrors && <FieldError errors={[formErrors.email]} />}
+              </Email>
 
-                <Field>
-                  <div className="flex items-center">
-                    <FieldLabel htmlFor="password">Password</FieldLabel>
+              <Field>
+                <div className="flex items-center">
+                  <FieldLabel htmlFor="password">Password</FieldLabel>
 
-                    <a
-                      href="#"
-                      className="ml-auto text-sm underline-offset-2 hover:underline"
-                    >
-                      Forgot your password?
-                    </a>
-                  </div>
-                  <div className="relative">
-                    <Input
-                      aria-invalid={errors.password && 'true'}
-                      {...register('password')}
-                      id="password"
-                      type={isShowPassword ? 'text' : 'password'}
-                      placeholder="********"
-                      required
-                    />
-                    <Button
-                      className="flex justify-end absolute top-0 right-3"
-                      variant="ghost"
-                      size="icon"
-                      type="button"
-                      onClick={() => setIsShowPassword(!isShowPassword)}
-                    >
-                      {isShowPassword ? <Eye /> : <EyeClosed />}
-                    </Button>
-                  </div>
-                  {errors && <FieldError errors={[errors.password]} />}
-                </Field>
-                <Field>
-                  <Button type="submit">
-                    {isLoading && <Spinner />}
-                    Login
+                  <a
+                    href="#"
+                    className="ml-auto text-sm underline-offset-2 hover:underline"
+                  >
+                    Forgot your password?
+                  </a>
+                </div>
+                <div className="relative">
+                  <Input
+                    aria-invalid={formErrors.password && 'true'}
+                    {...register('password')}
+                    id="password"
+                    type={isShowPassword ? 'text' : 'password'}
+                    placeholder="********"
+                    required
+                  />
+                  <Button
+                    className="flex justify-end absolute top-0 right-3"
+                    variant="ghost"
+                    size="icon"
+                    type="button"
+                    onClick={() => setIsShowPassword(!isShowPassword)}
+                  >
+                    {isShowPassword ? <Eye /> : <EyeClosed />}
                   </Button>
-                </Field>
-                <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
-                  Or continue with
-                </FieldSeparator>
-                <Field>
-                  <OAuthGoogle />
-                </Field>
-                <FieldDescription className="text-center">
-                  Don&apos;t have an account?{' '}
-                  <Link to="/auth/signup">Sign up</Link>
-                </FieldDescription>
-              </FieldSet>
-            </form>
-          </Form>
+                </div>
+                {formErrors && <FieldError errors={[formErrors.password]} />}
+              </Field>
+              <Field>
+                <Button type="submit">
+                  {isSubmitting && <Spinner />}
+                  Login
+                </Button>
+              </Field>
+              <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
+                Or continue with
+              </FieldSeparator>
+              <Field>
+                <OAuthGoogle />
+              </Field>
+              <FieldDescription className="text-center">
+                Don&apos;t have an account?{' '}
+                <Link to="/auth/signup">Sign up</Link>
+              </FieldDescription>
+            </FieldSet>
+          </form>
           <div className="bg-muted relative hidden md:block">
             <img
               src="/placeholder.svg"

@@ -5,7 +5,7 @@ import {
   MessageCircleQuestion,
   Settings2,
 } from 'lucide-react';
-import { TiChartBar } from 'react-icons/ti';
+import { TiChartBarOutline } from 'react-icons/ti';
 
 // This is sample data.
 export const navData = {
@@ -13,7 +13,7 @@ export const navData = {
     {
       title: 'Dashboard',
       url: 'dashboard',
-      icon: TiChartBar,
+      icon: TiChartBarOutline,
     },
     {
       title: 'Ask AI',
