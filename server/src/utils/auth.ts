@@ -1,7 +1,7 @@
-import { betterAuth } from 'better-auth';
-import { mongodbAdapter } from 'better-auth/adapters/mongodb';
-import { getClient } from '../database/db';
-import ENV from '../config/env.config';
+import { betterAuth } from "better-auth";
+import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { getClient } from "../database/db";
+import ENV from "../config/env.config";
 
 const client = await getClient();
 
@@ -11,5 +11,13 @@ export const auth = betterAuth({
   trustedOrigins: [ENV.CLIENT_URL],
   emailAndPassword: {
     enabled: true,
+  },
+  socialProviders: {
+    google: {
+      clientId: ENV.GOOGLE_CLIENT_ID,
+      clientSecret: ENV.GOOGLE_CLIENT_SECRET,
+      accessType: "offline",
+      prompt: "select_account consent",
+    },
   },
 });
