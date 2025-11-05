@@ -20,6 +20,7 @@ declare module '*.otf';
 // <reference types="vite/clien" />
 interface ImportMetaEnv {
   readonly VITE_SERVER_BASE_URL: string;
+  readonly VITE_CLIENT_URL: string;
   // add more environment variables here
 }
 
