@@ -1,13 +1,11 @@
 import { authClient } from '@/lib/better-auth';
 import { Button } from './ui/button';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import useToast from '@/hooks/use-toast';
 
 const { VITE_CLIENT_URL } = import.meta.env;
 
 const OAuthGoogle = () => {
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { toastNotification: toast } = useToast();
 
@@ -20,8 +18,6 @@ const OAuthGoogle = () => {
       },
       {
         onSuccess: () => {
-          navigate('/app/dashboard');
-          toast('success', 'You have Login to your account successfully');
           setIsLoading(false);
         },
         onError: (ctx) => {
@@ -36,6 +32,7 @@ const OAuthGoogle = () => {
     <Button
       variant="outline"
       type="button"
+      className="cursor-pointer"
       onClick={handleGoogleSignIn}
       disabled={isLoading}
     >
