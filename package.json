@@ -1,25 +1,20 @@
 {
-  "name": "academic-career-ai-guidance",
-  "version": "1.0.0",
-  "description": "AI-powered academic and career advisory platform",
+  "name": "latoon",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "tsx watch index.ts",
-    "install:all": "npm install && npm run install:client && npm run install:server && npm run install:ai",
-    "install:client": "cd client && npm install",
-    "install:server": "cd server && npm install",
-    "install:ai": "cd ai && pip install -r requirements.txt",
-    "build:client": "cd client && npm run build",
-    "start:server": "cd server && npm start",
-    "start:ai": "cd ai && python app.py"
+    "build": "bun --filter '*' build",
+    "test": "bun --filter '*' test",
+    "dev": "bun --filter '*' dev",
+    "start": "bun --filter '*' start"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0",
-    "typescript": "^5.9.3",
-    "@types/node": "^24.7.0",
-    "tsx": "^4.20.5"
+    "@types/bun": "latest"
   },
-  "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=7.0.0"
+  "workspaces": [
+    "packages/*"
+  ],
+  "peerDependencies": {
+    "typescript": "^5"
   }
 }

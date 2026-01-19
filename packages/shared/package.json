@@ -1,0 +1,21 @@
+{
+  "name": "shared",
+  "module": "index.ts",
+  "type": "module",
+  "private": false,
+  "exports": {
+    ".": "./index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "build": "bun build ./index.tsx --outdir ./build"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "zod": "^4.1.13"
+  }
+}
