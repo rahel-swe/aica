@@ -1,5 +1,4 @@
 import express, { type Request, type Response } from 'express';
-import ENV from './src/config/env.config';
 import cors from 'cors';
 import errorMiddleware from './src/middleware/error.middleware';
 import arcjectMiddleware from './src/middleware/arcjet.middleware';
@@ -19,7 +18,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ENV.CLIENT_URL,
+    origin: Bun.env.CLIENT_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   }),
@@ -47,8 +46,8 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use(errorMiddleware);
 
-app.listen(ENV.PORT, async () => {
-  console.log(`Server is running on http://localhost:${ENV.PORT}`);
+app.listen(Bun.env.PORT, async () => {
+  console.log(`Server is running on http://localhost:${Bun.env.PORT}`);
 });
 
 export default app;

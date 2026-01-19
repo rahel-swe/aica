@@ -1,5 +1,4 @@
-import type { ErrorRequestHandler } from "express";
-import ENV from "../config/env.config";
+import type { ErrorRequestHandler } from 'express';
 
 const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
   // If some earlier middleware already started sending a response, let Express handle the error
@@ -11,36 +10,36 @@ const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
 
   // Default response
   let status = 500;
-  let message = "Server Error";
+  let message = 'Server Error';
   let details: unknown = undefined;
 
   // Mongoose: invalid ObjectId / CastError -> 404
-  if (original?.name === "CastError") {
+  if (original?.name === 'CastError') {
     status = 404;
-    message = "Resource not found";
+    message = 'Resource not found';
   }
 
   // Mongoose: duplicate key -> 400
   else if (original?.code === 11000) {
     status = 400;
-    message = "Duplicate field value entered";
+    message = 'Duplicate field value entered';
     details = { duplicate: original.keyValue ?? original };
   }
 
   // Mongoose: validation error -> 400 (collect message)
-  else if (original?.name === "ValidationError") {
+  else if (original?.name === 'ValidationError') {
     status = 400;
     const messages = Object.values(original.errors ?? {})
       .map((e: any) => e?.message)
       .filter(Boolean);
-    message = message.length ? messages.join(", ") : "Validation failed";
+    message = message.length ? messages.join(', ') : 'Validation failed';
     details = original.errors;
   }
 
   // If error already specifies a status, use it
   else if (
-    typeof original?.status === "number" ||
-    typeof original?.statusCode === "number"
+    typeof original?.status === 'number' ||
+    typeof original?.statusCode === 'number'
   ) {
     status = original?.status ?? original?.statusCode;
     message = original?.message ?? message;
@@ -53,7 +52,7 @@ const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
   }
 
   // Log server-side (replace with real logger in production)
-  console.error("Error: ", {
+  console.error('Error: ', {
     message: original?.message,
     name: original?.name,
     stack: original?.stack,
@@ -65,7 +64,7 @@ const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
 
   // Build safe response (hide internal details for 5xx in production)
   const requesId = (req as any).requesId;
-  const safeMessage = status >= 500 ? "Internal server error" : message;
+  const safeMessage = status >= 500 ? 'Internal server error' : message;
 
   const payload: any = {
     success: false,
@@ -76,7 +75,7 @@ const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
     },
   };
 
-  if (ENV.NODE_ENV !== "production") {
+  if (Bun.env.NODE_ENV !== 'production') {
     // helpul debug info in development
     payload.error._rawMessage = message;
     payload.error.stack = original?.stack;
@@ -87,7 +86,7 @@ const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
   }
 
   // set request-id header if we have one
-  if (requesId) res.setHeader("X-Request-Id", requesId);
+  if (requesId) res.setHeader('X-Request-Id', requesId);
 
   return res.status(status).json(payload);
 };

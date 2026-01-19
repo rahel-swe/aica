@@ -1,14 +1,13 @@
 import mongoose from 'mongoose';
-import ENV from '../config/env.config';
 
-if (!ENV.MONGODB_URI) {
+if (!Bun.env.MONGODB_URI) {
   throw new Error('DATABASE_URL is not defined in environment variables.');
 }
 
 async function connectDB(): Promise<typeof mongoose> {
   try {
-    const mongooseInstance = await mongoose.connect(ENV.MONGODB_URI, {
-      dbName: ENV.DB_NAME,
+    const mongooseInstance = await mongoose.connect(Bun.env.MONGODB_URI, {
+      dbName: Bun.env.DB_NAME,
       maxPoolSize: 10,
     });
 
@@ -22,5 +21,5 @@ async function connectDB(): Promise<typeof mongoose> {
 
 export async function getClient() {
   const conn = await connectDB();
-  return conn.connection.getClient().db(ENV.DB_NAME);
+  return conn.connection.getClient().db(Bun.env.DB_NAME);
 }
