@@ -20,7 +20,12 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "paths": {
+      "@/*": ["./src/*"],
+      "@contracts/shared/*": ["../contracts/src/*"]
+    }
   },
   "include": ["vite.config.ts"]
 }
