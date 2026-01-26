@@ -26,7 +26,13 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+
+    "paths": {
+      "@/*": ["./*"],
+      "@contracts/shared/*": ["../contracts/src/*"]
+    }
   },
-  "include": ["src", "src/types"]
+  "include": ["src/types"],
+  "exclude": ["node_modules"]
 }

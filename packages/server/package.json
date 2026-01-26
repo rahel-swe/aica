@@ -23,7 +23,7 @@
     "multer": "^2.0.2",
     "nodemailer": "^7.0.12",
     "resend": "^6.7.0",
-    "shared": "workspace:*",
+    "@contracts/shared": "workspace:*",
     "zod": "^4.1.13"
   },
   "devDependencies": {

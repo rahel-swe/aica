@@ -1,11 +1,7 @@
 {
-  "name": "shared",
-  "module": "index.ts",
+  "name": "@contracts/shared",
   "type": "module",
   "private": false,
-  "exports": {
-    ".": "./index.ts"
-  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -17,5 +13,9 @@
   },
   "dependencies": {
     "zod": "^4.1.13"
+  },
+  "exports": {
+    "./schemas/*": "./src/schemas/*.ts",
+    "./types/*": "./src/types/*.ts"
   }
 }
