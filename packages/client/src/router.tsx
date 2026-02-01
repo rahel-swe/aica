@@ -39,14 +39,13 @@ const routes: RouteObject[] = [
           { index: true, element: <Navigate to="login" replace /> },
           { path: "login", element: <SignInPage /> },
           { path: "signup", element: <SignUpPage /> },
+          { path: "landing", element: <LandingPage /> },
         ],
       },
       {
         element: <AppLayout />,
         errorElement: <ErrorPage />,
         children: [
-          { index: true, element: <Navigate to="landing" replace /> },
-          { path: "landing", element: <LandingPage /> },
           { path: "profile", element: <ProfilePage /> },
 
           { path: "dashboard", element: <DashboardPage /> },
