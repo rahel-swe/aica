@@ -3,30 +3,15 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
- 
+import { signUpSchema } from "@contracts/shared/types/auth-types";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-
 import { Label } from "@/components/ui/label";
 
-
-const signUpSchema = z
-  .object({
-    name: z.string().min(2, "Name is required"),
-    email: z.string().email("Invalid email"),
-    password: z.string().min(6, "Password must be at least 6 characters"),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "Passwords do not match",
-  });
-
 type SignUpFormValues = z.infer<typeof signUpSchema>;
-
-
 
 export default function SignUpPage() {
   const {
@@ -45,7 +30,6 @@ export default function SignUpPage() {
 
   function onSubmit(values: SignUpFormValues) {
     console.log("Sign Up Data:", values);
-   
   }
 
   return (
