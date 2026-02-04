@@ -32,7 +32,6 @@ const routes: RouteObject[] = [
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "auth",
         element: <AuthLayout />,
         errorElement: <ErrorPage />,
         children: [
