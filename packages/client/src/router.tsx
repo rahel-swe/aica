@@ -35,10 +35,11 @@ const routes: RouteObject[] = [
         element: <AuthLayout />,
         errorElement: <ErrorPage />,
         children: [
-          { index: true, element: <Navigate to="login" replace /> },
+          { index: true, element: <Navigate to="landing" replace /> },
+          { path: "landing", element: <LandingPage /> },
           { path: "login", element: <SignInPage /> },
           { path: "signup", element: <SignUpPage /> },
-          { path: "landing", element: <LandingPage /> },
+    
         ],
       },
       {

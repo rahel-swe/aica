@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { signUpSchema } from "@contracts/shared/types/auth-types";
+import { signUpSchema } from "../../../contracts/schemas/auth-schema";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,14 +11,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Label } from "@/components/ui/label";
 
-type SignUpFormValues = z.infer<typeof signUpSchema>;
+type SignUpForm = z.infer<typeof signUpSchema>;
 
 export default function SignUpPage() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignUpFormValues>({
+  } = useForm<SignUpForm>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       name: "",
@@ -28,7 +28,7 @@ export default function SignUpPage() {
     },
   });
 
-  function onSubmit(values: SignUpFormValues) {
+  function onSubmit(values: SignUpForm) {
     console.log("Sign Up Data:", values);
   }
 
@@ -36,7 +36,7 @@ export default function SignUpPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
       <Card className="w-[400px] p-6">
         <CardHeader>
-          <CardTitle>Create Account</CardTitle>
+          <CardTitle>Create Your Account</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
