@@ -1,13 +1,21 @@
-import React from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import AppSidebar from "@/navigations/app-sidebar";
 
-const AppLayout = () => {
+
+export default function AppLayout() {
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleCollapsed = () => setCollapsed(!collapsed);
+
   return (
     <>
-      <div>app-layout</div>
-      <Outlet />
+      <div className="flex min-h-screen">
+        <AppSidebar collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
+        <Outlet />
+      </div>
+
+    
     </>
   );
-};
-
-export default AppLayout;
+}

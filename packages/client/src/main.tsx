@@ -6,11 +6,9 @@ import { RouterProvider } from "react-router-dom";
 import routre from "./router.tsx";
 
 import "./index.css";
-import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
     <RouterProvider router={routre} />
   </StrictMode>,
 );
