@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import AppSidebar from "@/navigations/app-sidebar";
 
+
 export default function AppLayout() {
   const [collapsed, setCollapsed] = useState(true);
 
@@ -13,6 +14,8 @@ export default function AppLayout() {
         <AppSidebar collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
         <Outlet />
       </div>
+
+    
     </>
   );
 }
