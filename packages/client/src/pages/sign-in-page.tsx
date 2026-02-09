@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { signInSchema } from "@contracts/shared/types/auth-types";
+import { signInSchema } from "../../../contracts/schemas/auth-schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -7,9 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-
-
 
 type SignInForm = z.infer<typeof signInSchema>;
 
@@ -30,7 +27,7 @@ export default function SignInPage() {
     <div className="flex min-h-screen items-center justify-center">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Sign In Form</CardTitle>
+          <CardTitle>Welcome Back! Please Sign In</CardTitle>
         </CardHeader>
 
         <CardContent>
@@ -66,7 +63,3 @@ export default function SignInPage() {
     </div>
   );
 }
-
-
-
-
