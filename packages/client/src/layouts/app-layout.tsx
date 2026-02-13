@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import AppSidebar from "@/navigations/app-sidebar";
-
+import AppTabs from "@/navigations/app-tabs";
+import AppHeader from "@/navigations/app-header";
 
 export default function AppLayout() {
   const [collapsed, setCollapsed] = useState(true);
@@ -12,10 +13,16 @@ export default function AppLayout() {
     <>
       <div className="flex min-h-screen">
         <AppSidebar collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
-        <Outlet />
+
+        <div className="flex flex-1 flex-col">
+          {/* Header */}
+          <AppHeader />
+           <Outlet />
+        </div>
+       
       </div>
 
-    
+      <AppTabs />
     </>
   );
 }

@@ -54,7 +54,7 @@ const routes: RouteObject[] = [
           { path: "roadmap", element: <RoadmapPage /> },
 
           { path: "settings", element: <SettingsPage /> },
-          { path: "get-help", element: <HelpPage /> },
+          { path: "help", element: <HelpPage /> },
 
           { path: "chatbot", element: <ChatbotPage /> },
           { path: "inbox", element: <InboxPage /> },
