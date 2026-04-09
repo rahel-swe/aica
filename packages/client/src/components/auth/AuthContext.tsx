@@ -1,10 +1,11 @@
-import {
+import{
   createContext,
   useContext,
   useEffect,
   useState,
-  ReactNode,
+  
 } from "react";
+import type { ReactNode, } from "react";
 
 import { createAuthClient } from "better-auth/client";
 import { email } from "better-auth";

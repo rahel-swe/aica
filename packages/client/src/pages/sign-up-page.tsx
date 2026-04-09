@@ -1,15 +1,17 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { signUpSchema } from '@contracts/shared/schemas/auth-schema';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { signUpSchema } from "@contracts/shared/schemas/auth-schema";
 
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Label } from '@/components/ui/label';
+import { Label } from "@/components/ui/label";
+import { authClient } from "@/lib/auth-client";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 type SignUpForm = z.infer<typeof signUpSchema>;
 
@@ -21,16 +23,28 @@ export default function SignUpPage() {
   } = useForm<SignUpForm>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
   });
 
-  function onSubmit(values: SignUpForm) {
-    console.log('Sign Up Data:', values);
-  }
+  const navigate = useNavigate()
+
+  const onSubmit = async (data: SignUpForm) => {
+    await authClient.signUp.email(
+      { email: data.email, name: data.name, password: data.password },
+      {
+        onError: (ctx) => {
+          console.log(ctx.error);
+        },
+        onSuccess:  () =>{
+           navigate('/dashboard')
+        }
+      },
+    );
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
@@ -43,7 +57,7 @@ export default function SignUpPage() {
             {/* Name */}
             <div className="flex flex-col">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Your name" {...register('name')} />
+              <Input id="name" placeholder="Your name" {...register("name")} />
               {errors.name && (
                 <span className="text-red-500 text-sm">
                   {errors.name.message}
@@ -57,7 +71,7 @@ export default function SignUpPage() {
               <Input
                 id="email"
                 placeholder="email@example.com"
-                {...register('email')}
+                {...register("email")}
               />
               {errors.email && (
                 <span className="text-red-500 text-sm">
@@ -73,7 +87,7 @@ export default function SignUpPage() {
                 id="password"
                 type="password"
                 placeholder="******"
-                {...register('password')}
+                {...register("password")}
               />
               {errors.password && (
                 <span className="text-red-500 text-sm">
@@ -89,7 +103,7 @@ export default function SignUpPage() {
                 id="confirmPassword"
                 type="password"
                 placeholder="******"
-                {...register('confirmPassword')}
+                {...register("confirmPassword")}
               />
               {errors.confirmPassword && (
                 <span className="text-red-500 text-sm">
