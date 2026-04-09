@@ -1,12 +1,14 @@
-import { z } from 'zod';
-import { signInSchema } from '@contracts/shared/schemas/auth-schema';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from "zod";
+import { signInSchema } from "@contracts/shared/schemas/auth-schema";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { authClient } from "@/lib/auth-client";
+import { useNavigate } from "react-router-dom";
 
 type SignInForm = z.infer<typeof signInSchema>;
 
@@ -14,13 +16,26 @@ export default function SignInPage() {
   const form = useForm<SignInForm>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
   });
 
-  const onSubmit = (data: SignInForm) => {
-    console.log(data);
+ const navigate = useNavigate()
+
+  const onSubmit = async (data: SignInForm) => {
+    await authClient.signIn.email(
+      { email: data.email, password: data.password },
+      {
+        onError: (ctx) => {
+          console.log(ctx.error.message);
+        },
+         onSuccess:  () =>{
+           navigate('/dashboard')
+        }
+      },
+    );
+   
   };
 
   return (
@@ -35,7 +50,7 @@ export default function SignInPage() {
             {/* Email */}
             <div className="space-y-1">
               <Label>Email</Label>
-              <Input {...form.register('email')} />
+              <Input {...form.register("email")} />
               {form.formState.errors.email && (
                 <p className="text-sm text-red-500">
                   {form.formState.errors.email.message}
@@ -46,7 +61,7 @@ export default function SignInPage() {
             {/* Password */}
             <div className="space-y-1">
               <Label>Password</Label>
-              <Input type="password" {...form.register('password')} />
+              <Input type="password" {...form.register("password")} />
               {form.formState.errors.password && (
                 <p className="text-sm text-red-500">
                   {form.formState.errors.password.message}

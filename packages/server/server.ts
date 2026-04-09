@@ -18,7 +18,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: Bun.env.CLIENT_URL,
+    origin:[Bun.env.CLIENT_URL! , "http://localhost:5173"],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   }),
@@ -27,9 +27,9 @@ app.use(
 app.all('/api/auth/*splat', toNodeHandler(auth));
 
 app.use(express.json());
+
 app.use(arcjectMiddleware);
 
-app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/profile', profileRouter);
 app.use('/api/v1/recommendations', recommendRouter);
 app.use('/api/v1/onboarding', onboardRouter);
@@ -40,7 +40,7 @@ app.use('/api/v1/universities', uniRouter);
 app.use('/api/v1/chat/why', chatRouter);
 app.use('/api/v1/chat/why', chatRouter);
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/health', (req: Request, res: Response) => {
   res.send({ success: true, message: 'Hello, From Academ AI!' });
 });
 
