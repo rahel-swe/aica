@@ -21,7 +21,7 @@ export default function SignInPage() {
     },
   });
 
- const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSubmit = async (data: SignInForm) => {
     await authClient.signIn.email(
@@ -30,12 +30,11 @@ export default function SignInPage() {
         onError: (ctx) => {
           console.log(ctx.error.message);
         },
-         onSuccess:  () =>{
-           navigate('/dashboard')
-        }
+        onSuccess: () => {
+          navigate("/app/dashboard");
+        },
       },
     );
-   
   };
 
   return (

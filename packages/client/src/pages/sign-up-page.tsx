@@ -11,7 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type SignUpForm = z.infer<typeof signUpSchema>;
 
@@ -30,7 +30,7 @@ export default function SignUpPage() {
     },
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSubmit = async (data: SignUpForm) => {
     await authClient.signUp.email(
@@ -39,9 +39,9 @@ export default function SignUpPage() {
         onError: (ctx) => {
           console.log(ctx.error);
         },
-        onSuccess:  () =>{
-           navigate('/dashboard')
-        }
+        onSuccess: () => {
+          navigate("/app/dashboard");
+        },
       },
     );
   };

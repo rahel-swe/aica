@@ -9,10 +9,10 @@ export default function LandingPage() {
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
           <h1 className="text-xl font-bold">AICA</h1>
           <div className="flex gap-3">
-            <Link to="/login">
+            <Link to="/sign-in">
               <Button variant="outline">Sign In</Button>
             </Link>
-            <Link to="/signup">
+            <Link to="/sign-up">
               <Button>Get Started</Button>
             </Link>
           </div>
@@ -31,10 +31,10 @@ export default function LandingPage() {
         </p>
 
         <div className="mt-6 flex gap-4">
-          <Link to="/signup">
+          <Link to="/sign-up">
             <Button size="lg">Create Account</Button>
           </Link>
-          <Link to="/login">
+          <Link to="/sign-in">
             <Button size="lg" variant="outline">
               Sign In
             </Button>
