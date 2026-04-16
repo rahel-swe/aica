@@ -1,29 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
- 
-import { User, Settings, HelpCircle, LogOut } from "lucide-react";
+import { User, Settings, HelpCircle, LogOut } from 'lucide-react';
 
 export default function AppHeader() {
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/sign-in";
+    localStorage.removeItem('token');
+    window.location.href = '/sign-in';
   };
 
   return (
     <header className="flex items-center justify-between border-b bg-black px-4 py-3 text-white">
-    
       <h1 className="text-xl font-semibold">Dashboard</h1>
 
       {/* Right side - Actions */}
       <div className="flex items-center gap-3">
-
         {/* Profile dropdown */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -35,7 +32,6 @@ export default function AppHeader() {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent align="end" className="w-44">
-
             <DropdownMenuItem asChild>
               <Link to="/app/profile" className="flex items-center gap-2">
                 <User className="h-4 w-4" />
@@ -64,7 +60,6 @@ export default function AppHeader() {
               <LogOut className="h-4 w-4" />
               Logout
             </DropdownMenuItem>
-
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

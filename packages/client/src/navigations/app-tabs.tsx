@@ -1,7 +1,6 @@
-
-import { LayoutDashboard, Map, Bot, Inbox, Plus } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useNavigate, useLocation } from "react-router-dom"
+import { LayoutDashboard, Map, Bot, Inbox, Plus } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function AppTabs() {
   const navigate = useNavigate();
@@ -50,17 +49,35 @@ export default function AppTabs() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-function TabItem({ icon, label, active = false, onClick }: { icon: React.ReactNode; label: string; active?: boolean; onClick?: () => void }) {
+function TabItem({
+  icon,
+  label,
+  active = false,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  active?: boolean;
+  onClick?: () => void;
+}) {
   return (
     <button
       onClick={onClick}
       className="flex flex-col items-center justify-center gap-1 text-xs"
     >
-      <div className={`flex items-center justify-center ${active ? 'text-white' : 'text-white/60'}`}>{icon}</div>
-      <span className={`${active ? 'text-white font-medium' : 'text-white/60'}`}>{label}</span>
+      <div
+        className={`flex items-center justify-center ${active ? 'text-white' : 'text-white/60'}`}
+      >
+        {icon}
+      </div>
+      <span
+        className={`${active ? 'text-white font-medium' : 'text-white/60'}`}
+      >
+        {label}
+      </span>
     </button>
-  )
+  );
 }

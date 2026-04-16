@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Bot, Inbox, Map } from "lucide-react";
+import { Link, useLocation } from 'react-router-dom';
+import { LayoutDashboard, Bot, Inbox, Map } from 'lucide-react';
 
 type SidebarProps = {
   collapsed: boolean;
@@ -13,23 +13,23 @@ export default function AppSidebar({
   const location = useLocation();
 
   const items = [
-    { title: "Dashboard", url: "/app/dashboard", icon: LayoutDashboard },
-    { title: "Chatbot", url: "/app/chatbot", icon: Bot },
-    { title: "Inbox", url: "/app/inbox", icon: Inbox },
-    { title: "Roadmap", url: "/app/roadmap", icon: Map },
+    { title: 'Dashboard', url: '/app/dashboard', icon: LayoutDashboard },
+    { title: 'Chatbot', url: '/app/chatbot', icon: Bot },
+    { title: 'Inbox', url: '/app/inbox', icon: Inbox },
+    { title: 'Roadmap', url: '/app/roadmap', icon: Map },
   ];
 
   return (
     <div className="hidden sm:block">
       <div
         className={`h-screen bg-black text-white flex flex-col justify-between transition-all duration-300 ${
-          collapsed ? "w-16" : "w-64"
+          collapsed ? 'w-16' : 'w-64'
         }`}
       >
         {/* App Name / Logo */}
         <div
           className={`h-16 flex items-center border-b border-white/10 px-3 transition-all ${
-            collapsed ? "justify-start" : "justify-center"
+            collapsed ? 'justify-start' : 'justify-center'
           }`}
         >
           <span className="font-bold text-lg">AICA</span>
@@ -46,7 +46,7 @@ export default function AppSidebar({
                   <Link
                     to={item.url}
                     className={`flex items-center gap-3 p-2 rounded-lg transition 
-                      ${isActive ? "bg-white text-black border-l-4 border-blue-500" : "hover:bg-white/10 hover:shadow-lg"}
+                      ${isActive ? 'bg-white text-black border-l-4 border-blue-500' : 'hover:bg-white/10 hover:shadow-lg'}
                     `}
                   >
                     <Icon size={24} />
@@ -68,7 +68,7 @@ export default function AppSidebar({
         {/* Bottom toggle button */}
         <div
           className={`p-2 transition-all ${
-            collapsed ? "self-start" : "self-center"
+            collapsed ? 'self-start' : 'self-center'
           }`}
         >
           <button
@@ -76,11 +76,11 @@ export default function AppSidebar({
             className="flex items-center justify-center w-14 h-14 rounded-lg hover:bg-white/10 transition relative group"
           >
             {/* Icon changes: + when collapsed, × when expanded */}
-            <span className="text-2xl font-bold">{collapsed ? "+" : "×"}</span>
+            <span className="text-2xl font-bold">{collapsed ? '+' : '×'}</span>
 
             {/* Tooltip changes */}
             <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity z-50">
-              {collapsed ? "Open" : "Close"}
+              {collapsed ? 'Open' : 'Close'}
             </span>
           </button>
         </div>
@@ -88,4 +88,3 @@ export default function AppSidebar({
     </div>
   );
 }
-

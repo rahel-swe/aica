@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const ProcessingPage = () => {
   return <div>processing-page</div>;

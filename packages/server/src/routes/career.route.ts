@@ -1,34 +1,34 @@
-import { Router, type Request, type Response } from "express";
+import { Router, type Request, type Response } from 'express';
 
 const careerRouter = Router();
 
-careerRouter.get("/", (req: Request, res: Response) => {
+careerRouter.get('/', (req: Request, res: Response) => {
   // Res: {id, title, description, requiredSkills, yearByYearRoadmap, marketOurlokk }
 
-  res.send({ success: true, message: "Get list career " });
+  res.send({ success: true, message: 'Get list career ' });
 });
 
-careerRouter.get("/:id", (req: Request, res: Response) => {
+careerRouter.get('/:id', (req: Request, res: Response) => {
   // Res: {id, title, description, requiredSkills, yearByYearRoadmap, marketOurlokk }
 
-  res.send({ success: true, message: "Get career detailed exploration" });
+  res.send({ success: true, message: 'Get career detailed exploration' });
 });
 
-careerRouter.get("/:id/resources", (req: Request, res: Response) => {
+careerRouter.get('/:id/resources', (req: Request, res: Response) => {
   // Res: Repo of courses, scholarships, job links.
 
   res.send({
     success: true,
-    message: "Get career resources",
+    message: 'Get career resources',
   });
 });
 
-careerRouter.get("/:id/skills-gaps", (req: Request, res: Response) => {
+careerRouter.get('/:id/skills-gaps', (req: Request, res: Response) => {
   // Res: { gaps: [{skill, missingProficiency}], suggestedResources: [...] }
 
   res.send({
     success: true,
-    message: "Get career skills gaps with user skills",
+    message: 'Get career skills gaps with user skills',
   });
 });
 

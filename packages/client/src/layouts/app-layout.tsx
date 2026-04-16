@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import AppSidebar from "@/navigations/app-sidebar";
-import AppTabs from "@/navigations/app-tabs";
-import AppHeader from "@/navigations/app-header";
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import AppSidebar from '@/navigations/app-sidebar';
+import AppTabs from '@/navigations/app-tabs';
+import AppHeader from '@/navigations/app-header';
 
 export default function AppLayout() {
   const [collapsed, setCollapsed] = useState(true);
@@ -17,9 +17,8 @@ export default function AppLayout() {
         <div className="flex flex-1 flex-col">
           {/* Header */}
           <AppHeader />
-           <Outlet />
+          <Outlet />
         </div>
-       
       </div>
 
       <AppTabs />

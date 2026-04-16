@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Dashboard() {
   const { user, loading } = useAuth();
@@ -8,7 +8,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!loading && !user) {
-      navigate("/login");
+      navigate('/login');
     }
   }, [user, loading, navigate]);
 

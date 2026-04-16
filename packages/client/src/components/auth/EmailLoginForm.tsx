@@ -1,33 +1,33 @@
-import React, { useState } from "react";
-import { createAuthClient } from "better-auth/client";
+import React, { useState } from 'react';
+import { createAuthClient } from 'better-auth/client';
 
 const authClient = createAuthClient({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000/api",
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
 });
 
 export default function EmailLoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError('');
 
     try {
       const result = await authClient.signIn.email({
         email,
         password,
-        callbackURL: "./dashboard",
+        callbackURL: './dashboard',
       });
 
       if (result.error) {
-        setError(result.error.message || "Login failed");
+        setError(result.error.message || 'Login failed');
       }
     } catch (error) {
-      setError("An unexpected error occurred");
+      setError('An unexpected error occurred');
     } finally {
       setLoading(false);
     }
@@ -35,7 +35,7 @@ export default function EmailLoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <div style={{ color: "red" }}>{error}</div>}
+      {error && <div style={{ color: 'red' }}>{error}</div>}
 
       <input
         type="email"
@@ -54,7 +54,7 @@ export default function EmailLoginForm() {
       />
 
       <button type="submit" disabled={loading}>
-        {loading ? "Signing in..." : "Sign In"}
+        {loading ? 'Signing in...' : 'Sign In'}
       </button>
     </form>
   );

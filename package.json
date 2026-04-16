@@ -3,13 +3,14 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "bun --filter '*' build",
     "test": "bun --filter '*' test",
     "dev": "bun --filter '*' dev",
-    "start": "bun --filter '*' start"
+    "start": "bun --filter '*' start",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "prettier": "^3.8.3"
   },
   "workspaces": [
     "packages/*"

@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import type { ReactNode } from "react";
-import { createAuthClient } from "better-auth/client";
+import { createContext, useContext, useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
+import { createAuthClient } from 'better-auth/client';
 
 const authClient = createAuthClient({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000/api",
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
 });
 
 interface User {
@@ -35,7 +35,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { data: session } = await authClient.getSession();
       setUser(session?.user || null);
     } catch (error) {
-      console.error("Session check failed:", error);
+      console.error('Session check failed:', error);
     } finally {
       setLoading(false);
     }
@@ -43,8 +43,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const loginWithGoogle = async () => {
     await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "./dashboard",
+      provider: 'google',
+      callbackURL: './dashboard',
     });
   };
 
@@ -52,7 +52,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const result = await authClient.signIn.email({
       email,
       password,
-      callbackURL: "./dashboard",
+      callbackURL: './dashboard',
     });
 
     if (!result.error) {
@@ -84,7 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used within AuthProvider");
+    throw new Error('useAuth must be used within AuthProvider');
   }
   return context;
 };

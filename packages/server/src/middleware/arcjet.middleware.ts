@@ -5,7 +5,7 @@ import type { NextFunction, Request, Response } from 'express';
 const arcjetMiddleware = async (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   try {
     const url = `http://${req.headers.host}${req.originalUrl}`;

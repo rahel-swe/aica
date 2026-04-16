@@ -18,10 +18,10 @@ const app = express();
 
 app.use(
   cors({
-    origin:[Bun.env.CLIENT_URL! , "http://localhost:5173"],
+    origin: [Bun.env.CLIENT_URL!, 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
-  }),
+  })
 );
 
 app.all('/api/auth/*splat', toNodeHandler(auth));
@@ -37,7 +37,6 @@ app.use('/api/v1/processing', processRouter);
 app.use('/api/v1/dashboard', dashboardRouter);
 app.use('/api/v1/careers', careerRouter);
 app.use('/api/v1/universities', uniRouter);
-app.use('/api/v1/chat/why', chatRouter);
 app.use('/api/v1/chat/why', chatRouter);
 
 app.get('/health', (req: Request, res: Response) => {
