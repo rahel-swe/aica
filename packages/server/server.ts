@@ -1,18 +1,10 @@
 import express, { type Request, type Response } from 'express';
 import cors from 'cors';
-import errorMiddleware from './src/middleware/error.middleware';
-import arcjectMiddleware from './src/middleware/arcjet.middleware';
-import onboardRouter from './src/routes/onboarding.route';
-import processRouter from './src/routes/processing.route';
-import dashboardRouter from './src/routes/dashboard.route';
-import careerRouter from './src/routes/career.route';
-import authRouter from './src/routes/auth.route';
-import profileRouter from './src/routes/profile.route';
-import recommendRouter from './src/routes/recommendation.route';
-import uniRouter from './src/routes/universities.route';
-import chatRouter from './src/routes/ai.route';
 import { toNodeHandler } from 'better-auth/node';
+import arcjetMiddleware from './src/middleware/arcjet.middleware';
+import errorMiddleware from './src/middleware/error.middleware';
 import { auth } from './src/utils/auth';
+import apiRouter from './src/routes';
 
 const app = express();
 
@@ -24,28 +16,21 @@ app.use(
   })
 );
 
+// better-auth handler should be top of express.json()
 app.all('/api/auth/*splat', toNodeHandler(auth));
 
 app.use(express.json());
+app.use(arcjetMiddleware);
 
-app.use(arcjectMiddleware);
+app.use('/api', apiRouter);
 
-app.use('/api/v1/profile', profileRouter);
-app.use('/api/v1/recommendations', recommendRouter);
-app.use('/api/v1/onboarding', onboardRouter);
-app.use('/api/v1/processing', processRouter);
-app.use('/api/v1/dashboard', dashboardRouter);
-app.use('/api/v1/careers', careerRouter);
-app.use('/api/v1/universities', uniRouter);
-app.use('/api/v1/chat/why', chatRouter);
-
-app.get('/health', (req: Request, res: Response) => {
-  res.send({ success: true, message: 'Hello, From Academ AI!' });
+app.get('/health', (_req: Request, res: Response) => {
+  res.send({ success: true, message: 'AICA server is healthy.' });
 });
 
 app.use(errorMiddleware);
 
-app.listen(Bun.env.PORT, async () => {
+app.listen(Bun.env.PORT, () => {
   console.log(`Server is running on http://localhost:${Bun.env.PORT}`);
 });
 

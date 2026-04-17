@@ -6,7 +6,7 @@
     "module": "preserve",
     "moduleDetection": "force",
     "jsx": "react-jsx",
-    "types": ["bun-types", "node"],
+    "types": ["bun", "node"],
 
     "allowJs": true,
 
@@ -33,6 +33,6 @@
       "@contracts/shared/*": ["../contracts/src/*"]
     }
   },
-  "include": ["src/types"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

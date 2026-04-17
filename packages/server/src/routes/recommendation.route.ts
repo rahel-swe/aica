@@ -1,22 +1,21 @@
 import { Router, type Request, type Response } from 'express';
 
-const recommendRouter = Router();
+const recommendationRouter = Router();
 
-recommendRouter.post('/', (req: Request, res: Response) => {
-  // purpose: {request new recommendation (calls AI service)}
-  //Requses: {profileId, options or use current user}
-  res.send({ success: true, message: 'Recommendations generating!' });
+recommendationRouter.post('/generate', (req: Request, res: Response) => {
+  res.send({
+    success: true,
+    data: req.body,
+    message: 'Recommendations generated.',
+  });
 });
 
-recommendRouter.get('/', (req: Request, res: Response) => {
-  //purpose: {list user Recommendation History}
-  res.send({ success: true, message: 'list user Recommendation History' });
+recommendationRouter.get('/me', (_req: Request, res: Response) => {
+  res.send({
+    success: true,
+    data: [],
+    message: 'Current user recommendations fetched.',
+  });
 });
 
-recommendRouter.get('/:id', (req: Request, res: Response) => {
-  //purpose: {fetch result}
-  //resp: {faculties: [...], scores, explanation}
-  res.send({ success: true, message: 'Get recommendation by ID!' });
-});
-
-export default recommendRouter;
+export default recommendationRouter;
