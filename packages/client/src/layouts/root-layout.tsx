@@ -1,10 +1,13 @@
 import { Outlet } from 'react-router-dom';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 const RootLayout = () => {
   return (
-    <main>
-      <Outlet />
-    </main>
+    <TooltipProvider>
+      <main>
+        <Outlet />
+      </main>
+    </TooltipProvider>
   );
 };
 
