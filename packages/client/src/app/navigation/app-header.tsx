@@ -1,8 +1,7 @@
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Input } from '@/components/ui/input';
 import { Bell, Search } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 
 const titles: Record<string, string> = {
   '/app/dashboard': 'Dashboard',
@@ -20,7 +19,7 @@ export default function AppHeader() {
   const title = titles[pathname] ?? 'AICA';
 
   return (
-    <header className="sticky top-0 z-30 border-b bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b backdrop-blur-md bg-input/65">
       <div className="flex items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <div className="min-w-0 flex-1">
           <p className="text-sm text-muted-foreground">AICA workspace</p>
@@ -35,11 +34,9 @@ export default function AppHeader() {
             />
           </div>
         </div>
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <Bell className="h-4 w-4" />
-        </Button>
+        <Bell className="" />
         <Link to="/app/profile" className="rounded-full">
-          <Avatar className="h-9 w-9">
+          <Avatar className="size-12">
             <AvatarFallback>AI</AvatarFallback>
           </Avatar>
         </Link>

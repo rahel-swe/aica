@@ -1,16 +1,16 @@
+import { cn } from '@/lib/utils';
 import {
   Compass,
-  LayoutDashboard,
+  House,
   Map,
   MessageSquareText,
   Sparkles,
   User,
 } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
-import { cn } from '@/lib/utils';
 
 const navItems = [
-  { label: 'Dashboard', to: '/app/dashboard', icon: LayoutDashboard },
+  { label: 'Dashboard', to: '/app/dashboard', icon: House },
   { label: 'Explore', to: '/app/explore', icon: Compass },
   { label: 'Recommendations', to: '/app/recommendations', icon: Sparkles },
   { label: 'Advisor', to: '/app/advisor', icon: MessageSquareText },
@@ -20,7 +20,7 @@ const navItems = [
 
 export default function AppSidebar() {
   return (
-    <aside className="sticky top-0 hidden h-screen w-72 shrink-0 border-r bg-sidebar/70 backdrop-blur lg:block">
+    <aside className="sticky top-0 hidden h-screen w-72 shrink-0 border-r bg-sidebar/70 backdrop-blur md:block">
       <div className="flex h-full flex-col px-4 py-6">
         <div className="px-3">
           <p className="text-sm font-semibold tracking-[0.18em] text-primary">

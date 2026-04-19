@@ -6,7 +6,7 @@ import AppTabs from '@/app/navigation/app-tabs';
 export default function AppShell() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1600px] gap-0 lg:px-4">
+      <div className="mx-auto flex min-h-screen w-full max-w-400 gap-0">
         <AppSidebar />
         <div className="flex min-h-screen min-w-0 flex-1 flex-col">
           <AppHeader />
