@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { HeroCard, SectionGrid } from '@/pages/page-primitives';
+import ModeToggle from '@/components/toggle-mode';
 
 export default function LandingPage() {
   return (
@@ -22,6 +23,7 @@ export default function LandingPage() {
             </Button>
           </div>
         </div>
+        <ModeToggle /> 
       </header>
 
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-8 sm:px-6 lg:px-8 lg:py-12">

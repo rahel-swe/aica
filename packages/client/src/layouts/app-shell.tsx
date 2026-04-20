@@ -1,5 +1,6 @@
-import AppHeader from '@/app/navigation/app-header';
-import AppTabs from '@/app/navigation/app-tabs';
+
+import AppHeader from '@/components/app-header';
+import AppTabs from '@/components/app-tabs';
 import { Outlet } from 'react-router-dom';
 
 export default function AppShell() {
