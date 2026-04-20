@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { HeroCard, SectionGrid } from '@/shared/pages/page-primitives';
+import { HeroCard, SectionGrid } from '@/pages/page-primitives';
 
 export default function LandingPage() {
   return (

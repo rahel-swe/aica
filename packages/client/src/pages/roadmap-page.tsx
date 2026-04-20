@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ShellPage } from '@/shared/pages/page-primitives';
+import { ShellPage } from '@/pages/page-primitives';
 
 export default function RoadmapPage() {
   return (

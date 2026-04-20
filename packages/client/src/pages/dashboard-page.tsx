@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ShellPage, StatusList } from '@/shared/pages/page-primitives';
+import { ShellPage, StatusList } from '@/pages/page-primitives';
 
 export default function DashboardPage() {
   return (
