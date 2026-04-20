@@ -1,9 +1,10 @@
 import { cn } from '@/lib/utils';
-import { Compass, House, Map, MessageSquareText } from 'lucide-react';
+import { Compass, House, Map, MessageSquareText, Sparkles } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 const tabItems = [
   { label: 'Home', to: '/app/dashboard', icon: House },
+  { label: 'Recommendations', to: '/app/recommendations', icon: Sparkles },
   { label: 'Explore', to: '/app/explore', icon: Compass },
   { label: 'Advisor', to: '/app/advisor', icon: MessageSquareText },
   { label: 'Roadmap', to: '/app/roadmap', icon: Map },
@@ -13,10 +14,10 @@ export default function AppTabs() {
   return (
     <div
       className={cn(
-        'fixed inset-x-0 bottom-0 z-40 backdrop-blur-md mx-auto rounded-full mb-2 w-min h-16 flex items-center bg-input/65 md:hidden'
+        'fixed inset-x-0 bottom-0 z-40 mx-auto w-full h-18 flex items-center bg-background border md:hidden'
       )}
     >
-      <div className="flex flex-items justify-evenly gap-x-4 px-2 py-1 w-full">
+      <div className="flex flex-items justify-evenly  px-2.5 py-1 w-full">
         {tabItems.map(({ to, icon: Icon }) => (
           <NavLink
             key={to}
@@ -24,7 +25,7 @@ export default function AppTabs() {
             className={({ isActive }) =>
               cn(
                 'flex flex-col items-center p-3.5 rounded-full text-xs font-medium text-muted-foreground transition-colors',
-                isActive && 'text-primary bg-background'
+                isActive && 'text-white bg-primary'
               )
             }
           >
