@@ -14,7 +14,7 @@ export default function AppTabs() {
   return (
     <div
       className={cn(
-        'fixed inset-x-0 bottom-0 z-40 mx-auto w-full h-18 flex items-center bg-background border md:hidden'
+        'fixed inset-x-0 bottom-2 max-w-70 rounded-full input/70 backdrop-blur-md z-40 mx-auto w-full h-16 flex items-center border md:hidden'
       )}
     >
       <div className="flex flex-items justify-evenly  px-2.5 py-1 w-full">

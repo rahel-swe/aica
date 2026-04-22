@@ -12,14 +12,14 @@ const navItems = [
 
 export default function AppHeaderTabs() {
   return (
-    <nav className="gap-1 hidden md:flex border p-2 rounded-full mx-auto">
+    <nav className="gap-1 hidden md:flex border p-2 lg:p-0 rounded-full mx-auto">
       {navItems.map(({ label, to, icon: Icon }) => (
         <NavLink
           key={to}
           to={to}
           className={({ isActive }) =>
             cn(
-              'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors',
+              'flex items-center gap-3 rounded-full px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors',
               'hover:bg-accent hover:text-accent-foreground',
               isActive &&
                 'bg-primary text-primary-foreground shadow-sm hover:bg-primary hover:text-primary-foreground'
