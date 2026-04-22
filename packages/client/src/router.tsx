@@ -3,7 +3,6 @@ import LandingPage from '@/pages/landing-page';
 import SignInPage from '@/pages/auth/sign-in-page';
 import SignUpPage from '@/pages/auth/sign-up-page';
 import DashboardPage from '@/pages/dashboard-page';
-import OnboardingPage from '@/pages/onboarding-page';
 import ExplorePage from '@/pages/explore-page';
 import RecommendationsPage from '@/pages/recommendations-page';
 import PathwayDetailPage from '@/pages/pathway-detail-page';
@@ -13,9 +12,11 @@ import ProfilePage from '@/pages/profile-page';
 import SettingsPage from '@/pages/settings-page';
 import ErrorPage from '@/pages/error-page';
 import NotFoundPage from '@/pages/not-found-page';
-import AppShell from '@/layouts/app-shell';
-import AuthShell from '@/layouts/auth-shell';
+import AppLayout from '@/layouts/app-layout';
+import AuthLayout from '@/layouts/auth-layout';
 import RootLayout from '@/layouts/root-layout';
+import OnboardingLayout from './layouts/onboarding-layout';
+import OnboardingStepRenderer from './pages/onboarding-steps-page';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        element: <AuthShell />,
+        element: <AuthLayout />,
         children: [
           { index: true, element: <LandingPage /> },
           { path: 'auth/sign-in', element: <SignInPage /> },
@@ -32,12 +33,25 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: 'onboarding',
+        element: <OnboardingLayout />,
+        children: [
+          {
+            index: true,
+            element: <Navigate to="welcome" replace />,
+          },
+          {
+            path: ':stepId',
+            element: <OnboardingStepRenderer />,
+          },
+        ],
+      },
+      {
         path: 'app',
-        element: <AppShell />,
+        element: <AppLayout />,
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> },
           { path: 'dashboard', element: <DashboardPage /> },
-          { path: 'onboarding', element: <OnboardingPage /> },
           { path: 'explore', element: <ExplorePage /> },
           { path: 'recommendations', element: <RecommendationsPage /> },
           { path: 'pathways/:id', element: <PathwayDetailPage /> },
