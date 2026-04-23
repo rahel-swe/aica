@@ -27,6 +27,7 @@ const OnboardingStepsPage = () => {
       {step.type === 'intro' && <OnboardingIntroPanel step={step} />}
       {step.type === 'cta' && (
         <OnboardingSummaryPanel
+          key={step.type}
           step={step}
           values={watchedValues as OnboardingFormValues}
         />

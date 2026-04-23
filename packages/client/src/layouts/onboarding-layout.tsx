@@ -49,19 +49,23 @@ const OnboardingLayout = () => {
 
   return (
     <FormProvider {...form}>
-      <div className="min-h-screen bg-background px-4 py-6 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 text-center px-6 py-8">
-          {/* <OnboardingProgress currentIndex={currentIndex} /> */}
+      <div className="relative min-h-screen bg-background flex flex-col items-center justify-center overflow-hidden">
+        {/* Background Illustration */}
+        <img
+          src="/onboarding-steps-bg.png"
+          alt="Onboarding hero background"
+          className="absolute inset-0 scale-140 w-full h-full object-contain opacity-80 pointer-events-none select-none z-0"
+        />
 
+        {/* Foreground Content */}
+        <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-6 text-center px-6 py-8">
           <Outlet
-            context={
-              {
-                currentIndex,
-                totalSteps: ONBOARDING_STEPS.length,
-                isSubmitting: form.formState.isSubmitting,
-                submitProfile,
-              } satisfies OnboardingOutletContext
-            }
+            context={{
+              currentIndex,
+              totalSteps: ONBOARDING_STEPS.length,
+              isSubmitting: form.formState.isSubmitting,
+              submitProfile,
+            }}
           />
         </div>
       </div>

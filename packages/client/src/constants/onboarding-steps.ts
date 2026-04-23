@@ -387,12 +387,12 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
   {
     id: 'welcome',
     type: 'intro',
-    title: 'Let’s find a direction that fits you',
+    title: 'Find a study or career path that fits you',
     description:
-      'You do not need to know the exact career already. AICA will build a clear profile first, then turn that into aligned pathways and roadmap-ready guidance.',
+      'Answer a few short questions about your strengths, interests, and goals. AICA will turn them into clear pathway matches, simple explanations, and a practical next-step roadmap.',
     helperText:
-      'No right or wrong answers. Just choose what feels true for you.',
-    cta: 'Start assessment',
+      'There are no right or wrong answers. Choose what feels most true to you right now.',
+    cta: 'Begin assessment',
   },
   {
     id: 'strengths',

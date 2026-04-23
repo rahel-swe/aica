@@ -36,7 +36,7 @@ const MultiSelectField: React.FC<MultiSelectFieldProps> = ({
         return (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {options.map((opt) => (
-              <FieldLabel key={opt.value}>
+              <FieldLabel key={opt.value} className="backdrop-blur-xl">
                 <Field orientation="horizontal">
                   <Checkbox
                     id={opt.value}

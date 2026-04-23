@@ -32,7 +32,7 @@ const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
           {options.map((opt) => (
             <FieldLabel
               key={opt.value}
-              className="max-w-md mx-auto rounded-full"
+              className="max-w-md mx-auto rounded-full backdrop-blur-xl"
             >
               <Field orientation="horizontal" className="items-center">
                 <RadioGroupItem
