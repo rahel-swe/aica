@@ -11,13 +11,12 @@ export const onboardingStrengthSchema = z.enum([
   'organized',
 ]);
 
-export const onboardingSubjectSchema = z.enum([
-  'math',
-  'science',
-  'writing',
-  'arts',
-  'social',
-]);
+export const onboardingSubjectSchema = z.enum(
+  ['math', 'science', 'writing', 'arts', 'social'],
+  {
+    error: 'Please choose your favorite subject',
+  }
+);
 
 export const onboardingPassionSchema = z.enum([
   'tech',
@@ -31,45 +30,40 @@ export const onboardingPassionSchema = z.enum([
   'ideas',
 ]);
 
-export const onboardingFreeTimeSchema = z.enum([
-  'build',
-  'outdoor',
-  'socialize',
-  'consume',
-  'learn',
-]);
+export const onboardingFreeTimeSchema = z.enum(
+  ['build', 'outdoor', 'socialize', 'consume', 'learn'],
+  {
+    error: 'Please choose what you spend your free time',
+  }
+);
 
-export const onboardingWorkEnvironmentSchema = z.enum([
-  'office',
-  'remote',
-  'outdoor',
-  'lab',
-  'mixed',
-]);
+export const onboardingWorkEnvironmentSchema = z.enum(
+  ['office', 'remote', 'outdoor', 'lab', 'mixed'],
+  {
+    error: 'Please choose your favorite work environment',
+  }
+);
 
-export const onboardingWorkStyleSchema = z.enum([
-  'analyze',
-  'help',
-  'build',
-  'create',
-  'routine',
-]);
+export const onboardingWorkStyleSchema = z.enum(
+  ['analyze', 'help', 'build', 'create', 'routine'],
+  {
+    error: 'Please choose your favorite work',
+  }
+);
 
-export const onboardingImpactSchema = z.enum([
-  'create',
-  'people',
-  'discover',
-  'systems',
-  'express',
-]);
+export const onboardingImpactSchema = z.enum(
+  ['create', 'people', 'discover', 'systems', 'express'],
+  {
+    error: 'Please choose one impactfull thing to you',
+  }
+);
 
-export const onboardingGoalSchema = z.enum([
-  'impact',
-  'money',
-  'balance',
-  'growth',
-  'variety',
-]);
+export const onboardingGoalSchema = z.enum(
+  ['impact', 'money', 'balance', 'growth', 'variety'],
+  {
+    error: 'Please choose your goal',
+  }
+);
 
 export const onboardingFormSchema = z.object({
   strengths: z
@@ -97,7 +91,6 @@ export const onboardingSubmitResponseSchema = z.object({
   message: z.string(),
   data: z.object({
     submissionId: z.string(),
-    nextRoute: z.string(),
     savedAt: z.string(),
   }),
 });

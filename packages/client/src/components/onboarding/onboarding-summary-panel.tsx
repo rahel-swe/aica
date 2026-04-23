@@ -1,37 +1,25 @@
-import {
-  ONBOARDING_STEPS,
-  type OnboardingStep,
-} from '@/constants/onboarding-steps';
-import { getStepValueLabel } from '@/lib/get-step-value-label';
-import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
-import OnboardingStepSummaryCard from './onboarding-step-summary-card';
+import { type OnboardingStep } from '@/constants/onboarding-steps';
 
 type OnboardingSummaryPanelProps = {
   step: OnboardingStep;
-  values: OnboardingFormValues;
 };
 
-const OnboardingSummaryPanel = ({
-  step,
-  values,
-}: OnboardingSummaryPanelProps) => {
+const OnboardingSummaryPanel = ({ step }: OnboardingSummaryPanelProps) => {
   return (
-    <div className="space-y-5">
-      <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
-        {step.description}
-      </p>
-      <div className="grid gap-3 md:grid-cols-2">
-        {ONBOARDING_STEPS.filter((item) => item.fieldName).map((item) => (
-          <OnboardingStepSummaryCard
-            key={item.id}
-            step={item}
-            labels={getStepValueLabel(step, values)}
-          />
-        ))}
+    <div className="mx-auto">
+      <img
+        src="/onboard-welcome.png"
+        alt="welcome image"
+        className="pointer-events-none max-w-110 mx-auto select-none z-0"
+      />
+      <div className="space-y-3">
+        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight">
+          {step.title}
+        </h1>
+        <p className="max-w-2xl text-sm leading-6">{step.description}</p>
+
+        {step.helperText ? <p className="text-sm">{step.helperText}</p> : null}
       </div>
-      {step.helperText ? (
-        <p className="text-sm text-muted-foreground">{step.helperText}</p>
-      ) : null}
     </div>
   );
 };

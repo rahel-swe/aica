@@ -4,15 +4,12 @@ import OnboardingStepsNavigations from '@/components/onboarding/onboarding-steps
 import OnboardingSummaryPanel from '@/components/onboarding/onboarding-summary-panel';
 import { ONBOARDING_STEPS } from '@/constants/onboarding-steps';
 import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
-import { useFormContext, useWatch } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 
 const OnboardingStepsPage = () => {
   const { stepId } = useParams();
   const form = useFormContext<OnboardingFormValues>();
-  const watchedValues = useWatch<OnboardingFormValues>({
-    control: form.control,
-  });
 
   const step = ONBOARDING_STEPS.find((item) => item.id === stepId);
 
@@ -26,11 +23,7 @@ const OnboardingStepsPage = () => {
     <>
       {step.type === 'intro' && <OnboardingIntroPanel step={step} />}
       {step.type === 'cta' && (
-        <OnboardingSummaryPanel
-          key={step.type}
-          step={step}
-          values={watchedValues as OnboardingFormValues}
-        />
+        <OnboardingSummaryPanel key={step.type} step={step} />
       )}
       {step.type !== 'intro' && step.type !== 'cta' && (
         <OnboardingFieldPanel step={step} />

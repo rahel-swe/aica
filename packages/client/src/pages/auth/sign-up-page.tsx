@@ -27,7 +27,7 @@ export default function SignUpPage() {
         isOnboardDone: false,
       },
       {
-        onSuccess: () => navigate('/onboarding'),
+        onSuccess: () => navigate('/onboarding/welcome'),
         onError: ({ error }) =>
           form.setError('root', { message: error.message }),
       }

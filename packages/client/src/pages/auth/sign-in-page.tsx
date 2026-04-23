@@ -23,7 +23,7 @@ export default function SignInPage() {
     await authClient.signIn.email(
       { email: data.email, password: data.password },
       {
-        onSuccess: () => navigate('/app/dashboard'),
+        onSuccess: () => navigate('/onboarding/welcome'),
         onError: ({ error }) =>
           form.setError('root', { message: error.message }),
       }
