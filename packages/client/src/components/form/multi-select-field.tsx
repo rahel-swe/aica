@@ -20,6 +20,7 @@ const MultiSelectField: React.FC<MultiSelectFieldProps> = ({
     <Controller
       name={name}
       control={control}
+      shouldUnregister={false}
       render={({ field }) => {
         const values: string[] = field.value || [];
 

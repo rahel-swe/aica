@@ -18,10 +18,17 @@ const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
 
   return (
     <Controller
+      key={name}
       name={name}
       control={control}
+      shouldUnregister={false}
       render={({ field }) => (
-        <RadioGroup {...field} onValueChange={field.onChange} className="">
+        <RadioGroup
+          name={field.name}
+          value={field.value ?? ''}
+          onValueChange={field.onChange}
+          className=""
+        >
           {options.map((opt) => (
             <FieldLabel
               key={opt.value}

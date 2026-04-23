@@ -50,15 +50,15 @@ export type OnboardingStep = {
 
 export const ONBOARDING_STORAGE_KEY = 'aica-onboarding-draft';
 
-export const onboardingDefaultValues: OnboardingFormValues = {
+export const onboardingDefaultValues = {
   strengths: [],
-  subjects: 'math',
+  subjects: '',
   passions: [],
-  freeTime: 'learn',
-  workEnvironment: 'mixed',
-  workStyle: 'create',
-  impact: 'create',
-  goals: 'growth',
+  freeTime: '',
+  workEnvironment: '',
+  workStyle: '',
+  impact: '',
+  goals: '',
 };
 
 const strengthOptions: OnboardingOption[] = [

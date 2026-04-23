@@ -1,17 +1,12 @@
 import type { OnboardingStep } from '@/constants/onboarding-steps';
 import MultiSelectField from '../form/multi-select-field';
 import SingleSelectField from '../form/single-select-field';
-import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
-import { useWatch } from 'react-hook-form';
 
 type OnboardingFieldPanelProps = {
   step: OnboardingStep;
 };
 
 const OnboardingFieldPanel = ({ step }: OnboardingFieldPanelProps) => {
-  const valuse = useWatch<OnboardingFormValues>();
-  console.log(valuse);
-
   if (!step.fieldName || !step.options) return null;
 
   return (

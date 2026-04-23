@@ -2,12 +2,8 @@ import {
   ONBOARDING_STEPS,
   onboardingDefaultValues,
 } from '@/constants/onboarding-steps';
-import { submitOnboardingProfile } from '@/services/oboarding-service';
 import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schema';
-import type {
-  OnboardingFormValues,
-  OnboardingSubmitRequest,
-} from '@contracts/shared/types/onboarding-types';
+import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -31,16 +27,17 @@ const OnboardingLayout = () => {
 
   const form = useForm<OnboardingFormValues>({
     resolver: zodResolver(onboardingFormSchema),
-    defaultValues: onboardingDefaultValues,
+    defaultValues: onboardingDefaultValues as OnboardingFormValues,
     mode: 'onChange',
+    shouldUnregister: false,
   });
 
   const submitProfile = async () => {
-    const payload: OnboardingSubmitRequest = {
-      responses: form.getValues(),
-    };
+    const payload = form.getValues();
 
-    const result = await submitOnboardingProfile(payload);
+    console.log(payload);
+
+    // const result = await submitOnboardingProfile(payload);
 
     // navigate(result.data.nextRoute);
   };
