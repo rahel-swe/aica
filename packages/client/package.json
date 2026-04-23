@@ -10,11 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@base-ui/react": "^1.4.1",
     "@contracts/shared": "workspace:*",
     "@fontsource-variable/inter": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "^4.2.4",
+    "axios": "^1.15.2",
     "better-auth": "^1.6.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

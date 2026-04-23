@@ -1,28 +1,51 @@
-import StepFactory from '@/components/onboarding/step-factory';
+import OnboardingFieldPanel from '@/components/onboarding/onboarding-field-panel';
+import OnboardingIntroPanel from '@/components/onboarding/onboarding-intro-panel';
+import OnboardingStepsNavigations from '@/components/onboarding/onboarding-steps-navigations';
+import OnboardingSummaryPanel from '@/components/onboarding/onboarding-summary-panel';
 import { ONBOARDING_STEPS } from '@/constants/onboarding-steps';
-import { useParams, useNavigate } from 'react-router-dom';
+import { getStepValueLabel } from '@/lib/get-step-value-label';
+import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
+import { useFormContext } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 
-function OnboardingStepRenderer() {
+const OnboardingStepsPage = () => {
   const { stepId } = useParams();
-  const navigate = useNavigate();
+  const form = useFormContext<OnboardingFormValues>();
 
-  const currentIndex = ONBOARDING_STEPS.findIndex((s) => s.id === stepId);
-
-  const step = ONBOARDING_STEPS[currentIndex];
+  const step = ONBOARDING_STEPS.find((item) => item.id === stepId);
 
   if (!step) {
-    navigate('/onboarding/welcome');
     return null;
   }
 
-  const handleNext = () => {
-    const next = ONBOARDING_STEPS[currentIndex + 1];
-    if (next) {
-      navigate(`/onboarding/${next.id}`);
-    }
-  };
+  const values = form.getValues();
+  const selectedLabels = getStepValueLabel(step, values);
+  const fieldError = step.fieldName
+    ? form.formState.errors[step.fieldName]
+    : undefined;
 
-  return <StepFactory step={step} onNext={handleNext} />;
-}
+  // const disableNext =
+  //   step.type === 'multi-select'
+  //     ? selectedLabels.length < (step.minSelect ?? 1)
+  //     : step.type === 'single-select'
+  //       ? selectedLabels.length === 0
+  //       : false;
 
-export default OnboardingStepRenderer;
+  return (
+    <>
+      {step.type === 'intro' && <OnboardingIntroPanel step={step} />}
+      {step.type === 'cta' && (
+        <OnboardingSummaryPanel step={step} values={values} />
+      )}
+      {step.type !== 'intro' && step.type !== 'cta' && (
+        <OnboardingFieldPanel step={step} />
+      )}
+      {step.type !== 'intro' && step.type !== 'cta' && fieldError?.message && (
+        <p className="text-sm text-destructive">{String(fieldError.message)}</p>
+      )}
+      <OnboardingStepsNavigations step={step} disableNext={false} />
+    </>
+  );
+};
+
+export default OnboardingStepsPage;

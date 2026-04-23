@@ -20,9 +20,14 @@ export default function SignUpPage() {
 
   const onSubmit = async (data: SignUpForm) => {
     await authClient.signUp.email(
-      { email: data.email, name: data.name, password: data.password },
       {
-        onSuccess: () => navigate('/app/onboarding'),
+        email: data.email,
+        name: data.name,
+        password: data.password,
+        isOnboardDone: false,
+      },
+      {
+        onSuccess: () => navigate('/onboarding'),
         onError: ({ error }) =>
           form.setError('root', { message: error.message }),
       }
