@@ -15,9 +15,9 @@ export type OnboardingStepId =
   | 'strengths'
   | 'subjects'
   | 'passions'
-  | 'free-time'
-  | 'work-environment'
-  | 'work-style'
+  | 'freeTime'
+  | 'workEnvironment'
+  | 'workStyle'
   | 'impact'
   | 'goals'
   | 'finish';
@@ -430,7 +430,7 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     options: passionOptions,
   },
   {
-    id: 'free-time',
+    id: 'freeTime',
     type: 'single-select',
     title: 'On a free day, you usually:',
     description:
@@ -439,7 +439,7 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     options: freeTimeOptions,
   },
   {
-    id: 'work-environment',
+    id: 'workEnvironment',
     type: 'single-select',
     title: 'Where would you enjoy working?',
     description:
@@ -448,7 +448,7 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     options: environmentOptions,
   },
   {
-    id: 'work-style',
+    id: 'workStyle',
     type: 'single-select',
     title: 'What kind of work do you enjoy?',
     description:

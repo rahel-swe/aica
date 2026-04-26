@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import assessmentRouter from './assessment.route';
+import assessmentRouter from './assessment-route';
 import advisorRouter from './advisor.route';
 import adminRouter from './admin.route';
 import pathwayRouter from './pathway.route';

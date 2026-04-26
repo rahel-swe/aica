@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const onboardingStrengthSchema = z.enum([
+export const strengthsEnum = [
   'problem_solving',
   'creativity',
   'people',
@@ -9,16 +9,11 @@ export const onboardingStrengthSchema = z.enum([
   'hands_on',
   'fast_learning',
   'organized',
-]);
+];
 
-export const onboardingSubjectSchema = z.enum(
-  ['math', 'science', 'writing', 'arts', 'social'],
-  {
-    error: 'Please choose your favorite subject',
-  }
-);
+export const subjectsEnum = ['math', 'science', 'writing', 'arts', 'social'];
 
-export const onboardingPassionSchema = z.enum([
+export const passionsEnum = [
   'tech',
   'music',
   'sports',
@@ -28,42 +23,63 @@ export const onboardingPassionSchema = z.enum([
   'nature',
   'building',
   'ideas',
-]);
+];
 
-export const onboardingFreeTimeSchema = z.enum(
-  ['build', 'outdoor', 'socialize', 'consume', 'learn'],
-  {
-    error: 'Please choose what you spend your free time',
-  }
-);
+export const freeTimeEnum = [
+  'build',
+  'outdoor',
+  'socialize',
+  'consume',
+  'learn',
+];
 
-export const onboardingWorkEnvironmentSchema = z.enum(
-  ['office', 'remote', 'outdoor', 'lab', 'mixed'],
-  {
-    error: 'Please choose your favorite work environment',
-  }
-);
+export const workEnvironmentEnum = [
+  'office',
+  'remote',
+  'outdoor',
+  'lab',
+  'mixed',
+];
 
-export const onboardingWorkStyleSchema = z.enum(
-  ['analyze', 'help', 'build', 'create', 'routine'],
-  {
-    error: 'Please choose your favorite work',
-  }
-);
+export const workStyleEnum = ['analyze', 'help', 'build', 'create', 'routine'];
 
-export const onboardingImpactSchema = z.enum(
-  ['create', 'people', 'discover', 'systems', 'express'],
-  {
-    error: 'Please choose one impactfull thing to you',
-  }
-);
+export const impactEnum = [
+  'create',
+  'people',
+  'discover',
+  'systems',
+  'express',
+];
 
-export const onboardingGoalSchema = z.enum(
-  ['impact', 'money', 'balance', 'growth', 'variety'],
-  {
-    error: 'Please choose your goal',
-  }
-);
+export const goalsEnum = ['impact', 'money', 'balance', 'growth', 'variety'];
+
+export const onboardingStrengthSchema = z.enum(strengthsEnum);
+
+export const onboardingSubjectSchema = z.enum(subjectsEnum, {
+  error: 'Please choose your favorite subject',
+});
+
+export const onboardingPassionSchema = z.enum(passionsEnum);
+
+export const onboardingFreeTimeSchema = z.enum(freeTimeEnum, {
+  error: 'Please choose what you spend your free time',
+});
+
+export const onboardingWorkEnvironmentSchema = z.enum(workEnvironmentEnum, {
+  error: 'Please choose your favorite work environment',
+});
+
+export const onboardingWorkStyleSchema = z.enum(workStyleEnum, {
+  error: 'Please choose your favorite work',
+});
+
+export const onboardingImpactSchema = z.enum(impactEnum, {
+  error: 'Please choose one impactfull thing to you',
+});
+
+export const onboardingGoalSchema = z.enum(goalsEnum, {
+  error: 'Please choose your goal',
+});
 
 export const onboardingFormSchema = z.object({
   strengths: z
@@ -80,10 +96,6 @@ export const onboardingFormSchema = z.object({
   workStyle: onboardingWorkStyleSchema,
   impact: onboardingImpactSchema,
   goals: onboardingGoalSchema,
-});
-
-export const onboardingSubmitRequestSchema = z.object({
-  responses: onboardingFormSchema,
 });
 
 export const onboardingSubmitResponseSchema = z.object({

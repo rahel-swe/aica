@@ -1,41 +1,16 @@
+import {
+  freeTimeEnum,
+  goalsEnum,
+  impactEnum,
+  passionsEnum,
+  strengthsEnum,
+  subjectsEnum,
+  workEnvironmentEnum,
+  workStyleEnum,
+} from '@contracts/shared/schemas/onboarding-schema';
 import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose;
-
-const strengthsEnum = [
-  'problem_solving',
-  'creativity',
-  'people',
-  'analytical',
-  'communication',
-  'hands_on',
-  'fast_learning',
-  'organized',
-];
-
-const subjectsEnum = ['math', 'science', 'writing', 'arts', 'social'];
-
-const passionsEnum = [
-  'tech',
-  'music',
-  'sports',
-  'reading',
-  'science',
-  'social',
-  'nature',
-  'building',
-  'ideas',
-];
-
-const freeTimeEnum = ['build', 'outdoor', 'socialize', 'consume', 'learn'];
-
-const workEnvironmentEnum = ['office', 'remote', 'outdoor', 'lab', 'mixed'];
-
-const workStyleEnum = ['analyze', 'help', 'build', 'create', 'routine'];
-
-const impactEnum = ['create', 'people', 'discover', 'systems', 'express'];
-
-const goalsEnum = ['impact', 'money', 'balance', 'growth', 'variety'];
 
 const onboardingSchema = new Schema(
   {

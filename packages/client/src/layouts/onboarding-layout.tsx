@@ -2,6 +2,7 @@ import {
   ONBOARDING_STEPS,
   onboardingDefaultValues,
 } from '@/constants/onboarding-steps';
+import { submitOnboardingProfile } from '@/services/oboarding-service';
 import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schema';
 import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -35,11 +36,9 @@ const OnboardingLayout = () => {
   const submitProfile = async () => {
     const payload = form.getValues();
 
-    console.log(payload);
+    const result = await submitOnboardingProfile(payload);
 
-    // const result = await submitOnboardingProfile(payload);
-
-    // navigate(result.data.nextRoute);
+    if (result.success) navigate('/congrates');
   };
 
   // If step id was out of the box then navigate to welcome

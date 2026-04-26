@@ -10,6 +10,8 @@ export const onboardingController = {
 
       const userId = req.user?.id || 'dummyUserId';
 
+      console.log(validatedData, userId);
+
       const result = await service.submitOnboarding(userId, validatedData);
 
       res.json({

@@ -6,7 +6,7 @@ import type { OnboardingOutletContext } from '@/layouts/onboarding-layout';
 import { cn } from '@/lib/utils';
 import { type OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { Button } from '../ui/button';
 
@@ -19,6 +19,7 @@ const OnboardingStepsNavigations = ({
 }) => {
   const form = useFormContext<OnboardingFormValues>();
   const navigate = useNavigate();
+  const watchedValues = useWatch<OnboardingFormValues>();
   const { currentIndex, isSubmitting, submitProfile } =
     useOutletContext<OnboardingOutletContext>();
 
@@ -28,6 +29,18 @@ const OnboardingStepsNavigations = ({
   };
 
   const goNext = async () => {
+    // If any field remained invalid we should trigger user there
+    for (const [key, value] of Object.entries(watchedValues) as [
+      keyof OnboardingFormValues,
+      string | [],
+    ][]) {
+      if (!value || !value.length || value.length > 4) {
+        navigate(`/onboarding/${key}`);
+        await form.trigger(key);
+        return;
+      }
+    }
+
     if (step.type === 'cta') {
       await submitProfile();
       return;
@@ -41,9 +54,7 @@ const OnboardingStepsNavigations = ({
     }
 
     const next = ONBOARDING_STEPS[currentIndex + 1];
-    if (next) {
-      navigate(`/onboarding/${next.id}`);
-    }
+    if (next) navigate(`/onboarding/${next.id}`);
   };
   return (
     <div
