@@ -16,7 +16,6 @@ assessmentRouter.get('/status', async (_req: Request, res: Response) => {
     message: 'Assessment status fetched.',
     data: {
       completed: false,
-      stepsCompleted: 0,
     },
   });
 

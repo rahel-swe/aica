@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import { PathwayMatchProfileRepository } from '../reposetories/pathway-match-profile-repository';
-import { PathwayRepository } from '../reposetories/pathway-repository';
-import { TaxonomyNodeRepository } from '../reposetories/taxonomy-node-repository';
+import { PathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
+import { PathwayRepository } from '../repositories/pathway-repository';
+import { TaxonomyNodeRepository } from '../repositories/taxonomy-node-repository';
 
 if (!Bun.env.MONGODB_URI) {
   throw new Error('DATABASE_URL is not defined in environment variables.');
