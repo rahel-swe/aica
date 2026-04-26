@@ -112,6 +112,5 @@ export const onboardingStatusResponseSchema = z.object({
   message: z.string(),
   data: z.object({
     completed: z.boolean(),
-    stepsCompleted: z.number().int().nonnegative(),
   }),
 });

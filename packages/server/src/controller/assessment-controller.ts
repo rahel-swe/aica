@@ -3,7 +3,7 @@ import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schem
 import { OnboardingService } from '../services/onboarding-service';
 const service = new OnboardingService();
 
-export const onboardingController = {
+export const assessmentController = {
   submitOnboarding: async (req: Request, res: Response) => {
     try {
       const validatedData = onboardingFormSchema.parse(req.body);
