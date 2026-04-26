@@ -2,10 +2,11 @@ import { Button } from '@/components/ui/button';
 import { FieldGroup, Field } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import PasswordInput from '@/components/Password/password-input';
 import { authClient } from '@/lib/auth-client';
 import { signUpSchema } from '@contracts/shared/schemas/auth-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
@@ -13,9 +14,15 @@ type SignUpForm = z.infer<typeof signUpSchema>;
 
 export default function SignUpPage() {
   const navigate = useNavigate();
+
   const form = useForm<SignUpForm>({
     resolver: zodResolver(signUpSchema),
-    defaultValues: { name: '', email: '', password: '', confirmPassword: '' },
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
   });
 
   const onSubmit = async (data: SignUpForm) => {
@@ -48,6 +55,7 @@ export default function SignUpPage() {
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
         <FieldGroup>
+          {/* Name */}
           <Field>
             <Label htmlFor="name">Full name</Label>
             <Input
@@ -62,6 +70,7 @@ export default function SignUpPage() {
             )}
           </Field>
 
+          {/* Email */}
           <Field>
             <Label htmlFor="email">Email</Label>
             <Input
@@ -76,13 +85,19 @@ export default function SignUpPage() {
             )}
           </Field>
 
+          {/* Password */}
           <Field>
             <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              {...form.register('password')}
-              placeholder="At least 8 characters"
+            <Controller
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <PasswordInput
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="At least 8 characters"
+                />
+              )}
             />
             {form.formState.errors.password && (
               <p className="text-sm text-destructive">
@@ -91,13 +106,19 @@ export default function SignUpPage() {
             )}
           </Field>
 
+          {/* Confirm Password */}
           <Field>
             <Label htmlFor="confirmPassword">Confirm password</Label>
-            <Input
-              id="confirmPassword"
-              type="password"
-              {...form.register('confirmPassword')}
-              placeholder="Repeat your password to confirm"
+            <Controller
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <PasswordInput
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Repeat your password to confirm"
+                />
+              )}
             />
             {form.formState.errors.confirmPassword && (
               <p className="text-sm text-destructive">
@@ -106,6 +127,7 @@ export default function SignUpPage() {
             )}
           </Field>
 
+          {/* Root Error */}
           {form.formState.errors.root && (
             <p className="text-sm text-destructive">
               {form.formState.errors.root.message}
