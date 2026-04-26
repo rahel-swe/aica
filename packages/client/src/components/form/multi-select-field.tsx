@@ -1,6 +1,7 @@
 import { useFormContext, Controller } from 'react-hook-form';
 import { Field, FieldLabel, FieldTitle, FieldContent } from '../ui/field';
 import { Checkbox } from '../ui/checkbox';
+import { Twemoji } from '../twemoji';
 
 interface MultiSelectFieldProps {
   name: string;
@@ -46,7 +47,7 @@ const MultiSelectField: React.FC<MultiSelectFieldProps> = ({
                   />
                   <FieldContent>
                     <FieldTitle className="flex gap-1 text-base">
-                      <p className="text-2xl">{opt.emoji}</p>
+                      <Twemoji className="text-2xl">{opt.emoji}</Twemoji>
                       {opt.label}
                     </FieldTitle>
                   </FieldContent>
