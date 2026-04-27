@@ -1,15 +1,11 @@
 import mongoose from 'mongoose';
-import { PathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
-import { PathwayRepository } from '../repositories/pathway-repository';
-import { TaxonomyNodeRepository } from '../repositories/taxonomy-node-repository';
+import { pathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
+import { pathwayRepository } from '../repositories/pathway-repository';
+import { taxonomyNodeRepository } from '../repositories/taxonomy-node-repository';
 
 if (!Bun.env.MONGODB_URI) {
   throw new Error('DATABASE_URL is not defined in environment variables.');
 }
-
-const taxonomyRepo = new TaxonomyNodeRepository();
-const pathwayRepo = new PathwayRepository();
-const profileRepo = new PathwayMatchProfileRepository();
 
 async function connectDB() {
   return await mongoose.connect(Bun.env.MONGODB_URI!, {
@@ -21,11 +17,11 @@ async function connectDB() {
 async function seedPathwayDomain() {
   await connectDB();
 
-  await profileRepo.deleteAll();
-  await pathwayRepo.deleteAll();
-  await taxonomyRepo.deleteAll();
+  await pathwayMatchProfileRepository.deleteAll();
+  await pathwayRepository.deleteAll();
+  await taxonomyNodeRepository.deleteAll();
 
-  const taxonomyNodes = await taxonomyRepo.createMany([
+  const taxonomyNodes = await taxonomyNodeRepository.createMany([
     {
       name: 'Health',
       slug: 'health',
@@ -51,7 +47,7 @@ async function seedPathwayDomain() {
     throw new Error('Base taxonomy nodes were not created correctly.');
   }
 
-  const childNodes = await taxonomyRepo.createMany([
+  const childNodes = await taxonomyNodeRepository.createMany([
     {
       name: 'Medicine',
       slug: 'medicine',
@@ -97,7 +93,7 @@ async function seedPathwayDomain() {
     throw new Error('Field taxonomy nodes were not created correctly.');
   }
 
-  const specializationNodes = await taxonomyRepo.createMany([
+  const specializationNodes = await taxonomyNodeRepository.createMany([
     {
       name: 'Frontend Development',
       slug: 'frontend-development',
@@ -129,7 +125,7 @@ async function seedPathwayDomain() {
     );
   }
 
-  const pathways = await pathwayRepo.createMany([
+  const pathways = await pathwayRepository.createMany([
     {
       title: 'General Doctor',
       slug: 'general-doctor',
@@ -250,7 +246,7 @@ async function seedPathwayDomain() {
 
   const pathwayBySlug = new Map(pathways.map((item) => [item.slug, item]));
 
-  await profileRepo.createMany([
+  await pathwayMatchProfileRepository.createMany([
     {
       pathwayId: pathwayBySlug.get('general-doctor')!._id,
       version: 1,

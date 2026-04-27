@@ -34,7 +34,7 @@ export default function SignInPage() {
         password: data.password,
       },
       {
-        onSuccess: () => navigate('/dashboard'), // change if needed
+        onSuccess: () => navigate('/onboarding'),
         onError: ({ error }) =>
           form.setError('root', { message: error.message }),
       }
