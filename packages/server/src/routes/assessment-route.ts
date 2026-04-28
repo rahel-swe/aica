@@ -5,10 +5,15 @@ import { onboardingStatusResponseSchema } from '@contracts/shared/schemas/onboar
 import { assessmentController } from '../controller/assessment-controller';
 
 import { userController } from '../controller/user-controller';
+import { requireAuth } from '../middleware/auth.middleware';
 
 const assessmentRouter = Router();
 
-assessmentRouter.post('/submit', assessmentController.submitOnboarding);
+assessmentRouter.post(
+  '/submit',
+  requireAuth,
+  assessmentController.submitOnboarding
+);
 
 assessmentRouter.get('/status', async (_req: Request, res: Response) => {
   const response = onboardingStatusResponseSchema.parse({
