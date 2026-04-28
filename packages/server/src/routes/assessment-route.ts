@@ -4,8 +4,7 @@ import { onboardingStatusResponseSchema } from '@contracts/shared/schemas/onboar
 
 import { assessmentController } from '../controller/assessment-controller';
 
-import { userController } from '../controller/user-controller';
-import { requireAuth } from '../middleware/auth.middleware';
+import { requireAuth } from '../middleware/auth-middleware';
 
 const assessmentRouter = Router();
 
@@ -26,9 +25,5 @@ assessmentRouter.get('/status', async (_req: Request, res: Response) => {
 
   res.send(response);
 });
-
-assessmentRouter.post('/users', userController.createUser);
-
-assessmentRouter.get('/users', userController.getUsers);
 
 export default assessmentRouter;

@@ -1,8 +1,8 @@
 import express, { type Request, type Response } from 'express';
 import cors from 'cors';
 import { toNodeHandler } from 'better-auth/node';
-import arcjetMiddleware from './src/middleware/arcjet.middleware';
-import errorMiddleware from './src/middleware/error.middleware';
+import arcjetMiddleware from './src/middleware/arcjet-middleware';
+import errorMiddleware from './src/middleware/error-middleware';
 import { auth } from './src/utils/auth';
 import apiRouter from './src/routes';
 
