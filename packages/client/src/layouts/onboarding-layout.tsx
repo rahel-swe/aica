@@ -1,11 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   ONBOARDING_STEPS,
   onboardingDefaultValues,
 } from '@/constants/onboarding-steps';
+import {
+  getOnboardingStatus,
+  submitOnboardingProfile,
+} from '@/services/assessment-service';
 import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schema';
 import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
@@ -13,12 +18,33 @@ export type OnboardingOutletContext = {
   currentIndex: number;
   totalSteps: number;
   isSubmitting: boolean;
-  submitProfile: () => Promise<void>;
+  submitAssisment: () => Promise<void>;
 };
 
 const OnboardingLayout = () => {
+  const [isOnboardSatus, setIsOnboardSatus] = useState(false);
+  const [isOnboardLoading, setIsOnboardLoading] = useState(false);
+  const [isOnboardError, setIsOnboardError] = useState(false);
+
   const navigate = useNavigate();
   const { stepId } = useParams();
+
+  useEffect(() => {
+    const setOnboardingStatus = async () => {
+      try {
+        setIsOnboardLoading(true);
+        const { data } = await getOnboardingStatus();
+
+        setIsOnboardSatus(data.completed);
+        setIsOnboardLoading(false);
+      } catch (error) {
+        setIsOnboardError(true);
+        setIsOnboardLoading(false);
+      }
+    };
+
+    setOnboardingStatus();
+  }, []);
 
   const currentIndex = useMemo(
     () => ONBOARDING_STEPS.findIndex((step) => step.id === stepId),
@@ -32,20 +58,25 @@ const OnboardingLayout = () => {
     shouldUnregister: false,
   });
 
-  const submitProfile = async () => {
-    const payload = form.getValues();
+  const submitAssisment = form.handleSubmit(async (payload) => {
+    const result = await submitOnboardingProfile(payload);
 
-    console.log(payload);
-
-    // const result = await submitOnboardingProfile(payload);
-
-    // navigate(result.data.nextRoute);
-  };
+    if (result.success) navigate('/congrates');
+  });
 
   // If step id was out of the box then navigate to welcome
   useEffect(() => {
     if (currentIndex === -1) navigate('/onboarding/welcome', { replace: true });
   }, [currentIndex, navigate]);
+
+  if (isOnboardLoading) return <p>Onboarding loading...</p>;
+
+  if (isOnboardError)
+    return (
+      <p className="text-destructive">Failed fetching onboarding status</p>
+    );
+
+  if (isOnboardSatus) return navigate('/app/dashboard');
 
   return (
     <FormProvider {...form}>
@@ -57,7 +88,7 @@ const OnboardingLayout = () => {
               currentIndex,
               totalSteps: ONBOARDING_STEPS.length,
               isSubmitting: form.formState.isSubmitting,
-              submitProfile,
+              submitAssisment,
             }}
           />
         </div>

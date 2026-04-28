@@ -1,4 +1,4 @@
-import { OnboardingRepository } from '../reposetories/onboarding-repository';
+import { OnboardingRepository } from '../repositories/onboarding-repository';
 
 const repo = new OnboardingRepository();
 

@@ -1,4 +1,4 @@
-import { Onboarding } from '../models/onboardin-model';
+import { Onboarding } from '../models/onboarding-model';
 
 export class OnboardingRepository {
   async create(data: any) {

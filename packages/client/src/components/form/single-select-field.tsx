@@ -1,6 +1,7 @@
 import { Controller, useFormContext } from 'react-hook-form';
 import { Field, FieldContent, FieldLabel, FieldTitle } from '../ui/field';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
+import { Twemoji } from '../twemoji';
 
 interface SingleSelectFieldProps {
   name: string;
@@ -42,7 +43,7 @@ const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
                 />
                 <FieldContent className="">
                   <FieldTitle className="flex gap-1 text-base">
-                    <p className="text-2xl">{opt.emoji}</p>
+                    <Twemoji className="text-2xl">{opt.emoji}</Twemoji>
                     {opt.label}
                   </FieldTitle>
                 </FieldContent>

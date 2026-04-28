@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "bun run --watch server.ts",
     "start": "bun run server.ts",
-    "build": "bun build server.ts --outdir ./build --target=bun"
+    "build": "bun build server.ts --outdir ./build --target=bun",
+    "seed:pathways": "bun run src/scripts/seed-pathway-domain.ts"
   },
   "dependencies": {
     "@arcjet/bun": "^1.4.0",
@@ -17,6 +18,7 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mongoose": "^9.4.1",
+    "openai": "^6.34.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {

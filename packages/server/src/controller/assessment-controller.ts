@@ -3,12 +3,14 @@ import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schem
 import { OnboardingService } from '../services/onboarding-service';
 const service = new OnboardingService();
 
-export const onboardingController = {
+export const assessmentController = {
   submitOnboarding: async (req: Request, res: Response) => {
     try {
       const validatedData = onboardingFormSchema.parse(req.body);
 
       const userId = req.user?.id || 'dummyUserId';
+
+      console.log(validatedData, userId);
 
       const result = await service.submitOnboarding(userId, validatedData);
 

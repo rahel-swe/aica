@@ -2,13 +2,13 @@ import { Router, type Request, type Response } from 'express';
 
 import { onboardingStatusResponseSchema } from '@contracts/shared/schemas/onboarding-schema';
 
-import { onboardingController } from '../controller/onboarding-controller';
+import { assessmentController } from '../controller/assessment-controller';
 
 import { userController } from '../controller/user-controller';
 
 const assessmentRouter = Router();
 
-assessmentRouter.post('/submit', onboardingController.submitOnboarding);
+assessmentRouter.post('/submit', assessmentController.submitOnboarding);
 
 assessmentRouter.get('/status', async (_req: Request, res: Response) => {
   const response = onboardingStatusResponseSchema.parse({
@@ -16,7 +16,6 @@ assessmentRouter.get('/status', async (_req: Request, res: Response) => {
     message: 'Assessment status fetched.',
     data: {
       completed: false,
-      stepsCompleted: 0,
     },
   });
 
