@@ -1,10 +1,11 @@
 import type { Request, Response } from 'express';
 import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schema';
 import { OnboardingService } from '../services/onboarding-service';
+import type { AuthRequest } from '../middleware/auth.middleware';
 const service = new OnboardingService();
 
 export const assessmentController = {
-  submitOnboarding: async (req: Request, res: Response) => {
+  submitOnboarding: async (req: AuthRequest, res: Response) => {
     try {
       const validatedData = onboardingFormSchema.parse(req.body);
 
