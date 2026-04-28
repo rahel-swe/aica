@@ -9,13 +9,20 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, Controller } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
+import { Loader2 } from 'lucide-react';
 
 type SignUpForm = z.infer<typeof signUpSchema>;
 
 export default function SignUpPage() {
   const navigate = useNavigate();
 
-  const form = useForm<SignUpForm>({
+  const {
+    handleSubmit,
+    formState: { isSubmitting, errors },
+    setError,
+    register,
+    control,
+  } = useForm<SignUpForm>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       name: '',
@@ -35,8 +42,7 @@ export default function SignUpPage() {
       },
       {
         onSuccess: () => navigate('/onboarding/welcome'),
-        onError: ({ error }) =>
-          form.setError('root', { message: error.message }),
+        onError: ({ error }) => setError('root', { message: error.message }),
       }
     );
   };
@@ -53,20 +59,19 @@ export default function SignUpPage() {
         </p>
       </div>
 
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
         <FieldGroup>
           {/* Name */}
           <Field>
             <Label htmlFor="name">Full name</Label>
             <Input
               id="name"
-              {...form.register('name')}
+              {...register('name')}
               placeholder="How should we address you?"
+              disabled={isSubmitting}
             />
-            {form.formState.errors.name && (
-              <p className="text-sm text-destructive">
-                {form.formState.errors.name.message}
-              </p>
+            {errors.name && (
+              <p className="text-sm text-destructive">{errors.name.message}</p>
             )}
           </Field>
 
@@ -75,13 +80,12 @@ export default function SignUpPage() {
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
-              {...form.register('email')}
+              {...register('email')}
               placeholder="you@example.com"
+              disabled={isSubmitting}
             />
-            {form.formState.errors.email && (
-              <p className="text-sm text-destructive">
-                {form.formState.errors.email.message}
-              </p>
+            {errors.email && (
+              <p className="text-sm text-destructive">{errors.email.message}</p>
             )}
           </Field>
 
@@ -89,19 +93,20 @@ export default function SignUpPage() {
           <Field>
             <Label htmlFor="password">Password</Label>
             <Controller
-              control={form.control}
+              control={control}
               name="password"
               render={({ field }) => (
                 <PasswordInput
                   value={field.value}
                   onChange={field.onChange}
                   placeholder="At least 8 characters"
+                  disabled={isSubmitting}
                 />
               )}
             />
-            {form.formState.errors.password && (
+            {errors.password && (
               <p className="text-sm text-destructive">
-                {form.formState.errors.password.message}
+                {errors.password.message}
               </p>
             )}
           </Field>
@@ -110,32 +115,35 @@ export default function SignUpPage() {
           <Field>
             <Label htmlFor="confirmPassword">Confirm password</Label>
             <Controller
-              control={form.control}
+              control={control}
               name="confirmPassword"
               render={({ field }) => (
                 <PasswordInput
                   value={field.value}
                   onChange={field.onChange}
                   placeholder="Repeat your password to confirm"
+                  disabled={isSubmitting}
                 />
               )}
             />
-            {form.formState.errors.confirmPassword && (
+            {errors.confirmPassword && (
               <p className="text-sm text-destructive">
-                {form.formState.errors.confirmPassword.message}
+                {errors.confirmPassword.message}
               </p>
             )}
           </Field>
 
           {/* Root Error */}
-          {form.formState.errors.root && (
-            <p className="text-sm text-destructive">
-              {form.formState.errors.root.message}
-            </p>
+          {errors.root && (
+            <p className="text-sm text-destructive">{errors.root.message}</p>
           )}
 
-          <Button type="submit" className="h-13">
-            Start my guidance journey
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              'Start my guidance journey'
+            )}
           </Button>
         </FieldGroup>
       </form>

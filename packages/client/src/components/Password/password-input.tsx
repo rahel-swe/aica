@@ -3,6 +3,7 @@ import { Eye, EyeOff } from 'lucide-react';
 
 type PasswordInputProps = {
   value: string;
+  disabled: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
 };
@@ -10,6 +11,7 @@ type PasswordInputProps = {
 export default function PasswordInput({
   value,
   onChange,
+  disabled,
   placeholder = 'Password',
 }: PasswordInputProps) {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +21,7 @@ export default function PasswordInput({
       <input
         type={showPassword ? 'text' : 'password'}
         value={value}
+        disabled={disabled}
         onChange={onChange}
         placeholder={placeholder}
         className="w-full rounded-full bg-muted px-4 py-3 pr-12 text-sm outline-none"

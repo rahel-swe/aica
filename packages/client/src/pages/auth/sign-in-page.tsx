@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, Controller } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
+import { Loader2 } from 'lucide-react';
 
 const signInSchema = z.object({
   email: z.string().email(),
@@ -19,7 +20,13 @@ type SignInForm = z.infer<typeof signInSchema>;
 export default function SignInPage() {
   const navigate = useNavigate();
 
-  const form = useForm<SignInForm>({
+  const {
+    handleSubmit,
+    formState: { isSubmitting, errors },
+    setError,
+    register,
+    control,
+  } = useForm<SignInForm>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       email: '',
@@ -35,8 +42,7 @@ export default function SignInPage() {
       },
       {
         onSuccess: () => navigate('/onboarding'),
-        onError: ({ error }) =>
-          form.setError('root', { message: error.message }),
+        onError: ({ error }) => setError('root', { message: error.message }),
       }
     );
   };
@@ -50,20 +56,19 @@ export default function SignInPage() {
         </p>
       </div>
 
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
         <FieldGroup>
           {/* Email */}
           <Field>
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
-              {...form.register('email')}
+              {...register('email')}
+              disabled={isSubmitting}
               placeholder="you@example.com"
             />
-            {form.formState.errors.email && (
-              <p className="text-sm text-destructive">
-                {form.formState.errors.email.message}
-              </p>
+            {errors.email && (
+              <p className="text-sm text-destructive">{errors.email.message}</p>
             )}
           </Field>
 
@@ -71,32 +76,35 @@ export default function SignInPage() {
           <Field>
             <Label htmlFor="password">Password</Label>
             <Controller
-              control={form.control}
+              control={control}
               name="password"
               render={({ field }) => (
                 <PasswordInput
                   value={field.value}
                   onChange={field.onChange}
                   placeholder="Enter your password"
+                  disabled={isSubmitting}
                 />
               )}
             />
-            {form.formState.errors.password && (
+            {errors.password && (
               <p className="text-sm text-destructive">
-                {form.formState.errors.password.message}
+                {errors.password.message}
               </p>
             )}
           </Field>
 
           {/* Root Error */}
-          {form.formState.errors.root && (
-            <p className="text-sm text-destructive">
-              {form.formState.errors.root.message}
-            </p>
+          {errors.root && (
+            <p className="text-sm text-destructive">{errors.root.message}</p>
           )}
 
-          <Button type="submit" className="h-13">
-            Sign in
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              'Sign in'
+            )}
           </Button>
         </FieldGroup>
       </form>
