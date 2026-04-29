@@ -1,0 +1,98 @@
+[
+  {
+    "title": "General Doctor",
+    "slug": "general-doctor",
+    "type": "hybrid",
+    "taxonomySlugs": ["health", "medicine"],
+    "summary": "A care-focused pathway for diagnosis, treatment, and patient support.",
+    "description": "General doctors combine science, communication, and long-term learning to support patient health across many conditions.",
+    "keySkills": ["clinical reasoning", "communication", "biology foundation"],
+    "learningRoute": [
+      "Build strong science foundations",
+      "Prepare for medical entry requirements",
+      "Train through supervised clinical practice"
+    ],
+    "opportunities": ["hospitals", "clinics", "community health"],
+    "status": "active"
+  },
+  {
+    "title": "Nurse",
+    "slug": "nurse",
+    "type": "hybrid",
+    "taxonomySlugs": ["health", "nursing"],
+    "summary": "A people-centered healthcare pathway focused on direct patient care.",
+    "description": "Nursing fits people who value human support, structure, responsibility, and practical clinical impact.",
+    "keySkills": ["patient care", "communication", "team coordination"],
+    "learningRoute": [
+      "Study nursing fundamentals",
+      "Build supervised clinical experience",
+      "Develop specialization over time"
+    ],
+    "opportunities": ["hospitals", "schools", "community health centers"],
+    "status": "active"
+  },
+  {
+    "title": "Frontend Engineer",
+    "slug": "frontend-engineer",
+    "type": "career",
+    "taxonomySlugs": ["technology", "software-engineering", "frontend-development"],
+    "summary": "A creative technical pathway for building user-facing digital experiences.",
+    "description": "Frontend engineers combine problem solving, creativity, and product thinking to build clear and usable interfaces.",
+    "keySkills": ["javascript", "ui development", "design collaboration"],
+    "learningRoute": [
+      "Learn web fundamentals",
+      "Build responsive interfaces",
+      "Work with APIs and product systems"
+    ],
+    "opportunities": ["product teams", "startups", "digital agencies"],
+    "status": "active"
+  },
+  {
+    "title": "Backend Engineer",
+    "slug": "backend-engineer",
+    "type": "career",
+    "taxonomySlugs": ["technology", "software-engineering", "backend-development"],
+    "summary": "A systems-oriented technical pathway for building application logic and services.",
+    "description": "Backend engineers focus on APIs, data flow, reliability, and structured problem solving behind user-facing apps.",
+    "keySkills": ["api design", "databases", "system thinking"],
+    "learningRoute": [
+      "Learn programming fundamentals",
+      "Build APIs and service logic",
+      "Develop database and reliability skills"
+    ],
+    "opportunities": ["platform teams", "saas products", "enterprise systems"],
+    "status": "active"
+  },
+  {
+    "title": "Data Analyst",
+    "slug": "data-analyst",
+    "type": "career",
+    "taxonomySlugs": ["technology", "data"],
+    "summary": "A data-focused pathway for turning information into practical decisions.",
+    "description": "Data analysts fit users who enjoy analytical thinking, patterns, evidence, and structured communication.",
+    "keySkills": ["sql", "analysis", "data storytelling"],
+    "learningRoute": [
+      "Learn spreadsheets and SQL",
+      "Practice analysis on real datasets",
+      "Build reporting and communication skills"
+    ],
+    "opportunities": ["business teams", "research units", "operations"],
+    "status": "active"
+  },
+  {
+    "title": "Medical Laboratory Specialist",
+    "slug": "medical-laboratory-specialist",
+    "type": "hybrid",
+    "taxonomySlugs": ["health", "medicine"],
+    "summary": "A science-centered health pathway focused on testing, evidence, and lab practice.",
+    "description": "This pathway suits users who value science, structure, careful analysis, and evidence-based healthcare support.",
+    "keySkills": ["lab methods", "scientific observation", "precision"],
+    "learningRoute": [
+      "Strengthen science fundamentals",
+      "Train on laboratory tools and methods",
+      "Develop quality and reporting discipline"
+    ],
+    "opportunities": ["diagnostic labs", "hospitals", "research support"],
+    "status": "active"
+  }
+]

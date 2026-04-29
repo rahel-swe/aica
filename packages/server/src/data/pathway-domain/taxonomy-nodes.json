@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Health",
+    "slug": "health",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 1,
+    "status": "active",
+    "description": "Health-related academic and career directions."
+  },
+  {
+    "name": "Technology",
+    "slug": "technology",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 2,
+    "status": "active",
+    "description": "Technology and digital systems pathways."
+  },
+  {
+    "name": "Medicine",
+    "slug": "medicine",
+    "kind": "field",
+    "parentSlug": "health",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Nursing",
+    "slug": "nursing",
+    "kind": "field",
+    "parentSlug": "health",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Software Engineering",
+    "slug": "software-engineering",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Data",
+    "slug": "data",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Frontend Development",
+    "slug": "frontend-development",
+    "kind": "specialization",
+    "parentSlug": "software-engineering",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Backend Development",
+    "slug": "backend-development",
+    "kind": "specialization",
+    "parentSlug": "software-engineering",
+    "order": 2,
+    "status": "active"
+  }
+]

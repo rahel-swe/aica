@@ -20,3 +20,25 @@ export type MatchWeight = z.infer<typeof matchWeightSchema>;
 export type TaxonomyNode = z.infer<typeof taxonomyNodeSchema>;
 export type Pathway = z.infer<typeof pathwaySchema>;
 export type PathwayMatchProfile = z.infer<typeof pathwayMatchProfileSchema>;
+
+export type RecommendationDimensionScores = {
+  strengths: number;
+  subjects: number;
+  passions: number;
+  freeTime: number;
+  workEnvironment: number;
+  workStyle: number;
+  impact: number;
+  goals: number;
+};
+
+export type RecommendationResult = {
+  pathwayId: string;
+  title: string;
+  slug: string;
+  type: PathwayType;
+  summary: string;
+  totalScore: number;
+  dimensionScores: RecommendationDimensionScores;
+  reasons: string[];
+};

@@ -1,21 +1,19 @@
-import { Router, type Request, type Response } from 'express';
+import { Router } from 'express';
+import { recommendationController } from '../controller/recommendation-controller';
+import { requireAuth } from '../middleware/auth-middleware';
 
 const recommendationRouter = Router();
 
-recommendationRouter.post('/generate', (req: Request, res: Response) => {
-  res.send({
-    success: true,
-    data: req.body,
-    message: 'Recommendations generated.',
-  });
-});
+recommendationRouter.post(
+  '/generate',
+  requireAuth,
+  recommendationController.generateRecommendations
+);
 
-recommendationRouter.get('/me', (_req: Request, res: Response) => {
-  res.send({
-    success: true,
-    data: [],
-    message: 'Current user recommendations fetched.',
-  });
-});
+recommendationRouter.get(
+  '/me',
+  requireAuth,
+  recommendationController.getMyRecommendations
+);
 
 export default recommendationRouter;

@@ -1,0 +1,152 @@
+[
+  {
+    "pathwaySlug": "general-doctor",
+    "version": 1,
+    "strengths": [
+      { "value": "analytical", "weight": 0.9, "band": "strong" },
+      { "value": "communication", "weight": 0.8, "band": "strong" },
+      { "value": "people", "weight": 0.9, "band": "strong" }
+    ],
+    "subjects": [{ "value": "science", "weight": 1, "band": "strong" }],
+    "passions": [
+      { "value": "science", "weight": 0.9, "band": "strong" },
+      { "value": "social", "weight": 0.6, "band": "supporting" }
+    ],
+    "freeTime": [{ "value": "learn", "weight": 0.7, "band": "supporting" }],
+    "workEnvironment": [{ "value": "mixed", "weight": 0.8, "band": "supporting" }],
+    "workStyle": [{ "value": "help", "weight": 0.9, "band": "strong" }],
+    "impact": [{ "value": "people", "weight": 1, "band": "strong" }],
+    "goals": [
+      { "value": "impact", "weight": 0.9, "band": "strong" },
+      { "value": "growth", "weight": 0.7, "band": "supporting" }
+    ],
+    "notes": ["High fit when science, people impact, and long-term growth align."],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "nurse",
+    "version": 1,
+    "strengths": [
+      { "value": "people", "weight": 1, "band": "strong" },
+      { "value": "communication", "weight": 0.9, "band": "strong" },
+      { "value": "organized", "weight": 0.7, "band": "supporting" }
+    ],
+    "subjects": [{ "value": "science", "weight": 0.8, "band": "strong" }],
+    "passions": [{ "value": "social", "weight": 0.8, "band": "strong" }],
+    "freeTime": [{ "value": "socialize", "weight": 0.5, "band": "supporting" }],
+    "workEnvironment": [{ "value": "mixed", "weight": 0.7, "band": "supporting" }],
+    "workStyle": [{ "value": "help", "weight": 1, "band": "strong" }],
+    "impact": [{ "value": "people", "weight": 1, "band": "strong" }],
+    "goals": [{ "value": "impact", "weight": 0.8, "band": "strong" }],
+    "notes": ["Best when direct human support is a major driver."],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "frontend-engineer",
+    "version": 1,
+    "strengths": [
+      { "value": "problem_solving", "weight": 0.9, "band": "strong" },
+      { "value": "creativity", "weight": 0.9, "band": "strong" },
+      { "value": "communication", "weight": 0.6, "band": "supporting" }
+    ],
+    "subjects": [
+      { "value": "math", "weight": 0.6, "band": "supporting" },
+      { "value": "arts", "weight": 0.7, "band": "supporting" }
+    ],
+    "passions": [
+      { "value": "tech", "weight": 1, "band": "strong" },
+      { "value": "building", "weight": 0.8, "band": "strong" },
+      { "value": "ideas", "weight": 0.7, "band": "supporting" }
+    ],
+    "freeTime": [
+      { "value": "build", "weight": 0.8, "band": "strong" },
+      { "value": "learn", "weight": 0.6, "band": "supporting" }
+    ],
+    "workEnvironment": [
+      { "value": "remote", "weight": 0.7, "band": "supporting" },
+      { "value": "mixed", "weight": 0.8, "band": "supporting" }
+    ],
+    "workStyle": [{ "value": "create", "weight": 1, "band": "strong" }],
+    "impact": [{ "value": "create", "weight": 0.9, "band": "strong" }],
+    "goals": [
+      { "value": "growth", "weight": 0.8, "band": "strong" },
+      { "value": "variety", "weight": 0.6, "band": "supporting" }
+    ],
+    "notes": ["High fit when tech interest and creative execution overlap."],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "backend-engineer",
+    "version": 1,
+    "strengths": [
+      { "value": "problem_solving", "weight": 1, "band": "strong" },
+      { "value": "analytical", "weight": 0.9, "band": "strong" },
+      { "value": "organized", "weight": 0.6, "band": "supporting" }
+    ],
+    "subjects": [{ "value": "math", "weight": 0.8, "band": "strong" }],
+    "passions": [
+      { "value": "tech", "weight": 1, "band": "strong" },
+      { "value": "building", "weight": 0.7, "band": "supporting" }
+    ],
+    "freeTime": [
+      { "value": "build", "weight": 0.7, "band": "supporting" },
+      { "value": "learn", "weight": 0.7, "band": "supporting" }
+    ],
+    "workEnvironment": [
+      { "value": "remote", "weight": 0.7, "band": "supporting" },
+      { "value": "mixed", "weight": 0.7, "band": "supporting" }
+    ],
+    "workStyle": [{ "value": "analyze", "weight": 0.9, "band": "strong" }],
+    "impact": [{ "value": "systems", "weight": 1, "band": "strong" }],
+    "goals": [
+      { "value": "growth", "weight": 0.8, "band": "strong" },
+      { "value": "money", "weight": 0.5, "band": "supporting" }
+    ],
+    "notes": ["Strong when the user likes systems, logic, and structured building."],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "data-analyst",
+    "version": 1,
+    "strengths": [
+      { "value": "analytical", "weight": 1, "band": "strong" },
+      { "value": "problem_solving", "weight": 0.8, "band": "strong" },
+      { "value": "communication", "weight": 0.6, "band": "supporting" }
+    ],
+    "subjects": [
+      { "value": "math", "weight": 0.9, "band": "strong" },
+      { "value": "science", "weight": 0.6, "band": "supporting" }
+    ],
+    "passions": [
+      { "value": "tech", "weight": 0.7, "band": "supporting" },
+      { "value": "ideas", "weight": 0.6, "band": "supporting" }
+    ],
+    "freeTime": [{ "value": "learn", "weight": 0.8, "band": "supporting" }],
+    "workEnvironment": [
+      { "value": "office", "weight": 0.6, "band": "supporting" },
+      { "value": "remote", "weight": 0.6, "band": "supporting" }
+    ],
+    "workStyle": [{ "value": "analyze", "weight": 1, "band": "strong" }],
+    "impact": [{ "value": "systems", "weight": 0.7, "band": "supporting" }],
+    "goals": [{ "value": "growth", "weight": 0.7, "band": "supporting" }],
+    "notes": ["Best when evidence, patterns, and analysis are central."],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "medical-laboratory-specialist",
+    "version": 1,
+    "strengths": [
+      { "value": "analytical", "weight": 0.9, "band": "strong" },
+      { "value": "organized", "weight": 0.8, "band": "strong" }
+    ],
+    "subjects": [{ "value": "science", "weight": 1, "band": "strong" }],
+    "passions": [{ "value": "science", "weight": 0.9, "band": "strong" }],
+    "freeTime": [{ "value": "learn", "weight": 0.6, "band": "supporting" }],
+    "workEnvironment": [{ "value": "lab", "weight": 1, "band": "strong" }],
+    "workStyle": [{ "value": "analyze", "weight": 0.8, "band": "strong" }],
+    "impact": [{ "value": "discover", "weight": 0.6, "band": "supporting" }],
+    "goals": [{ "value": "growth", "weight": 0.6, "band": "supporting" }],
+    "notes": ["Best fit when science and lab-based structured work align."],
+    "status": "active"
+  }
+]

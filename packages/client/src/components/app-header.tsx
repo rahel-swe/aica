@@ -4,6 +4,11 @@ import { Bell, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AppHeaderTabs from './app-header-tabs';
 import ModeToggle from './toggle-mode';
+import { Button } from './ui/button';
+import {
+  generateRecommendations,
+  getMyRecommendations,
+} from '@/services/recommendations-service';
 
 export default function AppHeader() {
   const { data, isPending } = authClient.useSession();
@@ -18,6 +23,20 @@ export default function AppHeader() {
         </p>
 
         <AppHeaderTabs />
+        <Button
+          onClick={async () => {
+            try {
+              await generateRecommendations();
+              const result = await getMyRecommendations();
+              console.log(result);
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } catch (err: any) {
+              console.error(err.response?.data || err.message);
+            }
+          }}
+        >
+          Generate my recommendations
+        </Button>
 
         <div className="flex items-center justify-between md:gap-x-4 w-full md:w-min px-4">
           <ModeToggle />
