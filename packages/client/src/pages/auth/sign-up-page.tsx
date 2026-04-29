@@ -1,15 +1,15 @@
+import PasswordInput from '@/components/Password/password-input';
 import { Button } from '@/components/ui/button';
-import { FieldGroup, Field } from '@/components/ui/field';
+import { Field, FieldGroup } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import PasswordInput from '@/components/Password/password-input';
 import { authClient } from '@/lib/auth-client';
 import { signUpSchema } from '@contracts/shared/schemas/auth-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, Controller } from 'react-hook-form';
+import { Loader } from 'lucide-react';
+import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
-import { Loader2 } from 'lucide-react';
 
 type SignUpForm = z.infer<typeof signUpSchema>;
 
@@ -139,11 +139,8 @@ export default function SignUpPage() {
           )}
 
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              'Start my guidance journey'
-            )}
+            Start my guidance journey
+            {!isSubmitting && <Loader className="animate-spin" />}
           </Button>
         </FieldGroup>
       </form>

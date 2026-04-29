@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
 type PasswordInputProps = {
   value: string;
@@ -18,13 +19,13 @@ export default function PasswordInput({
 
   return (
     <div className="relative">
-      <input
+      <Input
         type={showPassword ? 'text' : 'password'}
         value={value}
         disabled={disabled}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full rounded-full bg-muted px-4 py-3 pr-12 text-sm outline-none"
+        className="pe-12 text-sm"
       />
 
       <button

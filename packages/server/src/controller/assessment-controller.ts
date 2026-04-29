@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schema';
 import { OnboardingService } from '../services/onboarding-service';
-import type { AuthRequest } from '../middleware/auth.middleware';
+import type { AuthRequest } from '../middleware/auth-middleware';
 const service = new OnboardingService();
 
 export const assessmentController = {
@@ -10,8 +10,6 @@ export const assessmentController = {
       const validatedData = onboardingFormSchema.parse(req.body);
 
       const userId = req.user?.id || 'dummyUserId';
-
-      console.log(validatedData, userId);
 
       const result = await service.submitOnboarding(userId, validatedData);
 

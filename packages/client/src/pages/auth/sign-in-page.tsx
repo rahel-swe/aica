@@ -1,14 +1,14 @@
+import PasswordInput from '@/components/Password/password-input';
 import { Button } from '@/components/ui/button';
-import { FieldGroup, Field } from '@/components/ui/field';
+import { Field, FieldGroup } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import PasswordInput from '@/components/Password/password-input';
 import { authClient } from '@/lib/auth-client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, Controller } from 'react-hook-form';
+import { Loader } from 'lucide-react';
+import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
-import { Loader2 } from 'lucide-react';
 
 const signInSchema = z.object({
   email: z.string().email(),
@@ -100,11 +100,8 @@ export default function SignInPage() {
           )}
 
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              'Sign in'
-            )}
+            Sign in
+            {isSubmitting && <Loader className="animate-spin" />}
           </Button>
         </FieldGroup>
       </form>
