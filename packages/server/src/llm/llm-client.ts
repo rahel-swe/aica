@@ -6,7 +6,23 @@ const client = new OpenAI({
   apiKey: process.env.HF_TOKEN,
 });
 
+async function createTextCompletion(prompt: string) {
+  const chatCompletion = await client.chat.completions.create({
+    model: 'openai/gpt-oss-safeguard-20b:groq',
+    messages: [
+      {
+        role: 'user',
+        content: prompt,
+      },
+    ],
+  });
+
+  return chatCompletion.choices[0]?.message?.content ?? '';
+}
+
 export const llmClient = {
+  createTextCompletion,
+
   async testLLMClient(req: Request, res: Response) {
     const { prompt } = req.query;
 
@@ -15,21 +31,11 @@ export const llmClient = {
       return;
     }
 
-    const chatCompletion = await client.chat.completions.create({
-      model: 'openai/gpt-oss-safeguard-20b:groq',
-      messages: [
-        {
-          role: 'user',
-          content: prompt as string,
-        },
-      ],
-    });
+    const response = await createTextCompletion(prompt as string);
 
     res.status(200).json({
       prompt,
-      response: chatCompletion.choices[0]?.message,
+      response,
     });
-
-    // console.log(chatCompletion.choices[0]?.message);
   },
 };

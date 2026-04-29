@@ -6,7 +6,7 @@ import pathwayRouter from './pathway-route';
 import profileRouter from './profile-route';
 import recommendationRouter from './recommendation-route';
 import roadmapRouter from './roadmap-route';
-import { llmClient } from '../llm/client';
+import { llmClient } from '../llm/llm-client';
 
 const apiRouter = Router();
 

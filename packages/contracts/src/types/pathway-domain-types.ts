@@ -41,4 +41,7 @@ export type RecommendationResult = {
   totalScore: number;
   dimensionScores: RecommendationDimensionScores;
   reasons: string[];
+  explanation?: string;
+  rank?: number;
+  matchingVersion?: number;
 };

@@ -1,4 +1,4 @@
-import type { Request, Response } from 'express';
+import type { Response } from 'express';
 import { RecommendationService } from '../services/recommendation-service';
 import type { AuthRequest } from '../middleware/auth-middleware';
 
@@ -26,7 +26,7 @@ export const recommendationController = {
   getMyRecommendations: async (req: AuthRequest, res: Response) => {
     try {
       const userId = req.user?.id || 'dummyUserId';
-      const result = await service.generateRecommendations(userId);
+      const result = await service.getRecommendations(userId);
 
       res.json({
         success: true,

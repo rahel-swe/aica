@@ -47,7 +47,7 @@ const impactWeightSchema = createWeightSchema(impactEnum);
 const goalWeightSchema = createWeightSchema(goalsEnum);
 
 export interface IPathwayMatchProfile extends Document {
-  pathwayId: Schema.Types.ObjectId;
+  pathwayId: Schema.Types.ObjectId | string;
   version: number;
   strengths: Array<{ value: string; weight: number; band: string }>;
   subjects: Array<{ value: string; weight: number; band: string }>;

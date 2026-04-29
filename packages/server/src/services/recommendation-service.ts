@@ -9,10 +9,13 @@ import type {
 import { OnboardingRepository } from '../repositories/onboarding-repository';
 import { PathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
 import { PathwayRepository } from '../repositories/pathway-repository';
+import { recommendationRepository } from '../repositories/recommendation-repository';
+import { RecommendationExplanationService } from './recommendation-explanation-service';
 
 const onboardingRepo = new OnboardingRepository();
 const pathwayRepo = new PathwayRepository();
 const profileRepo = new PathwayMatchProfileRepository();
+const explanationService = new RecommendationExplanationService();
 
 const DIMENSION_WEIGHTS = {
   strengths: 0.2,
@@ -39,14 +42,13 @@ type MatchWeightItem = {
 };
 
 type OnboardingShape = OnboardingFormValues;
-type PathwayProfileShape = PathwayMatchProfile & { _id: string };
+type PathwayProfileShape = PathwayMatchProfile;
 type PathwayRecord = Pathway & { _id: string };
 
 export class RecommendationService {
   async generateRecommendations(
     userId: string
   ): Promise<RecommendationResult[]> {
-    console.log(userId);
     const onboarding = (await onboardingRepo.findByUserId(
       userId
     )) as OnboardingShape | null;
@@ -142,9 +144,60 @@ export class RecommendationService {
       })
       .filter((item): item is RecommendationResult => item !== null)
       .sort((a, b) => (b?.totalScore ?? 0) - (a?.totalScore ?? 0))
-      .slice(0, 3);
+      .slice(0, 3)
+      .map((item, index) => ({
+        ...item,
+        rank: index + 1,
+        matchingVersion: 1,
+      }));
 
-    return ranked;
+    const enriched = await explanationService.enrichRecommendations(
+      ranked,
+      onboarding
+    );
+
+    await recommendationRepository.replaceForUser(
+      userId,
+      enriched.map((item) => ({
+        userId,
+        pathwayId: item.pathwayId,
+        title: item.title,
+        slug: item.slug,
+        type: item.type,
+        summary: item.summary,
+        totalScore: item.totalScore,
+        dimensionScores: item.dimensionScores,
+        reasons: item.reasons,
+        explanation: item.explanation,
+        rank: item.rank,
+        matchingVersion: item.matchingVersion,
+        sourceProfileSnapshot: onboarding,
+      }))
+    );
+
+    return enriched;
+  }
+
+  async getRecommendations(userId: string): Promise<RecommendationResult[]> {
+    const existing = await recommendationRepository.findByUserId(userId);
+
+    if (!existing.length) {
+      return await this.generateRecommendations(userId);
+    }
+
+    return existing.map((item) => ({
+      pathwayId: String(item.pathwayId),
+      title: item.title,
+      slug: item.slug,
+      type: item.type,
+      summary: item.summary,
+      totalScore: item.totalScore,
+      dimensionScores: item.dimensionScores,
+      reasons: item.reasons,
+      explanation: item.explanation,
+      rank: item.rank,
+      matchingVersion: item.matchingVersion,
+    }));
   }
 
   private scoreMultiValueDimension(
@@ -195,7 +248,11 @@ export class RecommendationService {
   }
 
   private getBandMultiplier(band: ScoreBand) {
-    return BAND_MULTIPLIERS[band] ?? BAND_MULTIPLIERS.supporting;
+    // these type later create separate 'penalty' | 'weak' | 'supporting' | 'strong'
+    return (
+      BAND_MULTIPLIERS[band as 'penalty' | 'weak' | 'supporting' | 'strong'] ??
+      BAND_MULTIPLIERS.supporting
+    );
   }
 
   private buildReasons(

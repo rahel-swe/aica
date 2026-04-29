@@ -8,13 +8,13 @@ export interface IPathway extends Document {
   title: string;
   slug: string;
   type: (typeof pathwayTypeEnum)[number];
-  taxonomyNodeIds: Schema.Types.ObjectId[];
+  taxonomyNodeIds: Schema.Types.ObjectId[] | string[];
   summary: string;
   description: string;
   keySkills: string[];
   learningRoute: string[];
   opportunities: string[];
-  relatedPathwayIds: Schema.Types.ObjectId[];
+  relatedPathwayIds: Schema.Types.ObjectId[] | string[];
   status: (typeof pathwayStatusEnum)[number];
 }
 
