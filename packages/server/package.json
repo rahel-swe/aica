@@ -7,7 +7,7 @@
     "dev": "bun run --watch server.ts",
     "start": "bun run server.ts",
     "build": "bun build server.ts --outdir ./build --target=bun",
-    "seed:pathways": "bun run ./src/scripts/seed-pathway-domain.ts"
+    "seed:pathways": "bun run src/scripts/seed-pathway-domain.ts"
   },
   "dependencies": {
     "@arcjet/bun": "^1.4.0",

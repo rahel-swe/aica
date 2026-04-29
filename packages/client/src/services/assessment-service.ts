@@ -5,7 +5,7 @@ import type {
   OnboardingSubmitResponse,
 } from '@contracts/shared/types/onboarding-types';
 
-export const submitOnboardingProfile = async (
+export const createOnboardingProfile = async (
   payload: OnboardingFormValues
 ): Promise<OnboardingSubmitResponse> => {
   const response = await apiClient.post(`/api/assessment/submit`, payload);

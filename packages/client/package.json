@@ -14,6 +14,7 @@
     "@fontsource-variable/inter": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "^4.2.4",
+    "@tanstack/react-query-devtools": "^5.100.6",
     "axios": "^1.15.2",
     "better-auth": "^1.6.6",
     "class-variance-authority": "^0.7.1",
