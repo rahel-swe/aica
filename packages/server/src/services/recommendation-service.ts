@@ -6,16 +6,11 @@ import type {
   RecommendationResult,
   ScoreBand,
 } from '@contracts/shared/types/pathway-domain-types';
-import { OnboardingRepository } from '../repositories/onboarding-repository';
-import { PathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
-import { PathwayRepository } from '../repositories/pathway-repository';
+import { onboardingRepository } from '../repositories/onboarding-repository';
+import { pathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
+import { pathwayRepository } from '../repositories/pathway-repository';
 import { recommendationRepository } from '../repositories/recommendation-repository';
 import { RecommendationExplanationService } from './recommendation-explanation-service';
-
-const onboardingRepo = new OnboardingRepository();
-const pathwayRepo = new PathwayRepository();
-const profileRepo = new PathwayMatchProfileRepository();
-const explanationService = new RecommendationExplanationService();
 
 const DIMENSION_WEIGHTS = {
   strengths: 0.2,
@@ -46,10 +41,17 @@ type PathwayProfileShape = PathwayMatchProfile;
 type PathwayRecord = Pathway & { _id: string };
 
 export class RecommendationService {
+  private readonly onboardingRepository = onboardingRepository;
+  private readonly pathwayRepository = pathwayRepository;
+  private readonly pathwayMatchProfileRepository =
+    pathwayMatchProfileRepository;
+  private readonly recommendationRepository = recommendationRepository;
+  private readonly explanationService = new RecommendationExplanationService();
+
   async generateRecommendations(
     userId: string
   ): Promise<RecommendationResult[]> {
-    const onboarding = (await onboardingRepo.findByUserId(
+    const onboarding = (await this.onboardingRepository.findByUserId(
       userId
     )) as OnboardingShape | null;
 
@@ -60,14 +62,14 @@ export class RecommendationService {
     }
 
     const profiles =
-      (await profileRepo.findAllActive()) as PathwayProfileShape[];
+      (await this.pathwayMatchProfileRepository.findAllActive()) as PathwayProfileShape[];
 
     if (!profiles.length) {
       throw new Error('No active pathway match profiles found.');
     }
 
     const pathwayIds = profiles.map((profile) => String(profile.pathwayId));
-    const pathways = (await pathwayRepo.findActiveByIds(
+    const pathways = (await this.pathwayRepository.findActiveByIds(
       pathwayIds
     )) as PathwayRecord[];
     const pathwayById = new Map(
@@ -151,12 +153,12 @@ export class RecommendationService {
         matchingVersion: 1,
       }));
 
-    const enriched = await explanationService.enrichRecommendations(
+    const enriched = await this.explanationService.enrichRecommendations(
       ranked,
       onboarding
     );
 
-    await recommendationRepository.replaceForUser(
+    await this.recommendationRepository.replaceForUser(
       userId,
       enriched.map((item) => ({
         userId,
@@ -179,7 +181,7 @@ export class RecommendationService {
   }
 
   async getRecommendations(userId: string): Promise<RecommendationResult[]> {
-    const existing = await recommendationRepository.findByUserId(userId);
+    const existing = await this.recommendationRepository.findByUserId(userId);
 
     if (!existing.length) {
       return await this.generateRecommendations(userId);

@@ -2,16 +2,15 @@ import type { Request, Response } from 'express';
 import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schema';
 import { OnboardingService } from '../services/onboarding-service';
 import type { AuthRequest } from '../middleware/auth-middleware';
-const service = new OnboardingService();
 
-export const assessmentController = {
-  submitOnboarding: async (req: AuthRequest, res: Response) => {
+export class AssessmentController {
+  private readonly service = new OnboardingService();
+
+  submitOnboarding = async (req: AuthRequest, res: Response) => {
     try {
       const validatedData = onboardingFormSchema.parse(req.body);
-
       const userId = req.user?.id || 'dummyUserId';
-
-      const result = await service.submitOnboarding(userId, validatedData);
+      const result = await this.service.submitOnboarding(userId, validatedData);
 
       res.json({
         success: true,
@@ -23,5 +22,7 @@ export const assessmentController = {
         message: error.message,
       });
     }
-  },
-};
+  };
+}
+
+export const assessmentController = new AssessmentController();

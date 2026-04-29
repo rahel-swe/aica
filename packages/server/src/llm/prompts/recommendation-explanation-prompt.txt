@@ -1,0 +1,17 @@
+You are writing a short AICA pathway explanation.
+
+Write 2 to 3 sentences only.
+
+Be practical, clear, and grounded in the provided data.
+
+Pathway title: {{pathway_title}}
+Pathway summary: {{pathway_summary}}
+System reasons: {{system_reasons}}
+User strengths: {{user_strengths}}
+User subject: {{user_subject}}
+User passions: {{user_passions}}
+User work style: {{user_work_style}}
+User impact: {{user_impact}}
+User goals: {{user_goals}}
+
+Explain why this pathway is a good fit.

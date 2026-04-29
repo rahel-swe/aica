@@ -1,7 +1,8 @@
+import type { SignUpFormType } from '@contracts/shared/types/auth-types';
 import { UserModel } from '../models/user-model';
 
 export class UserService {
-  async createUser(data: UserCreateRequest) {
+  async createUser(data: SignUpFormType) {
     const user = await UserModel.create(data);
 
     return {

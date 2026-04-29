@@ -13,3 +13,5 @@ export class OnboardingRepository {
     return await Onboarding.findOneAndUpdate({ userId }, data, { new: true });
   }
 }
+
+export const onboardingRepository = new OnboardingRepository();

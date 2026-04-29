@@ -1,13 +1,13 @@
-import { OnboardingRepository } from '../repositories/onboarding-repository';
-
-const repo = new OnboardingRepository();
+import { onboardingRepository } from '../repositories/onboarding-repository';
 
 export class OnboardingService {
+  private readonly repository = onboardingRepository;
+
   async submitOnboarding(userId: string, data: any) {
-    const existing = await repo.findByUserId(userId);
+    const existing = await this.repository.findByUserId(userId);
 
     if (existing) {
-      return await repo.updateByUserId(userId, {
+      return await this.repository.updateByUserId(userId, {
         ...data,
         completed: true,
         stepsCompleted: 8,
@@ -15,7 +15,7 @@ export class OnboardingService {
     }
 
     // create new
-    return await repo.create({
+    return await this.repository.create({
       userId,
       ...data,
       completed: true,
