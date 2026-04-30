@@ -14,16 +14,10 @@ assessmentRouter.post(
   assessmentController.submitOnboarding
 );
 
-assessmentRouter.get('/status', async (_req: Request, res: Response) => {
-  const response = onboardingStatusResponseSchema.parse({
-    success: true,
-    message: 'Assessment status fetched.',
-    data: {
-      completed: false,
-    },
-  });
-
-  res.send(response);
-});
+assessmentRouter.get(
+  '/status',
+  requireAuth,
+  assessmentController.getOnboardingStatus
+);
 
 export default assessmentRouter;

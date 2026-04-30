@@ -22,4 +22,7 @@ export class OnboardingService {
       stepsCompleted: 8,
     });
   }
+  getOnboardingStatus(userId: string) {
+    return this.repository.findByUserId(userId);
+  }
 }

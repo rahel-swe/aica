@@ -23,6 +23,26 @@ export class AssessmentController {
       });
     }
   };
+
+  getOnboardingStatus = async (req: AuthRequest, res: Response) => {
+    try {
+      const userId = req.user?.id || 'dummyUserId';
+      const isCompleted = await this.service.getOnboardingStatus(userId);
+
+      res.json({
+        success: true,
+        message: 'Assessment status fetched.',
+        data: {
+          completed: !!isCompleted,
+        },
+      });
+    } catch (error: any) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  };
 }
 
 export const assessmentController = new AssessmentController();
