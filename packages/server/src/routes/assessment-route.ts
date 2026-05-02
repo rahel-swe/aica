@@ -4,19 +4,19 @@ import { onboardingStatusResponseSchema } from '@contracts/shared/schemas/onboar
 
 import { assessmentController } from '../controller/assessment-controller';
 
-import { requireAuth } from '../middleware/auth-middleware';
+import { authorize } from '../middleware/auth-middleware';
 
 const assessmentRouter = Router();
 
 assessmentRouter.post(
   '/submit',
-  requireAuth,
+  authorize,
   assessmentController.submitOnboarding
 );
 
 assessmentRouter.get(
   '/status',
-  requireAuth,
+  authorize,
   assessmentController.getOnboardingStatus
 );
 

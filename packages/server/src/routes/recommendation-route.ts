@@ -1,18 +1,18 @@
 import { Router } from 'express';
 import { recommendationController } from '../controller/recommendation-controller';
-import { requireAuth } from '../middleware/auth-middleware';
+import { authorize } from '../middleware/auth-middleware';
 
 const recommendationRouter = Router();
 
 recommendationRouter.post(
   '/generate',
-  requireAuth,
+  authorize,
   recommendationController.generateRecommendations
 );
 
 recommendationRouter.get(
   '/me',
-  requireAuth,
+  authorize,
   recommendationController.getMyRecommendations
 );
 

@@ -1,14 +1,20 @@
 import type z from 'zod';
 import {
   matchWeightSchema,
+  pathwayDetailResponseSchema,
+  pathwayDetailSchema,
+  pathwayListItemSchema,
   pathwayMatchProfileSchema,
   pathwaySchema,
   pathwayStatusSchema,
+  pathwaysListResponseSchema,
   pathwayTypeSchema,
+  relatedPathwaySummarySchema,
   scoreBandSchema,
   taxonomyNodeKindSchema,
   taxonomyNodeSchema,
   taxonomyNodeStatusSchema,
+  taxonomyNodeSummarySchema,
 } from '../schemas/pathway-domain-schema';
 
 export type TaxonomyNodeKind = z.infer<typeof taxonomyNodeKindSchema>;
@@ -20,6 +26,12 @@ export type MatchWeight = z.infer<typeof matchWeightSchema>;
 export type TaxonomyNode = z.infer<typeof taxonomyNodeSchema>;
 export type Pathway = z.infer<typeof pathwaySchema>;
 export type PathwayMatchProfile = z.infer<typeof pathwayMatchProfileSchema>;
+export type TaxonomyNodeSummary = z.infer<typeof taxonomyNodeSummarySchema>;
+export type RelatedPathwaySummary = z.infer<typeof relatedPathwaySummarySchema>;
+export type PathwayListItem = z.infer<typeof pathwayListItemSchema>;
+export type PathwayDetail = z.infer<typeof pathwayDetailSchema>;
+export type PathwaysListResponse = z.infer<typeof pathwaysListResponseSchema>;
+export type PathwayDetailResponse = z.infer<typeof pathwayDetailResponseSchema>;
 
 export type RecommendationDimensionScores = {
   strengths: number;

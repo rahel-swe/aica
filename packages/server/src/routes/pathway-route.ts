@@ -1,17 +1,11 @@
-import { Router, type Request, type Response } from 'express';
+import { Router } from 'express';
+import { pathwayController } from '../controller/pathway-controller';
+import { authorize } from '../middleware/auth-middleware';
 
 const pathwayRouter = Router();
 
-pathwayRouter.get('/', (_req: Request, res: Response) => {
-  res.send({ success: true, data: [], message: 'Pathway list fetched.' });
-});
+pathwayRouter.get('/', authorize, pathwayController.getPathways);
 
-pathwayRouter.get('/:id', (req: Request, res: Response) => {
-  res.send({
-    success: true,
-    data: { id: req.params.id },
-    message: 'Pathway detail fetched.',
-  });
-});
+pathwayRouter.get('/:id', authorize, pathwayController.getPathwayDetail);
 
 export default pathwayRouter;

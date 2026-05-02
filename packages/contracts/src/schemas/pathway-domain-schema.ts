@@ -102,3 +102,55 @@ export const pathwayMatchProfileSchema = z.object({
   notes: z.array(z.string()).default([]),
   status: pathwayStatusSchema.default('draft'),
 });
+
+export const taxonomyNodeSummarySchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  slug: z.string(),
+  kind: taxonomyNodeKindSchema,
+  parentId: z.string().nullable(),
+});
+
+export const relatedPathwaySummarySchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  slug: z.string(),
+  type: pathwayTypeSchema,
+  summary: z.string(),
+});
+
+export const pathwayListItemSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  slug: z.string(),
+  type: pathwayTypeSchema,
+  summary: z.string(),
+  taxonomyNodes: z.array(taxonomyNodeSummarySchema),
+  keySkills: z.array(z.string()),
+});
+
+export const pathwayDetailSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  slug: z.string(),
+  type: pathwayTypeSchema,
+  summary: z.string(),
+  description: z.string(),
+  taxonomyNodes: z.array(taxonomyNodeSummarySchema),
+  keySkills: z.array(z.string()),
+  learningRoute: z.array(z.string()),
+  opportunities: z.array(z.string()),
+  relatedPathways: z.array(relatedPathwaySummarySchema),
+});
+
+export const pathwaysListResponseSchema = z.object({
+  success: z.boolean(),
+  message: z.string(),
+  data: z.array(pathwayListItemSchema),
+});
+
+export const pathwayDetailResponseSchema = z.object({
+  success: z.boolean(),
+  message: z.string(),
+  data: pathwayDetailSchema,
+});
