@@ -17,6 +17,7 @@ import AuthLayout from '@/layouts/auth-layout';
 import RootLayout from '@/layouts/root-layout';
 import OnboardingLayout from './layouts/onboarding-layout';
 import OnboardingStepRenderer from './pages/onboarding-steps-page';
+import CongratsLayout from './layouts/congrats-layout';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             element: <OnboardingStepRenderer />,
           },
         ],
+      },
+      {
+        path: 'congrates',
+        element: <CongratsLayout />,
       },
       {
         path: 'app',

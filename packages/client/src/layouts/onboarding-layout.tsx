@@ -60,8 +60,10 @@ const OnboardingLayout = () => {
       <p className="text-destructive">Failed fetching onboarding status</p>
     );
 
-  if (data?.data?.completed)
-    return navigate('/app/dashboard', { replace: true });
+  if (data?.data?.completed) {
+    navigate('/app/dashboard', { replace: true });
+    return null;
+  }
 
   return (
     <FormProvider {...form}>
