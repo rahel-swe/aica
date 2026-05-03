@@ -9,7 +9,7 @@ export default function AppLayout() {
 
   if (isPending) return <SpinnerBars barDivClassName="scale-180" />;
 
-  if (!userData?.user) return <Navigate to="/auth" replace />;
+  if (!userData?.user) return <Navigate to="/auth/sign-in" replace />;
 
   if (!isPathwayAssessmentCompleted)
     return <Navigate to="/pathway-assessment/welcome" replace />;

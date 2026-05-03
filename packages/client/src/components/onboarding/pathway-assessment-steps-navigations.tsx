@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/refs */
 import {
   PATHWAY_ASSESSMENT_STEPS,
   type PathwayAssessmentStep,
@@ -11,6 +12,7 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import { Button } from '../ui/button';
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
+import { useEffect, useRef } from 'react';
 
 const PathwayAssessmentStepsNavigations = ({
   step,
@@ -25,9 +27,15 @@ const PathwayAssessmentStepsNavigations = ({
   const { currentIndex, isSubmitting, submitPathwayAssisment } =
     useOutletContext<PathwayAssessmentOutletContext>();
 
+  const previouseIndex = useRef(currentIndex);
+
+  useEffect(() => {
+    previouseIndex.current = currentIndex;
+  }, [currentIndex]);
+
   const goBack = () => {
     const prev = PATHWAY_ASSESSMENT_STEPS[currentIndex - 1];
-    if (prev) navigate(`/onboarding/${prev.id}`);
+    if (prev) navigate(`/pathway-assessment/${prev.id}`);
   };
 
   const goNext = async () => {
@@ -56,9 +64,14 @@ const PathwayAssessmentStepsNavigations = ({
 
   return (
     <div
+      key={step.id}
       className={cn(
         'flex flex-col-reverse sm:items-center justify-center sm:flex-row max-w-xs  mx-auto w-full',
-        !(currentIndex === 0) && 'gap-3 sm:gap-8 sm:justify-between'
+        !(currentIndex === 0) && 'gap-3 sm:gap-8 sm:justify-between',
+        'transition-all duration-500 animate-in fade-in',
+        previouseIndex.current > currentIndex
+          ? 'slide-in-from-right-6'
+          : 'slide-in-from-left-6'
       )}
     >
       {!(currentIndex === 0) && (
@@ -76,7 +89,7 @@ const PathwayAssessmentStepsNavigations = ({
       <Button
         type="button"
         onClick={goNext}
-        className="py-6 sm:px-12"
+        className="py-6.5 sm:px-12"
         disabled={disableNext || isSubmitting}
       >
         {isSubmitting

@@ -32,7 +32,7 @@ const PathwayAssessmentLayout = () => {
       </p>
     );
 
-  if (!userData?.user) return <Navigate to="/auth" replace />;
+  if (!userData?.user) return <Navigate to="/auth/sign-in" replace />;
 
   if (isPathwayAssessmentCompleted)
     return <Navigate to="/app/dashboard" replace />;

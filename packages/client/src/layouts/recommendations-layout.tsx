@@ -25,34 +25,33 @@ const RecommendedPathwaysLayout = () => {
 
   return (
     <div className="min-h-screen bg-linear-to-b from-background to-muted/30 p-8 md:p-10">
-      <div className="mx-auto max-w-3xl space-y-6">
+      <div className="mx-auto max-w-5xl space-y-6 md:space-y-8">
         {/* Header */}
         <h1 className="text-5xl capitalize text-start text-wrap px-28 font-semibold tracking-tight md:text-6xl sm:text-center">
           Pick your pathway
         </h1>
 
-        {/* Ranking Selector */}
-        <div className="flex justify-center gap-3">
-          {topThree.map((item, index) => (
-            <Button
-              key={item.pathwayId}
-              size={'lg'}
-              onClick={() => setActiveIndex(index)}
-              variant={'outline'}
-              className={cn(
-                'relative font-semibold text-lg transition-all py-5 px-5',
-                rankedBadgeColor[index],
-                activeIndex === index &&
-                  'bg-background dark:bg-background dark:text-white'
-              )}
-            >
-              #{item.rank}
-            </Button>
-          ))}
-        </div>
+        <div className="relative flex flex-col gap-6 md:flex-row w-full">
+          <div className="flex justify-center gap-3 md:flex-col">
+            {topThree.map((item, index) => (
+              <Button
+                key={item.pathwayId}
+                size={'lg'}
+                onClick={() => setActiveIndex(index)}
+                variant={'outline'}
+                className={cn(
+                  'relative font-semibold text-lg md:text-2xl transition-all py-5 md:py-7 px-5 md:px-7',
+                  rankedBadgeColor[index],
+                  activeIndex === index &&
+                    'bg-background dark:bg-background dark:text-white'
+                )}
+              >
+                #{item.rank}
+              </Button>
+            ))}
+          </div>
 
-        {/* Active Card */}
-        <div className="relative">
+          {/* Active Card */}
           <RecommendationCard key={activeItem.pathwayId} item={activeItem} />
         </div>
       </div>

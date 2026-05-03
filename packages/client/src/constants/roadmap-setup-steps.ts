@@ -3,34 +3,39 @@ import type {
   PathwayAssessmentOption,
 } from './pathway-assessment-steps';
 
-// Roadmap-specific option types
-export type RoadmapCurrentStage =
-  | 'high_school'
-  | 'university'
-  | 'graduate'
-  | 'self_learning'
-  | 'working';
+import type {
+  RoadmapSetupAssessmentConstraint,
+  RoadmapSetupAssessmentCurrentStage,
+  RoadmapSetupAssessmentStyle,
+} from '@contracts/shared/types/roadmap-setup-assessment-types';
 
-export type RoadmapWeeklyTime = 'low' | 'medium' | 'high' | 'intense';
+// export type RoadmapCurrentStage =
+//   | 'high_school'
+//   | 'university'
+//   | 'graduate'
+//   | 'self_learning'
+//   | 'working';
 
-export type RoadmapTimeline = 'short' | 'medium' | 'long';
+// export type RoadmapWeeklyTime = 'low' | 'medium' | 'high' | 'intense';
 
-export type RoadmapConstraint =
-  | 'low_budget'
-  | 'weak_internet'
-  | 'no_laptop'
-  | 'beginner'
-  | 'fast_track';
+// export type RoadmapTimeline = 'short' | 'medium' | 'long';
 
-export type RoadmapStyle = 'fast_track' | 'balanced' | 'deep';
+// export type RoadmapConstraint =
+//   | 'low_budget'
+//   | 'weak_internet'
+//   | 'no_laptop'
+//   | 'beginner'
+//   | 'fast_track';
+
+// export type RoadmapStyle = 'fast_track' | 'balanced' | 'deep';
 
 // Roadmap form values
 export type RoadmapFormValues = {
-  currentStage: RoadmapCurrentStage;
-  weeklyTime: RoadmapWeeklyTime;
-  timeline: RoadmapTimeline;
-  constraints: RoadmapConstraint[];
-  roadmapStyle: RoadmapStyle;
+  currentStage: RoadmapSetupAssessmentCurrentStage;
+  weeklyTime: RoadmapSetupAssessmentCurrentStage;
+  timeline: RoadmapSetupAssessmentCurrentStage;
+  constraints: RoadmapSetupAssessmentConstraint[];
+  roadmapStyle: RoadmapSetupAssessmentStyle;
 };
 
 // Roadmap step IDs

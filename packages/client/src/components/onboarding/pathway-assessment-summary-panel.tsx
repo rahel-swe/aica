@@ -1,4 +1,5 @@
 import { type PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
+import { cn } from '@/lib/utils';
 
 type PathwayAssessmentSummaryPanelProps = {
   step: PathwayAssessmentStep;
@@ -8,7 +9,13 @@ const PathwayAssessmentSummaryPanel = ({
   step,
 }: PathwayAssessmentSummaryPanelProps) => {
   return (
-    <div className="mx-auto">
+    <div
+      key={step.id}
+      className={cn(
+        'mx-auto',
+        'transition-all duration-500 animate-in fade-in slide-in-from-right-6'
+      )}
+    >
       <img
         src="/onboard-welcome.png"
         alt="welcome image"

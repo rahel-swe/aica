@@ -31,20 +31,20 @@ const RecommendationCard = ({ item }: Props) => {
   return (
     <Card
       className={cn(
-        'relative backdrop-blur transition-all duration-500 shadow-none',
-        'animate-in fade-in slide-in-from-bottom-4',
+        'relative transition-all duration-500 shadow-none',
+        'animate-in fade-in slide-in-from-bottom-6 md:slide-in-from-right-6 w-full',
         cardbgColors[item.rank! - 1]
       )}
     >
       <CardHeader>
         <div className="mx-auto mb-4 relative">
-          <p className="text-6xl font-semibold">{score}%</p>
+          <p className="text-6xl md:text-7xl font-semibold">{score}%</p>
           <p className="text-lg opacity-50 mx-auto absolute -bottom-6 inset-s-22">
             Match
           </p>
         </div>
         <div>
-          <CardTitle className="text-xl">{item.title}</CardTitle>
+          <CardTitle className="text-xl md:text-2xl">{item.title}</CardTitle>
           <CardDescription className="text-inherit">
             {item.summary}
           </CardDescription>
@@ -54,7 +54,7 @@ const RecommendationCard = ({ item }: Props) => {
         <Badge variant="secondary">{item.type}</Badge>
 
         <div className="flex flex-col gap-2 border border-black/15 rounded-xl p-2">
-          <p className="border-b w-min">Reasons</p>
+          <p>Reasons</p>
           <div className="flex flex-wrap flex-col">
             {reasons.map((r, i) => (
               <p key={i} className="rounded-full text-xs">

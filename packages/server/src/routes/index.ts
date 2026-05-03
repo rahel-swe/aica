@@ -7,11 +7,13 @@ import profileRouter from './profile-route';
 import recommendationRouter from './recommendation-route';
 import roadmapRouter from './roadmap-router';
 import { llmClient } from '../llm/llm-client';
+import roadmapSetupAssessmentRouter from './roadmap-setup-assessment-router';
 
 const apiRouter = Router();
 
 apiRouter.use('/users', profileRouter);
 apiRouter.use('/pathway-assessment', pathwayAssessmentRouter);
+apiRouter.use('/roadmap-setup-assessment', roadmapSetupAssessmentRouter);
 apiRouter.use('/pathways', pathwayRouter);
 apiRouter.use('/recommendations', recommendationRouter);
 apiRouter.use('/roadmaps', roadmapRouter);

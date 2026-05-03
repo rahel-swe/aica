@@ -47,7 +47,7 @@ export const useUserStatus = () => {
   const submitPathwayAssisment = form.handleSubmit(async (payload) => {
     await pathwayAssessmentMutateAsync(payload, {
       onSuccess: (result) => {
-        if (result?.success) navigate('/congrates');
+        if (result?.success) navigate('/pathway-recommendations');
       },
     });
   });

@@ -1,4 +1,5 @@
 import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
+import { cn } from '@/lib/utils';
 
 type PathwayAssessmentIntroPanelProps = {
   step: PathwayAssessmentStep;
@@ -8,7 +9,13 @@ const PathwayAssessmentIntroPanel = ({
   step,
 }: PathwayAssessmentIntroPanelProps) => {
   return (
-    <div className="flex flex-col items-center justify-center text-center">
+    <div
+      key={step.id}
+      className={cn(
+        'flex flex-col items-center justify-center text-center',
+        'transition-all duration-500 animate-in fade-in slide-in-from-left-6'
+      )}
+    >
       <img
         src="/onboard-welcome.png"
         alt="Pathway Assessment hero background"
