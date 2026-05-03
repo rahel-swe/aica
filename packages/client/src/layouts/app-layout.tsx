@@ -1,8 +1,19 @@
 import AppHeader from '@/components/app-header';
 import AppTabs from '@/components/app-tabs';
-import { Outlet } from 'react-router-dom';
+import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
+import { Navigate, Outlet } from 'react-router-dom';
 
 export default function AppLayout() {
+  const { userData, isPending, isPathwayAssessmentCompleted } =
+    usePathwayAssessment();
+
+  if (isPending) return <p>App loading...</p>;
+
+  if (!userData?.user) return <Navigate to="/auth" replace />;
+
+  if (!isPathwayAssessmentCompleted)
+    return <Navigate to="/pathway-assessment/welcome" replace />;
+
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto flex min-h-screen w-full max-w-400 gap-0">

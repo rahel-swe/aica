@@ -5,7 +5,6 @@ import {
 import type { PathwayAssessmentOutletContext } from '@/layouts/pathway-assessment-layout';
 import { toKebab } from '@/lib/to-kebab';
 import { cn } from '@/lib/utils';
-
 import { ChevronLeft, ChevronRight, Pencil, Send } from 'lucide-react';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useNavigate, useOutletContext } from 'react-router-dom';
@@ -23,7 +22,7 @@ const PathwayAssessmentStepsNavigations = ({
   const form = useFormContext<PathwayAssessmentFormValues>();
   const navigate = useNavigate();
   const watchedValues = useWatch<PathwayAssessmentFormValues>();
-  const { currentIndex, isSubmitting, submitAssisment } =
+  const { currentIndex, isSubmitting, submitPathwayAssisment } =
     useOutletContext<PathwayAssessmentOutletContext>();
 
   const goBack = () => {
@@ -47,7 +46,7 @@ const PathwayAssessmentStepsNavigations = ({
     }
 
     if (step.type === 'cta') {
-      await submitAssisment();
+      await submitPathwayAssisment();
       return;
     }
 

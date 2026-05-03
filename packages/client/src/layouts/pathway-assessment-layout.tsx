@@ -1,71 +1,43 @@
-import {
-  PATHWAY_ASSESSMENT_STEPS,
-  pathwayAssessmentDefaultValues,
-} from '@/constants/pathway-assessment-steps';
-import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
-import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useMemo } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
-
-import { usePathwayAssessmentStatusQuery } from '@/queries/pathway-assessment-query';
-
-import { usePathwayAssessmentCreateQuery } from '@/queries/pathway-assessment-query';
+import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps';
+import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
+import { FormProvider } from 'react-hook-form';
+import { Navigate, Outlet } from 'react-router-dom';
 
 export type PathwayAssessmentOutletContext = {
   currentIndex: number;
   totalSteps: number;
   isSubmitting: boolean;
-  submitAssisment: () => void;
+  submitPathwayAssisment: () => void;
 };
 
 const PathwayAssessmentLayout = () => {
-  const navigate = useNavigate();
-  const { stepId } = useParams();
+  const {
+    isPending,
+    error,
+    isPathwayAssessmentCompleted,
+    currentIndex,
+    form,
+    isPathwayAssessmentCreating,
+    submitPathwayAssisment,
+    userData,
+  } = usePathwayAssessment();
 
-  const { data, isLoading, isError } = usePathwayAssessmentStatusQuery();
+  if (isPending) return <p>Pathway Assessment loading...</p>;
 
-  const { mutateAsync, isPending: isPathwayAssessmentCreating } =
-    usePathwayAssessmentCreateQuery();
-
-  const currentIndex = useMemo(
-    () => PATHWAY_ASSESSMENT_STEPS.findIndex((step) => step.id === stepId),
-    [stepId]
-  );
-
-  const form = useForm<PathwayAssessmentFormValues>({
-    resolver: zodResolver(pathwayAssessmentFormSchema),
-    defaultValues:
-      pathwayAssessmentDefaultValues as PathwayAssessmentFormValues,
-    mode: 'onChange',
-    shouldUnregister: false,
-  });
-
-  const submitAssisment = form.handleSubmit(async (payload) => {
-    await mutateAsync(payload, {
-      onSuccess: (result) => {
-        if (result?.success) navigate('/congrates');
-      },
-    });
-  });
-
-  useEffect(() => {
-    if (currentIndex === -1)
-      navigate('/pathway-assessment/welcome', { replace: true });
-  }, [currentIndex, navigate]);
-
-  if (isLoading) return <p>Pathway Assessment loading...</p>;
-
-  if (isError)
+  if (error)
     return (
-      <p className="text-destructive">Failed fetching onboarding status</p>
+      <p className="text-destructive">
+        Failed fetching onboarding status {error.message}
+      </p>
     );
 
-  if (data?.data?.completed) {
-    navigate('/app/dashboard', { replace: true });
-    return null;
-  }
+  if (!userData?.user) return <Navigate to="/auth" replace />;
+
+  if (isPathwayAssessmentCompleted)
+    return <Navigate to="/app/dashboard" replace />;
+
+  if (currentIndex === -1)
+    return <Navigate to="/pathway-assessment/welcome" replace />;
 
   return (
     <FormProvider {...form}>
@@ -76,7 +48,7 @@ const PathwayAssessmentLayout = () => {
               currentIndex,
               totalSteps: PATHWAY_ASSESSMENT_STEPS.length,
               isSubmitting: isPathwayAssessmentCreating,
-              submitAssisment,
+              submitPathwayAssisment,
             }}
           />
         </div>

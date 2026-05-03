@@ -11,7 +11,7 @@ export const usePathwayAssessmentCreateQuery = () => {
     mutationFn: createPathwayAssessmentProfile,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['pathway-assesment'],
+        queryKey: ['pathway-assesment-status'],
       });
     },
   });
@@ -20,7 +20,8 @@ export const usePathwayAssessmentCreateQuery = () => {
 export const usePathwayAssessmentStatusQuery = () => {
   return useQuery({
     queryKey: ['pathway-assessment-status'],
-    refetchInterval: 5 * 1000,
+    refetchInterval: 60_000,
+    refetchOnWindowFocus: false,
     queryFn: getPathwayAssessmentStatus,
   });
 };
