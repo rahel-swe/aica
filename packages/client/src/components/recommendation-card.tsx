@@ -1,118 +1,94 @@
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { ArrowUpRight } from 'lucide-react';
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+
+import { cardbgColors } from '@/constants/recommendation-constant';
+import { cn } from '@/lib/utils';
 import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
 
-type Recommendation = {
-  pathwayId: string;
-  title: string;
-  type: string;
-  summary: string;
-  totalScore: number;
-  reasons: string[];
-  explanation: string;
-  rank: number;
-};
-
-interface RecommendationCardProps {
+interface Props {
   item: RecommendationResult;
-  onView?: (item: Recommendation) => void;
 }
 
-const typeColors: Record<string, string> = {
-  career: 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20',
-  hybrid:
-    'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20',
-};
-
-const RecommendationCard = ({ item }: RecommendationCardProps) => {
+const RecommendationCard = ({ item }: Props) => {
   const score = Math.round(item.totalScore * 100);
+  const reasons = item.reasons?.slice(0, 3) ?? [];
 
   return (
-    <Card className="group relative overflow-hidden rounded-3xl border bg-background/80 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      {/* Glow */}
-      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    <Card
+      className={cn(
+        'relative backdrop-blur transition-all duration-500 shadow-none',
+        'animate-in fade-in slide-in-from-bottom-4',
+        cardbgColors[item.rank! - 1]
+      )}
+    >
+      <CardHeader>
+        <div className="mx-auto mb-4 relative">
+          <p className="text-6xl font-semibold">{score}%</p>
+          <p className="text-lg opacity-50 mx-auto absolute -bottom-6 inset-s-22">
+            Match
+          </p>
+        </div>
+        <div>
+          <CardTitle className="text-xl">{item.title}</CardTitle>
+          <CardDescription className="text-inherit">
+            {item.summary}
+          </CardDescription>
+        </div>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-y-4">
+        <Badge variant="secondary">{item.type}</Badge>
 
-      <CardContent className="relative space-y-5 p-6">
-        {/* Top */}
-        <div className="flex items-start justify-between gap-4">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-sm font-bold text-primary-foreground">
-                #{item.rank}
-              </div>
-
-              <Badge
-                variant="outline"
-                className={
-                  typeColors[item.type] ?? 'bg-muted text-muted-foreground'
-                }
-              >
-                {item.type}
-              </Badge>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold tracking-tight">
-                {item.title}
-              </h3>
-
-              <p className="mt-1 text-sm text-muted-foreground">
-                {item.summary}
+        <div className="flex flex-col gap-2 border border-black/15 rounded-xl p-2">
+          <p className="border-b w-min">Reasons</p>
+          <div className="flex flex-wrap flex-col">
+            {reasons.map((r, i) => (
+              <p key={i} className="rounded-full text-xs">
+                {r}
               </p>
-            </div>
-          </div>
-
-          <div className="text-right">
-            <p className="text-xs text-muted-foreground">Match Score</p>
-
-            <h2 className="text-3xl font-bold tracking-tight">{score}%</h2>
+            ))}
           </div>
         </div>
 
-        {/* Progress */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>Compatibility</span>
-            <span>{score}%</span>
-          </div>
-
-          <Progress value={score} className="h-2" />
-        </div>
-
-        {/* Reasons */}
-        <div className="flex flex-wrap gap-2">
-          {item.reasons.map((reason, index) => (
-            <Badge
-              key={index}
-              variant="secondary"
-              className="rounded-full px-3 py-1"
-            >
-              {reason}
-            </Badge>
-          ))}
-        </div>
-
-        {/* Explanation */}
-        <p className="line-clamp-3 text-sm leading-6 text-muted-foreground">
-          {item.explanation}
-        </p>
+        <Accordion type="single" collapsible className="border-0">
+          <AccordionItem value="explanation" className="data-open:bg-white/50">
+            <AccordionTrigger className="bg-white text-inherit">
+              Why this recommendation?
+            </AccordionTrigger>
+            <AccordionContent className="py-4 h-full">
+              <CardDescription className='text-inherit"'>
+                {item.explanation}
+              </CardDescription>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </CardContent>
 
-      <CardFooter className="relative flex items-center justify-between border-t bg-muted/30 px-6 py-4">
-        <p className="text-xs text-muted-foreground">
-          ID: {item.pathwayId.slice(0, 8)}...
-        </p>
-
+      <div className="p-4 pt-0 flex justify-center">
         <Button
-          size="sm"
-          className="rounded-xl"
-          //  onClick={() => onView?.(item)}
+          size="lg"
+          variant="outline"
+          className="text-inherit dark:bg-white py-7 px-7"
+          onClick={() => console.log('selected', item)}
         >
-          View Details
+          Get Started
+          <ArrowUpRight />
         </Button>
-      </CardFooter>
+      </div>
     </Card>
   );
 };

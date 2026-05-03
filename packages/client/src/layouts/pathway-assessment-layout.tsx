@@ -1,7 +1,8 @@
 import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps';
-import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
+import { useUserStatus } from '@/hooks/use-user-status';
 import { FormProvider } from 'react-hook-form';
 import { Navigate, Outlet } from 'react-router-dom';
+import SpinnerBars from '../components/shadcn-space/spinner/spinner-06';
 
 export type PathwayAssessmentOutletContext = {
   currentIndex: number;
@@ -20,9 +21,9 @@ const PathwayAssessmentLayout = () => {
     isPathwayAssessmentCreating,
     submitPathwayAssisment,
     userData,
-  } = usePathwayAssessment();
+  } = useUserStatus();
 
-  if (isPending) return <p>Pathway Assessment loading...</p>;
+  if (isPending) return <SpinnerBars barDivClassName="scale-180" />;
 
   if (error)
     return (

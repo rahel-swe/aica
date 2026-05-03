@@ -14,7 +14,7 @@ import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const usePathwayAssessment = () => {
+export const useUserStatus = () => {
   const { isPending: isUserDataPending, data: userData } =
     authClient.useSession();
   const {

@@ -17,7 +17,7 @@ import AuthLayout from '@/layouts/auth-layout';
 import RootLayout from '@/layouts/root-layout';
 import PathwayAssessmentLayout from './layouts/pathway-assessment-layout';
 import PathwayAssessmentStepsPage from './pages/pathway-assessment-steps-page';
-import CongratsLayout from './layouts/congrats-layout';
+import RecommendedPathwaysLayout from './layouts/congrats-layout';
 
 const router = createBrowserRouter([
   {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'congrates',
-        element: <CongratsLayout />,
+        element: <RecommendedPathwaysLayout />,
       },
       {
         path: 'app',

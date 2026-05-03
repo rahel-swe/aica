@@ -1,13 +1,13 @@
 import AppHeader from '@/components/app-header';
 import AppTabs from '@/components/app-tabs';
-import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
+import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
+import { useUserStatus } from '@/hooks/use-user-status';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export default function AppLayout() {
-  const { userData, isPending, isPathwayAssessmentCompleted } =
-    usePathwayAssessment();
+  const { userData, isPending, isPathwayAssessmentCompleted } = useUserStatus();
 
-  if (isPending) return <p>App loading...</p>;
+  if (isPending) return <SpinnerBars barDivClassName="scale-180" />;
 
   if (!userData?.user) return <Navigate to="/auth" replace />;
 
