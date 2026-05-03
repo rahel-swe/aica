@@ -55,15 +55,17 @@ const PathwayAssessmentLayout = () => {
       navigate('/pathway-assessment/welcome', { replace: true });
   }, [currentIndex, navigate]);
 
-  if (isLoading) return <p>Onboarding loading...</p>;
+  if (isLoading) return <p>Pathway Assessment loading...</p>;
 
   if (isError)
     return (
       <p className="text-destructive">Failed fetching onboarding status</p>
     );
 
-  if (data?.data?.completed)
-    return navigate('/app/dashboard', { replace: true });
+  if (data?.data?.completed) {
+    navigate('/app/dashboard', { replace: true });
+    return null;
+  }
 
   return (
     <FormProvider {...form}>
