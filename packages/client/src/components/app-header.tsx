@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import apiClient from '@/lib/api-client';
 import { authClient } from '@/lib/auth-client';
 import { Bell, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -29,6 +30,10 @@ export default function AppHeader() {
               await generateRecommendations();
               const result = await getMyRecommendations();
               console.log(result);
+              // const response = await apiClient.get(`/api/roadmaps/me`);
+              // const data = await response.data;
+
+              // console.log(data);
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } catch (err: any) {
               console.error(err.response?.data || err.message);

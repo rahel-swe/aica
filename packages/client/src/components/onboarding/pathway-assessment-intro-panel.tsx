@@ -1,15 +1,17 @@
-import type { OnboardingStep } from '@/constants/onboarding-steps';
+import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
 
-type OnboardingIntroPanelProps = {
-  step: OnboardingStep;
+type PathwayAssessmentIntroPanelProps = {
+  step: PathwayAssessmentStep;
 };
 
-const OnboardingIntroPanel = ({ step }: OnboardingIntroPanelProps) => {
+const PathwayAssessmentIntroPanel = ({
+  step,
+}: PathwayAssessmentIntroPanelProps) => {
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <img
         src="/onboard-welcome.png"
-        alt="Onboarding hero background"
+        alt="Pathway Assessment hero background"
         className="inset-0 max-w-120 w-full h-full object-contain pointer-events-none select-none z-0"
       />
 
@@ -29,4 +31,4 @@ const OnboardingIntroPanel = ({ step }: OnboardingIntroPanelProps) => {
   );
 };
 
-export default OnboardingIntroPanel;
+export default PathwayAssessmentIntroPanel;

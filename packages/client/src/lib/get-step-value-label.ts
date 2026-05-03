@@ -1,9 +1,9 @@
-import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
-import type { OnboardingStep } from '@/constants/onboarding-steps';
+import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
+import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
 
 export const getStepValueLabel = (
-  step: OnboardingStep,
-  values: OnboardingFormValues
+  step: PathwayAssessmentStep,
+  values: PathwayAssessmentFormValues
 ): string[] => {
   if (!step.fieldName || !step.options) {
     return [];

@@ -1,10 +1,12 @@
-import { type OnboardingStep } from '@/constants/onboarding-steps';
+import { type PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
 
-type OnboardingSummaryPanelProps = {
-  step: OnboardingStep;
+type PathwayAssessmentSummaryPanelProps = {
+  step: PathwayAssessmentStep;
 };
 
-const OnboardingSummaryPanel = ({ step }: OnboardingSummaryPanelProps) => {
+const PathwayAssessmentSummaryPanel = ({
+  step,
+}: PathwayAssessmentSummaryPanelProps) => {
   return (
     <div className="mx-auto">
       <img
@@ -24,4 +26,4 @@ const OnboardingSummaryPanel = ({ step }: OnboardingSummaryPanelProps) => {
   );
 };
 
-export default OnboardingSummaryPanel;
+export default PathwayAssessmentSummaryPanel;

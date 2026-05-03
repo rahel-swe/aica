@@ -59,7 +59,7 @@ export default function DashboardPage() {
           <CardContent>
             <StatusList
               items={[
-                'Complete onboarding preferences for better matching accuracy.',
+                'Complete pathway assessment preferences for better matching accuracy.',
                 'Review the top three recommended pathways and save the strongest two.',
                 'Use the advisor page to compare your shortlist before generating a roadmap.',
               ]}

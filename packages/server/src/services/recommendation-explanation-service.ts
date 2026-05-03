@@ -1,4 +1,4 @@
-import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
+import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
 import { llmClient } from '../llm/llm-client';
 import explainRecommendationPrompt from '@/src/llm/prompts/recommendation-explanation-prompt.txt';
@@ -8,7 +8,7 @@ export class RecommendationExplanationService {
 
   async enrichRecommendations(
     recommendations: RecommendationResult[],
-    profile: OnboardingFormValues
+    profile: PathwayAssessmentFormValues
   ): Promise<RecommendationResult[]> {
     if (!Bun.env.HF_TOKEN) return recommendations;
 
@@ -38,7 +38,7 @@ export class RecommendationExplanationService {
   private renderPrompt(
     template: string,
     recommendation: RecommendationResult,
-    profile: OnboardingFormValues
+    profile: PathwayAssessmentFormValues
   ): string {
     return template
       .replace('{{pathway_title}}', recommendation.title)

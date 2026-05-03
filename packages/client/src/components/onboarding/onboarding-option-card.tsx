@@ -1,8 +1,8 @@
 import { cn } from '@/lib/utils';
-import type { OnboardingOption } from '@/constants/onboarding-steps';
+import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps';
 
 type OnboardingOptionCardProps = {
-  option: OnboardingOption;
+  option: PathwayAssessmentOption;
   selected: boolean;
   onClick: () => void;
 };

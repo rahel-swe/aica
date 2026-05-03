@@ -1,32 +1,33 @@
 import {
-  ONBOARDING_STEPS,
-  type OnboardingStep,
-} from '@/constants/onboarding-steps';
-import type { OnboardingOutletContext } from '@/layouts/onboarding-layout';
+  PATHWAY_ASSESSMENT_STEPS,
+  type PathwayAssessmentStep,
+} from '@/constants/pathway-assessment-steps';
+import type { PathwayAssessmentOutletContext } from '@/layouts/pathway-assessment-layout';
 import { toKebab } from '@/lib/to-kebab';
 import { cn } from '@/lib/utils';
-import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schema';
-import { type OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
+
 import { ChevronLeft, ChevronRight, Pencil, Send } from 'lucide-react';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { Button } from '../ui/button';
+import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
+import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
 
-const OnboardingStepsNavigations = ({
+const PathwayAssessmentStepsNavigations = ({
   step,
   disableNext,
 }: {
-  step: OnboardingStep;
+  step: PathwayAssessmentStep;
   disableNext: boolean;
 }) => {
-  const form = useFormContext<OnboardingFormValues>();
+  const form = useFormContext<PathwayAssessmentFormValues>();
   const navigate = useNavigate();
-  const watchedValues = useWatch<OnboardingFormValues>();
+  const watchedValues = useWatch<PathwayAssessmentFormValues>();
   const { currentIndex, isSubmitting, submitAssisment } =
-    useOutletContext<OnboardingOutletContext>();
+    useOutletContext<PathwayAssessmentOutletContext>();
 
   const goBack = () => {
-    const prev = ONBOARDING_STEPS[currentIndex - 1];
+    const prev = PATHWAY_ASSESSMENT_STEPS[currentIndex - 1];
     if (prev) navigate(`/onboarding/${prev.id}`);
   };
 
@@ -36,12 +37,12 @@ const OnboardingStepsNavigations = ({
       if (!isValid) return;
     }
 
-    const result = onboardingFormSchema.safeParse(watchedValues);
+    const result = pathwayAssessmentFormSchema.safeParse(watchedValues);
 
     if (!result.success) {
       const firstErrorPath = result.error.issues[0].path[0] as string;
 
-      navigate(`/onboarding/${toKebab(firstErrorPath)}`);
+      navigate(`/pathway-assessment/${toKebab(firstErrorPath)}`);
       return;
     }
 
@@ -50,8 +51,8 @@ const OnboardingStepsNavigations = ({
       return;
     }
 
-    const next = ONBOARDING_STEPS[currentIndex + 1];
-    if (next) navigate(`/onboarding/${next.id}`);
+    const next = PATHWAY_ASSESSMENT_STEPS[currentIndex + 1];
+    if (next) navigate(`/pathway-assessment/${next.id}`);
   };
 
   return (
@@ -90,4 +91,4 @@ const OnboardingStepsNavigations = ({
   );
 };
 
-export default OnboardingStepsNavigations;
+export default PathwayAssessmentStepsNavigations;

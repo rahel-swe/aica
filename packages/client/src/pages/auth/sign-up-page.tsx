@@ -41,7 +41,7 @@ export default function SignUpPage() {
         isOnboardDone: false,
       },
       {
-        onSuccess: () => navigate('/onboarding/welcome'),
+        onSuccess: () => navigate('/pathway-assessment/welcome'),
         onError: ({ error }) => setError('root', { message: error.message }),
       }
     );

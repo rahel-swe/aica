@@ -1,9 +1,9 @@
-import { ONBOARDING_STEPS } from '@/constants/onboarding-steps';
+import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps';
 
 const OnboardingProgress = ({ currentIndex }: { currentIndex: number }) => {
   const progressValue =
     currentIndex >= 0
-      ? ((currentIndex + 1) / ONBOARDING_STEPS.length) * 100
+      ? ((currentIndex + 1) / PATHWAY_ASSESSMENT_STEPS.length) * 100
       : 0;
 
   return (
@@ -11,7 +11,8 @@ const OnboardingProgress = ({ currentIndex }: { currentIndex: number }) => {
       <div className="flex items-center justify-between text-sm text-muted-foreground">
         <span>AICA onboarding</span>
         <span>
-          Step {Math.max(currentIndex + 1, 1)} of {ONBOARDING_STEPS.length}
+          Step {Math.max(currentIndex + 1, 1)} of{' '}
+          {PATHWAY_ASSESSMENT_STEPS.length}
         </span>
       </div>
       <div className="h-2 overflow-hidden rounded-full bg-muted">

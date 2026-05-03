@@ -1,4 +1,4 @@
-import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
+import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import type {
   MatchWeight,
   Pathway,
@@ -6,7 +6,7 @@ import type {
   RecommendationResult,
   ScoreBand,
 } from '@contracts/shared/types/pathway-domain-types';
-import { onboardingRepository } from '../repositories/onboarding-repository';
+import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 import { pathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
 import { pathwayRepository } from '../repositories/pathway-repository';
 import { recommendationRepository } from '../repositories/recommendation-repository';
@@ -36,12 +36,9 @@ type MatchWeightItem = {
   band: ScoreBand;
 };
 
-type OnboardingShape = OnboardingFormValues;
 type PathwayProfileShape = PathwayMatchProfile;
-type PathwayRecord = Pathway & { _id: string };
 
 export class RecommendationService {
-  private readonly onboardingRepository = onboardingRepository;
   private readonly pathwayRepository = pathwayRepository;
   private readonly pathwayMatchProfileRepository =
     pathwayMatchProfileRepository;
@@ -51,9 +48,9 @@ export class RecommendationService {
   async generateRecommendations(
     userId: string
   ): Promise<RecommendationResult[]> {
-    const onboarding = (await this.onboardingRepository.findByUserId(
+    const onboarding = (await pathwayAssessmentRepository.findByUserId(
       userId
-    )) as OnboardingShape | null;
+    )) as PathwayAssessmentFormValues | null;
 
     if (!onboarding) {
       throw new Error(
@@ -69,9 +66,7 @@ export class RecommendationService {
     }
 
     const pathwayIds = profiles.map((profile) => String(profile.pathwayId));
-    const pathways = (await this.pathwayRepository.findActiveByIds(
-      pathwayIds
-    )) as PathwayRecord[];
+    const pathways = await this.pathwayRepository.findActiveByIds(pathwayIds);
     const pathwayById = new Map(
       pathways.map((pathway) => [String(pathway._id), pathway])
     );
@@ -258,7 +253,7 @@ export class RecommendationService {
   }
 
   private buildReasons(
-    onboarding: OnboardingShape,
+    onboarding: PathwayAssessmentFormValues,
     profile: PathwayProfileShape
   ) {
     const reasons: string[] = [];

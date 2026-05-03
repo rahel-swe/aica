@@ -15,8 +15,8 @@ import NotFoundPage from '@/pages/not-found-page';
 import AppLayout from '@/layouts/app-layout';
 import AuthLayout from '@/layouts/auth-layout';
 import RootLayout from '@/layouts/root-layout';
-import OnboardingLayout from './layouts/onboarding-layout';
-import OnboardingStepRenderer from './pages/onboarding-steps-page';
+import PathwayAssessmentLayout from './layouts/pathway-assessment-layout';
+import PathwayAssessmentStepsPage from './pages/pathway-assessment-steps-page';
 
 const router = createBrowserRouter([
   {
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'onboarding',
-        element: <OnboardingLayout />,
+        path: 'pathway-assessment',
+        element: <PathwayAssessmentLayout />,
         children: [
           {
             index: true,
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
           },
           {
             path: ':stepId',
-            element: <OnboardingStepRenderer />,
+            element: <PathwayAssessmentStepsPage />,
           },
         ],
       },

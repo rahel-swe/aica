@@ -8,7 +8,7 @@ import {
   subjectsEnum,
   workEnvironmentEnum,
   workStyleEnum,
-} from './onboarding-schema';
+} from './pathway-assessment-schema';
 
 export const taxonomyNodeKindEnum = ['domain', 'field', 'specialization'];
 

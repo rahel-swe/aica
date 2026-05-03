@@ -1,9 +1,9 @@
-import { onboardingRepository } from '../repositories/onboarding-repository';
+import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 
-export class OnboardingService {
-  private readonly repository = onboardingRepository;
+export class PathwayAssessmentService {
+  private readonly repository = pathwayAssessmentRepository;
 
-  async submitOnboarding(userId: string, data: any) {
+  async submitPathwayAssessment(userId: string, data: any) {
     const existing = await this.repository.findByUserId(userId);
 
     if (existing) {
@@ -22,7 +22,7 @@ export class OnboardingService {
       stepsCompleted: 8,
     });
   }
-  getOnboardingStatus(userId: string) {
+  getPathwayAssessmentStatus(userId: string) {
     return this.repository.findByUserId(userId);
   }
 }

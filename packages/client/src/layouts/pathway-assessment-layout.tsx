@@ -1,42 +1,43 @@
 import {
-  ONBOARDING_STEPS,
-  onboardingDefaultValues,
-} from '@/constants/onboarding-steps';
-import { onboardingFormSchema } from '@contracts/shared/schemas/onboarding-schema';
-import type { OnboardingFormValues } from '@contracts/shared/types/onboarding-types';
+  PATHWAY_ASSESSMENT_STEPS,
+  pathwayAssessmentDefaultValues,
+} from '@/constants/pathway-assessment-steps';
+import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
+import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
-import { useOnboardingStatusQuery } from '@/queries/onboarding-query';
+import { usePathwayAssessmentStatusQuery } from '@/queries/pathway-assessment-query';
 
-import { useOnboardingCreateQuery } from '@/queries/onboarding-query';
+import { usePathwayAssessmentCreateQuery } from '@/queries/pathway-assessment-query';
 
-export type OnboardingOutletContext = {
+export type PathwayAssessmentOutletContext = {
   currentIndex: number;
   totalSteps: number;
   isSubmitting: boolean;
   submitAssisment: () => void;
 };
 
-const OnboardingLayout = () => {
+const PathwayAssessmentLayout = () => {
   const navigate = useNavigate();
   const { stepId } = useParams();
 
-  const { data, isLoading, isError } = useOnboardingStatusQuery();
+  const { data, isLoading, isError } = usePathwayAssessmentStatusQuery();
 
-  const { mutateAsync, isPending: isOnboardingCreating } =
-    useOnboardingCreateQuery();
+  const { mutateAsync, isPending: isPathwayAssessmentCreating } =
+    usePathwayAssessmentCreateQuery();
 
   const currentIndex = useMemo(
-    () => ONBOARDING_STEPS.findIndex((step) => step.id === stepId),
+    () => PATHWAY_ASSESSMENT_STEPS.findIndex((step) => step.id === stepId),
     [stepId]
   );
 
-  const form = useForm<OnboardingFormValues>({
-    resolver: zodResolver(onboardingFormSchema),
-    defaultValues: onboardingDefaultValues as OnboardingFormValues,
+  const form = useForm<PathwayAssessmentFormValues>({
+    resolver: zodResolver(pathwayAssessmentFormSchema),
+    defaultValues:
+      pathwayAssessmentDefaultValues as PathwayAssessmentFormValues,
     mode: 'onChange',
     shouldUnregister: false,
   });
@@ -50,7 +51,8 @@ const OnboardingLayout = () => {
   });
 
   useEffect(() => {
-    if (currentIndex === -1) navigate('/onboarding/welcome', { replace: true });
+    if (currentIndex === -1)
+      navigate('/pathway-assessment/welcome', { replace: true });
   }, [currentIndex, navigate]);
 
   if (isLoading) return <p>Onboarding loading...</p>;
@@ -70,8 +72,8 @@ const OnboardingLayout = () => {
           <Outlet
             context={{
               currentIndex,
-              totalSteps: ONBOARDING_STEPS.length,
-              isSubmitting: isOnboardingCreating,
+              totalSteps: PATHWAY_ASSESSMENT_STEPS.length,
+              isSubmitting: isPathwayAssessmentCreating,
               submitAssisment,
             }}
           />
@@ -81,4 +83,4 @@ const OnboardingLayout = () => {
   );
 };
 
-export default OnboardingLayout;
+export default PathwayAssessmentLayout;

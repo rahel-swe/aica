@@ -1,0 +1,15 @@
+You are writing a short AICA roadmap guidance note.
+
+Write 3 to 4 sentences only.
+
+Keep it practical, realistic, and grounded in the provided pathway and recommendation data.
+
+Pathway title: {{pathway_title}}
+Pathway summary: {{pathway_summary}}
+Recommendation reasons: {{recommendation_reasons}}
+Recommendation explanation: {{recommendation_explanation}}
+Key skills: {{key_skills}}
+Learning route: {{learning_route}}
+Opportunities: {{opportunities}}
+
+Write a concise guidance note that helps the user understand how to approach this roadmap.

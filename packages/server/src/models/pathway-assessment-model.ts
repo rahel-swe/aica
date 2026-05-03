@@ -7,12 +7,12 @@ import {
   subjectsEnum,
   workEnvironmentEnum,
   workStyleEnum,
-} from '@contracts/shared/schemas/onboarding-schema';
+} from '@contracts/shared/schemas/pathway-assessment-schema';
 import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose;
 
-const onboardingSchema = new Schema(
+const pathwayAssessmentSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -89,4 +89,7 @@ const onboardingSchema = new Schema(
   }
 );
 
-export const Onboarding = model('Onboarding', onboardingSchema);
+export const PathwayAssessmentModel = model(
+  'PathwayAssessment',
+  pathwayAssessmentSchema
+);

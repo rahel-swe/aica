@@ -1,16 +1,16 @@
 import type {
-  OnboardingFormValues,
-  OnboardingFreeTime,
-  OnboardingGoal,
-  OnboardingImpact,
-  OnboardingPassion,
-  OnboardingStrength,
-  OnboardingSubject,
-  OnboardingWorkEnvironment,
-  OnboardingWorkStyle,
-} from '@contracts/shared/types/onboarding-types';
+  PathwayAssessmentFormValues,
+  PathwayAssessmentFreeTime,
+  PathwayAssessmentGoal,
+  PathwayAssessmentImpact,
+  PathwayAssessmentPassion,
+  PathwayAssessmentStrength,
+  PathwayAssessmentSubject,
+  PathwayAssessmentWorkEnvironment,
+  PathwayAssessmentWorkStyle,
+} from '@contracts/shared/types/pathway-assessment-types';
 
-export type OnboardingStepId =
+export type PathwayAssessmentStepId =
   | 'welcome'
   | 'strengths'
   | 'subjects'
@@ -22,35 +22,35 @@ export type OnboardingStepId =
   | 'goals'
   | 'finish';
 
-export type OnboardingStepType =
+export type PathwayAssessmentStepType =
   | 'intro'
   | 'multi-select'
   | 'single-select'
   | 'cta';
 
-export type OnboardingOption = {
+export type PathwayAssessmentOption = {
   value: string;
   label: string;
   description: string;
   emoji: string;
 };
 
-export type OnboardingStep = {
-  id: OnboardingStepId;
-  type: OnboardingStepType;
+export type PathwayAssessmentStep = {
+  id: PathwayAssessmentStepId;
+  type: PathwayAssessmentStepType;
   title: string;
-  description: string;
+  description?: string;
   helperText?: string;
   cta?: string;
-  fieldName?: keyof OnboardingFormValues;
+  fieldName?: keyof PathwayAssessmentFormValues;
   minSelect?: number;
   maxSelect?: number;
-  options?: OnboardingOption[];
+  options?: PathwayAssessmentOption[];
 };
 
-export const ONBOARDING_STORAGE_KEY = 'aica-onboarding-draft';
+export const PATHWAY_ASSESSMENT_STORAGE_KEY = 'aica-onboarding-draft';
 
-export const onboardingDefaultValues = {
+export const pathwayAssessmentDefaultValues = {
   strengths: [],
   subjects: '',
   passions: [],
@@ -61,148 +61,148 @@ export const onboardingDefaultValues = {
   goals: '',
 };
 
-const strengthOptions: OnboardingOption[] = [
+const strengthOptions: PathwayAssessmentOption[] = [
   {
-    value: 'problem_solving' satisfies OnboardingStrength,
+    value: 'problem_solving' satisfies PathwayAssessmentStrength,
     label: 'Problem solving',
     description:
       'You like breaking down hard problems and finding practical answers.',
     emoji: '🔍',
   },
   {
-    value: 'creativity' satisfies OnboardingStrength,
+    value: 'creativity' satisfies PathwayAssessmentStrength,
     label: 'Creative thinking',
     description: 'You enjoy original ideas, design, and expressive work.',
     emoji: '🎨',
   },
   {
-    value: 'people' satisfies OnboardingStrength,
+    value: 'people' satisfies PathwayAssessmentStrength,
     label: 'People connection',
     description: 'You naturally support, guide, or connect with others.',
     emoji: '👥',
   },
   {
-    value: 'analytical' satisfies OnboardingStrength,
+    value: 'analytical' satisfies PathwayAssessmentStrength,
     label: 'Analytical mind',
     description: 'You notice patterns, structure, and logical detail quickly.',
     emoji: '📊',
   },
   {
-    value: 'communication' satisfies OnboardingStrength,
+    value: 'communication' satisfies PathwayAssessmentStrength,
     label: 'Communication',
     description:
       'You explain ideas clearly and make information easier to understand.',
     emoji: '💬',
   },
   {
-    value: 'hands_on' satisfies OnboardingStrength,
+    value: 'hands_on' satisfies PathwayAssessmentStrength,
     label: 'Hands-on building',
     description: 'You prefer making, fixing, and learning through action.',
     emoji: '🔧',
   },
   {
-    value: 'fast_learning' satisfies OnboardingStrength,
+    value: 'fast_learning' satisfies PathwayAssessmentStrength,
     label: 'Fast learning',
     description: 'You adapt quickly when you are exposed to something new.',
     emoji: '📚',
   },
   {
-    value: 'organized' satisfies OnboardingStrength,
+    value: 'organized' satisfies PathwayAssessmentStrength,
     label: 'Focus and structure',
     description: 'You work well with planning, routine, and follow-through.',
     emoji: '🎯',
   },
 ];
 
-const subjectOptions: OnboardingOption[] = [
+const subjectOptions: PathwayAssessmentOption[] = [
   {
-    value: 'math' satisfies OnboardingSubject,
+    value: 'math' satisfies PathwayAssessmentSubject,
     label: 'Math and numbers',
     description:
       'Best when the work involves logic, formulas, or numerical thinking.',
     emoji: '➗',
   },
   {
-    value: 'science' satisfies OnboardingSubject,
+    value: 'science' satisfies PathwayAssessmentSubject,
     label: 'Science and experiments',
     description: 'Best when exploring systems, evidence, and how things work.',
     emoji: '🧪',
   },
   {
-    value: 'writing' satisfies OnboardingSubject,
+    value: 'writing' satisfies PathwayAssessmentSubject,
     label: 'Writing and language',
     description:
       'Best when explaining ideas through language and communication.',
     emoji: '✍️',
   },
   {
-    value: 'arts' satisfies OnboardingSubject,
+    value: 'arts' satisfies PathwayAssessmentSubject,
     label: 'Arts and creativity',
     description: 'Best when creating visual, musical, or expressive work.',
     emoji: '🖌️',
   },
   {
-    value: 'social' satisfies OnboardingSubject,
+    value: 'social' satisfies PathwayAssessmentSubject,
     label: 'History and social studies',
     description: 'Best when understanding people, society, and context.',
     emoji: '🌍',
   },
 ];
 
-const passionOptions: OnboardingOption[] = [
+const passionOptions: PathwayAssessmentOption[] = [
   {
-    value: 'tech' satisfies OnboardingPassion,
+    value: 'tech' satisfies PathwayAssessmentPassion,
     label: 'Gaming and tech',
     description: 'You enjoy digital tools, systems, devices, or software.',
     emoji: '💻',
   },
   {
-    value: 'music' satisfies OnboardingPassion,
+    value: 'music' satisfies PathwayAssessmentPassion,
     label: 'Music and arts',
     description: 'You enjoy creative expression and artistic output.',
     emoji: '🎵',
   },
   {
-    value: 'sports' satisfies OnboardingPassion,
+    value: 'sports' satisfies PathwayAssessmentPassion,
     label: 'Sports and action',
     description: 'You enjoy movement, challenge, and active environments.',
     emoji: '⚽',
   },
   {
-    value: 'reading' satisfies OnboardingPassion,
+    value: 'reading' satisfies PathwayAssessmentPassion,
     label: 'Reading and stories',
     description: 'You enjoy ideas, reflection, and deeper content.',
     emoji: '📖',
   },
   {
-    value: 'science' satisfies OnboardingPassion,
+    value: 'science' satisfies PathwayAssessmentPassion,
     label: 'Science and discovery',
     description:
       'You like curiosity, experimentation, and evidence-based learning.',
     emoji: '🔬',
   },
   {
-    value: 'social' satisfies OnboardingPassion,
+    value: 'social' satisfies PathwayAssessmentPassion,
     label: 'Social and community',
     description:
       'You care about people, relationships, and community activity.',
     emoji: '🤝',
   },
   {
-    value: 'nature' satisfies OnboardingPassion,
+    value: 'nature' satisfies PathwayAssessmentPassion,
     label: 'Nature and animals',
     description:
       'You are drawn to environmental, outdoor, or life-related fields.',
     emoji: '🌿',
   },
   {
-    value: 'building' satisfies OnboardingPassion,
+    value: 'building' satisfies PathwayAssessmentPassion,
     label: 'Building and creating',
     description: 'You enjoy producing something useful and visible.',
     emoji: '🛠️',
   },
   {
-    value: 'ideas' satisfies OnboardingPassion,
+    value: 'ideas' satisfies PathwayAssessmentPassion,
     label: 'Ideas and innovation',
     description:
       'You enjoy new concepts, experimentation, and future-oriented thinking.',
@@ -210,69 +210,69 @@ const passionOptions: OnboardingOption[] = [
   },
 ];
 
-const freeTimeOptions: OnboardingOption[] = [
+const freeTimeOptions: PathwayAssessmentOption[] = [
   {
-    value: 'build' satisfies OnboardingFreeTime,
+    value: 'build' satisfies PathwayAssessmentFreeTime,
     label: 'Build or make something',
     description: 'You recharge by creating, fixing, or assembling things.',
     emoji: '🔨',
   },
   {
-    value: 'outdoor' satisfies OnboardingFreeTime,
+    value: 'outdoor' satisfies PathwayAssessmentFreeTime,
     label: 'Be outdoors',
     description:
       'You prefer movement, fresh environments, and active experience.',
     emoji: '🌤️',
   },
   {
-    value: 'socialize' satisfies OnboardingFreeTime,
+    value: 'socialize' satisfies PathwayAssessmentFreeTime,
     label: 'Spend time with people',
     description: 'You gain energy from interaction and shared experiences.',
     emoji: '🫱🏽‍🫲🏼',
   },
   {
-    value: 'consume' satisfies OnboardingFreeTime,
+    value: 'consume' satisfies PathwayAssessmentFreeTime,
     label: 'Read, watch, or play',
     description:
       'You enjoy absorbing stories, content, and digital experiences.',
     emoji: '🎮',
   },
   {
-    value: 'learn' satisfies OnboardingFreeTime,
+    value: 'learn' satisfies PathwayAssessmentFreeTime,
     label: 'Learn something new',
     description: 'You naturally spend time exploring new skills or ideas.',
     emoji: '🧠',
   },
 ];
 
-const environmentOptions: OnboardingOption[] = [
+const environmentOptions: PathwayAssessmentOption[] = [
   {
-    value: 'office' satisfies OnboardingWorkEnvironment,
+    value: 'office' satisfies PathwayAssessmentWorkEnvironment,
     label: 'Office with a team',
     description: 'You prefer structured collaboration and shared momentum.',
     emoji: '🏢',
   },
   {
-    value: 'remote' satisfies OnboardingWorkEnvironment,
+    value: 'remote' satisfies PathwayAssessmentWorkEnvironment,
     label: 'Remote and flexible',
     description: 'You prefer autonomy and location flexibility.',
     emoji: '🏠',
   },
   {
-    value: 'outdoor' satisfies OnboardingWorkEnvironment,
+    value: 'outdoor' satisfies PathwayAssessmentWorkEnvironment,
     label: 'Outdoor or on-site',
     description: 'You prefer active, physical, or field-based environments.',
     emoji: '🌳',
   },
   {
-    value: 'lab' satisfies OnboardingWorkEnvironment,
+    value: 'lab' satisfies PathwayAssessmentWorkEnvironment,
     label: 'Lab or studio',
     description:
       'You prefer focused environments for technical or creative practice.',
     emoji: '🧫',
   },
   {
-    value: 'mixed' satisfies OnboardingWorkEnvironment,
+    value: 'mixed' satisfies PathwayAssessmentWorkEnvironment,
     label: 'A mix of settings',
     description:
       'You want variety and do not want to stay in one environment all the time.',
@@ -280,69 +280,69 @@ const environmentOptions: OnboardingOption[] = [
   },
 ];
 
-const workStyleOptions: OnboardingOption[] = [
+const workStyleOptions: PathwayAssessmentOption[] = [
   {
-    value: 'analyze' satisfies OnboardingWorkStyle,
+    value: 'analyze' satisfies PathwayAssessmentWorkStyle,
     label: 'Analyzing information',
     description:
       'You enjoy logic, patterns, and decision-making based on information.',
     emoji: '📈',
   },
   {
-    value: 'help' satisfies OnboardingWorkStyle,
+    value: 'help' satisfies PathwayAssessmentWorkStyle,
     label: 'Helping people',
     description: 'You enjoy support, care, service, and direct human impact.',
     emoji: '🫶',
   },
   {
-    value: 'build' satisfies OnboardingWorkStyle,
+    value: 'build' satisfies PathwayAssessmentWorkStyle,
     label: 'Building or fixing',
     description: 'You enjoy practical execution and hands-on improvement.',
     emoji: '🧱',
   },
   {
-    value: 'create' satisfies OnboardingWorkStyle,
+    value: 'create' satisfies PathwayAssessmentWorkStyle,
     label: 'Creating ideas or solutions',
     description:
       'You enjoy originality, invention, and solving open-ended problems.',
     emoji: '✨',
   },
   {
-    value: 'routine' satisfies OnboardingWorkStyle,
+    value: 'routine' satisfies PathwayAssessmentWorkStyle,
     label: 'Clear structure and routine',
     description: 'You work well when expectations and steps are clear.',
     emoji: '🧭',
   },
 ];
 
-const impactOptions: OnboardingOption[] = [
+const impactOptions: PathwayAssessmentOption[] = [
   {
-    value: 'create' satisfies OnboardingImpact,
+    value: 'create' satisfies PathwayAssessmentImpact,
     label: 'Create useful things',
     description: 'You want your work to produce visible value for people.',
     emoji: '💡',
   },
   {
-    value: 'people' satisfies OnboardingImpact,
+    value: 'people' satisfies PathwayAssessmentImpact,
     label: 'Work directly with people',
     description: 'You want daily human interaction and direct support roles.',
     emoji: '👥',
   },
   {
-    value: 'discover' satisfies OnboardingImpact,
+    value: 'discover' satisfies PathwayAssessmentImpact,
     label: 'Discover new knowledge',
     description: 'You want research, exploration, and learning to matter.',
     emoji: '🔬',
   },
   {
-    value: 'systems' satisfies OnboardingImpact,
+    value: 'systems' satisfies PathwayAssessmentImpact,
     label: 'Build important systems',
     description:
       'You want to improve infrastructure, operations, or reliability.',
     emoji: '🏗️',
   },
   {
-    value: 'express' satisfies OnboardingImpact,
+    value: 'express' satisfies PathwayAssessmentImpact,
     label: 'Express creativity through work',
     description:
       'You want imagination and expression to be central to your path.',
@@ -350,40 +350,40 @@ const impactOptions: OnboardingOption[] = [
   },
 ];
 
-const goalOptions: OnboardingOption[] = [
+const goalOptions: PathwayAssessmentOption[] = [
   {
-    value: 'impact' satisfies OnboardingGoal,
+    value: 'impact' satisfies PathwayAssessmentGoal,
     label: 'Make a difference',
     description: 'Meaning and contribution matter most to you.',
     emoji: '🌟',
   },
   {
-    value: 'money' satisfies OnboardingGoal,
+    value: 'money' satisfies PathwayAssessmentGoal,
     label: 'Financial stability',
     description: 'You want a path with strong income and long-term security.',
     emoji: '💰',
   },
   {
-    value: 'balance' satisfies OnboardingGoal,
+    value: 'balance' satisfies PathwayAssessmentGoal,
     label: 'Work-life balance',
     description: 'You value sustainability, flexibility, and personal time.',
     emoji: '⚖️',
   },
   {
-    value: 'growth' satisfies OnboardingGoal,
+    value: 'growth' satisfies PathwayAssessmentGoal,
     label: 'Continuous growth',
     description: 'You want learning, development, and long-term progression.',
     emoji: '📚',
   },
   {
-    value: 'variety' satisfies OnboardingGoal,
+    value: 'variety' satisfies PathwayAssessmentGoal,
     label: 'Challenge and variety',
     description: 'You want dynamic work that keeps changing over time.',
     emoji: '🚀',
   },
 ];
 
-export const ONBOARDING_STEPS: OnboardingStep[] = [
+export const PATHWAY_ASSESSMENT_STEPS: PathwayAssessmentStep[] = [
   {
     id: 'welcome',
     type: 'intro',
@@ -398,10 +398,6 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: 'strengths',
     type: 'multi-select',
     title: 'What feels natural to you?',
-    description:
-      'Choose up to four strengths that describe how you naturally think, work, or support others.',
-    helperText:
-      'These answers help AICA understand your strongest working patterns.',
     fieldName: 'strengths',
     minSelect: 1,
     maxSelect: 4,
@@ -411,8 +407,6 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: 'subjects',
     type: 'single-select',
     title: 'Which subject are you best at explaining?',
-    description:
-      'This gives the system a simple signal about where your confidence and clarity already exist.',
     fieldName: 'subjects',
     options: subjectOptions,
   },
@@ -420,10 +414,6 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: 'passions',
     type: 'multi-select',
     title: 'What do you enjoy the most?',
-    description:
-      'Pick up to four areas that hold your attention and feel naturally interesting to you.',
-    helperText:
-      'Interest is important because strong-fit paths are easier to sustain over time.',
     fieldName: 'passions',
     minSelect: 1,
     maxSelect: 4,
@@ -433,8 +423,6 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: 'free-time',
     type: 'single-select',
     title: 'On a free day, you usually:',
-    description:
-      'Your free-time choices often reveal what kind of work and learning style feels energizing.',
     fieldName: 'freeTime',
     options: freeTimeOptions,
   },
@@ -442,8 +430,6 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: 'work-environment',
     type: 'single-select',
     title: 'Where would you enjoy working?',
-    description:
-      'Choose the environment that feels most realistic and comfortable for your best work.',
     fieldName: 'workEnvironment',
     options: environmentOptions,
   },
@@ -451,8 +437,6 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: 'work-style',
     type: 'single-select',
     title: 'What kind of work do you enjoy?',
-    description:
-      'This helps AICA distinguish between analytical, people-focused, practical, and creative pathways.',
     fieldName: 'workStyle',
     options: workStyleOptions,
   },
@@ -460,8 +444,6 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: 'impact',
     type: 'single-select',
     title: 'What feels meaningful to you?',
-    description:
-      'Choose the kind of impact that would make your work feel worth doing.',
     fieldName: 'impact',
     options: impactOptions,
   },
@@ -469,8 +451,6 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: 'goals',
     type: 'single-select',
     title: 'What matters most in your future?',
-    description:
-      'This final preference helps rank pathways by the kind of life and growth you want long term.',
     fieldName: 'goals',
     options: goalOptions,
   },

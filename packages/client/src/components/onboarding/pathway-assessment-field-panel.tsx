@@ -1,12 +1,12 @@
-import type { OnboardingStep } from '@/constants/onboarding-steps';
+import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
 import MultiSelectField from '../form/multi-select-field';
 import SingleSelectField from '../form/single-select-field';
 
 type OnboardingFieldPanelProps = {
-  step: OnboardingStep;
+  step: PathwayAssessmentStep;
 };
 
-const OnboardingFieldPanel = ({ step }: OnboardingFieldPanelProps) => {
+const PathwayAssessmentFieldPanel = ({ step }: OnboardingFieldPanelProps) => {
   if (!step.fieldName || !step.options) return null;
 
   return (
@@ -34,4 +34,4 @@ const OnboardingFieldPanel = ({ step }: OnboardingFieldPanelProps) => {
   );
 };
 
-export default OnboardingFieldPanel;
+export default PathwayAssessmentFieldPanel;

@@ -7,7 +7,7 @@ import {
   subjectsEnum,
   workEnvironmentEnum,
   workStyleEnum,
-} from '@contracts/shared/schemas/onboarding-schema';
+} from '@contracts/shared/schemas/pathway-assessment-schema';
 import {
   pathwayStatusEnum,
   scoreBandEnum,

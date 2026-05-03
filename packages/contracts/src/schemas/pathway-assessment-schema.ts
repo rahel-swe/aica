@@ -53,52 +53,55 @@ export const impactEnum = [
 
 export const goalsEnum = ['impact', 'money', 'balance', 'growth', 'variety'];
 
-export const onboardingStrengthSchema = z.enum(strengthsEnum);
+export const pathwayAssessmentStrengthSchema = z.enum(strengthsEnum);
 
-export const onboardingSubjectSchema = z.enum(subjectsEnum, {
+export const pathwayAssessmentSubjectSchema = z.enum(subjectsEnum, {
   error: 'Please choose your favorite subject',
 });
 
-export const onboardingPassionSchema = z.enum(passionsEnum);
+export const pathwayAssessmentPassionSchema = z.enum(passionsEnum);
 
-export const onboardingFreeTimeSchema = z.enum(freeTimeEnum, {
+export const pathwayAssessmentFreeTimeSchema = z.enum(freeTimeEnum, {
   error: 'Please choose what you spend your free time',
 });
 
-export const onboardingWorkEnvironmentSchema = z.enum(workEnvironmentEnum, {
-  error: 'Please choose your favorite work environment',
-});
+export const pathwayAssessmentWorkEnvironmentSchema = z.enum(
+  workEnvironmentEnum,
+  {
+    error: 'Please choose your favorite work environment',
+  }
+);
 
-export const onboardingWorkStyleSchema = z.enum(workStyleEnum, {
+export const pathwayAssessmentWorkStyleSchema = z.enum(workStyleEnum, {
   error: 'Please choose your favorite work',
 });
 
-export const onboardingImpactSchema = z.enum(impactEnum, {
+export const pathwayAssessmentImpactSchema = z.enum(impactEnum, {
   error: 'Please choose one impactfull thing to you',
 });
 
-export const onboardingGoalSchema = z.enum(goalsEnum, {
+export const pathwayAssessmentGoalSchema = z.enum(goalsEnum, {
   error: 'Please choose your goal',
 });
 
-export const onboardingFormSchema = z.object({
+export const pathwayAssessmentFormSchema = z.object({
   strengths: z
-    .array(onboardingStrengthSchema)
+    .array(pathwayAssessmentStrengthSchema)
     .min(1, 'Select at least one strength.')
     .max(4, 'Select up to four strengths.'),
-  subjects: onboardingSubjectSchema,
+  subjects: pathwayAssessmentSubjectSchema,
   passions: z
-    .array(onboardingPassionSchema)
+    .array(pathwayAssessmentPassionSchema)
     .min(1, 'Select at least one interest.')
     .max(4, 'Select up to four interests.'),
-  freeTime: onboardingFreeTimeSchema,
-  workEnvironment: onboardingWorkEnvironmentSchema,
-  workStyle: onboardingWorkStyleSchema,
-  impact: onboardingImpactSchema,
-  goals: onboardingGoalSchema,
+  freeTime: pathwayAssessmentFreeTimeSchema,
+  workEnvironment: pathwayAssessmentWorkEnvironmentSchema,
+  workStyle: pathwayAssessmentWorkStyleSchema,
+  impact: pathwayAssessmentImpactSchema,
+  goals: pathwayAssessmentGoalSchema,
 });
 
-export const onboardingSubmitResponseSchema = z.object({
+export const pathwayAssessmentSubmitResponseSchema = z.object({
   success: z.boolean(),
   message: z.string(),
   data: z.object({
@@ -107,7 +110,7 @@ export const onboardingSubmitResponseSchema = z.object({
   }),
 });
 
-export const onboardingStatusResponseSchema = z.object({
+export const pathwayAssessmentStatusResponseSchema = z.object({
   success: z.boolean(),
   message: z.string(),
   data: z.object({
