@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { authClient } from '@/lib/auth-client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader } from 'lucide-react';
+import { ArrowUpRight, Loader } from 'lucide-react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
@@ -50,10 +50,10 @@ export default function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center flex-col px-4 py-10 space-y-4 max-w-md w-full mx-auto">
       <div className="space-y-4 text-center px-10">
-        <h1 className="text-4xl font-medium capitalize">Welcome back</h1>
-        <p className="text-sm text-muted-foreground">
-          Sign in to continue your journey.
-        </p>
+        <h1 className="text-5xl font-semibold uppercase">Welcome back</h1>
+        {/* <p className="text-md">
+          Enter you password and email to continue your journey.
+        </p> */}
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
@@ -66,6 +66,7 @@ export default function SignInPage() {
               {...register('email')}
               disabled={isSubmitting}
               placeholder="you@example.com"
+              className="bg-background py-7 rounded-full"
             />
             {errors.email && (
               <p className="text-sm text-destructive">{errors.email.message}</p>
@@ -80,8 +81,7 @@ export default function SignInPage() {
               name="password"
               render={({ field }) => (
                 <PasswordInput
-                  value={field.value}
-                  onChange={field.onChange}
+                  {...field}
                   placeholder="Enter your password"
                   disabled={isSubmitting}
                 />
@@ -99,9 +99,18 @@ export default function SignInPage() {
             <p className="text-sm text-destructive">{errors.root.message}</p>
           )}
 
-          <Button type="submit" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            variant={'outline'}
+            className="py-6.5 w-min mx-auto px-10"
+          >
             Sign in
-            {isSubmitting && <Loader className="animate-spin" />}
+            {isSubmitting ? (
+              <Loader className="animate-spin" />
+            ) : (
+              <ArrowUpRight />
+            )}
           </Button>
         </FieldGroup>
       </form>

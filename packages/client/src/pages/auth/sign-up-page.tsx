@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { authClient } from '@/lib/auth-client';
 import { signUpSchema } from '@contracts/shared/schemas/auth-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader } from 'lucide-react';
+import { ArrowUpRight, Loader } from 'lucide-react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
@@ -49,14 +49,14 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center flex-col px-4 py-10 space-y-4 max-w-md w-full mx-auto">
-      <div className="space-y-4 text-center px-10">
-        <h1 className="text-4xl font-medium capitalize">
+      <div className="space-y-4 text-center px-10 mb-10">
+        <h1 className="capitalize text-4xl font-semibold">
           Start your guidance journey
         </h1>
-        <p className="text-sm text-balance text-muted-foreground">
+        {/* <p className="text-sm text-balance text-muted-foreground">
           Tell us about your interests and goals. We’ll match you with the right
           academic pathways and build a clear roadmap forward.
-        </p>
+        </p> */}
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
@@ -69,6 +69,7 @@ export default function SignUpPage() {
               {...register('name')}
               placeholder="How should we address you?"
               disabled={isSubmitting}
+              className="bg-background py-7 rounded-full"
             />
             {errors.name && (
               <p className="text-sm text-destructive">{errors.name.message}</p>
@@ -82,6 +83,7 @@ export default function SignUpPage() {
               id="email"
               {...register('email')}
               placeholder="you@example.com"
+              className="bg-background py-7 rounded-full"
               disabled={isSubmitting}
             />
             {errors.email && (
@@ -97,8 +99,7 @@ export default function SignUpPage() {
               name="password"
               render={({ field }) => (
                 <PasswordInput
-                  value={field.value}
-                  onChange={field.onChange}
+                  {...field}
                   placeholder="At least 8 characters"
                   disabled={isSubmitting}
                 />
@@ -119,8 +120,7 @@ export default function SignUpPage() {
               name="confirmPassword"
               render={({ field }) => (
                 <PasswordInput
-                  value={field.value}
-                  onChange={field.onChange}
+                  {...field}
                   placeholder="Repeat your password to confirm"
                   disabled={isSubmitting}
                 />
@@ -138,9 +138,18 @@ export default function SignUpPage() {
             <p className="text-sm text-destructive">{errors.root.message}</p>
           )}
 
-          <Button type="submit" disabled={isSubmitting}>
-            Start my guidance journey
-            {!isSubmitting && <Loader className="animate-spin" />}
+          <Button
+            variant={'outline'}
+            type="submit"
+            disabled={isSubmitting}
+            className="py-6.5 w-min mx-auto px-10"
+          >
+            Sign up
+            {isSubmitting ? (
+              <Loader className="animate-spin" />
+            ) : (
+              <ArrowUpRight />
+            )}
           </Button>
         </FieldGroup>
       </form>
