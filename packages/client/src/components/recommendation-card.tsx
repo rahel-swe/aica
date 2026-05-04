@@ -22,10 +22,15 @@ import type { RecommendationResult } from '@contracts/shared/types/pathway-domai
 
 interface Props {
   item: RecommendationResult;
-  onSelected: (item: RecommendationResult) => void;
+  onPickedPathway: (item: RecommendationResult) => void;
+  isPathwayPicking: boolean;
 }
 
-const RecommendationCard = ({ item, onSelected }: Props) => {
+const RecommendationCard = ({
+  item,
+  onPickedPathway,
+  isPathwayPicking,
+}: Props) => {
   const score = Math.round(item.totalScore * 100);
   const reasons = item.reasons?.slice(0, 3) ?? [];
 
@@ -67,7 +72,7 @@ const RecommendationCard = ({ item, onSelected }: Props) => {
 
         <Accordion type="single" collapsible className="border-0">
           <AccordionItem value="explanation" className="data-open:bg-white/50">
-            <AccordionTrigger className="bg-white text-inherit">
+            <AccordionTrigger className="bg-white text-inherit rounded-full">
               Why this recommendation?
             </AccordionTrigger>
             <AccordionContent className="py-4 h-full">
@@ -82,11 +87,12 @@ const RecommendationCard = ({ item, onSelected }: Props) => {
       <div className="p-4 pt-0 flex justify-center">
         <Button
           size="lg"
-          className="text-inherit bg-white dark:bg-white dark:hover:bg-white/80 py-7 px-7"
-          onClick={() => onSelected(item)}
+          className="group text-inherit bg-white hover:bg-white/80 dark:bg-white dark:hover:bg-white/80 py-7 px-7"
+          disabled={isPathwayPicking}
+          onClick={() => onPickedPathway(item)}
         >
           Get Started
-          <ArrowUpRight />
+          <ArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
         </Button>
       </div>
     </Card>

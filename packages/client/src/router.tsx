@@ -18,6 +18,7 @@ import RootLayout from '@/layouts/root-layout';
 import PathwayAssessmentLayout from './layouts/pathway-assessment-layout';
 import PathwayAssessmentStepsPage from './pages/pathway-assessment-steps-page';
 import RecommendedPathwaysLayout from './layouts/recommendations-layout';
+import PathwayCongratulations from './layouts/pathway-congratulations';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: 'pathway-recommendations',
         element: <RecommendedPathwaysLayout />,
+      },
+      {
+        path: 'pathway-congratulations',
+        element: <PathwayCongratulations />,
       },
       {
         path: 'app',

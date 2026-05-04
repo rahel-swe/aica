@@ -1,13 +1,9 @@
 import type {
-  PathwayAssessmentStepType,
   PathwayAssessmentOption,
+  PathwayAssessmentStepType,
 } from './pathway-assessment-steps';
 
-import type {
-  RoadmapSetupAssessmentConstraint,
-  RoadmapSetupAssessmentCurrentStage,
-  RoadmapSetupAssessmentStyle,
-} from '@contracts/shared/types/roadmap-setup-assessment-types';
+import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
 // export type RoadmapCurrentStage =
 //   | 'high_school'
@@ -29,15 +25,6 @@ import type {
 
 // export type RoadmapStyle = 'fast_track' | 'balanced' | 'deep';
 
-// Roadmap form values
-export type RoadmapFormValues = {
-  currentStage: RoadmapSetupAssessmentCurrentStage;
-  weeklyTime: RoadmapSetupAssessmentCurrentStage;
-  timeline: RoadmapSetupAssessmentCurrentStage;
-  constraints: RoadmapSetupAssessmentConstraint[];
-  roadmapStyle: RoadmapSetupAssessmentStyle;
-};
-
 // Roadmap step IDs
 export type RoadmapStepId =
   | 'current-stage'
@@ -53,7 +40,7 @@ export type RoadmapStep = {
   title: string;
   description?: string;
   helperText?: string;
-  fieldName?: keyof RoadmapFormValues;
+  fieldName?: keyof RoadmapSetupAssessmentFormValues;
   minSelect?: number;
   maxSelect?: number;
   options?: PathwayAssessmentOption[];

@@ -2,7 +2,10 @@ import { useState } from 'react';
 
 import RecommendationCard from '@/components/recommendation-card';
 import RecommendationRankedButton from '@/components/recommendation-ranked-button';
+import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
+import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
+import { useNavigate } from 'react-router-dom';
 
 const RecommendedPathwaysLayout = () => {
   const {
@@ -10,14 +13,17 @@ const RecommendedPathwaysLayout = () => {
     isLoading,
     error,
   } = useRecommendationQuery();
+  const { mutate, isPending: isPathwayPicking } =
+    useRoadmapSetupAssessmentSubmitMutation();
+  const navigate = useNavigate();
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  if (isLoading) return <p className="p-6">Loading...</p>;
+  if (isLoading) return <SpinnerBars />;
 
   if (error) return <p className="p-6">{error.message}</p>;
 
-  const activeItem = recommendationsResponse?.data[activeIndex];
+  const activeItem = recommendationsResponse!.data[activeIndex];
 
   return (
     <div className="min-h-screen bg-linear-to-b from-background to-muted/30 p-8 md:p-10">
@@ -31,6 +37,7 @@ const RecommendedPathwaysLayout = () => {
             {recommendationsResponse?.data.map((item, index) => (
               <RecommendationRankedButton
                 rank={item.rank!}
+                key={item.rank}
                 onClick={() => setActiveIndex(index)}
                 isActive={activeIndex === index}
               />
@@ -39,10 +46,26 @@ const RecommendedPathwaysLayout = () => {
 
           {/* Active Card */}
           <RecommendationCard
-            key={activeItem!.pathwayId}
-            item={activeItem!}
-            onSelected={(item) => {
-              console.log(item);
+            key={activeItem.pathwayId}
+            item={activeItem}
+            isPathwayPicking={isPathwayPicking}
+            onPickedPathway={(item) => {
+              mutate(
+                {
+                  selectedPathwayId: item.pathwayId,
+                  constraints: [],
+                },
+                {
+                  onSuccess: ({ data }) => {
+                    // const roadmapSetupAssessmentId = data.;
+                    console.log(data);
+                    navigate('/pathway-congratulations', {
+                      replace: true,
+                      viewTransition: true,
+                    });
+                  },
+                }
+              );
             }}
           />
         </div>
