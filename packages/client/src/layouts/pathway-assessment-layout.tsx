@@ -3,6 +3,7 @@ import { useUserStatus } from '@/hooks/use-user-status';
 import { FormProvider } from 'react-hook-form';
 import { Navigate, Outlet } from 'react-router-dom';
 import SpinnerBars from '../components/shadcn-space/spinner/spinner-06';
+import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
 
 export type PathwayAssessmentOutletContext = {
   currentIndex: number;
@@ -12,16 +13,15 @@ export type PathwayAssessmentOutletContext = {
 };
 
 const PathwayAssessmentLayout = () => {
+  const { isPending, error, isPathwayAssessmentCompleted, userData } =
+    useUserStatus();
+
   const {
-    isPending,
-    error,
-    isPathwayAssessmentCompleted,
     currentIndex,
     form,
     isPathwayAssessmentCreating,
     submitPathwayAssisment,
-    userData,
-  } = useUserStatus();
+  } = usePathwayAssessment();
 
   if (isPending) return <SpinnerBars barDivClassName="scale-180" />;
 
@@ -42,17 +42,15 @@ const PathwayAssessmentLayout = () => {
 
   return (
     <FormProvider {...form}>
-      <div className="relative min-h-screen bg-background flex flex-col items-center justify-center overflow-hidden">
-        <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-6 text-center px-6 py-8">
-          <Outlet
-            context={{
-              currentIndex,
-              totalSteps: PATHWAY_ASSESSMENT_STEPS.length,
-              isSubmitting: isPathwayAssessmentCreating,
-              submitPathwayAssisment,
-            }}
-          />
-        </div>
+      <div className="relative min-h-screen bg-background items-center justify-center overflow-hidden z-10 mx-auto flex w-full max-w-5xl flex-col gap-6 text-center px-6 py-8">
+        <Outlet
+          context={{
+            currentIndex,
+            totalSteps: PATHWAY_ASSESSMENT_STEPS.length,
+            isSubmitting: isPathwayAssessmentCreating,
+            submitPathwayAssisment,
+          }}
+        />
       </div>
     </FormProvider>
   );

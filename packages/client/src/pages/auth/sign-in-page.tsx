@@ -1,4 +1,4 @@
-import PasswordInput from '@/components/Password/password-input';
+import PasswordInput from '@/components/form/password-input';
 import { Button } from '@/components/ui/button';
 import { Field, FieldGroup } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
