@@ -1,37 +1,75 @@
 [
   {
-    "name": "Health",
-    "slug": "health",
-    "kind": "domain",
-    "parentSlug": null,
-    "order": 1,
-    "status": "active",
-    "description": "Health-related academic and career directions."
-  },
-  {
     "name": "Technology",
     "slug": "technology",
     "kind": "domain",
     "parentSlug": null,
+    "order": 1,
+    "status": "active",
+    "description": "Digital systems, software, data, security, and product careers."
+  },
+  {
+    "name": "Health",
+    "slug": "health",
+    "kind": "domain",
+    "parentSlug": null,
     "order": 2,
     "status": "active",
-    "description": "Technology and digital systems pathways."
+    "description": "Clinical care, public health, laboratory work, and wellbeing pathways."
   },
   {
-    "name": "Medicine",
-    "slug": "medicine",
-    "kind": "field",
-    "parentSlug": "health",
-    "order": 1,
-    "status": "active"
+    "name": "Business",
+    "slug": "business",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 3,
+    "status": "active",
+    "description": "Management, finance, marketing, operations, and entrepreneurship."
   },
   {
-    "name": "Nursing",
-    "slug": "nursing",
-    "kind": "field",
-    "parentSlug": "health",
-    "order": 2,
-    "status": "active"
+    "name": "Education",
+    "slug": "education",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 4,
+    "status": "active",
+    "description": "Teaching, learning design, counseling, and education leadership."
+  },
+  {
+    "name": "Engineering",
+    "slug": "engineering",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 5,
+    "status": "active",
+    "description": "Designing, building, testing, and maintaining physical systems."
+  },
+  {
+    "name": "Arts and Media",
+    "slug": "arts-media",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 6,
+    "status": "active",
+    "description": "Creative communication, design, storytelling, performance, and media production."
+  },
+  {
+    "name": "Law and Social Sciences",
+    "slug": "law-social-sciences",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 7,
+    "status": "active",
+    "description": "Law, policy, psychology, social research, and community-focused work."
+  },
+  {
+    "name": "Environment and Agriculture",
+    "slug": "environment-agriculture",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 8,
+    "status": "active",
+    "description": "Natural resources, sustainability, farming systems, and environmental protection."
   },
   {
     "name": "Software Engineering",
@@ -39,15 +77,8 @@
     "kind": "field",
     "parentSlug": "technology",
     "order": 1,
-    "status": "active"
-  },
-  {
-    "name": "Data",
-    "slug": "data",
-    "kind": "field",
-    "parentSlug": "technology",
-    "order": 2,
-    "status": "active"
+    "status": "active",
+    "description": "Designing and building applications, platforms, and digital products."
   },
   {
     "name": "Frontend Development",
@@ -55,7 +86,8 @@
     "kind": "specialization",
     "parentSlug": "software-engineering",
     "order": 1,
-    "status": "active"
+    "status": "active",
+    "description": "User interfaces, web applications, accessibility, and interactive experiences."
   },
   {
     "name": "Backend Development",
@@ -63,6 +95,358 @@
     "kind": "specialization",
     "parentSlug": "software-engineering",
     "order": 2,
-    "status": "active"
+    "status": "active",
+    "description": "APIs, databases, server logic, and scalable service architecture."
+  },
+  {
+    "name": "Mobile Development",
+    "slug": "mobile-development",
+    "kind": "specialization",
+    "parentSlug": "software-engineering",
+    "order": 3,
+    "status": "active",
+    "description": "Applications for phones, tablets, and mobile-first services."
+  },
+  {
+    "name": "Data and AI",
+    "slug": "data-ai",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 2,
+    "status": "active",
+    "description": "Data analysis, machine learning, automation, and intelligent systems."
+  },
+  {
+    "name": "Data Analytics",
+    "slug": "data-analytics",
+    "kind": "specialization",
+    "parentSlug": "data-ai",
+    "order": 1,
+    "status": "active",
+    "description": "Turning data into practical insight for decisions and operations."
+  },
+  {
+    "name": "Machine Learning",
+    "slug": "machine-learning",
+    "kind": "specialization",
+    "parentSlug": "data-ai",
+    "order": 2,
+    "status": "active",
+    "description": "Models, prediction, pattern recognition, and applied AI systems."
+  },
+  {
+    "name": "Cybersecurity",
+    "slug": "cybersecurity",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 3,
+    "status": "active",
+    "description": "Protecting systems, networks, applications, and users from digital risk."
+  },
+  {
+    "name": "Security Operations",
+    "slug": "security-operations",
+    "kind": "specialization",
+    "parentSlug": "cybersecurity",
+    "order": 1,
+    "status": "active",
+    "description": "Monitoring, incident response, threat analysis, and defensive security."
+  },
+  {
+    "name": "Medicine and Clinical Care",
+    "slug": "medicine-clinical-care",
+    "kind": "field",
+    "parentSlug": "health",
+    "order": 1,
+    "status": "active",
+    "description": "Patient care, diagnosis, treatment, and clinical decision-making."
+  },
+  {
+    "name": "Nursing",
+    "slug": "nursing",
+    "kind": "specialization",
+    "parentSlug": "medicine-clinical-care",
+    "order": 1,
+    "status": "active",
+    "description": "Direct patient support, care coordination, and clinical monitoring."
+  },
+  {
+    "name": "Medical Laboratory Science",
+    "slug": "medical-laboratory-science",
+    "kind": "specialization",
+    "parentSlug": "medicine-clinical-care",
+    "order": 2,
+    "status": "active",
+    "description": "Testing samples, supporting diagnosis, and maintaining lab quality."
+  },
+  {
+    "name": "Public Health",
+    "slug": "public-health",
+    "kind": "field",
+    "parentSlug": "health",
+    "order": 2,
+    "status": "active",
+    "description": "Improving health outcomes through prevention, policy, and community programs."
+  },
+  {
+    "name": "Health Promotion",
+    "slug": "health-promotion",
+    "kind": "specialization",
+    "parentSlug": "public-health",
+    "order": 1,
+    "status": "active",
+    "description": "Education, outreach, and behavior-change programs for healthier communities."
+  },
+  {
+    "name": "Finance and Accounting",
+    "slug": "finance-accounting",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 1,
+    "status": "active",
+    "description": "Financial records, analysis, planning, investment, and business controls."
+  },
+  {
+    "name": "Accounting",
+    "slug": "accounting",
+    "kind": "specialization",
+    "parentSlug": "finance-accounting",
+    "order": 1,
+    "status": "active",
+    "description": "Recording, reporting, auditing, and interpreting financial information."
+  },
+  {
+    "name": "Financial Analysis",
+    "slug": "financial-analysis",
+    "kind": "specialization",
+    "parentSlug": "finance-accounting",
+    "order": 2,
+    "status": "active",
+    "description": "Budgeting, forecasting, valuation, and evidence-based financial decisions."
+  },
+  {
+    "name": "Marketing and Sales",
+    "slug": "marketing-sales",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 2,
+    "status": "active",
+    "description": "Customer insight, communication, growth, brand positioning, and revenue."
+  },
+  {
+    "name": "Digital Marketing",
+    "slug": "digital-marketing",
+    "kind": "specialization",
+    "parentSlug": "marketing-sales",
+    "order": 1,
+    "status": "active",
+    "description": "Online campaigns, content, analytics, search, and social media channels."
+  },
+  {
+    "name": "Management and Entrepreneurship",
+    "slug": "management-entrepreneurship",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 3,
+    "status": "active",
+    "description": "Leading teams, improving operations, launching ventures, and managing change."
+  },
+  {
+    "name": "Product Management",
+    "slug": "product-management",
+    "kind": "specialization",
+    "parentSlug": "management-entrepreneurship",
+    "order": 1,
+    "status": "active",
+    "description": "Connecting users, business goals, and technical teams to build better products."
+  },
+  {
+    "name": "Teaching",
+    "slug": "teaching",
+    "kind": "field",
+    "parentSlug": "education",
+    "order": 1,
+    "status": "active",
+    "description": "Classroom instruction, student support, and subject-based learning."
+  },
+  {
+    "name": "Primary Education",
+    "slug": "primary-education",
+    "kind": "specialization",
+    "parentSlug": "teaching",
+    "order": 1,
+    "status": "active",
+    "description": "Foundational learning for younger students across core subjects."
+  },
+  {
+    "name": "STEM Education",
+    "slug": "stem-education",
+    "kind": "specialization",
+    "parentSlug": "teaching",
+    "order": 2,
+    "status": "active",
+    "description": "Teaching science, technology, engineering, and math with practical learning."
+  },
+  {
+    "name": "Learning Design",
+    "slug": "learning-design",
+    "kind": "field",
+    "parentSlug": "education",
+    "order": 2,
+    "status": "active",
+    "description": "Designing courses, training materials, assessments, and digital learning."
+  },
+  {
+    "name": "Instructional Design",
+    "slug": "instructional-design",
+    "kind": "specialization",
+    "parentSlug": "learning-design",
+    "order": 1,
+    "status": "active",
+    "description": "Building structured learning experiences for schools, companies, and online programs."
+  },
+  {
+    "name": "Civil and Infrastructure Engineering",
+    "slug": "civil-infrastructure-engineering",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 1,
+    "status": "active",
+    "description": "Buildings, roads, water systems, and public infrastructure."
+  },
+  {
+    "name": "Structural Engineering",
+    "slug": "structural-engineering",
+    "kind": "specialization",
+    "parentSlug": "civil-infrastructure-engineering",
+    "order": 1,
+    "status": "active",
+    "description": "Designing safe structures that handle loads, materials, and site conditions."
+  },
+  {
+    "name": "Mechanical and Electrical Engineering",
+    "slug": "mechanical-electrical-engineering",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 2,
+    "status": "active",
+    "description": "Machines, energy systems, electronics, automation, and technical maintenance."
+  },
+  {
+    "name": "Renewable Energy Systems",
+    "slug": "renewable-energy-systems",
+    "kind": "specialization",
+    "parentSlug": "mechanical-electrical-engineering",
+    "order": 1,
+    "status": "active",
+    "description": "Solar, wind, storage, and efficient power systems."
+  },
+  {
+    "name": "Design and Visual Communication",
+    "slug": "design-visual-communication",
+    "kind": "field",
+    "parentSlug": "arts-media",
+    "order": 1,
+    "status": "active",
+    "description": "Visual design, brand systems, interfaces, layouts, and communication materials."
+  },
+  {
+    "name": "Graphic Design",
+    "slug": "graphic-design",
+    "kind": "specialization",
+    "parentSlug": "design-visual-communication",
+    "order": 1,
+    "status": "active",
+    "description": "Branding, layout, typography, digital assets, and visual storytelling."
+  },
+  {
+    "name": "Media Production",
+    "slug": "media-production",
+    "kind": "field",
+    "parentSlug": "arts-media",
+    "order": 2,
+    "status": "active",
+    "description": "Video, audio, journalism, content production, and publishing."
+  },
+  {
+    "name": "Journalism",
+    "slug": "journalism",
+    "kind": "specialization",
+    "parentSlug": "media-production",
+    "order": 1,
+    "status": "active",
+    "description": "Researching, verifying, writing, and producing public-interest stories."
+  },
+  {
+    "name": "Law and Policy",
+    "slug": "law-policy",
+    "kind": "field",
+    "parentSlug": "law-social-sciences",
+    "order": 1,
+    "status": "active",
+    "description": "Legal systems, rights, governance, advocacy, and policy decisions."
+  },
+  {
+    "name": "Legal Practice",
+    "slug": "legal-practice",
+    "kind": "specialization",
+    "parentSlug": "law-policy",
+    "order": 1,
+    "status": "active",
+    "description": "Advising, drafting, advocacy, compliance, and dispute resolution."
+  },
+  {
+    "name": "Psychology and Social Work",
+    "slug": "psychology-social-work",
+    "kind": "field",
+    "parentSlug": "law-social-sciences",
+    "order": 2,
+    "status": "active",
+    "description": "Human behavior, mental wellbeing, social support, and community services."
+  },
+  {
+    "name": "Counseling",
+    "slug": "counseling",
+    "kind": "specialization",
+    "parentSlug": "psychology-social-work",
+    "order": 1,
+    "status": "active",
+    "description": "Supporting people through listening, assessment, guidance, and referral."
+  },
+  {
+    "name": "Environmental Science",
+    "slug": "environmental-science",
+    "kind": "field",
+    "parentSlug": "environment-agriculture",
+    "order": 1,
+    "status": "active",
+    "description": "Studying ecosystems, climate, resources, pollution, and environmental protection."
+  },
+  {
+    "name": "Conservation",
+    "slug": "conservation",
+    "kind": "specialization",
+    "parentSlug": "environmental-science",
+    "order": 1,
+    "status": "active",
+    "description": "Protecting biodiversity, habitats, and natural resources."
+  },
+  {
+    "name": "Agriculture and Food Systems",
+    "slug": "agriculture-food-systems",
+    "kind": "field",
+    "parentSlug": "environment-agriculture",
+    "order": 2,
+    "status": "active",
+    "description": "Crop production, livestock systems, food security, and agribusiness."
+  },
+  {
+    "name": "Agronomy",
+    "slug": "agronomy",
+    "kind": "specialization",
+    "parentSlug": "agriculture-food-systems",
+    "order": 1,
+    "status": "active",
+    "description": "Improving crop production through soil, water, seed, and field management."
   }
 ]
