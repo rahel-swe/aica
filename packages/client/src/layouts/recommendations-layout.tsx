@@ -1,58 +1,50 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import RecommendationCard from '@/components/recommendation-card';
-import { Button } from '@/components/ui/button';
-import { rankedBadgeColor } from '@/constants/recommendation-constant';
-import { cn } from '@/lib/utils';
+import RecommendationRankedButton from '@/components/recommendation-ranked-button';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 
 const RecommendedPathwaysLayout = () => {
-  const { data, isLoading, error } = useRecommendationQuery();
-
-  const topThree = useMemo(() => {
-    const items = data?.data ?? [];
-    return [...items]
-      .sort((a, b) => a.rank! - b.rank! || b.totalScore - a.totalScore)
-      .slice(0, 3);
-  }, [data]);
+  const {
+    data: recommendationsResponse,
+    isLoading,
+    error,
+  } = useRecommendationQuery();
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeItem = topThree[activeIndex];
 
   if (isLoading) return <p className="p-6">Loading...</p>;
 
   if (error) return <p className="p-6">{error.message}</p>;
 
+  const activeItem = recommendationsResponse?.data[activeIndex];
+
   return (
     <div className="min-h-screen bg-linear-to-b from-background to-muted/30 p-8 md:p-10">
       <div className="mx-auto max-w-5xl space-y-6 md:space-y-8">
-        {/* Header */}
         <h1 className="text-5xl capitalize text-start text-wrap px-28 font-semibold tracking-tight md:text-6xl sm:text-center">
           Pick your pathway
         </h1>
 
         <div className="relative flex flex-col gap-6 md:flex-row w-full">
           <div className="flex justify-center gap-3 md:flex-col">
-            {topThree.map((item, index) => (
-              <Button
-                key={item.pathwayId}
-                size={'lg'}
+            {recommendationsResponse?.data.map((item, index) => (
+              <RecommendationRankedButton
+                rank={item.rank!}
                 onClick={() => setActiveIndex(index)}
-                variant={'outline'}
-                className={cn(
-                  'relative font-semibold text-lg md:text-2xl transition-all py-5 md:py-7 px-5 md:px-7',
-                  rankedBadgeColor[index],
-                  activeIndex === index &&
-                    'bg-background dark:bg-background dark:text-white'
-                )}
-              >
-                #{item.rank}
-              </Button>
+                isActive={activeIndex === index}
+              />
             ))}
           </div>
 
           {/* Active Card */}
-          <RecommendationCard key={activeItem.pathwayId} item={activeItem} />
+          <RecommendationCard
+            key={activeItem!.pathwayId}
+            item={activeItem!}
+            onSelected={(item) => {
+              console.log(item);
+            }}
+          />
         </div>
       </div>
     </div>

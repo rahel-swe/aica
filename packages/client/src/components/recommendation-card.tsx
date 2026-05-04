@@ -22,17 +22,18 @@ import type { RecommendationResult } from '@contracts/shared/types/pathway-domai
 
 interface Props {
   item: RecommendationResult;
+  onSelected: (item: RecommendationResult) => void;
 }
 
-const RecommendationCard = ({ item }: Props) => {
+const RecommendationCard = ({ item, onSelected }: Props) => {
   const score = Math.round(item.totalScore * 100);
   const reasons = item.reasons?.slice(0, 3) ?? [];
 
   return (
     <Card
       className={cn(
-        'relative transition-all duration-500 shadow-none',
-        'animate-in fade-in slide-in-from-bottom-6 md:slide-in-from-right-6 w-full',
+        'relative shadow-none',
+        'transition-all duration-500 animate-in fade-in slide-in-from-bottom-6 md:slide-in-from-top-6 w-full',
         cardbgColors[item.rank! - 1]
       )}
     >
@@ -81,9 +82,8 @@ const RecommendationCard = ({ item }: Props) => {
       <div className="p-4 pt-0 flex justify-center">
         <Button
           size="lg"
-          variant="outline"
-          className="text-inherit dark:bg-white py-7 px-7"
-          onClick={() => console.log('selected', item)}
+          className="text-inherit bg-white dark:bg-white dark:hover:bg-white/80 py-7 px-7"
+          onClick={() => onSelected(item)}
         >
           Get Started
           <ArrowUpRight />
