@@ -54,17 +54,17 @@ const PathwayCongratulations = () => {
           </Badge>
         </div>
 
-        <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl uppercase mt-6">
+        <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 dark:text-slate-200 md:text-5xl uppercase mt-6">
           Congratulations
         </h1>
 
         <div className="mt-2 space-y-3">
-          <h2 className="text-balance text-4xl font-semibold text-slate-900 md:text-4xl">
+          <h2 className="text-balance text-4xl font-semibold text-slate-900 dark:text-slate-200 md:text-4xl">
             {title}
           </h2>
 
           {userPickedRecommendedPathway?.summary ? (
-            <p className="mx-auto max-w-lg text-sm leading-6 text-slate-600 md:text-base">
+            <p className="mx-auto max-w-lg text-sm leading-6 text-slate-600 dark:text-slate-300 md:text-base">
               {userPickedRecommendedPathway.summary}
             </p>
           ) : null}
