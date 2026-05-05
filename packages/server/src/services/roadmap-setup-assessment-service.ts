@@ -14,6 +14,8 @@ export class RoadmapSetupAssessmentService {
       });
     }
 
+    console.log(data);
+
     return await this.repository.create({
       userId,
       ...data,

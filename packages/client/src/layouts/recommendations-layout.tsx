@@ -52,12 +52,11 @@ const RecommendedPathwaysLayout = () => {
             onPickedPathway={(item) => {
               mutate(
                 {
-                  selectedPathwayId: item.pathwayId,
+                  pickedPathwayId: item.pathwayId,
                   constraints: [],
                 },
                 {
                   onSuccess: ({ data }) => {
-                    // const roadmapSetupAssessmentId = data.;
                     console.log(data);
                     navigate('/pathway-congratulations', {
                       replace: true,

@@ -60,9 +60,7 @@ export class RoadmapSetupAssessmentController {
       res.json({
         success: true,
         message: 'Assessment status fetched.',
-        data: {
-          completed: !!assessment,
-        },
+        data: assessment,
       });
     } catch (error: any) {
       res.status(400).json({

@@ -46,7 +46,7 @@ export const roadmapSetupStyle = z.enum(roadmapSetupStyleEnum);
  */
 
 export const roadmapSetupAssessmentFormSchema = z.object({
-  selectedPathwayId: z.string().min(1, 'Pathway is required'),
+  pickedPathwayId: z.string().min(1, 'Pathway is required'),
 
   currentStage: roadmapSetupCurrentStage.optional(),
 
@@ -68,13 +68,5 @@ export const roadmapSetupAssessmentSubmitResponseSchema = z.object({
   data: z.object({
     submissionId: z.string(),
     savedAt: z.string(),
-  }),
-});
-
-export const roadmapSetupAssessmentStatusResponseSchema = z.object({
-  success: z.boolean(),
-  message: z.string(),
-  data: z.object({
-    completed: z.boolean(),
   }),
 });

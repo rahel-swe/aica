@@ -17,7 +17,7 @@ const roadmapSetupAssessmentSchema = new Schema(
       required: true,
     },
 
-    selectedPathwayId: {
+    pickedPathwayId: {
       type: Schema.Types.ObjectId,
       ref: 'Pathway',
       required: true,
