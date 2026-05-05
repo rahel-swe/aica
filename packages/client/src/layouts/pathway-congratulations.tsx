@@ -7,6 +7,9 @@ import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-assessment-queries';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { Twemoji } from '@/components/twemoji';
+import { Link } from 'react-router-dom';
+import { ChevronRight, PartyPopper } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const PathwayCongratulations = () => {
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
@@ -43,21 +46,20 @@ const PathwayCongratulations = () => {
         <div className="flex flex-col gap-4">
           <Twemoji className="text-9xl">🎉</Twemoji>
 
-          <p className="mb-2 text-sm font-medium tracking-[0.2em] text-slate-500 uppercase">
+          <Badge
+            variant={'outline'}
+            className="font-medium tracking-[0.2em] uppercase"
+          >
             Great choice
-          </p>
+          </Badge>
         </div>
 
-        <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+        <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl uppercase mt-6">
           Congratulations
         </h1>
 
-        <div className="mt-4 space-y-3">
-          {/* <p className="text-md text-slate-600 md:text-xl">
-            You picked your pathway:
-          </p> */}
-
-          <h2 className="text-balance text-3xl font-semibold text-slate-900 md:text-4xl">
+        <div className="mt-2 space-y-3">
+          <h2 className="text-balance text-4xl font-semibold text-slate-900 md:text-4xl">
             {title}
           </h2>
 
@@ -68,16 +70,21 @@ const PathwayCongratulations = () => {
           ) : null}
         </div>
 
-        <div className="mt-8 flex justify-center">
+        <div className="mt-7 flex flex-col gap-4 justify-center">
           <Button
             variant="outline"
             className="rounded-full px-10 py-7 text-sm font-medium"
-            onClick={() => {
-              lottieRef.current?.goToAndPlay(0, true);
-            }}
+            onClick={() => lottieRef.current?.goToAndPlay(0, true)}
           >
             Celebrate again
+            <PartyPopper />
           </Button>
+          <Link to="/roadmap-setup-assessment">
+            <Button className="rounded-full px-10 py-7 text-sm font-medium">
+              Continue App
+              <ChevronRight />
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

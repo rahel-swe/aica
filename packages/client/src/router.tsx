@@ -19,6 +19,8 @@ import PathwayAssessmentLayout from './layouts/pathway-assessment-layout';
 import PathwayAssessmentStepsPage from './pages/pathway-assessment-steps-page';
 import RecommendedPathwaysLayout from './layouts/recommendations-layout';
 import PathwayCongratulations from './layouts/pathway-congratulations';
+import RoadmapSetupLayout from './layouts/roadmap-setup-assessment-layout';
+import RoadmapSetupAssesmentStepsPage from './pages/roadmap-setup-assessment-steps-page.tsx';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,20 @@ const router = createBrowserRouter([
       {
         path: 'pathway-congratulations',
         element: <PathwayCongratulations />,
+      },
+      {
+        path: 'roadmap-setup-assessment',
+        element: <RoadmapSetupLayout />,
+        children: [
+          {
+            index: true,
+            element: <Navigate to="current-stage" replace />,
+          },
+          {
+            path: ':stepId',
+            element: <RoadmapSetupAssesmentStepsPage />,
+          },
+        ],
       },
       {
         path: 'app',
