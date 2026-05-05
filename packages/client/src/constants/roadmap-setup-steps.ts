@@ -25,6 +25,15 @@ import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/r
 
 // export type RoadmapStyle = 'fast_track' | 'balanced' | 'deep';
 
+export const roadmapSetupDefaultValues = {
+  pickedPathwayId: '',
+  currentStage: '',
+  weeklyTime: '',
+  timeline: '',
+  constraints: [],
+  roadmapStyle: '',
+};
+
 // Roadmap step IDs
 export type RoadmapStepId =
   | 'current-stage'
