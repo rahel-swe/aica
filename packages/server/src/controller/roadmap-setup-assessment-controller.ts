@@ -9,12 +9,13 @@ export class RoadmapSetupAssessmentController {
 
   submitRoadmapSetupAssessment = async (req: AuthRequest, res: Response) => {
     try {
-      const validatedData = roadmapSetupAssessmentFormSchema.parse(req.body);
+      const data = req.body;
+
       const userId = req.user?.id || 'dummyUserId';
 
       const result = await this.service.submitRoadmapSetupAssessment(
         userId,
-        validatedData
+        data
       );
 
       res.json({

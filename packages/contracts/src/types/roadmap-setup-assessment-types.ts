@@ -1,6 +1,5 @@
 import {
   roadmapSetupAssessmentFormSchema,
-  roadmapSetupAssessmentSubmitResponseSchema,
   roadmapSetupConstraint,
   roadmapSetupCurrentStage,
   roadmapSetupStyle,
@@ -31,9 +30,34 @@ export type RoadmapSetupAssessmentFormValues = z.infer<
   typeof roadmapSetupAssessmentFormSchema
 >;
 
-export type RoadmapSetupAssessmentSubmitResponse = z.infer<
-  typeof roadmapSetupAssessmentSubmitResponseSchema
->;
+export type RoadmapSetupAssessmentSubmitResponse = {
+  success: boolean;
+  message?: string;
+  data: {
+    _id: string;
+    userId: string;
+    pickedPathwayId: string;
+    currentStage:
+      | 'graduate'
+      | 'high_school'
+      | 'self_learning'
+      | 'university'
+      | 'working';
+    weeklyTime: 'high' | 'intense' | 'low' | 'medium';
+    timeline: 'long' | 'medium' | 'short';
+    constraints: (
+      | 'beginner'
+      | 'fast_track'
+      | 'low_budget'
+      | 'no_laptop'
+      | 'weak_internet'
+    )[];
+    roadmapStyle: 'balanced' | 'deep' | 'fast_track';
+    completed: boolean;
+    stepsCompleted: number;
+    createdAt: Date;
+  };
+};
 export type RoadmapSetupAssessmentStatusResponse = {
   success: boolean;
   message: string;

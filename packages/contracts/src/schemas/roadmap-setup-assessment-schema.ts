@@ -66,14 +66,3 @@ export const roadmapSetupAssessmentFormSchema = z.object({
 
   roadmapStyle: roadmapSetupStyle,
 });
-
-/**
- * Response schemas (unchanged)
- */
-export const roadmapSetupAssessmentSubmitResponseSchema = z.object({
-  success: z.boolean(),
-  data: z.object({
-    submissionId: z.string(),
-    savedAt: z.string(),
-  }),
-});
