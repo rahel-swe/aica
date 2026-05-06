@@ -15,13 +15,13 @@ export const useRoadmapSetupAssessment = () => {
   const navigate = useNavigate();
   const { stepId } = useParams();
 
-  // 🚀 CREATE MUTATION
+  // CREATE MUTATION
   const {
     mutateAsync: roadmapSetupMutateAsync,
     isPending: isRoadmapSetupCreating,
   } = useRoadmapSetupAssessmentSubmitMutation();
 
-  // 🧠 FORM
+  // FORM
   const form = useForm<RoadmapSetupAssessmentFormValues>({
     resolver: zodResolver(roadmapSetupAssessmentFormSchema),
     mode: 'onChange',
