@@ -32,7 +32,6 @@ const RecommendationCard = ({
   isPathwayPicking,
 }: Props) => {
   const score = Math.round(item.totalScore * 100);
-  const reasons = item.reasons?.slice(0, 3) ?? [];
 
   return (
     <Card
@@ -44,7 +43,9 @@ const RecommendationCard = ({
     >
       <CardHeader>
         <div className="mx-auto mb-4 relative">
-          <p className="text-6xl md:text-7xl font-semibold">{score}%</p>
+          <p className="text-6xl md:text-7xl font-semibold">
+            {item.totalScore}%
+          </p>
           <p className="text-lg opacity-50 mx-auto absolute -bottom-6 inset-s-22">
             Match
           </p>
@@ -62,7 +63,7 @@ const RecommendationCard = ({
         <div className="flex flex-col gap-2 border border-black/15 rounded-xl p-2">
           <p>Reasons</p>
           <div className="flex flex-wrap flex-col">
-            {reasons.map((r, i) => (
+            {item.reasons.map((r, i) => (
               <p key={i} className="rounded-full text-xs">
                 {r}
               </p>
