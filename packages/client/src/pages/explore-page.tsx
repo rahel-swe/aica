@@ -1,52 +1,45 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import PathwayListCard from '@/components/cards/pathway-list-card';
+
+import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
+
 import { ShellPage } from '@/pages/page-primitives';
 
-const pathways = [
-  [
-    'Software Engineering',
-    'Build systems, products, and engineering workflows with strong technical depth.',
-  ],
-  [
-    'Product Design',
-    'Combine creativity, research, and user-centered problem solving.',
-  ],
-  [
-    'Business Analytics',
-    'Turn data into decisions across operations, strategy, and planning.',
-  ],
-  [
-    'Digital Marketing',
-    'Align messaging, campaigns, and audience growth with measurable outcomes.',
-  ],
-];
+import { usePathwaysQuery } from '@/queries/pathway-query';
 
 export default function ExplorePage() {
+  const { data, isPending, isError } = usePathwaysQuery();
+
+  if (isPending) {
+    return <SpinnerBars />;
+  }
+
+  if (isError) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        Failed to load pathways.
+      </div>
+    );
+  }
+
+  const pathways = data?.data;
+
   return (
     <ShellPage
       eyebrow="Explore"
       title="Browse aligned pathways"
-      description="Use explore to review faculties and careers before entering recommendation mode. This page should act as the searchable knowledge base of the app."
+      description="Use explore to review faculties and careers before entering recommendation mode."
     >
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {pathways.map(([title, description]) => (
-          <Card key={title} className="rounded-2xl">
-            <CardHeader>
-              <CardTitle className="text-lg">{title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="leading-6">
-                {description}
-              </CardDescription>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      {pathways.length === 0 ? (
+        <div className="flex items-center justify-center py-20 text-muted-foreground">
+          No pathways found.
+        </div>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {pathways.map((pathway) => (
+            <PathwayListCard key={pathway.slug} pathway={pathway} />
+          ))}
+        </div>
+      )}
     </ShellPage>
   );
 }

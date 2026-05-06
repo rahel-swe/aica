@@ -10,12 +10,17 @@
       },
       {
         "value": "analytical",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
       },
       {
         "value": "fast_learning",
-        "weight": 0.65,
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "organized",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -24,6 +29,11 @@
         "value": "math",
         "weight": 0.7,
         "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.5,
+        "band": "supporting"
       }
     ],
     "passions": [
@@ -36,6 +46,11 @@
         "value": "building",
         "weight": 0.75,
         "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "freeTime": [
@@ -70,7 +85,7 @@
       },
       {
         "value": "analyze",
-        "weight": 0.7,
+        "weight": 0.75,
         "band": "strong"
       }
     ],
@@ -94,7 +109,7 @@
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Broad fit for users who want formal software foundations before narrowing into a specific engineering specialty."
     ],
     "status": "active"
   },
@@ -223,25 +238,30 @@
     "strengths": [
       {
         "value": "problem_solving",
-        "weight": 0.9,
+        "weight": 0.95,
         "band": "strong"
       },
       {
         "value": "analytical",
-        "weight": 0.75,
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "fast_learning",
-        "weight": 0.65,
+        "value": "organized",
+        "weight": 0.7,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.7,
+        "weight": 0.8,
         "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "passions": [
@@ -252,27 +272,32 @@
       },
       {
         "value": "building",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "build",
-        "weight": 0.8,
-        "band": "strong"
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
         "value": "learn",
-        "weight": 0.6,
-        "band": "supporting"
+        "weight": 0.75,
+        "band": "strong"
       }
     ],
     "workEnvironment": [
       {
         "value": "remote",
-        "weight": 0.65,
-        "band": "supporting"
+        "weight": 0.75,
+        "band": "strong"
       },
       {
         "value": "office",
@@ -282,20 +307,20 @@
     ],
     "workStyle": [
       {
-        "value": "build",
+        "value": "analyze",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "analyze",
-        "weight": 0.7,
+        "value": "build",
+        "weight": 0.75,
         "band": "strong"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.85,
+        "weight": 0.9,
         "band": "strong"
       }
     ],
@@ -307,12 +332,12 @@
       },
       {
         "value": "money",
-        "weight": 0.55,
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Stronger fit for users who prefer APIs, data flow, and system logic over highly visual interface work."
     ],
     "status": "active"
   },
@@ -322,25 +347,25 @@
     "strengths": [
       {
         "value": "problem_solving",
-        "weight": 0.9,
+        "weight": 0.8,
         "band": "strong"
       },
       {
-        "value": "analytical",
+        "value": "creativity",
         "weight": 0.75,
         "band": "strong"
       },
       {
         "value": "fast_learning",
-        "weight": 0.65,
+        "weight": 0.8,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.7,
-        "band": "strong"
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "passions": [
@@ -351,8 +376,13 @@
       },
       {
         "value": "building",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "freeTime": [
@@ -370,32 +400,37 @@
     "workEnvironment": [
       {
         "value": "remote",
-        "weight": 0.65,
-        "band": "supporting"
+        "weight": 0.8,
+        "band": "strong"
       },
       {
         "value": "office",
-        "weight": 0.6,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
         "value": "build",
-        "weight": 0.9,
+        "weight": 0.8,
         "band": "strong"
       },
       {
-        "value": "analyze",
+        "value": "create",
         "weight": 0.7,
         "band": "strong"
       }
     ],
     "impact": [
       {
-        "value": "systems",
-        "weight": 0.85,
+        "value": "create",
+        "weight": 0.75,
         "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "goals": [
@@ -405,13 +440,13 @@
         "band": "strong"
       },
       {
-        "value": "money",
-        "weight": 0.55,
+        "value": "variety",
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Better for users who want app-building momentum, faster iteration, and a more product-facing build loop."
     ],
     "status": "active"
   },
@@ -420,18 +455,18 @@
     "version": 1,
     "strengths": [
       {
-        "value": "problem_solving",
+        "value": "analytical",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "analytical",
-        "weight": 0.75,
+        "value": "organized",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "fast_learning",
-        "weight": 0.65,
+        "value": "problem_solving",
+        "weight": 0.7,
         "band": "supporting"
       }
     ],
@@ -445,24 +480,24 @@
     "passions": [
       {
         "value": "tech",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "building",
-        "weight": 0.75,
-        "band": "strong"
-      }
-    ],
-    "freeTime": [
-      {
-        "value": "build",
         "weight": 0.8,
         "band": "strong"
       },
       {
+        "value": "ideas",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
         "value": "learn",
-        "weight": 0.6,
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "consume",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -474,19 +509,19 @@
       },
       {
         "value": "office",
-        "weight": 0.6,
-        "band": "supporting"
+        "weight": 0.7,
+        "band": "strong"
       }
     ],
     "workStyle": [
       {
-        "value": "build",
-        "weight": 0.9,
+        "value": "analyze",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "analyze",
-        "weight": 0.7,
+        "value": "routine",
+        "weight": 0.65,
         "band": "strong"
       }
     ],
@@ -499,18 +534,18 @@
     ],
     "goals": [
       {
-        "value": "growth",
-        "weight": 0.8,
-        "band": "strong"
+        "value": "balance",
+        "weight": 0.55,
+        "band": "supporting"
       },
       {
-        "value": "money",
-        "weight": 0.55,
+        "value": "growth",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Best for detail-focused users who enjoy finding defects, documenting risk, and improving release quality."
     ],
     "status": "active"
   },
@@ -525,12 +560,12 @@
       },
       {
         "value": "analytical",
-        "weight": 0.75,
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "fast_learning",
-        "weight": 0.65,
+        "value": "organized",
+        "weight": 0.75,
         "band": "supporting"
       }
     ],
@@ -549,8 +584,13 @@
       },
       {
         "value": "building",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "freeTime": [
@@ -561,19 +601,19 @@
       },
       {
         "value": "learn",
-        "weight": 0.6,
-        "band": "supporting"
+        "weight": 0.7,
+        "band": "strong"
       }
     ],
     "workEnvironment": [
       {
         "value": "remote",
-        "weight": 0.65,
-        "band": "supporting"
+        "weight": 0.8,
+        "band": "strong"
       },
       {
         "value": "office",
-        "weight": 0.6,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -585,7 +625,7 @@
       },
       {
         "value": "analyze",
-        "weight": 0.7,
+        "weight": 0.8,
         "band": "strong"
       }
     ],
@@ -599,17 +639,17 @@
     "goals": [
       {
         "value": "growth",
-        "weight": 0.8,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "money",
-        "weight": 0.55,
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Best for users who like automation, reliability, infrastructure, and steady operational ownership."
     ],
     "status": "active"
   },
@@ -817,25 +857,30 @@
     "strengths": [
       {
         "value": "problem_solving",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "analytical",
-        "weight": 0.75,
+        "weight": 0.95,
         "band": "strong"
       },
       {
-        "value": "fast_learning",
-        "weight": 0.65,
+        "value": "organized",
+        "weight": 0.7,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.7,
+        "weight": 0.85,
         "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "passions": [
@@ -846,19 +891,24 @@
       },
       {
         "value": "building",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "freeTime": [
       {
-        "value": "build",
-        "weight": 0.8,
+        "value": "learn",
+        "weight": 0.75,
         "band": "strong"
       },
       {
-        "value": "learn",
-        "weight": 0.6,
+        "value": "build",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -870,26 +920,31 @@
       },
       {
         "value": "office",
-        "weight": 0.6,
-        "band": "supporting"
+        "weight": 0.7,
+        "band": "strong"
       }
     ],
     "workStyle": [
       {
-        "value": "build",
+        "value": "analyze",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "analyze",
-        "weight": 0.7,
+        "value": "build",
+        "weight": 0.65,
         "band": "strong"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.85,
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "discover",
+        "weight": 0.55,
         "band": "strong"
       }
     ],
@@ -901,12 +956,12 @@
       },
       {
         "value": "money",
-        "weight": 0.55,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Best for users who want infrastructure-level data work rather than dashboard-only analytics or product UI work."
     ],
     "status": "active"
   },
@@ -1020,20 +1075,25 @@
       },
       {
         "value": "analytical",
-        "weight": 0.75,
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "fast_learning",
-        "weight": 0.65,
-        "band": "supporting"
+        "value": "organized",
+        "weight": 0.8,
+        "band": "strong"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.7,
-        "band": "strong"
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "passions": [
@@ -1043,44 +1103,44 @@
         "band": "strong"
       },
       {
-        "value": "building",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "ideas",
+        "weight": 0.6,
+        "band": "supporting"
       }
     ],
     "freeTime": [
       {
-        "value": "build",
+        "value": "learn",
         "weight": 0.8,
         "band": "strong"
       },
       {
-        "value": "learn",
-        "weight": 0.6,
+        "value": "consume",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
-        "value": "remote",
-        "weight": 0.65,
-        "band": "supporting"
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
       },
       {
-        "value": "office",
-        "weight": 0.6,
+        "value": "mixed",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
-        "value": "build",
+        "value": "analyze",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "analyze",
-        "weight": 0.7,
+        "value": "routine",
+        "weight": 0.65,
         "band": "strong"
       }
     ],
@@ -1099,12 +1159,12 @@
       },
       {
         "value": "money",
-        "weight": 0.55,
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Best for detail-oriented users who prefer monitoring, investigation, and defensive systems work over broad software delivery."
     ],
     "status": "active"
   },
@@ -1222,38 +1282,43 @@
     "version": 1,
     "strengths": [
       {
+        "value": "people",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
         "value": "problem_solving",
-        "weight": 0.9,
+        "weight": 0.8,
         "band": "strong"
-      },
-      {
-        "value": "analytical",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "fast_learning",
-        "weight": 0.65,
-        "band": "supporting"
       }
     ],
     "subjects": [
       {
-        "value": "math",
-        "weight": 0.7,
-        "band": "strong"
+        "value": "science",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "passions": [
       {
         "value": "tech",
-        "weight": 0.9,
+        "weight": 0.8,
         "band": "strong"
       },
       {
         "value": "building",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "social",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "freeTime": [
@@ -1264,55 +1329,65 @@
       },
       {
         "value": "learn",
-        "weight": 0.6,
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
-        "value": "remote",
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
         "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "office",
-        "weight": 0.6,
-        "band": "supporting"
+        "value": "remote",
+        "weight": 0.2,
+        "band": "penalty"
       }
     ],
     "workStyle": [
       {
         "value": "build",
-        "weight": 0.9,
-        "band": "strong"
+        "weight": 0.65,
+        "band": "supporting"
       },
       {
-        "value": "analyze",
-        "weight": 0.7,
+        "value": "help",
+        "weight": 0.9,
         "band": "strong"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.85,
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.75,
         "band": "strong"
       }
     ],
     "goals": [
       {
         "value": "growth",
-        "weight": 0.8,
+        "weight": 0.65,
         "band": "strong"
       },
       {
-        "value": "money",
+        "value": "balance",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Best entry path for users who enjoy practical troubleshooting, user support, and hands-on technical service."
     ],
     "status": "active"
   },
@@ -1322,25 +1397,30 @@
     "strengths": [
       {
         "value": "problem_solving",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "analytical",
+        "value": "hands_on",
         "weight": 0.75,
         "band": "strong"
       },
       {
-        "value": "fast_learning",
-        "weight": 0.65,
+        "value": "organized",
+        "weight": 0.7,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.7,
+        "weight": 0.6,
         "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "passions": [
@@ -1351,8 +1431,8 @@
       },
       {
         "value": "building",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.7,
+        "band": "supporting"
       }
     ],
     "freeTime": [
@@ -1370,25 +1450,35 @@
     "workEnvironment": [
       {
         "value": "remote",
-        "weight": 0.65,
+        "weight": 0.35,
         "band": "supporting"
       },
       {
         "value": "office",
-        "weight": 0.6,
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
         "value": "build",
-        "weight": 0.9,
+        "weight": 0.8,
         "band": "strong"
       },
       {
         "value": "analyze",
-        "weight": 0.7,
-        "band": "strong"
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "routine",
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "impact": [
@@ -1401,17 +1491,17 @@
     "goals": [
       {
         "value": "growth",
-        "weight": 0.8,
+        "weight": 0.7,
         "band": "strong"
       },
       {
-        "value": "money",
-        "weight": 0.55,
+        "value": "balance",
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Best for users who like connectivity, infrastructure uptime, and practical systems support more than pure software creation."
     ],
     "status": "active"
   },
@@ -1421,25 +1511,25 @@
     "strengths": [
       {
         "value": "problem_solving",
-        "weight": 0.9,
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.75,
         "band": "strong"
       },
       {
         "value": "analytical",
         "weight": 0.75,
         "band": "strong"
-      },
-      {
-        "value": "fast_learning",
-        "weight": 0.65,
-        "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.7,
-        "band": "strong"
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "passions": [
@@ -1450,43 +1540,48 @@
       },
       {
         "value": "building",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.5,
+        "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "build",
-        "weight": 0.8,
-        "band": "strong"
+        "weight": 0.6,
+        "band": "supporting"
       },
       {
         "value": "learn",
-        "weight": 0.6,
-        "band": "supporting"
+        "weight": 0.75,
+        "band": "strong"
       }
     ],
     "workEnvironment": [
       {
         "value": "remote",
-        "weight": 0.65,
-        "band": "supporting"
+        "weight": 0.8,
+        "band": "strong"
       },
       {
         "value": "office",
-        "weight": 0.6,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
-        "value": "build",
-        "weight": 0.9,
+        "value": "analyze",
+        "weight": 0.75,
         "band": "strong"
       },
       {
-        "value": "analyze",
-        "weight": 0.7,
+        "value": "routine",
+        "weight": 0.65,
         "band": "strong"
       }
     ],
@@ -1500,17 +1595,17 @@
     "goals": [
       {
         "value": "growth",
-        "weight": 0.8,
+        "weight": 0.7,
         "band": "strong"
       },
       {
-        "value": "money",
+        "value": "balance",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+      "Best for users who want structured cloud operations work with access, monitoring, and service reliability responsibilities."
     ],
     "status": "active"
   },
