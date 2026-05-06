@@ -162,11 +162,20 @@
     "description": "Patient care, diagnosis, treatment, and clinical decision-making."
   },
   {
+    "name": "Medicine",
+    "slug": "medicine",
+    "kind": "specialization",
+    "parentSlug": "medicine-clinical-care",
+    "order": 1,
+    "status": "active",
+    "description": "Physician training for diagnosis, treatment, and regulated clinical practice."
+  },
+  {
     "name": "Nursing",
     "slug": "nursing",
     "kind": "specialization",
     "parentSlug": "medicine-clinical-care",
-    "order": 1,
+    "order": 2,
     "status": "active",
     "description": "Direct patient support, care coordination, and clinical monitoring."
   },
@@ -175,7 +184,7 @@
     "slug": "medical-laboratory-science",
     "kind": "specialization",
     "parentSlug": "medicine-clinical-care",
-    "order": 2,
+    "order": 3,
     "status": "active",
     "description": "Testing samples, supporting diagnosis, and maintaining lab quality."
   },

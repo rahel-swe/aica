@@ -26,12 +26,11 @@ import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/r
 // export type RoadmapStyle = 'fast_track' | 'balanced' | 'deep';
 
 export const roadmapSetupDefaultValues: RoadmapSetupAssessmentFormValues = {
-  pickedPathwayId: '',
   constraints: [],
   currentStage: 'self_learning',
   roadmapStyle: 'balanced',
   timeline: 'medium',
-  weeklyTime: 'intense',
+  weeklyTime: 'medium',
 };
 
 // Roadmap step IDs
@@ -60,32 +59,37 @@ export type RoadmapStep = {
 const currentStageOptions: PathwayAssessmentOption[] = [
   {
     value: 'high_school',
-    label: 'High school',
-    description: 'You are still studying and exploring your direction.',
+    label: 'In school',
+    description:
+      'You are still in school and need a realistic starting direction.',
     emoji: '🏫',
   },
   {
     value: 'university',
     label: 'University student',
-    description: 'You are studying but want clearer direction or skills.',
+    description:
+      'You are studying now and want a clearer path, stronger skills, or both.',
     emoji: '🎓',
   },
   {
     value: 'graduate',
-    label: 'Graduate',
-    description: 'You finished studies and want to move into a career.',
+    label: 'Recent graduate',
+    description:
+      'You finished formal study and want to move into the next real step.',
     emoji: '📜',
   },
   {
     value: 'self_learning',
     label: 'Self-learner',
-    description: 'You are learning independently without formal education.',
+    description:
+      'You are learning on your own and need structure, focus, and proof of progress.',
     emoji: '💻',
   },
   {
     value: 'working',
-    label: 'Working professional',
-    description: 'You are working and want to shift or grow your path.',
+    label: 'Working now',
+    description:
+      'You are already working and want to grow, switch, or reposition carefully.',
     emoji: '💼',
   },
 ];
@@ -93,26 +97,26 @@ const currentStageOptions: PathwayAssessmentOption[] = [
 const weeklyTimeOptions: PathwayAssessmentOption[] = [
   {
     value: 'low',
-    label: '1–3 hours',
-    description: 'Light commitment, slow and steady progress.',
+    label: '2-4 hours',
+    description: 'Light pace for small consistent progress each week.',
     emoji: '🐢',
   },
   {
     value: 'medium',
-    label: '3–6 hours',
-    description: 'Balanced pace with consistent improvement.',
+    label: '5-7 hours',
+    description: 'A realistic steady pace for most people.',
     emoji: '⚖️',
   },
   {
     value: 'high',
-    label: '6–10 hours',
-    description: 'Focused effort with faster results.',
+    label: '8-12 hours',
+    description: 'Focused effort with faster visible progress.',
     emoji: '🚀',
   },
   {
     value: 'intense',
-    label: '10+ hours',
-    description: 'Aggressive pace, high commitment.',
+    label: '13+ hours',
+    description: 'An accelerated pace that needs strong weekly consistency.',
     emoji: '🔥',
   },
 ];
@@ -120,20 +124,21 @@ const weeklyTimeOptions: PathwayAssessmentOption[] = [
 const timelineOptions: PathwayAssessmentOption[] = [
   {
     value: 'short',
-    label: '1–2 months',
-    description: 'Quick start, focus on immediate results.',
+    label: '4-6 weeks',
+    description: 'Optimize for a quick start and immediate traction.',
     emoji: '⚡',
   },
   {
     value: 'medium',
-    label: '3–6 months',
-    description: 'Build solid skills with visible progress.',
+    label: '2-3 months',
+    description: 'A balanced planning window with strong visible progress.',
     emoji: '📈',
   },
   {
     value: 'long',
-    label: '6–12 months',
-    description: 'Deep learning with strong foundation.',
+    label: '4-6 months',
+    description:
+      'A longer action window for stronger foundations and better sequencing.',
     emoji: '🏗️',
   },
 ];
@@ -164,30 +169,33 @@ const constraintOptions: PathwayAssessmentOption[] = [
     emoji: '🌱',
   },
   {
-    value: 'fast_track',
-    label: 'Need fast results',
-    description: 'Prioritize speed over depth.',
-    emoji: '⚡',
+    value: 'inconsistent_schedule',
+    label: 'Schedule changes often',
+    description: 'Need a roadmap that can survive busy or unpredictable weeks.',
+    emoji: '🗓️',
   },
 ];
 
 const roadmapStyleOptions: PathwayAssessmentOption[] = [
   {
     value: 'fast_track',
-    label: 'Fast track',
-    description: 'Skip theory, focus on practical results quickly.',
+    label: 'Move faster',
+    description:
+      'Bias toward practical momentum, earlier output, and faster entry steps.',
     emoji: '🚀',
   },
   {
     value: 'balanced',
-    label: 'Balanced',
-    description: 'Mix of theory and practice for steady growth.',
+    label: 'Balanced growth',
+    description:
+      'Mix fundamentals and practical work in a steady, sustainable way.',
     emoji: '⚖️',
   },
   {
     value: 'deep',
-    label: 'Deep learning',
-    description: 'Strong fundamentals with long-term mastery.',
+    label: 'Strong foundations',
+    description:
+      'Go deeper on core understanding before pushing hard on speed.',
     emoji: '🧠',
   },
 ];
@@ -196,55 +204,65 @@ export const ROADMAP_SETUP_STEPS: RoadmapStep[] = [
   {
     id: 'welcome',
     type: 'intro',
-    title: 'Find a study or career path that fits you',
+    title: 'Let AICA shape the right roadmap for this pathway',
     description:
-      'Answer a few short questions about your strengths, interests, and goals. AICA will turn them into clear pathway matches, simple explanations, and a practical next-step roadmap.',
+      'Answer a few short planning questions. AICA will use them to shape a roadmap that fits your stage, time, constraints, and pace instead of giving everyone the same plan.',
     helperText:
-      'There are no right or wrong answers. Choose what feels most true to you right now.',
+      'Be realistic. The better your inputs, the more useful your roadmap will be.',
   },
   {
     id: 'current-stage',
     type: 'single-select',
-    title: 'Where are you starting from?',
+    title: 'Where are you starting from right now?',
+    description:
+      'This helps AICA decide whether to begin with exploration, study preparation, portfolio work, or market-entry steps.',
     fieldName: 'currentStage',
     options: currentStageOptions,
   },
   {
     id: 'weekly-time',
     type: 'single-select',
-    title: 'Weekly time you can commit',
+    title: 'How much focused time can you realistically give each week?',
+    description:
+      'Choose your real weekly capacity, not your best-case motivation.',
     fieldName: 'weeklyTime',
     options: weeklyTimeOptions,
   },
   {
     id: 'timeline',
     type: 'single-select',
-    title: 'Target timeline',
+    title: 'What planning window should this roadmap optimize for?',
+    description:
+      'This is the first action window, not the full career duration.',
     fieldName: 'timeline',
     options: timelineOptions,
   },
   {
     id: 'constraints',
     type: 'multi-select',
-    title: 'Any constraints?',
+    title: 'What should the roadmap work around?',
+    description:
+      'Pick only the constraints that are actually likely to affect your next steps.',
     fieldName: 'constraints',
     minSelect: 0,
-    maxSelect: 2,
+    maxSelect: 3,
     options: constraintOptions,
   },
   {
     id: 'roadmap-style',
     type: 'single-select',
-    title: 'Roadmap style',
+    title: 'How should the roadmap feel?',
+    description:
+      'This changes the balance between speed, depth, and sustainability.',
     fieldName: 'roadmapStyle',
     options: roadmapStyleOptions,
   },
   {
     id: 'finish',
     type: 'cta',
-    title: 'Your profile is ready',
+    title: 'Your roadmap setup is ready',
     description:
-      'AICA can now turn your answers into ranked pathways, explainable matches, and roadmap-ready guidance.',
-    helperText: 'Submit your profile to continue to recommendations.',
+      'AICA now has the planning context it needs to generate a more realistic roadmap for your selected pathway.',
+    helperText: 'Submit to save your setup and continue.',
   },
 ] as const;

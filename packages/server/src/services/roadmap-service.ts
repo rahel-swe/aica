@@ -1,12 +1,14 @@
-import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
 import type {
-  Roadmap,
-  RoadmapStep,
-} from '@contracts/shared/types/roadmap-types';
+  PathwayDurationProfile,
+  PathwayJourneyPhase,
+  RecommendationResult,
+} from '@contracts/shared/types/pathway-domain-types';
+import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 import { pathwayRepository } from '../repositories/pathway-repository';
 import { recommendationRepository } from '../repositories/recommendation-repository';
 import { roadmapRepository } from '../repositories/roadmap-repository';
-import { roadmapGuidanceService } from './roadmap-guidance-service';
+import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
+import { roadmapGenerationService } from './roadmap-generation-service';
 
 type PathwayDetailRecord = {
   _id: string;
@@ -15,15 +17,19 @@ type PathwayDetailRecord = {
   summary: string;
   description: string;
   keySkills: string[];
-  learningRoute: string[];
   opportunities: string[];
+  durationProfile: PathwayDurationProfile;
+  journeyPhases: PathwayJourneyPhase[];
+  verificationNote?: string;
 };
 
 export class RoadmapService {
   private readonly pathwayRepository = pathwayRepository;
   private readonly recommendationRepository = recommendationRepository;
   private readonly roadmapRepository = roadmapRepository;
-  private readonly roadmapGuidanceService = roadmapGuidanceService;
+  private readonly roadmapSetupAssessmentRepository =
+    roadmapSetupAssessmentRepository;
+  private readonly roadmapGenerationService = roadmapGenerationService;
 
   async generateRoadmap(userId: string, pathwayId: string) {
     const pathway =
@@ -33,117 +39,126 @@ export class RoadmapService {
       throw new Error('Pathway not found.');
     }
 
+    const roadmapSetup =
+      await this.roadmapSetupAssessmentRepository.findByUserId(userId);
+
+    if (!roadmapSetup) {
+      throw new Error(
+        'Complete roadmap setup assessment before generating a roadmap.'
+      );
+    }
+
     const savedRecommendations =
       await this.recommendationRepository.findByUserId(userId);
     const recommendation = savedRecommendations.find(
       (item) => String(item.pathwayId) === String(pathway._id)
     );
 
-    const steps = this.buildSteps(pathway as unknown as PathwayDetailRecord);
+    const pathwayContext = pathway as unknown as PathwayDetailRecord;
+    const generated =
+      await this.roadmapGenerationService.generateStructuredRoadmap({
+        pathway: pathwayContext,
+        setup: roadmapSetup as unknown as RoadmapSetupAssessmentFormValues,
+        recommendation: recommendation
+          ? this.mapRecommendation(recommendation)
+          : undefined,
+      });
 
-    const guidanceNote = await this.roadmapGuidanceService.buildGuidanceNote({
-      pathwayTitle: pathway.title,
-      pathwaySummary: pathway.summary,
-      keySkills: pathway.keySkills,
-      learningRoute: pathway.learningRoute,
-      opportunities: pathway.opportunities,
-      recommendation: recommendation
-        ? {
-            pathwayId: String(recommendation.pathwayId),
-            title: recommendation.title,
-            slug: recommendation.slug,
-            type: recommendation.type,
-            summary: recommendation.summary,
-            totalScore: recommendation.totalScore,
-            dimensionScores: recommendation.dimensionScores,
-            reasons: recommendation.reasons,
-            explanation: recommendation.explanation,
-            rank: recommendation.rank,
-            matchingVersion: recommendation.matchingVersion,
-          }
-        : undefined,
-    });
+    const currentLevel = this.mapCurrentLevel(
+      roadmapSetup as unknown as RoadmapSetupAssessmentFormValues
+    );
+    const timeBudgetPerWeek = this.mapTimeBudget(
+      roadmapSetup as unknown as RoadmapSetupAssessmentFormValues
+    );
 
-    const created = await this.roadmapRepository.create({
+    const roadmap = await this.roadmapRepository.replaceActiveForUserPathway(
       userId,
-      pathwayId: pathway._id,
-      title: `${pathway.title} roadmap`,
-      summary: `A practical roadmap for progressing toward ${pathway.title}.`,
-      guidanceNote,
-      steps,
-      sourceRecommendation: recommendation
-        ? {
-            pathwayId: String(recommendation.pathwayId),
-            reasons: recommendation.reasons,
-            explanation: recommendation.explanation,
-            totalScore: recommendation.totalScore,
-          }
-        : undefined,
-    });
+      String(pathway._id),
+      {
+        userId,
+        pathwayId: pathway._id,
+        version: 1,
+        status: 'active',
+        title: generated.title,
+        summary: generated.summary,
+        goal: generated.goal,
+        currentLevel,
+        timeBudgetPerWeek,
+        roadmapStyle: roadmapSetup.roadmapStyle,
+        phases: generated.phases,
+        aiSummary: generated.aiSummary,
+        guidanceNote: generated.guidanceNote,
+        userEdits: [],
+        lastGeneratedAt: new Date(),
+        nextReviewAt: this.buildNextReviewAt(roadmapSetup.timeline),
+        sourceRecommendation: recommendation
+          ? {
+              pathwayId: String(recommendation.pathwayId),
+              reasons: recommendation.reasons,
+              explanation: recommendation.explanation,
+              totalScore: recommendation.totalScore,
+            }
+          : undefined,
+      }
+    );
 
-    return created;
+    return roadmap;
   }
 
   async getRoadmaps(userId: string) {
     const roadmaps = await this.roadmapRepository.findByUserId(userId);
 
-    return roadmaps[0];
+    return roadmaps[0] ?? null;
   }
 
-  private buildSteps(pathway: PathwayDetailRecord): RoadmapStep[] {
-    const shortTerm = this.uniqueNonEmpty([
-      pathway.learningRoute[0],
-      pathway.keySkills[0]
-        ? `Build foundation in ${pathway.keySkills[0]}.`
-        : '',
-      'Review what this pathway expects and identify your current gaps.',
-    ]);
-
-    const mediumTerm = this.uniqueNonEmpty([
-      pathway.learningRoute[1],
-      pathway.keySkills[1]
-        ? `Practice ${pathway.keySkills[1]} through small projects or guided work.`
-        : '',
-      pathway.opportunities[0]
-        ? `Explore realistic environments such as ${pathway.opportunities[0]}.`
-        : '',
-    ]);
-
-    const longTerm = this.uniqueNonEmpty([
-      pathway.learningRoute[2],
-      'Create visible proof of progress through projects, coursework, or practical experience.',
-      'Review progress, adjust goals, and choose the next specialization step.',
-    ]);
-
-    return [...shortTerm, ...mediumTerm, ...longTerm].map(
-      (description, index) => {
-        const phase =
-          index < shortTerm.length
-            ? 'short_term'
-            : index < shortTerm.length + mediumTerm.length
-              ? 'medium_term'
-              : 'long_term';
-
-        return {
-          id: `step_${index + 1}`,
-          title: this.buildStepTitle(phase, index + 1),
-          description,
-          phase,
-          order: index + 1,
-          status: 'pending',
-        } satisfies RoadmapStep;
-      }
-    );
+  private mapRecommendation(recommendation: any): RecommendationResult {
+    return {
+      pathwayId: String(recommendation.pathwayId),
+      title: recommendation.title,
+      slug: recommendation.slug,
+      type: recommendation.type,
+      summary: recommendation.summary,
+      totalScore: recommendation.totalScore,
+      dimensionScores: recommendation.dimensionScores,
+      reasons: recommendation.reasons,
+      explanation: recommendation.explanation,
+      rank: recommendation.rank,
+      matchingVersion: recommendation.matchingVersion,
+    };
   }
 
-  private uniqueNonEmpty(values: string[]): string[] {
-    return [...new Set(values.map((value) => value?.trim()).filter(Boolean))];
+  private mapCurrentLevel(setup: RoadmapSetupAssessmentFormValues) {
+    if (setup.currentStage === 'high_school') return 'school';
+    if (setup.currentStage === 'university') return 'student';
+    if (setup.currentStage === 'graduate') return 'graduate';
+    if (setup.currentStage === 'working') return 'working';
+    return 'self-learning';
   }
 
-  private buildStepTitle(phase: RoadmapStep['phase'], order: number): string {
-    if (phase === 'short_term') return `Short-term step ${order}`;
-    if (phase === 'medium_term') return `Medium-term step ${order}`;
-    return `Long-term step ${order}`;
+  private mapTimeBudget(setup: RoadmapSetupAssessmentFormValues) {
+    if (setup.weeklyTime === 'low') return '2-4 hours per week';
+    if (setup.weeklyTime === 'medium') return '5-7 hours per week';
+    if (setup.weeklyTime === 'high') return '8-12 hours per week';
+    return '13+ hours per week';
+  }
+
+  private buildNextReviewAt(
+    timeline: RoadmapSetupAssessmentFormValues['timeline']
+  ) {
+    const date = new Date();
+
+    if (timeline === 'short') {
+      date.setDate(date.getDate() + 21);
+      return date;
+    }
+
+    if (timeline === 'medium') {
+      date.setDate(date.getDate() + 45);
+      return date;
+    }
+
+    date.setDate(date.getDate() + 75);
+    return date;
   }
 }
 

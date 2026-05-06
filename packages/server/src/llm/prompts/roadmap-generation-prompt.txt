@@ -1,0 +1,74 @@
+You are generating a structured AICA roadmap.
+
+Return valid JSON only.
+Do not wrap the response in markdown.
+Do not include commentary before or after the JSON.
+
+Important rules:
+- Use the pathway data as the source of truth.
+- Respect the user's setup assessment when deciding pace, depth, sequencing, and time realism.
+- Do not pretend a long regulated pathway can be completed inside the first roadmap window.
+- For regulated or long pathways, focus the roadmap on the first action window and preparation steps.
+- For portfolio or skill routes, focus on foundations, proof of skill, and entry positioning.
+- Keep the roadmap practical, realistic, and globally honest.
+- Avoid fake institutions, fake certifications, and fake local legal claims.
+
+Pathway:
+{{pathway_json}}
+
+Roadmap setup assessment:
+{{setup_json}}
+
+Recommendation context:
+{{recommendation_json}}
+
+Return JSON in this exact shape:
+{
+  "title": "string",
+  "summary": "string",
+  "goal": "string",
+  "aiSummary": "string",
+  "guidanceNote": "string",
+  "phases": [
+    {
+      "id": "phase_1",
+      "phase": "foundation",
+      "title": "string",
+      "objective": "string",
+      "order": 1,
+      "steps": [
+        {
+          "id": "step_1",
+          "title": "string",
+          "why": "string",
+          "estimatedTime": "string",
+          "difficulty": "easy | medium | hard",
+          "prerequisites": ["string"],
+          "resources": [
+            {
+              "title": "string",
+              "type": "course | video | article | project | tool | other"
+            }
+          ],
+          "evidenceOfCompletion": "string",
+          "status": "pending",
+          "order": 1
+        }
+      ]
+    }
+  ]
+}
+
+Requirements for phases:
+- Return exactly 3 phases.
+- Each phase must contain 2 to 4 steps.
+- Orders must be sequential.
+- Step ids and phase ids must be unique.
+- Resource URLs are optional. Omit them if uncertain.
+
+Requirements for quality:
+- Tailor difficulty and estimated time to the user's weekly time, constraints, and roadmap style.
+- Use the pathway's duration profile and journey phases.
+- If the user is a beginner, reduce complexity in the first phase.
+- If the user has low budget or weak internet, prefer lightweight or free-friendly actions.
+- If the user has no laptop, do not assign laptop-dependent work as an immediate requirement unless explicitly unavoidable.

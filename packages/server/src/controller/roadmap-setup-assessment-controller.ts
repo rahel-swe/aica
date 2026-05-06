@@ -36,7 +36,7 @@ export class RoadmapSetupAssessmentController {
       const assessment = await this.service.getRoadmapSetupStatus(userId);
 
       if (!assessment) {
-        res.json({
+        return res.json({
           success: true,
           message: 'Assessment status fetched.',
           data: {
@@ -45,7 +45,7 @@ export class RoadmapSetupAssessmentController {
         });
       }
 
-      res.json({
+      return res.json({
         success: true,
         message: 'Assessment status fetched.',
         data: assessment,

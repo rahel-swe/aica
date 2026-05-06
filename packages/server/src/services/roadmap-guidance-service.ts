@@ -1,4 +1,8 @@
-import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
+import type {
+  PathwayDurationProfile,
+  PathwayJourneyPhase,
+  RecommendationResult,
+} from '@contracts/shared/types/pathway-domain-types';
 import { llmClient } from '../llm/llm-client';
 import roadmapGuidancePrompt from '@/src/llm/prompts/roadmap-guidance-prompt.txt';
 
@@ -6,8 +10,10 @@ type RoadmapPromptInput = {
   pathwayTitle: string;
   pathwaySummary: string;
   keySkills: string[];
-  learningRoute: string[];
   opportunities: string[];
+  durationProfile: PathwayDurationProfile;
+  journeyPhases: PathwayJourneyPhase[];
+  verificationNote?: string;
   recommendation?: RecommendationResult;
 };
 
@@ -43,8 +49,22 @@ export class RoadmapGuidanceService {
         input.recommendation?.explanation || 'none'
       )
       .replace('{{key_skills}}', input.keySkills.join(', ') || 'none')
-      .replace('{{learning_route}}', input.learningRoute.join(' | ') || 'none')
-      .replace('{{opportunities}}', input.opportunities.join(', ') || 'none');
+      .replace('{{opportunities}}', input.opportunities.join(', ') || 'none')
+      .replace(
+        '{{timeline_type}}',
+        input.durationProfile.timelineType || 'unknown'
+      )
+      .replace(
+        '{{roadmap_window_label}}',
+        input.durationProfile.roadmapWindowLabel || 'Next 12 months'
+      )
+      .replace(
+        '{{journey_phases}}',
+        input.journeyPhases
+          .map((phase) => `${phase.name} (${phase.duration}): ${phase.focus}`)
+          .join(' | ') || 'none'
+      )
+      .replace('{{verification_note}}', input.verificationNote || 'none');
   }
 }
 

@@ -22,6 +22,24 @@ export const pathwayTypeEnum = ['study', 'career', 'hybrid'] as const;
 
 export const pathwayStatusEnum = ['active', 'draft', 'archived'] as const;
 
+export const pathwayCommitmentLevelEnum = ['short', 'medium', 'long'] as const;
+
+export const pathwayTimelineTypeEnum = [
+  'skill-route',
+  'portfolio-route',
+  'vocational-route',
+  'degree-route',
+  'regulated-degree',
+  'hybrid-route',
+] as const;
+
+export const degreeRequirementEnum = [
+  'not_required',
+  'optional',
+  'preferred',
+  'required',
+] as const;
+
 export const scoreBandEnum = [
   'strong',
   'supporting',
@@ -33,6 +51,9 @@ export const taxonomyNodeKindSchema = z.enum(taxonomyNodeKindEnum);
 export const taxonomyNodeStatusSchema = z.enum(taxonomyNodeStatusEnum);
 export const pathwayTypeSchema = z.enum(pathwayTypeEnum);
 export const pathwayStatusSchema = z.enum(pathwayStatusEnum);
+export const pathwayCommitmentLevelSchema = z.enum(pathwayCommitmentLevelEnum);
+export const pathwayTimelineTypeSchema = z.enum(pathwayTimelineTypeEnum);
+export const degreeRequirementSchema = z.enum(degreeRequirementEnum);
 export const scoreBandSchema = z.enum(scoreBandEnum);
 
 export const matchWeightSchema = z.object({
@@ -51,6 +72,25 @@ export const taxonomyNodeSchema = z.object({
   status: taxonomyNodeStatusSchema.default('draft'),
 });
 
+export const pathwayDurationProfileSchema = z.object({
+  commitmentLevel: pathwayCommitmentLevelSchema,
+  timelineType: pathwayTimelineTypeSchema,
+  degreeRequirement: degreeRequirementSchema,
+  estimatedMonthsMin: z.number().int().positive().optional(),
+  estimatedMonthsMax: z.number().int().positive().optional(),
+  estimatedYearsMin: z.number().int().positive().optional(),
+  estimatedYearsMax: z.number().int().positive().optional(),
+  requiresLicense: z.boolean().default(false),
+  localRulesRequired: z.boolean().default(false),
+  roadmapWindowLabel: z.string().min(1).default('Next 12 months'),
+});
+
+export const pathwayJourneyPhaseSchema = z.object({
+  name: z.string().min(1),
+  duration: z.string().min(1),
+  focus: z.string().min(1),
+});
+
 export const pathwaySchema = z.object({
   title: z.string().min(1),
   slug: z.string().min(1),
@@ -59,8 +99,10 @@ export const pathwaySchema = z.object({
   summary: z.string().min(1),
   description: z.string().min(1),
   keySkills: z.array(z.string()).default([]),
-  learningRoute: z.array(z.string()).default([]),
   opportunities: z.array(z.string()).default([]),
+  durationProfile: pathwayDurationProfileSchema,
+  journeyPhases: z.array(pathwayJourneyPhaseSchema).min(1),
+  verificationNote: z.string().optional(),
   relatedPathwayIds: z.array(z.string()).default([]),
   status: pathwayStatusSchema.default('draft'),
 });
@@ -136,6 +178,7 @@ export const pathwayListItemSchema = z.object({
   summary: z.string(),
   taxonomyNodes: z.array(taxonomyNodeSummarySchema),
   keySkills: z.array(z.string()),
+  durationProfile: pathwayDurationProfileSchema,
 });
 
 export const pathwayDetailSchema = z.object({
@@ -147,8 +190,10 @@ export const pathwayDetailSchema = z.object({
   description: z.string(),
   taxonomyNodes: z.array(taxonomyNodeSummarySchema),
   keySkills: z.array(z.string()),
-  learningRoute: z.array(z.string()),
   opportunities: z.array(z.string()),
+  durationProfile: pathwayDurationProfileSchema,
+  journeyPhases: z.array(pathwayJourneyPhaseSchema),
+  verificationNote: z.string().optional(),
   relatedPathways: z.array(relatedPathwaySummarySchema),
 });
 

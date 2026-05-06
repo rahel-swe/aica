@@ -13,7 +13,7 @@ export class RoadmapSetupAssessmentRepository {
     return await RoadmapSetupAssessmentModel.findOneAndUpdate(
       { userId },
       { $set: data },
-      { new: true }
+      { returnDocument: 'after' }
     ).lean();
   }
 
@@ -21,3 +21,6 @@ export class RoadmapSetupAssessmentRepository {
     return await RoadmapSetupAssessmentModel.deleteOne({ userId });
   }
 }
+
+export const roadmapSetupAssessmentRepository =
+  new RoadmapSetupAssessmentRepository();

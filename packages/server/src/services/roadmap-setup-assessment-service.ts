@@ -1,10 +1,13 @@
-import { RoadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
+import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
+import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 
 export class RoadmapSetupAssessmentService {
-  private readonly roadmapSetupRepository =
-    new RoadmapSetupAssessmentRepository();
+  private readonly roadmapSetupRepository = roadmapSetupAssessmentRepository;
 
-  async submitRoadmapSetupAssessment(userId: string, data: any) {
+  async submitRoadmapSetupAssessment(
+    userId: string,
+    data: RoadmapSetupAssessmentFormValues
+  ) {
     const existing = await this.roadmapSetupRepository.findByUserId(userId);
 
     if (existing) {

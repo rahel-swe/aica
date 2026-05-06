@@ -1,4 +1,5 @@
 import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-steps';
+import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-steps';
 
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
 
@@ -25,6 +26,7 @@ export const useRoadmapSetupAssessment = () => {
     resolver: zodResolver(roadmapSetupAssessmentFormSchema),
     mode: 'onChange',
     shouldUnregister: false,
+    defaultValues: roadmapSetupDefaultValues,
   });
 
   // 📊 STEP INDEX (URL-based like Pathway)

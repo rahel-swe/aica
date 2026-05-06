@@ -31,8 +31,26 @@ type PathwaySeedItem = {
   summary: string;
   description: string;
   keySkills: string[];
-  learningRoute: string[];
   opportunities: string[];
+  durationProfile: {
+    commitmentLevel: string;
+    timelineType: string;
+    degreeRequirement: string;
+    estimatedMonthsMin?: number;
+    estimatedMonthsMax?: number;
+    estimatedYearsMin?: number;
+    estimatedYearsMax?: number;
+    requiresLicense: boolean;
+    localRulesRequired: boolean;
+    roadmapWindowLabel: string;
+  };
+  journeyPhases: Array<{
+    name: string;
+    duration: string;
+    focus: string;
+  }>;
+  verificationNote?: string;
+  relatedPathwaySlugs?: string[];
   status: string;
 };
 
@@ -108,13 +126,43 @@ async function seedPathwayDomain() {
       summary: pathway.summary,
       description: pathway.description,
       keySkills: pathway.keySkills,
-      learningRoute: pathway.learningRoute,
       opportunities: pathway.opportunities,
+      durationProfile: pathway.durationProfile,
+      journeyPhases: pathway.journeyPhases,
+      verificationNote: pathway.verificationNote,
       status: pathway.status,
     }))
   );
 
   const pathwayBySlug = new Map(pathways.map((item) => [item.slug, item]));
+
+  for (const pathwaySeedItem of pathwaySeed) {
+    if (!pathwaySeedItem.relatedPathwaySlugs?.length) {
+      continue;
+    }
+
+    const currentPathway = pathwayBySlug.get(pathwaySeedItem.slug);
+
+    if (!currentPathway) {
+      throw new Error(
+        `Missing seeded pathway for slug: ${pathwaySeedItem.slug}`
+      );
+    }
+
+    currentPathway.relatedPathwayIds = pathwaySeedItem.relatedPathwaySlugs.map(
+      (slug) => {
+        const relatedPathway = pathwayBySlug.get(slug);
+
+        if (!relatedPathway) {
+          throw new Error(`Missing related pathway for slug: ${slug}`);
+        }
+
+        return relatedPathway._id;
+      }
+    );
+
+    await currentPathway.save();
+  }
 
   await pathwayMatchProfileRepository.createMany(
     profileSeed.map((profile) => {

@@ -26,7 +26,7 @@ const roadmapSetupAssessmentSchema = new Schema(
     currentStage: {
       type: String,
       enum: roadmapSetupCurrentStageEnum,
-      default: 'high_school',
+      default: 'self_learning',
     },
 
     weeklyTime: {

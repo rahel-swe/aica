@@ -28,8 +28,6 @@ export class LlmClient {
       ],
     });
 
-    console.log(chatCompletion.choices);
-
     return chatCompletion.choices[0]?.message?.content ?? '';
   };
 

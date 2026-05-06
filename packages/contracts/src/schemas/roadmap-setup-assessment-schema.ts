@@ -22,7 +22,7 @@ export const roadmapSetupConstraintEnum = [
   'weak_internet',
   'no_laptop',
   'beginner',
-  'fast_track',
+  'inconsistent_schedule',
 ] as const;
 
 export const roadmapSetupStyleEnum = [
@@ -61,8 +61,7 @@ export const roadmapSetupAssessmentFormSchema = z.object({
 
   constraints: z
     .array(roadmapSetupConstraint)
-    .min(1, 'Select at least one constraint.')
-    .max(4, 'Select up to four constraints.'),
+    .max(3, 'Select up to three constraints.'),
 
   roadmapStyle: roadmapSetupStyle,
 });

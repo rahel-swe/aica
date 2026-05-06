@@ -37,22 +37,11 @@ export type RoadmapSetupAssessmentSubmitResponse = {
     _id: string;
     userId: string;
     pickedPathwayId: string;
-    currentStage:
-      | 'graduate'
-      | 'high_school'
-      | 'self_learning'
-      | 'university'
-      | 'working';
-    weeklyTime: 'high' | 'intense' | 'low' | 'medium';
-    timeline: 'long' | 'medium' | 'short';
-    constraints: (
-      | 'beginner'
-      | 'fast_track'
-      | 'low_budget'
-      | 'no_laptop'
-      | 'weak_internet'
-    )[];
-    roadmapStyle: 'balanced' | 'deep' | 'fast_track';
+    currentStage: RoadmapSetupAssessmentCurrentStage;
+    weeklyTime: RoadmapSetupAssessmentWeeklyTime;
+    timeline: RoadmapSetupAssessmentTimeline;
+    constraints: RoadmapSetupAssessmentConstraint[];
+    roadmapStyle: RoadmapSetupAssessmentStyle;
     completed: boolean;
     stepsCompleted: number;
     createdAt: Date;
@@ -63,25 +52,14 @@ export type RoadmapSetupAssessmentStatusResponse = {
   message: string;
   data: {
     pickedPathwayId: string;
-    constraints: (
-      | 'low_budget'
-      | 'weak_internet'
-      | 'no_laptop'
-      | 'beginner'
-      | 'fast_track'
-    )[];
-    currentStage?:
-      | 'high_school'
-      | 'university'
-      | 'graduate'
-      | 'self_learning'
-      | 'working';
-    weeklyTime?: 'medium' | 'low' | 'high' | 'intense';
-    timeline?: 'short' | 'medium' | 'long';
-    roadmapStyle?: 'fast_track' | 'balanced' | 'deep';
+    constraints: RoadmapSetupAssessmentConstraint[];
+    currentStage?: RoadmapSetupAssessmentCurrentStage;
+    weeklyTime?: RoadmapSetupAssessmentWeeklyTime;
+    timeline?: RoadmapSetupAssessmentTimeline;
+    roadmapStyle?: RoadmapSetupAssessmentStyle;
     completed: boolean;
     _id: string;
-    stepsComleted: number;
+    stepsCompleted: number;
     userId: string;
     createdAt: string;
   };
