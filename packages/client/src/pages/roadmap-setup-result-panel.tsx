@@ -1,6 +1,4 @@
-import type { RoadmapStep } from '@/constants/roadmap-setup-steps';
-
-const RoadmapSetupResultPanel = ({ step }: { step: RoadmapStep }) => {
+const RoadmapSetupResultPanel = () => {
   return <div>RoadmapSetupResultPanel</div>;
 };
 
