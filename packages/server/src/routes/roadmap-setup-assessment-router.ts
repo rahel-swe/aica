@@ -11,12 +11,6 @@ roadmapSetupAssessmentRouter.post(
   roadmapSetupAssessmentController.submitRoadmapSetupAssessment
 );
 
-roadmapSetupAssessmentRouter.put(
-  '/update',
-  authorize,
-  roadmapSetupAssessmentController.updateRoadmapSetupAssessment
-);
-
 roadmapSetupAssessmentRouter.get(
   '/status',
   authorize,

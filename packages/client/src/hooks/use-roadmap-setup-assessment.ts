@@ -1,13 +1,6 @@
-import {
-  ROADMAP_SETUP_STEPS,
-  roadmapSetupDefaultValues,
-} from '@/constants/roadmap-setup-steps';
+import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-steps';
 
-import {
-  useRoadmapSetupAssessmentStatusQuery,
-  useRoadmapSetupAssessmentSubmitMutation,
-  useRoadmapSetupAssessmentUpdateMutation,
-} from '@/queries/roadmap-setup-assessment-queries';
+import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
 
 import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/roadmap-setup-assessment-schema';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
@@ -17,12 +10,9 @@ import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const useRoadmapSetup = () => {
+export const useRoadmapSetupAssessment = () => {
   const navigate = useNavigate();
   const { stepId } = useParams();
-
-  // 📡 STATUS (like Pathway create query)
-  const { data } = useRoadmapSetupAssessmentStatusQuery();
 
   // 🚀 CREATE MUTATION
   const {
@@ -30,19 +20,9 @@ export const useRoadmapSetup = () => {
     isPending: isRoadmapSetupCreating,
   } = useRoadmapSetupAssessmentSubmitMutation();
 
-  // ✏️ UPDATE MUTATION (optional but same pattern as pro apps)
-  const {
-    mutateAsync: roadmapSetupUpdateMutateAsync,
-    isPending: isRoadmapSetupUpdating,
-  } = useRoadmapSetupAssessmentUpdateMutation();
-
   // 🧠 FORM
   const form = useForm<RoadmapSetupAssessmentFormValues>({
     resolver: zodResolver(roadmapSetupAssessmentFormSchema),
-
-    defaultValues:
-      roadmapSetupDefaultValues as RoadmapSetupAssessmentFormValues,
-
     mode: 'onChange',
     shouldUnregister: false,
   });
@@ -53,32 +33,21 @@ export const useRoadmapSetup = () => {
     [stepId]
   );
 
-  // 📡 STEP INDEX FROM API (optional fallback)
-  const apiIndex = data?.data?.stepsComleted ?? -1;
-
   // 🚀 SUBMIT (CREATE)
   const submitRoadmapSetup = form.handleSubmit(async (payload) => {
     await roadmapSetupMutateAsync(payload, {
       onSuccess: (result) => {
         if (result?.success) {
-          navigate('/app/dashboard');
+          navigate('/roadmap-setup-assessment/finish');
         }
       },
     });
   });
 
-  // ✏️ UPDATE (if user already exists)
-  const updateRoadmapSetup = form.handleSubmit(async (payload) => {
-    await roadmapSetupUpdateMutateAsync(payload);
-  });
-
   return {
     currentIndex,
-    apiIndex,
     form,
     isRoadmapSetupCreating,
-    isRoadmapSetupUpdating,
     submitRoadmapSetup,
-    updateRoadmapSetup,
   };
 };

@@ -7,10 +7,13 @@ import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/r
 
 import { useFormContext } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import RoadmapSetupIntroPanel from '@/components/roadmap/roadmap-setup-assessment-intro-panel';
+import RoadmapSetupResultPanel from './roadmap-setup-result-panel';
+import { useRoadmapSetupAssessment } from '@/hooks/use-roadmap-setup-assessment';
 
 const RoadmapSetupAssesmentStepsPage = () => {
   const { stepId } = useParams();
-
+  const { currentIndex } = useRoadmapSetupAssessment();
   const form = useFormContext<RoadmapSetupAssessmentFormValues>();
 
   const step = ROADMAP_SETUP_STEPS.find((item) => item.id === stepId);
@@ -23,17 +26,15 @@ const RoadmapSetupAssesmentStepsPage = () => {
 
   return (
     <>
-      <RoadmapSetupFieldPanel
-        step={step}
-        currentIndex={0}
-        direction="forward"
-      />
-
-      {fieldError?.message && (
-        <p className="text-sm text-destructive text-center mt-4">
-          {String(fieldError.message)}
-        </p>
+      {step.type === 'intro' && <RoadmapSetupIntroPanel step={step} />}
+      {step.type !== 'intro' && step.type !== 'cta' && (
+        <RoadmapSetupFieldPanel step={step} currentIndex={currentIndex} />
       )}
+      {step.type !== 'intro' && step.type !== 'cta' && fieldError?.message && (
+        <p className="text-sm text-destructive">{String(fieldError.message)}</p>
+      )}
+
+      {step.type === 'cta' && <RoadmapSetupResultPanel step={step} />}
 
       <RoadmapSetupAssessmentStepsNavigation step={step} />
     </>

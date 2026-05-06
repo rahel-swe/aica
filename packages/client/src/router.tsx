@@ -17,7 +17,7 @@ import AuthLayout from '@/layouts/auth-layout';
 import RootLayout from '@/layouts/root-layout';
 import PathwayAssessmentLayout from './layouts/pathway-assessment-layout';
 import PathwayAssessmentStepsPage from './pages/pathway-assessment-steps-page';
-import RecommendedPathwaysLayout from './layouts/recommendations-layout';
+import PathwayRecommendedPathwaysLayout from './layouts/pathway-recommendations-layout.tsx';
 import PathwayCongratulations from './layouts/pathway-congratulations';
 import RoadmapSetupLayout from './layouts/roadmap-setup-assessment-layout';
 import RoadmapSetupAssesmentStepsPage from './pages/roadmap-setup-assessment-steps-page.tsx';
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'pathway-recommendations',
-        element: <RecommendedPathwaysLayout />,
+        element: <PathwayRecommendedPathwaysLayout />,
       },
       {
         path: 'pathway-congratulations',

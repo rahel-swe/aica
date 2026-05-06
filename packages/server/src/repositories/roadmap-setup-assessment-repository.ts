@@ -21,6 +21,3 @@ export class RoadmapSetupAssessmentRepository {
     return await RoadmapSetupAssessmentModel.deleteOne({ userId });
   }
 }
-
-export const roadmapSetupAssessmentRepository =
-  new RoadmapSetupAssessmentRepository();

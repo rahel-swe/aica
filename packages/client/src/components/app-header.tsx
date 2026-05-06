@@ -1,15 +1,9 @@
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import apiClient from '@/lib/api-client';
 import { authClient } from '@/lib/auth-client';
 import { Bell, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AppHeaderTabs from './app-header-tabs';
 import ModeToggle from './toggle-mode';
-import { Button } from './ui/button';
-import {
-  generateRecommendations,
-  getMyRecommendations,
-} from '@/services/recommendations-service';
 
 export default function AppHeader() {
   const { data, isPending } = authClient.useSession();
@@ -18,30 +12,12 @@ export default function AppHeader() {
 
   return (
     <header className="sticky top-0 p-1 sm:p-2">
-      <div className="flex items-center gap-4 h-16 lg:justify-between bg-background/70 backdrop-blur-md rounded-full border-x">
+      <div className="flex items-center gap-4 h-16 lg:justify-between bg-secondary/7 backdrop-blur-md rounded-full border-x">
         <p className="text-2xl font-bold tracking-wide text-primary hidden md:block px-4">
           AICA
         </p>
 
         <AppHeaderTabs />
-        <Button
-          onClick={async () => {
-            try {
-              await generateRecommendations();
-              const result = await getMyRecommendations();
-              console.log(result);
-              // const response = await apiClient.get(`/api/roadmaps/me`);
-              // const data = await response.data;
-
-              // console.log(data);
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            } catch (err: any) {
-              console.error(err.response?.data || err.message);
-            }
-          }}
-        >
-          Generate my recommendations
-        </Button>
 
         <div className="flex items-center justify-between md:gap-x-4 w-full md:w-min px-4">
           <ModeToggle />

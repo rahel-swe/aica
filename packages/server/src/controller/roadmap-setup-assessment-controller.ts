@@ -30,33 +30,20 @@ export class RoadmapSetupAssessmentController {
     }
   };
 
-  updateRoadmapSetupAssessment = async (req: AuthRequest, res: Response) => {
-    try {
-      const validatedData = roadmapSetupAssessmentFormSchema.parse(req.body);
-      const userId = req.user?.id || 'dummyUserId';
-
-      const result = await this.service.updateRoadmapSetupAssessment(
-        userId,
-        validatedData
-      );
-
-      res.json({
-        success: true,
-        message: 'Roadmap setup assessment updated.',
-        data: result,
-      });
-    } catch (error: any) {
-      res.status(400).json({
-        success: false,
-        message: error.message,
-      });
-    }
-  };
-
   getRoadmapSetupAssessmentStatus = async (req: AuthRequest, res: Response) => {
     try {
       const userId = req.user?.id || 'dummyUserId';
       const assessment = await this.service.getRoadmapSetupStatus(userId);
+
+      if (!assessment) {
+        res.json({
+          success: true,
+          message: 'Assessment status fetched.',
+          data: {
+            completed: false,
+          },
+        });
+      }
 
       res.json({
         success: true,

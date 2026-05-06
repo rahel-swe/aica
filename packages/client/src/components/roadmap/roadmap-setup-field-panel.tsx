@@ -4,17 +4,23 @@ import MultiSelectField from '../form/multi-select-field';
 import SingleSelectField from '../form/single-select-field';
 
 import { cn } from '@/lib/utils';
+import { useEffect, useRef } from 'react';
 
 type RoadmapSetupFieldPanelProps = {
   step: RoadmapStep;
   currentIndex: number;
-  direction: 'forward' | 'backward';
 };
 
 const RoadmapSetupFieldPanel = ({
   step,
-  direction,
+  currentIndex,
 }: RoadmapSetupFieldPanelProps) => {
+  const previouseIndex = useRef(0);
+
+  useEffect(() => {
+    previouseIndex.current = currentIndex;
+  }, [currentIndex]);
+
   if (!step.fieldName || !step.options) return null;
 
   return (
@@ -23,7 +29,8 @@ const RoadmapSetupFieldPanel = ({
       className={cn(
         'space-y-4 transition-all duration-500',
         'animate-in fade-in',
-        direction === 'forward'
+        // eslint-disable-next-line react-hooks/refs
+        currentIndex > previouseIndex.current
           ? 'slide-in-from-right-6'
           : 'slide-in-from-left-6'
       )}

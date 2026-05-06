@@ -11,7 +11,7 @@ export default function AppLayout() {
 
   if (!userData?.user) return <Navigate to="/auth/sign-in" replace />;
 
-  if (!isPathwayAssessmentCompleted)
+  if (!isPathwayAssessmentCompleted?.data.completed)
     return <Navigate to="/pathway-assessment/welcome" replace />;
 
   return (

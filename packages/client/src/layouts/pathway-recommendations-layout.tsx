@@ -6,8 +6,9 @@ import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
 import { useNavigate } from 'react-router-dom';
+import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-steps';
 
-const RecommendedPathwaysLayout = () => {
+const PathwayRecommendedPathwaysLayout = () => {
   const {
     data: recommendationsResponse,
     isLoading,
@@ -52,14 +53,13 @@ const RecommendedPathwaysLayout = () => {
             onPickedPathway={(item) => {
               mutate(
                 {
+                  ...roadmapSetupDefaultValues,
                   pickedPathwayId: item.pathwayId,
-                  constraints: [],
                 },
                 {
-                  onSuccess: ({ data }) => {
-                    console.log(data);
+                  onSuccess: () => {
                     navigate('/pathway-congratulations', {
-                      replace: true,
+                      // replace: true,
                       viewTransition: true,
                     });
                   },
@@ -73,4 +73,4 @@ const RecommendedPathwaysLayout = () => {
   );
 };
 
-export default RecommendedPathwaysLayout;
+export default PathwayRecommendedPathwaysLayout;

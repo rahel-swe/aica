@@ -1,22 +1,21 @@
-import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
+import { RoadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 
 export class RoadmapSetupAssessmentService {
-  private readonly repository = roadmapSetupAssessmentRepository;
+  private readonly roadmapSetupRepository =
+    new RoadmapSetupAssessmentRepository();
 
   async submitRoadmapSetupAssessment(userId: string, data: any) {
-    const existing = await this.repository.findByUserId(userId);
+    const existing = await this.roadmapSetupRepository.findByUserId(userId);
 
     if (existing) {
-      return await this.repository.updateByUserId(userId, {
+      return await this.roadmapSetupRepository.updateByUserId(userId, {
         ...data,
         completed: true,
         stepsCompleted: 8,
       });
     }
 
-    console.log(data);
-
-    return await this.repository.create({
+    return await this.roadmapSetupRepository.create({
       userId,
       ...data,
       completed: true,
@@ -24,26 +23,7 @@ export class RoadmapSetupAssessmentService {
     });
   }
 
-  async updateRoadmapSetupAssessment(userId: string, data: any) {
-    const existing = await this.repository.findByUserId(userId);
-
-    if (!existing) {
-      return await this.repository.create({
-        userId,
-        ...data,
-        completed: true,
-        stepsCompleted: 8,
-      });
-    }
-
-    return await this.repository.updateByUserId(userId, {
-      ...data,
-      completed: true,
-      stepsCompleted: 8,
-    });
-  }
-
   getRoadmapSetupStatus(userId: string) {
-    return this.repository.findByUserId(userId);
+    return this.roadmapSetupRepository.findByUserId(userId);
   }
 }

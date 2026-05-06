@@ -17,18 +17,6 @@ export const createRoadmapSetupAssessment = async (
   return data;
 };
 
-export const updateRoadmapSetupAssessment = async (
-  payload: RoadmapSetupAssessmentFormValues
-): Promise<RoadmapSetupAssessmentSubmitResponse> => {
-  const response = await apiClient.put(
-    `/api/roadmap-setup-assessment/update`,
-    payload
-  );
-  const data = await response.data;
-
-  return data;
-};
-
 export const getRoadmapSetupAssessmentStatus =
   async (): Promise<RoadmapSetupAssessmentStatusResponse> => {
     const response = await apiClient.get(

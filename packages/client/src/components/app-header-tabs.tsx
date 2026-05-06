@@ -12,7 +12,7 @@ const navItems = [
 
 export default function AppHeaderTabs() {
   return (
-    <nav className="gap-1 hidden md:flex border p-2 lg:p-0 rounded-full mx-auto">
+    <nav className="gap-1 hidden md:flex p-2 lg:p-0 rounded-full mx-auto">
       {navItems.map(({ label, to, icon: Icon }) => (
         <NavLink
           key={to}

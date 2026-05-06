@@ -25,22 +25,24 @@ import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/r
 
 // export type RoadmapStyle = 'fast_track' | 'balanced' | 'deep';
 
-export const roadmapSetupDefaultValues = {
+export const roadmapSetupDefaultValues: RoadmapSetupAssessmentFormValues = {
   pickedPathwayId: '',
-  currentStage: '',
-  weeklyTime: '',
-  timeline: '',
   constraints: [],
-  roadmapStyle: '',
+  currentStage: 'self_learning',
+  roadmapStyle: 'balanced',
+  timeline: 'medium',
+  weeklyTime: 'intense',
 };
 
 // Roadmap step IDs
 export type RoadmapStepId =
+  | 'welcome'
   | 'current-stage'
   | 'weekly-time'
   | 'timeline'
   | 'constraints'
-  | 'roadmap-style';
+  | 'roadmap-style'
+  | 'finish';
 
 // Roadmap step type (reuse existing OnboardingStepType)
 export type RoadmapStep = {
@@ -192,6 +194,15 @@ const roadmapStyleOptions: PathwayAssessmentOption[] = [
 
 export const ROADMAP_SETUP_STEPS: RoadmapStep[] = [
   {
+    id: 'welcome',
+    type: 'intro',
+    title: 'Find a study or career path that fits you',
+    description:
+      'Answer a few short questions about your strengths, interests, and goals. AICA will turn them into clear pathway matches, simple explanations, and a practical next-step roadmap.',
+    helperText:
+      'There are no right or wrong answers. Choose what feels most true to you right now.',
+  },
+  {
     id: 'current-stage',
     type: 'single-select',
     title: 'Where are you starting from?',
@@ -227,5 +238,13 @@ export const ROADMAP_SETUP_STEPS: RoadmapStep[] = [
     title: 'Roadmap style',
     fieldName: 'roadmapStyle',
     options: roadmapStyleOptions,
+  },
+  {
+    id: 'finish',
+    type: 'cta',
+    title: 'Your profile is ready',
+    description:
+      'AICA can now turn your answers into ranked pathways, explainable matches, and roadmap-ready guidance.',
+    helperText: 'Submit your profile to continue to recommendations.',
   },
 ] as const;

@@ -1,7 +1,6 @@
 import {
   createRoadmapSetupAssessment,
   getRoadmapSetupAssessmentStatus,
-  updateRoadmapSetupAssessment,
 } from '@/services/roadmap-setup-assessment-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
@@ -22,19 +21,6 @@ export const useRoadmapSetupAssessmentSubmitMutation = () => {
 
   return useMutation({
     mutationFn: createRoadmapSetupAssessment,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: roadmapKeys.status(),
-      });
-    },
-  });
-};
-
-export const useRoadmapSetupAssessmentUpdateMutation = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: updateRoadmapSetupAssessment,
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: roadmapKeys.status(),

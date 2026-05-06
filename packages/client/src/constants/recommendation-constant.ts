@@ -1,7 +1,7 @@
 export const rankedButtonColor = [
-  'bg-blue-200/70 dark:bg-blue-200 dark:text-black dark:hover:text-white',
-  'bg-green-200/70 dark:bg-green-200 dark:text-green-900 dark:hover:text-white',
-  'bg-yellow-200/70 dark:bg-yellow-200 dark:text-yellow-900 dark:hover:text-white',
+  'bg-blue-200/70 dark:bg-blue-200 dark:text-blue-950 dark:hover:text-white',
+  'bg-green-200/70 dark:bg-green-200 dark:text-green-950 dark:hover:text-white',
+  'bg-yellow-200/70 dark:bg-yellow-200 dark:text-yellow-950 dark:hover:text-white',
 ] as const;
 
 export const cardbgColors = [

@@ -15,7 +15,7 @@ export type RoadmapStep = z.infer<typeof roadmapStepSchema>;
 export type RoadmapGenerateRequest = z.infer<
   typeof roadmapGenerateRequestSchema
 >;
-export type Roadmap = z.infer<typeof roadmapSchema>;
+export type PathwayRoadmap = z.infer<typeof roadmapSchema>;
 export type RoadmapGenerateResponse = z.infer<
   typeof roadmapGenerateResponseSchema
 >;

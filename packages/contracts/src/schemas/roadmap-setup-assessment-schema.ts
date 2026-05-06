@@ -51,7 +51,7 @@ export const roadmapSetupStyle = z.enum(roadmapSetupStyleEnum, {
 });
 
 export const roadmapSetupAssessmentFormSchema = z.object({
-  pickedPathwayId: z.string().min(1, 'Pathway is required'),
+  pickedPathwayId: z.string().optional(),
 
   currentStage: roadmapSetupCurrentStage,
 
