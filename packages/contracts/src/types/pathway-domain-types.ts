@@ -42,7 +42,9 @@ export type Pathway = z.infer<typeof pathwaySchema>;
 export type PathwayMatchProfile = z.infer<typeof pathwayMatchProfileSchema>;
 export type TaxonomyNodeSummary = z.infer<typeof taxonomyNodeSummarySchema>;
 export type RelatedPathwaySummary = z.infer<typeof relatedPathwaySummarySchema>;
+
 export type PathwayListItem = z.infer<typeof pathwayListItemSchema>;
+
 export type PathwayDetail = z.infer<typeof pathwayDetailSchema>;
 export type PathwaysListResponse = z.infer<typeof pathwaysListResponseSchema>;
 export type PathwayDetailResponse = z.infer<typeof pathwayDetailResponseSchema>;
