@@ -10,15 +10,24 @@ import {
   workStyleEnum,
 } from './pathway-assessment-schema';
 
-export const taxonomyNodeKindEnum = ['domain', 'field', 'specialization'];
+export const taxonomyNodeKindEnum = [
+  'domain',
+  'field',
+  'specialization',
+] as const;
 
-export const taxonomyNodeStatusEnum = ['active', 'draft', 'archived'];
+export const taxonomyNodeStatusEnum = ['active', 'draft', 'archived'] as const;
 
-export const pathwayTypeEnum = ['study', 'career', 'hybrid'];
+export const pathwayTypeEnum = ['study', 'career', 'hybrid'] as const;
 
-export const pathwayStatusEnum = ['active', 'draft', 'archived'];
+export const pathwayStatusEnum = ['active', 'draft', 'archived'] as const;
 
-export const scoreBandEnum = ['strong', 'supporting', 'weak', 'penalty'];
+export const scoreBandEnum = [
+  'strong',
+  'supporting',
+  'weak',
+  'penalty',
+] as const;
 
 export const taxonomyNodeKindSchema = z.enum(taxonomyNodeKindEnum);
 export const taxonomyNodeStatusSchema = z.enum(taxonomyNodeStatusEnum);

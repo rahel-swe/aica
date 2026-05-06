@@ -1,5 +1,8 @@
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
-import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
+import type {
+  PathwayMatchProfile,
+  RecommendationResult,
+} from '@contracts/shared/types/pathway-domain-types';
 import { llmClient } from '../llm/llm-client';
 import explainRecommendationPrompt from '@/src/llm/prompts/recommendation-explanation-prompt.txt';
 
@@ -51,4 +54,64 @@ export class RecommendationExplanationService {
       .replace('{{user_impact}}', profile.impact)
       .replace('{{user_goals}}', profile.goals);
   }
+
+  buildReasons(
+    onboarding: PathwayAssessmentFormValues,
+    profile: PathwayMatchProfile
+  ) {
+    const reasons: string[] = [];
+
+    const strongestStrength = profile.strengths
+      .filter((item) => onboarding.strengths.includes(item.value))
+      .sort((a, b) => b.weight - a.weight)[0];
+
+    if (strongestStrength) {
+      reasons.push(
+        `Matches your strength in ${strongestStrength.value.replaceAll('_', ' ')}.`
+      );
+    }
+
+    const subjectMatch = profile.subjects.find(
+      (item) => item.value === onboarding.subjects
+    );
+
+    if (subjectMatch) {
+      reasons.push(
+        `Aligns with your subject preference in ${subjectMatch.value}.`
+      );
+    }
+
+    const passionMatch = profile.passions.find((item) =>
+      onboarding.passions.includes(item.value)
+    );
+
+    if (passionMatch) {
+      reasons.push(`Connects with your interest in ${passionMatch.value}.`);
+    }
+
+    const workStyleMatch = profile.workStyle.find(
+      (item) => item.value === onboarding.workStyle
+    );
+
+    if (workStyleMatch) {
+      reasons.push(
+        `Fits your preferred work style: ${workStyleMatch.value.replaceAll('_', ' ')}.`
+      );
+    }
+
+    const impactMatch = profile.impact.find(
+      (item) => item.value === onboarding.impact
+    );
+
+    if (impactMatch) {
+      reasons.push(
+        `Supports the kind of impact you value: ${impactMatch.value}.`
+      );
+    }
+
+    return reasons.slice(0, 4);
+  }
 }
+
+export const recommendationExplanationService =
+  new RecommendationExplanationService();

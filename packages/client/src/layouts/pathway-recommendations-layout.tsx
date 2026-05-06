@@ -27,7 +27,7 @@ const PathwayRecommendedPathwaysLayout = () => {
   const activeItem = recommendationsResponse!.data[activeIndex];
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-background to-muted/30 p-8 md:p-10">
+    <div className="min-h-screen p-8 md:p-10">
       <div className="mx-auto max-w-5xl space-y-6 md:space-y-8">
         <h1 className="text-5xl capitalize text-start text-wrap px-28 font-semibold tracking-tight md:text-6xl sm:text-center">
           Pick your pathway

@@ -10,31 +10,14 @@ import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-
 import { pathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
 import { pathwayRepository } from '../repositories/pathway-repository';
 import { recommendationRepository } from '../repositories/recommendation-repository';
-import { RecommendationExplanationService } from './recommendation-explanation-service';
-
-const DIMENSION_WEIGHTS = {
-  strengths: 0.2,
-  subjects: 0.1,
-  passions: 0.2,
-  freeTime: 0.1,
-  workEnvironment: 0.1,
-  workStyle: 0.1,
-  impact: 0.1,
-  goals: 0.1,
-} as const;
-
-const BAND_MULTIPLIERS = {
-  strong: 1,
-  supporting: 0.75,
-  weak: 0.4,
-  penalty: -0.5,
-} as const;
-
-type MatchWeightItem = {
-  value: MatchWeight['value'];
-  weight: MatchWeight['weight'];
-  band: ScoreBand;
-};
+import {
+  recommendationExplanationService,
+  RecommendationExplanationService,
+} from './recommendation-explanation-service';
+import {
+  DIMENSION_WEIGHTS,
+  pathwayScoringEngine,
+} from '../utils/pathway-scoring-engin';
 
 type PathwayProfileShape = PathwayMatchProfile;
 
@@ -43,12 +26,14 @@ export class RecommendationService {
   private readonly pathwayMatchProfileRepository =
     pathwayMatchProfileRepository;
   private readonly recommendationRepository = recommendationRepository;
-  private readonly explanationService = new RecommendationExplanationService();
+  private readonly explanationService = recommendationExplanationService;
+  private readonly pathwayAssessment = pathwayAssessmentRepository;
+  private readonly scoringEngine = pathwayScoringEngine;
 
   async generateRecommendations(
     userId: string
   ): Promise<RecommendationResult[]> {
-    const onboarding = (await pathwayAssessmentRepository.findByUserId(
+    const onboarding = (await this.pathwayAssessment.findByUserId(
       userId
     )) as PathwayAssessmentFormValues | null;
 
@@ -80,35 +65,35 @@ export class RecommendationService {
         }
 
         const dimensionScores = {
-          strengths: this.scoreMultiValueDimension(
+          strengths: this.scoringEngine.scoreMultiValueDimension(
             onboarding.strengths,
             profile.strengths
           ),
-          subjects: this.scoreSingleValueDimension(
+          subjects: this.scoringEngine.scoreSingleValueDimension(
             onboarding.subjects,
             profile.subjects
           ),
-          passions: this.scoreMultiValueDimension(
+          passions: this.scoringEngine.scoreMultiValueDimension(
             onboarding.passions,
             profile.passions
           ),
-          freeTime: this.scoreSingleValueDimension(
+          freeTime: this.scoringEngine.scoreSingleValueDimension(
             onboarding.freeTime,
             profile.freeTime
           ),
-          workEnvironment: this.scoreSingleValueDimension(
+          workEnvironment: this.scoringEngine.scoreSingleValueDimension(
             onboarding.workEnvironment,
             profile.workEnvironment
           ),
-          workStyle: this.scoreSingleValueDimension(
+          workStyle: this.scoringEngine.scoreSingleValueDimension(
             onboarding.workStyle,
             profile.workStyle
           ),
-          impact: this.scoreSingleValueDimension(
+          impact: this.scoringEngine.scoreSingleValueDimension(
             onboarding.impact,
             profile.impact
           ),
-          goals: this.scoreSingleValueDimension(
+          goals: this.scoringEngine.scoreSingleValueDimension(
             onboarding.goals,
             profile.goals
           ),
@@ -136,7 +121,7 @@ export class RecommendationService {
           summary: pathway.summary,
           totalScore,
           dimensionScores,
-          reasons: this.buildReasons(onboarding, profile),
+          reasons: this.explanationService.buildReasons(onboarding, profile),
         } satisfies RecommendationResult;
       })
       .filter((item): item is RecommendationResult => item !== null)
@@ -195,117 +180,5 @@ export class RecommendationService {
       rank: item.rank,
       matchingVersion: item.matchingVersion,
     }));
-  }
-
-  private scoreMultiValueDimension(
-    selectedValues: string[],
-    weights: MatchWeightItem[]
-  ) {
-    if (!weights.length || !selectedValues.length) {
-      return 0;
-    }
-
-    const totalPossible = weights.reduce(
-      (sum, item) => sum + item.weight * this.getBandMultiplier(item.band),
-      0
-    );
-
-    if (totalPossible <= 0) {
-      return 0;
-    }
-
-    const matchedScore = weights.reduce((sum, item) => {
-      if (!selectedValues.includes(item.value)) {
-        return sum;
-      }
-
-      return sum + item.weight * this.getBandMultiplier(item.band);
-    }, 0);
-
-    return Number(Math.max(0, matchedScore / totalPossible).toFixed(4));
-  }
-
-  private scoreSingleValueDimension(
-    selectedValue: string,
-    weights: MatchWeightItem[]
-  ) {
-    if (!weights.length || !selectedValue) {
-      return 0;
-    }
-
-    const match = weights.find((item) => item.value === selectedValue);
-
-    if (!match) {
-      return 0;
-    }
-
-    return Number(
-      Math.max(0, match.weight * this.getBandMultiplier(match.band)).toFixed(4)
-    );
-  }
-
-  private getBandMultiplier(band: ScoreBand) {
-    // these type later create separate 'penalty' | 'weak' | 'supporting' | 'strong'
-    return (
-      BAND_MULTIPLIERS[band as 'penalty' | 'weak' | 'supporting' | 'strong'] ??
-      BAND_MULTIPLIERS.supporting
-    );
-  }
-
-  private buildReasons(
-    onboarding: PathwayAssessmentFormValues,
-    profile: PathwayProfileShape
-  ) {
-    const reasons: string[] = [];
-
-    const strongestStrength = profile.strengths
-      .filter((item) => onboarding.strengths.includes(item.value))
-      .sort((a, b) => b.weight - a.weight)[0];
-
-    if (strongestStrength) {
-      reasons.push(
-        `Matches your strength in ${strongestStrength.value.replaceAll('_', ' ')}.`
-      );
-    }
-
-    const subjectMatch = profile.subjects.find(
-      (item) => item.value === onboarding.subjects
-    );
-
-    if (subjectMatch) {
-      reasons.push(
-        `Aligns with your subject preference in ${subjectMatch.value}.`
-      );
-    }
-
-    const passionMatch = profile.passions.find((item) =>
-      onboarding.passions.includes(item.value)
-    );
-
-    if (passionMatch) {
-      reasons.push(`Connects with your interest in ${passionMatch.value}.`);
-    }
-
-    const workStyleMatch = profile.workStyle.find(
-      (item) => item.value === onboarding.workStyle
-    );
-
-    if (workStyleMatch) {
-      reasons.push(
-        `Fits your preferred work style: ${workStyleMatch.value.replaceAll('_', ' ')}.`
-      );
-    }
-
-    const impactMatch = profile.impact.find(
-      (item) => item.value === onboarding.impact
-    );
-
-    if (impactMatch) {
-      reasons.push(
-        `Supports the kind of impact you value: ${impactMatch.value}.`
-      );
-    }
-
-    return reasons.slice(0, 4);
   }
 }
