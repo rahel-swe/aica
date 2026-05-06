@@ -7,19 +7,19 @@
       "technology",
       "software-engineering"
     ],
-    "summary": "A study path for building reliable applications, services, and digital systems.",
-    "description": "Software engineering suits learners who enjoy solving problems, building useful tools, and improving systems over time. It combines programming, databases, testing, teamwork, and product thinking, with strong career options across many industries.",
+    "summary": "A degree route for building reliable applications, platforms, and digital systems.",
+    "description": "Software engineering suits learners who enjoy logic, technology, and building useful systems. It provides broad foundations for web, mobile, backend, cloud, testing, and product software careers.",
     "keySkills": [
       "programming",
       "algorithms",
       "databases",
       "testing",
-      "team collaboration"
+      "version control"
     ],
     "opportunities": [
       "software companies",
       "banks and telecoms",
-      "startups",
+      "government digital teams",
       "remote product teams"
     ],
     "status": "active",
@@ -28,32 +28,34 @@
       "timelineType": "degree-route",
       "degreeRequirement": "required",
       "estimatedYearsMin": 3,
-      "estimatedYearsMax": 4,
+      "estimatedYearsMax": 5,
       "requiresLicense": false,
-      "localRulesRequired": false,
+      "localRulesRequired": true,
       "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what Software Engineering really demands and whether the long study route fits you"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward Software Engineering"
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
+    "verificationNote": "Program duration and degree naming vary by country and university.",
     "relatedPathwaySlugs": [
       "frontend-engineer",
       "backend-engineer",
-      "mobile-app-developer"
+      "mobile-app-developer",
+      "software-quality-assurance-engineer"
     ]
   },
   {
@@ -65,54 +67,54 @@
       "software-engineering",
       "frontend-development"
     ],
-    "summary": "Builds user-facing web interfaces that are useful, accessible, and pleasant to use.",
-    "description": "Frontend engineering is a practical career for people who like both logic and visual detail. It involves translating designs and user needs into responsive interfaces, connecting to APIs, improving performance, and making digital products easy to understand.",
+    "summary": "Builds user-facing web interfaces that are clear, accessible, and connected to real data.",
+    "description": "Frontend engineering is a strong portfolio route for people who combine problem-solving with visual and user-facing detail. It is roadmap-friendly because progress can be shown through increasingly realistic projects.",
     "keySkills": [
       "javascript",
       "react",
       "html",
       "css",
       "accessibility",
-      "ui development"
+      "api integration"
     ],
     "opportunities": [
       "product teams",
       "startups",
-      "agencies",
-      "remote web development roles"
+      "digital agencies",
+      "remote web roles"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
       "timelineType": "portfolio-route",
-      "degreeRequirement": "not_required",
+      "degreeRequirement": "optional",
       "estimatedMonthsMin": 6,
-      "estimatedMonthsMax": 18,
+      "estimatedMonthsMax": 24,
       "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 6 months"
     },
     "journeyPhases": [
       {
-        "name": "Foundation building",
-        "duration": "1-2 months",
-        "focus": "learn the core tools, principles, and standards behind Frontend Engineer"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn principles, tools, and examples from high-quality work."
       },
       {
-        "name": "Proof of skill",
-        "duration": "2-6 months",
-        "focus": "create portfolio projects, case studies, and feedback loops that show visible progress"
+        "name": "Portfolio projects",
+        "duration": "3-9 months",
+        "focus": "Create case studies that show process, decisions, and outcomes."
       },
       {
-        "name": "Market entry",
-        "duration": "6-18 months",
-        "focus": "turn visible proof into internships, freelance work, or junior frontend engineer opportunities"
+        "name": "Market readiness",
+        "duration": "3-12 months",
+        "focus": "Refine portfolio, seek feedback, and apply for junior or freelance work."
       }
     ],
     "relatedPathwaySlugs": [
-      "ux-ui-designer",
       "software-engineering-study",
-      "backend-engineer"
+      "ux-ui-designer",
+      "software-quality-assurance-engineer"
     ]
   },
   {
@@ -124,53 +126,53 @@
       "software-engineering",
       "backend-development"
     ],
-    "summary": "Builds APIs, data models, and server logic that power applications.",
-    "description": "Backend engineering fits people who enjoy systems, data flow, and problem-solving behind the scenes. The work includes designing APIs, managing databases, securing services, and making applications reliable as usage grows.",
+    "summary": "Builds APIs, data models, authentication, and server-side systems.",
+    "description": "Backend engineering fits analytical builders who enjoy data flow, system design, reliability, and logic behind applications. It supports clear roadmaps from basic APIs to secure production services.",
     "keySkills": [
-      "node.js",
       "api design",
       "databases",
       "authentication",
+      "node.js",
       "system design"
     ],
     "opportunities": [
-      "SaaS companies",
-      "enterprise technology teams",
+      "SaaS teams",
+      "enterprise IT",
       "fintech",
-      "platform engineering teams"
+      "platform teams"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
       "timelineType": "skill-route",
-      "degreeRequirement": "not_required",
-      "estimatedMonthsMin": 8,
-      "estimatedMonthsMax": 18,
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
       "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 6 months"
     },
     "journeyPhases": [
       {
-        "name": "Core skill foundations",
-        "duration": "1-2 months",
-        "focus": "build the essential concepts and tools used in Backend Engineer"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
       },
       {
-        "name": "Applied practice",
-        "duration": "2-6 months",
-        "focus": "practice through realistic tasks, projects, and structured feedback"
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
       },
       {
-        "name": "Entry positioning",
-        "duration": "8-18 months",
-        "focus": "turn skills into job-ready proof and realistic entry opportunities in Backend Engineer"
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
       }
     ],
     "relatedPathwaySlugs": [
       "software-engineering-study",
-      "cybersecurity-analyst",
-      "data-analyst"
+      "devops-cloud-engineer",
+      "data-engineer"
     ]
   },
   {
@@ -182,8 +184,8 @@
       "software-engineering",
       "mobile-development"
     ],
-    "summary": "Creates mobile applications for everyday services, learning, business, and entertainment.",
-    "description": "Mobile development is a strong option for builders who want their work to reach people directly on phones. It includes interface development, device features, offline behavior, app performance, and release workflows.",
+    "summary": "Creates mobile applications for services, learning, business, and daily use.",
+    "description": "Mobile development suits builders who want their work to reach users directly through phones. It requires interface skill, state management, API integration, testing, and release discipline.",
     "keySkills": [
       "mobile UI",
       "react native",
@@ -194,15 +196,73 @@
     "opportunities": [
       "mobile product teams",
       "freelance app projects",
-      "digital agencies",
-      "startup MVPs"
+      "startup MVPs",
+      "digital agencies"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "portfolio-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn principles, tools, and examples from high-quality work."
+      },
+      {
+        "name": "Portfolio projects",
+        "duration": "3-9 months",
+        "focus": "Create case studies that show process, decisions, and outcomes."
+      },
+      {
+        "name": "Market readiness",
+        "duration": "3-12 months",
+        "focus": "Refine portfolio, seek feedback, and apply for junior or freelance work."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "frontend-engineer",
+      "software-engineering-study",
+      "ux-ui-designer"
+    ]
+  },
+  {
+    "title": "Software Quality Assurance Engineer",
+    "slug": "software-quality-assurance-engineer",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "software-engineering",
+      "software-quality-assurance"
+    ],
+    "summary": "Tests software systematically so teams can release with confidence.",
+    "description": "QA engineering is a structured technology pathway for detail-oriented people who enjoy finding risks, documenting behavior, and improving quality. It can grow from manual testing into automation and release quality leadership.",
+    "keySkills": [
+      "test planning",
+      "bug reporting",
+      "automation basics",
+      "quality systems",
+      "documentation"
+    ],
+    "opportunities": [
+      "software teams",
+      "outsourcing companies",
+      "product companies",
+      "IT departments"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
       "timelineType": "skill-route",
-      "degreeRequirement": "not_required",
-      "estimatedMonthsMin": 8,
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 6,
       "estimatedMonthsMax": 18,
       "requiresLicense": false,
       "localRulesRequired": false,
@@ -210,25 +270,83 @@
     },
     "journeyPhases": [
       {
-        "name": "Core skill foundations",
-        "duration": "1-2 months",
-        "focus": "build the essential concepts and tools used in Mobile App Developer"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
       },
       {
-        "name": "Applied practice",
-        "duration": "2-6 months",
-        "focus": "practice through realistic tasks, projects, and structured feedback"
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
       },
       {
-        "name": "Entry positioning",
-        "duration": "8-18 months",
-        "focus": "turn skills into job-ready proof and realistic entry opportunities in Mobile App Developer"
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
       }
     ],
     "relatedPathwaySlugs": [
       "frontend-engineer",
       "backend-engineer",
-      "ux-ui-designer"
+      "product-manager"
+    ]
+  },
+  {
+    "title": "DevOps and Cloud Engineer",
+    "slug": "devops-cloud-engineer",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "software-engineering",
+      "devops-cloud-engineering"
+    ],
+    "summary": "Automates deployment, cloud infrastructure, monitoring, and reliability workflows.",
+    "description": "DevOps and cloud engineering is best after some programming or IT foundation. It suits organized problem solvers who like systems, automation, and keeping services reliable in production.",
+    "keySkills": [
+      "linux",
+      "cloud platforms",
+      "ci/cd",
+      "monitoring",
+      "infrastructure automation"
+    ],
+    "opportunities": [
+      "cloud teams",
+      "platform engineering",
+      "large software teams",
+      "managed service providers"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
+      },
+      {
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
+      },
+      {
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "backend-engineer",
+      "network-administrator",
+      "cloud-administrator"
     ]
   },
   {
@@ -240,8 +358,8 @@
       "data-ai",
       "data-analytics"
     ],
-    "summary": "Turns raw data into clear findings that help teams make better decisions.",
-    "description": "Data analysis fits analytical learners who like patterns, evidence, and practical business questions. The work often includes cleaning data, building dashboards, interpreting trends, and explaining what the numbers mean.",
+    "summary": "Turns data into clear findings, dashboards, and decision support.",
+    "description": "Data analysis is a high-structure pathway for people who like numbers, patterns, and practical business questions. It has a clear roadmap through spreadsheets, SQL, statistics, dashboards, and communication.",
     "keySkills": [
       "spreadsheets",
       "sql",
@@ -251,42 +369,158 @@
     ],
     "opportunities": [
       "business operations",
-      "public sector analytics",
       "marketing analytics",
-      "finance teams"
+      "finance teams",
+      "public sector analytics"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
       "timelineType": "skill-route",
-      "degreeRequirement": "preferred",
+      "degreeRequirement": "optional",
       "estimatedMonthsMin": 6,
-      "estimatedMonthsMax": 15,
+      "estimatedMonthsMax": 18,
       "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 6 months"
     },
     "journeyPhases": [
       {
-        "name": "Core skill foundations",
-        "duration": "1-2 months",
-        "focus": "build the essential concepts and tools used in Data Analyst"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
       },
       {
-        "name": "Applied practice",
-        "duration": "2-6 months",
-        "focus": "practice through realistic tasks, projects, and structured feedback"
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
       },
       {
-        "name": "Entry positioning",
-        "duration": "6-15 months",
-        "focus": "turn skills into job-ready proof and realistic entry opportunities in Data Analyst"
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
       }
     ],
     "relatedPathwaySlugs": [
-      "machine-learning-specialist",
+      "business-intelligence-analyst",
       "financial-analyst",
-      "policy-analyst"
+      "market-research-analyst"
+    ]
+  },
+  {
+    "title": "Business Intelligence Analyst",
+    "slug": "business-intelligence-analyst",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "data-ai",
+      "business-intelligence"
+    ],
+    "summary": "Builds reporting systems and metrics that help organizations monitor performance.",
+    "description": "BI analysis is a practical bridge between data and business operations. It suits organized analysts who like dashboards, repeatable reporting, and clear definitions of performance.",
+    "keySkills": [
+      "sql",
+      "dashboard design",
+      "metrics",
+      "data modeling",
+      "stakeholder communication"
+    ],
+    "opportunities": [
+      "operations teams",
+      "finance departments",
+      "large companies",
+      "NGOs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
+      },
+      {
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
+      },
+      {
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "data-analyst",
+      "data-engineer",
+      "operations-manager"
+    ]
+  },
+  {
+    "title": "Data Engineer",
+    "slug": "data-engineer",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "data-ai",
+      "data-engineering"
+    ],
+    "summary": "Builds reliable pipelines and data systems for analytics and products.",
+    "description": "Data engineering fits technical problem solvers who like databases, automation, and system reliability. It is more infrastructure-focused than data analysis and often benefits from programming experience.",
+    "keySkills": [
+      "sql",
+      "python",
+      "data pipelines",
+      "warehousing",
+      "data quality"
+    ],
+    "opportunities": [
+      "analytics platforms",
+      "large companies",
+      "fintech",
+      "AI teams"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
+      },
+      {
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
+      },
+      {
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "backend-engineer",
+      "data-analyst",
+      "machine-learning-specialist"
     ]
   },
   {
@@ -299,13 +533,13 @@
       "machine-learning"
     ],
     "summary": "Develops data-driven models for prediction, automation, and intelligent features.",
-    "description": "Machine learning is best for people who enjoy math, experimentation, programming, and long-term learning. It requires patience with data quality, model evaluation, and translating technical results into useful applications.",
+    "description": "Machine learning is a demanding pathway requiring math, programming, experimentation, and patience with data quality. AICA should recommend it strongly only when analytical and science traits are clear.",
     "keySkills": [
       "python",
       "statistics",
-      "machine learning",
       "model evaluation",
-      "data preparation"
+      "data preparation",
+      "machine learning"
     ],
     "opportunities": [
       "AI product teams",
@@ -315,36 +549,36 @@
     ],
     "status": "active",
     "durationProfile": {
-      "commitmentLevel": "long",
+      "commitmentLevel": "medium",
       "timelineType": "hybrid-route",
       "degreeRequirement": "preferred",
-      "estimatedYearsMin": 2,
-      "estimatedYearsMax": 4,
+      "estimatedMonthsMin": 18,
+      "estimatedMonthsMax": 36,
       "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Direction check",
-        "duration": "1-2 months",
-        "focus": "confirm whether Machine Learning Specialist matches your strengths, motivation, and reality"
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
       },
       {
-        "name": "Foundation and proof",
-        "duration": "2-8 months",
-        "focus": "combine learning, project work, and practical exposure"
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
       },
       {
-        "name": "Positioning and growth",
-        "duration": "2-4 years",
-        "focus": "choose a focused entry route and keep building toward Machine Learning Specialist"
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
       }
     ],
     "relatedPathwaySlugs": [
+      "data-engineer",
       "data-analyst",
-      "software-engineering-study",
-      "cybersecurity-analyst"
+      "software-engineering-study"
     ]
   },
   {
@@ -356,8 +590,8 @@
       "cybersecurity",
       "security-operations"
     ],
-    "summary": "Protects systems by monitoring threats, investigating incidents, and improving defenses.",
-    "description": "Cybersecurity analysis fits detail-oriented problem solvers who like investigation and structured procedures. The role combines networking basics, logs, risk thinking, communication, and continuous learning as threats change.",
+    "summary": "Monitors threats, investigates incidents, and helps protect digital systems.",
+    "description": "Cybersecurity analysis fits detail-oriented problem solvers who like investigation, procedures, and continuous learning. It has a strong roadmap through networking, logs, labs, and incident response practice.",
     "keySkills": [
       "networking",
       "security monitoring",
@@ -367,99 +601,390 @@
     ],
     "opportunities": [
       "security operations centers",
-      "IT departments",
       "banks",
-      "government technology teams"
+      "government technology teams",
+      "IT departments"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
       "timelineType": "skill-route",
-      "degreeRequirement": "preferred",
-      "estimatedMonthsMin": 6,
-      "estimatedMonthsMax": 18,
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
       "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 6 months"
     },
     "journeyPhases": [
       {
-        "name": "Core skill foundations",
-        "duration": "1-2 months",
-        "focus": "build the essential concepts and tools used in Cybersecurity Analyst"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
       },
       {
-        "name": "Applied practice",
-        "duration": "2-6 months",
-        "focus": "practice through realistic tasks, projects, and structured feedback"
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
       },
       {
-        "name": "Entry positioning",
-        "duration": "6-18 months",
-        "focus": "turn skills into job-ready proof and realistic entry opportunities in Cybersecurity Analyst"
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
       }
     ],
     "relatedPathwaySlugs": [
-      "backend-engineer",
-      "information-technology-support",
-      "software-engineering-study"
+      "network-administrator",
+      "it-support-specialist",
+      "cybersecurity-governance-analyst"
     ]
   },
   {
-    "title": "Information Technology Support",
-    "slug": "information-technology-support",
+    "title": "Cybersecurity Governance Analyst",
+    "slug": "cybersecurity-governance-analyst",
     "type": "career",
     "taxonomySlugs": [
       "technology",
-      "software-engineering"
+      "cybersecurity",
+      "governance-risk-compliance"
     ],
-    "summary": "Helps users and organizations keep computers, networks, and software working reliably.",
-    "description": "IT support is a practical entry route into technology for people who like hands-on troubleshooting and helping others. It builds foundations in hardware, operating systems, networking, user support, and service processes.",
+    "summary": "Helps organizations manage security policies, audits, evidence, and risk controls.",
+    "description": "Security governance is a structured cybersecurity path for organized communicators who prefer risk management and documentation over deep technical operations.",
     "keySkills": [
-      "troubleshooting",
-      "network basics",
-      "operating systems",
-      "customer support",
-      "documentation"
+      "risk assessment",
+      "policy writing",
+      "audit evidence",
+      "security controls",
+      "compliance reporting"
     ],
     "opportunities": [
-      "schools and universities",
+      "banks",
+      "large companies",
+      "government offices",
+      "consulting firms"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
+      },
+      {
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
+      },
+      {
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "cybersecurity-analyst",
+      "compliance-officer",
+      "it-support-specialist"
+    ]
+  },
+  {
+    "title": "IT Support Specialist",
+    "slug": "it-support-specialist",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "it-systems-networks",
+      "it-support"
+    ],
+    "summary": "Helps users and organizations keep devices, software, and networks working.",
+    "description": "IT support is a practical vocational entry route into technology. It suits hands-on helpers and can lead toward networking, cloud administration, cybersecurity, or systems roles.",
+    "keySkills": [
+      "troubleshooting",
+      "operating systems",
+      "network basics",
+      "ticketing",
+      "customer support"
+    ],
+    "opportunities": [
+      "schools",
       "business IT teams",
       "help desks",
       "managed service providers"
     ],
     "status": "active",
     "durationProfile": {
-      "commitmentLevel": "short",
+      "commitmentLevel": "medium",
       "timelineType": "vocational-route",
-      "degreeRequirement": "not_required",
-      "estimatedMonthsMin": 3,
-      "estimatedMonthsMax": 9,
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 6,
+      "estimatedMonthsMax": 18,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Orientation and requirements",
+        "duration": "1-2 months",
+        "focus": "Confirm local training options, safety expectations, and entry requirements."
+      },
+      {
+        "name": "Practical training",
+        "duration": "4-12 months",
+        "focus": "Build supervised hands-on skills and workplace habits."
+      },
+      {
+        "name": "Entry experience",
+        "duration": "6-12 months",
+        "focus": "Gain field exposure, references, and confidence with real tasks."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "network-administrator",
+      "cloud-administrator",
+      "cybersecurity-analyst"
+    ]
+  },
+  {
+    "title": "Network Administrator",
+    "slug": "network-administrator",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "it-systems-networks",
+      "network-administration"
+    ],
+    "summary": "Maintains connectivity, network devices, access, and troubleshooting for organizations.",
+    "description": "Network administration fits hands-on technical learners who enjoy systems and practical troubleshooting. It is a strong next step after IT support and a foundation for security and cloud roles.",
+    "keySkills": [
+      "networking",
+      "routing basics",
+      "switching",
+      "documentation",
+      "troubleshooting"
+    ],
+    "opportunities": [
+      "telecoms",
+      "schools",
+      "enterprise IT",
+      "service providers"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "vocational-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Orientation and requirements",
+        "duration": "1-2 months",
+        "focus": "Confirm local training options, safety expectations, and entry requirements."
+      },
+      {
+        "name": "Practical training",
+        "duration": "4-12 months",
+        "focus": "Build supervised hands-on skills and workplace habits."
+      },
+      {
+        "name": "Entry experience",
+        "duration": "6-12 months",
+        "focus": "Gain field exposure, references, and confidence with real tasks."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "it-support-specialist",
+      "cybersecurity-analyst",
+      "cloud-administrator"
+    ]
+  },
+  {
+    "title": "Cloud Administrator",
+    "slug": "cloud-administrator",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "it-systems-networks",
+      "cloud-administration"
+    ],
+    "summary": "Operates cloud services, identity, storage, monitoring, and access controls.",
+    "description": "Cloud administration is a practical route for people with IT foundations who want modern infrastructure work. It is less code-heavy than cloud engineering but still requires structured learning.",
+    "keySkills": [
+      "cloud services",
+      "identity management",
+      "monitoring",
+      "backup",
+      "access control"
+    ],
+    "opportunities": [
+      "cloud support teams",
+      "enterprise IT",
+      "managed service providers",
+      "software companies"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
       "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 6 months"
     },
     "journeyPhases": [
       {
-        "name": "Technical basics",
-        "duration": "1-2 months",
-        "focus": "learn the tools, safety habits, and hands-on basics needed for Information Technology Support"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
       },
       {
-        "name": "Guided practical work",
-        "duration": "2-6 months",
-        "focus": "practice in workshop, field, or supervised task settings"
-      },
-      {
-        "name": "Field entry",
+        "name": "Applied projects",
         "duration": "3-9 months",
-        "focus": "move into technician, apprenticeship, or junior operational work related to Information Technology Support"
+        "focus": "Build realistic work samples and connect skills to practical problems."
+      },
+      {
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
       }
     ],
     "relatedPathwaySlugs": [
-      "cybersecurity-analyst",
-      "backend-engineer",
-      "software-engineering-study"
+      "network-administrator",
+      "devops-cloud-engineer",
+      "it-support-specialist"
+    ]
+  },
+  {
+    "title": "UX/UI Designer",
+    "slug": "ux-ui-designer",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "digital-product-design",
+      "ux-product-design"
+    ],
+    "summary": "Designs digital interfaces and user flows that help people complete tasks.",
+    "description": "UX/UI design is included because it is a structured digital product pathway with clear portfolio evidence and strong roadmap logic. It should be recommended for users who combine creativity, people understanding, and technology interest.",
+    "keySkills": [
+      "user research",
+      "wireframing",
+      "prototyping",
+      "usability testing",
+      "visual interface design"
+    ],
+    "opportunities": [
+      "product teams",
+      "design agencies",
+      "startups",
+      "software companies"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "portfolio-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 6,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn principles, tools, and examples from high-quality work."
+      },
+      {
+        "name": "Portfolio projects",
+        "duration": "3-9 months",
+        "focus": "Create case studies that show process, decisions, and outcomes."
+      },
+      {
+        "name": "Market readiness",
+        "duration": "3-12 months",
+        "focus": "Refine portfolio, seek feedback, and apply for junior or freelance work."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "frontend-engineer",
+      "product-manager",
+      "software-quality-assurance-engineer"
+    ]
+  },
+  {
+    "title": "Product Manager",
+    "slug": "product-manager",
+    "type": "career",
+    "taxonomySlugs": [
+      "technology",
+      "digital-product-design",
+      "product-management"
+    ],
+    "summary": "Guides digital product decisions across user needs, business goals, and delivery.",
+    "description": "Product management fits organized communicators who enjoy prioritization, user problems, and cross-functional work. It is often stronger after some exposure to technology, business, design, or operations.",
+    "keySkills": [
+      "user research",
+      "prioritization",
+      "roadmapping",
+      "analytics",
+      "communication"
+    ],
+    "opportunities": [
+      "software companies",
+      "startups",
+      "digital services",
+      "innovation teams"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "ux-ui-designer",
+      "project-manager",
+      "business-intelligence-analyst"
     ]
   },
   {
@@ -469,22 +994,22 @@
     "taxonomySlugs": [
       "health",
       "medicine-clinical-care",
-      "medicine"
+      "general-medicine"
     ],
-    "summary": "A regulated medical study path for diagnosing, treating, and guiding patient care.",
-    "description": "General doctor training suits learners with strong science interest, emotional steadiness, and long-term discipline. It is a high-commitment regulated pathway that combines academic study, supervised clinical exposure, and country-specific licensing before independent practice.",
+    "summary": "A long regulated medical pathway for broad patient diagnosis, treatment, and clinical care.",
+    "description": "General doctor is a serious long-term direction, not a 12-month career switch. AICA should use the roadmap for first-year readiness, local verification, science strengthening, admission preparation, and commitment testing while showing the full multi-year journey separately.",
     "keySkills": [
       "biology",
+      "chemistry",
       "clinical reasoning",
-      "communication",
-      "discipline",
-      "patient care"
+      "patient communication",
+      "study discipline"
     ],
     "opportunities": [
-      "medical faculties",
-      "teaching hospitals",
-      "community clinics",
-      "public health systems"
+      "hospitals",
+      "clinics",
+      "public health systems",
+      "specialist training routes"
     ],
     "status": "active",
     "durationProfile": {
@@ -499,25 +1024,25 @@
     },
     "journeyPhases": [
       {
-        "name": "Fit and readiness",
-        "duration": "1-3 months",
-        "focus": "confirm long-term fit, daily realities, and academic readiness for General Doctor"
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-12 months",
-        "focus": "check admission rules, required documents, exams, finances, and support systems"
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
       },
       {
-        "name": "Formal study and licensing journey",
-        "duration": "6-10 years",
-        "focus": "complete accredited study, supervised training, and local licensing steps toward General Doctor"
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
       }
     ],
-    "verificationNote": "Exact duration, admission, accreditation, and licensing rules for General Doctor depend on country, institution, and regulator.",
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
     "relatedPathwaySlugs": [
       "nursing-study",
-      "medical-laboratory-scientist",
+      "pharmacy-study",
       "public-health-officer"
     ]
   },
@@ -530,20 +1055,20 @@
       "medicine-clinical-care",
       "nursing"
     ],
-    "summary": "A clinical study path focused on patient care, health monitoring, and practical support.",
-    "description": "Nursing suits people who are steady, organized, compassionate, and ready for hands-on clinical work. It requires science learning, communication, discipline, and the ability to support people during stressful moments.",
+    "summary": "A regulated clinical pathway focused on patient care, monitoring, and care coordination.",
+    "description": "Nursing suits people-centered learners who can handle hands-on clinical work, routines, pressure, and communication. It is often shorter than medicine but still requires formal local training and registration.",
     "keySkills": [
       "patient care",
       "clinical observation",
       "communication",
-      "basic science",
-      "care planning"
+      "care planning",
+      "documentation"
     ],
     "opportunities": [
       "hospitals",
       "clinics",
       "community health programs",
-      "international healthcare pathways"
+      "care facilities"
     ],
     "status": "active",
     "durationProfile": {
@@ -558,26 +1083,144 @@
     },
     "journeyPhases": [
       {
-        "name": "Fit and readiness",
-        "duration": "1-3 months",
-        "focus": "confirm long-term fit, daily realities, and academic readiness for Nursing"
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-12 months",
-        "focus": "check admission rules, required documents, exams, finances, and support systems"
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
       },
       {
-        "name": "Formal study and licensing journey",
-        "duration": "3-5 years",
-        "focus": "complete accredited study, supervised training, and local licensing steps toward Nursing"
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
       }
     ],
-    "verificationNote": "Exact duration, admission, accreditation, and licensing rules for Nursing depend on country, institution, and regulator.",
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
     "relatedPathwaySlugs": [
       "general-doctor",
-      "public-health-officer",
+      "physiotherapist",
+      "public-health-officer"
+    ]
+  },
+  {
+    "title": "Pharmacy",
+    "slug": "pharmacy-study",
+    "type": "study",
+    "taxonomySlugs": [
+      "health",
+      "medicine-clinical-care",
+      "pharmacy"
+    ],
+    "summary": "A regulated health pathway focused on safe medicines, dispensing, and pharmaceutical care.",
+    "description": "Pharmacy is a strong fit for science-oriented, organized users who want healthcare impact with less continuous bedside care than medicine or nursing.",
+    "keySkills": [
+      "pharmacology",
+      "chemistry",
+      "patient advice",
+      "dispensing safety",
+      "accuracy"
+    ],
+    "opportunities": [
+      "pharmacies",
+      "hospitals",
+      "medicine supply chains",
+      "public health programs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 4,
+      "estimatedYearsMax": 6,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
+    "relatedPathwaySlugs": [
+      "general-doctor",
+      "medical-laboratory-scientist",
       "nutrition-dietetics"
+    ]
+  },
+  {
+    "title": "Dentistry",
+    "slug": "dentistry-study",
+    "type": "study",
+    "taxonomySlugs": [
+      "health",
+      "medicine-clinical-care",
+      "dentistry"
+    ],
+    "summary": "A regulated clinical pathway focused on oral health, diagnosis, and dental procedures.",
+    "description": "Dentistry suits learners who combine science, hands-on precision, patient communication, and long training commitment. Exact training and registration rules must be checked locally.",
+    "keySkills": [
+      "oral anatomy",
+      "manual precision",
+      "patient care",
+      "diagnosis",
+      "infection control"
+    ],
+    "opportunities": [
+      "dental clinics",
+      "hospitals",
+      "public oral health programs",
+      "private practice"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 5,
+      "estimatedYearsMax": 7,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
+    "relatedPathwaySlugs": [
+      "general-doctor",
+      "nursing-study",
+      "physiotherapist"
     ]
   },
   {
@@ -586,20 +1229,20 @@
     "type": "career",
     "taxonomySlugs": [
       "health",
-      "medicine-clinical-care",
+      "diagnostics-laboratory-science",
       "medical-laboratory-science"
     ],
     "summary": "Performs laboratory tests that support diagnosis, treatment, and public health.",
-    "description": "Medical laboratory science fits careful, analytical people who like science but prefer structured lab work over constant public-facing care. The role demands accuracy, quality control, and respect for safety procedures.",
+    "description": "Medical laboratory science fits careful analytical users who like science and structured lab work. It requires formal training in many countries, but the role is highly roadmap-worthy because skills and lab readiness are clear.",
     "keySkills": [
-      "laboratory techniques",
-      "biology",
-      "quality control",
+      "lab safety",
       "sample handling",
+      "microscopy",
+      "quality control",
       "data accuracy"
     ],
     "opportunities": [
-      "hospital laboratories",
+      "hospital labs",
       "diagnostic centers",
       "research labs",
       "public health labs"
@@ -617,26 +1260,85 @@
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what Medical Laboratory Scientist really demands and whether the long study route fits you"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward Medical Laboratory Scientist"
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
-    "verificationNote": "Exact program structure and qualification expectations for Medical Laboratory Scientist depend on country and institution.",
+    "verificationNote": "Local accreditation and practice rules may apply depending on country.",
     "relatedPathwaySlugs": [
-      "general-doctor",
+      "pharmacy-study",
+      "epidemiologist",
+      "general-doctor"
+    ]
+  },
+  {
+    "title": "Radiographer",
+    "slug": "radiographer",
+    "type": "career",
+    "taxonomySlugs": [
+      "health",
+      "diagnostics-laboratory-science",
+      "radiography-imaging"
+    ],
+    "summary": "Uses medical imaging equipment to support diagnosis and patient care.",
+    "description": "Radiography is a technical health pathway for users who like science, equipment, accuracy, and patient interaction. It often requires accredited education and local registration.",
+    "keySkills": [
+      "imaging equipment",
+      "patient positioning",
+      "radiation safety",
+      "anatomy",
+      "communication"
+    ],
+    "opportunities": [
+      "hospitals",
+      "diagnostic imaging centers",
+      "specialist clinics",
+      "public health facilities"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 5,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
+    "relatedPathwaySlugs": [
+      "medical-laboratory-scientist",
       "nursing-study",
-      "public-health-officer"
+      "physiotherapist"
     ]
   },
   {
@@ -648,78 +1350,20 @@
       "public-health",
       "health-promotion"
     ],
-    "summary": "Plans and supports programs that improve health outcomes for communities.",
-    "description": "Public health is a strong match for people who care about prevention, community impact, and systems-level change. It blends health knowledge, communication, data, outreach, and program coordination.",
+    "summary": "Plans and supports community health programs, prevention, and outreach.",
+    "description": "Public health officer is a practical impact pathway for users who want health work at community and systems level. It combines communication, coordination, basic data, and health education.",
     "keySkills": [
       "health education",
       "community outreach",
-      "basic epidemiology",
       "program coordination",
-      "reporting"
+      "reporting",
+      "prevention"
     ],
     "opportunities": [
       "NGOs",
       "public health agencies",
       "community programs",
       "international development projects"
-    ],
-    "status": "active",
-    "durationProfile": {
-      "commitmentLevel": "medium",
-      "timelineType": "hybrid-route",
-      "degreeRequirement": "preferred",
-      "estimatedYearsMin": 1,
-      "estimatedYearsMax": 3,
-      "requiresLicense": false,
-      "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 9 months"
-    },
-    "journeyPhases": [
-      {
-        "name": "Direction check",
-        "duration": "1-2 months",
-        "focus": "confirm whether Public Health Officer matches your strengths, motivation, and reality"
-      },
-      {
-        "name": "Foundation and proof",
-        "duration": "2-8 months",
-        "focus": "combine learning, project work, and practical exposure"
-      },
-      {
-        "name": "Positioning and growth",
-        "duration": "1-3 years",
-        "focus": "choose a focused entry route and keep building toward Public Health Officer"
-      }
-    ],
-    "relatedPathwaySlugs": [
-      "nutrition-dietetics",
-      "social-worker",
-      "counselor"
-    ]
-  },
-  {
-    "title": "Nutrition and Dietetics",
-    "slug": "nutrition-dietetics",
-    "type": "study",
-    "taxonomySlugs": [
-      "health",
-      "public-health",
-      "health-promotion"
-    ],
-    "summary": "A health study path focused on food, wellbeing, prevention, and practical nutrition planning.",
-    "description": "Nutrition and dietetics is useful for learners interested in science, people, and everyday health decisions. It can lead to clinical, community, sports, and wellness roles depending on training and local licensing requirements.",
-    "keySkills": [
-      "nutrition science",
-      "counseling",
-      "meal planning",
-      "health education",
-      "assessment"
-    ],
-    "opportunities": [
-      "clinics",
-      "community health programs",
-      "sports programs",
-      "wellness organizations"
     ],
     "status": "active",
     "durationProfile": {
@@ -734,26 +1378,262 @@
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what Nutrition and Dietetics really demands and whether the long study route fits you"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward Nutrition and Dietetics"
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
-    "verificationNote": "Exact program structure and qualification expectations for Nutrition and Dietetics depend on country and institution.",
+    "verificationNote": "Titles and public-sector entry requirements vary locally.",
+    "relatedPathwaySlugs": [
+      "epidemiologist",
+      "monitoring-evaluation-specialist",
+      "nursing-study"
+    ]
+  },
+  {
+    "title": "Epidemiologist",
+    "slug": "epidemiologist",
+    "type": "career",
+    "taxonomySlugs": [
+      "health",
+      "public-health",
+      "epidemiology"
+    ],
+    "summary": "Studies disease patterns and population health data to guide prevention and response.",
+    "description": "Epidemiology is a strong analytical health pathway for science-minded users who like data and public impact. It often requires postgraduate study for advanced roles.",
+    "keySkills": [
+      "statistics",
+      "surveillance",
+      "study design",
+      "data analysis",
+      "public health reporting"
+    ],
+    "opportunities": [
+      "public health institutes",
+      "research centers",
+      "NGOs",
+      "government health teams"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 24,
+      "estimatedMonthsMax": 48,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "verificationNote": "Advanced roles may require graduate study and local public health experience.",
     "relatedPathwaySlugs": [
       "public-health-officer",
+      "data-analyst",
+      "medical-laboratory-scientist"
+    ]
+  },
+  {
+    "title": "Physiotherapist",
+    "slug": "physiotherapist",
+    "type": "career",
+    "taxonomySlugs": [
+      "health",
+      "rehabilitation-allied-health",
+      "physiotherapy"
+    ],
+    "summary": "Helps people recover movement, function, and physical confidence after injury or illness.",
+    "description": "Physiotherapy fits hands-on helpers who like science, movement, and direct patient progress. It usually requires formal clinical education and supervised practice.",
+    "keySkills": [
+      "anatomy",
+      "movement assessment",
+      "exercise planning",
+      "patient communication",
+      "rehabilitation"
+    ],
+    "opportunities": [
+      "hospitals",
+      "rehabilitation centers",
+      "sports clinics",
+      "community health programs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 5,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
+    "relatedPathwaySlugs": [
       "nursing-study",
+      "nutrition-dietetics",
       "general-doctor"
+    ]
+  },
+  {
+    "title": "Nutrition and Dietetics",
+    "slug": "nutrition-dietetics",
+    "type": "study",
+    "taxonomySlugs": [
+      "health",
+      "rehabilitation-allied-health",
+      "nutrition-dietetics-spec"
+    ],
+    "summary": "A health pathway focused on food, prevention, counseling, and practical nutrition planning.",
+    "description": "Nutrition and dietetics suits users interested in science, people, and health behavior. Clinical dietetics may be regulated, while wellness and community nutrition rules vary widely.",
+    "keySkills": [
+      "nutrition science",
+      "diet assessment",
+      "counseling",
+      "meal planning",
+      "health education"
+    ],
+    "opportunities": [
+      "clinics",
+      "community health programs",
+      "sports programs",
+      "wellness organizations"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "degree-route",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 5,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
+      },
+      {
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
+      }
+    ],
+    "verificationNote": "Clinical practice and protected titles may require local registration.",
+    "relatedPathwaySlugs": [
+      "public-health-officer",
+      "physiotherapist",
+      "counseling-psychologist"
+    ]
+  },
+  {
+    "title": "Counseling Psychologist",
+    "slug": "counseling-psychologist",
+    "type": "career",
+    "taxonomySlugs": [
+      "health",
+      "mental-health-counseling",
+      "counseling-psychology"
+    ],
+    "summary": "Supports mental wellbeing through structured listening, assessment, and guidance.",
+    "description": "Counseling psychology is a long people-centered pathway that requires ethics, supervision, and local rules. AICA should recommend it carefully to users with strong people and communication traits.",
+    "keySkills": [
+      "active listening",
+      "ethics",
+      "assessment",
+      "case notes",
+      "referral judgment"
+    ],
+    "opportunities": [
+      "schools",
+      "clinics",
+      "NGOs",
+      "wellbeing programs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 5,
+      "estimatedYearsMax": 8,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
+    "relatedPathwaySlugs": [
+      "school-counselor",
+      "social-worker",
+      "psychology-study"
     ]
   },
   {
@@ -765,13 +1645,13 @@
       "finance-accounting",
       "accounting"
     ],
-    "summary": "A business study path for financial records, reporting, auditing, and controls.",
-    "description": "Accounting is practical for organized learners who like structure, numbers, and responsibility. It offers stable options in nearly every sector and can grow into audit, finance, tax, compliance, or management roles.",
+    "summary": "A structured business pathway for financial records, reporting, audit, and controls.",
+    "description": "Accounting is a high-confidence recommendation for organized, analytical users who like numbers and stable progression. It supports clear roadmaps from bookkeeping to reporting, audit, and finance roles.",
     "keySkills": [
       "bookkeeping",
       "financial reporting",
-      "audit basics",
       "spreadsheets",
+      "audit basics",
       "attention to detail"
     ],
     "opportunities": [
@@ -788,30 +1668,31 @@
       "estimatedYearsMin": 3,
       "estimatedYearsMax": 4,
       "requiresLicense": false,
-      "localRulesRequired": false,
+      "localRulesRequired": true,
       "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what Accounting really demands and whether the long study route fits you"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward Accounting"
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
+    "verificationNote": "Professional accounting titles may require local certification or exams.",
     "relatedPathwaySlugs": [
       "financial-analyst",
-      "entrepreneurship-small-business",
-      "policy-analyst"
+      "banking-credit-officer",
+      "compliance-officer"
     ]
   },
   {
@@ -823,12 +1704,12 @@
       "finance-accounting",
       "financial-analysis"
     ],
-    "summary": "Uses financial data to evaluate performance, plan budgets, and guide decisions.",
-    "description": "Financial analysis suits people who enjoy numbers, business questions, and evidence-based recommendations. The work can include budgeting, forecasts, investment analysis, reporting, and advising managers.",
+    "summary": "Uses financial data to evaluate performance, budgets, forecasts, and decisions.",
+    "description": "Financial analysis suits analytical users who like numbers, business problems, and communication with decision-makers. It may start from accounting, finance, economics, or strong spreadsheet/data skills.",
     "keySkills": [
       "financial modeling",
-      "spreadsheets",
       "forecasting",
+      "spreadsheets",
       "business analysis",
       "presentation"
     ],
@@ -843,33 +1724,91 @@
       "commitmentLevel": "medium",
       "timelineType": "hybrid-route",
       "degreeRequirement": "preferred",
-      "estimatedYearsMin": 1,
-      "estimatedYearsMax": 3,
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
       "requiresLicense": false,
       "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 9 months"
+      "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Direction check",
-        "duration": "1-2 months",
-        "focus": "confirm whether Financial Analyst matches your strengths, motivation, and reality"
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
       },
       {
-        "name": "Foundation and proof",
-        "duration": "2-8 months",
-        "focus": "combine learning, project work, and practical exposure"
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
       },
       {
-        "name": "Positioning and growth",
-        "duration": "1-3 years",
-        "focus": "choose a focused entry route and keep building toward Financial Analyst"
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
       }
     ],
     "relatedPathwaySlugs": [
       "accounting-study",
       "data-analyst",
-      "product-manager"
+      "business-intelligence-analyst"
+    ]
+  },
+  {
+    "title": "Banking and Credit Officer",
+    "slug": "banking-credit-officer",
+    "type": "career",
+    "taxonomySlugs": [
+      "business",
+      "finance-accounting",
+      "banking-credit"
+    ],
+    "summary": "Assesses customers, credit applications, risk, and banking service needs.",
+    "description": "Banking and credit is a structured business route for people who are organized, analytical, and comfortable with customers. It can lead toward finance, risk, compliance, or relationship management.",
+    "keySkills": [
+      "credit analysis",
+      "customer service",
+      "risk review",
+      "financial documents",
+      "banking operations"
+    ],
+    "opportunities": [
+      "banks",
+      "microfinance institutions",
+      "credit teams",
+      "financial services"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "financial-analyst",
+      "accounting-study",
+      "compliance-officer"
     ]
   },
   {
@@ -878,17 +1817,17 @@
     "type": "career",
     "taxonomySlugs": [
       "business",
-      "marketing-sales",
+      "marketing-growth",
       "digital-marketing"
     ],
-    "summary": "Plans online campaigns that help organizations reach, understand, and serve customers.",
-    "description": "Digital marketing fits creative communicators who also like measuring results. It includes content, social media, search, email, advertising, analytics, and ongoing experiments to improve growth.",
+    "summary": "Plans online campaigns that help organizations reach and understand customers.",
+    "description": "Digital marketing is included as a structured business-growth pathway, not decorative content creation. It should focus on audience research, campaigns, analytics, and measurable outcomes.",
     "keySkills": [
       "content strategy",
-      "social media",
       "analytics",
       "copywriting",
-      "campaign planning"
+      "campaign planning",
+      "search and social channels"
     ],
     "opportunities": [
       "marketing agencies",
@@ -898,327 +1837,442 @@
     ],
     "status": "active",
     "durationProfile": {
-      "commitmentLevel": "short",
+      "commitmentLevel": "medium",
       "timelineType": "portfolio-route",
-      "degreeRequirement": "not_required",
-      "estimatedMonthsMin": 4,
-      "estimatedMonthsMax": 12,
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 6,
+      "estimatedMonthsMax": 18,
       "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 6 months"
     },
     "journeyPhases": [
       {
-        "name": "Foundation building",
-        "duration": "1-2 months",
-        "focus": "learn the core tools, principles, and standards behind Digital Marketing Specialist"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn principles, tools, and examples from high-quality work."
       },
       {
-        "name": "Proof of skill",
-        "duration": "2-6 months",
-        "focus": "create portfolio projects, case studies, and feedback loops that show visible progress"
+        "name": "Portfolio projects",
+        "duration": "3-9 months",
+        "focus": "Create case studies that show process, decisions, and outcomes."
       },
       {
-        "name": "Market entry",
-        "duration": "4-12 months",
-        "focus": "turn visible proof into internships, freelance work, or junior digital marketing specialist opportunities"
+        "name": "Market readiness",
+        "duration": "3-12 months",
+        "focus": "Refine portfolio, seek feedback, and apply for junior or freelance work."
       }
     ],
     "relatedPathwaySlugs": [
-      "graphic-designer",
-      "video-content-producer",
-      "product-manager"
+      "market-research-analyst",
+      "sales-business-development-specialist",
+      "small-business-manager"
     ]
   },
   {
-    "title": "Product Manager",
-    "slug": "product-manager",
+    "title": "Sales and Business Development Specialist",
+    "slug": "sales-business-development-specialist",
     "type": "career",
     "taxonomySlugs": [
       "business",
-      "management-entrepreneurship",
-      "product-management"
+      "marketing-growth",
+      "sales-business-development"
     ],
-    "summary": "Guides product decisions by connecting user needs, business goals, and technical delivery.",
-    "description": "Product management is a hybrid path for organized communicators who enjoy problem-solving, prioritization, and teamwork. It is less about coding directly and more about deciding what should be built and why.",
-    "keySkills": [
-      "user research",
-      "prioritization",
-      "roadmapping",
-      "communication",
-      "analytics"
-    ],
-    "opportunities": [
-      "software companies",
-      "startups",
-      "digital services",
-      "innovation teams"
-    ],
-    "status": "active",
-    "durationProfile": {
-      "commitmentLevel": "medium",
-      "timelineType": "hybrid-route",
-      "degreeRequirement": "preferred",
-      "estimatedYearsMin": 1,
-      "estimatedYearsMax": 3,
-      "requiresLicense": false,
-      "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 9 months"
-    },
-    "journeyPhases": [
-      {
-        "name": "Direction check",
-        "duration": "1-2 months",
-        "focus": "confirm whether Product Manager matches your strengths, motivation, and reality"
-      },
-      {
-        "name": "Foundation and proof",
-        "duration": "2-8 months",
-        "focus": "combine learning, project work, and practical exposure"
-      },
-      {
-        "name": "Positioning and growth",
-        "duration": "1-3 years",
-        "focus": "choose a focused entry route and keep building toward Product Manager"
-      }
-    ],
-    "relatedPathwaySlugs": [
-      "software-engineering-study",
-      "ux-ui-designer",
-      "digital-marketing-specialist"
-    ]
-  },
-  {
-    "title": "Entrepreneurship and Small Business",
-    "slug": "entrepreneurship-small-business",
-    "type": "hybrid",
-    "taxonomySlugs": [
-      "business",
-      "management-entrepreneurship"
-    ],
-    "summary": "Builds the skills needed to launch, test, and grow small ventures.",
-    "description": "Entrepreneurship fits self-directed learners who like building, selling, adapting, and taking responsibility for uncertain outcomes. It requires customer understanding, financial discipline, operations, and resilience.",
+    "summary": "Builds customer relationships, identifies opportunities, and grows revenue.",
+    "description": "Sales and business development is a practical pathway for communicators who like people, goals, negotiation, and variety. It has clear progress through product knowledge, pipeline discipline, and customer trust.",
     "keySkills": [
       "customer discovery",
-      "sales",
-      "basic finance",
-      "operations",
-      "adaptability"
+      "negotiation",
+      "pipeline management",
+      "presentation",
+      "relationship building"
     ],
     "opportunities": [
-      "local business ownership",
-      "online services",
-      "family businesses",
-      "startup projects"
+      "B2B companies",
+      "startups",
+      "service firms",
+      "financial services"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
-      "timelineType": "hybrid-route",
-      "degreeRequirement": "not_required",
-      "estimatedYearsMin": 1,
-      "estimatedYearsMax": 3,
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 6,
+      "estimatedMonthsMax": 18,
       "requiresLicense": false,
       "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 9 months"
+      "roadmapWindowLabel": "Next 6 months"
     },
     "journeyPhases": [
       {
-        "name": "Direction check",
-        "duration": "1-2 months",
-        "focus": "confirm whether Entrepreneurship and Small Business matches your strengths, motivation, and reality"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
       },
       {
-        "name": "Foundation and proof",
-        "duration": "2-8 months",
-        "focus": "combine learning, project work, and practical exposure"
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
       },
       {
-        "name": "Positioning and growth",
-        "duration": "1-3 years",
-        "focus": "choose a focused entry route and keep building toward Entrepreneurship and Small Business"
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
       }
     ],
     "relatedPathwaySlugs": [
       "digital-marketing-specialist",
-      "product-manager",
-      "sustainable-agriculture-entrepreneur"
+      "small-business-manager",
+      "banking-credit-officer"
     ]
   },
   {
-    "title": "Primary School Teacher",
-    "slug": "primary-school-teacher",
+    "title": "Market Research Analyst",
+    "slug": "market-research-analyst",
     "type": "career",
     "taxonomySlugs": [
-      "education",
-      "teaching",
-      "primary-education"
+      "business",
+      "marketing-growth",
+      "market-research"
     ],
-    "summary": "Supports younger learners in literacy, numeracy, confidence, and classroom habits.",
-    "description": "Primary teaching suits patient communicators who enjoy helping children grow step by step. The role requires planning, classroom management, subject basics, empathy, and consistent routines.",
+    "summary": "Studies customers, competitors, and markets to guide product and business decisions.",
+    "description": "Market research combines social curiosity with analytical discipline. It suits users who like surveys, interviews, patterns, and making evidence useful for teams.",
     "keySkills": [
-      "lesson planning",
-      "classroom management",
-      "communication",
-      "child development",
-      "assessment"
+      "survey design",
+      "interviewing",
+      "data analysis",
+      "customer insight",
+      "report writing"
     ],
     "opportunities": [
-      "public schools",
-      "private schools",
-      "education NGOs",
-      "tutoring centers"
+      "consumer companies",
+      "consulting firms",
+      "marketing teams",
+      "NGOs"
     ],
     "status": "active",
     "durationProfile": {
-      "commitmentLevel": "long",
-      "timelineType": "degree-route",
-      "degreeRequirement": "required",
-      "estimatedYearsMin": 3,
-      "estimatedYearsMax": 4,
+      "commitmentLevel": "medium",
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
       "requiresLicense": false,
-      "localRulesRequired": true,
-      "roadmapWindowLabel": "Next 12 months"
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
+        "name": "Foundations",
         "duration": "1-3 months",
-        "focus": "understand what Primary School Teacher really demands and whether the long study route fits you"
+        "focus": "Learn core concepts and tools through structured practice."
       },
       {
-        "name": "Entry preparation",
+        "name": "Applied projects",
         "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "focus": "Build realistic work samples and connect skills to practical problems."
       },
       {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward Primary School Teacher"
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
       }
     ],
-    "verificationNote": "Exact program structure and qualification expectations for Primary School Teacher depend on country and institution.",
     "relatedPathwaySlugs": [
-      "stem-teacher",
-      "counselor",
-      "instructional-designer"
+      "data-analyst",
+      "digital-marketing-specialist",
+      "product-manager"
     ]
   },
   {
-    "title": "STEM Teacher",
-    "slug": "stem-teacher",
+    "title": "Project Manager",
+    "slug": "project-manager",
     "type": "career",
     "taxonomySlugs": [
-      "education",
-      "teaching",
-      "stem-education"
+      "business",
+      "management-operations",
+      "project-management"
     ],
-    "summary": "Teaches science, math, and practical problem-solving through clear instruction.",
-    "description": "STEM teaching is a strong option for people who like science or math and also enjoy explaining ideas to others. It combines subject knowledge, demonstrations, assessment, and student motivation.",
+    "summary": "Coordinates scope, timelines, people, risks, and delivery across work streams.",
+    "description": "Project management fits organized communicators who like turning plans into action. It is useful across technology, construction, NGOs, business operations, and education.",
     "keySkills": [
-      "math teaching",
-      "science teaching",
-      "experiments",
-      "explanation",
-      "assessment"
+      "planning",
+      "risk tracking",
+      "stakeholder communication",
+      "coordination",
+      "delivery reporting"
     ],
     "opportunities": [
-      "secondary schools",
-      "STEM programs",
-      "tutoring centers",
-      "education nonprofits"
-    ],
-    "status": "active",
-    "durationProfile": {
-      "commitmentLevel": "long",
-      "timelineType": "degree-route",
-      "degreeRequirement": "required",
-      "estimatedYearsMin": 3,
-      "estimatedYearsMax": 4,
-      "requiresLicense": false,
-      "localRulesRequired": true,
-      "roadmapWindowLabel": "Next 12 months"
-    },
-    "journeyPhases": [
-      {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what STEM Teacher really demands and whether the long study route fits you"
-      },
-      {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
-      },
-      {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward STEM Teacher"
-      }
-    ],
-    "verificationNote": "Exact program structure and qualification expectations for STEM Teacher depend on country and institution.",
-    "relatedPathwaySlugs": [
-      "primary-school-teacher",
-      "instructional-designer",
-      "software-engineering-study"
-    ]
-  },
-  {
-    "title": "Instructional Designer",
-    "slug": "instructional-designer",
-    "type": "career",
-    "taxonomySlugs": [
-      "education",
-      "learning-design",
-      "instructional-design"
-    ],
-    "summary": "Designs courses, training materials, and learning experiences for specific outcomes.",
-    "description": "Instructional design suits organized creators who like explaining ideas clearly. The role can work in education, corporate training, NGOs, and online learning, often combining writing, design, assessment, and technology.",
-    "keySkills": [
-      "learning objectives",
-      "course design",
-      "assessment",
-      "writing",
-      "e-learning tools"
-    ],
-    "opportunities": [
-      "online learning companies",
-      "corporate training",
       "NGOs",
-      "universities"
+      "construction firms",
+      "technology teams",
+      "business operations"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
       "timelineType": "hybrid-route",
       "degreeRequirement": "preferred",
-      "estimatedYearsMin": 1,
-      "estimatedYearsMax": 2,
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 24,
       "requiresLicense": false,
       "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 9 months"
+      "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Direction check",
-        "duration": "1-2 months",
-        "focus": "confirm whether Instructional Designer matches your strengths, motivation, and reality"
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
       },
       {
-        "name": "Foundation and proof",
-        "duration": "2-8 months",
-        "focus": "combine learning, project work, and practical exposure"
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
       },
       {
-        "name": "Positioning and growth",
-        "duration": "1-2 years",
-        "focus": "choose a focused entry route and keep building toward Instructional Designer"
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
       }
     ],
     "relatedPathwaySlugs": [
-      "primary-school-teacher",
-      "stem-teacher",
-      "ux-ui-designer"
+      "product-manager",
+      "operations-manager",
+      "development-program-coordinator"
+    ]
+  },
+  {
+    "title": "Operations Manager",
+    "slug": "operations-manager",
+    "type": "career",
+    "taxonomySlugs": [
+      "business",
+      "management-operations",
+      "operations-management"
+    ],
+    "summary": "Improves daily systems, processes, service delivery, and team execution.",
+    "description": "Operations management suits practical systems thinkers who like making work more reliable and efficient. It is highly roadmapable through process mapping, metrics, and team coordination.",
+    "keySkills": [
+      "process improvement",
+      "team coordination",
+      "metrics",
+      "service delivery",
+      "problem solving"
+    ],
+    "opportunities": [
+      "retail operations",
+      "logistics firms",
+      "service companies",
+      "NGOs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "project-manager",
+      "supply-chain-logistics-specialist",
+      "business-intelligence-analyst"
+    ]
+  },
+  {
+    "title": "Supply Chain and Logistics Specialist",
+    "slug": "supply-chain-logistics-specialist",
+    "type": "career",
+    "taxonomySlugs": [
+      "business",
+      "management-operations",
+      "supply-chain-logistics"
+    ],
+    "summary": "Manages procurement, inventory, transport, warehousing, and flow of goods.",
+    "description": "Supply chain and logistics is a practical pathway for organized people who enjoy systems, movement, planning, and real-world operations. It is useful across health, retail, agriculture, construction, and humanitarian work.",
+    "keySkills": [
+      "inventory control",
+      "procurement",
+      "transport planning",
+      "supplier coordination",
+      "operations reporting"
+    ],
+    "opportunities": [
+      "logistics companies",
+      "retailers",
+      "NGOs",
+      "manufacturing firms"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "operations-manager",
+      "agribusiness-specialist",
+      "project-manager"
+    ]
+  },
+  {
+    "title": "Human Resource Specialist",
+    "slug": "human-resource-specialist",
+    "type": "career",
+    "taxonomySlugs": [
+      "business",
+      "management-operations",
+      "human-resource-management"
+    ],
+    "summary": "Supports hiring, employee records, performance processes, and workplace policies.",
+    "description": "Human resources fits people-oriented communicators who are organized and comfortable with sensitive information. It can grow into recruitment, learning and development, people operations, or HR management.",
+    "keySkills": [
+      "recruitment",
+      "employee records",
+      "policy basics",
+      "communication",
+      "conflict handling"
+    ],
+    "opportunities": [
+      "companies",
+      "NGOs",
+      "schools",
+      "public organizations"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 6,
+      "estimatedMonthsMax": 18,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
+      },
+      {
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
+      },
+      {
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "operations-manager",
+      "school-administrator",
+      "instructional-designer"
+    ]
+  },
+  {
+    "title": "Small Business Manager",
+    "slug": "small-business-manager",
+    "type": "hybrid",
+    "taxonomySlugs": [
+      "business",
+      "entrepreneurship-small-business-field",
+      "small-business-management"
+    ],
+    "summary": "Runs practical business operations, customer service, finance, and local growth.",
+    "description": "Small business management is a realistic entrepreneurship pathway for users who want ownership or family business leadership. It should focus on customer validation, cash flow, operations, and service quality.",
+    "keySkills": [
+      "basic finance",
+      "customer service",
+      "sales",
+      "operations",
+      "market testing"
+    ],
+    "opportunities": [
+      "local businesses",
+      "online services",
+      "family businesses",
+      "cooperatives"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 6,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "sales-business-development-specialist",
+      "digital-marketing-specialist",
+      "agribusiness-specialist"
     ]
   },
   {
@@ -1227,14 +2281,15 @@
     "type": "study",
     "taxonomySlugs": [
       "engineering",
-      "civil-infrastructure-engineering"
+      "civil-infrastructure-engineering",
+      "civil-engineering"
     ],
-    "summary": "A study path for designing and improving buildings, roads, water systems, and infrastructure.",
-    "description": "Civil engineering fits learners who enjoy math, practical problem-solving, and visible real-world impact. It requires technical discipline, site awareness, teamwork, and responsibility for public safety.",
+    "summary": "A degree route for infrastructure, buildings, roads, water systems, and construction.",
+    "description": "Civil engineering is a long structured pathway for learners who like math, science, practical problem-solving, and visible public impact. It requires formal study and often local professional rules for signing designs.",
     "keySkills": [
       "engineering math",
-      "materials",
       "surveying",
+      "materials",
       "structural basics",
       "project documentation"
     ],
@@ -1257,26 +2312,26 @@
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what Civil Engineering really demands and whether the long study route fits you"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Degree progression",
-        "duration": "4-5 years",
-        "focus": "build academic and practical foundations that lead toward Civil Engineering"
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
-    "verificationNote": "Exact program structure and qualification expectations for Civil Engineering depend on country and institution.",
+    "verificationNote": "Professional engineering registration rules vary by country.",
     "relatedPathwaySlugs": [
       "structural-engineer",
-      "mechanical-engineering-study",
-      "renewable-energy-technician"
+      "construction-manager",
+      "water-resources-engineer"
     ]
   },
   {
@@ -1288,12 +2343,12 @@
       "civil-infrastructure-engineering",
       "structural-engineering"
     ],
-    "summary": "Designs and checks structures so buildings and infrastructure can carry loads safely.",
-    "description": "Structural engineering suits analytical people who enjoy math-heavy design and careful responsibility. It involves calculations, codes, materials, modeling software, site coordination, and clear technical documentation.",
+    "summary": "Designs and checks structures so buildings and infrastructure carry loads safely.",
+    "description": "Structural engineering is a high-responsibility career for analytical users comfortable with math, design codes, and careful documentation. It usually follows civil engineering study.",
     "keySkills": [
       "structural analysis",
-      "engineering codes",
       "materials",
+      "engineering codes",
       "CAD",
       "technical reporting"
     ],
@@ -1316,84 +2371,144 @@
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what Structural Engineer really demands and whether the long study route fits you"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Degree progression",
-        "duration": "4-6 years",
-        "focus": "build academic and practical foundations that lead toward Structural Engineer"
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
-    "verificationNote": "Exact program structure and qualification expectations for Structural Engineer depend on country and institution.",
+    "verificationNote": "Design authority and professional registration vary locally.",
     "relatedPathwaySlugs": [
       "civil-engineering-study",
-      "mechanical-engineering-study",
+      "construction-manager",
+      "quality-engineer"
+    ]
+  },
+  {
+    "title": "Water Resources Engineer",
+    "slug": "water-resources-engineer",
+    "type": "career",
+    "taxonomySlugs": [
+      "engineering",
+      "civil-infrastructure-engineering",
+      "water-resources-engineering"
+    ],
+    "summary": "Works on water supply, drainage, irrigation, flood control, and hydraulic systems.",
+    "description": "Water resources engineering is a strong direction for users who like math, environment, infrastructure, and public service. It connects engineering with climate and community needs.",
+    "keySkills": [
+      "hydraulics",
+      "water systems",
+      "GIS basics",
+      "modeling",
+      "field assessment"
+    ],
+    "opportunities": [
+      "water agencies",
+      "consultancies",
+      "NGOs",
+      "infrastructure projects"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "degree-route",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 4,
+      "estimatedYearsMax": 6,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
+      },
+      {
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
+      }
+    ],
+    "verificationNote": "Professional engineering and public works requirements vary by country.",
+    "relatedPathwaySlugs": [
+      "civil-engineering-study",
+      "water-resource-manager",
       "environmental-scientist"
     ]
   },
   {
-    "title": "Renewable Energy Technician",
-    "slug": "renewable-energy-technician",
+    "title": "Electrical Power Engineer",
+    "slug": "electrical-power-engineer",
     "type": "career",
     "taxonomySlugs": [
       "engineering",
       "mechanical-electrical-engineering",
-      "renewable-energy-systems"
+      "electrical-power-engineering"
     ],
-    "summary": "Installs, maintains, and troubleshoots solar and other renewable energy systems.",
-    "description": "This hands-on pathway fits people who like practical technical work, outdoor or mixed environments, and useful systems. It can begin through vocational training and grow into design, supervision, or energy project work.",
+    "summary": "Works on power generation, distribution, safety, and electrical energy systems.",
+    "description": "Electrical power engineering is a structured technical pathway for users who like math, physics, systems, and real infrastructure. It often requires formal engineering education and local safety rules.",
     "keySkills": [
-      "electrical basics",
-      "solar installation",
-      "safety",
-      "maintenance",
-      "troubleshooting"
+      "circuits",
+      "power systems",
+      "electrical safety",
+      "testing",
+      "technical documentation"
     ],
     "opportunities": [
-      "solar companies",
-      "NGO energy projects",
-      "maintenance teams",
-      "rural electrification programs"
+      "utilities",
+      "construction firms",
+      "energy companies",
+      "industrial plants"
     ],
     "status": "active",
     "durationProfile": {
-      "commitmentLevel": "medium",
-      "timelineType": "vocational-route",
-      "degreeRequirement": "not_required",
-      "estimatedMonthsMin": 6,
-      "estimatedMonthsMax": 18,
+      "commitmentLevel": "long",
+      "timelineType": "degree-route",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 4,
+      "estimatedYearsMax": 5,
       "requiresLicense": false,
-      "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 6 months"
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Technical basics",
-        "duration": "1-2 months",
-        "focus": "learn the tools, safety habits, and hands-on basics needed for Renewable Energy Technician"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Guided practical work",
-        "duration": "2-6 months",
-        "focus": "practice in workshop, field, or supervised task settings"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Field entry",
+        "name": "Entry transition",
         "duration": "6-18 months",
-        "focus": "move into technician, apprenticeship, or junior operational work related to Renewable Energy Technician"
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
+    "verificationNote": "Engineering registration and electrical safety authorization vary locally.",
     "relatedPathwaySlugs": [
-      "mechanical-engineering-study",
-      "environmental-scientist",
-      "sustainable-agriculture-entrepreneur"
+      "renewable-energy-technician",
+      "renewable-energy-engineer",
+      "mechanical-engineering-study"
     ]
   },
   {
@@ -1402,10 +2517,11 @@
     "type": "study",
     "taxonomySlugs": [
       "engineering",
-      "mechanical-electrical-engineering"
+      "mechanical-electrical-engineering",
+      "mechanical-engineering"
     ],
-    "summary": "A study path for machines, energy, manufacturing, maintenance, and mechanical systems.",
-    "description": "Mechanical engineering suits learners who enjoy physics, design, hands-on systems, and problem-solving. It opens pathways into manufacturing, energy, automotive, HVAC, maintenance, and product development.",
+    "summary": "A degree route for machines, energy, manufacturing, maintenance, and mechanical systems.",
+    "description": "Mechanical engineering suits learners who enjoy physics, design, hands-on systems, and broad technical problem-solving. It opens routes into manufacturing, energy, HVAC, maintenance, and product development.",
     "keySkills": [
       "mechanics",
       "thermodynamics",
@@ -1427,180 +2543,651 @@
       "estimatedYearsMin": 4,
       "estimatedYearsMax": 5,
       "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
+      },
+      {
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
+      }
+    ],
+    "verificationNote": "Professional engineering rules vary locally.",
+    "relatedPathwaySlugs": [
+      "industrial-engineer",
+      "renewable-energy-engineer",
+      "quality-engineer"
+    ]
+  },
+  {
+    "title": "Renewable Energy Technician",
+    "slug": "renewable-energy-technician",
+    "type": "career",
+    "taxonomySlugs": [
+      "engineering",
+      "mechanical-electrical-engineering",
+      "renewable-energy-systems"
+    ],
+    "summary": "Installs, maintains, and troubleshoots solar and renewable energy systems.",
+    "description": "Renewable energy technician is a strong vocational route for hands-on users who like useful technical work, field conditions, and energy systems. It should not overpromise licensing; safety rules must be checked locally.",
+    "keySkills": [
+      "electrical basics",
+      "solar installation",
+      "safety",
+      "maintenance",
+      "troubleshooting"
+    ],
+    "opportunities": [
+      "solar companies",
+      "NGO energy projects",
+      "maintenance teams",
+      "rural electrification programs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "vocational-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 6,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Orientation and requirements",
+        "duration": "1-2 months",
+        "focus": "Confirm local training options, safety expectations, and entry requirements."
+      },
+      {
+        "name": "Practical training",
+        "duration": "4-12 months",
+        "focus": "Build supervised hands-on skills and workplace habits."
+      },
+      {
+        "name": "Entry experience",
+        "duration": "6-12 months",
+        "focus": "Gain field exposure, references, and confidence with real tasks."
+      }
+    ],
+    "verificationNote": "Electrical safety and installation rules vary by country.",
+    "relatedPathwaySlugs": [
+      "electrical-power-engineer",
+      "renewable-energy-engineer",
+      "it-support-specialist"
+    ]
+  },
+  {
+    "title": "Renewable Energy Engineer",
+    "slug": "renewable-energy-engineer",
+    "type": "career",
+    "taxonomySlugs": [
+      "engineering",
+      "mechanical-electrical-engineering",
+      "renewable-energy-systems"
+    ],
+    "summary": "Designs and evaluates solar, storage, and efficient power systems.",
+    "description": "Renewable energy engineering is a degree-oriented technical path for users who like energy, systems, math, and environmental impact. It is different from technician work because it focuses more on design and analysis.",
+    "keySkills": [
+      "energy modeling",
+      "solar design",
+      "power systems",
+      "storage basics",
+      "technical analysis"
+    ],
+    "opportunities": [
+      "energy companies",
+      "consultancies",
+      "utilities",
+      "development projects"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "degree-route",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 4,
+      "estimatedYearsMax": 6,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
+      },
+      {
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
+      }
+    ],
+    "verificationNote": "Professional engineering and grid rules vary locally.",
+    "relatedPathwaySlugs": [
+      "electrical-power-engineer",
+      "renewable-energy-technician",
+      "sustainability-manager"
+    ]
+  },
+  {
+    "title": "Industrial Engineer",
+    "slug": "industrial-engineer",
+    "type": "career",
+    "taxonomySlugs": [
+      "engineering",
+      "industrial-manufacturing-engineering",
+      "industrial-engineering"
+    ],
+    "summary": "Improves production systems, workflows, efficiency, and operational performance.",
+    "description": "Industrial engineering fits users who like systems, process improvement, math, and practical business operations. It bridges engineering and management with strong roadmap logic.",
+    "keySkills": [
+      "process improvement",
+      "operations analytics",
+      "workflow design",
+      "quality tools",
+      "productivity analysis"
+    ],
+    "opportunities": [
+      "manufacturing firms",
+      "logistics companies",
+      "hospitals",
+      "service operations"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "degree-route",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 4,
+      "estimatedYearsMax": 5,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
+      },
+      {
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
+      }
+    ],
+    "verificationNote": "Degree naming and engineering registration vary locally.",
+    "relatedPathwaySlugs": [
+      "operations-manager",
+      "quality-engineer",
+      "supply-chain-logistics-specialist"
+    ]
+  },
+  {
+    "title": "Quality Engineer",
+    "slug": "quality-engineer",
+    "type": "career",
+    "taxonomySlugs": [
+      "engineering",
+      "industrial-manufacturing-engineering",
+      "quality-engineering"
+    ],
+    "summary": "Builds quality systems, investigates defects, and improves production reliability.",
+    "description": "Quality engineering is a structured pathway for organized analytical users who like root-cause analysis and practical improvement. It can work in manufacturing, software-adjacent operations, health supply chains, or construction materials.",
+    "keySkills": [
+      "quality control",
+      "root cause analysis",
+      "inspection",
+      "process documentation",
+      "continuous improvement"
+    ],
+    "opportunities": [
+      "manufacturing",
+      "construction materials",
+      "health supply chains",
+      "industrial operations"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
+      "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
+        "name": "Foundations and direction check",
         "duration": "1-3 months",
-        "focus": "understand what Mechanical Engineering really demands and whether the long study route fits you"
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
       },
       {
-        "name": "Degree progression",
-        "duration": "4-5 years",
-        "focus": "build academic and practical foundations that lead toward Mechanical Engineering"
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
       }
     ],
+    "relatedPathwaySlugs": [
+      "industrial-engineer",
+      "software-quality-assurance-engineer",
+      "operations-manager"
+    ]
+  },
+  {
+    "title": "Construction Manager",
+    "slug": "construction-manager",
+    "type": "career",
+    "taxonomySlugs": [
+      "engineering",
+      "construction-built-environment",
+      "construction-management"
+    ],
+    "summary": "Coordinates construction sites, schedules, contractors, budgets, safety, and delivery.",
+    "description": "Construction management suits organized hands-on communicators who like field conditions and practical coordination. It has clearer roadmap logic than vague building interests because tasks, safety, and delivery milestones are concrete.",
+    "keySkills": [
+      "site planning",
+      "contractor coordination",
+      "budget tracking",
+      "safety",
+      "schedule control"
+    ],
+    "opportunities": [
+      "construction companies",
+      "infrastructure projects",
+      "real estate developers",
+      "public works"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "degree-route",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 5,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
+      },
+      {
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
+      }
+    ],
+    "verificationNote": "Some markets require formal credentials for site responsibility.",
     "relatedPathwaySlugs": [
       "civil-engineering-study",
       "structural-engineer",
-      "renewable-energy-technician"
+      "land-surveyor"
     ]
   },
   {
-    "title": "Graphic Designer",
-    "slug": "graphic-designer",
+    "title": "Land Surveyor",
+    "slug": "land-surveyor",
     "type": "career",
     "taxonomySlugs": [
-      "arts-media",
-      "design-visual-communication",
-      "graphic-design"
+      "engineering",
+      "construction-built-environment",
+      "land-surveying"
     ],
-    "summary": "Creates visual materials that communicate messages clearly across digital and print media.",
-    "description": "Graphic design fits creative people who enjoy visual problem-solving, layout, color, typography, and brand communication. It rewards practice, portfolio building, feedback, and understanding client goals.",
+    "summary": "Measures land, maps sites, and provides spatial data for construction and planning.",
+    "description": "Land surveying is a practical field pathway for users who like outdoor work, measurement, tools, and construction support. Licensing and boundary authority vary significantly by country.",
     "keySkills": [
-      "layout",
-      "typography",
-      "branding",
-      "visual composition",
-      "design software"
+      "measurement",
+      "mapping",
+      "survey equipment",
+      "site documentation",
+      "spatial data"
     ],
     "opportunities": [
-      "design studios",
-      "marketing teams",
-      "freelance work",
-      "media organizations"
-    ],
-    "status": "active",
-    "durationProfile": {
-      "commitmentLevel": "short",
-      "timelineType": "portfolio-route",
-      "degreeRequirement": "not_required",
-      "estimatedMonthsMin": 4,
-      "estimatedMonthsMax": 12,
-      "requiresLicense": false,
-      "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 6 months"
-    },
-    "journeyPhases": [
-      {
-        "name": "Foundation building",
-        "duration": "1-2 months",
-        "focus": "learn the core tools, principles, and standards behind Graphic Designer"
-      },
-      {
-        "name": "Proof of skill",
-        "duration": "2-6 months",
-        "focus": "create portfolio projects, case studies, and feedback loops that show visible progress"
-      },
-      {
-        "name": "Market entry",
-        "duration": "4-12 months",
-        "focus": "turn visible proof into internships, freelance work, or junior graphic designer opportunities"
-      }
-    ],
-    "relatedPathwaySlugs": [
-      "ux-ui-designer",
-      "digital-marketing-specialist",
-      "video-content-producer"
-    ]
-  },
-  {
-    "title": "UX/UI Designer",
-    "slug": "ux-ui-designer",
-    "type": "career",
-    "taxonomySlugs": [
-      "arts-media",
-      "design-visual-communication",
-      "graphic-design",
-      "technology",
-      "software-engineering",
-      "frontend-development"
-    ],
-    "summary": "Designs digital interfaces that help users complete tasks clearly and comfortably.",
-    "description": "UX/UI design is a hybrid creative and analytical path. It suits people who care about people, visual clarity, research, and digital products, and who can turn user needs into practical screens and flows.",
-    "keySkills": [
-      "user research",
-      "wireframing",
-      "prototyping",
-      "visual design",
-      "usability testing"
-    ],
-    "opportunities": [
-      "product teams",
-      "design agencies",
-      "startups",
-      "freelance interface projects"
+      "construction firms",
+      "land agencies",
+      "engineering consultancies",
+      "infrastructure projects"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
-      "timelineType": "portfolio-route",
-      "degreeRequirement": "not_required",
-      "estimatedMonthsMin": 6,
-      "estimatedMonthsMax": 15,
-      "requiresLicense": false,
-      "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 6 months"
-    },
-    "journeyPhases": [
-      {
-        "name": "Foundation building",
-        "duration": "1-2 months",
-        "focus": "learn the core tools, principles, and standards behind UX/UI Designer"
-      },
-      {
-        "name": "Proof of skill",
-        "duration": "2-6 months",
-        "focus": "create portfolio projects, case studies, and feedback loops that show visible progress"
-      },
-      {
-        "name": "Market entry",
-        "duration": "6-15 months",
-        "focus": "turn visible proof into internships, freelance work, or junior ux/ui designer opportunities"
-      }
-    ],
-    "relatedPathwaySlugs": [
-      "frontend-engineer",
-      "graphic-designer",
-      "product-manager"
-    ]
-  },
-  {
-    "title": "Journalist",
-    "slug": "journalist",
-    "type": "career",
-    "taxonomySlugs": [
-      "arts-media",
-      "media-production",
-      "journalism"
-    ],
-    "summary": "Researches, verifies, writes, and produces stories for public audiences.",
-    "description": "Journalism suits curious communicators who like reading, writing, people, and public issues. It requires accuracy, ethics, interviewing, research, and the ability to make complex topics understandable.",
-    "keySkills": [
-      "research",
-      "interviewing",
-      "writing",
-      "fact checking",
-      "media ethics"
-    ],
-    "opportunities": [
-      "newsrooms",
-      "digital media",
-      "NGO communications",
-      "independent reporting"
-    ],
-    "status": "active",
-    "durationProfile": {
-      "commitmentLevel": "medium",
-      "timelineType": "portfolio-route",
+      "timelineType": "vocational-route",
       "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 36,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Orientation and requirements",
+        "duration": "1-2 months",
+        "focus": "Confirm local training options, safety expectations, and entry requirements."
+      },
+      {
+        "name": "Practical training",
+        "duration": "4-12 months",
+        "focus": "Build supervised hands-on skills and workplace habits."
+      },
+      {
+        "name": "Entry experience",
+        "duration": "6-12 months",
+        "focus": "Gain field exposure, references, and confidence with real tasks."
+      }
+    ],
+    "verificationNote": "Legal boundary surveying may require local licensing.",
+    "relatedPathwaySlugs": [
+      "civil-engineering-study",
+      "construction-manager",
+      "water-resource-manager"
+    ]
+  },
+  {
+    "title": "Primary School Teacher",
+    "slug": "primary-school-teacher",
+    "type": "career",
+    "taxonomySlugs": [
+      "education",
+      "teaching",
+      "primary-education"
+    ],
+    "summary": "Supports younger learners in literacy, numeracy, confidence, and classroom habits.",
+    "description": "Primary teaching is a strong people-centered pathway with clear preparation logic: subject basics, child development, classroom practice, and assessment. It usually requires formal teacher education or certification.",
+    "keySkills": [
+      "lesson planning",
+      "classroom management",
+      "child development",
+      "communication",
+      "assessment"
+    ],
+    "opportunities": [
+      "public schools",
+      "private schools",
+      "education NGOs",
+      "tutoring centers"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 5,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Teacher certification requirements vary by country and school system.",
+    "relatedPathwaySlugs": [
+      "early-childhood-educator",
+      "language-teacher",
+      "school-counselor"
+    ]
+  },
+  {
+    "title": "Secondary STEM Teacher",
+    "slug": "secondary-stem-teacher",
+    "type": "career",
+    "taxonomySlugs": [
+      "education",
+      "teaching",
+      "secondary-stem-education"
+    ],
+    "summary": "Teaches math or science through clear explanation, practice, and assessment.",
+    "description": "Secondary STEM teaching fits users who like math or science and also enjoy helping learners. It requires both subject strength and teaching practice.",
+    "keySkills": [
+      "math teaching",
+      "science teaching",
+      "experiments",
+      "explanation",
+      "assessment"
+    ],
+    "opportunities": [
+      "secondary schools",
+      "STEM programs",
+      "tutoring centers",
+      "education nonprofits"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 5,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Teacher certification and subject requirements vary locally.",
+    "relatedPathwaySlugs": [
+      "primary-school-teacher",
+      "instructional-designer",
+      "civil-engineering-study"
+    ]
+  },
+  {
+    "title": "Language Teacher",
+    "slug": "language-teacher",
+    "type": "career",
+    "taxonomySlugs": [
+      "education",
+      "teaching",
+      "language-education"
+    ],
+    "summary": "Teaches reading, writing, speaking, and communication skills in a language.",
+    "description": "Language teaching suits strong communicators who enjoy reading, writing, explaining, and helping learners improve gradually. It can work in schools, training centers, or adult learning.",
+    "keySkills": [
+      "grammar",
+      "reading instruction",
+      "speaking practice",
+      "lesson planning",
+      "feedback"
+    ],
+    "opportunities": [
+      "schools",
+      "language centers",
+      "online tutoring",
+      "adult education"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 2,
+      "estimatedYearsMax": 5,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Teacher requirements depend on country, institution, and learner level.",
+    "relatedPathwaySlugs": [
+      "primary-school-teacher",
+      "instructional-designer",
+      "school-counselor"
+    ]
+  },
+  {
+    "title": "Early Childhood Educator",
+    "slug": "early-childhood-educator",
+    "type": "career",
+    "taxonomySlugs": [
+      "education",
+      "teaching",
+      "early-childhood-education"
+    ],
+    "summary": "Supports young children through safe, structured, play-based learning and care.",
+    "description": "Early childhood education is a high-trust pathway for patient people who like helping young learners develop routines, language, social skills, and confidence.",
+    "keySkills": [
+      "child safety",
+      "play-based learning",
+      "family communication",
+      "observation",
+      "routine planning"
+    ],
+    "opportunities": [
+      "preschools",
+      "child development centers",
+      "NGOs",
+      "early learning programs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 2,
+      "estimatedYearsMax": 4,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Childcare and early education credentials vary locally.",
+    "relatedPathwaySlugs": [
+      "primary-school-teacher",
+      "school-counselor",
+      "social-worker"
+    ]
+  },
+  {
+    "title": "Instructional Designer",
+    "slug": "instructional-designer",
+    "type": "career",
+    "taxonomySlugs": [
+      "education",
+      "learning-design-edtech",
+      "instructional-design"
+    ],
+    "summary": "Designs courses, training materials, and assessments for specific learning outcomes.",
+    "description": "Instructional design is a structured pathway for organized creators who like explaining ideas clearly. It is useful in companies, NGOs, online learning, and schools.",
+    "keySkills": [
+      "learning objectives",
+      "course design",
+      "assessment",
+      "writing",
+      "e-learning tools"
+    ],
+    "opportunities": [
+      "online learning companies",
+      "corporate training",
+      "NGOs",
+      "universities"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "portfolio-route",
+      "degreeRequirement": "optional",
       "estimatedMonthsMin": 6,
       "estimatedMonthsMax": 18,
       "requiresLicense": false,
@@ -1609,82 +3196,200 @@
     },
     "journeyPhases": [
       {
-        "name": "Foundation building",
-        "duration": "1-2 months",
-        "focus": "learn the core tools, principles, and standards behind Journalist"
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn principles, tools, and examples from high-quality work."
       },
       {
-        "name": "Proof of skill",
-        "duration": "2-6 months",
-        "focus": "create portfolio projects, case studies, and feedback loops that show visible progress"
+        "name": "Portfolio projects",
+        "duration": "3-9 months",
+        "focus": "Create case studies that show process, decisions, and outcomes."
       },
       {
-        "name": "Market entry",
-        "duration": "6-18 months",
-        "focus": "turn visible proof into internships, freelance work, or junior journalist opportunities"
+        "name": "Market readiness",
+        "duration": "3-12 months",
+        "focus": "Refine portfolio, seek feedback, and apply for junior or freelance work."
       }
     ],
     "relatedPathwaySlugs": [
-      "video-content-producer",
-      "policy-analyst",
-      "digital-marketing-specialist"
+      "educational-technology-specialist",
+      "human-resource-specialist",
+      "language-teacher"
     ]
   },
   {
-    "title": "Video Content Producer",
-    "slug": "video-content-producer",
+    "title": "Educational Technology Specialist",
+    "slug": "educational-technology-specialist",
     "type": "career",
     "taxonomySlugs": [
-      "arts-media",
-      "media-production"
+      "education",
+      "learning-design-edtech",
+      "educational-technology"
     ],
-    "summary": "Plans, records, edits, and publishes video content for education, marketing, or media.",
-    "description": "Video production fits creative builders who enjoy storytelling, visuals, editing, and practical production work. It can grow from social media content into documentary, brand, education, or commercial production.",
+    "summary": "Helps schools and programs use digital tools, platforms, and learning systems effectively.",
+    "description": "Educational technology is a practical hybrid pathway for users who like teaching and technology but may not want classroom teaching as the only route.",
     "keySkills": [
-      "storyboarding",
-      "camera basics",
-      "editing",
-      "sound",
-      "publishing"
+      "learning platforms",
+      "teacher training",
+      "digital tools",
+      "support documentation",
+      "basic data"
     ],
     "opportunities": [
-      "media teams",
-      "marketing agencies",
-      "education content",
-      "freelance production"
+      "schools",
+      "universities",
+      "edtech companies",
+      "training programs"
     ],
     "status": "active",
     "durationProfile": {
-      "commitmentLevel": "short",
-      "timelineType": "portfolio-route",
-      "degreeRequirement": "not_required",
-      "estimatedMonthsMin": 4,
-      "estimatedMonthsMax": 12,
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
       "requiresLicense": false,
       "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 6 months"
+      "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Foundation building",
-        "duration": "1-2 months",
-        "focus": "learn the core tools, principles, and standards behind Video Content Producer"
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
       },
       {
-        "name": "Proof of skill",
-        "duration": "2-6 months",
-        "focus": "create portfolio projects, case studies, and feedback loops that show visible progress"
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
       },
       {
-        "name": "Market entry",
-        "duration": "4-12 months",
-        "focus": "turn visible proof into internships, freelance work, or junior video content producer opportunities"
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
       }
     ],
     "relatedPathwaySlugs": [
-      "graphic-designer",
-      "digital-marketing-specialist",
-      "journalist"
+      "instructional-designer",
+      "it-support-specialist",
+      "secondary-stem-teacher"
+    ]
+  },
+  {
+    "title": "School Counselor",
+    "slug": "school-counselor",
+    "type": "career",
+    "taxonomySlugs": [
+      "education",
+      "student-support-education-leadership",
+      "school-counseling"
+    ],
+    "summary": "Supports students with academic planning, wellbeing, behavior, and referrals.",
+    "description": "School counseling is a people-centered pathway requiring ethics, trust, communication, and local qualifications. It is distinct from clinical counseling because it is grounded in school systems and student development.",
+    "keySkills": [
+      "student guidance",
+      "active listening",
+      "referral",
+      "records",
+      "family communication"
+    ],
+    "opportunities": [
+      "schools",
+      "education NGOs",
+      "student support programs",
+      "youth centers"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 6,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Qualification and safeguarding rules vary by country and school system.",
+    "relatedPathwaySlugs": [
+      "counseling-psychologist",
+      "social-worker",
+      "primary-school-teacher"
+    ]
+  },
+  {
+    "title": "School Administrator",
+    "slug": "school-administrator",
+    "type": "career",
+    "taxonomySlugs": [
+      "education",
+      "student-support-education-leadership",
+      "education-administration"
+    ],
+    "summary": "Manages school operations, records, staff coordination, planning, and quality processes.",
+    "description": "School administration fits organized communicators who care about education systems but may prefer operations over classroom teaching. It can grow from teaching, operations, or administration experience.",
+    "keySkills": [
+      "operations planning",
+      "records",
+      "staff coordination",
+      "policy implementation",
+      "communication"
+    ],
+    "opportunities": [
+      "schools",
+      "training centers",
+      "education NGOs",
+      "universities"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "primary-school-teacher",
+      "operations-manager",
+      "project-manager"
     ]
   },
   {
@@ -1693,16 +3398,16 @@
     "type": "study",
     "taxonomySlugs": [
       "law-social-sciences",
-      "law-policy",
+      "law-legal-practice",
       "legal-practice"
     ],
-    "summary": "A study path for legal reasoning, rights, governance, advocacy, and dispute resolution.",
-    "description": "Law suits learners who enjoy reading, structured argument, social issues, and careful communication. It requires discipline, ethical judgment, research, writing, and comfort with complex rules.",
+    "summary": "A long regulated pathway for legal reasoning, advocacy, rights, and dispute resolution.",
+    "description": "Law is a serious structured direction for users who like reading, writing, argument, social issues, and rules. AICA should show first-year readiness and local verification separately from the full qualification path.",
     "keySkills": [
       "legal research",
+      "critical reading",
       "argumentation",
       "writing",
-      "critical reading",
       "ethics"
     ],
     "opportunities": [
@@ -1725,26 +3430,84 @@
     },
     "journeyPhases": [
       {
-        "name": "Fit and readiness",
-        "duration": "1-3 months",
-        "focus": "confirm long-term fit, daily realities, and academic readiness for Law"
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-12 months",
-        "focus": "check admission rules, required documents, exams, finances, and support systems"
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
       },
       {
-        "name": "Formal study and licensing journey",
-        "duration": "4-7 years",
-        "focus": "complete accredited study, supervised training, and local licensing steps toward Law"
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
       }
     ],
-    "verificationNote": "Exact duration, admission, accreditation, and licensing rules for Law depend on country, institution, and regulator.",
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
     "relatedPathwaySlugs": [
+      "compliance-officer",
       "policy-analyst",
-      "counselor",
-      "social-worker"
+      "public-administration-officer"
+    ]
+  },
+  {
+    "title": "Compliance Officer",
+    "slug": "compliance-officer",
+    "type": "career",
+    "taxonomySlugs": [
+      "law-social-sciences",
+      "law-legal-practice",
+      "compliance-risk"
+    ],
+    "summary": "Helps organizations follow rules, manage controls, and reduce legal or operational risk.",
+    "description": "Compliance is a structured pathway for organized people who like rules, documentation, and risk prevention. It can connect business, law, finance, and cybersecurity governance.",
+    "keySkills": [
+      "policy review",
+      "risk controls",
+      "audit evidence",
+      "documentation",
+      "communication"
+    ],
+    "opportunities": [
+      "banks",
+      "NGOs",
+      "large companies",
+      "health organizations"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "law-study",
+      "accounting-study",
+      "cybersecurity-governance-analyst"
     ]
   },
   {
@@ -1753,14 +3516,15 @@
     "type": "career",
     "taxonomySlugs": [
       "law-social-sciences",
-      "law-policy"
+      "policy-public-administration",
+      "policy-analysis"
     ],
     "summary": "Researches public problems and recommends practical policy options.",
-    "description": "Policy analysis fits analytical communicators interested in society, systems, and evidence-based change. It often involves research, stakeholder input, writing briefs, comparing options, and evaluating impact.",
+    "description": "Policy analysis suits analytical communicators interested in society, systems, and evidence-based change. It requires research, writing, stakeholder understanding, and practical recommendations.",
     "keySkills": [
       "policy research",
-      "data interpretation",
       "writing",
+      "data interpretation",
       "stakeholder analysis",
       "presentation"
     ],
@@ -1773,94 +3537,94 @@
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
-      "timelineType": "degree-route",
+      "timelineType": "hybrid-route",
       "degreeRequirement": "preferred",
-      "estimatedYearsMin": 1,
-      "estimatedYearsMax": 3,
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 36,
       "requiresLicense": false,
       "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 9 months"
+      "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
+        "name": "Foundations and direction check",
         "duration": "1-3 months",
-        "focus": "understand what Policy Analyst really demands and whether the long study route fits you"
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
       },
       {
-        "name": "Degree progression",
-        "duration": "1-3 years",
-        "focus": "build academic and practical foundations that lead toward Policy Analyst"
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
       }
     ],
     "relatedPathwaySlugs": [
-      "law-study",
-      "public-health-officer",
-      "financial-analyst"
+      "public-administration-officer",
+      "monitoring-evaluation-specialist",
+      "law-study"
     ]
   },
   {
-    "title": "Counselor",
-    "slug": "counselor",
+    "title": "Public Administration Officer",
+    "slug": "public-administration-officer",
     "type": "career",
     "taxonomySlugs": [
       "law-social-sciences",
-      "psychology-social-work",
-      "counseling"
+      "policy-public-administration",
+      "public-administration"
     ],
-    "summary": "Supports people with emotional, educational, or life challenges through structured guidance.",
-    "description": "Counseling fits patient listeners who care about people and can stay calm with sensitive topics. It requires formal training, ethics, boundaries, communication, and referral judgment.",
+    "summary": "Supports public services, government programs, records, and administrative delivery.",
+    "description": "Public administration fits organized people who want stable public service impact through systems, procedures, and citizen-facing work. Entry rules vary, but the pathway is clear and practical.",
     "keySkills": [
-      "active listening",
-      "ethics",
-      "assessment",
-      "communication",
-      "referral"
+      "administration",
+      "public service",
+      "records",
+      "policy implementation",
+      "communication"
     ],
     "opportunities": [
-      "schools",
-      "community centers",
-      "NGOs",
-      "health and wellbeing programs"
+      "government offices",
+      "municipal services",
+      "public programs",
+      "administrative agencies"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "long",
-      "timelineType": "regulated-degree",
+      "timelineType": "degree-route",
       "degreeRequirement": "required",
-      "estimatedYearsMin": 4,
-      "estimatedYearsMax": 6,
-      "requiresLicense": true,
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 4,
+      "requiresLicense": false,
       "localRulesRequired": true,
       "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Fit and readiness",
-        "duration": "1-3 months",
-        "focus": "confirm long-term fit, daily realities, and academic readiness for Counselor"
-      },
-      {
-        "name": "Entry preparation",
+        "name": "Fit and admission preparation",
         "duration": "3-12 months",
-        "focus": "check admission rules, required documents, exams, finances, and support systems"
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Formal study and licensing journey",
-        "duration": "4-6 years",
-        "focus": "complete accredited study, supervised training, and local licensing steps toward Counselor"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
-    "verificationNote": "Exact duration, admission, accreditation, and licensing rules for Counselor depend on country, institution, and regulator.",
+    "verificationNote": "Civil service entry rules vary by country and agency.",
     "relatedPathwaySlugs": [
-      "social-worker",
-      "public-health-officer",
-      "primary-school-teacher"
+      "policy-analyst",
+      "project-manager",
+      "compliance-officer"
     ]
   },
   {
@@ -1869,10 +3633,11 @@
     "type": "career",
     "taxonomySlugs": [
       "law-social-sciences",
-      "psychology-social-work"
+      "psychology-social-work",
+      "social-work"
     ],
     "summary": "Helps individuals and communities access support, protection, and practical services.",
-    "description": "Social work suits people who want direct human impact and can manage complex social situations with empathy and structure. It blends assessment, advocacy, case management, and coordination with services.",
+    "description": "Social work suits users who want direct human impact and can handle complex situations with empathy, boundaries, and structure. It usually requires formal training and safeguarding awareness.",
     "keySkills": [
       "case management",
       "advocacy",
@@ -1889,6 +3654,65 @@
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 5,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Social work title protection and practice rules vary locally.",
+    "relatedPathwaySlugs": [
+      "school-counselor",
+      "counseling-psychologist",
+      "development-program-coordinator"
+    ]
+  },
+  {
+    "title": "Psychology",
+    "slug": "psychology-study",
+    "type": "study",
+    "taxonomySlugs": [
+      "law-social-sciences",
+      "psychology-social-work",
+      "psychology"
+    ],
+    "summary": "A study pathway for understanding behavior, development, research, and mental processes.",
+    "description": "Psychology is a useful direction for users interested in people, behavior, research, and wellbeing. AICA should distinguish general psychology study from licensed clinical practice, which takes longer and depends on local rules.",
+    "keySkills": [
+      "behavioral science",
+      "research methods",
+      "statistics",
+      "writing",
+      "ethics"
+    ],
+    "opportunities": [
+      "research assistance",
+      "education support",
+      "HR pathways",
+      "mental health further study"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
       "timelineType": "degree-route",
       "degreeRequirement": "required",
       "estimatedYearsMin": 3,
@@ -1899,26 +3723,142 @@
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what Social Worker really demands and whether the long study route fits you"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward Social Worker"
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
-    "verificationNote": "Exact program structure and qualification expectations for Social Worker depend on country and institution.",
+    "verificationNote": "Clinical or counseling practice usually requires further regulated training.",
     "relatedPathwaySlugs": [
-      "counselor",
-      "public-health-officer",
+      "counseling-psychologist",
+      "school-counselor",
+      "human-resource-specialist"
+    ]
+  },
+  {
+    "title": "Monitoring and Evaluation Specialist",
+    "slug": "monitoring-evaluation-specialist",
+    "type": "career",
+    "taxonomySlugs": [
+      "law-social-sciences",
+      "social-research-development",
+      "monitoring-evaluation"
+    ],
+    "summary": "Tracks program results, indicators, data quality, and learning for improvement.",
+    "description": "Monitoring and evaluation is a practical evidence pathway for users who like data, social impact, field realities, and reporting. It is especially useful in NGOs and development programs.",
+    "keySkills": [
+      "indicators",
+      "survey tools",
+      "data quality",
+      "reporting",
+      "program learning"
+    ],
+    "opportunities": [
+      "NGOs",
+      "development agencies",
+      "public programs",
+      "research organizations"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "skill-route",
+      "degreeRequirement": "optional",
+      "estimatedMonthsMin": 9,
+      "estimatedMonthsMax": 24,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 6 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations",
+        "duration": "1-3 months",
+        "focus": "Learn core concepts and tools through structured practice."
+      },
+      {
+        "name": "Applied projects",
+        "duration": "3-9 months",
+        "focus": "Build realistic work samples and connect skills to practical problems."
+      },
+      {
+        "name": "Readiness and entry",
+        "duration": "3-6 months",
+        "focus": "Prepare portfolio, interviews, and first supervised or junior opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "development-program-coordinator",
+      "data-analyst",
       "policy-analyst"
+    ]
+  },
+  {
+    "title": "Development Program Coordinator",
+    "slug": "development-program-coordinator",
+    "type": "career",
+    "taxonomySlugs": [
+      "law-social-sciences",
+      "social-research-development",
+      "development-program-coordination"
+    ],
+    "summary": "Coordinates NGO or development projects, field activities, stakeholders, and reports.",
+    "description": "Development coordination fits organized communicators who want social impact through practical project delivery. It requires field awareness, reporting discipline, and stakeholder coordination.",
+    "keySkills": [
+      "project coordination",
+      "field reporting",
+      "stakeholder communication",
+      "budget basics",
+      "documentation"
+    ],
+    "opportunities": [
+      "NGOs",
+      "development programs",
+      "community projects",
+      "international organizations"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "project-manager",
+      "monitoring-evaluation-specialist",
+      "social-worker"
     ]
   },
   {
@@ -1927,11 +3867,11 @@
     "type": "career",
     "taxonomySlugs": [
       "environment-agriculture",
-      "environmental-science",
-      "conservation"
+      "environmental-science-sustainability",
+      "environmental-science"
     ],
     "summary": "Studies environmental conditions and supports decisions that protect natural systems.",
-    "description": "Environmental science fits people who like nature, science, fieldwork, and evidence-based problem-solving. The work may include sampling, data analysis, reporting, conservation, and advising projects on environmental risk.",
+    "description": "Environmental science fits users who like science, nature, fieldwork, and evidence-based decisions. It has clear roadmaps through sampling, data, reporting, and environmental assessment.",
     "keySkills": [
       "field sampling",
       "ecology",
@@ -1951,32 +3891,149 @@
       "timelineType": "degree-route",
       "degreeRequirement": "required",
       "estimatedYearsMin": 3,
-      "estimatedYearsMax": 4,
+      "estimatedYearsMax": 5,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
+      },
+      {
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
+      }
+    ],
+    "verificationNote": "Environmental assessment authority and titles vary locally.",
+    "relatedPathwaySlugs": [
+      "sustainability-manager",
+      "climate-disaster-risk-officer",
+      "water-resource-manager"
+    ]
+  },
+  {
+    "title": "Sustainability Manager",
+    "slug": "sustainability-manager",
+    "type": "career",
+    "taxonomySlugs": [
+      "environment-agriculture",
+      "environmental-science-sustainability",
+      "sustainability-management"
+    ],
+    "summary": "Helps organizations reduce environmental impact and improve resource practices.",
+    "description": "Sustainability management is a hybrid pathway for users who like environment, systems, communication, and organizational change. It can connect business operations with environmental goals.",
+    "keySkills": [
+      "sustainability reporting",
+      "resource efficiency",
+      "stakeholder communication",
+      "project planning",
+      "environmental basics"
+    ],
+    "opportunities": [
+      "companies",
+      "NGOs",
+      "universities",
+      "development projects"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
       "requiresLicense": false,
       "localRulesRequired": false,
       "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
+        "name": "Foundations and direction check",
         "duration": "1-3 months",
-        "focus": "understand what Environmental Scientist really demands and whether the long study route fits you"
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
       },
       {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward Environmental Scientist"
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
       }
     ],
     "relatedPathwaySlugs": [
-      "agronomy-specialist",
-      "renewable-energy-technician",
-      "sustainable-agriculture-entrepreneur"
+      "environmental-scientist",
+      "operations-manager",
+      "renewable-energy-engineer"
+    ]
+  },
+  {
+    "title": "Climate and Disaster Risk Officer",
+    "slug": "climate-disaster-risk-officer",
+    "type": "career",
+    "taxonomySlugs": [
+      "environment-agriculture",
+      "environmental-science-sustainability",
+      "climate-disaster-risk"
+    ],
+    "summary": "Supports risk reduction, preparedness, resilience planning, and climate adaptation.",
+    "description": "This pathway is practical for users who want environmental and social impact through planning, community preparedness, and risk systems. It is not a climate influencer path; it is operational and evidence-based.",
+    "keySkills": [
+      "risk assessment",
+      "preparedness planning",
+      "community coordination",
+      "GIS basics",
+      "reporting"
+    ],
+    "opportunities": [
+      "NGOs",
+      "disaster management agencies",
+      "local government",
+      "development programs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 36,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "environmental-scientist",
+      "policy-analyst",
+      "development-program-coordinator"
     ]
   },
   {
@@ -1988,8 +4045,8 @@
       "agriculture-food-systems",
       "agronomy"
     ],
-    "summary": "Improves crop production through soil, seed, water, and field management decisions.",
-    "description": "Agronomy is a practical pathway for people who like science, nature, fieldwork, and food security. It combines crop knowledge, observation, farmer communication, and applied problem-solving.",
+    "summary": "Improves crop production through soil, seed, water, pest, and field management decisions.",
+    "description": "Agronomy is a strong practical science pathway for users who like nature, agriculture, fieldwork, and food security. It has clear roadmap logic through crop science and field advisory practice.",
     "keySkills": [
       "crop science",
       "soil management",
@@ -2011,89 +4068,265 @@
       "estimatedYearsMin": 3,
       "estimatedYearsMax": 4,
       "requiresLicense": false,
-      "localRulesRequired": false,
+      "localRulesRequired": true,
       "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Exploration and readiness",
-        "duration": "1-3 months",
-        "focus": "understand what Agronomy Specialist really demands and whether the long study route fits you"
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
       },
       {
-        "name": "Entry preparation",
-        "duration": "3-9 months",
-        "focus": "prepare prerequisites, documents, finances, and program comparison"
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
       },
       {
-        "name": "Degree progression",
-        "duration": "3-4 years",
-        "focus": "build academic and practical foundations that lead toward Agronomy Specialist"
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
       }
     ],
+    "verificationNote": "Agricultural extension roles and titles vary by country.",
     "relatedPathwaySlugs": [
-      "sustainable-agriculture-entrepreneur",
-      "environmental-scientist",
-      "public-health-officer"
+      "agribusiness-specialist",
+      "water-resource-manager",
+      "environmental-scientist"
     ]
   },
   {
-    "title": "Sustainable Agriculture Entrepreneur",
-    "slug": "sustainable-agriculture-entrepreneur",
-    "type": "hybrid",
+    "title": "Agribusiness Specialist",
+    "slug": "agribusiness-specialist",
+    "type": "career",
     "taxonomySlugs": [
       "environment-agriculture",
       "agriculture-food-systems",
-      "business",
-      "management-entrepreneurship"
+      "agribusiness"
     ],
-    "summary": "Builds farming or food ventures that balance productivity, market demand, and sustainability.",
-    "description": "This hybrid pathway fits builders who like nature, business, and practical systems. It requires learning crop or livestock basics, customer needs, cost control, supply chains, and sustainable production habits.",
+    "summary": "Connects farming, markets, finance, supply chains, and food business operations.",
+    "description": "Agribusiness is a practical hybrid route for users who like nature and business. It is distinct from agronomy because it focuses more on markets, operations, and farm enterprise.",
     "keySkills": [
-      "farm planning",
-      "basic finance",
-      "market research",
-      "sustainable practices",
+      "farm finance",
+      "market analysis",
+      "supply chains",
+      "customer relationships",
       "operations"
     ],
     "opportunities": [
-      "small farms",
-      "food businesses",
       "cooperatives",
-      "local supply chains"
+      "food companies",
+      "input suppliers",
+      "farm enterprises"
     ],
     "status": "active",
     "durationProfile": {
       "commitmentLevel": "medium",
       "timelineType": "hybrid-route",
-      "degreeRequirement": "not_required",
-      "estimatedYearsMin": 1,
-      "estimatedYearsMax": 3,
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 30,
       "requiresLicense": false,
       "localRulesRequired": false,
-      "roadmapWindowLabel": "Next 9 months"
+      "roadmapWindowLabel": "Next 12 months"
     },
     "journeyPhases": [
       {
-        "name": "Direction check",
-        "duration": "1-2 months",
-        "focus": "confirm whether Sustainable Agriculture Entrepreneur matches your strengths, motivation, and reality"
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
       },
       {
-        "name": "Foundation and proof",
-        "duration": "2-8 months",
-        "focus": "combine learning, project work, and practical exposure"
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
       },
       {
-        "name": "Positioning and growth",
-        "duration": "1-3 years",
-        "focus": "choose a focused entry route and keep building toward Sustainable Agriculture Entrepreneur"
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
       }
     ],
     "relatedPathwaySlugs": [
       "agronomy-specialist",
-      "entrepreneurship-small-business",
-      "environmental-scientist"
+      "small-business-manager",
+      "supply-chain-logistics-specialist"
+    ]
+  },
+  {
+    "title": "Veterinary Science",
+    "slug": "veterinary-science-study",
+    "type": "study",
+    "taxonomySlugs": [
+      "environment-agriculture",
+      "agriculture-food-systems",
+      "veterinary-science"
+    ],
+    "summary": "A regulated animal health pathway focused on disease prevention, clinical care, and livestock systems.",
+    "description": "Veterinary science is a long regulated route for users who like animals, science, fieldwork, and clinical responsibility. AICA should clearly show local verification and long-term commitment.",
+    "keySkills": [
+      "animal biology",
+      "diagnosis",
+      "clinical procedures",
+      "disease prevention",
+      "farmer communication"
+    ],
+    "opportunities": [
+      "veterinary clinics",
+      "livestock programs",
+      "public animal health",
+      "farms"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "regulated-degree",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 5,
+      "estimatedYearsMax": 7,
+      "requiresLicense": true,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and local verification",
+        "duration": "1-6 months",
+        "focus": "Confirm commitment, local admission rules, licensing path, cost, and personal readiness."
+      },
+      {
+        "name": "Formal education",
+        "duration": "Varies by country and institution",
+        "focus": "Complete required accredited study, supervised practice, and assessments."
+      },
+      {
+        "name": "Licensing and supervised entry",
+        "duration": "Varies by regulator",
+        "focus": "Complete exams, internship, registration, or supervised practice required locally."
+      }
+    ],
+    "verificationNote": "Exact admission, licensing, internship, and practice rules vary by country, institution, and regulator. AICA should treat this as a direction pathway and ask the user to verify local requirements before committing.",
+    "relatedPathwaySlugs": [
+      "agronomy-specialist",
+      "public-health-officer",
+      "water-resource-manager"
+    ]
+  },
+  {
+    "title": "Forestry and Conservation Officer",
+    "slug": "forestry-conservation-officer",
+    "type": "career",
+    "taxonomySlugs": [
+      "environment-agriculture",
+      "natural-resources-field-operations",
+      "forestry-conservation"
+    ],
+    "summary": "Supports forest management, biodiversity protection, restoration, and conservation fieldwork.",
+    "description": "Forestry and conservation is a structured environmental field pathway for users who like nature, outdoor work, data collection, and practical protection of resources.",
+    "keySkills": [
+      "field monitoring",
+      "biodiversity basics",
+      "mapping",
+      "community outreach",
+      "resource reporting"
+    ],
+    "opportunities": [
+      "conservation NGOs",
+      "forestry departments",
+      "protected areas",
+      "restoration projects"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "long",
+      "timelineType": "degree-route",
+      "degreeRequirement": "required",
+      "estimatedYearsMin": 3,
+      "estimatedYearsMax": 4,
+      "requiresLicense": false,
+      "localRulesRequired": true,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Fit and admission preparation",
+        "duration": "3-12 months",
+        "focus": "Confirm subject fit, compare programs, prepare documents, and plan finances."
+      },
+      {
+        "name": "Degree study",
+        "duration": "3-5 years",
+        "focus": "Complete academic foundations, projects, internships, and practical assessments."
+      },
+      {
+        "name": "Entry transition",
+        "duration": "6-18 months",
+        "focus": "Build experience, apply for graduate roles, and continue professional development."
+      }
+    ],
+    "verificationNote": "Public resource roles and protected-area requirements vary locally.",
+    "relatedPathwaySlugs": [
+      "environmental-scientist",
+      "water-resource-manager",
+      "climate-disaster-risk-officer"
+    ]
+  },
+  {
+    "title": "Water Resource Manager",
+    "slug": "water-resource-manager",
+    "type": "career",
+    "taxonomySlugs": [
+      "environment-agriculture",
+      "natural-resources-field-operations",
+      "water-resource-management"
+    ],
+    "summary": "Supports water access, watershed planning, monitoring, and sustainable resource use.",
+    "description": "Water resource management bridges environment, engineering, and community needs. It suits users who like science, outdoor work, systems, and public impact.",
+    "keySkills": [
+      "water monitoring",
+      "watershed planning",
+      "community coordination",
+      "GIS basics",
+      "reporting"
+    ],
+    "opportunities": [
+      "water agencies",
+      "NGOs",
+      "rural development projects",
+      "environmental programs"
+    ],
+    "status": "active",
+    "durationProfile": {
+      "commitmentLevel": "medium",
+      "timelineType": "hybrid-route",
+      "degreeRequirement": "preferred",
+      "estimatedMonthsMin": 12,
+      "estimatedMonthsMax": 36,
+      "requiresLicense": false,
+      "localRulesRequired": false,
+      "roadmapWindowLabel": "Next 12 months"
+    },
+    "journeyPhases": [
+      {
+        "name": "Foundations and direction check",
+        "duration": "1-3 months",
+        "focus": "Confirm fit, learn core vocabulary, and map practical entry options."
+      },
+      {
+        "name": "Applied capability building",
+        "duration": "6-18 months",
+        "focus": "Build projects, field experience, or work samples tied to real problems."
+      },
+      {
+        "name": "Professional positioning",
+        "duration": "3-12 months",
+        "focus": "Choose a role direction, document experience, and apply for relevant opportunities."
+      }
+    ],
+    "relatedPathwaySlugs": [
+      "water-resources-engineer",
+      "environmental-scientist",
+      "climate-disaster-risk-officer"
     ]
   }
 ]

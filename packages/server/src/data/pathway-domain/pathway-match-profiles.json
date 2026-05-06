@@ -5,70 +5,60 @@
     "strengths": [
       {
         "value": "problem_solving",
-        "weight": 0.95,
+        "weight": 0.9,
         "band": "strong"
       },
       {
         "value": "analytical",
-        "weight": 0.85,
+        "weight": 0.75,
         "band": "strong"
       },
       {
         "value": "fast_learning",
-        "weight": 0.7,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.8,
+        "weight": 0.7,
         "band": "strong"
-      },
-      {
-        "value": "science",
-        "weight": 0.55,
-        "band": "supporting"
       }
     ],
     "passions": [
       {
         "value": "tech",
-        "weight": 0.95,
+        "weight": 0.9,
         "band": "strong"
       },
       {
         "value": "building",
         "weight": 0.75,
-        "band": "supporting"
-      },
-      {
-        "value": "ideas",
-        "weight": 0.55,
-        "band": "supporting"
+        "band": "strong"
       }
     ],
     "freeTime": [
       {
         "value": "build",
-        "weight": 0.85,
+        "weight": 0.8,
         "band": "strong"
       },
       {
         "value": "learn",
-        "weight": 0.65,
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
-        "value": "office",
-        "weight": 0.6,
+        "value": "remote",
+        "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "remote",
-        "weight": 0.7,
+        "value": "office",
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
@@ -80,36 +70,31 @@
       },
       {
         "value": "analyze",
-        "weight": 0.75,
+        "weight": 0.7,
         "band": "strong"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.8,
+        "weight": 0.85,
         "band": "strong"
-      },
-      {
-        "value": "create",
-        "weight": 0.65,
-        "band": "supporting"
       }
     ],
     "goals": [
       {
         "value": "growth",
-        "weight": 0.85,
+        "weight": 0.8,
         "band": "strong"
       },
       {
         "value": "money",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Strong fit for users who like logic, technology, and building digital systems."
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -118,67 +103,67 @@
     "version": 1,
     "strengths": [
       {
-        "value": "problem_solving",
+        "value": "creativity",
         "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "creativity",
-        "weight": 0.8,
-        "band": "strong"
+        "value": "communication",
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "communication",
-        "weight": 0.55,
+        "value": "problem_solving",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
-        "value": "math",
-        "weight": 0.55,
+        "value": "arts",
+        "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "arts",
-        "weight": 0.55,
+        "value": "writing",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "passions": [
       {
         "value": "tech",
-        "weight": 0.9,
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.75,
         "band": "strong"
       },
       {
         "value": "building",
-        "weight": 0.75,
-        "band": "supporting"
-      },
-      {
-        "value": "ideas",
-        "weight": 0.5,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "build",
-        "weight": 0.85,
-        "band": "strong"
+        "weight": 0.55,
+        "band": "supporting"
       },
       {
-        "value": "learn",
-        "weight": 0.6,
+        "value": "consume",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
         "value": "remote",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.65,
+        "band": "supporting"
       },
       {
         "value": "office",
@@ -188,42 +173,47 @@
     ],
     "workStyle": [
       {
-        "value": "build",
+        "value": "create",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "create",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "help",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "impact": [
       {
         "value": "create",
-        "weight": 0.8,
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "systems",
+        "value": "people",
         "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "express",
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "goals": [
       {
-        "value": "growth",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "variety",
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "balance",
-        "weight": 0.55,
+        "value": "growth",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Matches users who combine technology interest with visual creation and practical building."
+      "Best fit when the user shows create digital traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -233,37 +223,37 @@
     "strengths": [
       {
         "value": "problem_solving",
-        "weight": 0.95,
-        "band": "strong"
-      },
-      {
-        "value": "analytical",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "organized",
-        "weight": 0.7,
+        "value": "analytical",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "fast_learning",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.75,
+        "weight": 0.7,
         "band": "strong"
       }
     ],
     "passions": [
       {
         "value": "tech",
-        "weight": 0.95,
+        "weight": 0.9,
         "band": "strong"
       },
       {
         "value": "building",
-        "weight": 0.7,
-        "band": "supporting"
+        "weight": 0.75,
+        "band": "strong"
       }
     ],
     "freeTime": [
@@ -280,32 +270,32 @@
     ],
     "workEnvironment": [
       {
-        "value": "office",
+        "value": "remote",
         "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "remote",
-        "weight": 0.7,
+        "value": "office",
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
-        "value": "analyze",
+        "value": "build",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "build",
-        "weight": 0.85,
+        "value": "analyze",
+        "weight": 0.7,
         "band": "strong"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       }
     ],
@@ -317,12 +307,12 @@
       },
       {
         "value": "money",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Best for users who enjoy structure, APIs, data flow, and technical depth."
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -332,25 +322,25 @@
     "strengths": [
       {
         "value": "problem_solving",
-        "weight": 0.85,
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "creativity",
-        "weight": 0.65,
-        "band": "supporting"
+        "value": "analytical",
+        "weight": 0.75,
+        "band": "strong"
       },
       {
         "value": "fast_learning",
-        "weight": 0.7,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.55,
-        "band": "supporting"
+        "weight": 0.7,
+        "band": "strong"
       }
     ],
     "passions": [
@@ -361,26 +351,31 @@
       },
       {
         "value": "building",
-        "weight": 0.85,
+        "weight": 0.75,
         "band": "strong"
       }
     ],
     "freeTime": [
       {
         "value": "build",
-        "weight": 0.85,
+        "weight": 0.8,
         "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.6,
+        "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
         "value": "remote",
-        "weight": 0.7,
+        "weight": 0.65,
         "band": "supporting"
       },
       {
         "value": "office",
-        "weight": 0.55,
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
@@ -391,32 +386,230 @@
         "band": "strong"
       },
       {
-        "value": "create",
-        "weight": 0.6,
-        "band": "supporting"
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "strong"
       }
     ],
     "impact": [
       {
-        "value": "create",
-        "weight": 0.75,
+        "value": "systems",
+        "weight": 0.85,
         "band": "strong"
       }
     ],
     "goals": [
       {
         "value": "growth",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
       },
       {
-        "value": "variety",
+        "value": "money",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Good match for builders who want their work to reach users directly through apps."
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "software-quality-assurance-engineer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "fast_learning",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "building",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "remote",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "office",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "money",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "devops-cloud-engineer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "fast_learning",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "building",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "remote",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "office",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "money",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -436,19 +629,19 @@
       },
       {
         "value": "organized",
-        "weight": 0.7,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.85,
+        "weight": 0.9,
         "band": "strong"
       },
       {
         "value": "science",
-        "weight": 0.5,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -460,15 +653,15 @@
       },
       {
         "value": "ideas",
-        "weight": 0.6,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "learn",
-        "weight": 0.7,
-        "band": "supporting"
+        "weight": 0.75,
+        "band": "strong"
       }
     ],
     "workEnvironment": [
@@ -479,7 +672,7 @@
       },
       {
         "value": "remote",
-        "weight": 0.6,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -488,39 +681,232 @@
         "value": "analyze",
         "weight": 0.95,
         "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.75,
+        "band": "strong"
       },
       {
-        "value": "routine",
+        "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
         "weight": 0.45,
         "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows data traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "business-intelligence-analyst",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "remote",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows data traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "data-engineer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "fast_learning",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "building",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "remote",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "office",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "strong"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.7,
-        "band": "supporting"
-      },
-      {
-        "value": "discover",
-        "weight": 0.75,
+        "weight": 0.85,
         "band": "strong"
       }
     ],
     "goals": [
       {
         "value": "growth",
-        "weight": 0.7,
-        "band": "supporting"
+        "weight": 0.8,
+        "band": "strong"
       },
       {
-        "value": "balance",
+        "value": "money",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Fits users who like evidence, patterns, and explaining decisions with data."
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -535,37 +921,32 @@
       },
       {
         "value": "problem_solving",
-        "weight": 0.9,
+        "weight": 0.8,
         "band": "strong"
       },
       {
-        "value": "fast_learning",
-        "weight": 0.8,
-        "band": "strong"
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.95,
+        "weight": 0.9,
         "band": "strong"
       },
       {
         "value": "science",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "passions": [
       {
         "value": "tech",
-        "weight": 0.95,
-        "band": "strong"
-      },
-      {
-        "value": "science",
-        "weight": 0.8,
-        "band": "strong"
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
         "value": "ideas",
@@ -576,18 +957,112 @@
     "freeTime": [
       {
         "value": "learn",
-        "weight": 0.85,
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.75,
         "band": "strong"
       },
       {
-        "value": "build",
+        "value": "remote",
         "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows data traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "cybersecurity-analyst",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "fast_learning",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "building",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
-        "value": "lab",
+        "value": "remote",
         "weight": 0.65,
         "band": "supporting"
       },
@@ -599,85 +1074,85 @@
     ],
     "workStyle": [
       {
-        "value": "analyze",
-        "weight": 0.95,
+        "value": "build",
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "build",
-        "weight": 0.65,
-        "band": "supporting"
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "strong"
       }
     ],
     "impact": [
       {
-        "value": "discover",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
         "value": "systems",
-        "weight": 0.75,
+        "weight": 0.85,
         "band": "strong"
       }
     ],
     "goals": [
       {
         "value": "growth",
-        "weight": 0.9,
+        "weight": 0.8,
         "band": "strong"
       },
       {
         "value": "money",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Requires strong math comfort, persistence, and interest in technical experimentation."
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "cybersecurity-analyst",
+    "pathwaySlug": "cybersecurity-governance-analyst",
     "version": 1,
     "strengths": [
       {
         "value": "analytical",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "problem_solving",
-        "weight": 0.9,
+        "value": "communication",
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "organized",
-        "weight": 0.75,
+        "weight": 0.7,
         "band": "strong"
       }
     ],
     "subjects": [
       {
-        "value": "math",
-        "weight": 0.55,
-        "band": "supporting"
+        "value": "writing",
+        "weight": 0.9,
+        "band": "strong"
       },
       {
-        "value": "science",
-        "weight": 0.55,
-        "band": "supporting"
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
       }
     ],
     "passions": [
       {
-        "value": "tech",
-        "weight": 0.95,
+        "value": "reading",
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "ideas",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "social",
         "weight": 0.55,
         "band": "supporting"
       }
@@ -685,38 +1160,142 @@
     "freeTime": [
       {
         "value": "learn",
-        "weight": 0.8,
+        "weight": 0.7,
         "band": "strong"
+      },
+      {
+        "value": "consume",
+        "weight": 0.4,
+        "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
         "value": "office",
-        "weight": 0.7,
-        "band": "supporting"
-      },
-      {
-        "value": "remote",
-        "weight": 0.55,
-        "band": "supporting"
+        "weight": 0.8,
+        "band": "strong"
       }
     ],
     "workStyle": [
       {
         "value": "analyze",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "routine",
-        "weight": 0.55,
+        "weight": 0.4,
         "band": "supporting"
       }
     ],
     "impact": [
       {
         "value": "systems",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "growth",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows law policy traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "it-support-specialist",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
         "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "fast_learning",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "building",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "remote",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "office",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
         "band": "strong"
       }
     ],
@@ -733,33 +1312,236 @@
       }
     ],
     "notes": [
-      "Good for detail-oriented users who like investigation, protection, and structured response."
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "information-technology-support",
+    "pathwaySlug": "network-administrator",
     "version": 1,
     "strengths": [
       {
-        "value": "hands_on",
-        "weight": 0.85,
+        "value": "problem_solving",
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "people",
+        "value": "analytical",
         "weight": 0.75,
         "band": "strong"
       },
       {
-        "value": "problem_solving",
-        "weight": 0.8,
-        "band": "strong"
+        "value": "fast_learning",
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "subjects": [
       {
-        "value": "science",
+        "value": "math",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "building",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "remote",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "office",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "money",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "cloud-administrator",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "fast_learning",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "building",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "remote",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "office",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "money",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows tech build traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "ux-ui-designer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "creativity",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "arts",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
         "weight": 0.45,
         "band": "supporting"
       }
@@ -767,7 +1549,12 @@
     "passions": [
       {
         "value": "tech",
-        "weight": 0.85,
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.75,
         "band": "strong"
       },
       {
@@ -779,12 +1566,126 @@
     "freeTime": [
       {
         "value": "build",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "consume",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "remote",
         "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "socialize",
+        "value": "office",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "create",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "help",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "create",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "express",
         "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "variety",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "growth",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows create digital traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "product-manager",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -796,19 +1697,19 @@
       },
       {
         "value": "mixed",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
         "value": "help",
-        "weight": 0.9,
+        "weight": 0.7,
         "band": "strong"
       },
       {
-        "value": "build",
-        "weight": 0.55,
+        "value": "create",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -820,24 +1721,24 @@
       },
       {
         "value": "systems",
-        "weight": 0.6,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "goals": [
       {
         "value": "growth",
-        "weight": 0.65,
-        "band": "supporting"
+        "weight": 0.7,
+        "band": "strong"
       },
       {
-        "value": "balance",
+        "value": "variety",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Accessible technology entry point for users who enjoy practical troubleshooting and helping others."
+      "Best fit when the user shows business people traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -846,64 +1747,59 @@
     "version": 1,
     "strengths": [
       {
-        "value": "analytical",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
         "value": "people",
-        "weight": 0.9,
+        "weight": 0.95,
         "band": "strong"
       },
       {
         "value": "communication",
-        "weight": 0.75,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "organized",
         "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "science",
-        "weight": 0.95,
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "math",
-        "weight": 0.6,
+        "value": "social",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "passions": [
       {
         "value": "science",
-        "weight": 0.95,
-        "band": "strong"
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
         "value": "social",
-        "weight": 0.75,
-        "band": "supporting"
-      },
-      {
-        "value": "reading",
-        "weight": 0.55,
-        "band": "supporting"
+        "weight": 0.8,
+        "band": "strong"
       }
     ],
     "freeTime": [
       {
-        "value": "learn",
-        "weight": 0.85,
-        "band": "strong"
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
       },
       {
-        "value": "socialize",
-        "weight": 0.45,
+        "value": "learn",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -914,9 +1810,9 @@
         "band": "strong"
       },
       {
-        "value": "lab",
-        "weight": 0.55,
-        "band": "supporting"
+        "value": "remote",
+        "weight": 0.15,
+        "band": "penalty"
       }
     ],
     "workStyle": [
@@ -926,9 +1822,9 @@
         "band": "strong"
       },
       {
-        "value": "analyze",
-        "weight": 0.8,
-        "band": "strong"
+        "value": "routine",
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "impact": [
@@ -936,11 +1832,6 @@
         "value": "people",
         "weight": 0.95,
         "band": "strong"
-      },
-      {
-        "value": "discover",
-        "weight": 0.5,
-        "band": "supporting"
       }
     ],
     "goals": [
@@ -951,12 +1842,12 @@
       },
       {
         "value": "growth",
-        "weight": 0.6,
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Long regulated pathway best for users with strong science interest, people focus, and willingness for sustained study."
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -976,13 +1867,13 @@
       },
       {
         "value": "organized",
-        "weight": 0.8,
+        "weight": 0.7,
         "band": "strong"
       },
       {
         "value": "hands_on",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "subjects": [
@@ -993,26 +1884,26 @@
       },
       {
         "value": "social",
-        "weight": 0.6,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "passions": [
       {
-        "value": "social",
-        "weight": 0.85,
-        "band": "strong"
+        "value": "science",
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "science",
-        "weight": 0.65,
-        "band": "supporting"
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
       }
     ],
     "freeTime": [
       {
         "value": "socialize",
-        "weight": 0.6,
+        "weight": 0.55,
         "band": "supporting"
       },
       {
@@ -1024,12 +1915,12 @@
     "workEnvironment": [
       {
         "value": "mixed",
-        "weight": 0.8,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "remote",
-        "weight": 0.2,
+        "weight": 0.15,
         "band": "penalty"
       }
     ],
@@ -1055,22 +1946,22 @@
     "goals": [
       {
         "value": "impact",
-        "weight": 0.85,
+        "weight": 0.9,
         "band": "strong"
       },
       {
         "value": "growth",
-        "weight": 0.55,
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Strong fit for people-centered users who can handle hands-on, structured clinical work."
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "medical-laboratory-scientist",
+    "pathwaySlug": "pharmacy-study",
     "version": 1,
     "strengths": [
       {
@@ -1085,7 +1976,7 @@
       },
       {
         "value": "hands_on",
-        "weight": 0.7,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
@@ -1109,7 +2000,7 @@
       },
       {
         "value": "ideas",
-        "weight": 0.55,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -1152,7 +2043,7 @@
       },
       {
         "value": "people",
-        "weight": 0.55,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -1169,17 +2060,17 @@
       }
     ],
     "notes": [
-      "Ideal for science-focused users who prefer precise lab work over constant public-facing care."
+      "Best fit when the user shows lab traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "public-health-officer",
+    "pathwaySlug": "dentistry-study",
     "version": 1,
     "strengths": [
       {
         "value": "people",
-        "weight": 0.85,
+        "weight": 0.95,
         "band": "strong"
       },
       {
@@ -1190,37 +2081,42 @@
       {
         "value": "organized",
         "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "science",
-        "weight": 0.65,
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "science",
+        "weight": 0.7,
         "band": "supporting"
       },
       {
         "value": "social",
         "weight": 0.8,
         "band": "strong"
-      }
-    ],
-    "passions": [
-      {
-        "value": "social",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "science",
-        "weight": 0.6,
-        "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "socialize",
-        "weight": 0.7,
+        "weight": 0.55,
         "band": "supporting"
       },
       {
@@ -1236,184 +2132,85 @@
         "band": "strong"
       },
       {
-        "value": "office",
-        "weight": 0.5,
-        "band": "supporting"
+        "value": "remote",
+        "weight": 0.15,
+        "band": "penalty"
       }
     ],
     "workStyle": [
       {
         "value": "help",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "analyze",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "impact": [
-      {
-        "value": "people",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "systems",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "goals": [
-      {
-        "value": "impact",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "variety",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "notes": [
-      "Matches users who want community health impact through education, coordination, and prevention."
-    ],
-    "status": "active"
-  },
-  {
-    "pathwaySlug": "nutrition-dietetics",
-    "version": 1,
-    "strengths": [
-      {
-        "value": "people",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "communication",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "analytical",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "subjects": [
-      {
-        "value": "science",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "social",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "passions": [
-      {
-        "value": "science",
-        "weight": 0.7,
-        "band": "supporting"
-      },
-      {
-        "value": "sports",
-        "weight": 0.55,
-        "band": "supporting"
-      },
-      {
-        "value": "social",
-        "weight": 0.7,
-        "band": "supporting"
-      }
-    ],
-    "freeTime": [
-      {
-        "value": "learn",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "workEnvironment": [
-      {
-        "value": "mixed",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "office",
-        "weight": 0.5,
-        "band": "supporting"
-      }
-    ],
-    "workStyle": [
-      {
-        "value": "help",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "analyze",
-        "weight": 0.45,
-        "band": "supporting"
-      }
-    ],
-    "impact": [
-      {
-        "value": "people",
-        "weight": 0.85,
-        "band": "strong"
-      }
-    ],
-    "goals": [
-      {
-        "value": "impact",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "balance",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "notes": [
-      "Good for users interested in health, food choices, prevention, and personal guidance."
-    ],
-    "status": "active"
-  },
-  {
-    "pathwaySlug": "accounting-study",
-    "version": 1,
-    "strengths": [
-      {
-        "value": "organized",
         "weight": 0.95,
         "band": "strong"
       },
       {
+        "value": "routine",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "growth",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "medical-laboratory-scientist",
+    "version": 1,
+    "strengths": [
+      {
         "value": "analytical",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
         "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "problem_solving",
-        "weight": 0.6,
+        "value": "hands_on",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
-        "value": "math",
-        "weight": 0.75,
+        "value": "science",
+        "weight": 0.95,
         "band": "strong"
+      },
+      {
+        "value": "math",
+        "weight": 0.5,
+        "band": "supporting"
       }
     ],
     "passions": [
+      {
+        "value": "science",
+        "weight": 0.9,
+        "band": "strong"
+      },
       {
         "value": "ideas",
         "weight": 0.45,
@@ -1423,14 +2220,14 @@
     "freeTime": [
       {
         "value": "learn",
-        "weight": 0.55,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
-        "value": "office",
-        "weight": 0.85,
+        "value": "lab",
+        "weight": 0.95,
         "band": "strong"
       },
       {
@@ -1441,80 +2238,85 @@
     ],
     "workStyle": [
       {
-        "value": "routine",
+        "value": "analyze",
         "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "analyze",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "routine",
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "systems",
-        "weight": 0.65,
+        "value": "discover",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "goals": [
       {
         "value": "balance",
-        "weight": 0.7,
+        "weight": 0.55,
         "band": "supporting"
       },
       {
-        "value": "money",
-        "weight": 0.6,
+        "value": "growth",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Fits organized users who like structured number work and stable business roles."
+      "Best fit when the user shows lab traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "financial-analyst",
+    "pathwaySlug": "radiographer",
     "version": 1,
     "strengths": [
       {
         "value": "analytical",
-        "weight": 0.95,
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "problem_solving",
-        "weight": 0.8,
+        "value": "organized",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "communication",
-        "weight": 0.55,
+        "value": "hands_on",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
-        "value": "math",
-        "weight": 0.9,
+        "value": "science",
+        "weight": 0.95,
         "band": "strong"
       },
       {
-        "value": "writing",
-        "weight": 0.45,
+        "value": "math",
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "passions": [
       {
-        "value": "ideas",
-        "weight": 0.6,
-        "band": "supporting"
+        "value": "science",
+        "weight": 0.9,
+        "band": "strong"
       },
       {
-        "value": "tech",
+        "value": "ideas",
         "weight": 0.45,
         "band": "supporting"
       }
@@ -1528,13 +2330,226 @@
     ],
     "workEnvironment": [
       {
-        "value": "office",
+        "value": "lab",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "outdoor",
+        "weight": 0.15,
+        "band": "penalty"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "balance",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "growth",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows lab traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "public-health-officer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "science",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
         "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "remote",
-        "weight": 0.45,
+        "weight": 0.15,
+        "band": "penalty"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "growth",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "epidemiologist",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "remote",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -1547,25 +2562,624 @@
     ],
     "impact": [
       {
+        "value": "discover",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
         "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows data traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "physiotherapist",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
         "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "science",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "remote",
+        "weight": 0.15,
+        "band": "penalty"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "growth",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "nutrition-dietetics",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "science",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "remote",
+        "weight": 0.15,
+        "band": "penalty"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "growth",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "counseling-psychologist",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "science",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "remote",
+        "weight": 0.15,
+        "band": "penalty"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "growth",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "accounting-study",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "writing",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.85,
+        "band": "strong"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "goals": [
       {
         "value": "money",
-        "weight": 0.85,
+        "weight": 0.75,
         "band": "strong"
       },
       {
         "value": "growth",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "notes": [
-      "Strong for users who like quantitative business decisions and career growth."
+      "Best fit when the user shows business analyze traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "financial-analyst",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "writing",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.85,
+        "band": "strong"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "money",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "growth",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows business analyze traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "banking-credit-officer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "writing",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.85,
+        "band": "strong"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "money",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "growth",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows business analyze traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -1580,142 +3194,23 @@
       },
       {
         "value": "communication",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "analytical",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "subjects": [
-      {
-        "value": "writing",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "arts",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "passions": [
-      {
-        "value": "social",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "ideas",
         "weight": 0.7,
         "band": "supporting"
       },
       {
-        "value": "tech",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "freeTime": [
-      {
-        "value": "consume",
-        "weight": 0.6,
-        "band": "supporting"
-      },
-      {
-        "value": "socialize",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "workEnvironment": [
-      {
-        "value": "office",
-        "weight": 0.65,
-        "band": "supporting"
-      },
-      {
-        "value": "remote",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "workStyle": [
-      {
-        "value": "create",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "analyze",
-        "weight": 0.5,
-        "band": "supporting"
-      }
-    ],
-    "impact": [
-      {
-        "value": "express",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "create",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "goals": [
-      {
-        "value": "variety",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "growth",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "notes": [
-      "Matches communicators who enjoy creative campaigns and measurable audience response."
-    ],
-    "status": "active"
-  },
-  {
-    "pathwaySlug": "product-manager",
-    "version": 1,
-    "strengths": [
-      {
-        "value": "communication",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "organized",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
         "value": "problem_solving",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "analytical",
         "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
-        "value": "social",
-        "weight": 0.55,
+        "value": "arts",
+        "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "math",
+        "value": "writing",
         "weight": 0.45,
         "band": "supporting"
       }
@@ -1723,7 +3218,7 @@
     "passions": [
       {
         "value": "tech",
-        "weight": 0.75,
+        "weight": 0.7,
         "band": "strong"
       },
       {
@@ -1739,163 +3234,460 @@
     ],
     "freeTime": [
       {
-        "value": "learn",
-        "weight": 0.65,
+        "value": "build",
+        "weight": 0.55,
         "band": "supporting"
       },
       {
-        "value": "socialize",
+        "value": "consume",
         "weight": 0.45,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
-        "value": "office",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "remote",
+        "weight": 0.65,
+        "band": "supporting"
       },
       {
-        "value": "remote",
-        "weight": 0.5,
+        "value": "office",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
-        "value": "analyze",
-        "weight": 0.7,
-        "band": "supporting"
+        "value": "create",
+        "weight": 0.9,
+        "band": "strong"
       },
       {
         "value": "help",
-        "weight": 0.65,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "systems",
-        "weight": 0.75,
+        "value": "create",
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "people",
-        "weight": 0.6,
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "express",
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "goals": [
       {
-        "value": "growth",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
         "value": "variety",
         "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "growth",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Works well for users who can organize ambiguity and communicate across teams."
+      "Best fit when the user shows create digital traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "entrepreneurship-small-business",
+    "pathwaySlug": "sales-business-development-specialist",
     "version": 1,
     "strengths": [
       {
-        "value": "fast_learning",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
         "value": "communication",
-        "weight": 0.75,
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "problem_solving",
-        "weight": 0.75,
+        "value": "people",
+        "weight": 0.8,
         "band": "strong"
       },
       {
         "value": "organized",
-        "weight": 0.55,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "social",
-        "weight": 0.55,
+        "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "math",
-        "weight": 0.45,
+        "value": "writing",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "passions": [
       {
-        "value": "building",
-        "weight": 0.9,
+        "value": "social",
+        "weight": 0.75,
         "band": "strong"
       },
       {
         "value": "ideas",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "social",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
-        "value": "build",
-        "weight": 0.85,
-        "band": "strong"
+        "value": "socialize",
+        "weight": 0.65,
+        "band": "supporting"
       },
       {
         "value": "learn",
-        "weight": 0.65,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
         "value": "mixed",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "systems",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows business people traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "market-research-analyst",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "remote",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows data traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "project-manager",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "systems",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows business people traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "operations-manager",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "writing",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
         "weight": 0.85,
         "band": "strong"
       }
     ],
     "workStyle": [
       {
-        "value": "build",
-        "weight": 0.85,
+        "value": "analyze",
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "create",
-        "weight": 0.7,
+        "value": "routine",
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "create",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
         "value": "systems",
-        "weight": 0.55,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
@@ -1906,7 +3698,91 @@
         "band": "strong"
       },
       {
-        "value": "variety",
+        "value": "growth",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows business analyze traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "supply-chain-logistics-specialist",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "writing",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.85,
+        "band": "strong"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "money",
         "weight": 0.75,
         "band": "strong"
       },
@@ -1917,34 +3793,34 @@
       }
     ],
     "notes": [
-      "Fits self-directed users who want to build and test practical business ideas."
+      "Best fit when the user shows business analyze traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "primary-school-teacher",
+    "pathwaySlug": "human-resource-specialist",
     "version": 1,
     "strengths": [
-      {
-        "value": "people",
-        "weight": 0.95,
-        "band": "strong"
-      },
       {
         "value": "communication",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "organized",
-        "weight": 0.75,
+        "value": "people",
+        "weight": 0.8,
         "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "social",
-        "weight": 0.7,
+        "weight": 0.65,
         "band": "supporting"
       },
       {
@@ -1956,11 +3832,11 @@
     "passions": [
       {
         "value": "social",
-        "weight": 0.85,
+        "weight": 0.75,
         "band": "strong"
       },
       {
-        "value": "reading",
+        "value": "ideas",
         "weight": 0.55,
         "band": "supporting"
       }
@@ -1970,262 +3846,54 @@
         "value": "socialize",
         "weight": 0.65,
         "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
         "value": "office",
-        "weight": 0.55,
-        "band": "supporting"
+        "weight": 0.75,
+        "band": "strong"
       },
       {
         "value": "mixed",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
         "value": "help",
-        "weight": 0.95,
-        "band": "strong"
-      },
-      {
-        "value": "routine",
         "weight": 0.7,
-        "band": "supporting"
-      }
-    ],
-    "impact": [
-      {
-        "value": "people",
-        "weight": 0.95,
-        "band": "strong"
-      }
-    ],
-    "goals": [
-      {
-        "value": "impact",
-        "weight": 0.85,
         "band": "strong"
       },
-      {
-        "value": "balance",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "notes": [
-      "Strong people-helping match with steady routines and communication-heavy work."
-    ],
-    "status": "active"
-  },
-  {
-    "pathwaySlug": "stem-teacher",
-    "version": 1,
-    "strengths": [
-      {
-        "value": "communication",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "problem_solving",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "people",
-        "weight": 0.75,
-        "band": "strong"
-      }
-    ],
-    "subjects": [
-      {
-        "value": "math",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "science",
-        "weight": 0.85,
-        "band": "strong"
-      }
-    ],
-    "passions": [
-      {
-        "value": "science",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "tech",
-        "weight": 0.55,
-        "band": "supporting"
-      },
-      {
-        "value": "social",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "freeTime": [
-      {
-        "value": "learn",
-        "weight": 0.7,
-        "band": "supporting"
-      }
-    ],
-    "workEnvironment": [
-      {
-        "value": "mixed",
-        "weight": 0.65,
-        "band": "supporting"
-      },
-      {
-        "value": "office",
-        "weight": 0.5,
-        "band": "supporting"
-      }
-    ],
-    "workStyle": [
-      {
-        "value": "help",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "analyze",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "impact": [
-      {
-        "value": "people",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "discover",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "goals": [
-      {
-        "value": "impact",
-        "weight": 0.85,
-        "band": "strong"
-      }
-    ],
-    "notes": [
-      "Combines STEM subject interest with a clear desire to explain and help learners."
-    ],
-    "status": "active"
-  },
-  {
-    "pathwaySlug": "instructional-designer",
-    "version": 1,
-    "strengths": [
-      {
-        "value": "organized",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "communication",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "creativity",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "subjects": [
-      {
-        "value": "writing",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "arts",
-        "weight": 0.45,
-        "band": "supporting"
-      }
-    ],
-    "passions": [
-      {
-        "value": "reading",
-        "weight": 0.7,
-        "band": "supporting"
-      },
-      {
-        "value": "ideas",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "tech",
-        "weight": 0.45,
-        "band": "supporting"
-      }
-    ],
-    "freeTime": [
-      {
-        "value": "learn",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "consume",
-        "weight": 0.45,
-        "band": "supporting"
-      }
-    ],
-    "workEnvironment": [
-      {
-        "value": "remote",
-        "weight": 0.65,
-        "band": "supporting"
-      },
-      {
-        "value": "office",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "workStyle": [
       {
         "value": "create",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "routine",
-        "weight": 0.55,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "impact": [
       {
         "value": "people",
-        "weight": 0.7,
-        "band": "supporting"
+        "weight": 0.75,
+        "band": "strong"
       },
       {
         "value": "systems",
-        "weight": 0.55,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "goals": [
       {
-        "value": "balance",
-        "weight": 0.65,
-        "band": "supporting"
+        "value": "growth",
+        "weight": 0.7,
+        "band": "strong"
       },
       {
         "value": "variety",
@@ -2234,7 +3902,116 @@
       }
     ],
     "notes": [
-      "Good for organized creators who enjoy turning knowledge into structured learning."
+      "Best fit when the user shows business people traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "small-business-manager",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "systems",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows business people traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -2255,18 +4032,18 @@
       {
         "value": "hands_on",
         "weight": 0.7,
-        "band": "supporting"
+        "band": "strong"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.9,
+        "weight": 0.95,
         "band": "strong"
       },
       {
         "value": "science",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
       }
     ],
@@ -2278,31 +4055,26 @@
       },
       {
         "value": "science",
-        "weight": 0.6,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "build",
-        "weight": 0.8,
+        "weight": 0.75,
         "band": "strong"
-      },
-      {
-        "value": "outdoor",
-        "weight": 0.45,
-        "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
         "value": "mixed",
-        "weight": 0.85,
+        "weight": 0.8,
         "band": "strong"
       },
       {
-        "value": "outdoor",
-        "weight": 0.65,
+        "value": "office",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -2314,7 +4086,7 @@
       },
       {
         "value": "analyze",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
       }
     ],
@@ -2326,24 +4098,24 @@
       },
       {
         "value": "create",
-        "weight": 0.55,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "goals": [
       {
-        "value": "impact",
-        "weight": 0.65,
+        "value": "growth",
+        "weight": 0.7,
         "band": "supporting"
       },
       {
-        "value": "growth",
-        "weight": 0.65,
+        "value": "impact",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Matches users who like math, construction, and tangible infrastructure impact."
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -2352,18 +4124,122 @@
     "version": 1,
     "strengths": [
       {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
         "value": "analytical",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
         "weight": 0.95,
         "band": "strong"
       },
+      {
+        "value": "science",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "building",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "office",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "impact",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "water-resources-engineer",
+    "version": 1,
+    "strengths": [
       {
         "value": "problem_solving",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "organized",
-        "weight": 0.75,
+        "value": "analytical",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.7,
         "band": "strong"
       }
     ],
@@ -2375,14 +4251,14 @@
       },
       {
         "value": "science",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
       }
     ],
     "passions": [
       {
         "value": "building",
-        "weight": 0.85,
+        "weight": 0.9,
         "band": "strong"
       },
       {
@@ -2394,164 +4270,164 @@
     "freeTime": [
       {
         "value": "build",
-        "weight": 0.7,
-        "band": "supporting"
+        "weight": 0.75,
+        "band": "strong"
       }
     ],
     "workEnvironment": [
       {
-        "value": "office",
-        "weight": 0.65,
-        "band": "supporting"
-      },
-      {
         "value": "mixed",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "workStyle": [
-      {
-        "value": "analyze",
-        "weight": 0.95,
-        "band": "strong"
-      },
-      {
-        "value": "routine",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "impact": [
-      {
-        "value": "systems",
-        "weight": 0.85,
-        "band": "strong"
-      }
-    ],
-    "goals": [
-      {
-        "value": "growth",
-        "weight": 0.7,
-        "band": "supporting"
-      },
-      {
-        "value": "impact",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "notes": [
-      "Best for users comfortable with precise calculations and safety-critical design."
-    ],
-    "status": "active"
-  },
-  {
-    "pathwaySlug": "renewable-energy-technician",
-    "version": 1,
-    "strengths": [
-      {
-        "value": "hands_on",
-        "weight": 0.95,
-        "band": "strong"
-      },
-      {
-        "value": "problem_solving",
         "weight": 0.8,
         "band": "strong"
       },
       {
-        "value": "fast_learning",
-        "weight": 0.6,
+        "value": "office",
+        "weight": 0.45,
         "band": "supporting"
-      }
-    ],
-    "subjects": [
-      {
-        "value": "science",
-        "weight": 0.7,
-        "band": "supporting"
-      },
-      {
-        "value": "math",
-        "weight": 0.5,
-        "band": "supporting"
-      }
-    ],
-    "passions": [
-      {
-        "value": "building",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "nature",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "tech",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "freeTime": [
-      {
-        "value": "build",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "outdoor",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "workEnvironment": [
-      {
-        "value": "outdoor",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "mixed",
-        "weight": 0.75,
-        "band": "strong"
       }
     ],
     "workStyle": [
       {
         "value": "build",
-        "weight": 0.95,
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.8,
         "band": "strong"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.75,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "create",
-        "weight": 0.55,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "goals": [
       {
-        "value": "impact",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "growth",
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "growth",
+        "value": "impact",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Practical fit for hands-on users who want useful technical work in energy systems."
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "electrical-power-engineer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "building",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "office",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "impact",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -2565,25 +4441,25 @@
         "band": "strong"
       },
       {
-        "value": "hands_on",
+        "value": "analytical",
         "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "analytical",
-        "weight": 0.8,
+        "value": "hands_on",
+        "weight": 0.7,
         "band": "strong"
       }
     ],
     "subjects": [
       {
         "value": "math",
-        "weight": 0.9,
+        "weight": 0.95,
         "band": "strong"
       },
       {
         "value": "science",
-        "weight": 0.85,
+        "weight": 0.8,
         "band": "strong"
       }
     ],
@@ -2595,14 +4471,14 @@
       },
       {
         "value": "science",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "build",
-        "weight": 0.85,
+        "weight": 0.75,
         "band": "strong"
       }
     ],
@@ -2613,32 +4489,32 @@
         "band": "strong"
       },
       {
-        "value": "lab",
-        "weight": 0.6,
+        "value": "office",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
         "value": "build",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "analyze",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.8,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "create",
-        "weight": 0.65,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -2649,70 +4525,70 @@
         "band": "supporting"
       },
       {
-        "value": "variety",
+        "value": "impact",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Good for users who enjoy physical systems, technical problem-solving, and applied science."
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "graphic-designer",
+    "pathwaySlug": "renewable-energy-technician",
     "version": 1,
     "strengths": [
       {
-        "value": "creativity",
-        "weight": 0.95,
+        "value": "hands_on",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "communication",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "organized",
-        "weight": 0.45,
+        "value": "problem_solving",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
-        "value": "arts",
-        "weight": 0.95,
+        "value": "science",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "writing",
-        "weight": 0.5,
+        "value": "math",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "passions": [
       {
-        "value": "ideas",
-        "weight": 0.85,
+        "value": "nature",
+        "weight": 0.95,
         "band": "strong"
       },
       {
-        "value": "reading",
-        "weight": 0.55,
+        "value": "science",
+        "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "music",
-        "weight": 0.4,
+        "value": "building",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
-        "value": "consume",
-        "weight": 0.55,
-        "band": "supporting"
+        "value": "outdoor",
+        "weight": 0.85,
+        "band": "strong"
       },
       {
         "value": "learn",
@@ -2722,39 +4598,688 @@
     ],
     "workEnvironment": [
       {
-        "value": "remote",
-        "weight": 0.65,
-        "band": "supporting"
+        "value": "outdoor",
+        "weight": 0.95,
+        "band": "strong"
       },
       {
-        "value": "office",
-        "weight": 0.55,
+        "value": "mixed",
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
-        "value": "create",
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "build",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "systems",
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "renewable-energy-engineer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
         "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "building",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "office",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.8,
         "band": "strong"
       }
     ],
     "impact": [
       {
-        "value": "express",
-        "weight": 0.9,
+        "value": "systems",
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "impact",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "industrial-engineer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
         "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "building",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "office",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "impact",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "quality-engineer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "building",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "office",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "impact",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "construction-manager",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "problem_solving",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "building",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "build",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "office",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "build",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analyze",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "impact",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows engineering traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "land-surveyor",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "hands_on",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "math",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "nature",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "building",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "outdoor",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "outdoor",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "build",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "systems",
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "primary-school-teacher",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "reading",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
         "band": "strong"
       }
     ],
     "goals": [
       {
-        "value": "variety",
-        "weight": 0.75,
+        "value": "impact",
+        "weight": 0.85,
         "band": "strong"
       },
       {
@@ -2764,12 +5289,324 @@
       }
     ],
     "notes": [
-      "Strong creative fit for users who like visual expression and portfolio-based work."
+      "Best fit when the user shows education traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "ux-ui-designer",
+    "pathwaySlug": "secondary-stem-teacher",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "reading",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows education traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "language-teacher",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "reading",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows education traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "early-childhood-educator",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "reading",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows education traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "instructional-designer",
     "version": 1,
     "strengths": [
       {
@@ -2778,47 +5615,42 @@
         "band": "strong"
       },
       {
-        "value": "people",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "analytical",
-        "weight": 0.6,
+        "value": "communication",
+        "weight": 0.7,
         "band": "supporting"
       },
       {
-        "value": "communication",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "problem_solving",
+        "weight": 0.65,
+        "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "arts",
-        "weight": 0.75,
-        "band": "strong"
+        "weight": 0.65,
+        "band": "supporting"
       },
       {
-        "value": "social",
-        "weight": 0.55,
+        "value": "writing",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "passions": [
       {
         "value": "tech",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
         "weight": 0.75,
         "band": "strong"
       },
       {
         "value": "building",
-        "weight": 0.65,
-        "band": "supporting"
-      },
-      {
-        "value": "ideas",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -2842,222 +5674,217 @@
       },
       {
         "value": "office",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
         "value": "create",
-        "weight": 0.85,
+        "weight": 0.9,
         "band": "strong"
       },
       {
         "value": "help",
-        "weight": 0.6,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "people",
-        "weight": 0.75,
+        "value": "create",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "create",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "people",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "express",
+        "weight": 0.5,
+        "band": "supporting"
       }
     ],
     "goals": [
       {
-        "value": "growth",
-        "weight": 0.65,
+        "value": "variety",
+        "weight": 0.7,
         "band": "supporting"
       },
       {
-        "value": "variety",
+        "value": "growth",
         "weight": 0.65,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Hybrid fit for users who want creative digital work grounded in user needs."
+      "Best fit when the user shows create digital traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "journalist",
+    "pathwaySlug": "educational-technology-specialist",
     "version": 1,
     "strengths": [
       {
-        "value": "communication",
-        "weight": 0.95,
+        "value": "people",
+        "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "analytical",
-        "weight": 0.65,
-        "band": "supporting"
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
       },
       {
-        "value": "people",
-        "weight": 0.6,
-        "band": "supporting"
+        "value": "organized",
+        "weight": 0.75,
+        "band": "strong"
       }
     ],
     "subjects": [
       {
-        "value": "writing",
-        "weight": 0.95,
-        "band": "strong"
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
       },
       {
-        "value": "social",
-        "weight": 0.7,
+        "value": "writing",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "passions": [
       {
-        "value": "reading",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
         "value": "social",
-        "weight": 0.65,
-        "band": "supporting"
+        "weight": 0.85,
+        "band": "strong"
       },
       {
-        "value": "ideas",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "reading",
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "freeTime": [
       {
-        "value": "consume",
-        "weight": 0.65,
+        "value": "socialize",
+        "weight": 0.55,
         "band": "supporting"
       },
       {
-        "value": "socialize",
-        "weight": 0.45,
+        "value": "learn",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
-        "value": "mixed",
-        "weight": 0.85,
-        "band": "strong"
+        "value": "office",
+        "weight": 0.55,
+        "band": "supporting"
       },
       {
-        "value": "outdoor",
-        "weight": 0.45,
+        "value": "mixed",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "workStyle": [
       {
-        "value": "create",
-        "weight": 0.75,
+        "value": "help",
+        "weight": 0.95,
         "band": "strong"
       },
       {
-        "value": "analyze",
+        "value": "routine",
         "weight": 0.6,
         "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "express",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
         "value": "people",
-        "weight": 0.55,
-        "band": "supporting"
+        "weight": 0.95,
+        "band": "strong"
       }
     ],
     "goals": [
       {
         "value": "impact",
-        "weight": 0.7,
-        "band": "supporting"
+        "weight": 0.85,
+        "band": "strong"
       },
       {
-        "value": "variety",
-        "weight": 0.8,
-        "band": "strong"
+        "value": "balance",
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "notes": [
-      "Best for curious writers who like public issues, research, and varied environments."
+      "Best fit when the user shows education traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "video-content-producer",
+    "pathwaySlug": "school-counselor",
     "version": 1,
     "strengths": [
       {
-        "value": "creativity",
+        "value": "people",
         "weight": 0.95,
         "band": "strong"
       },
       {
         "value": "communication",
-        "weight": 0.7,
-        "band": "supporting"
-      },
-      {
-        "value": "hands_on",
-        "weight": 0.75,
-        "band": "strong"
-      }
-    ],
-    "subjects": [
-      {
-        "value": "arts",
         "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "writing",
-        "weight": 0.45,
+        "value": "organized",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "passions": [
       {
-        "value": "ideas",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "music",
-        "weight": 0.55,
+        "value": "science",
+        "weight": 0.7,
         "band": "supporting"
       },
       {
         "value": "social",
-        "weight": 0.5,
-        "band": "supporting"
+        "weight": 0.8,
+        "band": "strong"
       }
     ],
     "freeTime": [
       {
-        "value": "consume",
-        "weight": 0.65,
+        "value": "socialize",
+        "weight": 0.55,
         "band": "supporting"
       },
       {
-        "value": "build",
+        "value": "learn",
         "weight": 0.55,
         "band": "supporting"
       }
@@ -3070,48 +5897,147 @@
       },
       {
         "value": "remote",
-        "weight": 0.45,
-        "band": "supporting"
+        "weight": 0.15,
+        "band": "penalty"
       }
     ],
     "workStyle": [
       {
-        "value": "create",
+        "value": "help",
         "weight": 0.95,
         "band": "strong"
       },
       {
-        "value": "build",
+        "value": "routine",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "express",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "create",
-        "weight": 0.75,
+        "value": "people",
+        "weight": 0.95,
         "band": "strong"
       }
     ],
     "goals": [
       {
-        "value": "variety",
-        "weight": 0.85,
+        "value": "impact",
+        "weight": 0.9,
         "band": "strong"
       },
       {
         "value": "growth",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "school-administrator",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "reading",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
         "weight": 0.55,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Strong creative-production fit for users who like making media and learning through output."
+      "Best fit when the user shows education traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -3126,12 +6052,12 @@
       },
       {
         "value": "communication",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "organized",
-        "weight": 0.75,
+        "weight": 0.7,
         "band": "strong"
       }
     ],
@@ -3143,7 +6069,7 @@
       },
       {
         "value": "social",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
       }
     ],
@@ -3154,13 +6080,13 @@
         "band": "strong"
       },
       {
-        "value": "social",
+        "value": "ideas",
         "weight": 0.7,
-        "band": "supporting"
+        "band": "strong"
       },
       {
-        "value": "ideas",
-        "weight": 0.65,
+        "value": "social",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -3168,11 +6094,11 @@
       {
         "value": "learn",
         "weight": 0.7,
-        "band": "supporting"
+        "band": "strong"
       },
       {
         "value": "consume",
-        "weight": 0.45,
+        "weight": 0.4,
         "band": "supporting"
       }
     ],
@@ -3191,20 +6117,20 @@
       },
       {
         "value": "routine",
-        "weight": 0.45,
+        "weight": 0.4,
         "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "people",
-        "weight": 0.7,
-        "band": "supporting"
+        "value": "systems",
+        "weight": 0.8,
+        "band": "strong"
       },
       {
-        "value": "systems",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "people",
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "goals": [
@@ -3215,12 +6141,121 @@
       },
       {
         "value": "growth",
-        "weight": 0.65,
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Fits disciplined readers and communicators who like rules, argument, and social impact."
+      "Best fit when the user shows law policy traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "compliance-officer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "writing",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "reading",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "consume",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "growth",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows law policy traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -3230,54 +6265,59 @@
     "strengths": [
       {
         "value": "analytical",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "communication",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "organized",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "subjects": [
-      {
-        "value": "social",
         "weight": 0.85,
         "band": "strong"
       },
       {
+        "value": "communication",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
         "value": "writing",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "social",
         "weight": 0.8,
         "band": "strong"
       }
     ],
     "passions": [
       {
-        "value": "ideas",
-        "weight": 0.8,
+        "value": "reading",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "reading",
+        "value": "ideas",
         "weight": 0.7,
-        "band": "supporting"
+        "band": "strong"
       },
       {
         "value": "social",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "learn",
-        "weight": 0.75,
+        "weight": 0.7,
         "band": "strong"
+      },
+      {
+        "value": "consume",
+        "weight": 0.4,
+        "band": "supporting"
       }
     ],
     "workEnvironment": [
@@ -3285,145 +6325,155 @@
         "value": "office",
         "weight": 0.8,
         "band": "strong"
-      },
-      {
-        "value": "mixed",
-        "weight": 0.45,
-        "band": "supporting"
       }
     ],
     "workStyle": [
       {
         "value": "analyze",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "help",
-        "weight": 0.45,
+        "value": "routine",
+        "weight": 0.4,
         "band": "supporting"
       }
     ],
     "impact": [
       {
         "value": "systems",
-        "weight": 0.85,
+        "weight": 0.8,
         "band": "strong"
       },
       {
         "value": "people",
-        "weight": 0.65,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "goals": [
       {
         "value": "impact",
-        "weight": 0.8,
-        "band": "strong"
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
         "value": "growth",
-        "weight": 0.55,
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Good for users who want evidence-based social change through research and writing."
+      "Best fit when the user shows law policy traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "counselor",
+    "pathwaySlug": "public-administration-officer",
     "version": 1,
     "strengths": [
       {
-        "value": "people",
-        "weight": 0.95,
+        "value": "analytical",
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "communication",
-        "weight": 0.9,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "organized",
-        "weight": 0.55,
-        "band": "supporting"
+        "weight": 0.7,
+        "band": "strong"
       }
     ],
     "subjects": [
       {
-        "value": "social",
+        "value": "writing",
         "weight": 0.9,
         "band": "strong"
       },
       {
-        "value": "writing",
-        "weight": 0.45,
-        "band": "supporting"
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
       }
     ],
     "passions": [
       {
-        "value": "social",
-        "weight": 0.95,
+        "value": "reading",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "reading",
-        "weight": 0.45,
+        "value": "ideas",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
-        "value": "socialize",
-        "weight": 0.6,
+        "value": "learn",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "consume",
+        "weight": 0.4,
         "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
         "value": "office",
-        "weight": 0.75,
+        "weight": 0.8,
         "band": "strong"
-      },
-      {
-        "value": "remote",
-        "weight": 0.25,
-        "band": "penalty"
       }
     ],
     "workStyle": [
       {
-        "value": "help",
-        "weight": 0.95,
+        "value": "analyze",
+        "weight": 0.85,
         "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.4,
+        "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "people",
-        "weight": 0.95,
+        "value": "systems",
+        "weight": 0.8,
         "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.55,
+        "band": "supporting"
       }
     ],
     "goals": [
       {
         "value": "impact",
-        "weight": 0.85,
-        "band": "strong"
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "balance",
-        "weight": 0.55,
+        "value": "growth",
+        "weight": 0.6,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Strong match for patient listeners who want direct human support work."
+      "Best fit when the user shows law policy traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
@@ -3444,37 +6494,47 @@
       {
         "value": "organized",
         "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
-        "value": "social",
-        "weight": 0.9,
+        "value": "science",
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "writing",
-        "weight": 0.5,
+        "value": "social",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "passions": [
       {
-        "value": "social",
-        "weight": 0.95,
-        "band": "strong"
+        "value": "science",
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "ideas",
-        "weight": 0.45,
-        "band": "supporting"
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
       }
     ],
     "freeTime": [
       {
         "value": "socialize",
-        "weight": 0.65,
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -3485,9 +6545,9 @@
         "band": "strong"
       },
       {
-        "value": "office",
-        "weight": 0.45,
-        "band": "supporting"
+        "value": "remote",
+        "weight": 0.15,
+        "band": "penalty"
       }
     ],
     "workStyle": [
@@ -3498,7 +6558,7 @@
       },
       {
         "value": "routine",
-        "weight": 0.45,
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -3516,18 +6576,18 @@
         "band": "strong"
       },
       {
-        "value": "variety",
-        "weight": 0.55,
+        "value": "growth",
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Fits users who want practical community impact and can handle complex people work."
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "environmental-scientist",
+    "pathwaySlug": "psychology-study",
     "version": 1,
     "strengths": [
       {
@@ -3536,12 +6596,329 @@
         "band": "strong"
       },
       {
+        "value": "communication",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.7,
+        "band": "strong"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "writing",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "passions": [
+      {
+        "value": "reading",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "consume",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.4,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "systems",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "growth",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows law policy traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "monitoring-evaluation-specialist",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "analytical",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
         "value": "problem_solving",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "math",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "tech",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "learn",
+        "weight": 0.75,
+        "band": "strong"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
         "weight": 0.75,
         "band": "strong"
       },
       {
+        "value": "remote",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "systems",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "balance",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows data traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "development-program-coordinator",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "communication",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "people",
+        "weight": 0.8,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "social",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "writing",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "social",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "ideas",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "office",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "create",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.75,
+        "band": "strong"
+      },
+      {
+        "value": "systems",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "growth",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows business people traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "environmental-scientist",
+    "version": 1,
+    "strengths": [
+      {
         "value": "hands_on",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "problem_solving",
         "weight": 0.65,
         "band": "supporting"
       }
@@ -3549,12 +6926,12 @@
     "subjects": [
       {
         "value": "science",
-        "weight": 0.95,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "math",
-        "weight": 0.55,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -3566,12 +6943,12 @@
       },
       {
         "value": "science",
-        "weight": 0.85,
-        "band": "strong"
+        "weight": 0.65,
+        "band": "supporting"
       },
       {
-        "value": "ideas",
-        "weight": 0.55,
+        "value": "building",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
@@ -3583,126 +6960,7 @@
       },
       {
         "value": "learn",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "workEnvironment": [
-      {
-        "value": "outdoor",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "lab",
-        "weight": 0.55,
-        "band": "supporting"
-      },
-      {
-        "value": "mixed",
-        "weight": 0.65,
-        "band": "supporting"
-      }
-    ],
-    "workStyle": [
-      {
-        "value": "analyze",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "help",
         "weight": 0.45,
-        "band": "supporting"
-      }
-    ],
-    "impact": [
-      {
-        "value": "discover",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "systems",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "goals": [
-      {
-        "value": "impact",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "variety",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "notes": [
-      "Matches users who want science-based environmental work with field and analysis components."
-    ],
-    "status": "active"
-  },
-  {
-    "pathwaySlug": "agronomy-specialist",
-    "version": 1,
-    "strengths": [
-      {
-        "value": "hands_on",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "analytical",
-        "weight": 0.7,
-        "band": "supporting"
-      },
-      {
-        "value": "communication",
-        "weight": 0.6,
-        "band": "supporting"
-      }
-    ],
-    "subjects": [
-      {
-        "value": "science",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "math",
-        "weight": 0.45,
-        "band": "supporting"
-      }
-    ],
-    "passions": [
-      {
-        "value": "nature",
-        "weight": 0.9,
-        "band": "strong"
-      },
-      {
-        "value": "science",
-        "weight": 0.65,
-        "band": "supporting"
-      },
-      {
-        "value": "building",
-        "weight": 0.55,
-        "band": "supporting"
-      }
-    ],
-    "freeTime": [
-      {
-        "value": "outdoor",
-        "weight": 0.85,
-        "band": "strong"
-      },
-      {
-        "value": "build",
-        "weight": 0.55,
         "band": "supporting"
       }
     ],
@@ -3720,47 +6978,52 @@
     ],
     "workStyle": [
       {
-        "value": "build",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "help",
-        "weight": 0.6,
+        "value": "build",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "systems",
+        "value": "discover",
         "weight": 0.65,
         "band": "supporting"
       },
       {
-        "value": "people",
+        "value": "systems",
         "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "goals": [
       {
         "value": "impact",
-        "weight": 0.75,
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "balance",
-        "weight": 0.45,
+        "value": "variety",
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Good for users who like outdoor science, crops, and practical food security work."
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   },
   {
-    "pathwaySlug": "sustainable-agriculture-entrepreneur",
+    "pathwaySlug": "sustainability-manager",
     "version": 1,
     "strengths": [
       {
@@ -3769,26 +7032,21 @@
         "band": "strong"
       },
       {
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
         "value": "problem_solving",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "fast_learning",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "communication",
-        "weight": 0.6,
+        "weight": 0.65,
         "band": "supporting"
       }
     ],
     "subjects": [
       {
         "value": "science",
-        "weight": 0.65,
-        "band": "supporting"
+        "weight": 0.85,
+        "band": "strong"
       },
       {
         "value": "math",
@@ -3799,92 +7057,791 @@
     "passions": [
       {
         "value": "nature",
-        "weight": 0.85,
+        "weight": 0.95,
         "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.65,
+        "band": "supporting"
       },
       {
         "value": "building",
-        "weight": 0.8,
-        "band": "strong"
-      },
-      {
-        "value": "ideas",
-        "weight": 0.65,
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "freeTime": [
       {
         "value": "outdoor",
-        "weight": 0.8,
+        "weight": 0.85,
         "band": "strong"
       },
       {
-        "value": "build",
-        "weight": 0.75,
-        "band": "strong"
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
       }
     ],
     "workEnvironment": [
       {
         "value": "outdoor",
-        "weight": 0.8,
+        "weight": 0.95,
         "band": "strong"
       },
       {
         "value": "mixed",
-        "weight": 0.85,
-        "band": "strong"
+        "weight": 0.6,
+        "band": "supporting"
       }
     ],
     "workStyle": [
       {
-        "value": "build",
-        "weight": 0.85,
-        "band": "strong"
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
       },
       {
-        "value": "create",
-        "weight": 0.65,
+        "value": "build",
+        "weight": 0.55,
         "band": "supporting"
       }
     ],
     "impact": [
       {
-        "value": "create",
-        "weight": 0.75,
-        "band": "strong"
-      },
-      {
-        "value": "people",
-        "weight": 0.55,
+        "value": "discover",
+        "weight": 0.65,
         "band": "supporting"
       },
       {
         "value": "systems",
-        "weight": 0.55,
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
         "band": "supporting"
       }
     ],
     "goals": [
       {
-        "value": "money",
-        "weight": 0.65,
-        "band": "supporting"
-      },
-      {
         "value": "impact",
-        "weight": 0.75,
+        "weight": 0.85,
         "band": "strong"
       },
       {
         "value": "variety",
-        "weight": 0.65,
+        "weight": 0.5,
         "band": "supporting"
       }
     ],
     "notes": [
-      "Hybrid fit for users who want to combine agriculture, practical building, and business ownership."
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "climate-disaster-risk-officer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "hands_on",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "math",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "nature",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "building",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "outdoor",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "outdoor",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "build",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "systems",
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "agronomy-specialist",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "hands_on",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "math",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "nature",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "building",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "outdoor",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "outdoor",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "build",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "systems",
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "agribusiness-specialist",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "hands_on",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "math",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "nature",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "building",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "outdoor",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "outdoor",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "build",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "systems",
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "veterinary-science-study",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "communication",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "organized",
+        "weight": 0.7,
+        "band": "strong"
+      },
+      {
+        "value": "hands_on",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "social",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "science",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "social",
+        "weight": 0.8,
+        "band": "strong"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "socialize",
+        "weight": 0.55,
+        "band": "supporting"
+      },
+      {
+        "value": "learn",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "mixed",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "remote",
+        "weight": 0.15,
+        "band": "penalty"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "help",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "routine",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "people",
+        "weight": 0.95,
+        "band": "strong"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.9,
+        "band": "strong"
+      },
+      {
+        "value": "growth",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows people health traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "forestry-conservation-officer",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "hands_on",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "math",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "nature",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "building",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "outdoor",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "outdoor",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "build",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "systems",
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
+    ],
+    "status": "active"
+  },
+  {
+    "pathwaySlug": "water-resource-manager",
+    "version": 1,
+    "strengths": [
+      {
+        "value": "hands_on",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "analytical",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "problem_solving",
+        "weight": 0.65,
+        "band": "supporting"
+      }
+    ],
+    "subjects": [
+      {
+        "value": "science",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "math",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "passions": [
+      {
+        "value": "nature",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "science",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "building",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "freeTime": [
+      {
+        "value": "outdoor",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "learn",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "workEnvironment": [
+      {
+        "value": "outdoor",
+        "weight": 0.95,
+        "band": "strong"
+      },
+      {
+        "value": "mixed",
+        "weight": 0.6,
+        "band": "supporting"
+      }
+    ],
+    "workStyle": [
+      {
+        "value": "analyze",
+        "weight": 0.7,
+        "band": "supporting"
+      },
+      {
+        "value": "build",
+        "weight": 0.55,
+        "band": "supporting"
+      }
+    ],
+    "impact": [
+      {
+        "value": "discover",
+        "weight": 0.65,
+        "band": "supporting"
+      },
+      {
+        "value": "systems",
+        "weight": 0.6,
+        "band": "supporting"
+      },
+      {
+        "value": "people",
+        "weight": 0.45,
+        "band": "supporting"
+      }
+    ],
+    "goals": [
+      {
+        "value": "impact",
+        "weight": 0.85,
+        "band": "strong"
+      },
+      {
+        "value": "variety",
+        "weight": 0.5,
+        "band": "supporting"
+      }
+    ],
+    "notes": [
+      "Best fit when the user shows field nature traits that align with this pathway's real work and training demands."
     ],
     "status": "active"
   }
