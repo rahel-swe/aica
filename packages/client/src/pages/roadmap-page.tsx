@@ -31,7 +31,7 @@ export default function RoadmapPage() {
 
   if (!roadmap) {
     return (
-      <main className="min-h-screen rounded-[2rem] bg-slate-50 p-4 text-slate-950 sm:p-6 lg:p-8">
+      <main className="min-h-screen rounded-[2rem] p-4 text-slate-950 sm:p-6 lg:p-8">
         <RoadmapEmptyState />
       </main>
     );
@@ -40,7 +40,7 @@ export default function RoadmapPage() {
   const stats = getRoadmapStats(roadmap);
 
   return (
-    <main className="min-h-screen rounded-[2rem] bg-slate-50 p-4 text-slate-950 sm:p-6 lg:p-8">
+    <main className="min-h-screen rounded-[2rem] p-4 text-slate-950 sm:p-6 lg:p-8">
       <div className="mx-auto max-w-7xl space-y-6">
         <RoadmapHero roadmap={roadmap} />
 

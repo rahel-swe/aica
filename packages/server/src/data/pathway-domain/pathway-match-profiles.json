@@ -68,11 +68,7 @@
       { "value": "create", "weight": 0.9, "band": "strong" },
       { "value": "help", "weight": 0.45, "band": "supporting" }
     ],
-    "impact": [
-      { "value": "create", "weight": 0.85, "band": "strong" },
-      { "value": "people", "weight": 0.55, "band": "supporting" },
-      { "value": "express", "weight": 0.5, "band": "supporting" }
-    ],
+    "impact": [{ "value": "create", "weight": 0.85, "band": "strong" }],
     "goals": [
       { "value": "variety", "weight": 0.7, "band": "supporting" },
       { "value": "growth", "weight": 0.65, "band": "supporting" }
@@ -254,7 +250,7 @@
     ],
     "workStyle": [{ "value": "analyze", "weight": 0.95, "band": "strong" }],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.75, "band": "supporting" },
       { "value": "systems", "weight": 0.65, "band": "supporting" }
     ],
     "goals": [
@@ -289,7 +285,7 @@
     ],
     "workStyle": [{ "value": "analyze", "weight": 0.95, "band": "strong" }],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.76, "band": "supporting" },
       { "value": "systems", "weight": 0.65, "band": "supporting" }
     ],
     "goals": [
@@ -366,7 +362,7 @@
     ],
     "workStyle": [{ "value": "analyze", "weight": 0.95, "band": "strong" }],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.77, "band": "supporting" },
       { "value": "systems", "weight": 0.65, "band": "supporting" }
     ],
     "goals": [
@@ -600,11 +596,7 @@
       { "value": "create", "weight": 0.9, "band": "strong" },
       { "value": "help", "weight": 0.45, "band": "supporting" }
     ],
-    "impact": [
-      { "value": "create", "weight": 0.85, "band": "strong" },
-      { "value": "people", "weight": 0.55, "band": "supporting" },
-      { "value": "express", "weight": 0.5, "band": "supporting" }
-    ],
+    "impact": [{ "value": "create", "weight": 0.86, "band": "strong" }],
     "goals": [
       { "value": "variety", "weight": 0.7, "band": "supporting" },
       { "value": "growth", "weight": 0.65, "band": "supporting" }
@@ -643,7 +635,7 @@
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "impact": [
-      { "value": "people", "weight": 0.75, "band": "strong" },
+      { "value": "people", "weight": 0.75, "band": "supporting" },
       { "value": "systems", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -798,7 +790,7 @@
       { "value": "routine", "weight": 0.65, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.75, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -836,7 +828,7 @@
       { "value": "routine", "weight": 0.65, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.76, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -874,7 +866,7 @@
       { "value": "routine", "weight": 0.65, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.77, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -948,7 +940,7 @@
     ],
     "workStyle": [{ "value": "analyze", "weight": 0.95, "band": "strong" }],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.78, "band": "supporting" },
       { "value": "systems", "weight": 0.65, "band": "supporting" }
     ],
     "goals": [
@@ -1129,7 +1121,7 @@
       { "value": "analyze", "weight": 0.9, "band": "strong" },
       { "value": "routine", "weight": 0.5, "band": "supporting" }
     ],
-    "impact": [{ "value": "systems", "weight": 0.65, "band": "supporting" }],
+    "impact": [{ "value": "systems", "weight": 0.66, "band": "supporting" }],
     "goals": [
       { "value": "money", "weight": 0.75, "band": "strong" },
       { "value": "growth", "weight": 0.65, "band": "supporting" }
@@ -1160,7 +1152,7 @@
       { "value": "analyze", "weight": 0.9, "band": "strong" },
       { "value": "routine", "weight": 0.5, "band": "supporting" }
     ],
-    "impact": [{ "value": "systems", "weight": 0.65, "band": "supporting" }],
+    "impact": [{ "value": "systems", "weight": 0.67, "band": "supporting" }],
     "goals": [
       { "value": "money", "weight": 0.75, "band": "strong" },
       { "value": "growth", "weight": 0.65, "band": "supporting" }
@@ -1199,11 +1191,7 @@
       { "value": "create", "weight": 0.9, "band": "strong" },
       { "value": "help", "weight": 0.45, "band": "supporting" }
     ],
-    "impact": [
-      { "value": "create", "weight": 0.85, "band": "strong" },
-      { "value": "people", "weight": 0.55, "band": "supporting" },
-      { "value": "express", "weight": 0.5, "band": "supporting" }
-    ],
+    "impact": [{ "value": "create", "weight": 0.87, "band": "strong" }],
     "goals": [
       { "value": "variety", "weight": 0.7, "band": "supporting" },
       { "value": "growth", "weight": 0.65, "band": "supporting" }
@@ -1242,7 +1230,7 @@
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "impact": [
-      { "value": "people", "weight": 0.75, "band": "strong" },
+      { "value": "people", "weight": 0.76, "band": "supporting" },
       { "value": "systems", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1277,7 +1265,7 @@
     ],
     "workStyle": [{ "value": "analyze", "weight": 0.95, "band": "strong" }],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.79, "band": "supporting" },
       { "value": "systems", "weight": 0.65, "band": "supporting" }
     ],
     "goals": [
@@ -1318,7 +1306,7 @@
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "impact": [
-      { "value": "people", "weight": 0.75, "band": "strong" },
+      { "value": "people", "weight": 0.77, "band": "supporting" },
       { "value": "systems", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1351,7 +1339,7 @@
       { "value": "analyze", "weight": 0.9, "band": "strong" },
       { "value": "routine", "weight": 0.5, "band": "supporting" }
     ],
-    "impact": [{ "value": "systems", "weight": 0.65, "band": "supporting" }],
+    "impact": [{ "value": "systems", "weight": 0.68, "band": "supporting" }],
     "goals": [
       { "value": "money", "weight": 0.75, "band": "strong" },
       { "value": "growth", "weight": 0.65, "band": "supporting" }
@@ -1382,7 +1370,7 @@
       { "value": "analyze", "weight": 0.9, "band": "strong" },
       { "value": "routine", "weight": 0.5, "band": "supporting" }
     ],
-    "impact": [{ "value": "systems", "weight": 0.65, "band": "supporting" }],
+    "impact": [{ "value": "systems", "weight": 0.69, "band": "supporting" }],
     "goals": [
       { "value": "money", "weight": 0.75, "band": "strong" },
       { "value": "growth", "weight": 0.65, "band": "supporting" }
@@ -1421,7 +1409,7 @@
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "impact": [
-      { "value": "people", "weight": 0.75, "band": "strong" },
+      { "value": "people", "weight": 0.78, "band": "supporting" },
       { "value": "systems", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1462,7 +1450,7 @@
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "impact": [
-      { "value": "people", "weight": 0.75, "band": "strong" },
+      { "value": "people", "weight": 0.79, "band": "supporting" },
       { "value": "systems", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1500,7 +1488,7 @@
       { "value": "analyze", "weight": 0.8, "band": "strong" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.85, "band": "strong" },
+      { "value": "systems", "weight": 0.8, "band": "strong" },
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1538,7 +1526,7 @@
       { "value": "analyze", "weight": 0.8, "band": "strong" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.85, "band": "strong" },
+      { "value": "systems", "weight": 0.81, "band": "strong" },
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1576,7 +1564,7 @@
       { "value": "analyze", "weight": 0.8, "band": "strong" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.85, "band": "strong" },
+      { "value": "systems", "weight": 0.82, "band": "strong" },
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1614,7 +1602,7 @@
       { "value": "analyze", "weight": 0.8, "band": "strong" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.85, "band": "strong" },
+      { "value": "systems", "weight": 0.83, "band": "strong" },
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1652,7 +1640,7 @@
       { "value": "analyze", "weight": 0.8, "band": "strong" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.85, "band": "strong" },
+      { "value": "systems", "weight": 0.84, "band": "strong" },
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1694,7 +1682,7 @@
       { "value": "build", "weight": 0.55, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.65, "band": "supporting" },
+      { "value": "discover", "weight": 0.6, "band": "supporting" },
       { "value": "systems", "weight": 0.6, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
@@ -1771,7 +1759,7 @@
       { "value": "analyze", "weight": 0.8, "band": "strong" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.85, "band": "strong" },
+      { "value": "systems", "weight": 0.86, "band": "strong" },
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1809,7 +1797,7 @@
       { "value": "analyze", "weight": 0.8, "band": "strong" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.85, "band": "strong" },
+      { "value": "systems", "weight": 0.87, "band": "strong" },
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1847,7 +1835,7 @@
       { "value": "analyze", "weight": 0.8, "band": "strong" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.85, "band": "strong" },
+      { "value": "systems", "weight": 0.88, "band": "strong" },
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -1889,7 +1877,7 @@
       { "value": "build", "weight": 0.55, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.65, "band": "supporting" },
+      { "value": "discover", "weight": 0.61, "band": "supporting" },
       { "value": "systems", "weight": 0.6, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
@@ -1968,7 +1956,7 @@
       { "value": "help", "weight": 0.95, "band": "strong" },
       { "value": "routine", "weight": 0.6, "band": "supporting" }
     ],
-    "impact": [{ "value": "people", "weight": 0.95, "band": "strong" }],
+    "impact": [{ "value": "people", "weight": 0.96, "band": "strong" }],
     "goals": [
       { "value": "impact", "weight": 0.85, "band": "strong" },
       { "value": "balance", "weight": 0.55, "band": "supporting" }
@@ -2006,7 +1994,7 @@
       { "value": "help", "weight": 0.95, "band": "strong" },
       { "value": "routine", "weight": 0.6, "band": "supporting" }
     ],
-    "impact": [{ "value": "people", "weight": 0.95, "band": "strong" }],
+    "impact": [{ "value": "people", "weight": 0.97, "band": "strong" }],
     "goals": [
       { "value": "impact", "weight": 0.85, "band": "strong" },
       { "value": "balance", "weight": 0.55, "band": "supporting" }
@@ -2044,7 +2032,7 @@
       { "value": "help", "weight": 0.95, "band": "strong" },
       { "value": "routine", "weight": 0.6, "band": "supporting" }
     ],
-    "impact": [{ "value": "people", "weight": 0.95, "band": "strong" }],
+    "impact": [{ "value": "people", "weight": 0.98, "band": "strong" }],
     "goals": [
       { "value": "impact", "weight": 0.85, "band": "strong" },
       { "value": "balance", "weight": 0.55, "band": "supporting" }
@@ -2083,11 +2071,7 @@
       { "value": "create", "weight": 0.9, "band": "strong" },
       { "value": "help", "weight": 0.45, "band": "supporting" }
     ],
-    "impact": [
-      { "value": "create", "weight": 0.85, "band": "strong" },
-      { "value": "people", "weight": 0.55, "band": "supporting" },
-      { "value": "express", "weight": 0.5, "band": "supporting" }
-    ],
+    "impact": [{ "value": "create", "weight": 0.88, "band": "strong" }],
     "goals": [
       { "value": "variety", "weight": 0.7, "band": "supporting" },
       { "value": "growth", "weight": 0.65, "band": "supporting" }
@@ -2125,7 +2109,7 @@
       { "value": "help", "weight": 0.95, "band": "strong" },
       { "value": "routine", "weight": 0.6, "band": "supporting" }
     ],
-    "impact": [{ "value": "people", "weight": 0.95, "band": "strong" }],
+    "impact": [{ "value": "people", "weight": 0.99, "band": "strong" }],
     "goals": [
       { "value": "impact", "weight": 0.85, "band": "strong" },
       { "value": "balance", "weight": 0.55, "band": "supporting" }
@@ -2202,7 +2186,7 @@
       { "value": "help", "weight": 0.95, "band": "strong" },
       { "value": "routine", "weight": 0.6, "band": "supporting" }
     ],
-    "impact": [{ "value": "people", "weight": 0.95, "band": "strong" }],
+    "impact": [{ "value": "people", "weight": 1.0, "band": "strong" }],
     "goals": [
       { "value": "impact", "weight": 0.85, "band": "strong" },
       { "value": "balance", "weight": 0.55, "band": "supporting" }
@@ -2239,7 +2223,7 @@
       { "value": "routine", "weight": 0.4, "band": "supporting" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.8, "band": "strong" },
+      { "value": "systems", "weight": 0.81, "band": "strong" },
       { "value": "people", "weight": 0.55, "band": "supporting" }
     ],
     "goals": [
@@ -2278,7 +2262,7 @@
       { "value": "routine", "weight": 0.4, "band": "supporting" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.8, "band": "strong" },
+      { "value": "systems", "weight": 0.82, "band": "strong" },
       { "value": "people", "weight": 0.55, "band": "supporting" }
     ],
     "goals": [
@@ -2317,7 +2301,7 @@
       { "value": "routine", "weight": 0.4, "band": "supporting" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.8, "band": "strong" },
+      { "value": "systems", "weight": 0.83, "band": "strong" },
       { "value": "people", "weight": 0.55, "band": "supporting" }
     ],
     "goals": [
@@ -2356,7 +2340,7 @@
       { "value": "routine", "weight": 0.4, "band": "supporting" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.8, "band": "strong" },
+      { "value": "systems", "weight": 0.84, "band": "strong" },
       { "value": "people", "weight": 0.55, "band": "supporting" }
     ],
     "goals": [
@@ -2434,7 +2418,7 @@
       { "value": "routine", "weight": 0.4, "band": "supporting" }
     ],
     "impact": [
-      { "value": "systems", "weight": 0.8, "band": "strong" },
+      { "value": "systems", "weight": 0.85, "band": "strong" },
       { "value": "people", "weight": 0.55, "band": "supporting" }
     ],
     "goals": [
@@ -2469,7 +2453,7 @@
     ],
     "workStyle": [{ "value": "analyze", "weight": 0.95, "band": "strong" }],
     "impact": [
-      { "value": "discover", "weight": 0.75, "band": "strong" },
+      { "value": "discover", "weight": 0.8, "band": "strong" },
       { "value": "systems", "weight": 0.65, "band": "supporting" }
     ],
     "goals": [
@@ -2510,7 +2494,7 @@
       { "value": "create", "weight": 0.45, "band": "supporting" }
     ],
     "impact": [
-      { "value": "people", "weight": 0.75, "band": "strong" },
+      { "value": "people", "weight": 0.8, "band": "strong" },
       { "value": "systems", "weight": 0.45, "band": "supporting" }
     ],
     "goals": [
@@ -2552,7 +2536,7 @@
       { "value": "build", "weight": 0.55, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.65, "band": "supporting" },
+      { "value": "discover", "weight": 0.62, "band": "supporting" },
       { "value": "systems", "weight": 0.6, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
@@ -2595,7 +2579,7 @@
       { "value": "build", "weight": 0.55, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.65, "band": "supporting" },
+      { "value": "discover", "weight": 0.63, "band": "supporting" },
       { "value": "systems", "weight": 0.6, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
@@ -2638,7 +2622,7 @@
       { "value": "build", "weight": 0.55, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.65, "band": "supporting" },
+      { "value": "discover", "weight": 0.64, "band": "supporting" },
       { "value": "systems", "weight": 0.6, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
@@ -2724,7 +2708,7 @@
       { "value": "build", "weight": 0.55, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.65, "band": "supporting" },
+      { "value": "discover", "weight": 0.66, "band": "supporting" },
       { "value": "systems", "weight": 0.6, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
@@ -2806,7 +2790,7 @@
       { "value": "build", "weight": 0.55, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.65, "band": "supporting" },
+      { "value": "discover", "weight": 0.67, "band": "supporting" },
       { "value": "systems", "weight": 0.6, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
@@ -2849,7 +2833,7 @@
       { "value": "build", "weight": 0.55, "band": "supporting" }
     ],
     "impact": [
-      { "value": "discover", "weight": 0.65, "band": "supporting" },
+      { "value": "discover", "weight": 0.68, "band": "supporting" },
       { "value": "systems", "weight": 0.6, "band": "supporting" },
       { "value": "people", "weight": 0.45, "band": "supporting" }
     ],
