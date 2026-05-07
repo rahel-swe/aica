@@ -194,7 +194,7 @@ export class RecommendationService {
         dimensionScores.workStyle * DIMENSION_WEIGHTS.workStyle +
         dimensionScores.impact * DIMENSION_WEIGHTS.impact +
         dimensionScores.goals * DIMENSION_WEIGHTS.goals
-      ).toFixed(4)
+      ).toFixed(7)
     );
   }
 
