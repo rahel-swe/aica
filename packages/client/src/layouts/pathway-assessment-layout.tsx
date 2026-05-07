@@ -23,7 +23,12 @@ const PathwayAssessmentLayout = () => {
     submitPathwayAssisment,
   } = usePathwayAssessment();
 
-  if (isPending) return <SpinnerBars barDivClassName="scale-180" />;
+  if (isPending)
+    return (
+      <div className="grid place-items-center min-h-dvh">
+        <SpinnerBars />
+      </div>
+    );
 
   if (error)
     return (

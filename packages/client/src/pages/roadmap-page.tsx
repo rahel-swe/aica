@@ -1,14 +1,3 @@
-import { motion } from 'motion/react';
-import {
-  AlertCircle,
-  CalendarDays,
-  CheckCircle2,
-  Layers3,
-  Target,
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
-import { useRoadmapQuery } from '@/queries/roadmap-query';
 import { RoadmapEmptyState } from '@/components/roadmap/roadmap-empty-state';
 import { RoadmapHero } from '@/components/roadmap/roadmap-hero';
 import { RoadmapPhaseTimeline } from '@/components/roadmap/roadmap-phase-timeline';
@@ -16,31 +5,40 @@ import { RoadmapProgressHeader } from '@/components/roadmap/roadmap-progress-hea
 import { RoadmapSidebar } from '@/components/roadmap/roadmap-sidebar';
 import { RoadmapSummaryCard } from '@/components/roadmap/roadmap-summary-card';
 import { getRoadmapStats } from '@/components/roadmap/roadmap-view-utils';
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useRoadmapQuery } from '@/queries/roadmap-query';
+import {
+  AlertCircle,
+  CalendarDays,
+  CheckCircle2,
+  Layers3,
+  Target,
+} from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function RoadmapPage() {
   const { data, isPending, isError, refetch } = useRoadmapQuery();
+
   const roadmap = data?.data;
 
   if (isPending) {
     return <RoadmapLoadingState />;
   }
 
-  if (isError) {
-    return <RoadmapErrorState onRetry={() => refetch()} />;
-  }
+  if (isError) return <RoadmapErrorState onRetry={() => refetch()} />;
 
-  if (!roadmap) {
+  if (!roadmap)
     return (
-      <main className="min-h-screen rounded-[2rem] p-4 text-slate-950 sm:p-6 lg:p-8">
+      <main className="min-h-screen rounded-[2rem] p-4 sm:p-6 lg:p-8">
         <RoadmapEmptyState />
       </main>
     );
-  }
 
   const stats = getRoadmapStats(roadmap);
 
   return (
-    <main className="min-h-screen rounded-[2rem] p-4 text-slate-950 sm:p-6 lg:p-8">
+    <main className="min-h-screen rounded-[2rem] p-4 sm:p-6 lg:p-8">
       <div className="mx-auto max-w-7xl space-y-6">
         <RoadmapHero roadmap={roadmap} />
 

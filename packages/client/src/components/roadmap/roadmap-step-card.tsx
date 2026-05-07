@@ -20,32 +20,26 @@ export function RoadmapStepCard({ step }: RoadmapStepCardProps) {
   const difficulty = difficultyMeta[step.difficulty ?? 'medium'];
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-sm hover:shadow-slate-200/70">
+    <div className="rounded-2xl border p-4 transition hover:-translate-y-0.5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap gap-2">
             <Badge className={status.className}>{status.label}</Badge>
             <Badge className={difficulty.className}>{difficulty.label}</Badge>
             {step.estimatedTime ? (
-              <Badge className="border-blue-200 bg-blue-50 text-blue-900">
-                {step.estimatedTime}
-              </Badge>
+              <Badge className="border">{step.estimatedTime}</Badge>
             ) : null}
           </div>
-          <h4 className="mt-3 text-base font-semibold text-slate-950">
-            {step.title}
-          </h4>
-          <p className="mt-2 text-sm leading-6 text-slate-600">{step.why}</p>
+          <h4 className="mt-3 text-base font-semibold">{step.title}</h4>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            {step.why}
+          </p>
         </div>
       </div>
 
-      <Accordion
-        type="single"
-        collapsible
-        className="mt-4 border-slate-200 bg-slate-50/70"
-      >
+      <Accordion type="single" collapsible className="mt-4 border">
         <AccordionItem value={step.id}>
-          <AccordionTrigger className="p-3 text-sm text-slate-700 hover:no-underline">
+          <AccordionTrigger className="p-3 text-sm hover:no-underline">
             Explore details
           </AccordionTrigger>
           <AccordionContent className="px-3 pb-3">
@@ -57,11 +51,11 @@ export function RoadmapStepCard({ step }: RoadmapStepCardProps) {
                 items={step.prerequisites}
               />
               <div>
-                <div className="mb-2 flex items-center gap-2 text-sm font-medium text-slate-900">
+                <div className="mb-2 flex items-center gap-2 text-sm font-medium">
                   <FileCheck2 className="size-4" />
                   Evidence of completion
                 </div>
-                <p className="text-sm leading-6 text-slate-600">
+                <p className="text-sm leading-6 text-muted-foreground">
                   {step.evidenceOfCompletion ??
                     'A visible artifact, note, or review that proves this step is complete.'}
                 </p>
@@ -72,7 +66,7 @@ export function RoadmapStepCard({ step }: RoadmapStepCardProps) {
               <>
                 <Separator className="my-4" />
                 <div>
-                  <p className="mb-2 text-sm font-medium text-slate-900">
+                  <p className="mb-2 text-sm font-medium">
                     Suggested resources
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -83,7 +77,7 @@ export function RoadmapStepCard({ step }: RoadmapStepCardProps) {
                           href={resource.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100"
+                          className="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium"
                         >
                           {resource.title}
                           <ExternalLink className="size-3" />
@@ -91,7 +85,7 @@ export function RoadmapStepCard({ step }: RoadmapStepCardProps) {
                       ) : (
                         <span
                           key={resource.title}
-                          className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
+                          className="inline-flex rounded-full border px-3 py-1 text-xs font-medium"
                         >
                           {resource.title}
                         </span>
@@ -118,18 +112,18 @@ type DetailGroupProps = {
 function DetailGroup({ icon, title, items = [], empty }: DetailGroupProps) {
   return (
     <div>
-      <div className="mb-2 flex items-center gap-2 text-sm font-medium text-slate-900">
+      <div className="mb-2 flex items-center gap-2 text-sm font-medium">
         {icon}
         {title}
       </div>
       {items.length > 0 ? (
-        <ul className="space-y-1 text-sm leading-6 text-slate-600">
+        <ul className="space-y-1 text-sm leading-6 text-muted-foreground">
           {items.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       ) : (
-        <p className="text-sm leading-6 text-slate-600">{empty}</p>
+        <p className="text-sm leading-6 text-muted-foreground">{empty}</p>
       )}
     </div>
   );

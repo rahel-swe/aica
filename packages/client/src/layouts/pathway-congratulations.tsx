@@ -23,7 +23,11 @@ const PathwayCongratulations = () => {
     useRecommendationQuery();
 
   if (roadmapSetupAssessmentPending || recommendationPending) {
-    return <SpinnerBars />;
+    return (
+      <div className="grid place-items-center min-h-dvh">
+        <SpinnerBars />
+      </div>
+    );
   }
 
   const userPickedRecommendedPathway = recommendationData?.data.find(

@@ -21,7 +21,12 @@ const RoadmapSetupLayout = () => {
   const { currentIndex, form, isRoadmapSetupCreating, submitRoadmapSetup } =
     useRoadmapSetupAssessment();
 
-  if (isPending) return <SpinnerBars />;
+  if (isPending)
+    return (
+      <div className="grid place-items-center min-h-dvh">
+        <SpinnerBars />
+      </div>
+    );
 
   if (!isRoadmapSetupCompleted?.data.completed)
     return <Navigate to={'/pathway-recommendations'} />;

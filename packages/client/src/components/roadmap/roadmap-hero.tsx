@@ -29,17 +29,17 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
-      className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm shadow-slate-200/70"
+      className="overflow-hidden rounded-3xl border"
     >
-      <div className="bg-sky-50 px-5 py-6 sm:px-7 lg:px-8">
+      <div className=" px-5 py-6 sm:px-7 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <div className="mb-4 flex flex-wrap gap-2">
-              <Badge className="border-sky-200 bg-sky-100 text-sky-900">
+              <Badge className="border-sky-200 ">
                 <Compass className="size-3" />
                 Roadmap
               </Badge>
-              <Badge className="border-emerald-200 bg-emerald-100 text-emerald-900">
+              <Badge className="border text-emerald-900">
                 {formatRoadmapStyle(roadmap.roadmapStyle)}
               </Badge>
               <Badge className="border-amber-200 bg-amber-100 text-amber-900">
@@ -47,31 +47,31 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
               </Badge>
             </div>
 
-            <h1 className="text-3xl font-semibold tracking-normal text-slate-950 sm:text-4xl">
+            <h1 className="text-3xl font-semibold tracking-normal sm:text-4xl">
               {roadmap.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">
+            <p className="mt-4 max-w-2xl text-base leading-7">
               {roadmap.summary}
             </p>
           </div>
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button className="w-fit bg-slate-950 text-white hover:bg-slate-800">
+              <Button className="w-fit">
                 <Sparkles className="size-4" />
                 Guidance note
               </Button>
             </SheetTrigger>
-            <SheetContent className="bg-white text-slate-950 sm:max-w-md">
+            <SheetContent className="sm:max-w-md">
               <SheetHeader>
                 <SheetTitle>Roadmap guidance</SheetTitle>
-                <SheetDescription className="leading-6 text-slate-600">
+                <SheetDescription className="leading-6">
                   {roadmap.guidanceNote ??
                     'Use this roadmap as a practical weekly guide. Review it regularly and adjust when your context changes.'}
                 </SheetDescription>
               </SheetHeader>
               <div className="px-6 pb-6">
-                <div className="rounded-2xl bg-orange-50 p-4 text-sm leading-6 text-orange-950">
+                <div className="rounded-2xl p-4 text-sm">
                   Long or regulated pathways should be treated as direction and
                   preparation guidance first. Exact admission, licensing, and
                   training rules must be checked locally.
@@ -82,7 +82,7 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
         </div>
       </div>
 
-      <div className="grid gap-0 border-t border-slate-200 bg-white sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-0 border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-4">
         {[
           {
             label: 'Current level',
@@ -107,15 +107,13 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
         ].map((item) => (
           <div
             key={item.label}
-            className="border-b border-slate-200 p-5 last:border-b-0 sm:odd:border-r lg:border-b-0 lg:not-last:border-r"
+            className="border-b p-5 last:border-b-0 sm:odd:border-r lg:border-b-0 lg:not-last:border-r"
           >
-            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-normal text-slate-500">
+            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-normal ">
               {item.icon}
               {item.label}
             </div>
-            <p className="mt-2 text-sm font-semibold text-slate-950">
-              {item.value}
-            </p>
+            <p className="mt-2 text-sm font-semibold">{item.value}</p>
           </div>
         ))}
       </div>

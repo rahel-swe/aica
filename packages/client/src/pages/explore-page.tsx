@@ -9,9 +9,7 @@ import { usePathwaysQuery } from '@/queries/pathway-query';
 export default function ExplorePage() {
   const { data, isPending, isError } = usePathwaysQuery();
 
-  if (isPending) {
-    return <SpinnerBars />;
-  }
+  if (isPending) return <SpinnerBars />;
 
   if (isError) {
     return (

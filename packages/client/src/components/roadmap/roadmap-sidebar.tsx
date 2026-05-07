@@ -30,9 +30,9 @@ export function RoadmapSidebar({ roadmap }: RoadmapSidebarProps) {
 
   return (
     <aside className="space-y-4 lg:sticky lg:top-6">
-      <Card className="rounded-3xl border-slate-200 bg-white shadow-sm shadow-slate-200/70">
+      <Card className="rounded-3xl border shadow-sm shadow-slate-200/70">
         <CardHeader>
-          <div className="mb-2 flex size-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-900">
+          <div className="mb-2 flex size-10 items-center justify-center rounded-full text-emerald-900">
             <Sparkles className="size-5" />
           </div>
           <CardTitle className="text-slate-950">AI summary</CardTitle>
@@ -43,7 +43,7 @@ export function RoadmapSidebar({ roadmap }: RoadmapSidebarProps) {
         </CardHeader>
       </Card>
 
-      <Card className="rounded-3xl border-slate-200 bg-white shadow-sm shadow-slate-200/70">
+      <Card className="rounded-3xl border shadow-sm shadow-slate-200/70">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-slate-950">
             <Target className="size-5 text-amber-700" />
@@ -56,12 +56,9 @@ export function RoadmapSidebar({ roadmap }: RoadmapSidebarProps) {
         <CardContent className="space-y-3">
           {thisWeekSteps.length > 0 ? (
             thisWeekSteps.map((step, index) => (
-              <div
-                key={step.id}
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-3"
-              >
+              <div key={step.id} className="rounded-2xl border p-3">
                 <div className="flex items-center gap-2">
-                  <span className="flex size-6 items-center justify-center rounded-full bg-white text-xs font-semibold text-slate-700">
+                  <span className="flex size-6 items-center justify-center rounded-full text-xs font-semibold text-slate-700">
                     {index + 1}
                   </span>
                   <p className="text-sm font-medium text-slate-950">
@@ -69,9 +66,7 @@ export function RoadmapSidebar({ roadmap }: RoadmapSidebarProps) {
                   </p>
                 </div>
                 {step.estimatedTime ? (
-                  <p className="mt-2 text-xs text-slate-500">
-                    {step.estimatedTime}
-                  </p>
+                  <p className="mt-2 text-xs">{step.estimatedTime}</p>
                 ) : null}
               </div>
             ))
@@ -84,7 +79,7 @@ export function RoadmapSidebar({ roadmap }: RoadmapSidebarProps) {
         </CardContent>
       </Card>
 
-      <Card className="rounded-3xl border-orange-200 bg-orange-50 shadow-sm shadow-orange-100/70">
+      <Card className="rounded-3xl border-orange-200 shadow-sm shadow-orange-100/70">
         <CardHeader>
           <div className="flex items-center justify-between gap-3">
             <CardTitle className="flex items-center gap-2 text-orange-950">
@@ -116,7 +111,7 @@ export function RoadmapSidebar({ roadmap }: RoadmapSidebarProps) {
       </Card>
 
       {roadmap.sourceRecommendation ? (
-        <Card className="rounded-3xl border-slate-200 bg-white shadow-sm shadow-slate-200/70">
+        <Card className="rounded-3xl border shadow-sm shadow-slate-200/70">
           <CardHeader>
             <CardTitle className="text-slate-950">Fit context</CardTitle>
             <CardDescription className="leading-6 text-slate-600">
@@ -124,7 +119,7 @@ export function RoadmapSidebar({ roadmap }: RoadmapSidebarProps) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Badge className="border-sky-200 bg-sky-100 text-sky-900">
+            <Badge className="border-sky-200">
               {Math.round(roadmap.sourceRecommendation.totalScore)} fit score
             </Badge>
             {roadmap.sourceRecommendation.reasons.length > 0 ? (

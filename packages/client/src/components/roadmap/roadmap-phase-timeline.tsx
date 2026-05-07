@@ -16,12 +16,12 @@ export function RoadmapPhaseTimeline({ roadmap }: RoadmapPhaseTimelineProps) {
 
   return (
     <section className="relative">
-      <div className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px bg-slate-200 md:block" />
+      <div className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px md:block" />
       <motion.div
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px origin-top bg-slate-300 md:block"
+        className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px origin-top md:block"
       />
 
       <div className="space-y-5 md:pl-12">

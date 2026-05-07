@@ -26,7 +26,7 @@ export function RoadmapPhaseCard({ phase, index }: RoadmapPhaseCardProps) {
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
       whileHover={{ y: -2 }}
-      className="relative rounded-3xl border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/70"
+      className="relative rounded-3xl border p-5"
     >
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div>
@@ -36,10 +36,8 @@ export function RoadmapPhaseCard({ phase, index }: RoadmapPhaseCardProps) {
               {steps.length} steps
             </Badge>
           </div>
-          <h3 className="mt-3 text-xl font-semibold text-slate-950">
-            {phase.title}
-          </h3>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+          <h3 className="mt-3 text-xl font-semibold">{phase.title}</h3>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
             {phase.objective}
           </p>
         </div>

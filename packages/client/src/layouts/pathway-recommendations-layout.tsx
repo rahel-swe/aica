@@ -20,7 +20,12 @@ const PathwayRecommendedPathwaysLayout = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  if (isLoading) return <SpinnerBars />;
+  if (isLoading)
+    return (
+      <div className="grid place-items-center min-h-dvh">
+        <SpinnerBars />
+      </div>
+    );
 
   if (error) return <p className="p-6">{error.message}</p>;
 
