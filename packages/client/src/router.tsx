@@ -80,7 +80,7 @@ const router = createBrowserRouter([
           { path: 'dashboard', element: <DashboardPage /> },
           { path: 'explore', element: <ExplorePage /> },
           { path: 'recommendations', element: <RecommendationsPage /> },
-          { path: 'pathways/:id', element: <PathwayDetailPage /> },
+          { path: 'pathways/:pathwayId', element: <PathwayDetailPage /> },
           { path: 'advisor', element: <AdvisorPage /> },
           { path: 'roadmap', element: <RoadmapPage /> },
           { path: 'profile', element: <ProfilePage /> },

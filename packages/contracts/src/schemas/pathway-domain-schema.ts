@@ -171,7 +171,7 @@ export const relatedPathwaySummarySchema = z.object({
 });
 
 export const pathwayListItemSchema = z.object({
-  id: z.string(),
+  _id: z.string(),
   title: z.string(),
   slug: z.string(),
   type: pathwayTypeSchema,
@@ -182,7 +182,7 @@ export const pathwayListItemSchema = z.object({
 });
 
 export const pathwayDetailSchema = z.object({
-  id: z.string(),
+  _id: z.string(),
   title: z.string(),
   slug: z.string(),
   type: pathwayTypeSchema,

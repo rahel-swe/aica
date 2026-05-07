@@ -28,7 +28,7 @@ app.get('/health', (_req: Request, res: Response) => {
   res.send({ success: true, message: 'AICA server is healthy.' });
 });
 
-app.use(errorMiddleware);
+// app.use(errorMiddleware);
 
 app.listen(Bun.env.PORT, () => {
   console.log(`Server is running on http://localhost:${Bun.env.PORT}`);

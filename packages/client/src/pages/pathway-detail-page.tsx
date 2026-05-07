@@ -1,55 +1,66 @@
+import { useParams, useNavigate } from 'react-router-dom';
+
+import PathwayDetailsCard from '@/components/cards/pathway-details-card';
+import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
+
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { ShellPage, StatusList } from '@/pages/page-primitives';
+  usePathwayDetailQuery,
+  usePathwaysQuery,
+} from '@/queries/pathway-query';
 
 export default function PathwayDetailPage() {
+  const { pathwayId } = useParams();
+  const navigate = useNavigate();
+
+  const { data, isPending } = usePathwayDetailQuery(pathwayId ?? '');
+  const { data: listData } = usePathwaysQuery();
+
   return (
-    <ShellPage
-      eyebrow="Pathway detail"
-      title="Pathway detail view"
-      description="This page should explain who the path fits, which strengths matter most, what learning route is realistic, and which related pathways are close alternatives."
-    >
-      <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-        <Card className="rounded-2xl">
-          <CardHeader>
-            <CardTitle>What this path should show</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <StatusList
-              items={[
-                'Overview and short description',
-                'Who this path fits best',
-                'Key skills and expectations',
-                'Learning route and practical preparation',
-                'Career opportunities and related options',
-              ]}
-            />
-          </CardContent>
-        </Card>
-        <Card className="rounded-2xl">
-          <CardHeader>
-            <CardTitle>Page actions</CardTitle>
-            <CardDescription>
-              Keep decision-making actions close to the content.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <StatusList
-              items={[
-                'Save pathway',
-                'Compare with another option',
-                'Ask advisor for explanation',
-                'Generate roadmap',
-              ]}
-            />
-          </CardContent>
-        </Card>
-      </div>
-    </ShellPage>
+    <div className="mx-auto flex max-w-7xl gap-6 p-6 min-h-screen">
+      {/* SIDEBAR (NEVER BLOCKED BY DETAIL LOADING) */}
+      {isPending ? (
+        <p>Pathway sidebar loading...</p>
+      ) : (
+        <aside className="hidden md:flex w-80 flex-col">
+          <div className="sticky top-6 flex h-[calc(100vh-3rem)] flex-col rounded-xl border bg-card">
+            {/* Header */}
+            <div className="border-b p-4">
+              <h2 className="text-sm font-semibold text-muted-foreground">
+                All Pathways
+              </h2>
+            </div>
+
+            {/* LIST */}
+            <div className="flex-1 overflow-y-auto p-2 space-y-2">
+              {listData?.data?.map((item) => (
+                <div
+                  key={item._id}
+                  onClick={() => navigate(`/app/pathways/${item._id}`)}
+                  className={`
+                  cursor-pointer rounded-lg px-3 py-2 text-sm transition
+                  hover:bg-muted
+                  ${item._id === pathwayId ? 'bg-muted font-medium' : ''}
+                `}
+                >
+                  {item.title}
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
+      )}
+
+      {/* DETAILS AREA */}
+      <main className="flex-1">
+        {/* ONLY DETAILS LOADING */}
+        {isPending ? (
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <SpinnerBars />
+          </div>
+        ) : (
+          data?.data && <PathwayDetailsCard pathway={data.data} />
+        )}
+      </main>
+    </div>
   );
 }
