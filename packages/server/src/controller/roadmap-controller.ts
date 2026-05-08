@@ -1,5 +1,4 @@
 import type { Response } from 'express';
-import { roadmapGenerateRequestSchema } from '@contracts/shared/schemas/roadmap-schema';
 import type { AuthRequest } from '../middleware/auth-middleware';
 import { roadmapService } from '../services/roadmap-service';
 
@@ -8,7 +7,7 @@ export class RoadmapController {
 
   generateRoadmap = async (req: AuthRequest, res: Response) => {
     try {
-      const { pathwayId } = roadmapGenerateRequestSchema.parse(req.body);
+      const { pathwayId } = req.body as { pathwayId: string };
       const userId = req.user?.id || 'dummyUserId';
       const result = await this.service.generateRoadmap(userId, pathwayId);
 

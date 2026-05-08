@@ -41,11 +41,6 @@ export function RoadmapPhaseCard({ phase, index }: RoadmapPhaseCardProps) {
             {phase.objective}
           </p>
         </div>
-        <div className={`rounded-2xl px-4 py-3 text-sm ${toneClasses.surface}`}>
-          <p className={`font-medium ${toneClasses.text}`}>
-            {phase.phase.replace(/[-_]/g, ' ')}
-          </p>
-        </div>
       </div>
 
       <Separator className="my-5" />

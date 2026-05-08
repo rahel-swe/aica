@@ -1,8 +1,8 @@
-import type { RoadmapStep } from '@/constants/roadmap-setup-steps';
+import type { RoadmapSetupStep } from '@/constants/roadmap-setup-steps';
 import { cn } from '@/lib/utils';
 
 type RoadmapSetupIntroPanelProps = {
-  step: RoadmapStep;
+  step: RoadmapSetupStep;
 };
 
 const RoadmapSetupIntroPanel = ({ step }: RoadmapSetupIntroPanelProps) => {

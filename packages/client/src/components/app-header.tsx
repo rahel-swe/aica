@@ -11,8 +11,8 @@ export default function AppHeader() {
   if (isPending) return <p>Header loading..</p>;
 
   return (
-    <header className="sticky top-0 p-1 sm:p-2">
-      <div className="flex items-center gap-4 h-16 lg:justify-between bg-secondary/7 backdrop-blur-md rounded-full border-x">
+    <header className="sticky z-20 top-0 p-1 sm:p-2">
+      <div className="flex items-center gap-4 h-16 lg:justify-between bg-secondary/15 backdrop-blur-md rounded-full border-x">
         <p className="text-2xl font-bold tracking-wide text-primary hidden md:block px-4">
           AICA
         </p>

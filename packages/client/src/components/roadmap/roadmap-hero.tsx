@@ -29,33 +29,26 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
-      className="overflow-hidden rounded-3xl border"
+      className="overflow-hidden"
     >
-      <div className=" px-5 py-6 sm:px-7 lg:px-8">
+      <div className=" px-5 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <div className="mb-4 flex flex-wrap gap-2">
-              <Badge className="border-sky-200 ">
-                <Compass className="size-3" />
-                Roadmap
-              </Badge>
-              <Badge className="border text-emerald-900">
+          <div className="max-w-3xl text-center py-6">
+            <h1 className="text-5xl font-semibold tracking-normal relative font-heading mx-auto">
+              {roadmap.title}
+              <Badge
+                variant={'outline'}
+                className="bg-emerald-100 text-emerald-950 absolute rotate-45 inset-x-0 mx-auto"
+              >
                 {formatRoadmapStyle(roadmap.roadmapStyle)}
               </Badge>
-              <Badge className="border-amber-200 bg-amber-100 text-amber-900">
-                {roadmap.status}
-              </Badge>
-            </div>
-
-            <h1 className="text-3xl font-semibold tracking-normal sm:text-4xl">
-              {roadmap.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7">
+            <p className="mt-4 font-heading hidden sm:block">
               {roadmap.summary}
             </p>
           </div>
 
-          <Sheet>
+          {/* <Sheet>
             <SheetTrigger asChild>
               <Button className="w-fit">
                 <Sparkles className="size-4" />
@@ -66,23 +59,15 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
               <SheetHeader>
                 <SheetTitle>Roadmap guidance</SheetTitle>
                 <SheetDescription className="leading-6">
-                  {roadmap.guidanceNote ??
-                    'Use this roadmap as a practical weekly guide. Review it regularly and adjust when your context changes.'}
+                  {roadmap.guidanceNote}
                 </SheetDescription>
               </SheetHeader>
-              <div className="px-6 pb-6">
-                <div className="rounded-2xl p-4 text-sm">
-                  Long or regulated pathways should be treated as direction and
-                  preparation guidance first. Exact admission, licensing, and
-                  training rules must be checked locally.
-                </div>
-              </div>
             </SheetContent>
-          </Sheet>
+          </Sheet> */}
         </div>
       </div>
 
-      <div className="grid gap-0 border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-4">
+      {/* <div className="grid gap-0  border-t sm:grid-cols-2 lg:grid-cols-4">
         {[
           {
             label: 'Current level',
@@ -116,7 +101,7 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
             <p className="mt-2 text-sm font-semibold">{item.value}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </motion.section>
   );
 }

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/refs */
 import {
   ROADMAP_SETUP_STEPS,
-  type RoadmapStep,
+  type RoadmapSetupStep,
 } from '@/constants/roadmap-setup-steps';
 
 import { useFormContext, useWatch } from 'react-hook-form';
@@ -19,7 +19,7 @@ import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/road
 import { toKebab } from '@/lib/to-kebab';
 
 type RoadmapSetupStepsNavigationProps = {
-  step: RoadmapStep;
+  step: RoadmapSetupStep;
 };
 
 const RoadmapSetupAssessmentStepsNavigation = ({
