@@ -1,5 +1,3 @@
-import { ArrowUpRight } from 'lucide-react';
-
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +5,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+
 import {
   Card,
   CardContent,
@@ -26,12 +24,7 @@ interface Props {
   isPathwayPicking: boolean;
 }
 
-const RecommendationCard = ({
-  item,
-  onPickedPathway,
-  isPathwayPicking,
-}: Props) => {
-  // const score = Math.round(item.totalScore * 100);
+const RecommendationDetailsCard = ({ item }: Props) => {
   return (
     <Card
       className={cn(
@@ -49,18 +42,30 @@ const RecommendationCard = ({
             Match
           </p>
         </div>
+
         <div>
           <CardTitle className="text-xl md:text-2xl">{item.title}</CardTitle>
+
           <CardDescription className="text-inherit">
             {item.summary}
           </CardDescription>
         </div>
       </CardHeader>
+
       <CardContent className="flex flex-col gap-y-4">
+        {/* BASIC INFO */}
+        <div className="text-xs space-y-1 opacity-80">
+          <p>Pathway ID: {item.pathwayId}</p>
+          <p>Slug: {item.slug}</p>
+          <p>Rank: {item.rank ?? 'N/A'}</p>
+          <p>Matching Version: {item.matchingVersion ?? 'N/A'}</p>
+        </div>
+
         <Badge variant="secondary">{item.type}</Badge>
 
+        {/* REASONS */}
         <div className="flex flex-col gap-2 border border-black/15 rounded-xl p-2">
-          <p>Reasons</p>
+          <p className="font-medium">Reasons</p>
           <div className="flex flex-wrap flex-col">
             {item.reasons.map((r, i) => (
               <p key={i} className="rounded-full text-xs">
@@ -70,33 +75,32 @@ const RecommendationCard = ({
           </div>
         </div>
 
+        {/* DIMENSION SCORES (optional but useful) */}
+        <div className="text-xs border rounded-xl p-2 space-y-1">
+          <p className="font-medium">Dimension Scores</p>
+          <p>Strengths: {item.dimensionScores.strengths}</p>
+          <p>Subjects: {item.dimensionScores.subjects}</p>
+          <p>Passions: {item.dimensionScores.passions}</p>
+          <p>Goals: {item.dimensionScores.goals}</p>
+        </div>
+
+        {/* EXPLANATION */}
         <Accordion type="single" collapsible className="border-0">
           <AccordionItem value="explanation" className="data-open:bg-white/50">
             <AccordionTrigger className="bg-white text-inherit rounded-full">
               Why this recommendation?
             </AccordionTrigger>
+
             <AccordionContent className="py-4 h-full">
-              <CardDescription className='text-inherit"'>
+              <CardDescription className="text-inherit">
                 {item.explanation}
               </CardDescription>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
       </CardContent>
-
-      <div className="p-4 pt-0 flex justify-center">
-        <Button
-          size="lg"
-          className="group text-inherit bg-white hover:bg-white/80 dark:bg-white dark:hover:bg-white/80 py-7 px-7"
-          disabled={isPathwayPicking}
-          onClick={() => onPickedPathway(item)}
-        >
-          Get Started
-          <ArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
-        </Button>
-      </div>
     </Card>
   );
 };
 
-export default RecommendationCard;
+export default RecommendationDetailsCard;
