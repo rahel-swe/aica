@@ -1,0 +1,39 @@
+import { usePathwaysQuery } from '@/queries/pathway-query';
+import { useNavigate } from 'react-router-dom';
+
+export default function PathwaySidebar() {
+  const navigate = useNavigate();
+  const { data, isPending } = usePathwaysQuery();
+
+  if (isPending) return <p>wait a minut all data is comming....</p>;
+
+  return (
+    <aside className="hidden md:flex w-80 flex-col">
+      <div className="sticky top-20 flex h-[calc(100vh-10rem)] flex-col rounded-xl border bg-card">
+        {/* Header */}
+        <div className="border-b p-4">
+          <h2 className="text-sm font-semibold text-muted-foreground">
+            All Pathways
+          </h2>
+        </div>
+
+        {/* LIST */}
+        <div className="flex-1 overflow-y-auto p-2 space-y-2">
+          {data?.data.map((item) => (
+            <div
+              key={item._id}
+              onClick={() => navigate(`/app/pathways/${item._id}`)}
+              className={`
+                cursor-pointer rounded-lg px-3 py-2 text-sm transition
+                hover:bg-muted
+              
+              `}
+            >
+              {item.title}
+            </div>
+          ))}
+        </div>
+      </div>
+    </aside>
+  );
+}
