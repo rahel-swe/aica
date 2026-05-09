@@ -25,7 +25,7 @@ export default function AppTabs() {
             className={({ isActive }) =>
               cn(
                 'flex flex-col items-center p-3.5 rounded-full text-xs font-medium text-muted-foreground transition-colors',
-                isActive && 'text-white bg-primary'
+                isActive && 'bg-primary text-gray-300 dark:text-gray-950'
               )
             }
           >

@@ -22,7 +22,7 @@ export default function PathwayDetailPage() {
         <p>Pathway sidebar loading...</p>
       ) : (
         <aside className="hidden md:flex w-80 flex-col">
-          <div className="sticky top-6 flex h-[calc(100vh-3rem)] flex-col rounded-xl border bg-card">
+          <div className="sticky top-20 flex h-[calc(100vh-10rem)] flex-col rounded-xl border bg-card">
             {/* Header */}
             <div className="border-b p-4">
               <h2 className="text-sm font-semibold text-muted-foreground">

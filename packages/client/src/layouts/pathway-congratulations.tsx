@@ -23,7 +23,11 @@ const PathwayCongratulations = () => {
     useRecommendationQuery();
 
   if (roadmapSetupAssessmentPending || recommendationPending) {
-    return <SpinnerBars />;
+    return (
+      <div className="grid place-items-center min-h-dvh">
+        <SpinnerBars />
+      </div>
+    );
   }
 
   const userPickedRecommendedPathway = recommendationData?.data.find(
@@ -54,12 +58,12 @@ const PathwayCongratulations = () => {
           </Badge>
         </div>
 
-        <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 dark:text-slate-200 md:text-5xl uppercase mt-6">
+        <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 dark:text-slate-200 md:text-5xl uppercase mt-6 font-heading">
           Congratulations
         </h1>
 
         <div className="mt-2 space-y-3">
-          <h2 className="text-balance text-4xl font-semibold text-slate-900 dark:text-slate-200 md:text-4xl">
+          <h2 className="text-balance text-4xl font-semibold text-slate-900 dark:text-slate-200 md:text-4xl font-heading">
             {title}
           </h2>
 

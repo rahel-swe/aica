@@ -1,4 +1,4 @@
-import type { RoadmapStep } from '@/constants/roadmap-setup-steps';
+import type { RoadmapSetupStep } from '@/constants/roadmap-setup-steps';
 
 import MultiSelectField from '../form/multi-select-field';
 import SingleSelectField from '../form/single-select-field';
@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { useEffect, useRef } from 'react';
 
 type RoadmapSetupFieldPanelProps = {
-  step: RoadmapStep;
+  step: RoadmapSetupStep;
   currentIndex: number;
 };
 

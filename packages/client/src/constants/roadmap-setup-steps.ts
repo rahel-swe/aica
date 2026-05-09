@@ -44,7 +44,7 @@ export type RoadmapStepId =
   | 'finish';
 
 // Roadmap step type (reuse existing OnboardingStepType)
-export type RoadmapStep = {
+export type RoadmapSetupStep = {
   id: RoadmapStepId;
   type: PathwayAssessmentStepType;
   title: string;
@@ -200,7 +200,7 @@ const roadmapStyleOptions: PathwayAssessmentOption[] = [
   },
 ];
 
-export const ROADMAP_SETUP_STEPS: RoadmapStep[] = [
+export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
   {
     id: 'welcome',
     type: 'intro',

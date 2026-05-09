@@ -29,60 +29,45 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
-      className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm shadow-slate-200/70"
+      className="overflow-hidden"
     >
-      <div className="bg-sky-50 px-5 py-6 sm:px-7 lg:px-8">
+      <div className=" px-5 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <div className="mb-4 flex flex-wrap gap-2">
-              <Badge className="border-sky-200 bg-sky-100 text-sky-900">
-                <Compass className="size-3" />
-                Roadmap
-              </Badge>
-              <Badge className="border-emerald-200 bg-emerald-100 text-emerald-900">
+          <div className="max-w-3xl text-center py-6">
+            <h1 className="text-5xl font-semibold tracking-normal relative font-heading mx-auto">
+              {roadmap.title}
+              <Badge
+                variant={'outline'}
+                className="bg-emerald-100 text-emerald-950 absolute rotate-45 inset-x-0 mx-auto"
+              >
                 {formatRoadmapStyle(roadmap.roadmapStyle)}
               </Badge>
-              <Badge className="border-amber-200 bg-amber-100 text-amber-900">
-                {roadmap.status}
-              </Badge>
-            </div>
-
-            <h1 className="text-3xl font-semibold tracking-normal text-slate-950 sm:text-4xl">
-              {roadmap.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">
+            <p className="mt-4 font-heading hidden sm:block">
               {roadmap.summary}
             </p>
           </div>
 
-          <Sheet>
+          {/* <Sheet>
             <SheetTrigger asChild>
-              <Button className="w-fit bg-slate-950 text-white hover:bg-slate-800">
+              <Button className="w-fit">
                 <Sparkles className="size-4" />
                 Guidance note
               </Button>
             </SheetTrigger>
-            <SheetContent className="bg-white text-slate-950 sm:max-w-md">
+            <SheetContent className="sm:max-w-md">
               <SheetHeader>
                 <SheetTitle>Roadmap guidance</SheetTitle>
-                <SheetDescription className="leading-6 text-slate-600">
-                  {roadmap.guidanceNote ??
-                    'Use this roadmap as a practical weekly guide. Review it regularly and adjust when your context changes.'}
+                <SheetDescription className="leading-6">
+                  {roadmap.guidanceNote}
                 </SheetDescription>
               </SheetHeader>
-              <div className="px-6 pb-6">
-                <div className="rounded-2xl bg-orange-50 p-4 text-sm leading-6 text-orange-950">
-                  Long or regulated pathways should be treated as direction and
-                  preparation guidance first. Exact admission, licensing, and
-                  training rules must be checked locally.
-                </div>
-              </div>
             </SheetContent>
-          </Sheet>
+          </Sheet> */}
         </div>
       </div>
 
-      <div className="grid gap-0 border-t border-slate-200 bg-white sm:grid-cols-2 lg:grid-cols-4">
+      {/* <div className="grid gap-0  border-t sm:grid-cols-2 lg:grid-cols-4">
         {[
           {
             label: 'Current level',
@@ -107,18 +92,16 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
         ].map((item) => (
           <div
             key={item.label}
-            className="border-b border-slate-200 p-5 last:border-b-0 sm:odd:border-r lg:border-b-0 lg:not-last:border-r"
+            className="border-b p-5 last:border-b-0 sm:odd:border-r lg:border-b-0 lg:not-last:border-r"
           >
-            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-normal text-slate-500">
+            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-normal ">
               {item.icon}
               {item.label}
             </div>
-            <p className="mt-2 text-sm font-semibold text-slate-950">
-              {item.value}
-            </p>
+            <p className="mt-2 text-sm font-semibold">{item.value}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </motion.section>
   );
 }

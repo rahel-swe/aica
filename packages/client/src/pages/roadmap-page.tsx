@@ -1,50 +1,34 @@
-import { motion } from 'motion/react';
-import {
-  AlertCircle,
-  CalendarDays,
-  CheckCircle2,
-  Layers3,
-  Target,
-} from 'lucide-react';
+import { RoadmapEmptyState } from '@/components/roadmap/roadmap-empty-state';
+import { RoadmapHero } from '@/components/roadmap/roadmap-hero';
+import { RoadmapSidebar } from '@/components/roadmap/roadmap-sidebar';
+import RoadmapSteps from '@/components/roadmap/roadmap-steps';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useRoadmapQuery } from '@/queries/roadmap-query';
-import { RoadmapEmptyState } from '@/components/roadmap/roadmap-empty-state';
-import { RoadmapHero } from '@/components/roadmap/roadmap-hero';
-import { RoadmapPhaseTimeline } from '@/components/roadmap/roadmap-phase-timeline';
-import { RoadmapProgressHeader } from '@/components/roadmap/roadmap-progress-header';
-import { RoadmapSidebar } from '@/components/roadmap/roadmap-sidebar';
-import { RoadmapSummaryCard } from '@/components/roadmap/roadmap-summary-card';
-import { getRoadmapStats } from '@/components/roadmap/roadmap-view-utils';
+import { AlertCircle } from 'lucide-react';
 
 export default function RoadmapPage() {
   const { data, isPending, isError, refetch } = useRoadmapQuery();
+
   const roadmap = data?.data;
 
-  if (isPending) {
-    return <RoadmapLoadingState />;
-  }
+  if (isPending) return <RoadmapLoadingState />;
 
-  if (isError) {
-    return <RoadmapErrorState onRetry={() => refetch()} />;
-  }
+  if (isError) return <RoadmapErrorState onRetry={() => refetch()} />;
 
-  if (!roadmap) {
+  if (!roadmap)
     return (
-      <main className="min-h-screen rounded-[2rem] p-4 text-slate-950 sm:p-6 lg:p-8">
+      <main className="h-full rounded-[2rem] grid place-items-center">
         <RoadmapEmptyState />
       </main>
     );
-  }
-
-  const stats = getRoadmapStats(roadmap);
 
   return (
-    <main className="min-h-screen rounded-[2rem] p-4 text-slate-950 sm:p-6 lg:p-8">
-      <div className="mx-auto max-w-7xl space-y-6">
+    <main className="lg:px-8">
+      <div className="mx-auto max-w-7xl flex flex-col gap-10">
         <RoadmapHero roadmap={roadmap} />
 
-        <motion.section
+        {/* <motion.section
           initial="hidden"
           animate="show"
           variants={{
@@ -103,12 +87,13 @@ export default function RoadmapPage() {
               <RoadmapSummaryCard {...item} />
             </motion.div>
           ))}
-        </motion.section>
+        </motion.section> */}
 
-        <RoadmapProgressHeader roadmap={roadmap} />
+        {/* <RoadmapProgressHeader roadmap={roadmap} /> */}
 
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
-          <RoadmapPhaseTimeline roadmap={roadmap} />
+        <div className="grid gap-6 items-start xl:grid-cols-[minmax(0,1fr)_22rem]">
+          {/* <RoadmapPhaseTimeline roadmap={roadmap} /> */}
+          <RoadmapSteps roadmap={roadmap} />
           <RoadmapSidebar roadmap={roadmap} />
         </div>
       </div>

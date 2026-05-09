@@ -76,7 +76,7 @@ const RecommendationCard = ({
               Why this recommendation?
             </AccordionTrigger>
             <AccordionContent className="py-4 h-full">
-              <CardDescription className='text-inherit"'>
+              <CardDescription className="text-inherit font-sans">
                 {item.explanation}
               </CardDescription>
             </AccordionContent>

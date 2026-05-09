@@ -7,7 +7,12 @@ import { Navigate, Outlet } from 'react-router-dom';
 export default function AppLayout() {
   const { userData, isPending, isPathwayAssessmentCompleted } = useUserStatus();
 
-  if (isPending) return <SpinnerBars barDivClassName="scale-180" />;
+  if (isPending)
+    return (
+      <div className="grid place-items-center min-h-dvh">
+        <SpinnerBars />
+      </div>
+    );
 
   if (!userData?.user) return <Navigate to="/auth/sign-in" replace />;
 
