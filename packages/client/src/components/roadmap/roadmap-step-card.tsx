@@ -1,24 +1,35 @@
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import type { RoadmapStep } from '@contracts/shared/types/roadmap-types';
-import { ExternalLink, FileCheck2, ListChecks } from 'lucide-react';
-import type { ReactNode } from 'react';
-import { difficultyMeta, stepStatusMeta } from './roadmap-view-utils';
+import { ChevronDown, ExternalLink } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../ui/accordion';
+import { Button } from '../ui/button';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { stepStatusMeta } from './roadmap-view-utils';
 
 type RoadmapStepCardProps = {
   step: RoadmapStep;
 };
 
-export function RoadmapStepCard({ step }: RoadmapStepCardProps) {
-  const status = stepStatusMeta[step.status];
-  const difficulty = difficultyMeta[step.difficulty ?? 'medium'];
+const RoadmapStepCard = ({ step }: RoadmapStepCardProps) => {
+  const {
+    icon: StatusIcon,
+    label,
+    iconClassName,
+  } = stepStatusMeta[step.status];
 
   return (
     <div>
       <div className="min-w-0">
         <div className="flex flex-wrap gap-2">
-          <Badge className={status.className}>{status.label}</Badge>
-          <Badge className={difficulty.className}>{difficulty.label}</Badge>
+          <Badge variant={'secondary'}>
+            {label}
+            <StatusIcon className={iconClassName} fill="currentColor" />
+          </Badge>
           {step.estimatedTime ? (
             <Badge className="border">{step.estimatedTime}</Badge>
           ) : null}
@@ -28,83 +39,80 @@ export function RoadmapStepCard({ step }: RoadmapStepCardProps) {
           {step.why}
         </p>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
-        <DetailGroup
-          icon={<ListChecks className="size-4" />}
-          title="Prerequisites"
-          empty="No formal prerequisites."
-          items={step.prerequisites}
-        />
+      <div className="grid gap-4">
+        <Accordion type="single" collapsible className="border-0">
+          <AccordionItem
+            value="prerequisites"
+            className="border-none data-open:bg-transparent"
+          >
+            <AccordionTrigger className="px-0 py-2">
+              Prerequisites
+            </AccordionTrigger>
+            <AccordionContent>
+              {step.prerequisites.length > 0 ? (
+                <ul className="space-y-1 text-sm leading-6 text-muted-foreground">
+                  {step.prerequisites.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm leading-6 text-muted-foreground">
+                  No formal prerequisites.
+                </p>
+              )}
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="evidence" className="data-open:bg-transparent">
+            <AccordionTrigger className="px-0 py-2">
+              Evidence of completion
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              {step.evidenceOfCompletion ??
+                'A visible artifact, note, or review that proves this step is complete.'}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
         <div>
-          <div className="mb-2 flex items-center gap-2 text-sm font-medium">
-            <FileCheck2 className="size-4" />
-            Evidence of completion
-          </div>
-          <p className="text-sm leading-6 text-muted-foreground">
-            {step.evidenceOfCompletion ??
-              'A visible artifact, note, or review that proves this step is complete.'}
-          </p>
+          <div className="mb-2 flex items-center gap-2 text-sm font-medium"></div>
+          <p className="text-sm leading-6 text-muted-foreground"></p>
         </div>
       </div>
 
       {step.resources.length > 0 ? (
-        <>
-          <Separator className="my-4" />
-          <div>
-            <p className="mb-2 text-sm font-medium">Suggested resources</p>
-            <div className="flex flex-wrap gap-2">
-              {step.resources.map((resource) =>
-                resource.url ? (
-                  <a
-                    key={`${resource.title}-${resource.url}`}
-                    href={resource.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium"
-                  >
-                    {resource.title}
-                    <ExternalLink className="size-3" />
-                  </a>
-                ) : (
-                  <span
-                    key={resource.title}
-                    className="inline-flex rounded-full border px-3 py-1 text-xs font-medium"
-                  >
-                    {resource.title}
-                  </span>
-                )
-              )}
-            </div>
-          </div>
-        </>
+        <Popover>
+          <PopoverTrigger className="relative -bottom-1">
+            <Button size={'xs'} variant={'secondary'}>
+              Suggested resources
+              <ChevronDown />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="gap-0 ms-5">
+            {step.resources.map((resource) =>
+              resource.url ? (
+                <a
+                  key={`${resource.title}-${resource.url}`}
+                  href={resource.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium"
+                >
+                  {resource.title}
+                  <ExternalLink className="size-3" />
+                </a>
+              ) : (
+                <span
+                  key={resource.title}
+                  className="inline-flex rounded-full px-3 py-1 text-xs font-medium"
+                >
+                  {resource.title}
+                </span>
+              )
+            )}
+          </PopoverContent>
+        </Popover>
       ) : null}
     </div>
   );
-}
-
-type DetailGroupProps = {
-  icon: ReactNode;
-  title: string;
-  items?: string[];
-  empty: string;
 };
 
-function DetailGroup({ icon, title, items = [], empty }: DetailGroupProps) {
-  return (
-    <div>
-      <div className="mb-2 flex items-center gap-2 text-sm font-medium">
-        {icon}
-        {title}
-      </div>
-      {items.length > 0 ? (
-        <ul className="space-y-1 text-sm leading-6 text-muted-foreground">
-          {items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-sm leading-6 text-muted-foreground">{empty}</p>
-      )}
-    </div>
-  );
-}
+export default RoadmapStepCard;

@@ -1,6 +1,8 @@
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
 import RoadmapStepButton from './roadmap-step-button';
 import { getRoadmapStats } from './roadmap-view-utils';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import RoadmapStepCard from './roadmap-step-card';
 
 const RoadmapSteps = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
   const { steps } = getRoadmapStats(roadmap);
@@ -8,11 +10,18 @@ const RoadmapSteps = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
   return (
     <div className="flex flex-wrap items-center justify-evenly gap-20 px-4 sm:gap-25">
       {steps.map((step, idx) => (
-        <RoadmapStepButton
-          order={idx + 1}
-          isInProgress={step.status === 'in_progress'}
-          isCompleted={step.status === 'completed'}
-        />
+        <Popover>
+          <PopoverTrigger>
+            <RoadmapStepButton
+              order={idx + 1}
+              isInProgress={step.status === 'in_progress'}
+              isCompleted={step.status === 'completed'}
+            />
+          </PopoverTrigger>
+          <PopoverContent side="right">
+            <RoadmapStepCard step={step} />
+          </PopoverContent>
+        </Popover>
       ))}
     </div>
   );

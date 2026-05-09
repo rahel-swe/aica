@@ -5,6 +5,7 @@ import type {
   RoadmapStepDifficulty,
   RoadmapStepStatus,
 } from '@contracts/shared/types/roadmap-types';
+import { Circle, Star, Triangle, type LucideIcon } from 'lucide-react';
 
 export type RoadmapTone =
   | 'foundation'
@@ -150,19 +151,22 @@ export const phaseToneClasses: Record<
 
 export const stepStatusMeta: Record<
   RoadmapStepStatus,
-  { label: string; className: string }
+  { label: string; icon: LucideIcon; iconClassName: string }
 > = {
   completed: {
     label: 'Completed',
-    className: 'border-emerald-200 bg-emerald-100 text-emerald-900',
+    icon: Star,
+    iconClassName: 'text-yellow-200',
   },
   in_progress: {
     label: 'In progress',
-    className: 'border-sky-200 bg-sky-100 text-sky-900',
+    icon: Circle,
+    iconClassName: 'text-sky-300',
   },
   pending: {
     label: 'Planned',
-    className: 'border-slate-200 bg-slate-100 text-slate-700',
+    icon: Triangle,
+    iconClassName: 'text-violet-400',
   },
 };
 
@@ -185,7 +189,7 @@ export const difficultyMeta: Record<
 };
 
 export const sampleRoadmap: PathwayRoadmap = {
-  id: 'sample-roadmap',
+  _id: 'sample-roadmap',
   pathwayId: 'frontend-engineer',
   version: 1,
   status: 'active',

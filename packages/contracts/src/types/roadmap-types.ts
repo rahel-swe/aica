@@ -15,7 +15,7 @@ export type RoadmapStyle = z.infer<typeof roadmapSetupStyle>;
 
 export type RoadmapResource = {
   title: string;
-  url?: string | undefined;
+  url?: string;
   type: RoadmapResourceType;
 };
 
@@ -23,15 +23,15 @@ export type RoadmapStep = {
   id: string;
   title: string;
   why: string;
-  estimatedTime?: string | undefined;
+  estimatedTime?: string;
   difficulty: RoadmapStepDifficulty;
   prerequisites: string[];
   resources: {
     title: string;
-    url?: string | undefined;
+    url?: string;
     type: RoadmapResourceType;
   }[];
-  evidenceOfCompletion?: string | undefined;
+  evidenceOfCompletion?: string;
   status: RoadmapStepStatus;
   order: number;
 };
@@ -52,7 +52,7 @@ export type RoadmapGenerateRequest = {
 export type RoadmapSourceRecommendation = {
   pathwayId: string;
   reasons: string[];
-  explanation?: string | undefined;
+  explanation?: string;
   totalScore: number;
 };
 export type PathwayRoadmap = {
