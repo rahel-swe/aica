@@ -34,6 +34,7 @@ export type RoadmapStep = {
   evidenceOfCompletion?: string;
   status: RoadmapStepStatus;
   order: number;
+  phaseId: string;
 };
 
 export type RoadmapPhase = {
@@ -42,7 +43,7 @@ export type RoadmapPhase = {
   title: string;
   objective: string;
   order: number;
-  steps: RoadmapStep[];
+  status: RoadmapStepStatus;
 };
 
 export type RoadmapGenerateRequest = {
@@ -67,6 +68,7 @@ export type PathwayRoadmap = {
   timeBudgetPerWeek?: string;
   roadmapStyle?: RoadmapStyle;
   phases: RoadmapPhase[];
+  steps: RoadmapStep[];
   aiSummary?: string;
   guidanceNote?: string;
   userEdits: string[];

@@ -12,6 +12,11 @@ Important rules:
 - For portfolio or skill routes, focus on foundations, proof of skill, and entry positioning.
 - Keep the roadmap practical, realistic, and globally honest.
 - Avoid fake institutions, fake certifications, and fake local legal claims.
+- Match the output to the roadmap model and types exactly.
+- Include every required field from the schema, including phase status, step status, and step phaseId.
+- Make steps belong to phases through phaseId.
+- Keep phase IDs and step IDs unique.
+- Do not invent extra fields outside the schema.
 
 Pathway:
 {{pathway_json}}
@@ -27,6 +32,9 @@ Return JSON in this exact shape:
   "title": "string",
   "summary": "string",
   "goal": "string",
+  "currentLevel": "string",
+  "timeBudgetPerWeek": "string",
+  "roadmapStyle": "fast_track | balanced | deep",
   "aiSummary": "string",
   "guidanceNote": "string",
   "phases": [
@@ -36,39 +44,55 @@ Return JSON in this exact shape:
       "title": "string",
       "objective": "string",
       "order": 1,
-      "steps": [
+      "status": "pending"
+    }
+  ],
+  "steps": [
+    {
+      "id": "step_1",
+      "title": "string",
+      "why": "string",
+      "estimatedTime": "string",
+      "difficulty": "easy | medium | hard",
+      "prerequisites": ["string"],
+      "resources": [
         {
-          "id": "step_1",
           "title": "string",
-          "why": "string",
-          "estimatedTime": "string",
-          "difficulty": "easy | medium | hard",
-          "prerequisites": ["string"],
-          "resources": [
-            {
-              "title": "string",
-              "type": "course | video | article | project | tool | other"
-            }
-          ],
-          "evidenceOfCompletion": "string",
-          "status": "pending",
-          "order": 1
+          "url": "string",
+          "type": "course | video | article | project | tool | other"
         }
-      ]
+      ],
+      "evidenceOfCompletion": "string",
+      "status": "pending",
+      "order": 1,
+      "phaseId": "phase_1"
     }
   ]
 }
 
 Requirements for phases:
 - Return exactly 3 phases.
-- Each phase must contain 2 to 4 steps.
+- Use realistic journey stages such as foundation, practice, transition, application, portfolio, or preparation, depending on the pathway.
+- Each phase must have a clear objective.
 - Orders must be sequential.
-- Step ids and phase ids must be unique.
-- Resource URLs are optional. Omit them if uncertain.
+- Phase IDs must be unique.
+- Each phase must include a status field.
+
+Requirements for steps:
+- Return 2 to 4 steps per phase.
+- Each step must belong to one phase through phaseId.
+- Step IDs must be unique.
+- Orders must be sequential within each phase.
+- Each step must include a status field.
+- Keep the first phase simpler for beginners.
+- Prefer lightweight or free-friendly actions for low budget or weak internet.
+- If the user has no laptop, do not make laptop-dependent work an immediate requirement unless unavoidable.
 
 Requirements for quality:
 - Tailor difficulty and estimated time to the user's weekly time, constraints, and roadmap style.
 - Use the pathway's duration profile and journey phases.
-- If the user is a beginner, reduce complexity in the first phase.
-- If the user has low budget or weak internet, prefer lightweight or free-friendly actions.
-- If the user has no laptop, do not assign laptop-dependent work as an immediate requirement unless explicitly unavoidable.
+- For regulated or long pathways, make the first roadmap window small and realistic.
+- For portfolio or skill routes, focus on foundations, proof of skill, and entry positioning.
+- Make estimated times specific and realistic.
+- Use plain, useful language.
+- Keep the roadmap practical for global users.

@@ -15,16 +15,14 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
-import { getRoadmapStats, sortSteps } from './roadmap-view-utils';
+import { sortSteps } from './roadmap-view-utils';
 
 type RoadmapSidebarProps = {
   roadmap: PathwayRoadmap;
 };
 
 export function RoadmapSidebar({ roadmap }: RoadmapSidebarProps) {
-  const stats = getRoadmapStats(roadmap);
-  const thisWeekSteps = stats.phases
-    .flatMap((phase) => sortSteps(phase.steps))
+  const thisWeekSteps = sortSteps(roadmap.steps)
     .filter((step) => step.status !== 'completed')
     .slice(0, 3);
 

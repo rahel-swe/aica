@@ -30,6 +30,7 @@ type GeneratedRoadmap = {
   aiSummary?: string;
   guidanceNote?: string;
   phases: RoadmapPhase[];
+  steps: RoadmapStep[];
 };
 
 export class RoadmapGenerationService {
@@ -125,6 +126,8 @@ export class RoadmapGenerationService {
         return null;
       }
 
+      const collectedSteps: RoadmapStep[] = [];
+
       const phases = parsed.phases
         .map((phase, phaseIndex) => {
           if (
@@ -145,6 +148,7 @@ export class RoadmapGenerationService {
 
               return {
                 id: step.id,
+                phaseId: phase.id,
                 title: step.title,
                 why: step.why,
                 estimatedTime: step.estimatedTime,
@@ -164,18 +168,20 @@ export class RoadmapGenerationService {
             return null;
           }
 
+          collectedSteps.push(...steps);
+
           return {
             id: phase.id,
             phase: phase.phase,
             title: phase.title,
             objective: phase.objective,
             order: phase.order ?? phaseIndex + 1,
-            steps,
+            status: 'pending',
           } satisfies RoadmapPhase;
         })
         .filter((phase): phase is RoadmapPhase => phase !== null);
 
-      if (phases.length !== 3) {
+      if (phases.length !== 3 || !collectedSteps.length) {
         return null;
       }
 
@@ -186,6 +192,7 @@ export class RoadmapGenerationService {
         aiSummary: parsed.aiSummary,
         guidanceNote: parsed.guidanceNote,
         phases,
+        steps: collectedSteps.sort((a, b) => a.order - b.order),
       };
     } catch {
       return null;
@@ -200,21 +207,23 @@ export class RoadmapGenerationService {
     const journeyPhases = input.pathway.journeyPhases.slice(0, 3);
     const phaseNames = ['foundation', 'practice', 'positioning'];
 
-    const phases = journeyPhases.map((journeyPhase, index) => {
-      const steps = this.buildFallbackSteps({
+    const steps = journeyPhases.flatMap((journeyPhase, index) =>
+      this.buildFallbackSteps({
         pathway: input.pathway,
         setup: input.setup,
         journeyPhase,
         phaseIndex: index,
-      });
+      })
+    );
 
+    const phases = journeyPhases.map((journeyPhase, index) => {
       return {
         id: `phase_${index + 1}`,
         phase: phaseNames[index] ?? `phase_${index + 1}`,
         title: journeyPhase.name,
         objective: journeyPhase.focus,
         order: index + 1,
-        steps,
+        status: 'pending',
       } satisfies RoadmapPhase;
     });
 
@@ -228,6 +237,7 @@ export class RoadmapGenerationService {
       aiSummary: `This roadmap is tailored to your current stage, weekly capacity, and preferred pace for progressing toward ${input.pathway.title}.`,
       guidanceNote: input.pathway.verificationNote,
       phases,
+      steps,
     };
   }
 
@@ -245,6 +255,7 @@ export class RoadmapGenerationService {
     const baseSteps = [
       {
         id: `step_${input.phaseIndex + 1}_1`,
+        phaseId: `phase_${input.phaseIndex + 1}`,
         title:
           input.phaseIndex === 0
             ? `Clarify what ${input.pathway.title} really requires`
@@ -263,6 +274,7 @@ export class RoadmapGenerationService {
       },
       {
         id: `step_${input.phaseIndex + 1}_2`,
+        phaseId: `phase_${input.phaseIndex + 1}`,
         title: `Build progress in ${input.pathway.keySkills[input.phaseIndex] ?? input.pathway.keySkills[0] ?? 'core pathway skills'}`,
         why:
           input.setup.roadmapStyle === 'fast_track'
@@ -279,6 +291,7 @@ export class RoadmapGenerationService {
       },
       {
         id: `step_${input.phaseIndex + 1}_3`,
+        phaseId: `phase_${input.phaseIndex + 1}`,
         title:
           input.phaseIndex === 2
             ? 'Review fit and choose the next serious move'

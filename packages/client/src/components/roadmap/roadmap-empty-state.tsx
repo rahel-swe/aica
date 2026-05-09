@@ -3,7 +3,7 @@ import { useGenerateRoadmapMutation } from '@/queries/roadmap-query';
 import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-assessment-queries';
 
 export function RoadmapEmptyState() {
-  const { mutate } = useGenerateRoadmapMutation();
+  const { mutate, isPending: isGenerating } = useGenerateRoadmapMutation();
   const { data: roadmapStatusData, isPending } =
     useRoadmapSetupAssessmentStatusQuery();
 
@@ -16,8 +16,9 @@ export function RoadmapEmptyState() {
 
         mutate({ pathwayId: pickedPathwayId });
       }}
+      disabled={isGenerating}
     >
-      Generate
+      {isGenerating ? 'Generating...' : 'Generate Roadmap'}
     </Button>
   );
 }

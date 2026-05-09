@@ -86,6 +86,7 @@ export class RoadmapService {
         timeBudgetPerWeek,
         roadmapStyle: roadmapSetup.roadmapStyle,
         phases: generated.phases,
+        steps: generated.steps,
         aiSummary: generated.aiSummary,
         guidanceNote: generated.guidanceNote,
         userEdits: [],

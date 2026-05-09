@@ -1,9 +1,8 @@
+import RoadmapActionableSection from '@/components/roadmap/roadmap-actionable-section';
 import { RoadmapEmptyState } from '@/components/roadmap/roadmap-empty-state';
 import { RoadmapHero } from '@/components/roadmap/roadmap-hero';
-import { RoadmapSidebar } from '@/components/roadmap/roadmap-sidebar';
 import RoadmapSteps from '@/components/roadmap/roadmap-steps';
 import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
 import { useRoadmapQuery } from '@/queries/roadmap-query';
 import { AlertCircle } from 'lucide-react';
 
@@ -12,7 +11,7 @@ export default function RoadmapPage() {
 
   const roadmap = data?.data;
 
-  if (isPending) return <RoadmapLoadingState />;
+  if (isPending) return <p>Roadmap loading...</p>;
 
   if (isError) return <RoadmapErrorState onRetry={() => refetch()} />;
 
@@ -25,102 +24,14 @@ export default function RoadmapPage() {
 
   return (
     <main className="lg:px-8">
-      <div className="mx-auto max-w-7xl flex flex-col gap-10">
-        <RoadmapHero roadmap={roadmap} />
+      <div className=" grid gap-6 items-start xl:grid-cols-[minmax(0,1fr)_22rem]">
+        <div className="mx-auto max-w-7xl flex flex-col gap-10">
+          <RoadmapHero roadmap={roadmap} />
 
-        {/* <motion.section
-          initial="hidden"
-          animate="show"
-          variants={{
-            hidden: {},
-            show: {
-              transition: {
-                staggerChildren: 0.08,
-              },
-            },
-          }}
-          className="grid gap-4 md:grid-cols-2 xl:grid-cols-4"
-        >
-          {[
-            {
-              label: 'Phases',
-              value: stats.totalPhases,
-              detail: 'A clear sequence from first action to next review.',
-              icon: <Layers3 className="size-4" />,
-              className: 'bg-sky-50/80',
-            },
-            {
-              label: 'Steps',
-              value: stats.totalSteps,
-              detail: 'Small enough to scan, specific enough to act on.',
-              icon: <CheckCircle2 className="size-4" />,
-              className: 'bg-emerald-50/80',
-            },
-            {
-              label: 'Current focus',
-              value: stats.currentFocus ?? 'First planned step',
-              detail: 'The next useful move without opening every section.',
-              icon: <Target className="size-4" />,
-              className: 'bg-amber-50/80',
-            },
-            {
-              label: 'Next review',
-              value: roadmap.nextReviewAt
-                ? new Intl.DateTimeFormat(undefined, {
-                    month: 'short',
-                    day: 'numeric',
-                  }).format(new Date(roadmap.nextReviewAt))
-                : 'Not set',
-              detail: 'A checkpoint keeps the plan honest and adjustable.',
-              icon: <CalendarDays className="size-4" />,
-              className: 'bg-rose-50/70',
-            },
-          ].map((item) => (
-            <motion.div
-              key={item.label}
-              variants={{
-                hidden: { opacity: 0, y: 14 },
-                show: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-            >
-              <RoadmapSummaryCard {...item} />
-            </motion.div>
-          ))}
-        </motion.section> */}
-
-        {/* <RoadmapProgressHeader roadmap={roadmap} /> */}
-
-        <div className="grid gap-6 items-start xl:grid-cols-[minmax(0,1fr)_22rem]">
-          {/* <RoadmapPhaseTimeline roadmap={roadmap} /> */}
-          <RoadmapSteps roadmap={roadmap} />
-          <RoadmapSidebar roadmap={roadmap} />
+          <RoadmapSteps steps={roadmap.steps} />
+          {/* <RoadmapSidebar roadmap={roadmap} /> */}
         </div>
-      </div>
-    </main>
-  );
-}
-
-function RoadmapLoadingState() {
-  return (
-    <main className="min-h-screen rounded-[2rem] bg-slate-50 p-4 text-slate-950 sm:p-6 lg:p-8">
-      <div className="mx-auto max-w-7xl space-y-6">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/70">
-          <Skeleton className="h-6 w-32 bg-slate-200" />
-          <Skeleton className="mt-6 h-10 w-full max-w-xl bg-slate-200" />
-          <Skeleton className="mt-4 h-5 w-full max-w-2xl bg-slate-200" />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <Skeleton key={index} className="h-20 rounded-2xl bg-slate-200" />
-            ))}
-          </div>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <Skeleton key={index} className="h-36 rounded-2xl bg-slate-200" />
-          ))}
-        </div>
-        <Skeleton className="h-72 rounded-3xl bg-slate-200" />
+        <RoadmapActionableSection roadmap={roadmap} />
       </div>
     </main>
   );

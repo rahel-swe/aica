@@ -17,6 +17,7 @@ export interface IRoadmapStep {
   evidenceOfCompletion?: string;
   status: 'pending' | 'in_progress' | 'completed';
   order: number;
+  phaseId: string;
 }
 
 export interface IRoadmapPhase {
@@ -25,7 +26,7 @@ export interface IRoadmapPhase {
   title: string;
   objective: string;
   order: number;
-  steps: IRoadmapStep[];
+  status: 'pending' | 'in_progress' | 'completed';
 }
 
 export interface IRoadmap extends Document {
@@ -44,6 +45,7 @@ export interface IRoadmap extends Document {
   roadmapStyle?: 'fast_track' | 'balanced' | 'deep';
 
   phases: IRoadmapPhase[];
+  steps: IRoadmapStep[];
 
   aiSummary?: string;
   userEdits?: string[];
@@ -94,6 +96,11 @@ const stepSchema = new Schema<IRoadmapStep>(
       default: 'pending',
     },
     order: { type: Number, required: true },
+    phaseId: {
+      type: String,
+      required: true,
+      index: true,
+    },
   },
   { _id: false }
 );
@@ -105,7 +112,11 @@ const phaseSchema = new Schema<IRoadmapPhase>(
     title: { type: String, required: true, trim: true },
     objective: { type: String, required: true, trim: true },
     order: { type: Number, required: true },
-    steps: { type: [stepSchema], default: [] },
+    status: {
+      type: String,
+      enum: ['pending', 'in_progress', 'completed'],
+      default: 'pending',
+    },
   },
   { _id: false }
 );
@@ -164,6 +175,11 @@ const roadmapSchema = new Schema<IRoadmap>(
 
     phases: {
       type: [phaseSchema],
+      default: [],
+    },
+
+    steps: {
+      type: [stepSchema],
       default: [],
     },
 

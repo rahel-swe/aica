@@ -1,29 +1,13 @@
-import { motion } from 'motion/react';
-import { CalendarClock, Clock3, Compass, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
-import {
-  formatDate,
-  formatRoadmapStyle,
-  getRoadmapStats,
-} from './roadmap-view-utils';
+import { motion } from 'motion/react';
+import { formatRoadmapStyle } from './roadmap-view-utils';
 
 type RoadmapHeroProps = {
   roadmap: PathwayRoadmap;
 };
 
 export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
-  const stats = getRoadmapStats(roadmap);
-
   return (
     <motion.section
       initial={{ opacity: 0, y: 18 }}
@@ -66,42 +50,6 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
           </Sheet> */}
         </div>
       </div>
-
-      {/* <div className="grid gap-0  border-t sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          {
-            label: 'Current level',
-            value: roadmap.currentLevel ?? 'Not set',
-            icon: <Compass className="size-4" />,
-          },
-          {
-            label: 'Weekly time',
-            value: roadmap.timeBudgetPerWeek ?? 'Not set',
-            icon: <Clock3 className="size-4" />,
-          },
-          {
-            label: 'Next review',
-            value: formatDate(roadmap.nextReviewAt),
-            icon: <CalendarClock className="size-4" />,
-          },
-          {
-            label: 'Roadmap size',
-            value: `${stats.totalPhases} phases / ${stats.totalSteps} steps`,
-            icon: <Sparkles className="size-4" />,
-          },
-        ].map((item) => (
-          <div
-            key={item.label}
-            className="border-b p-5 last:border-b-0 sm:odd:border-r lg:border-b-0 lg:not-last:border-r"
-          >
-            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-normal ">
-              {item.icon}
-              {item.label}
-            </div>
-            <p className="mt-2 text-sm font-semibold">{item.value}</p>
-          </div>
-        ))}
-      </div> */}
     </motion.section>
   );
 }

@@ -22,7 +22,7 @@ export const sortSteps = (steps: RoadmapStep[]) =>
 
 export const getRoadmapStats = (roadmap: PathwayRoadmap) => {
   const phases = sortPhases(roadmap.phases);
-  const steps = phases.flatMap((phase) => phase.steps);
+  const steps = roadmap.steps;
   const completedSteps = steps.filter((step) => step.status === 'completed');
   const inProgressSteps = steps.filter((step) => step.status === 'in_progress');
   const progress =
@@ -186,113 +186,4 @@ export const difficultyMeta: Record<
     label: 'Hard',
     className: 'border-rose-200 bg-rose-50 text-rose-900',
   },
-};
-
-export const sampleRoadmap: PathwayRoadmap = {
-  _id: 'sample-roadmap',
-  pathwayId: 'frontend-engineer',
-  version: 1,
-  status: 'active',
-  title: 'Frontend Engineer Roadmap',
-  summary:
-    'A practical path from web foundations to a small portfolio that can support junior frontend applications.',
-  goal: 'Build enough skill and evidence to apply for supervised junior frontend work.',
-  currentLevel: 'self-learning',
-  timeBudgetPerWeek: '5-7 hours per week',
-  roadmapStyle: 'balanced',
-  aiSummary:
-    'Start with stable web fundamentals, then build one polished interface connected to real data. Keep the scope focused so progress feels visible without becoming overwhelming.',
-  guidanceNote:
-    'Use this preview as a sample only. Your generated roadmap will reflect your selected pathway, current stage, timeline, and weekly time budget.',
-  phases: [
-    {
-      id: 'sample-foundation',
-      phase: 'foundation',
-      title: 'Build the web foundation',
-      objective:
-        'Create a reliable base in HTML, CSS, JavaScript, and interface thinking.',
-      order: 1,
-      steps: [
-        {
-          id: 'sample-step-1',
-          title: 'Rebuild three real interface sections',
-          why: 'Small reproductions teach layout, spacing, typography, and responsive behavior faster than abstract notes.',
-          estimatedTime: '2 weeks',
-          difficulty: 'easy',
-          prerequisites: ['Basic HTML and CSS'],
-          resources: [{ title: 'MDN Web Docs', type: 'article' }],
-          evidenceOfCompletion:
-            'Three responsive sections with clean spacing and readable code.',
-          status: 'completed',
-          order: 1,
-        },
-        {
-          id: 'sample-step-2',
-          title: 'Create a JavaScript interaction journal',
-          why: 'Writing down small interactions builds confidence with events, state, and DOM updates.',
-          estimatedTime: '2-3 weeks',
-          difficulty: 'medium',
-          prerequisites: ['Basic JavaScript syntax'],
-          resources: [
-            { title: 'JavaScript.info fundamentals', type: 'article' },
-          ],
-          evidenceOfCompletion:
-            'Five small interactions with short notes explaining how each one works.',
-          status: 'in_progress',
-          order: 2,
-        },
-      ],
-    },
-    {
-      id: 'sample-practice',
-      phase: 'practice',
-      title: 'Build a realistic product screen',
-      objective:
-        'Move from exercises into a focused project that shows real frontend judgment.',
-      order: 2,
-      steps: [
-        {
-          id: 'sample-step-3',
-          title: 'Build a dashboard from API data',
-          why: 'API-connected work shows that you can handle loading, error, empty, and success states.',
-          estimatedTime: '4 weeks',
-          difficulty: 'medium',
-          prerequisites: ['React components', 'Fetch or Axios basics'],
-          resources: [{ title: 'TanStack Query docs', type: 'article' }],
-          evidenceOfCompletion:
-            'A deployed screen with loading, empty, error, and populated states.',
-          status: 'pending',
-          order: 1,
-        },
-      ],
-    },
-    {
-      id: 'sample-positioning',
-      phase: 'positioning',
-      title: 'Prepare for entry opportunities',
-      objective:
-        'Turn practice into evidence that another person can evaluate quickly.',
-      order: 3,
-      steps: [
-        {
-          id: 'sample-step-4',
-          title: 'Write one short project case study',
-          why: 'A case study helps reviewers understand your decisions, not only the final screenshot.',
-          estimatedTime: '1 week',
-          difficulty: 'easy',
-          prerequisites: ['Completed project'],
-          resources: [{ title: 'Portfolio case study outline', type: 'other' }],
-          evidenceOfCompletion:
-            'A concise write-up covering problem, constraints, decisions, and outcome.',
-          status: 'pending',
-          order: 1,
-        },
-      ],
-    },
-  ],
-  userEdits: [],
-  lastGeneratedAt: new Date().toISOString(),
-  nextReviewAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString(),
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
 };
