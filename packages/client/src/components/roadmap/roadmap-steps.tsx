@@ -7,7 +7,7 @@ const RoadmapSteps = ({ steps }: { steps: RoadmapStep[] }) => {
   return (
     <div className="flex flex-wrap items-center justify-evenly gap-20 px-4 sm:gap-25">
       {steps.map((step, idx) => (
-        <Popover>
+        <Popover key={step.id}>
           <PopoverTrigger>
             <RoadmapStepButton
               order={idx + 1}

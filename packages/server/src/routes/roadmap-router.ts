@@ -6,11 +6,11 @@ const roadmapRouter = Router();
 
 roadmapRouter.post('/generate', authorize, roadmapController.generateRoadmap);
 
-// roadmapRouter.put(
-//   '/steps/:stepId',
-//   authorize,
-//   roadmapController.markStepComplete
-// );
+roadmapRouter.put(
+  '/:id/steps/:stepId',
+  authorize,
+  roadmapController.changeStepStatus
+);
 
 roadmapRouter.get('/me', authorize, roadmapController.getMyRoadmaps);
 

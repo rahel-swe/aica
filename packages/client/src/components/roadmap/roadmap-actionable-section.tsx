@@ -1,41 +1,28 @@
+import { cn } from '@/lib/utils';
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
-import {
-  Check,
-  ChevronDown,
-  Circle,
-  ExternalLink,
-  LoaderCircle,
-  Play,
-  Trash,
-  Trash2,
-} from 'lucide-react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '../ui/accordion';
+import { Trash } from 'lucide-react';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
-import { roadmapPhaseStatusMeta, stepStatusMeta } from './roadmap-view-utils';
-import { cn } from '@/lib/utils';
 import { Separator } from '../ui/separator';
+import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
+import { roadmapPhaseStatusMeta } from './roadmap-view-utils';
 
 const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
-  const { steps, phases } = roadmap;
+  const { steps, phases, _id } = roadmap;
+  const activePhase =
+    phases.find((p) => p.status === 'in_progress') ??
+    phases.find((p) => p.status === 'pending');
 
-  const activePhase = phases.filter((p) => p.status === 'in_progress').pop();
+  const currentPhaseSteps = steps.filter(
+    (step) => step.phaseId === activePhase?.id
+  );
+
   const step =
-    roadmap.steps.find((step) => step.phaseId === activePhase?.id) ?? steps[0];
+    currentPhaseSteps.find((s) => s.status === 'in_progress') ??
+    currentPhaseSteps.find((s) => s.status === 'pending');
 
-  const { titleClassName } = roadmapPhaseStatusMeta[activePhase!.id];
-
-  const {
-    icon: StatusIcon,
-    label,
-    iconClassName,
-  } = stepStatusMeta[step.status];
+  const { titleClassName } =
+    roadmapPhaseStatusMeta[activePhase?.id ?? 'phase_1'];
 
   return (
     <div className="flex flex-col gap-6 py-4">
@@ -67,24 +54,7 @@ const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
         )}
       </div>
 
-      <Button className={cn('px-6 mx-auto')}>
-        {step.status === 'pending'
-          ? 'Start'
-          : step.status === 'in_progress'
-            ? 'Complete'
-            : step.status === 'completed'
-              ? 'Completed'
-              : ''}
-        {step.status === 'pending' ? (
-          <Play />
-        ) : step.status === 'in_progress' ? (
-          <LoaderCircle />
-        ) : step.status === 'completed' ? (
-          <Check />
-        ) : (
-          <Circle />
-        )}
-      </Button>
+      <RoadmapStepStatusActionButton roadmapId={_id} step={step} />
       <Separator />
       <Button
         variant={'destructive'}
