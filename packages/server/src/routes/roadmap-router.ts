@@ -14,4 +14,6 @@ roadmapRouter.put(
 
 roadmapRouter.get('/me', authorize, roadmapController.getMyRoadmaps);
 
+roadmapRouter.delete('/:id', authorize, roadmapController.deleteMyRoadmap);
+
 export default roadmapRouter;

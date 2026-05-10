@@ -1,5 +1,6 @@
 import {
   changeRoadmapStepStatus,
+  deleteMyRoadmap,
   generateRoadmap,
   getMyRoadmap,
 } from '@/services/roadmap-service';
@@ -31,6 +32,17 @@ export const useRoadmapStepStatusMutation = () => {
 
   return useMutation({
     mutationFn: changeRoadmapStepStatus,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: roadmapQueryKey });
+    },
+  });
+};
+
+export const useRoadmapDeleteMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteMyRoadmap,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: roadmapQueryKey });
     },

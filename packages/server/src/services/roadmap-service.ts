@@ -9,7 +9,10 @@ import { recommendationRepository } from '../repositories/recommendation-reposit
 import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 import { roadmapGenerationService } from './roadmap-generation-service';
-import type { RoadmapStepStatus } from '@contracts/shared/types/roadmap-types';
+import type {
+  PathwayRoadmap,
+  RoadmapStepStatus,
+} from '@contracts/shared/types/roadmap-types';
 
 type PathwayDetailRecord = {
   _id: string;
@@ -119,6 +122,7 @@ export class RoadmapService {
     stepId: string,
     status: RoadmapStepStatus
   ) {
+    // 1. Persist the new step status
     const result = await this.roadmapRepository.changeStepStatus(
       roadmapId,
       userId,
@@ -126,6 +130,96 @@ export class RoadmapService {
       status
     );
 
+    // 2. Load the full roadmap
+    const roadmap: PathwayRoadmap | null =
+      await this.roadmapRepository.findOneByUserId(userId);
+
+    if (!roadmap) return result;
+
+    // 3. Find the step that was just updated
+    const updatedStep = roadmap.steps.find((s) => s.id === stepId);
+    if (!updatedStep) return result; // defensive
+
+    // 4. Find its parent phase
+    const phase = roadmap.phases.find((p) => p.id === updatedStep.phaseId);
+    if (!phase) return result;
+
+    // 5. Collect all steps that belong to this phase, sorted by order
+    const phaseSteps = roadmap.steps
+      .filter((s) => s.phaseId === phase.id)
+      .sort((a, b) => a.order - b.order);
+
+    // 6. Derive the new phase status
+    let newPhaseStatus: RoadmapStepStatus;
+
+    if (phaseSteps.length === 0) {
+      newPhaseStatus = 'pending';
+    } else {
+      const hasStarted = phaseSteps.some(
+        (s) => s.status === 'in_progress' || s.status === 'completed'
+      );
+      const allCompleted = phaseSteps.every((s) => s.status === 'completed');
+
+      if (allCompleted) {
+        newPhaseStatus = 'completed';
+      } else if (hasStarted) {
+        newPhaseStatus = 'in_progress';
+      } else {
+        newPhaseStatus = 'pending';
+      }
+    }
+
+    // 7. Update the phase status only if it changed
+    if (newPhaseStatus !== phase.status) {
+      await this.roadmapRepository.changeRoadmapPhaseStatus(
+        roadmapId,
+        userId,
+        phase.id,
+        newPhaseStatus
+      );
+    }
+
+    // 8. If the phase just became completed, auto‑start the next phase
+    if (newPhaseStatus === 'completed') {
+      // Find the next phase by order (or array order if no explicit order)
+      const currentOrder = phase.order;
+      const nextPhase = roadmap.phases
+        .sort((a, b) => a.order - b.order)
+        .find((p) => p.order > currentOrder && p.status === 'pending');
+
+      if (nextPhase) {
+        // Activate the next phase
+        await this.roadmapRepository.changeRoadmapPhaseStatus(
+          roadmapId,
+          userId,
+          nextPhase.id,
+          'in_progress'
+        );
+
+        // Activate its first step (lowest order, if not already started)
+        const nextPhaseSteps = roadmap.steps
+          .filter((s) => s.phaseId === nextPhase.id)
+          .sort((a, b) => a.order - b.order);
+
+        const firstStep = nextPhaseSteps[0];
+        if (firstStep && firstStep.status === 'pending') {
+          await this.roadmapRepository.changeStepStatus(
+            roadmapId,
+            userId,
+            firstStep.id,
+            'in_progress'
+          );
+        }
+      }
+    }
+
+    return result;
+  }
+
+  private changePhaseStatus() {}
+
+  async deleteMyRoadmap(roadmapId: string, userId: string) {
+    const result = await this.roadmapRepository.delete(roadmapId, userId);
     return result;
   }
 

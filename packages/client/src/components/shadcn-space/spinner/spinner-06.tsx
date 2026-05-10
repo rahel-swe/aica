@@ -4,9 +4,11 @@ import { motion } from 'motion/react';
 export default function SpinnerBars({
   className,
   barClassName,
+  heights,
 }: {
   className?: string;
   barClassName?: string;
+  heights?: string[];
 }) {
   return (
     <div
@@ -20,7 +22,7 @@ export default function SpinnerBars({
           key={i}
           className={cn('w-3 rounded-sm bg-current', barClassName)}
           animate={{
-            height: ['10px', '40px', '10px'],
+            height: heights ?? ['10px', '40px', '10px'],
           }}
           transition={{
             duration: 0.8,

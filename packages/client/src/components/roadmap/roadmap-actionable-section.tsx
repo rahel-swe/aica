@@ -1,9 +1,8 @@
 import { cn } from '@/lib/utils';
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
-import { Trash } from 'lucide-react';
 import { Badge } from '../ui/badge';
-import { Button } from '../ui/button';
 import { Separator } from '../ui/separator';
+import RoadmapDeleteButton from './roadmap-delete-button';
 import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
 import { roadmapPhaseStatusMeta } from './roadmap-view-utils';
 
@@ -11,7 +10,8 @@ const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
   const { steps, phases, _id } = roadmap;
   const activePhase =
     phases.find((p) => p.status === 'in_progress') ??
-    phases.find((p) => p.status === 'pending');
+    phases.find((p) => p.status === 'pending') ??
+    phases.find((p) => p.status === 'completed');
 
   const currentPhaseSteps = steps.filter(
     (step) => step.phaseId === activePhase?.id
@@ -19,7 +19,8 @@ const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
 
   const step =
     currentPhaseSteps.find((s) => s.status === 'in_progress') ??
-    currentPhaseSteps.find((s) => s.status === 'pending');
+    currentPhaseSteps.find((s) => s.status === 'pending') ??
+    currentPhaseSteps[0];
 
   const { titleClassName } =
     roadmapPhaseStatusMeta[activePhase?.id ?? 'phase_1'];
@@ -56,13 +57,7 @@ const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
 
       <RoadmapStepStatusActionButton roadmapId={_id} step={step} />
       <Separator />
-      <Button
-        variant={'destructive'}
-        className={'w-min mx-auto text-destructive px-4'}
-      >
-        Delete Roadmap
-        <Trash />
-      </Button>
+      <RoadmapDeleteButton roadmapId={_id} />
     </div>
   );
 };

@@ -4,8 +4,31 @@ import type {
   RoadmapStep,
   RoadmapStepStatus,
 } from '@contracts/shared/types/roadmap-types';
-import { Check, Circle, LoaderCircle, Play } from 'lucide-react';
+import { Check, LoaderCircle, Play, type LucideIcon } from 'lucide-react';
 import { Button } from '../ui/button';
+import SpinnerBars from '../shadcn-space/spinner/spinner-06';
+
+const roadmapStepActionButtonMeta: Record<
+  RoadmapStepStatus,
+  {
+    lable: string;
+    icon: LucideIcon;
+    className?: string;
+  }
+> = {
+  pending: {
+    lable: 'Start',
+    icon: Play,
+  },
+  in_progress: {
+    lable: 'Complete',
+    icon: LoaderCircle,
+  },
+  completed: {
+    lable: 'Completed',
+    icon: Check,
+  },
+};
 
 const RoadmapStepStatusActionButton = ({
   roadmapId,
@@ -16,6 +39,8 @@ const RoadmapStepStatusActionButton = ({
 }) => {
   const { mutate, isPending } = useRoadmapStepStatusMutation();
 
+  const { icon: Icon, lable } = roadmapStepActionButtonMeta[step.status];
+
   const handleStepStatusChanges = () => {
     const nextStatus: RoadmapStepStatus =
       step.status === 'pending'
@@ -23,6 +48,7 @@ const RoadmapStepStatusActionButton = ({
         : step.status === 'in_progress'
           ? 'completed'
           : 'pending';
+
     mutate(
       {
         roadmapId,
@@ -33,36 +59,25 @@ const RoadmapStepStatusActionButton = ({
         onError: (error) => {
           console.log(error);
         },
-        onSuccess: (res) => {
-          console.log(res);
-        },
       }
     );
   };
 
   return (
     <Button
-      className={cn('px-6 mx-auto')}
+      className={cn('px-6 mx-auto relative')}
       onClick={handleStepStatusChanges}
       disabled={isPending}
     >
-      {step.status === 'pending'
-        ? 'Start'
-        : step.status === 'in_progress'
-          ? 'Complete'
-          : step.status === 'completed'
-            ? 'Completed'
-            : ''}
-      {step.status === 'pending' ? (
-        <Play />
-      ) : step.status === 'in_progress' ? (
-        <LoaderCircle />
-      ) : step.status === 'completed' ? (
-        <Check />
-      ) : (
-        <Circle />
+      {lable}
+      <Icon />
+      {isPending && (
+        <SpinnerBars
+          className={'my-auto absolute gap-1'}
+          barClassName="w-1"
+          heights={['3px', '15px', '3px']}
+        />
       )}
-      {/* {!isPending && <SpinnerBars barClassName="w-1" />} */}
     </Button>
   );
 };

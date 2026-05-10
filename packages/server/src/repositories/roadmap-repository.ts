@@ -32,6 +32,16 @@ export class RoadmapRepository {
     return await RoadmapModel.find({ userId }).sort({ createdAt: -1 }).lean();
   }
 
+  async findOneByUserId(userId: string) {
+    return await RoadmapModel.findOne({ userId })
+      .sort({ createdAt: -1 })
+      .lean();
+  }
+
+  async delete(roadmapId: string, userId: string) {
+    return await RoadmapModel.findOneAndDelete({ _id: roadmapId, userId });
+  }
+
   async changeStepStatus(
     roadmapId: string,
     userId: string,
@@ -47,6 +57,29 @@ export class RoadmapRepository {
       {
         $set: {
           'steps.$.status': status,
+        },
+      },
+      {
+        returnDocument: 'after',
+      }
+    );
+  }
+
+  async changeRoadmapPhaseStatus(
+    roadmapId: string,
+    userId: string,
+    phaseId: string,
+    status: RoadmapStepStatus
+  ) {
+    return await RoadmapModel.findOneAndUpdate(
+      {
+        _id: roadmapId,
+        userId,
+        'phases.id': phaseId,
+      },
+      {
+        $set: {
+          'phases.$.status': status,
         },
       },
       {

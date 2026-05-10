@@ -68,6 +68,26 @@ export class RoadmapController {
       });
     }
   };
+
+  deleteMyRoadmap = async (req: AuthRequest, res: Response) => {
+    try {
+      const { id } = req.params as { id: string };
+      const userId = req.user?.id || 'dummyUserId';
+
+      const result = await this.service.deleteMyRoadmap(id, userId);
+
+      res.json({
+        success: true,
+        data: result,
+        message: 'Current user roadmap fetched.',
+      });
+    } catch (error: any) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  };
 }
 
 export const roadmapController = new RoadmapController();

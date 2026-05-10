@@ -37,3 +37,10 @@ export const changeRoadmapStepStatus = async ({
   );
   return response.data;
 };
+
+export const deleteMyRoadmap = async (
+  roadmapId: string
+): Promise<RoadmapGenerateResponse> => {
+  const response = await apiClient.delete(`/api/roadmaps/${roadmapId}`);
+  return response.data;
+};
