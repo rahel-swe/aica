@@ -1,5 +1,14 @@
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
-import { ChevronDown, ExternalLink } from 'lucide-react';
+import {
+  Check,
+  ChevronDown,
+  Circle,
+  ExternalLink,
+  LoaderCircle,
+  Play,
+  Trash,
+  Trash2,
+} from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -9,10 +18,18 @@ import {
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
-import { stepStatusMeta } from './roadmap-view-utils';
+import { roadmapPhaseStatusMeta, stepStatusMeta } from './roadmap-view-utils';
+import { cn } from '@/lib/utils';
+import { Separator } from '../ui/separator';
 
 const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
-  const step = roadmap.steps[0];
+  const { steps, phases } = roadmap;
+
+  const activePhase = phases.filter((p) => p.status === 'in_progress').pop();
+  const step =
+    roadmap.steps.find((step) => step.phaseId === activePhase?.id) ?? steps[0];
+
+  const { titleClassName } = roadmapPhaseStatusMeta[activePhase!.id];
 
   const {
     icon: StatusIcon,
@@ -21,94 +38,61 @@ const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
   } = stepStatusMeta[step.status];
 
   return (
-    <div>
-      <div className="min-w-0">
-        <div className="flex flex-wrap gap-2">
-          <Badge variant={'secondary'}>
-            {label}
-            <StatusIcon className={iconClassName} fill="currentColor" />
-          </Badge>
-          {step.estimatedTime ? (
-            <Badge className="border">{step.estimatedTime}</Badge>
-          ) : null}
-        </div>
-        <h4 className="mt-3 text-base font-semibold">{step.title}</h4>
-        <p className="mt-2 text-sm leading-6 text-muted-foreground">
-          {step.why}
-        </p>
-      </div>
-      <div className="grid gap-4">
-        <Accordion type="single" collapsible className="border-0">
-          <AccordionItem
-            value="prerequisites"
-            className="border-none data-open:bg-transparent"
-          >
-            <AccordionTrigger className="px-0 py-2">
-              Prerequisites
-            </AccordionTrigger>
-            <AccordionContent>
-              {step.prerequisites.length > 0 ? (
-                <ul className="space-y-1 text-sm leading-6 text-muted-foreground">
-                  {step.prerequisites.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-sm leading-6 text-muted-foreground">
-                  No formal prerequisites.
-                </p>
-              )}
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="evidence" className="data-open:bg-transparent">
-            <AccordionTrigger className="px-0 py-2">
-              Evidence of completion
-            </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-              {step.evidenceOfCompletion ??
-                'A visible artifact, note, or review that proves this step is complete.'}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-        <div>
-          <div className="mb-2 flex items-center gap-2 text-sm font-medium"></div>
-          <p className="text-sm leading-6 text-muted-foreground"></p>
-        </div>
+    <div className="flex flex-col gap-6 py-4">
+      <Badge
+        className={cn(
+          'text-2xl font-semibold py-6 px-4 mx-auto  relative rotate-6',
+          titleClassName
+        )}
+      >
+        {activePhase!.title}
+        <span className={'absolute text-xs top-0'}>
+          Phase {activePhase?.order}
+        </span>
+      </Badge>
+      <div className="flex flex-wrap gap-2">
+        <h3>{activePhase?.objective}</h3>
+        <Badge
+          variant={'secondary'}
+          className={cn('text-md font-semibold py-5 px-4 mx-auto')}
+        >
+          Step {step.order}
+        </Badge>
       </div>
 
-      {step.resources.length > 0 ? (
-        <Popover>
-          <PopoverTrigger className="relative -bottom-1">
-            <Button size={'xs'} variant={'secondary'}>
-              Suggested resources
-              <ChevronDown />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="gap-0 ms-5">
-            {step.resources.map((resource) =>
-              resource.url ? (
-                <a
-                  key={`${resource.title}-${resource.url}`}
-                  href={resource.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium"
-                >
-                  {resource.title}
-                  <ExternalLink className="size-3" />
-                </a>
-              ) : (
-                <span
-                  key={resource.title}
-                  className="inline-flex rounded-full px-3 py-1 text-xs font-medium"
-                >
-                  {resource.title}
-                </span>
-              )
-            )}
-          </PopoverContent>
-        </Popover>
-      ) : null}
+      <div className="grid gap-2">
+        <h3>Evidence Of Completion</h3>
+        {step.evidenceOfCompletion && (
+          <p className="text-muted-foreground">{step.evidenceOfCompletion}</p>
+        )}
+      </div>
+
+      <Button className={cn('px-6 mx-auto')}>
+        {step.status === 'pending'
+          ? 'Start'
+          : step.status === 'in_progress'
+            ? 'Complete'
+            : step.status === 'completed'
+              ? 'Completed'
+              : ''}
+        {step.status === 'pending' ? (
+          <Play />
+        ) : step.status === 'in_progress' ? (
+          <LoaderCircle />
+        ) : step.status === 'completed' ? (
+          <Check />
+        ) : (
+          <Circle />
+        )}
+      </Button>
+      <Separator />
+      <Button
+        variant={'destructive'}
+        className={'w-min mx-auto text-destructive px-4'}
+      >
+        Delete Roadmap
+        <Trash />
+      </Button>
     </div>
   );
 };

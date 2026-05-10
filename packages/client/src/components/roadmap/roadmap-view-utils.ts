@@ -170,6 +170,48 @@ export const stepStatusMeta: Record<
   },
 };
 
+export const roadmapStepTextColors = [
+  'text-emerald-400',
+  'text-sky-300',
+  'text-violet-400',
+  'text-rose-400',
+  'text-amber-300',
+  'text-cyan-300',
+  'text-fuchsia-400',
+  'text-lime-400',
+  'text-orange-400',
+  'text-teal-400',
+  'text-indigo-400',
+  'text-pink-400',
+  'text-green-400',
+  'text-purple-400',
+  'text-yellow-300',
+];
+
+export const roadmapPhaseStatusMeta: Record<
+  string,
+  { titleClassName: string }
+> = {
+  phase_1: {
+    titleClassName: 'bg-emerald-400 text-gray-900',
+  },
+  phase_2: {
+    titleClassName: 'bg-sky-300 text-gray-900',
+  },
+  phase_3: {
+    titleClassName: 'bg-violet-400 text-gray-900',
+  },
+  phase_4: {
+    titleClassName: 'bg-rose-400 text-gray-900',
+  },
+  phase_5: {
+    titleClassName: 'bg-pink-400 text-gray-900',
+  },
+  phase_6: {
+    titleClassName: 'bg-teal-400 text-gray-900',
+  },
+};
+
 export const difficultyMeta: Record<
   RoadmapStepDifficulty,
   { label: string; className: string }
