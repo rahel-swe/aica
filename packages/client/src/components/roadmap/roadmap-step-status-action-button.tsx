@@ -38,7 +38,7 @@ const RoadmapStepStatusActionButton = ({
   roadmapId: string;
   step: RoadmapStep;
 }) => {
-  const { mutate, isPending } = useRoadmapStepStatusMutation();
+  const { mutate, isPending, isSuccess } = useRoadmapStepStatusMutation();
   const { icon: Icon, lable } = roadmapStepActionButtonMeta[step.status];
   const [, setRoadmapParams] = useRoadmapStepsAndPhasesParams();
 
@@ -60,14 +60,13 @@ const RoadmapStepStatusActionButton = ({
         onError(error) {
           console.log(error);
         },
-        onSuccess() {
-          setRoadmapParams({
-            phaseId: '',
-            stepId: '',
-          });
-        },
       }
     );
+    if (isSuccess)
+      setRoadmapParams({
+        phaseId: '',
+        stepId: '',
+      });
   };
 
   return (
