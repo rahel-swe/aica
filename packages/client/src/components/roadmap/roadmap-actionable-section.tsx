@@ -5,6 +5,7 @@ import { Separator } from '../ui/separator';
 import RoadmapDeleteButton from './roadmap-delete-button';
 import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
 import { roadmapPhaseStatusMeta } from './roadmap-view-utils';
+import { ExternalLink } from 'lucide-react';
 
 const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
   const { steps, phases, _id } = roadmap;
@@ -54,6 +55,35 @@ const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
           <p className="text-muted-foreground">{step.evidenceOfCompletion}</p>
         )}
       </div>
+
+      {step.resources.length > 0 && (
+        <div className="grid gap-2">
+          <h3>Suggested resources</h3>
+          <p className="text-muted-foreground">
+            {step.resources.map((resource) =>
+              resource.url ? (
+                <a
+                  key={`${resource.title}-${resource.url}`}
+                  href={resource.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium"
+                >
+                  {resource.title}
+                  <ExternalLink className="size-3" />
+                </a>
+              ) : (
+                <span
+                  key={resource.title}
+                  className="inline-flex rounded-full px-3 py-1 text-xs font-medium"
+                >
+                  {resource.title}
+                </span>
+              )
+            )}
+          </p>
+        </div>
+      )}
 
       <RoadmapStepStatusActionButton roadmapId={_id} step={step} />
       <Separator />
