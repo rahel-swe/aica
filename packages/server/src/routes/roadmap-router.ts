@@ -6,6 +6,12 @@ const roadmapRouter = Router();
 
 roadmapRouter.post('/generate', authorize, roadmapController.generateRoadmap);
 
+roadmapRouter.put(
+  '/:id/steps/:stepId',
+  authorize,
+  roadmapController.changeStepStatus
+);
+
 roadmapRouter.get('/me', authorize, roadmapController.getMyRoadmaps);
 
 export default roadmapRouter;

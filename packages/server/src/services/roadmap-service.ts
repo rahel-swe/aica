@@ -9,6 +9,7 @@ import { recommendationRepository } from '../repositories/recommendation-reposit
 import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 import { roadmapGenerationService } from './roadmap-generation-service';
+import type { RoadmapStepStatus } from '@contracts/shared/types/roadmap-types';
 
 type PathwayDetailRecord = {
   _id: string;
@@ -110,6 +111,22 @@ export class RoadmapService {
     const roadmaps = await this.roadmapRepository.findByUserId(userId);
 
     return roadmaps[0] ?? null;
+  }
+
+  async changeStepStatus(
+    roadmapId: string,
+    userId: string,
+    stepId: string,
+    status: RoadmapStepStatus
+  ) {
+    const result = await this.roadmapRepository.changeStepStatus(
+      roadmapId,
+      userId,
+      stepId,
+      status
+    );
+
+    return result;
   }
 
   private mapRecommendation(recommendation: any): RecommendationResult {

@@ -1,24 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Check, FlagTriangleRight } from 'lucide-react';
 import { Button } from '../ui/button';
-
-const roadmapStepTextColors = [
-  'text-emerald-400',
-  'text-sky-300',
-  'text-violet-400',
-  'text-rose-400',
-  'text-amber-300',
-  'text-cyan-300',
-  'text-fuchsia-400',
-  'text-lime-400',
-  'text-orange-400',
-  'text-teal-400',
-  'text-indigo-400',
-  'text-pink-400',
-  'text-green-400',
-  'text-purple-400',
-  'text-yellow-300',
-];
+import { roadmapStepTextColors } from './roadmap-view-utils';
 
 const RoadmapStepButton = ({
   order,
