@@ -6,22 +6,11 @@ import RoadmapDeleteButton from './roadmap-delete-button';
 import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
 import { roadmapPhaseStatusMeta } from './roadmap-view-utils';
 import { ExternalLink } from 'lucide-react';
+import { useRoadmapStepsAndPhases } from '@/hooks/use-roadmap-steps-and-phases';
 
 const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
   const { steps, phases, _id } = roadmap;
-  const activePhase =
-    phases.find((p) => p.status === 'in_progress') ??
-    phases.find((p) => p.status === 'pending') ??
-    phases.find((p) => p.status === 'completed');
-
-  const currentPhaseSteps = steps.filter(
-    (step) => step.phaseId === activePhase?.id
-  );
-
-  const step =
-    currentPhaseSteps.find((s) => s.status === 'in_progress') ??
-    currentPhaseSteps.find((s) => s.status === 'pending') ??
-    currentPhaseSteps[0];
+  const { activePhase, step } = useRoadmapStepsAndPhases({ steps, phases });
 
   const { titleClassName } =
     roadmapPhaseStatusMeta[activePhase?.id ?? 'phase_1'];

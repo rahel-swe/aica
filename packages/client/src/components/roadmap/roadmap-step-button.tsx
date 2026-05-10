@@ -7,11 +7,13 @@ const RoadmapStepButton = ({
   order,
   isInProgress,
   isCompleted,
+  onClick,
   className,
 }: {
   order: number;
   isInProgress: boolean;
   isCompleted: boolean;
+  onClick?: () => void;
   className?: string;
 }) => {
   return (
@@ -21,6 +23,7 @@ const RoadmapStepButton = ({
         'relative text-2xl px-10 w-min border-dashed border-2 font-heading',
         className
       )}
+      onClick={onClick}
     >
       {isCompleted ? (
         <Check

@@ -7,6 +7,7 @@ import type {
 import { Check, LoaderCircle, Play, type LucideIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 import SpinnerBars from '../shadcn-space/spinner/spinner-06';
+import { useRoadmapStepsAndPhasesParams } from '@/hooks/roadmap-steps-and-phases-params';
 
 const roadmapStepActionButtonMeta: Record<
   RoadmapStepStatus,
@@ -38,8 +39,8 @@ const RoadmapStepStatusActionButton = ({
   step: RoadmapStep;
 }) => {
   const { mutate, isPending } = useRoadmapStepStatusMutation();
-
   const { icon: Icon, lable } = roadmapStepActionButtonMeta[step.status];
+  const [, setRoadmapParams] = useRoadmapStepsAndPhasesParams();
 
   const handleStepStatusChanges = () => {
     const nextStatus: RoadmapStepStatus =
@@ -56,8 +57,14 @@ const RoadmapStepStatusActionButton = ({
         stepStatus: nextStatus,
       },
       {
-        onError: (error) => {
+        onError(error) {
           console.log(error);
+        },
+        onSuccess() {
+          setRoadmapParams({
+            phaseId: '',
+            stepId: '',
+          });
         },
       }
     );
