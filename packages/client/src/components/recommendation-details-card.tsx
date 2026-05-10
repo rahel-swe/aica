@@ -54,15 +54,10 @@ const RecommendationDetailsCard = ({ item }: Props) => {
 
       <CardContent className="flex flex-col gap-y-4">
         {/* BASIC INFO */}
-        <div className="text-xs space-y-1 opacity-80">
-          <p>Pathway ID: {item.pathwayId}</p>
-          <p>Slug: {item.slug}</p>
+        <div className="flex items-center justify-center text-sm space-y-1 opacity-80">
           <p>Rank: {item.rank ?? 'N/A'}</p>
-          <p>Matching Version: {item.matchingVersion ?? 'N/A'}</p>
         </div>
-
         <Badge variant="secondary">{item.type}</Badge>
-
         {/* REASONS */}
         <div className="flex flex-col gap-2 border border-black/15 rounded-xl p-2">
           <p className="font-medium">Reasons</p>
@@ -73,15 +68,6 @@ const RecommendationDetailsCard = ({ item }: Props) => {
               </p>
             ))}
           </div>
-        </div>
-
-        {/* DIMENSION SCORES (optional but useful) */}
-        <div className="text-xs border rounded-xl p-2 space-y-1">
-          <p className="font-medium">Dimension Scores</p>
-          <p>Strengths: {item.dimensionScores.strengths}</p>
-          <p>Subjects: {item.dimensionScores.subjects}</p>
-          <p>Passions: {item.dimensionScores.passions}</p>
-          <p>Goals: {item.dimensionScores.goals}</p>
         </div>
 
         {/* EXPLANATION */}
