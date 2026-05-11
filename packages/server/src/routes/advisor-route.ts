@@ -1,13 +1,9 @@
-import { Router, type Request, type Response } from 'express';
+import { Router } from 'express';
+import { advisorController } from '../controller/advisor-controller';
+import { authorize } from '../middleware/auth-middleware';
 
 const advisorRouter = Router();
 
-advisorRouter.post('/chat', (req: Request, res: Response) => {
-  res.send({
-    success: true,
-    data: req.body,
-    message: 'Advisor message accepted.',
-  });
-});
+advisorRouter.post('/chat', authorize, advisorController.chat);
 
 export default advisorRouter;
