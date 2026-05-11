@@ -1,176 +1,246 @@
+import type {
+  DashboardNextActionType,
+  DashboardResponse,
+  DashboardStatus,
+} from '@contracts/shared/types/dashboard-types';
 import { UserModel } from '../models/user-model';
-import { PathwayModel } from '../models/pathway-model';
+import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 import { recommendationRepository } from '../repositories/recommendation-repository';
+import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
+
+type DashboardNextAction = DashboardResponse['nextAction'];
+type DashboardRoadmap = DashboardResponse['roadmap'];
+type DashboardRecommendation = DashboardResponse['recommendation'];
 
 export class DashboardService {
   private readonly userModel = UserModel;
-  private readonly pathwayModel = PathwayModel;
+  private readonly pathwayAssessmentRepo = pathwayAssessmentRepository;
   private readonly recommendationRepo = recommendationRepository;
+  private readonly roadmapRepo = roadmapRepository;
   private readonly roadmapSetupAssessmentRepo =
     roadmapSetupAssessmentRepository;
 
-  /**
-   * MAIN DASHBOARD DATA
-   */
-  async getDashboardData(userId: string) {
-    const [user, stats, progress, recommendations, insights] =
+  async getDashboardData(userId: string): Promise<DashboardResponse> {
+    const [user, onboarding, recommendations, roadmapSetup, roadmap] =
       await Promise.all([
-        this.getUserSummary(userId),
-        this.getStats(userId),
-        this.getProgress(userId),
-        this.getRecommendationSummary(userId),
-        this.getInsights(userId),
+        this.userModel.findById(userId).select('name email').lean(),
+        this.pathwayAssessmentRepo.findByUserId(userId),
+        this.recommendationRepo.findByUserId(userId),
+        this.roadmapSetupAssessmentRepo.findByUserId(userId),
+        this.roadmapRepo.findOneByUserId(userId),
       ]);
 
-    return {
-      user,
-      stats,
-      progress,
-      recommendations,
-      insights,
-    };
-  }
-
-  /**
-   * USER INFO (WELCOME SECTION)
-   */
-  async getUserSummary(userId: string) {
-    const user = await this.userModel.findById(userId).select('name email');
-
     if (!user) {
-      throw new Error('User not found');
+      throw new Error('User not found.');
     }
 
-    const roadmapSetupAssessment =
-      await this.roadmapSetupAssessmentRepo.findByUserId(userId);
-
-    const activePathways = await this.pathwayModel.findOne({
-      userId,
-      _id: roadmapSetupAssessment?.pickedPathwayId,
-      status: 'active',
+    const onboardingCompleted = Boolean(onboarding?.completed);
+    const roadmapSetupCompleted = Boolean(roadmapSetup?.completed);
+    const recommendation = this.buildRecommendation(recommendations);
+    const roadmapSummary = this.buildRoadmapSummary(roadmap);
+    const status = this.resolveStatus({
+      onboardingCompleted,
+      hasRecommendations: recommendation.hasRecommendations,
+      roadmapSetupCompleted,
+      hasRoadmap: roadmapSummary.hasRoadmap,
     });
 
     return {
-      name: user.name,
-      email: user.email,
-      activePathways,
+      profile: {
+        name: user.name,
+        email: user.email,
+        onboardingCompleted,
+        roadmapSetupCompleted,
+      },
+      status,
+      nextAction: this.buildNextAction(status, recommendation, roadmapSummary),
+      recommendation,
+      roadmap: roadmapSummary,
+      insights: this.buildInsights({
+        onboardingCompleted,
+        recommendation,
+        roadmap: roadmapSummary,
+        roadmapSetupCompleted,
+      }),
     };
   }
 
-  /**
-   * DASHBOARD STATS (CARDS)
-   */
-  async getStats(userId: string) {
-    const pathways = await this.pathwayModel.find({ userId });
-
-    const totalPathways = pathways.length;
-
-    const completedPathways = pathways.filter(
-      (p: any) => p.progress === 1
-    ).length;
-
-    const inProgress = totalPathways - completedPathways;
-
-    const avgProgress =
-      totalPathways === 0
-        ? 0
-        : pathways.reduce((sum: number, p: any) => sum + (p.progress || 0), 0) /
-          totalPathways;
-
-    return {
-      totalPathways,
-      completedPathways,
-      inProgress,
-      averageProgress: Number(avgProgress.toFixed(2)),
-    };
-  }
-
-  /**
-   * ROADMAP PROGRESS SECTION
-   */
-  async getProgress(userId: string) {
-    const pathways = await this.pathwayModel.find({ userId });
-
-    const roadmap = pathways.map((p: any) => ({
-      pathwayId: String(p._id),
-      title: p.title,
-      slug: p.slug,
-      progress: p.progress || 0,
-      currentStep: p.currentStep || null,
-      completedSteps: p.completedSteps || 0,
-    }));
-
-    const currentPathway =
-      roadmap.find((p) => p.progress > 0 && p.progress < 1) || null;
-
-    return {
-      roadmap,
-      currentPathway,
-      nextSteps: this.getNextSteps(roadmap),
-    };
-  }
-
-  /**
-   * RECOMMENDATION PREVIEW (from your RecommendationService)
-   */
-  async getRecommendationSummary(userId: string) {
-    const recommendations = await this.recommendationRepo.findByUserId(userId);
-
-    if (!recommendations.length) {
-      return {
-        hasRecommendations: false,
-        top: [],
-      };
-    }
-
-    const top = recommendations.slice(0, 3).map((r: any) => ({
-      pathwayId: r.pathwayId,
-      title: r.title,
-      slug: r.slug,
-      score: r.totalScore,
-      rank: r.rank,
+  private buildRecommendation(recommendations: any[]): DashboardRecommendation {
+    const top = recommendations.slice(0, 3).map((item) => ({
+      pathwayId: String(item.pathwayId),
+      title: item.title,
+      slug: item.slug,
+      type: item.type,
+      summary: item.summary,
+      score: Number(item.totalScore.toFixed(2)),
+      rank: item.rank,
+      reasons: item.reasons.slice(0, 2),
     }));
 
     return {
-      hasRecommendations: true,
+      hasRecommendations: top.length > 0,
       top,
     };
   }
 
-  /**
-   * SIMPLE INSIGHTS (NO AI ENGINE INSIDE DASHBOARD)
-   */
-  async getInsights(userId: string) {
-    const stats = await this.getStats(userId);
-    const recommendations = await this.getRecommendationSummary(userId);
-
-    let message = 'Keep building your learning path.';
-
-    if (recommendations.hasRecommendations && stats.averageProgress > 0.6) {
-      message =
-        'You are doing great! You are ready to explore advanced pathways.';
+  private buildRoadmapSummary(roadmap: any | null): DashboardRoadmap {
+    if (!roadmap) {
+      return {
+        hasRoadmap: false,
+        progressPercent: 0,
+        completedSteps: 0,
+        totalSteps: 0,
+      };
     }
 
-    if (!recommendations.hasRecommendations) {
-      message = 'Complete onboarding to unlock personalized recommendations.';
-    }
+    const steps = roadmap.steps ?? [];
+    const completedSteps = steps.filter(
+      (step: any) => step.status === 'completed'
+    ).length;
+    const totalSteps = steps.length;
+    const nextStep = steps.find((step: any) => step.status !== 'completed');
+    const currentPhase = nextStep
+      ? roadmap.phases?.find((phase: any) => phase.id === nextStep.phaseId)
+      : roadmap.phases?.find((phase: any) => phase.status !== 'completed');
+    const progressPercent =
+      totalSteps === 0 ? 0 : Math.round((completedSteps / totalSteps) * 100);
 
     return {
-      message,
+      hasRoadmap: true,
+      roadmapId: String(roadmap._id),
+      pathwayId: String(roadmap.pathwayId),
+      title: roadmap.title,
+      summary: roadmap.summary,
+      progressPercent,
+      completedSteps,
+      totalSteps,
+      currentPhase: currentPhase?.title,
+      nextStep: nextStep
+        ? {
+            id: nextStep.id,
+            title: nextStep.title,
+            estimatedTime: nextStep.estimatedTime,
+            difficulty: nextStep.difficulty,
+          }
+        : undefined,
+      nextReviewAt: roadmap.nextReviewAt
+        ? new Date(roadmap.nextReviewAt).toISOString()
+        : undefined,
     };
   }
 
-  /**
-   * HELPERS
-   */
-  private getNextSteps(roadmap: any[]) {
-    return roadmap
-      .filter((p) => p.progress < 1)
-      .slice(0, 2)
-      .map((p) => ({
-        pathwayId: p.pathwayId,
-        title: p.title,
-      }));
+  private resolveStatus(input: {
+    onboardingCompleted: boolean;
+    hasRecommendations: boolean;
+    roadmapSetupCompleted: boolean;
+    hasRoadmap: boolean;
+  }): DashboardStatus {
+    if (!input.onboardingCompleted) return 'needs_onboarding';
+    if (!input.hasRecommendations) return 'needs_recommendations';
+    if (!input.roadmapSetupCompleted) return 'needs_roadmap_setup';
+    if (!input.hasRoadmap) return 'needs_roadmap';
+    return 'active';
+  }
+
+  private buildNextAction(
+    status: DashboardStatus,
+    recommendation: DashboardRecommendation,
+    roadmap: DashboardRoadmap
+  ): DashboardNextAction {
+    const actions: Record<DashboardStatus, DashboardNextAction> = {
+      needs_onboarding: this.nextAction(
+        'complete_onboarding',
+        'Complete your direction profile',
+        'AICA needs your strengths, interests, and work preferences before it can recommend useful pathways.',
+        'Start onboarding',
+        '/pathway-assessment'
+      ),
+      needs_recommendations: this.nextAction(
+        'review_recommendations',
+        'Generate your pathway recommendations',
+        'Your profile is ready. Generate recommendations so AICA can show your strongest pathway options.',
+        'View recommendations',
+        '/recommendations'
+      ),
+      needs_roadmap_setup: this.nextAction(
+        'complete_roadmap_setup',
+        'Set up your roadmap preferences',
+        'Choose your starting level, weekly time, constraints, and roadmap style before generating a plan.',
+        'Set up roadmap',
+        '/roadmap/setup'
+      ),
+      needs_roadmap: this.nextAction(
+        'generate_roadmap',
+        `Generate a roadmap for ${recommendation.top[0]?.title ?? 'your top pathway'}`,
+        'Your pathway and planning preferences are ready. The next useful step is a realistic action roadmap.',
+        'Generate roadmap',
+        '/roadmap'
+      ),
+      active: this.nextAction(
+        'continue_roadmap',
+        roadmap.nextStep?.title ?? 'Review your roadmap progress',
+        roadmap.nextStep
+          ? 'Continue with the next incomplete roadmap step.'
+          : 'Your roadmap has no pending steps. Review progress and decide whether to refresh the plan.',
+        'Open roadmap',
+        '/roadmap'
+      ),
+    };
+
+    return actions[status];
+  }
+
+  private nextAction(
+    type: DashboardNextActionType,
+    title: string,
+    description: string,
+    ctaLabel: string,
+    href: string
+  ): DashboardNextAction {
+    return {
+      type,
+      title,
+      description,
+      ctaLabel,
+      href,
+    };
+  }
+
+  private buildInsights(input: {
+    onboardingCompleted: boolean;
+    roadmapSetupCompleted: boolean;
+    recommendation: DashboardRecommendation;
+    roadmap: DashboardRoadmap;
+  }): DashboardResponse['insights'] {
+    return [
+      {
+        label: 'Direction status',
+        value: input.onboardingCompleted ? 'Profile ready' : 'Profile needed',
+        helper: input.onboardingCompleted
+          ? 'Recommendations can use your onboarding traits.'
+          : 'Complete onboarding to unlock useful pathway matching.',
+      },
+      {
+        label: 'Best match',
+        value: input.recommendation.top[0]?.title ?? 'Not generated',
+        helper: input.recommendation.top[0]
+          ? `${input.recommendation.top[0].score}% fit based on your current profile.`
+          : 'Generate recommendations after onboarding.',
+      },
+      {
+        label: 'Roadmap progress',
+        value: input.roadmap.hasRoadmap
+          ? `${input.roadmap.progressPercent}% complete`
+          : 'No roadmap yet',
+        helper: input.roadmap.hasRoadmap
+          ? `${input.roadmap.completedSteps} of ${input.roadmap.totalSteps} steps completed.`
+          : input.roadmapSetupCompleted
+            ? 'Setup is ready. Generate a roadmap next.'
+            : 'Roadmap setup is needed before generation.',
+      },
+    ];
   }
 }
+
+export const dashboardService = new DashboardService();
