@@ -160,13 +160,9 @@ export class RoadmapService {
       );
       const allCompleted = phaseSteps.every((s) => s.status === 'completed');
 
-      if (allCompleted) {
-        newPhaseStatus = 'completed';
-      } else if (hasStarted) {
-        newPhaseStatus = 'in_progress';
-      } else {
-        newPhaseStatus = 'pending';
-      }
+      if (allCompleted) newPhaseStatus = 'completed';
+      else if (hasStarted) newPhaseStatus = 'in_progress';
+      else newPhaseStatus = 'pending';
     }
 
     // 7. Update the phase status only if it changed

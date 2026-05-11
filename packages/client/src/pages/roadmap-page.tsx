@@ -24,7 +24,7 @@ export default function RoadmapPage() {
 
   return (
     <main className="lg:px-8">
-      <div className=" grid gap-6 items-start xl:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="flex flex-col md:flex-row gap-6 items-start">
         <div className="mx-auto max-w-7xl flex flex-col gap-10">
           <RoadmapHero roadmap={roadmap} />
 

@@ -22,7 +22,7 @@ export class RoadmapRepository {
       },
       {
         upsert: true,
-        new: true,
+        returnDocument: 'after',
         setDefaultsOnInsert: true,
       }
     );

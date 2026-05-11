@@ -19,7 +19,7 @@ const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
     <div className="flex flex-col gap-6 py-4">
       <Badge
         className={cn(
-          'text-2xl font-semibold py-6 px-4 mx-auto  relative rotate-6',
+          'text-2xl font-semibold py-6 px-4 mx-auto  relative rotate-8',
           titleClassName
         )}
       >
@@ -32,7 +32,7 @@ const RoadmapActionableSection = ({ roadmap }: { roadmap: PathwayRoadmap }) => {
         <h3>{activePhase?.objective}</h3>
         <Badge
           variant={'secondary'}
-          className={cn('text-md font-semibold py-5 px-4 mx-auto')}
+          className={cn('text-md font-semibold py-5 px-4 mx-auto -rotate-12')}
         >
           Step {step.order}
         </Badge>
