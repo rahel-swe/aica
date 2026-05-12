@@ -1,63 +1,44 @@
+import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import type { AdvisorIntent } from '@contracts/shared/types/advisor-types';
-import { advisorPrompts, toneClasses } from './advisor-ui-data';
+import { advisorPrompts } from './advisor-ui-data';
 
 type AdvisorPromptGridProps = {
-  activeIntent: AdvisorIntent;
-  onPromptSelect: (prompt: string, intent: AdvisorIntent) => void;
+  onPromptSelect: (prompt: string) => void;
 };
 
-export function AdvisorPromptGrid({
-  activeIntent,
-  onPromptSelect,
-}: AdvisorPromptGridProps) {
-  const visiblePrompts = advisorPrompts.filter(
-    (prompt) => prompt.intent === activeIntent || activeIntent === 'roadmap'
-  );
-
+export function AdvisorPromptGrid({ onPromptSelect }: AdvisorPromptGridProps) {
   return (
     <motion.section
       initial="hidden"
       animate="show"
       variants={{
         hidden: {},
-        show: { transition: { staggerChildren: 0.06 } },
+        show: { transition: { staggerChildren: 0.055 } },
       }}
-      className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3"
+      className="flex flex-wrap justify-center gap-3 xl:grid-cols-3 max-w-4xl mx-auto"
     >
-      {visiblePrompts.map((prompt) => {
-        const tone = toneClasses[prompt.tone];
+      {advisorPrompts.map(({ id, icon: Icon, intent, prompt, tone }) => (
+        <motion.button
+          key={id}
+          type="button"
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            show: { opacity: 1, y: 0 },
+          }}
+          whileHover={{ y: -2 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+          onClick={() => onPromptSelect(prompt)}
+          className="group rounded-full border bg-card p-4 text-left shadow-sm transition-colors hover:bg-muted/60 sm:max-w-xs"
+        >
+          <div className="flex flex-col items-start justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <Icon className={cn('size-6 text-muted-foreground', tone)} />
 
-        return (
-          <motion.button
-            key={prompt.id}
-            type="button"
-            variants={{
-              hidden: { opacity: 0, y: 12 },
-              show: { opacity: 1, y: 0 },
-            }}
-            whileHover={{ y: -3 }}
-            transition={{ duration: 0.22, ease: 'easeOut' }}
-            onClick={() => onPromptSelect(prompt.prompt, prompt.intent)}
-            className={`rounded-3xl border p-4 text-left shadow-sm transition ${tone.card}`}
-          >
-            <div className="flex items-start justify-between gap-3">
-              <Badge className={tone.badge}>{prompt.intent}</Badge>
-              <span className={`rounded-full p-2 ${tone.icon}`}>
-                <ArrowUpRight className="size-4" />
-              </span>
+              <p className="capitalize">{intent}</p>
             </div>
-            <h3 className="mt-4 text-base font-semibold text-slate-950">
-              {prompt.title}
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-slate-700">
-              {prompt.description}
-            </p>
-          </motion.button>
-        );
-      })}
+          </div>
+        </motion.button>
+      ))}
     </motion.section>
   );
 }

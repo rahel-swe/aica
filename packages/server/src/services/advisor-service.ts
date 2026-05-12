@@ -12,13 +12,85 @@ import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-
 import { llmClient } from '../llm/llm-client';
 import advisorGuidancePrompt from '@/src/llm/prompts/advisor-guidance-prompt.txt';
 
-type AdvisorContext = {
-  onboarding: unknown;
-  recommendations: unknown[];
-  selectedPathway: unknown;
-  roadmapSetup: unknown;
-  roadmap: any;
+// ─── Internal context types ───────────────────────────────────────────────────
+// Typed to what we actually extract — not the full mongoose document shape.
+// When the real model types are exported from repositories, replace these.
+
+type RecommendationItem = {
+  pathwayId: string;
+  title: string;
+  slug: string;
+  rank: number;
+  totalScore: number;
+  reasons: string[];
 };
+
+type RoadmapPhase = {
+  title: string;
+  objective: string;
+  steps: Array<{
+    title: string;
+    status: string;
+    estimatedTime: string;
+    difficulty: string;
+  }>;
+};
+
+type RoadmapData = {
+  pathwayId: string;
+  title: string;
+  summary: string;
+  goal: string;
+  currentLevel: string;
+  timeBudgetPerWeek: number;
+  roadmapStyle: string;
+  nextReviewAt: Date | string;
+  phases: RoadmapPhase[];
+};
+
+type PathwayData = {
+  title: string;
+  slug: string;
+  type: string;
+  summary: string;
+  description: string;
+  keySkills: string[];
+  opportunities: string[];
+  durationProfile: { localRulesRequired?: boolean };
+  journeyPhases: unknown[];
+  verificationNote?: string;
+};
+
+type RoadmapSetupData = {
+  pickedPathwayId?: string;
+  [key: string]: unknown;
+};
+
+type AdvisorContext = {
+  onboarding: Record<string, unknown> | null;
+  recommendations: RecommendationItem[];
+  selectedPathway: PathwayData | null;
+  roadmapSetup: RoadmapSetupData | null;
+  roadmap: RoadmapData | null;
+};
+
+// ─── Static fallback ─────────────────────────────────────────────────────────
+// Used only when LLM is unavailable or returns unparseable output.
+// Intentionally minimal — no hand-coded routing logic.
+
+const FALLBACK_RESPONSE: Omit<AdvisorResponse, 'contextUsed'> = {
+  intent: 'general',
+  answer:
+    'The advisor is temporarily unavailable. Your pathway data and roadmap are saved — try again in a moment.',
+  nextActions: ['Return to your roadmap and continue the current step.'],
+  cautions: ['Advisor response could not be generated right now.'],
+  suggestedFollowUps: [
+    'What should I focus on this week?',
+    'Explain my current roadmap phase.',
+  ],
+};
+
+// ─── Service ─────────────────────────────────────────────────────────────────
 
 export class AdvisorService {
   private readonly pathwayAssessment = pathwayAssessmentRepository;
@@ -28,64 +100,85 @@ export class AdvisorService {
   private readonly roadmapSetup = roadmapSetupAssessmentRepository;
   private readonly llm = llmClient;
 
-  async answer(userId: string, request: AdvisorChatRequest) {
+  async answer(
+    userId: string,
+    request: AdvisorChatRequest
+  ): Promise<AdvisorResponse> {
     const context = await this.buildContext(userId);
 
     if (!process.env.HF_TOKEN) {
-      return this.buildFallbackResponse(request, context);
+      return {
+        ...FALLBACK_RESPONSE,
+        contextUsed: this.resolveContextSources(context),
+      };
     }
 
     try {
       const raw = await this.llm.createTextCompletion(
-        this.renderPrompt(request, context)
+        this.buildPrompt(request, context)
       );
-      const parsed = this.parseJson(raw);
-      const response = advisorResponseSchema.parse({
-        intent: request.intent,
-        contextUsed: this.getContextUsed(context),
-        ...parsed,
-      });
+      const parsed = this.extractJson(raw);
 
-      return response;
+      return advisorResponseSchema.parse({
+        ...parsed,
+        contextUsed: this.resolveContextSources(context),
+      });
     } catch {
-      return this.buildFallbackResponse(request, context);
+      return {
+        ...FALLBACK_RESPONSE,
+        contextUsed: this.resolveContextSources(context),
+      };
     }
   }
 
+  // ─── Context assembly ───────────────────────────────────────────────────────
+
   private async buildContext(userId: string): Promise<AdvisorContext> {
-    const [onboarding, recommendations, roadmapSetup, roadmap] =
+    const [onboardingRaw, recommendationsRaw, roadmapSetup, roadmap] =
       await Promise.all([
-        this.pathwayAssessment
-          .findByUserId(userId)
-          .then((item) => item?.toObject?.() ?? item),
+        this.pathwayAssessment.findByUserId(userId),
         this.recommendations.findByUserId(userId),
         this.roadmapSetup.findByUserId(userId),
         this.roadmaps.findOneByUserId(userId),
       ]);
 
+    const onboarding = onboardingRaw
+      ? ((onboardingRaw as any).toObject?.() ??
+        (onboardingRaw as Record<string, unknown>))
+      : null;
+
+    const recommendations = (recommendationsRaw as RecommendationItem[]).slice(
+      0,
+      3
+    );
+
     const selectedPathwayId =
       roadmap?.pathwayId ??
-      roadmapSetup?.pickedPathwayId ??
+      (roadmapSetup as RoadmapSetupData | null)?.pickedPathwayId ??
       recommendations[0]?.pathwayId;
 
     const selectedPathway = selectedPathwayId
-      ? await this.pathways.findActiveDetailByIdOrSlug(
-          String(selectedPathwayId)
-        )
+      ? await this.pathways
+          .findActiveDetailByIdOrSlug(String(selectedPathwayId))
+          .then((p) => p as PathwayData | null)
       : null;
 
     return {
       onboarding,
-      recommendations: recommendations.slice(0, 3),
+      recommendations,
       selectedPathway,
-      roadmapSetup,
-      roadmap,
+      roadmapSetup: roadmapSetup as RoadmapSetupData | null,
+      roadmap: roadmap as RoadmapData | null,
     };
   }
 
-  private renderPrompt(request: AdvisorChatRequest, context: AdvisorContext) {
+  // ─── Prompt building ────────────────────────────────────────────────────────
+
+  private buildPrompt(
+    request: AdvisorChatRequest,
+    context: AdvisorContext
+  ): string {
     return advisorGuidancePrompt
-      .replace('{{intent}}', request.intent)
       .replace('{{message}}', request.message)
       .replace(
         '{{context}}',
@@ -96,17 +189,32 @@ export class AdvisorService {
   private summarizeContext(context: AdvisorContext) {
     return {
       onboarding: context.onboarding,
-      recommendations: context.recommendations.map((item: any) => ({
-        title: item.title,
-        slug: item.slug,
-        rank: item.rank,
-        totalScore: item.totalScore,
-        reasons: item.reasons,
+
+      recommendations: context.recommendations.map((r) => ({
+        title: r.title,
+        slug: r.slug,
+        rank: r.rank,
+        totalScore: r.totalScore,
+        reasons: r.reasons,
       })),
+
       selectedPathway: context.selectedPathway
-        ? this.pickPathwayFields(context.selectedPathway as any)
+        ? {
+            title: context.selectedPathway.title,
+            slug: context.selectedPathway.slug,
+            type: context.selectedPathway.type,
+            summary: context.selectedPathway.summary,
+            description: context.selectedPathway.description,
+            keySkills: context.selectedPathway.keySkills,
+            opportunities: context.selectedPathway.opportunities,
+            durationProfile: context.selectedPathway.durationProfile,
+            journeyPhases: context.selectedPathway.journeyPhases,
+            verificationNote: context.selectedPathway.verificationNote,
+          }
         : null,
+
       roadmapSetup: context.roadmapSetup,
+
       roadmap: context.roadmap
         ? {
             title: context.roadmap.title,
@@ -116,10 +224,10 @@ export class AdvisorService {
             timeBudgetPerWeek: context.roadmap.timeBudgetPerWeek,
             roadmapStyle: context.roadmap.roadmapStyle,
             nextReviewAt: context.roadmap.nextReviewAt,
-            phases: context.roadmap.phases?.map((phase: any) => ({
+            phases: context.roadmap.phases?.map((phase) => ({
               title: phase.title,
               objective: phase.objective,
-              steps: phase.steps?.map((step: any) => ({
+              steps: phase.steps?.map((step) => ({
                 title: step.title,
                 status: step.status,
                 estimatedTime: step.estimatedTime,
@@ -131,160 +239,32 @@ export class AdvisorService {
     };
   }
 
-  private pickPathwayFields(pathway: any) {
-    return {
-      title: pathway.title,
-      slug: pathway.slug,
-      type: pathway.type,
-      summary: pathway.summary,
-      description: pathway.description,
-      keySkills: pathway.keySkills,
-      opportunities: pathway.opportunities,
-      durationProfile: pathway.durationProfile,
-      journeyPhases: pathway.journeyPhases,
-      verificationNote: pathway.verificationNote,
-    };
-  }
+  // ─── JSON extraction ────────────────────────────────────────────────────────
+  // Handles: plain JSON, markdown fences (```json ... ```), and LLM preamble text.
 
-  private parseJson(raw: string) {
-    const start = raw.indexOf('{');
-    const end = raw.lastIndexOf('}');
+  private extractJson(raw: string): unknown {
+    const stripped = raw.replace(/```json|```/gi, '').trim();
 
-    if (start === -1 || end === -1) {
-      throw new Error('Advisor response was not JSON.');
+    try {
+      return JSON.parse(stripped);
+    } catch {}
+
+    // Find the outermost JSON object when the LLM adds preamble/postamble
+    const start = stripped.indexOf('{');
+    const end = stripped.lastIndexOf('}');
+
+    if (start === -1 || end === -1 || end <= start) {
+      throw new Error('LLM response contained no parseable JSON object.');
     }
 
-    return JSON.parse(raw.slice(start, end + 1));
+    return JSON.parse(stripped.slice(start, end + 1));
   }
 
-  private buildFallbackResponse(
-    request: AdvisorChatRequest,
+  // ─── Context source resolution ──────────────────────────────────────────────
+
+  private resolveContextSources(
     context: AdvisorContext
-  ): AdvisorResponse {
-    const roadmap = context.roadmap;
-    const pathway = context.selectedPathway as any;
-    const topRecommendation = context.recommendations[0] as any;
-    const nextStep = roadmap?.phases
-      ?.flatMap((phase: any) => phase.steps ?? [])
-      ?.find((step: any) => step.status !== 'completed');
-
-    const title =
-      request.intent === 'fit'
-        ? 'Why this pathway may fit'
-        : request.intent === 'compare'
-          ? 'How to compare your options'
-          : request.intent === 'adjust'
-            ? 'How to adjust the plan'
-            : request.intent === 'decide'
-              ? 'How to make the decision'
-              : 'How to use your roadmap';
-
-    const directAnswer = this.buildDirectAnswer(request.intent, {
-      pathway,
-      roadmap,
-      topRecommendation,
-      nextStep,
-    });
-
-    return {
-      intent: request.intent,
-      title,
-      directAnswer,
-      meaning:
-        'AICA is using your saved pathway, recommendation, setup, and roadmap context. The guidance is scoped to decision quality and next steps, not general advice.',
-      nextActions: this.buildNextActions(request.intent, nextStep),
-      cautions: this.buildCautions(pathway, roadmap),
-      contextUsed: this.getContextUsed(context),
-      suggestedFollowUps: [
-        'What should I do this week?',
-        'Explain the current phase simply.',
-        'What could make this pathway hard for me?',
-      ],
-    };
-  }
-
-  private buildDirectAnswer(
-    intent: AdvisorChatRequest['intent'],
-    context: {
-      pathway: any;
-      roadmap: any;
-      topRecommendation: any;
-      nextStep: any;
-    }
-  ) {
-    if (!context.pathway && !context.roadmap) {
-      return 'Complete recommendations and generate a roadmap first so the Advisor can give grounded guidance.';
-    }
-
-    if (intent === 'fit') {
-      return `${context.pathway?.title ?? context.topRecommendation?.title ?? 'This pathway'} fits best when your strengths, interests, and work preferences match the recommendation reasons already saved in AICA. Use the fit score as a signal, then check whether the daily work and training path feel realistic.`;
-    }
-
-    if (intent === 'compare') {
-      return 'Compare the options by commitment, work style, required study, and first 30 days of action. The better choice is not always the highest score; it is the one with strong fit and a realistic next step.';
-    }
-
-    if (intent === 'adjust') {
-      return `Adjust the roadmap by protecting the core outcome, then changing pace. Keep the next step small: ${context.nextStep?.title ?? 'choose one concrete action you can finish this week'}.`;
-    }
-
-    if (intent === 'decide') {
-      return 'Stay with the pathway if the work style, learning route, and near-term actions still feel realistic after review. Pause or compare again if the commitment, constraints, or required study path conflicts with your situation.';
-    }
-
-    return `Use the roadmap as your first action window, not the full career journey. Start with ${context.nextStep?.title ?? 'the first active step'}, then review progress before adding more work.`;
-  }
-
-  private buildNextActions(
-    intent: AdvisorChatRequest['intent'],
-    nextStep: any
-  ) {
-    if (intent === 'compare') {
-      return [
-        'Open the top two recommendations and compare daily work style.',
-        'Check which option has the clearest first step.',
-        'Choose the option you can test with the least risk this week.',
-      ];
-    }
-
-    if (intent === 'adjust') {
-      return [
-        'Reduce the roadmap to one active step for this week.',
-        'Move expensive or high-time tasks later if constraints are real.',
-        'Keep evidence of completion simple and visible.',
-      ];
-    }
-
-    return [
-      nextStep?.title ?? 'Pick the first roadmap step and make it concrete.',
-      'Write down what completion will look like.',
-      'Review again after one focused work session.',
-    ];
-  }
-
-  private buildCautions(pathway: any, roadmap: any) {
-    const cautions: string[] = [];
-
-    if (
-      pathway?.verificationNote ||
-      pathway?.durationProfile?.localRulesRequired
-    ) {
-      cautions.push(
-        pathway.verificationNote ??
-          'Local admission, licensing, or training rules may need verification.'
-      );
-    }
-
-    if (!roadmap) {
-      cautions.push(
-        'No generated roadmap was found yet, so guidance is limited.'
-      );
-    }
-
-    return cautions;
-  }
-
-  private getContextUsed(context: AdvisorContext): AdvisorContextSource[] {
+  ): AdvisorContextSource[] {
     const sources: AdvisorContextSource[] = [];
 
     if (context.onboarding) sources.push('onboarding');

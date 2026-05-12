@@ -1,130 +1,141 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { AlertTriangle, CheckCircle2, Lightbulb, Sparkles } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import type { AdvisorResponse } from '@contracts/shared/types/advisor-types';
-import { AdvisorEmptyState } from './advisor-empty-state';
 
 type AdvisorResponsePanelProps = {
   response?: AdvisorResponse;
   isPending: boolean;
+  onFollowUp: (question: string) => void;
 };
 
 export function AdvisorResponsePanel({
   response,
   isPending,
+  onFollowUp,
 }: AdvisorResponsePanelProps) {
   if (isPending) {
     return (
-      <Card className="rounded-[2rem] border-blue-200 bg-blue-100/70 shadow-sm">
+      <Card className="rounded-2xl  bg-card shadow-sm">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-blue-950">
-            <Sparkles className="size-5 animate-pulse" />
-            Advisor is reading your AICA context
-          </CardTitle>
-          <CardDescription className="text-blue-950/75">
-            The response is being shaped around pathway fit, roadmap, and
-            recommendation data.
-          </CardDescription>
+          <div className="flex items-center gap-2.5 text-sm font-medium text-foreground">
+            <Loader2 className="size-4 animate-spin text-muted-foreground" />
+            Reading your AICA context…
+          </div>
+          <p className="text-xs leading-5 text-muted-foreground">
+            Response is shaped around your pathway, roadmap, and
+            recommendations.
+          </p>
         </CardHeader>
       </Card>
     );
   }
 
-  if (!response) {
-    return <AdvisorEmptyState />;
-  }
+  if (!response)
+    return (
+      <motion.header
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
+        className="flex flex-col gap-4 text-center sm:justify-between"
+      >
+        <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+          Pathway &amp; roadmap guidance
+        </h1>
+      </motion.header>
+    );
 
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={`${response.intent}-${response.title}`}
-        initial={{ opacity: 0, y: 12 }}
+        key={response.answer.slice(0, 40)}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
+        exit={{ opacity: 0, y: -6 }}
+        transition={{ duration: 0.22, ease: 'easeOut' }}
       >
-        <Card className="rounded-[2rem] border-emerald-200 bg-white/85 shadow-sm">
-          <CardHeader>
+        <Card className="rounded-2xl bg-card shadow-sm">
+          <CardHeader className="pb-4">
+            {/* Intent badge + context source pills */}
             <div className="flex flex-wrap items-center gap-2">
-              <Badge className="h-7 border-emerald-300 bg-emerald-200 px-3 text-emerald-950">
+              <Badge variant="default" className="capitalize">
                 {response.intent}
               </Badge>
               {response.contextUsed.map((source) => (
-                <Badge
-                  key={source}
-                  className="h-7 border-slate-300 bg-slate-100 px-3 text-slate-700"
-                >
+                <Badge key={source} variant="secondary" className="capitalize">
                   {source}
                 </Badge>
               ))}
             </div>
-            <CardTitle className="mt-3 text-2xl text-slate-950">
-              {response.title}
-            </CardTitle>
-            <CardDescription className="text-base leading-7 text-slate-700">
-              {response.directAnswer}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-5">
-            <section className="rounded-3xl bg-blue-100/80 p-4">
-              <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-blue-950">
-                <Lightbulb className="size-4" />
-                What this means
-              </div>
-              <p className="text-sm leading-6 text-blue-950/80">
-                {response.meaning}
-              </p>
-            </section>
 
-            <section className="rounded-3xl bg-yellow-100/90 p-4">
-              <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-yellow-950">
-                <CheckCircle2 className="size-4" />
+            {/* Main answer */}
+            <p className="mt-3 text-sm leading-7 text-foreground">
+              {response.answer}
+            </p>
+          </CardHeader>
+
+          <CardContent className="space-y-4">
+            {/* Next actions */}
+            <div className="rounded-xl bg-muted p-4">
+              <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-foreground">
+                <CheckCircle2 className="size-3.5" />
                 What to do next
               </div>
-              <ul className="space-y-2 text-sm leading-6 text-yellow-950/85">
-                {response.nextActions.map((action) => (
-                  <li key={action}>{action}</li>
+              <ul className="space-y-2">
+                {response.nextActions.map((action, i) => (
+                  <li
+                    key={action}
+                    className="flex gap-2.5 text-sm leading-6 text-foreground"
+                  >
+                    <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-background text-[10px] font-bold text-muted-foreground">
+                      {i + 1}
+                    </span>
+                    {action}
+                  </li>
                 ))}
               </ul>
-            </section>
+            </div>
 
+            {/* Cautions — only when present */}
             {response.cautions.length > 0 ? (
-              <section className="rounded-3xl bg-orange-100/80 p-4">
-                <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-orange-950">
-                  <AlertTriangle className="size-4" />
+              <div className="rounded-xl border border-border bg-muted/40 p-4">
+                <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-foreground">
+                  <AlertTriangle className="size-3.5" />
                   Reality notes
                 </div>
-                <ul className="space-y-2 text-sm leading-6 text-orange-950/85">
+                <ul className="space-y-1.5">
                   {response.cautions.map((caution) => (
-                    <li key={caution}>{caution}</li>
+                    <li
+                      key={caution}
+                      className="text-xs leading-5 text-muted-foreground"
+                    >
+                      {caution}
+                    </li>
                   ))}
                 </ul>
-              </section>
+              </div>
             ) : null}
 
+            {/* Clickable follow-up chips */}
             {response.suggestedFollowUps.length > 0 ? (
               <>
                 <Separator />
                 <div>
-                  <p className="text-sm font-semibold text-slate-950">
-                    Useful follow-ups
+                  <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Follow-up
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {response.suggestedFollowUps.map((followUp) => (
-                      <Badge
+                      <button
                         key={followUp}
-                        className="h-auto border-green-300 bg-green-100 px-3 py-1.5 text-green-950"
+                        type="button"
+                        onClick={() => onFollowUp(followUp)}
+                        className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-muted active:scale-95"
                       >
                         {followUp}
-                      </Badge>
+                      </button>
                     ))}
                   </div>
                 </div>

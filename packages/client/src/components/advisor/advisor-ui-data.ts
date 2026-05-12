@@ -6,7 +6,12 @@ import {
   ListChecks,
   RefreshCcw,
   Route,
+  type LucideIcon,
 } from 'lucide-react';
+
+// ─── Prompt cards ─────────────────────────────────────────────────────────────
+// `intent` is display metadata only — it is NOT sent to the API.
+// The advisor infers intent server-side from the message content.
 
 export type AdvisorPrompt = {
   id: string;
@@ -14,89 +19,64 @@ export type AdvisorPrompt = {
   title: string;
   prompt: string;
   description: string;
-  tone: 'blue' | 'green' | 'yellow' | 'orange' | 'rose';
+  tone: string;
+  icon: LucideIcon;
 };
-
-export const advisorIntents: Array<{
-  value: AdvisorIntent;
-  label: string;
-  description: string;
-}> = [
-  {
-    value: 'fit',
-    label: 'Fit',
-    description: 'Understand why a pathway was recommended.',
-  },
-  {
-    value: 'roadmap',
-    label: 'Roadmap',
-    description: 'Use the generated roadmap with less confusion.',
-  },
-  {
-    value: 'compare',
-    label: 'Compare',
-    description: 'Compare realistic options before choosing.',
-  },
-  {
-    value: 'adjust',
-    label: 'Adjust',
-    description: 'Adapt the plan around constraints and time.',
-  },
-  {
-    value: 'decide',
-    label: 'Decide',
-    description: 'Check whether to continue with this direction.',
-  },
-];
 
 export const advisorPrompts: AdvisorPrompt[] = [
   {
     id: 'fit',
     intent: 'fit',
+    icon: BadgeQuestionMark,
     title: 'Why does this pathway match me?',
     prompt: 'Explain why this pathway fits me based on my AICA profile.',
     description: 'Connect recommendation reasons to your actual traits.',
-    tone: 'blue',
+    tone: 'text-blue-300',
   },
   {
     id: 'first-focus',
     intent: 'roadmap',
+    icon: Route,
     title: 'What should I focus on first?',
     prompt: 'What should I focus on first in my roadmap?',
     description: 'Turn the roadmap into a clear first move.',
-    tone: 'green',
-  },
-  {
-    id: 'weekly',
-    intent: 'roadmap',
-    title: 'What should I do this week?',
-    prompt: 'What should I do this week based on my roadmap?',
-    description: 'Make the next action small and realistic.',
-    tone: 'yellow',
+    tone: 'text-green-300',
   },
   {
     id: 'adjust',
     intent: 'adjust',
+    icon: RefreshCcw,
     title: 'Adjust this plan for my constraints',
     prompt: 'Adjust this roadmap for my time, budget, and constraints.',
     description: 'Keep the goal but change the pace and sequence.',
-    tone: 'orange',
+    tone: 'text-orange-300',
   },
   {
     id: 'compare',
     intent: 'compare',
+    icon: GitCompare,
     title: 'Compare my top options',
     prompt: 'Compare my top two pathway options in a practical way.',
     description: 'Look at effort, fit, risk, and next steps.',
-    tone: 'blue',
+    tone: 'text-blue-300',
   },
   {
     id: 'risk',
     intent: 'decide',
+    icon: Compass,
     title: 'What are the risks?',
     prompt: 'What are the main risks or challenges in this pathway?',
     description: 'Add realism without discouraging momentum.',
-    tone: 'rose',
+    tone: 'text-rose-300',
+  },
+  {
+    id: 'weekly',
+    intent: 'roadmap',
+    icon: ListChecks,
+    title: 'What should I do this week?',
+    prompt: 'What should I do this week based on my roadmap?',
+    description: 'Make the next action small and realistic.',
+    tone: 'text-yellow-300',
   },
 ];
 
@@ -133,13 +113,11 @@ export const advisorBoundaries = [
   },
 ];
 
+// ─── Tone classes ─────────────────────────────────────────────────────────────
+
 export const toneClasses: Record<
   AdvisorPrompt['tone'],
-  {
-    card: string;
-    badge: string;
-    icon: string;
-  }
+  { card: string; badge: string; icon: string }
 > = {
   blue: {
     card: 'border-blue-300/70 bg-blue-100/70 hover:bg-blue-200/60',
