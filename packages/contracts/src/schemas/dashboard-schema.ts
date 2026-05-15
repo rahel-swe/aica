@@ -54,6 +54,8 @@ export const dashboardResponseSchema = z.object({
     summary: z.string().optional(),
     progressPercent: z.number(),
     completedSteps: z.number(),
+    notStartedSteps: z.number(),
+    inProgressSteps: z.number(),
     totalSteps: z.number(),
     currentPhase: z.string().optional(),
     nextStep: z

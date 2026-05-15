@@ -8,32 +8,28 @@ import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-
 import { recommendationRepository } from '../repositories/recommendation-repository';
 import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
+import type { User } from 'better-auth';
+import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
 
 type DashboardNextAction = DashboardResponse['nextAction'];
 type DashboardRoadmap = DashboardResponse['roadmap'];
 type DashboardRecommendation = DashboardResponse['recommendation'];
 
 export class DashboardService {
-  private readonly userModel = UserModel;
   private readonly pathwayAssessmentRepo = pathwayAssessmentRepository;
   private readonly recommendationRepo = recommendationRepository;
   private readonly roadmapRepo = roadmapRepository;
   private readonly roadmapSetupAssessmentRepo =
     roadmapSetupAssessmentRepository;
 
-  async getDashboardData(userId: string): Promise<DashboardResponse> {
-    const [user, onboarding, recommendations, roadmapSetup, roadmap] =
+  async getDashboardData(user: User): Promise<DashboardResponse> {
+    const [onboarding, recommendations, roadmapSetup, roadmap] =
       await Promise.all([
-        this.userModel.findById(userId).select('name email').lean(),
-        this.pathwayAssessmentRepo.findByUserId(userId),
-        this.recommendationRepo.findByUserId(userId),
-        this.roadmapSetupAssessmentRepo.findByUserId(userId),
-        this.roadmapRepo.findOneByUserId(userId),
+        this.pathwayAssessmentRepo.findByUserId(user.id),
+        this.recommendationRepo.findByUserId(user.id),
+        this.roadmapSetupAssessmentRepo.findByUserId(user.id),
+        this.roadmapRepo.findOneByUserId(user.id),
       ]);
-
-    if (!user) {
-      throw new Error('User not found.');
-    }
 
     const onboardingCompleted = Boolean(onboarding?.completed);
     const roadmapSetupCompleted = Boolean(roadmapSetup?.completed);
@@ -84,20 +80,32 @@ export class DashboardService {
     };
   }
 
-  private buildRoadmapSummary(roadmap: any | null): DashboardRoadmap {
+  private buildRoadmapSummary(
+    roadmap: PathwayRoadmap | null
+  ): DashboardRoadmap {
     if (!roadmap) {
       return {
         hasRoadmap: false,
         progressPercent: 0,
         completedSteps: 0,
+        inProgressSteps: 0,
+        notStartedSteps: 0,
         totalSteps: 0,
       };
     }
 
     const steps = roadmap.steps ?? [];
     const completedSteps = steps.filter(
-      (step: any) => step.status === 'completed'
+      (step) => step.status === 'completed'
     ).length;
+    const notStartedSteps = steps.filter(
+      (step) => step.status === 'pending'
+    ).length;
+
+    const inProgressSteps = steps.filter(
+      (step) => step.status === 'in_progress'
+    ).length;
+
     const totalSteps = steps.length;
     const nextStep = steps.find((step: any) => step.status !== 'completed');
     const currentPhase = nextStep
@@ -114,6 +122,8 @@ export class DashboardService {
       summary: roadmap.summary,
       progressPercent,
       completedSteps,
+      notStartedSteps,
+      inProgressSteps,
       totalSteps,
       currentPhase: currentPhase?.title,
       nextStep: nextStep
@@ -161,21 +171,21 @@ export class DashboardService {
         'Generate your pathway recommendations',
         'Your profile is ready. Generate recommendations so AICA can show your strongest pathway options.',
         'View recommendations',
-        '/recommendations'
+        '/pathway-recommendations'
       ),
       needs_roadmap_setup: this.nextAction(
         'complete_roadmap_setup',
         'Set up your roadmap preferences',
         'Choose your starting level, weekly time, constraints, and roadmap style before generating a plan.',
         'Set up roadmap',
-        '/roadmap/setup'
+        '/roadmap-setup-assessment'
       ),
       needs_roadmap: this.nextAction(
         'generate_roadmap',
         `Generate a roadmap for ${recommendation.top[0]?.title ?? 'your top pathway'}`,
         'Your pathway and planning preferences are ready. The next useful step is a realistic action roadmap.',
         'Generate roadmap',
-        '/roadmap'
+        '/app/roadmap'
       ),
       active: this.nextAction(
         'continue_roadmap',
@@ -184,7 +194,7 @@ export class DashboardService {
           ? 'Continue with the next incomplete roadmap step.'
           : 'Your roadmap has no pending steps. Review progress and decide whether to refresh the plan.',
         'Open roadmap',
-        '/roadmap'
+        '/app/roadmap'
       ),
     };
 

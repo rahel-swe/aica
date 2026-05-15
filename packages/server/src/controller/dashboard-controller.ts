@@ -9,16 +9,16 @@ export class DashboardController {
     res: Response<DashboardApiResponse | { success: false; message: string }>
   ) => {
     try {
-      const userId = req.user?.id;
+      const user = req.user;
 
-      if (!userId) {
+      if (!user) {
         return res.status(401).json({
           success: false,
           message: 'You are not logged in.',
         });
       }
 
-      const data = await dashboardService.getDashboardData(userId);
+      const data = await dashboardService.getDashboardData(user);
 
       return res.json({
         success: true,

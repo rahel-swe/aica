@@ -17,7 +17,7 @@ export default function AdvisorPage() {
   };
 
   return (
-    <main className="max-h-screen h-full flex flex-col items-center justify-center my-7 sm:my-10 lg:my-14 px-4">
+    <main className="h-full flex flex-col items-center justify-center">
       <section className="space-y-5">
         <AdvisorResponsePanel
           response={advisorMutation.data?.data}

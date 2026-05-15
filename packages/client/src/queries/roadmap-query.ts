@@ -6,6 +6,7 @@ import {
 } from '@/services/roadmap-service';
 import type { RoadmapGenerateRequest } from '@contracts/shared/types/roadmap-types';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { dashboardQueryKey } from './dashboard-query';
 
 export const roadmapQueryKey = ['roadmap', 'me'] as const;
 
@@ -34,6 +35,7 @@ export const useRoadmapStepStatusMutation = () => {
     mutationFn: changeRoadmapStepStatus,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: roadmapQueryKey });
+      queryClient.invalidateQueries({ queryKey: dashboardQueryKey });
     },
   });
 };
@@ -45,6 +47,7 @@ export const useRoadmapDeleteMutation = () => {
     mutationFn: deleteMyRoadmap,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: roadmapQueryKey });
+      queryClient.invalidateQueries({ queryKey: dashboardQueryKey });
     },
   });
 };

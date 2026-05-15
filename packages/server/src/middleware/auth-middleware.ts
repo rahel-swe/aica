@@ -1,9 +1,10 @@
 import type { Request, Response, NextFunction } from 'express';
 import { auth } from '../utils/auth';
 import { fromNodeHeaders } from 'better-auth/node';
+import type { User } from 'better-auth';
 
 export interface AuthRequest extends Request {
-  user?: any;
+  user?: User;
 }
 
 export const authorize = async (
