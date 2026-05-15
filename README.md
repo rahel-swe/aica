@@ -113,4 +113,5 @@ Please read [SECURITY.md](SECURITY.md) before reporting vulnerabilities.
 
 ## License
 
-A license has not been selected yet. Until a `LICENSE` file is added, reuse rights are not granted. Maintainers should choose a license before announcing the repository as fully open source.
+This project is licensed under `Apache-2.0`. See [LICENSE](LICENSE),
+[NOTICE](NOTICE), and [docs/LICENSING.md](docs/LICENSING.md).
