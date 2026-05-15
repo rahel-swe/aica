@@ -7,6 +7,7 @@ import {
   pathwayJourneyPhaseSchema,
   pathwayListItemSchema,
   pathwayMatchProfileSchema,
+  pathwayVisibilityLayerSchema,
   degreeRequirementSchema,
   pathwaySchema,
   pathwayCommitmentLevelSchema,
@@ -26,6 +27,9 @@ export type TaxonomyNodeKind = z.infer<typeof taxonomyNodeKindSchema>;
 export type TaxonomyNodeStatus = z.infer<typeof taxonomyNodeStatusSchema>;
 export type PathwayType = z.infer<typeof pathwayTypeSchema>;
 export type PathwayStatus = z.infer<typeof pathwayStatusSchema>;
+export type PathwayVisibilityLayer = z.infer<
+  typeof pathwayVisibilityLayerSchema
+>;
 export type PathwayCommitmentLevel = z.infer<
   typeof pathwayCommitmentLevelSchema
 >;
@@ -60,6 +64,26 @@ export type RecommendationDimensionScores = {
   goals: number;
 };
 
+export type RecommendationGroupRef = {
+  slug: string;
+  title: string;
+};
+
+export type RecommendationDirectionMatch = RecommendationGroupRef & {
+  totalScore: number;
+  matchPercent: number;
+  pathwayCount: number;
+  topPathwaySlugs: string[];
+};
+
+export type RecommendationFamilyMatch = RecommendationGroupRef & {
+  direction: RecommendationGroupRef;
+  totalScore: number;
+  matchPercent: number;
+  pathwayCount: number;
+  topPathwaySlugs: string[];
+};
+
 export type RecommendationResult = {
   pathwayId: string;
   title: string;
@@ -67,9 +91,19 @@ export type RecommendationResult = {
   type: PathwayType;
   summary: string;
   totalScore: number;
+  matchPercent?: number;
   dimensionScores: RecommendationDimensionScores;
   reasons: string[];
   explanation?: string;
+  visibilityLayer?: PathwayVisibilityLayer;
+  direction?: RecommendationGroupRef;
+  family?: RecommendationGroupRef;
   rank?: number;
   matchingVersion?: number;
+};
+
+export type RecommendationOverview = {
+  directionMatches: RecommendationDirectionMatch[];
+  familyMatches: RecommendationFamilyMatch[];
+  pathwayRecommendations: RecommendationResult[];
 };

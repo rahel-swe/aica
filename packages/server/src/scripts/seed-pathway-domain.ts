@@ -32,6 +32,7 @@ type PathwaySeedItem = {
   description: string;
   keySkills: string[];
   opportunities: string[];
+  visibilityLayer: 'primary' | 'adjacent' | 'specialized';
   durationProfile: {
     commitmentLevel: string;
     timelineType: string;
@@ -127,6 +128,7 @@ async function seedPathwayDomain() {
       description: pathway.description,
       keySkills: pathway.keySkills,
       opportunities: pathway.opportunities,
+      visibilityLayer: pathway.visibilityLayer,
       durationProfile: pathway.durationProfile,
       journeyPhases: pathway.journeyPhases,
       verificationNote: pathway.verificationNote,

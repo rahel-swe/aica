@@ -21,6 +21,11 @@ export const taxonomyNodeStatusEnum = ['active', 'draft', 'archived'] as const;
 export const pathwayTypeEnum = ['study', 'career', 'hybrid'] as const;
 
 export const pathwayStatusEnum = ['active', 'draft', 'archived'] as const;
+export const pathwayVisibilityLayerEnum = [
+  'primary',
+  'adjacent',
+  'specialized',
+] as const;
 
 export const pathwayCommitmentLevelEnum = ['short', 'medium', 'long'] as const;
 
@@ -51,6 +56,7 @@ export const taxonomyNodeKindSchema = z.enum(taxonomyNodeKindEnum);
 export const taxonomyNodeStatusSchema = z.enum(taxonomyNodeStatusEnum);
 export const pathwayTypeSchema = z.enum(pathwayTypeEnum);
 export const pathwayStatusSchema = z.enum(pathwayStatusEnum);
+export const pathwayVisibilityLayerSchema = z.enum(pathwayVisibilityLayerEnum);
 export const pathwayCommitmentLevelSchema = z.enum(pathwayCommitmentLevelEnum);
 export const pathwayTimelineTypeSchema = z.enum(pathwayTimelineTypeEnum);
 export const degreeRequirementSchema = z.enum(degreeRequirementEnum);
@@ -100,6 +106,7 @@ export const pathwaySchema = z.object({
   description: z.string().min(1),
   keySkills: z.array(z.string()).default([]),
   opportunities: z.array(z.string()).default([]),
+  visibilityLayer: pathwayVisibilityLayerSchema.default('adjacent'),
   durationProfile: pathwayDurationProfileSchema,
   journeyPhases: z.array(pathwayJourneyPhaseSchema).min(1),
   verificationNote: z.string().optional(),
@@ -176,6 +183,7 @@ export const pathwayListItemSchema = z.object({
   slug: z.string(),
   type: pathwayTypeSchema,
   summary: z.string(),
+  visibilityLayer: pathwayVisibilityLayerSchema,
   taxonomyNodes: z.array(taxonomyNodeSummarySchema),
   keySkills: z.array(z.string()),
   durationProfile: pathwayDurationProfileSchema,
@@ -188,6 +196,7 @@ export const pathwayDetailSchema = z.object({
   type: pathwayTypeSchema,
   summary: z.string(),
   description: z.string(),
+  visibilityLayer: pathwayVisibilityLayerSchema,
   taxonomyNodes: z.array(taxonomyNodeSummarySchema),
   keySkills: z.array(z.string()),
   opportunities: z.array(z.string()),

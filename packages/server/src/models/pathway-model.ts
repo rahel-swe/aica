@@ -4,6 +4,7 @@ import {
   pathwayStatusEnum,
   pathwayTimelineTypeEnum,
   pathwayTypeEnum,
+  pathwayVisibilityLayerEnum,
 } from '@contracts/shared/schemas/pathway-domain-schema';
 import { Schema, model, type Document } from 'mongoose';
 
@@ -16,6 +17,7 @@ export interface IPathway extends Document {
   description: string;
   keySkills: string[];
   opportunities: string[];
+  visibilityLayer: (typeof pathwayVisibilityLayerEnum)[number];
   durationProfile: {
     commitmentLevel: (typeof pathwayCommitmentLevelEnum)[number];
     timelineType: (typeof pathwayTimelineTypeEnum)[number];
@@ -88,6 +90,12 @@ const pathwaySchema = new Schema<IPathway>(
     opportunities: {
       type: [String],
       default: [],
+    },
+
+    visibilityLayer: {
+      type: String,
+      enum: pathwayVisibilityLayerEnum,
+      default: 'adjacent',
     },
 
     durationProfile: {
