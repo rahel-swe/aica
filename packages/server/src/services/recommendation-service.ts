@@ -65,7 +65,7 @@ type RecommendationGroupCandidate = {
 };
 
 const DIRECTION_COUNT = 3;
-const FAMILY_COUNT = 17;
+const FAMILY_COUNT = 15;
 
 const VISIBILITY_SCORE_WEIGHTS: Record<PathwayVisibilityLayer, number> = {
   primary: 1,
@@ -275,7 +275,7 @@ export class RecommendationService {
     directionMatches: RecommendationDirectionMatch[]
   ): RecommendationFamilyMatch[] {
     const topDirectionSlugs = new Set(
-      directionMatches.slice(0, 2).map((item) => item.slug)
+      directionMatches.slice(0, DIRECTION_COUNT).map((item) => item.slug)
     );
 
     const candidates = this.buildGroupCandidates(

@@ -51,7 +51,7 @@ const RecommendationDetailsCard = ({ item }: Props) => {
         </CardHeader>
 
         <CardContent className="flex flex-col gap-y-4">
-          <Badge className="bg-white mx-auto px-3 text-md font-heading">
+          <Badge className="mx-auto px-3 text-md font-heading">
             Rank: {item.rank ?? 'N/A'}
           </Badge>
           <div className="flex flex-wrap gap-2">

@@ -38,6 +38,7 @@ export default function RecommendationPage() {
             key={direction.slug}
             item={direction}
             index={index}
+            // className="shadow-[7px_9px_0px] shadow-primary"
           />
         ))}
       </div>

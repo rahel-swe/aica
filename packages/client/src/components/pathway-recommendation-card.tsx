@@ -23,7 +23,7 @@ interface Props {
   className?: string;
 }
 
-const RecommendationCard = ({ item, onTapCard, className }: Props) => {
+const PathwayRecommendationCard = ({ item, onTapCard, className }: Props) => {
   return (
     <Card
       className={cn(
@@ -50,16 +50,22 @@ const RecommendationCard = ({ item, onTapCard, className }: Props) => {
           </CardDescription>
         </div>
       </CardHeader>
+
+      <Badge className="mx-auto px-3 text-md font-heading">
+        Rank: {item.rank ?? 'N/A'}
+      </Badge>
       <CardContent className="flex flex-col gap-y-4">
         <div className="flex flex-wrap gap-2">
-          <Badge variant="secondary">{item.type}</Badge>
+          <Badge variant="secondary" className="capitalize">
+            {item.type}
+          </Badge>
           {item.direction ? (
-            <Badge variant="outline" className="border-black/10 bg-transparent">
+            <Badge variant="outline" className="border-black/10 text-inherit">
               {item.direction.title}
             </Badge>
           ) : null}
           {item.family ? (
-            <Badge variant="outline" className="border-black/10 bg-transparent">
+            <Badge variant="outline" className="border-black/10 text-inherit">
               {item.family.title}
             </Badge>
           ) : null}
@@ -97,4 +103,4 @@ const RecommendationCard = ({ item, onTapCard, className }: Props) => {
   );
 };
 
-export default RecommendationCard;
+export default PathwayRecommendationCard;
