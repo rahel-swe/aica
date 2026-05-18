@@ -30,7 +30,9 @@ const PathwayCongratulations = () => {
     );
   }
 
-  const userPickedRecommendedPathway = recommendationData?.data.find(
+  const pathwayRecommendations =
+    recommendationData?.data.pathwayRecommendations ?? [];
+  const userPickedRecommendedPathway = pathwayRecommendations.find(
     (item) =>
       item.pathwayId === roadmapSetupAssessmentData?.data.pickedPathwayId
   );

@@ -2,6 +2,11 @@ import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathwa
 import type {
   MatchWeight,
   PathwayMatchProfile,
+  PathwayVisibilityLayer,
+  RecommendationDirectionMatch,
+  RecommendationFamilyMatch,
+  RecommendationGroupRef,
+  RecommendationOverview,
   RecommendationResult,
 } from '@contracts/shared/types/pathway-domain-types';
 import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
@@ -15,13 +20,57 @@ import {
 } from '../utils/pathway-scoring-engin';
 
 type PathwayProfileShape = PathwayMatchProfile;
-type RecommendationScoreSnapshot = RecommendationResult & {
+
+type PathwayTaxonomyNode = {
+  name: string;
+  slug: string;
+  kind: 'domain' | 'field' | 'specialization';
+};
+
+type PathwayRecord = {
+  _id: unknown;
+  title: string;
+  slug: string;
+  type: RecommendationResult['type'];
+  summary: string;
+  visibilityLayer?: PathwayVisibilityLayer;
+  taxonomyNodeIds: PathwayTaxonomyNode[];
+};
+
+type RecommendationScoreSnapshot = Omit<
+  RecommendationResult,
+  'matchPercent' | 'visibilityLayer' | 'direction' | 'family'
+> & {
+  matchPercent: number;
+  visibilityLayer: PathwayVisibilityLayer;
+  direction: RecommendationGroupRef;
+  family?: RecommendationGroupRef;
   rankingSignals: {
     strongMatches: number;
     supportingMatches: number;
     penaltyConflicts: number;
     matchedDimensions: number;
   };
+};
+
+type RecommendationGroupCandidate = {
+  key: string;
+  title: string;
+  direction?: RecommendationGroupRef;
+  topEntries: RecommendationScoreSnapshot[];
+  totalScore: number;
+  matchPercent: number;
+  pathwayCount: number;
+  topPathwaySlugs: string[];
+};
+
+const DIRECTION_COUNT = 3;
+const FAMILY_COUNT = 17;
+
+const VISIBILITY_SCORE_WEIGHTS: Record<PathwayVisibilityLayer, number> = {
+  primary: 1,
+  adjacent: 0.84,
+  specialized: 0.68,
 };
 
 export class RecommendationService {
@@ -35,10 +84,18 @@ export class RecommendationService {
 
   async generateRecommendations(
     userId: string
-  ): Promise<RecommendationResult[]> {
-    const onboarding = (await this.pathwayAssessment.findByUserId(
-      userId
-    )) as PathwayAssessmentFormValues | null;
+  ): Promise<RecommendationOverview> {
+    return await this.buildRecommendationOverview(userId);
+  }
+
+  async getRecommendations(userId: string): Promise<RecommendationOverview> {
+    return await this.buildRecommendationOverview(userId);
+  }
+
+  private async buildRecommendationOverview(
+    userId: string
+  ): Promise<RecommendationOverview> {
+    const onboarding = await this.pathwayAssessment.findByUserId(userId);
 
     if (!onboarding) {
       throw new Error(
@@ -46,60 +103,99 @@ export class RecommendationService {
       );
     }
 
-    const profiles =
-      (await this.pathwayMatchProfileRepository.findAllActive()) as PathwayProfileShape[];
+    const [profiles, pathwaysRaw, existingRecommendations] = await Promise.all([
+      this.pathwayMatchProfileRepository.findAllActive() as Promise<
+        PathwayProfileShape[]
+      >,
+      this.pathwayRepository.findAllActiveWithDetails(),
+      this.recommendationRepository.findByUserId(userId),
+    ]);
+
+    const pathways = pathwaysRaw as unknown as PathwayRecord[];
 
     if (!profiles.length) {
       throw new Error('No active pathway match profiles found.');
     }
 
-    const pathwayIds = profiles.map((profile) => String(profile.pathwayId));
-    const pathways = await this.pathwayRepository.findActiveByIds(pathwayIds);
     const pathwayById = new Map(
       pathways.map((pathway) => [String(pathway._id), pathway])
     );
+    const explanationBySlug = new Map(
+      existingRecommendations.map((item) => [item.slug, item.explanation])
+    );
 
-    const ranked = profiles
-      .map((profile) => {
+    const rankedPathways = profiles
+      .map((profile): RecommendationScoreSnapshot | null => {
         const pathway = pathwayById.get(String(profile.pathwayId));
 
-        if (!pathway) {
-          return null;
-        }
+        if (!pathway) return null;
 
+        const direction = this.resolveDirection(pathway);
+
+        if (!direction) return null;
+
+        const family = this.resolveFamily(pathway);
         const dimensionScores = this.buildDimensionScores(onboarding, profile);
         const totalScore = this.calculateTotalScore(dimensionScores);
-        const rankingSignals = this.buildRankingSignals(onboarding, profile);
+        const visibilityLayer = pathway.visibilityLayer ?? 'adjacent';
 
-        return {
+        const candidate: RecommendationScoreSnapshot = {
           pathwayId: String(pathway._id),
           title: pathway.title,
           slug: pathway.slug,
           type: pathway.type,
           summary: pathway.summary,
           totalScore,
+          matchPercent: this.toPercent(totalScore),
           dimensionScores,
           reasons: this.explanationService.buildReasons(onboarding, profile),
-          rankingSignals,
-        } satisfies RecommendationScoreSnapshot;
+          visibilityLayer,
+          direction,
+          family,
+          rankingSignals: this.buildRankingSignals(onboarding, profile),
+        };
+
+        return candidate;
       })
       .filter((item): item is RecommendationScoreSnapshot => item !== null)
-      .sort((a, b) => this.compareRecommendations(a, b))
-      .slice(0, 3)
-      .map(({ rankingSignals: _rankingSignals, ...item }, index) => ({
-        ...item,
-        rank: index + 1,
-        matchingVersion: 1,
-      }));
+      .sort((a, b) => this.compareRecommendations(a, b));
 
-    const enriched = await this.explanationService.enrichRecommendations(
-      ranked,
+    const directionMatches = this.buildDirectionMatches(rankedPathways);
+    const familyMatches = this.buildFamilyMatches(
+      rankedPathways,
+      directionMatches
+    );
+
+    const pathwayRecommendationsBase = rankedPathways.map((pathway) => ({
+      ...pathway,
+      explanation: explanationBySlug.get(pathway.slug) || undefined,
+    }));
+
+    const topPathwaysForExplanation = this.selectTopPathways(
+      pathwayRecommendationsBase
+    );
+    const enrichedTopPathways = await this.enrichPathwaysIfNeeded(
+      topPathwaysForExplanation,
       onboarding
+    );
+
+    const enrichedTopPathwaysBySlug = new Map(
+      enrichedTopPathways.map((item) => [item.slug, item.explanation])
+    );
+
+    const pathwayRecommendations = pathwayRecommendationsBase.map(
+      (item, index) => ({
+        ...item,
+        explanation:
+          item.explanation ?? enrichedTopPathwaysBySlug.get(item.slug),
+        rank: index + 1,
+        matchingVersion: 2,
+      })
     );
 
     await this.recommendationRepository.replaceForUser(
       userId,
-      enriched.map((item) => ({
+      pathwayRecommendations.map((item) => ({
         userId,
         pathwayId: item.pathwayId,
         title: item.title,
@@ -107,6 +203,10 @@ export class RecommendationService {
         type: item.type,
         summary: item.summary,
         totalScore: item.totalScore,
+        matchPercent: item.matchPercent,
+        visibilityLayer: item.visibilityLayer,
+        direction: item.direction,
+        family: item.family,
         dimensionScores: item.dimensionScores,
         reasons: item.reasons,
         explanation: item.explanation,
@@ -116,29 +216,224 @@ export class RecommendationService {
       }))
     );
 
-    return enriched;
+    return {
+      directionMatches,
+      familyMatches,
+      pathwayRecommendations,
+    };
   }
 
-  async getRecommendations(userId: string): Promise<RecommendationResult[]> {
-    const existing = await this.recommendationRepository.findByUserId(userId);
+  private async enrichPathwaysIfNeeded(
+    recommendations: RecommendationResult[],
+    onboarding: PathwayAssessmentFormValues
+  ) {
+    const ready = recommendations.filter((item) => item.explanation);
+    const missing = recommendations.filter((item) => !item.explanation);
 
-    if (!existing.length) {
-      return await this.generateRecommendations(userId);
+    if (!missing.length) {
+      return recommendations;
     }
 
-    return existing.map((item) => ({
-      pathwayId: String(item.pathwayId),
-      title: item.title,
-      slug: item.slug,
-      type: item.type,
-      summary: item.summary,
-      totalScore: item.totalScore,
-      dimensionScores: item.dimensionScores,
-      reasons: item.reasons,
-      explanation: item.explanation,
-      rank: item.rank,
-      matchingVersion: item.matchingVersion,
+    const enrichedMissing = await this.explanationService.enrichRecommendations(
+      missing,
+      onboarding
+    );
+    const enrichedBySlug = new Map(
+      enrichedMissing.map((item) => [item.slug, item.explanation])
+    );
+
+    return recommendations.map((item) => ({
+      ...item,
+      explanation: item.explanation ?? enrichedBySlug.get(item.slug),
     }));
+  }
+
+  private buildDirectionMatches(
+    rankedPathways: RecommendationScoreSnapshot[]
+  ): RecommendationDirectionMatch[] {
+    const candidates = this.buildGroupCandidates(
+      rankedPathways,
+      (item) => ({
+        key: item.direction.slug,
+        title: item.direction.title,
+      }),
+      DIRECTION_COUNT
+    );
+
+    return candidates.map((item) => ({
+      slug: item.key,
+      title: item.title,
+      totalScore: item.totalScore,
+      matchPercent: item.matchPercent,
+      pathwayCount: item.pathwayCount,
+      topPathwaySlugs: item.topPathwaySlugs,
+    }));
+  }
+
+  private buildFamilyMatches(
+    rankedPathways: RecommendationScoreSnapshot[],
+    directionMatches: RecommendationDirectionMatch[]
+  ): RecommendationFamilyMatch[] {
+    const topDirectionSlugs = new Set(
+      directionMatches.slice(0, 2).map((item) => item.slug)
+    );
+
+    const candidates = this.buildGroupCandidates(
+      rankedPathways.filter(
+        (item) => item.family && topDirectionSlugs.has(item.direction.slug)
+      ),
+      (item) =>
+        item.family
+          ? {
+              key: item.family.slug,
+              title: item.family.title,
+              direction: item.direction,
+            }
+          : null,
+      FAMILY_COUNT
+    );
+
+    return candidates.map((item) => ({
+      slug: item.key,
+      title: item.title,
+      direction: item.direction!,
+      totalScore: item.totalScore,
+      matchPercent: item.matchPercent,
+      pathwayCount: item.pathwayCount,
+      topPathwaySlugs: item.topPathwaySlugs,
+    }));
+  }
+
+  private buildGroupCandidates(
+    rankedPathways: RecommendationScoreSnapshot[],
+    pickGroup: (item: RecommendationScoreSnapshot) => {
+      key: string;
+      title: string;
+      direction?: RecommendationGroupRef;
+    } | null,
+    limit: number
+  ) {
+    const grouped = new Map<string, RecommendationGroupCandidate>();
+
+    for (const item of rankedPathways) {
+      const group = pickGroup(item);
+
+      if (!group) {
+        continue;
+      }
+
+      const existing = grouped.get(group.key);
+
+      if (!existing) {
+        grouped.set(group.key, {
+          key: group.key,
+          title: group.title,
+          direction: group.direction,
+          topEntries: [item],
+          totalScore: 0,
+          matchPercent: 0,
+          pathwayCount: 1,
+          topPathwaySlugs: [],
+        });
+        continue;
+      }
+
+      existing.topEntries.push(item);
+      existing.pathwayCount += 1;
+    }
+
+    const scored = [...grouped.values()].map((group) => {
+      const topEntries = group.topEntries
+        .sort((a, b) => this.compareRecommendations(a, b))
+        .slice(0, 3);
+      const totalScore = Number(
+        (
+          topEntries.reduce(
+            (sum, item) => sum + this.applyVisibilityWeight(item),
+            0
+          ) / topEntries.length
+        ).toFixed(4)
+      );
+
+      return {
+        ...group,
+        topEntries,
+        totalScore,
+        matchPercent: this.toPercent(totalScore),
+        topPathwaySlugs: topEntries.map((item) => item.slug),
+      };
+    });
+
+    return scored
+      .sort((a, b) => {
+        if (b.totalScore !== a.totalScore) {
+          return b.totalScore - a.totalScore;
+        }
+
+        if (b.pathwayCount !== a.pathwayCount) {
+          return b.pathwayCount - a.pathwayCount;
+        }
+
+        return a.title.localeCompare(b.title);
+      })
+      .slice(0, limit);
+  }
+
+  private selectTopPathways(
+    rankedPathways: Array<
+      RecommendationScoreSnapshot & { explanation?: string | undefined }
+    >
+  ) {
+    const visibleFirst = rankedPathways.filter(
+      (item) => item.visibilityLayer !== 'specialized'
+    );
+    const selected = visibleFirst.slice(0, 3);
+
+    if (selected.length >= 3) {
+      return selected;
+    }
+
+    const selectedSlugs = new Set(selected.map((item) => item.slug));
+
+    for (const item of rankedPathways) {
+      if (selectedSlugs.has(item.slug)) {
+        continue;
+      }
+
+      selected.push(item);
+
+      if (selected.length >= 3) {
+        break;
+      }
+    }
+
+    return selected;
+  }
+
+  private resolveDirection(pathway: PathwayRecord) {
+    const directionNode = pathway.taxonomyNodeIds.find(
+      (node) => node.kind === 'domain'
+    );
+
+    if (!directionNode) return null;
+
+    return {
+      slug: directionNode.slug,
+      title: directionNode.name,
+    } satisfies RecommendationGroupRef;
+  }
+
+  private resolveFamily(pathway: PathwayRecord) {
+    const familyNode = pathway.taxonomyNodeIds.find(
+      (node) => node.kind === 'field'
+    );
+
+    if (!familyNode) return undefined;
+
+    return {
+      slug: familyNode.slug,
+      title: familyNode.name,
+    } satisfies RecommendationGroupRef;
   }
 
   private buildDimensionScores(
@@ -206,10 +501,12 @@ export class RecommendationService {
       onboarding.strengths,
       profile.strengths
     );
+
     const matchedPassions = this.collectMultiValueMatches(
       onboarding.passions,
       profile.passions
     );
+
     const matchedSingles = [
       this.collectSingleValueMatch(onboarding.subjects, profile.subjects),
       this.collectSingleValueMatch(onboarding.freeTime, profile.freeTime),
@@ -244,20 +541,13 @@ export class RecommendationService {
       ...matchedPassions,
       ...matchedSingles,
     ];
-    const strongMatches = allMatches.filter(
-      (item) => item.band === 'strong'
-    ).length;
-    const supportingMatches = allMatches.filter(
-      (item) => item.band === 'supporting'
-    ).length;
-    const penaltyConflicts = allMatches.filter(
-      (item) => item.band === 'penalty'
-    ).length;
 
     return {
-      strongMatches,
-      supportingMatches,
-      penaltyConflicts,
+      strongMatches: allMatches.filter((item) => item.band === 'strong').length,
+      supportingMatches: allMatches.filter((item) => item.band === 'supporting')
+        .length,
+      penaltyConflicts: allMatches.filter((item) => item.band === 'penalty')
+        .length,
       matchedDimensions,
     };
   }
@@ -266,21 +556,27 @@ export class RecommendationService {
     a: RecommendationScoreSnapshot,
     b: RecommendationScoreSnapshot
   ) {
-    if (b.totalScore !== a.totalScore) {
-      return b.totalScore - a.totalScore;
-    }
+    if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
 
-    if (b.rankingSignals.strongMatches !== a.rankingSignals.strongMatches) {
+    if (b.rankingSignals.strongMatches !== a.rankingSignals.strongMatches)
       return b.rankingSignals.strongMatches - a.rankingSignals.strongMatches;
-    }
 
     if (
       b.rankingSignals.matchedDimensions !== a.rankingSignals.matchedDimensions
-    ) {
+    )
       return (
         b.rankingSignals.matchedDimensions - a.rankingSignals.matchedDimensions
       );
-    }
+
+    if (
+      a.visibilityLayer !== b.visibilityLayer &&
+      VISIBILITY_SCORE_WEIGHTS[a.visibilityLayer] !==
+        VISIBILITY_SCORE_WEIGHTS[b.visibilityLayer]
+    )
+      return (
+        VISIBILITY_SCORE_WEIGHTS[b.visibilityLayer] -
+        VISIBILITY_SCORE_WEIGHTS[a.visibilityLayer]
+      );
 
     if (
       b.rankingSignals.supportingMatches !== a.rankingSignals.supportingMatches
@@ -299,6 +595,18 @@ export class RecommendationService {
     }
 
     return a.slug.localeCompare(b.slug);
+  }
+
+  private applyVisibilityWeight(item: RecommendationScoreSnapshot) {
+    return Number(
+      (
+        item.totalScore * VISIBILITY_SCORE_WEIGHTS[item.visibilityLayer]
+      ).toFixed(4)
+    );
+  }
+
+  private toPercent(score: number) {
+    return Math.max(0, Math.min(100, Math.round(score * 100)));
   }
 
   private collectMultiValueMatches(

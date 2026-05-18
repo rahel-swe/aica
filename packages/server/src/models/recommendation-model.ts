@@ -1,4 +1,5 @@
 import { Schema, model, type Document } from 'mongoose';
+import { pathwayVisibilityLayerEnum } from '@contracts/shared/schemas/pathway-domain-schema';
 
 type RecommendationDimensionScores = {
   strengths: number;
@@ -19,6 +20,16 @@ export interface IRecommendation extends Document {
   type: 'study' | 'career' | 'hybrid';
   summary: string;
   totalScore: number;
+  matchPercent?: number;
+  visibilityLayer?: (typeof pathwayVisibilityLayerEnum)[number];
+  direction?: {
+    slug: string;
+    title: string;
+  };
+  family?: {
+    slug: string;
+    title: string;
+  };
   dimensionScores: RecommendationDimensionScores;
   reasons: string[];
   explanation?: string;
@@ -64,6 +75,21 @@ const recommendationSchema = new Schema<IRecommendation>(
     totalScore: {
       type: Number,
       required: true,
+    },
+    matchPercent: {
+      type: Number,
+    },
+    visibilityLayer: {
+      type: String,
+      enum: pathwayVisibilityLayerEnum,
+    },
+    direction: {
+      slug: { type: String, trim: true, lowercase: true },
+      title: { type: String, trim: true },
+    },
+    family: {
+      slug: { type: String, trim: true, lowercase: true },
+      title: { type: String, trim: true },
     },
     dimensionScores: {
       strengths: { type: Number, required: true },

@@ -1,8 +1,8 @@
 import RecommendationDetailsCard from '@/components/recommendation-details-card';
+import RecommendationDirectionCard from '@/components/recommendation-direction-card';
+import RecommendationFamilyStrip from '@/components/recommendation-family-strip';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
-
 import { useRecommendationQuery } from '@/queries/recommendation-query';
-import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
 
 export default function RecommendationPage() {
   const {
@@ -11,9 +11,6 @@ export default function RecommendationPage() {
     isError,
   } = useRecommendationQuery();
 
-  const handlePickedPathway = (item: RecommendationResult) => {
-    console.log('picked:', item);
-  };
   if (isLoading) {
     return (
       <div className="flex justify-center py-10">
@@ -22,20 +19,58 @@ export default function RecommendationPage() {
     );
   }
 
-  if (isError) {
-    return <div>Something went wrong</div>;
-  }
+  if (isError || !recommendations?.data) return <div>Something went wrong</div>;
+
+  const { directionMatches, familyMatches, pathwayRecommendations } =
+    recommendations.data;
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {recommendations?.data?.map((recommendation) => (
-        <RecommendationDetailsCard
-          key={recommendation.pathwayId}
-          item={recommendation}
-          onPickedPathway={handlePickedPathway}
-          isPathwayPicking={false}
-        />
-      ))}
+    <div className="space-y-8">
+      <div className="space-y-3">
+        <h1 className="text-3xl font-semibold tracking-tight md:text-5xl">
+          Review your direction, families, and strongest pathways
+        </h1>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        {directionMatches.map((direction, index) => (
+          <RecommendationDirectionCard
+            key={direction.slug}
+            item={direction}
+            index={index}
+          />
+        ))}
+      </div>
+
+      <div className="space-y-3">
+        <div className="flex justify-start">
+          <span className="text-3xl text-center bg-card py-2 px-7 rounded-full">
+            Best-fit Families
+          </span>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {familyMatches.map((item) => (
+            <RecommendationFamilyStrip item={item} />
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        <div className="flex justify-start">
+          <span className="text-3xl text-center bg-card py-2 px-7 rounded-full">
+            Best-fit Pathways
+          </span>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {pathwayRecommendations.map((recommendation) => (
+            <RecommendationDetailsCard
+              key={recommendation.pathwayId}
+              item={{ ...recommendation }}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
