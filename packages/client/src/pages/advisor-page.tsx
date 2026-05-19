@@ -24,13 +24,13 @@ export default function AdvisorPage() {
           isPending={advisorMutation.isPending}
           onFollowUp={submitPrompt}
         />
-        <AdvisorPromptGrid onPromptSelect={submitPrompt} />
         <AdvisorInputBox
           value={message}
           isPending={advisorMutation.isPending}
           onChange={setMessage}
           onSubmit={() => submitPrompt()}
         />
+        <AdvisorPromptGrid onPromptSelect={submitPrompt} />
       </section>
     </main>
   );

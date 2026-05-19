@@ -23,16 +23,12 @@ export default function RoadmapPage() {
     );
 
   return (
-    <main className="lg:px-8">
-      <div className="flex flex-col md:flex-row gap-6 items-start">
-        <div className="mx-auto max-w-7xl flex flex-col gap-10">
-          <RoadmapHero roadmap={roadmap} />
-
-          <RoadmapSteps steps={roadmap.steps} />
-          {/* <RoadmapSidebar roadmap={roadmap} /> */}
-        </div>
-        <RoadmapActionableSection roadmap={roadmap} />
+    <main className="lg:px-8 flex flex-col md:flex-row gap-6 items-start">
+      <div className="mx-auto max-w-7xl flex flex-col gap-10">
+        <RoadmapHero roadmap={roadmap} />
+        <RoadmapSteps steps={roadmap.steps} />
       </div>
+      <RoadmapActionableSection roadmap={roadmap} />
     </main>
   );
 }
