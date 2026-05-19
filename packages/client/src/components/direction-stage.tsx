@@ -38,7 +38,7 @@ const DirectionStage = ({
     </div>
 
     <GetStartedButton
-      shouldDisable={false}
+      shouldDisable={!selectedDirectionSlug}
       onButtonClicked={onContinue}
       className="mx-auto flex"
     />

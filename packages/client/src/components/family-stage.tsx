@@ -44,7 +44,7 @@ const FamilyStage = ({
     </div>
 
     <GetStartedButton
-      shouldDisable={false}
+      shouldDisable={!selectedFamilySlug}
       onButtonClicked={onContinue}
       className="mx-auto flex"
     />

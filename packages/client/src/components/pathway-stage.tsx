@@ -39,7 +39,7 @@ const PathwayStage = ({
     </div>
 
     <GetStartedButton
-      shouldDisable={isSubmitting}
+      shouldDisable={!selectedPathwaySlug || isSubmitting}
       onButtonClicked={onSubmit}
       className="mx-auto flex"
     />
