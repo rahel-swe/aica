@@ -1,6 +1,24 @@
+import type { Variants } from 'motion/react';
 import { useEffect, useState } from 'react';
 
-type Direction = 'forward' | 'backward';
+export type Direction = 'forward' | 'backward';
+
+export const containerVariants = {
+  hidden: (direction: Direction) => ({
+    opacity: 0,
+    x: direction === 'backward' ? 16 : -16,
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: {
+      duration: 0.28,
+      ease: 'easeOut',
+      when: 'beforeChildren',
+    },
+  },
+} as Variants;
 
 type AnimationState = {
   direction: Direction;
@@ -8,7 +26,7 @@ type AnimationState = {
   replayKey: number;
 };
 
-export function useRoadmapSetupStepsNavigationAnimation(
+export function useAssissmentStepsNavigationAnimation(
   currentIndex: number,
   lastIndex: number
 ) {

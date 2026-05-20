@@ -7,7 +7,7 @@ type RoadmapSetupNavigationButtonProps = {
   iconPosition?: 'left' | 'right';
 } & React.ComponentProps<typeof Button>;
 
-const RoadmapSetupNavigationButton = ({
+const AssessmentNavigationButton = ({
   label,
   icon: Icon,
   iconPosition = 'left',
@@ -23,4 +23,4 @@ const RoadmapSetupNavigationButton = ({
     </Button>
   );
 };
-export default RoadmapSetupNavigationButton;
+export default AssessmentNavigationButton;

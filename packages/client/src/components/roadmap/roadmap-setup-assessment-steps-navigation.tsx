@@ -1,4 +1,4 @@
-import { motion, type Variants } from 'motion/react';
+import { motion } from 'motion/react';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 
@@ -6,7 +6,10 @@ import {
   ROADMAP_SETUP_STEPS,
   type RoadmapSetupStep,
 } from '@/constants/roadmap-setup-steps';
-import { useRoadmapSetupStepsNavigationAnimation } from '@/hooks/use-roadmap-steps-navigation-animation';
+import {
+  containerVariants,
+  useAssissmentStepsNavigationAnimation,
+} from '@/hooks/use-assissment-steps-navigation-animation';
 import type { RoadmapSetupOutletContext } from '@/layouts/roadmap-setup-assessment-layout';
 import { getRoadmapNavigationActions } from '@/lib/get-roadmap-navigation-actions';
 import { toKebab } from '@/lib/to-kebab';
@@ -14,30 +17,11 @@ import { useGenerateRoadmapMutation } from '@/queries/roadmap-query';
 import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-assessment-queries';
 import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/roadmap-setup-assessment-schema';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
-import RoadmapSetupNavigationButton from './roadmap-setup-navigation-button';
+import AssessmentNavigationButton from './assessment-navigation-button';
 
 type RoadmapSetupStepsNavigationProps = {
   step: RoadmapSetupStep;
 };
-
-type Direction = 'forward' | 'backward';
-
-const containerVariants = {
-  hidden: (direction: Direction) => ({
-    opacity: 0,
-    x: direction === 'backward' ? 16 : -16,
-  }),
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    transition: {
-      duration: 0.28,
-      ease: 'easeOut',
-      when: 'beforeChildren',
-    },
-  },
-} as Variants;
 
 const RoadmapSetupAssessmentStepsNavigation = ({
   step,
@@ -49,16 +33,15 @@ const RoadmapSetupAssessmentStepsNavigation = ({
 
   const { mutate: generateRoadmap, isSuccess: isRoadmapGenerateSuccessed } =
     useGenerateRoadmapMutation();
-
   const {
     data: roadmapSetupStatusResponse,
     isPending: roadmpaSetupStatusPending,
   } = useRoadmapSetupAssessmentStatusQuery();
-
   const watchedValues = useWatch<RoadmapSetupAssessmentFormValues>();
+
   const lastIndex = ROADMAP_SETUP_STEPS.length - 1;
 
-  const animation = useRoadmapSetupStepsNavigationAnimation(
+  const animation = useAssissmentStepsNavigationAnimation(
     currentIndex,
     lastIndex
   );
@@ -127,10 +110,10 @@ const RoadmapSetupAssessmentStepsNavigation = ({
       variants={containerVariants}
       initial={animation.shouldAnimate ? 'hidden' : false}
       animate="visible"
-      className="flex flex-col-reverse sm:items-center sm:flex-row max-w-xs  mx-auto w-full
-        gap-3 sm:gap-8 sm:justify-between"
+      className="flex flex-col-reverse sm:items-center sm:flex-row max-w-xs sm:max-w-full mx-auto w-full
+        gap-3 sm:gap-16 sm:justify-center"
     >
-      <RoadmapSetupNavigationButton
+      <AssessmentNavigationButton
         type="button"
         variant="outline"
         onClick={handleSecondButtonNavigation}
@@ -141,7 +124,7 @@ const RoadmapSetupAssessmentStepsNavigation = ({
         iconPosition="left"
       />
 
-      <RoadmapSetupNavigationButton
+      <AssessmentNavigationButton
         type="button"
         onClick={goNext}
         disabled={isSubmitting}

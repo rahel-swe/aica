@@ -1,4 +1,10 @@
-import { ChevronLeft, ChevronRight, type LucideIcon } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  ClipboardPen,
+  type LucideIcon,
+} from 'lucide-react';
 
 type StepId = 'welcome' | 'finish' | string;
 
@@ -24,7 +30,7 @@ export function getRoadmapNavigationActions(stepId: StepId): NavigationActions {
           ? 'Review answers'
           : 'Go back',
 
-      icon: isWelcome || isFinish ? undefined : ChevronLeft,
+      icon: isWelcome ? undefined : isFinish ? ClipboardPen : ChevronLeft,
     },
 
     primary: {
@@ -34,7 +40,7 @@ export function getRoadmapNavigationActions(stepId: StepId): NavigationActions {
           ? 'Create my roadmap'
           : 'Keep going',
 
-      icon: isFinish ? undefined : ChevronRight,
+      icon: isFinish ? Sparkles : ChevronRight,
     },
   };
 }

@@ -1,18 +1,20 @@
-/* eslint-disable react-hooks/refs */
 import {
   PATHWAY_ASSESSMENT_STEPS,
   type PathwayAssessmentStep,
 } from '@/constants/pathway-assessment-steps';
+import {
+  containerVariants,
+  useAssissmentStepsNavigationAnimation,
+} from '@/hooks/use-assissment-steps-navigation-animation';
 import type { PathwayAssessmentOutletContext } from '@/layouts/pathway-assessment-layout';
+import { getPathwayAssessmentNavigationActions } from '@/lib/get-pathway-assessment-navigation-actions';
 import { toKebab } from '@/lib/to-kebab';
-import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight, Pencil, Send } from 'lucide-react';
+import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
+import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
+import { motion } from 'motion/react';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import { Button } from '../ui/button';
-import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
-import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
-import { useEffect, useRef, useState } from 'react';
+import AssessmentNavigationButton from '../roadmap/assessment-navigation-button';
 
 const PathwayAssessmentStepsNavigations = ({
   step,
@@ -27,33 +29,15 @@ const PathwayAssessmentStepsNavigations = ({
   const { currentIndex, isSubmitting, submitPathwayAssisment } =
     useOutletContext<PathwayAssessmentOutletContext>();
   const lastIndex = PATHWAY_ASSESSMENT_STEPS.length - 1;
-  const previousIndex = useRef(currentIndex);
 
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-
-  // edge + near-edge steps
-  const isEdgeZone =
-    currentIndex === 0 ||
-    (currentIndex === 1 && previousIndex.current === 0) ||
-    currentIndex === lastIndex ||
-    (currentIndex === lastIndex - 1 && previousIndex.current === lastIndex);
-
-  const isGoingBack =
-    previousIndex.current !== null && previousIndex.current > currentIndex;
-
-  useEffect(() => {
-    if (isEdgeZone) {
-      // reset animation so it can replay
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setShouldAnimate(false);
-
-      requestAnimationFrame(() => {
-        setShouldAnimate(true);
-      });
-    }
-
-    previousIndex.current = currentIndex;
-  }, [currentIndex, isEdgeZone]);
+  const animation = useAssissmentStepsNavigationAnimation(
+    currentIndex,
+    lastIndex
+  );
+  const navigationActions = getPathwayAssessmentNavigationActions(
+    step.type,
+    isSubmitting
+  );
 
   const goBack = () => {
     const prev = PATHWAY_ASSESSMENT_STEPS[currentIndex - 1];
@@ -85,41 +69,37 @@ const PathwayAssessmentStepsNavigations = ({
   };
 
   return (
-    <div
-      className={cn(
-        'flex flex-col-reverse sm:items-center justify-center sm:flex-row max-w-xs  mx-auto w-full',
-        currentIndex !== 0 && 'gap-3 sm:gap-8 sm:justify-between',
-        shouldAnimate && 'transition-all duration-500 animate-in fade-in',
-        shouldAnimate &&
-          (isGoingBack ? 'slide-in-from-right-6' : 'slide-in-from-left-6')
-      )}
+    <motion.div
+      key={animation.replayKey}
+      custom={animation.direction}
+      variants={containerVariants}
+      initial={animation.shouldAnimate ? 'hidden' : false}
+      animate="visible"
+      className="flex flex-col-reverse sm:items-center sm:flex-row max-w-xs sm:max-w-full mx-auto w-full
+            gap-3 sm:gap-16 sm:justify-center"
     >
-      {!(currentIndex === 0) && (
-        <Button
+      {navigationActions.secondary && (
+        <AssessmentNavigationButton
           variant="outline"
           onClick={goBack}
           className="py-6 sm:px-12"
           disabled={isSubmitting}
-        >
-          {step.type !== 'cta' ? <ChevronLeft /> : <Pencil />}
-          {step.type === 'cta' ? 'Edit' : 'Back'}
-        </Button>
+          label={navigationActions.secondary.label}
+          icon={navigationActions.secondary.icon}
+          iconPosition="left"
+        />
       )}
 
-      <Button
+      <AssessmentNavigationButton
         type="button"
         onClick={goNext}
         className="py-6.5 sm:px-12"
         disabled={disableNext || isSubmitting}
-      >
-        {isSubmitting
-          ? 'Saving...'
-          : step.type === 'cta'
-            ? 'Submit'
-            : 'Continue'}
-        {step.type === 'cta' ? <Send /> : <ChevronRight />}
-      </Button>
-    </div>
+        label={navigationActions.primary.label}
+        icon={navigationActions.primary.icon}
+        iconPosition="right"
+      />
+    </motion.div>
   );
 };
 
