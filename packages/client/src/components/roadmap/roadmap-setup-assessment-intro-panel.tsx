@@ -15,24 +15,18 @@ const RoadmapSetupIntroPanel = ({ step }: RoadmapSetupIntroPanelProps) => {
       )}
     >
       <img
-        src="/roadmap-setup.png"
+        src="/roadmap-img.png"
         alt="Roadmap setup hero image"
-        className="max-w-120 w-full h-full object-contain pointer-events-none select-none"
+        className="w-full scale-125 sm:scale-100 fixed -top-28 h-full object-contain pointer-events-none select-none"
       />
 
-      <div className="flex flex-col gap-4">
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight">
+      <div className="flex flex-col gap-2 mt-50 md:mt-60">
+        <h1 className="max-w-3xl text-5xl font-semibold tracking-tight">
           {step.title}
         </h1>
 
-        {step.description && (
-          <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
-            {step.description}
-          </p>
-        )}
-
         {step.helperText && (
-          <p className="text-sm text-muted-foreground">{step.helperText}</p>
+          <p className="text-base text-muted-foreground">{step.helperText}</p>
         )}
       </div>
     </div>

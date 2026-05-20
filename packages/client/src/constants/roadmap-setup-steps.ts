@@ -48,7 +48,6 @@ export type RoadmapSetupStep = {
   id: RoadmapStepId;
   type: PathwayAssessmentStepType;
   title: string;
-  description?: string;
   helperText?: string;
   fieldName?: keyof RoadmapSetupAssessmentFormValues;
   minSelect?: number;
@@ -204,9 +203,7 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
   {
     id: 'welcome',
     type: 'intro',
-    title: 'Let AICA shape the right roadmap for this pathway',
-    description:
-      'Answer a few short planning questions. AICA will use them to shape a roadmap that fits your stage, time, constraints, and pace instead of giving everyone the same plan.',
+    title: "Let's Setup your Roadmap",
     helperText:
       'Be realistic. The better your inputs, the more useful your roadmap will be.',
   },
@@ -214,8 +211,6 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
     id: 'current-stage',
     type: 'single-select',
     title: 'Where are you starting from right now?',
-    description:
-      'This helps AICA decide whether to begin with exploration, study preparation, portfolio work, or market-entry steps.',
     fieldName: 'currentStage',
     options: currentStageOptions,
   },
@@ -223,8 +218,6 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
     id: 'weekly-time',
     type: 'single-select',
     title: 'How much focused time can you realistically give each week?',
-    description:
-      'Choose your real weekly capacity, not your best-case motivation.',
     fieldName: 'weeklyTime',
     options: weeklyTimeOptions,
   },
@@ -232,7 +225,7 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
     id: 'timeline',
     type: 'single-select',
     title: 'What planning window should this roadmap optimize for?',
-    description:
+    helperText:
       'This is the first action window, not the full career duration.',
     fieldName: 'timeline',
     options: timelineOptions,
@@ -241,8 +234,6 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
     id: 'constraints',
     type: 'multi-select',
     title: 'What should the roadmap work around?',
-    description:
-      'Pick only the constraints that are actually likely to affect your next steps.',
     fieldName: 'constraints',
     minSelect: 0,
     maxSelect: 3,
@@ -252,8 +243,6 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
     id: 'roadmap-style',
     type: 'single-select',
     title: 'How should the roadmap feel?',
-    description:
-      'This changes the balance between speed, depth, and sustainability.',
     fieldName: 'roadmapStyle',
     options: roadmapStyleOptions,
   },
@@ -261,8 +250,6 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
     id: 'finish',
     type: 'cta',
     title: 'Your roadmap setup is ready',
-    description:
-      'AICA now has the planning context it needs to generate a more realistic roadmap for your selected pathway.',
     helperText: 'Submit to save your setup and continue.',
   },
 ] as const;

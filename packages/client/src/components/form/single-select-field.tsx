@@ -1,12 +1,13 @@
+import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps';
 import { Controller, useFormContext } from 'react-hook-form';
+import { Twemoji } from '../twemoji';
 import { Field, FieldContent, FieldLabel, FieldTitle } from '../ui/field';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
-import { Twemoji } from '../twemoji';
 
 interface SingleSelectFieldProps {
   name: string;
   label: string;
-  options?: { value: string; label: string; emoji: string }[];
+  options?: PathwayAssessmentOption[];
 }
 
 const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
@@ -33,7 +34,7 @@ const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
           {options.map((opt) => (
             <FieldLabel
               key={opt.value}
-              className="max-w-md mx-auto rounded-full backdrop-blur-xl"
+              className="max-w-md mx-auto rounded-full backdrop-blur-xl relative"
             >
               <Field orientation="horizontal" className="items-center">
                 <RadioGroupItem

@@ -1,26 +1,43 @@
-/* eslint-disable react-hooks/refs */
+import { motion, type Variants } from 'motion/react';
+import { useFormContext, useWatch } from 'react-hook-form';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+
 import {
   ROADMAP_SETUP_STEPS,
   type RoadmapSetupStep,
 } from '@/constants/roadmap-setup-steps';
-
-import { useFormContext, useWatch } from 'react-hook-form';
-
-import { useNavigate, useOutletContext } from 'react-router-dom';
-
-import { Button } from '../ui/button';
-
+import { useRoadmapSetupStepsNavigationAnimation } from '@/hooks/use-roadmap-steps-navigation-animation';
 import type { RoadmapSetupOutletContext } from '@/layouts/roadmap-setup-assessment-layout';
-import { cn } from '@/lib/utils';
-import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
-import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/roadmap-setup-assessment-schema';
+import { getRoadmapNavigationActions } from '@/lib/get-roadmap-navigation-actions';
 import { toKebab } from '@/lib/to-kebab';
+import { useGenerateRoadmapMutation } from '@/queries/roadmap-query';
+import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-assessment-queries';
+import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/roadmap-setup-assessment-schema';
+import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
+import RoadmapSetupNavigationButton from './roadmap-setup-navigation-button';
 
 type RoadmapSetupStepsNavigationProps = {
   step: RoadmapSetupStep;
 };
+
+type Direction = 'forward' | 'backward';
+
+const containerVariants = {
+  hidden: (direction: Direction) => ({
+    opacity: 0,
+    x: direction === 'backward' ? 16 : -16,
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: {
+      duration: 0.28,
+      ease: 'easeOut',
+      when: 'beforeChildren',
+    },
+  },
+} as Variants;
 
 const RoadmapSetupAssessmentStepsNavigation = ({
   step,
@@ -30,40 +47,31 @@ const RoadmapSetupAssessmentStepsNavigation = ({
     useOutletContext<RoadmapSetupOutletContext>();
   const navigate = useNavigate();
 
-  const lastIndex = ROADMAP_SETUP_STEPS.length - 1;
-  const previousIndex = useRef(currentIndex);
+  const { mutate: generateRoadmap, isSuccess: isRoadmapGenerateSuccessed } =
+    useGenerateRoadmapMutation();
+
+  const {
+    data: roadmapSetupStatusResponse,
+    isPending: roadmpaSetupStatusPending,
+  } = useRoadmapSetupAssessmentStatusQuery();
 
   const watchedValues = useWatch<RoadmapSetupAssessmentFormValues>();
+  const lastIndex = ROADMAP_SETUP_STEPS.length - 1;
 
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const animation = useRoadmapSetupStepsNavigationAnimation(
+    currentIndex,
+    lastIndex
+  );
 
-  // edge + near-edge steps
-  const isEdgeZone =
-    currentIndex === 0 ||
-    (currentIndex === 1 && previousIndex.current === 0) ||
-    currentIndex === lastIndex ||
-    (currentIndex === lastIndex - 1 && previousIndex.current === lastIndex);
+  const actions = getRoadmapNavigationActions(step.id);
 
-  const isGoingBack =
-    previousIndex.current !== null && previousIndex.current > currentIndex;
-
-  useEffect(() => {
-    if (isEdgeZone) {
-      // reset animation so it can replay
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setShouldAnimate(false);
-
-      requestAnimationFrame(() => {
-        setShouldAnimate(true);
-      });
+  const handleSecondButtonNavigation = () => {
+    if (step.id === 'welcome') {
+      navigate('/app/dashboard');
+      return;
     }
 
-    previousIndex.current = currentIndex;
-  }, [currentIndex, isEdgeZone]);
-
-  const goBack = () => {
     const prev = ROADMAP_SETUP_STEPS[currentIndex - 1];
-
     if (prev) navigate(`/roadmap-setup-assessment/${prev.id}`);
   };
 
@@ -77,7 +85,6 @@ const RoadmapSetupAssessmentStepsNavigation = ({
 
     if (!result.success) {
       const firstErrorPath = result.error.issues[0].path[0] as string;
-
       navigate(`/roadmap-setup-assessment/${toKebab(firstErrorPath)}`);
       return;
     }
@@ -90,10 +97,18 @@ const RoadmapSetupAssessmentStepsNavigation = ({
     const next = ROADMAP_SETUP_STEPS[currentIndex + 1];
 
     if (currentIndex === lastIndex) {
-      navigate('/app/dashboard', {
-        replace: true,
-        viewTransition: true,
+      if (roadmpaSetupStatusPending) return;
+      generateRoadmap({
+        pathwayId: roadmapSetupStatusResponse!.data.pickedPathwayId,
       });
+
+      if (isRoadmapGenerateSuccessed) {
+        navigate('/app/roadmap', {
+          replace: true,
+          viewTransition: true,
+        });
+      }
+
       return;
     }
 
@@ -106,40 +121,36 @@ const RoadmapSetupAssessmentStepsNavigation = ({
   };
 
   return (
-    <div
-      className={cn(
-        'flex flex-col-reverse sm:items-center sm:flex-row max-w-xs  mx-auto w-full',
-        currentIndex === 0 || currentIndex === lastIndex
-          ? 'justify-center'
-          : 'gap-3 sm:gap-8 sm:justify-between',
-        shouldAnimate && 'transition-all duration-500 animate-in fade-in',
-        shouldAnimate &&
-          (isGoingBack ? 'slide-in-from-right-6' : 'slide-in-from-left-6')
-      )}
+    <motion.div
+      key={animation.replayKey}
+      custom={animation.direction}
+      variants={containerVariants}
+      initial={animation.shouldAnimate ? 'hidden' : false}
+      animate="visible"
+      className="flex flex-col-reverse sm:items-center sm:flex-row max-w-xs  mx-auto w-full
+        gap-3 sm:gap-8 sm:justify-between"
     >
-      {currentIndex > 0 && currentIndex < lastIndex && (
-        <Button
-          type="button"
-          variant="outline"
-          onClick={goBack}
-          disabled={isSubmitting}
-          className="py-6 sm:px-12"
-        >
-          <ChevronLeft />
-          Back
-        </Button>
-      )}
+      <RoadmapSetupNavigationButton
+        type="button"
+        variant="outline"
+        onClick={handleSecondButtonNavigation}
+        disabled={isSubmitting}
+        className="py-6 sm:px-12"
+        label={actions.secondary.label}
+        icon={actions.secondary.icon}
+        iconPosition="left"
+      />
 
-      <Button
+      <RoadmapSetupNavigationButton
         type="button"
         onClick={goNext}
         disabled={isSubmitting}
         className="py-6 sm:px-12"
-      >
-        Continue
-        <ChevronRight />
-      </Button>
-    </div>
+        label={actions.primary.label}
+        icon={actions.primary.icon}
+        iconPosition="right"
+      />
+    </motion.div>
   );
 };
 

@@ -2,11 +2,12 @@ import { useFormContext, Controller } from 'react-hook-form';
 import { Field, FieldLabel, FieldTitle, FieldContent } from '../ui/field';
 import { Checkbox } from '../ui/checkbox';
 import { Twemoji } from '../twemoji';
+import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps';
 
 interface MultiSelectFieldProps {
   name: string;
   label: string;
-  options: { value: string; label: string; emoji: string }[];
+  options: PathwayAssessmentOption[];
   maxSelect?: number;
 }
 

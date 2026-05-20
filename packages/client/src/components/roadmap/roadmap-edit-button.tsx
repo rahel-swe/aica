@@ -1,36 +1,40 @@
-import { useRoadmapDeleteMutation } from '@/queries/roadmap-query';
 import { Pencil } from 'lucide-react';
-import SpinnerBars from '../shadcn-space/spinner/spinner-06';
 import { Button } from '../ui/button';
+import RoadmapActionDialog from './roadmap-action-dialog';
+import { useRoadmapDeleteMutation } from '@/queries/roadmap-query';
+import { useNavigate } from 'react-router-dom';
 
 const RoadmapEditButton = ({ roadmapId }: { roadmapId: string }) => {
-  const { mutate, isPending } = useRoadmapDeleteMutation();
+  const { mutateAsync, isPending } = useRoadmapDeleteMutation();
+  const navigate = useNavigate();
 
-  const onDeleteClick = () => {
-    mutate(roadmapId, {
-      onError(error) {
-        console.log(error);
-      },
-    });
+  const onEdit = async () => {
+    try {
+      await mutateAsync(roadmapId);
+      navigate('/roadmap-setup-assessment', { viewTransition: true });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <Button
-      variant={'secondary'}
-      className={'w-min mx-auto px-4 relative'}
-      onClick={onDeleteClick}
-      disabled={isPending}
-    >
-      Edit Roadmap
-      <Pencil />
-      {isPending && (
-        <SpinnerBars
-          className={'my-auto absolute gap-1'}
-          barClassName="w-1"
-          heights={['3px', '15px', '3px']}
-        />
-      )}
-    </Button>
+    <RoadmapActionDialog
+      trigger={
+        <Button
+          variant="secondary"
+          className="w-min mx-auto px-4"
+          disabled={isPending}
+        >
+          Edit Roadmap
+          <Pencil />
+        </Button>
+      }
+      title="Edit roadmap?"
+      description="Continuing will delete your current roadmap and start a new assessment."
+      actionLabel="Continue"
+      actionVariant="default"
+      onAction={onEdit}
+    />
   );
 };
 

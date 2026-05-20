@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowUp } from 'lucide-react';
-import type { FormEvent } from 'react';
+import type { ChangeEvent } from 'react';
 
 type AdvisorInputBoxProps = {
   value: string;
@@ -16,15 +16,16 @@ export function AdvisorInputBox({
   onChange,
   onSubmit,
 }: AdvisorInputBoxProps) {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
+    event.target.reset();
     onSubmit();
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-4xl bg-muted p-0.5 flex items-center sm:flex-row sm:items-center sm:justify-between max-w-sm sm:max-w-xl mx-auto"
+      className="rounded-3xl bg-muted flex items-center sm:flex-row sm:items-center sm:justify-between max-w-sm sm:max-w-xl mx-auto"
     >
       <Textarea
         value={value}
@@ -37,9 +38,9 @@ export function AdvisorInputBox({
         type="submit"
         size={'icon-lg'}
         disabled={isPending || value.trim().length < 3}
-        className="size-11.5 self-end"
+        className="size-11.5 self-end me-0.5 my-0.5"
       >
-        <ArrowUp className="size-6" />
+        <ArrowUp className="size-6" strokeWidth={2.9} />
       </Button>
     </form>
   );

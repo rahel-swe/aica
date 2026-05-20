@@ -5,11 +5,11 @@ import RoadmapSetupAssessmentStepsNavigation from '@/components/roadmap/roadmap-
 import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-steps';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
+import RoadmapSetupIntroPanel from '@/components/roadmap/roadmap-setup-assessment-intro-panel';
+import RoadmapStepsPreview from '@/components/roadmap/roadmap-steps-preview';
+import { useRoadmapSetupAssessment } from '@/hooks/use-roadmap-setup-assessment';
 import { useFormContext } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import RoadmapSetupIntroPanel from '@/components/roadmap/roadmap-setup-assessment-intro-panel';
-import RoadmapSetupResultPanel from './roadmap-setup-result-panel';
-import { useRoadmapSetupAssessment } from '@/hooks/use-roadmap-setup-assessment';
 
 const RoadmapSetupAssesmentStepsPage = () => {
   const { stepId } = useParams();
@@ -34,7 +34,11 @@ const RoadmapSetupAssesmentStepsPage = () => {
         <p className="text-sm text-destructive">{String(fieldError.message)}</p>
       )}
 
-      {step.type === 'cta' && <RoadmapSetupResultPanel step={step} />}
+      {step.id === 'finish' && (
+        <div>
+          <RoadmapStepsPreview />
+        </div>
+      )}
 
       <RoadmapSetupAssessmentStepsNavigation step={step} />
     </>

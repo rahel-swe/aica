@@ -6,31 +6,40 @@ import { useState } from 'react';
 
 export default function AdvisorPage() {
   const [message, setMessage] = useState('');
+  const {
+    mutate: advisorMutate,
+    isPending,
+    data: advisorResponse,
+    isSuccess: avisorMutateSuccess,
+  } = useAdvisorMutation();
 
-  const advisorMutation = useAdvisorMutation();
-  const submitPrompt = (prompt = message) => {
+  const handleBuiltInPrompt = (prompt = message) => {
     const cleanPrompt = prompt.trim();
 
-    if (cleanPrompt.length < 3 || advisorMutation.isPending) return;
+    if (cleanPrompt.length < 3 || isPending) return;
     setMessage(cleanPrompt);
-    advisorMutation.mutate({ message: cleanPrompt });
   };
 
   return (
     <main className="h-full flex flex-col items-center justify-center">
       <section className="space-y-5">
         <AdvisorResponsePanel
-          response={advisorMutation.data?.data}
-          isPending={advisorMutation.isPending}
-          onFollowUp={submitPrompt}
+          response={advisorResponse?.data}
+          isPending={isPending}
+          onFollowUp={handleBuiltInPrompt}
         />
         <AdvisorInputBox
           value={message}
-          isPending={advisorMutation.isPending}
+          isPending={isPending}
           onChange={setMessage}
-          onSubmit={() => submitPrompt()}
+          onSubmit={() => {
+            advisorMutate({
+              message,
+            });
+            if (avisorMutateSuccess) setMessage('');
+          }}
         />
-        <AdvisorPromptGrid onPromptSelect={submitPrompt} />
+        <AdvisorPromptGrid onPromptSelect={handleBuiltInPrompt} />
       </section>
     </main>
   );

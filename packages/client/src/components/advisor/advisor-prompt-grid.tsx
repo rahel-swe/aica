@@ -28,13 +28,13 @@ export function AdvisorPromptGrid({ onPromptSelect }: AdvisorPromptGridProps) {
           whileHover={{ y: -2 }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
           onClick={() => onPromptSelect(prompt)}
-          className="group rounded-2xl border bg-card p-2 px-3 text-left shadow-sm transition-colors hover:bg-muted/60 sm:max-w-xs"
+          className="group rounded-xl border bg-card py-2 px-3 transition-colors hover:bg-muted/60 sm:max-w-xs"
         >
           <div className="flex flex-col items-start justify-between gap-3">
             <div className="flex items-center gap-2.5 text-sm">
               <Icon className={cn('size-4', tone)} />
 
-              <p className="capitalize">{intent}</p>
+              <p className="capitalize text-muted-foreground">{intent}</p>
             </div>
           </div>
         </motion.button>

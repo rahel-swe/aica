@@ -4,6 +4,7 @@ import MultiSelectField from '../form/multi-select-field';
 import SingleSelectField from '../form/single-select-field';
 
 import { cn } from '@/lib/utils';
+import { MessageCircleWarning } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 type RoadmapSetupFieldPanelProps = {
@@ -39,18 +40,6 @@ const RoadmapSetupFieldPanel = ({
         {step.title}
       </h1>
 
-      {step.description ? (
-        <p className="mx-auto -mt-6 mb-8 max-w-2xl text-center text-sm leading-6 text-muted-foreground md:text-base">
-          {step.description}
-        </p>
-      ) : null}
-
-      {step.helperText ? (
-        <p className="mx-auto -mt-4 mb-8 max-w-xl text-center text-xs leading-5 text-muted-foreground/90 md:text-sm">
-          {step.helperText}
-        </p>
-      ) : null}
-
       {step.type === 'multi-select' ? (
         <MultiSelectField
           name={step.fieldName}
@@ -63,6 +52,14 @@ const RoadmapSetupFieldPanel = ({
           label={step.title}
           options={step.options}
         />
+      )}
+      {step.helperText && (
+        <div className="mx-auto flex justify-center gap-1.5">
+          <MessageCircleWarning className="size-5 md:size-5.5" />
+          <p className="text-muted-foreground md:text-sm text-center text-xs self-end">
+            {step.helperText}
+          </p>
+        </div>
       )}
     </div>
   );

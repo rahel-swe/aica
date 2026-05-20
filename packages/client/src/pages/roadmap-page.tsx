@@ -15,12 +15,7 @@ export default function RoadmapPage() {
 
   if (isError) return <RoadmapErrorState onRetry={() => refetch()} />;
 
-  if (!roadmap)
-    return (
-      <main className="h-full rounded-[2rem] grid place-items-center">
-        <RoadmapEmptyState />
-      </main>
-    );
+  if (!roadmap) return <RoadmapEmptyState />;
 
   return (
     <main className="lg:px-8 flex flex-col md:flex-row gap-6 items-start">

@@ -1,9 +1,11 @@
-import { motion, AnimatePresence } from 'motion/react';
-import { AlertTriangle, CheckCircle2, Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import type { AdvisorResponse } from '@contracts/shared/types/advisor-types';
+import { AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import AdvisorEmptyState from './advisor-empty-state';
+import AdvisorResponsePendingState from './advisor-response-pending-state';
 
 type AdvisorResponsePanelProps = {
   response?: AdvisorResponse;
@@ -16,36 +18,9 @@ export function AdvisorResponsePanel({
   isPending,
   onFollowUp,
 }: AdvisorResponsePanelProps) {
-  if (isPending) {
-    return (
-      <Card className="rounded-2xl  bg-card shadow-sm">
-        <CardHeader>
-          <div className="flex items-center gap-2.5 text-sm font-medium text-foreground">
-            <Loader2 className="size-4 animate-spin text-muted-foreground" />
-            Reading your AICA context…
-          </div>
-          <p className="text-xs leading-5 text-muted-foreground">
-            Response is shaped around your pathway, roadmap, and
-            recommendations.
-          </p>
-        </CardHeader>
-      </Card>
-    );
-  }
+  if (isPending) return <AdvisorResponsePendingState />;
 
-  if (!response)
-    return (
-      <motion.header
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35, ease: 'easeOut' }}
-        className="flex flex-col gap-4 text-center sm:justify-between"
-      >
-        <h1 className="text-4xl font-semibold tracking-tight text-foreground">
-          Pathway &amp; roadmap guidance
-        </h1>
-      </motion.header>
-    );
+  if (!response) return <AdvisorEmptyState />;
 
   return (
     <AnimatePresence mode="wait">
