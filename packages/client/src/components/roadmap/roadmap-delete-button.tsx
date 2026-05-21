@@ -20,7 +20,7 @@ const RoadmapDeleteButton = ({ roadmapId }: { roadmapId: string }) => {
       trigger={
         <Button
           variant="destructive"
-          className="w-min mx-auto text-destructive px-4 relative"
+          className="w-min mx-auto text-destructive px-4 relative text-xs sm:text-sm"
           disabled={isPending}
         >
           Delete Roadmap

@@ -15,7 +15,7 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
       transition={{ duration: 0.45, ease: 'easeOut' }}
       className="overflow-hidden"
     >
-      <div className=" px-5 lg:px-8">
+      <div className="px-5 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl text-center py-6">
             <h1 className="text-5xl font-semibold tracking-normal relative font-heading mx-auto">

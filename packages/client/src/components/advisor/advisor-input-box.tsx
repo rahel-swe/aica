@@ -30,7 +30,7 @@ export function AdvisorInputBox({
       <Textarea
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Ask about your pthway anything!"
+        placeholder="Ask about your context anything!"
         // Ask about your pathway, roadmap, comparison, or next steps
         className="min-h-10 border-0 text-sm placeholder:text-sm placeholder: bg-transparent focus-visible:ring-0 max-h-40 no-scrollbar"
       />
@@ -40,7 +40,7 @@ export function AdvisorInputBox({
         disabled={isPending || value.trim().length < 3}
         className="size-11.5 self-end me-0.5 my-0.5"
       >
-        <ArrowUp className="size-6" strokeWidth={2.9} />
+        <ArrowUp className="size-6" strokeWidth={2.7} />
       </Button>
     </form>
   );

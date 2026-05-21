@@ -1,5 +1,5 @@
 import { ChevronLeft } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { Button } from '@/components/ui/button';
@@ -10,18 +10,23 @@ import { usePathwayPickerParams } from '@/hooks/use-picker-pathway-params';
 import DirectionStage from '@/components/direction-stage';
 import FamilyStage from '@/components/family-stage';
 import PathwayStage from '@/components/pathway-stage';
+import { usePathwayAssessmentStatusQuery } from '@/queries/pathway-assessment-query';
 
 const FINAL_PATHWAY_COUNT = 3;
 
 const PathwayRecommendedPathwaysLayout = () => {
   const {
     data: recommendationsResponse,
-    isLoading,
+    isPending: isRecommendationsPending,
     error,
   } = useRecommendationQuery();
   const { mutate, isPending: isPathwayPicking } =
     useRoadmapSetupAssessmentSubmitMutation();
   const navigate = useNavigate();
+  const {
+    data: pathwayAssessmentStatusResponse,
+    isPending: isPathwayAssessmentStatusPending,
+  } = usePathwayAssessmentStatusQuery();
 
   const {
     params,
@@ -34,14 +39,22 @@ const PathwayRecommendedPathwaysLayout = () => {
     goBack,
   } = usePathwayPickerParams();
 
-  if (isLoading)
+  if (isPathwayAssessmentStatusPending || isRecommendationsPending)
     return (
       <div className="grid min-h-dvh place-items-center">
         <SpinnerBars />
       </div>
     );
 
-  if (error) return <p className="p-6">{error.message}</p>;
+  if (!pathwayAssessmentStatusResponse?.data.completed)
+    return <Navigate to={'/pathway-assessment'} />;
+
+  if (error)
+    return (
+      <p className="p-6 text-destructive">
+        Failed fechting, Please reload the page.
+      </p>
+    );
 
   const recommendationData = recommendationsResponse?.data;
 

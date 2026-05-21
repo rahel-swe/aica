@@ -22,7 +22,7 @@ export default function AdvisorPage() {
 
   return (
     <main className="h-full flex flex-col items-center justify-center">
-      <section className="space-y-5">
+      <section className="grid gap-4">
         <AdvisorResponsePanel
           response={advisorResponse?.data}
           isPending={isPending}

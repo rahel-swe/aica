@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/static-components */
 import { useDashboardQuery } from '@/queries/dashboard-query';
 import {
   ArrowRight,
@@ -14,6 +13,7 @@ import * as React from 'react';
 
 import { DashboardErrorState } from '@/components/dashboard/dashboard-error-state';
 import { InsightsCard } from '@/components/dashboard/dashboard-insights-card';
+import { RoadmapCard } from '@/components/dashboard/dashboard-roadmap-card';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -29,20 +29,6 @@ import type {
   DashboardStatus,
 } from '@contracts/shared/types/dashboard-types';
 import { Link } from 'react-router-dom';
-import { RoadmapCard } from '@/components/dashboard/dashboard-roadmap-card';
-
-function formatRelativeDate(dateString?: string) {
-  if (!dateString) return 'Not scheduled';
-
-  const date = new Date(dateString);
-  if (Number.isNaN(date.getTime())) return dateString;
-
-  return new Intl.DateTimeFormat(undefined, {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(date);
-}
 
 function getStatusMeta(status: DashboardStatus) {
   switch (status) {
@@ -220,7 +206,7 @@ export default function DashboardPage() {
   if (isError) return <DashboardErrorState onRetry={refetch} />;
 
   return (
-    <div className="min-h-screen p-4">
+    <div className="min-h-screen">
       <div className="mx-auto flex w-full flex-col gap-2">
         <div className="grid gap-6 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-8">

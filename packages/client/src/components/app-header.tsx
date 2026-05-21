@@ -1,42 +1,87 @@
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { authClient } from '@/lib/auth-client';
-import { Bell, Search } from 'lucide-react';
+import { Bell } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import AppHeaderTabs from './app-header-tabs';
+
 import ModeToggle from './toggle-mode';
+import { Button } from './ui/button';
 
 export default function AppHeader() {
   const { data, isPending } = authClient.useSession();
 
-  if (isPending) return <p>Header loading..</p>;
-
   return (
-    <header className="sticky z-20 top-0 p-1 sm:p-2">
-      <div className="flex items-center gap-4 h-16 lg:justify-between bg-secondary/15 backdrop-blur-md rounded-full border-x">
-        <p className="text-2xl font-bold tracking-wide text-primary hidden md:block px-4">
-          AICA
-        </p>
+    <header className="sticky top-1 md:top-2 md:mx-auto z-50 border-x md:border bg-background/20 backdrop-blur-lg supports-backdrop-filter:bg-background/20 mx-1  rounded-full">
+      <div className="mx-auto flex h-16 items-center justify-between gap-3 px-3 sm:px-5">
+        <Link to="/app/dashboard" className="flex shrink-0 items-center gap-2">
+          <div className="flex items-center gap-1">
+            {/* Logo */}
+            <picture>
+              <source
+                srcSet="/dark-logo.png"
+                media="(prefers-color-scheme: dark)"
+              />
 
-        <AppHeaderTabs />
+              <img
+                src="/light-logo.png"
+                alt="Logo"
+                width={40}
+                height={40}
+                loading="eager"
+                decoding="async"
+                className="h-10 w-10 object-contain"
+              />
+            </picture>
 
-        <div className="flex items-center justify-between md:gap-x-4 w-full md:w-min px-4">
-          <ModeToggle />
-          <div className="flex items-center md:ms-auto gap-x-4">
-            <Search className="size-6.5" />
-            <Bell className="size-6.5" />
+            {/* App Name */}
+            <picture>
+              <source
+                srcSet="/dark-app-name.png"
+                media="(prefers-color-scheme: dark)"
+              />
+
+              <img
+                src="/light-app-name.png"
+                alt="App Name"
+                width={56}
+                height={20}
+                loading="eager"
+                decoding="async"
+                className="mt-2 h-5 w-14 self-end object-contain"
+              />
+            </picture>
           </div>
+        </Link>
 
+        {/* Right Actions */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Button variant={'outline'} size={'icon-lg'}>
+            <Bell className="size-5" />
+          </Button>
+
+          <ModeToggle />
+
+          {/* Profile */}
           <Link
             to="/app/profile"
-            className="rounded-full flex items-center gap-x-2 pe-3 bg-input"
+            className="hidden items-center gap-3 rounded-full bg-background/40 p-1.5 pe-4 transition-all hover:bg-accent md:flex"
           >
-            <Avatar className="size-12">
-              <AvatarFallback>{data?.user.name.substring(0, 2)}</AvatarFallback>
+            <Avatar className="size-11">
+              <AvatarFallback className="bg-primary/10 text-sm font-semibold">
+                {isPending ? '..' : data?.user.name?.slice(0, 2).toUpperCase()}
+              </AvatarFallback>
             </Avatar>
-            <div>
-              <h6 className="text-sm">{data?.user.name}</h6>
-              <p className="text-xs">{data?.user.email}</p>
-            </div>
+
+            {!isPending && (
+              <div className="max-w-40 overflow-hidden">
+                <h6 className="truncate text-sm font-semibold">
+                  {data?.user.name}
+                </h6>
+
+                <p className="truncate text-xs text-muted-foreground">
+                  {data?.user.email}
+                </p>
+              </div>
+            )}
           </Link>
         </div>
       </div>
