@@ -5,6 +5,8 @@ import type {
   RecommendationDirectionMatch,
   RecommendationFamilyMatch,
 } from '@contracts/shared/types/pathway-domain-types';
+import BackdropShapes from './backdrop-shapes';
+import RecommendationStageCheckedRadio from './recommendation-stage-checked-radio';
 
 type Props = {
   selectedDirection: RecommendationDirectionMatch;
@@ -28,18 +30,23 @@ const FamilyStage = ({
 
     <div className="flex flex-wrap gap-6 items-center justify-center">
       {directionFamilies.map((item, index) => (
-        <RecommendationFamilyCard
-          key={item.slug}
-          index={index}
-          item={item}
-          className={cn(
-            'w-full sm:max-w-max border-gray-200/75  dark:border-gray-950/75',
-            selectedFamilySlug === item.slug
-              ? 'shadow-[3px_5px_0px] shadow-primary'
-              : ''
+        <div className="relative">
+          <RecommendationFamilyCard
+            key={item.slug}
+            item={item}
+            className={cn(
+              'w-full sm:max-w-max bg-card/50 backdrop-blur-sm z-20 relative',
+              selectedFamilySlug === item.slug && 'ring-7 bg-card/70 pt-10'
+            )}
+            onTapCard={() => onSelectFamily(item.slug)}
+          />
+
+          <BackdropShapes index={index} />
+
+          {selectedFamilySlug === item.slug && (
+            <RecommendationStageCheckedRadio />
           )}
-          onTapCard={() => onSelectFamily(item.slug)}
-        />
+        </div>
       ))}
     </div>
 

@@ -102,7 +102,6 @@ export default function SignInPage() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            variant={'outline'}
             className="py-6.5 w-min mx-auto px-10"
           >
             Sign in

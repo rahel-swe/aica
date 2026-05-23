@@ -13,7 +13,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
-import { cardbgColors } from '@/constants/recommendation-constant';
 import { cn } from '@/lib/utils';
 import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
 
@@ -27,9 +26,8 @@ const PathwayRecommendationCard = ({ item, onTapCard, className }: Props) => {
   return (
     <Card
       className={cn(
-        'relative shadow-none',
+        'shadow-none',
         'transition-all animate-in fade-in slide-in-from-bottom-6 md:slide-in-from-top-6 w-full',
-        cardbgColors[item.rank! - 1],
         className
       )}
       onClick={onTapCard}
@@ -54,24 +52,22 @@ const PathwayRecommendationCard = ({ item, onTapCard, className }: Props) => {
       <Badge className="mx-auto px-3 text-md font-heading">
         Rank: {item.rank ?? 'N/A'}
       </Badge>
-      <CardContent className="flex flex-col gap-y-4">
+      <CardContent className="flex flex-col gap-y-4 w-full">
         <div className="flex flex-wrap gap-2">
           <Badge variant="secondary" className="capitalize">
             {item.type}
           </Badge>
           {item.direction ? (
-            <Badge variant="outline" className="border-black/10 text-inherit">
-              {item.direction.title}
-            </Badge>
+            <Badge variant="outline">{item.direction.title}</Badge>
           ) : null}
           {item.family ? (
-            <Badge variant="outline" className="border-black/10 text-inherit">
-              {item.family.title}
-            </Badge>
+            <Badge variant="outline">{item.family.title}</Badge>
           ) : null}
         </div>
 
-        <div className={cn('flex flex-col gap-2 rounded-2xl p-3 bg-white/15')}>
+        <div
+          className={cn('flex flex-col gap-2 rounded-2xl p-3 bg-secondary/35')}
+        >
           <p className="font-medium">Reasons</p>
           <div className="flex flex-wrap flex-col">
             {item.reasons.map((r, i) => (
@@ -85,9 +81,9 @@ const PathwayRecommendationCard = ({ item, onTapCard, className }: Props) => {
         <Accordion type="single" collapsible className="border-0">
           <AccordionItem
             value="explanation"
-            className="rounded-2xl data-[state=open]:bg-black/5 dark:data-[state=open]:bg-black/10"
+            className="rounded-2xl data-[state=open]:bg-background/35 dark:data-[state=open]:bg-background/35"
           >
-            <AccordionTrigger className="rounded-full bg-black/5 px-4 text-inherit dark:bg-black/10">
+            <AccordionTrigger className="rounded-full bg-background/10 px-4 text-inherit dark:bg-background/35">
               Why this recommendation?
             </AccordionTrigger>
             <AccordionContent className="py-4 h-full">

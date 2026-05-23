@@ -1,12 +1,12 @@
 import { Badge } from '@/components/ui/badge';
-import { cardbgColors } from '@/constants/recommendation-constant';
 import { cn } from '@/lib/utils';
 import type { RecommendationFamilyMatch } from '@contracts/shared/types/pathway-domain-types';
+import { Card, CardContent, CardFooter } from './ui/card';
 
 type Props = {
   item: RecommendationFamilyMatch;
   onTapCard?: () => void;
-  index: number;
+
   className?: string;
 };
 
@@ -19,16 +19,16 @@ const formatLabel = (value: string) =>
 const RecommendationFamilyCard = ({
   item,
   onTapCard,
-  index,
+
   className,
 }: Props) => {
   return (
-    <div
+    <Card
       key={item.slug}
-      className={cn('p-4 border rounded-3xl', cardbgColors[index], className)}
+      className={cn('shadow-none', className)}
       onClick={onTapCard}
     >
-      <div className="flex items-start justify-between gap-3">
+      <CardContent className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs opacity-85 font-medium">
             {item.direction.title}
@@ -38,20 +38,16 @@ const RecommendationFamilyCard = ({
         <Badge variant="secondary" className="font-heading">
           {item.matchPercent}%
         </Badge>
-      </div>
+      </CardContent>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <CardFooter className="mt-4 flex flex-wrap gap-2">
         {item.topPathwaySlugs.slice(0, 3).map((slug) => (
-          <Badge
-            key={slug}
-            variant="outline"
-            className="text-inherit border border-gray-900/15"
-          >
+          <Badge key={slug} variant="outline" className="border">
             {formatLabel(slug)}
           </Badge>
         ))}
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   );
 };
 export default RecommendationFamilyCard;

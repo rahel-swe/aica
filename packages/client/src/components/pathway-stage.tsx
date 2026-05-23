@@ -2,6 +2,8 @@ import GetStartedButton from '@/components/get-started-button';
 import PathwayRecommendationCard from '@/components/pathway-recommendation-card';
 import { cn } from '@/lib/utils';
 import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
+import BackdropShapes from './backdrop-shapes';
+import RecommendationStageCheckedRadio from './recommendation-stage-checked-radio';
 
 type Props = {
   pathways: RecommendationResult[];
@@ -23,18 +25,25 @@ const PathwayStage = ({
       Pick your pathway
     </h2>
 
-    <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3 items-start">
+    <div className="grid gap-7 lg:grid-cols-2 xl:grid-cols-3 items-start">
       {pathways.map((item, index) => (
-        <PathwayRecommendationCard
-          key={item.pathwayId}
-          className={cn(
-            'border border-gray-200/75  dark:border-gray-950/75',
-            selectedPathwaySlug === item.slug &&
-              'shadow-[8px_10px_0px] shadow-primary'
+        <div className="relative">
+          <PathwayRecommendationCard
+            key={item.pathwayId}
+            className={cn(
+              'rounded-[2rem] bg-card/50 backdrop-blur-sm z-20 relative',
+              selectedPathwaySlug === item.slug && 'ring-7 bg-card/70'
+            )}
+            item={{ ...item, rank: index + 1 }}
+            onTapCard={() => onSelectPathway(item.slug)}
+          />
+
+          <BackdropShapes index={index} />
+
+          {selectedPathwaySlug === item.slug && (
+            <RecommendationStageCheckedRadio className="top-5" />
           )}
-          item={{ ...item, rank: index + 1 }}
-          onTapCard={() => onSelectPathway(item.slug)}
-        />
+        </div>
       ))}
     </div>
 

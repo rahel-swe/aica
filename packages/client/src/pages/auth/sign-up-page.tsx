@@ -139,7 +139,6 @@ export default function SignUpPage() {
           )}
 
           <Button
-            variant={'outline'}
             type="submit"
             disabled={isSubmitting}
             className="py-6.5 w-min mx-auto px-10"

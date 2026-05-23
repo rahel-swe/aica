@@ -11,6 +11,7 @@ import { appImgSources } from '@/constants/app-image-sources';
 export default function AppHeader() {
   const { data, isPending } = authClient.useSession();
   const { theme } = useTheme();
+  const currentTheme = theme === 'dark' ? 'dark' : 'light';
 
   return (
     <div className="sticky top-1 px-1 md:top-2 md:mx-auto md:max-w-lg z-50 w-full">
@@ -21,10 +22,8 @@ export default function AppHeader() {
             className="flex shrink-0 items-center gap-2"
           >
             <div className="flex items-center gap-1">
-              {/* Logo */}
-
               <img
-                src={appImgSources[theme as 'light' | 'dark'].logo}
+                src={appImgSources[currentTheme].logo}
                 alt="Logo"
                 width={40}
                 height={40}
@@ -34,13 +33,13 @@ export default function AppHeader() {
               />
 
               <img
-                src={appImgSources[theme as 'light' | 'dark'].name}
+                src={appImgSources[currentTheme].name}
                 alt="App Name"
                 width={56}
                 height={20}
                 loading="eager"
                 decoding="async"
-                className="mt-2 h-5 w-14 self-end object-contain"
+                className="h-5 w-14 self-end mb-1 object-contain"
               />
             </div>
           </Link>
