@@ -26,9 +26,6 @@ type PathwayRoadmapContext = {
 type GeneratedRoadmap = {
   title: string;
   summary: string;
-  goal?: string;
-  aiSummary?: string;
-  guidanceNote?: string;
   phases: RoadmapPhase[];
   steps: RoadmapStep[];
 };
@@ -93,27 +90,25 @@ export class RoadmapGenerationService {
       const parsed = JSON.parse(jsonText.slice(startIndex, endIndex + 1)) as {
         title?: string;
         summary?: string;
-        goal?: string;
-        aiSummary?: string;
-        guidanceNote?: string;
         phases?: Array<{
           id?: string;
           phase?: string;
           title?: string;
           objective?: string;
           order?: number;
-          steps?: Array<{
-            id?: string;
-            title?: string;
-            why?: string;
-            estimatedTime?: string;
-            difficulty?: RoadmapStep['difficulty'];
-            prerequisites?: string[];
-            resources?: RoadmapResource[];
-            evidenceOfCompletion?: string;
-            status?: RoadmapStep['status'];
-            order?: number;
-          }>;
+        }>;
+        steps?: Array<{
+          id?: string;
+          phaseId?: string;
+          title?: string;
+          why?: string;
+          estimatedTime?: string;
+          difficulty?: RoadmapStep['difficulty'];
+          prerequisites?: string[];
+          resources?: RoadmapResource[];
+          evidenceOfCompletion?: string;
+          status?: RoadmapStep['status'];
+          order?: number;
         }>;
       };
 
@@ -121,54 +116,17 @@ export class RoadmapGenerationService {
         !parsed.title ||
         !parsed.summary ||
         !parsed.phases?.length ||
-        parsed.phases.length !== 3
+        parsed.phases.length !== 3 ||
+        !parsed.steps?.length
       ) {
         return null;
       }
 
-      const collectedSteps: RoadmapStep[] = [];
-
       const phases = parsed.phases
         .map((phase, phaseIndex) => {
-          if (
-            !phase.id ||
-            !phase.phase ||
-            !phase.title ||
-            !phase.objective ||
-            !phase.steps?.length
-          ) {
+          if (!phase.id || !phase.phase || !phase.title || !phase.objective) {
             return null;
           }
-
-          const steps = phase.steps
-            .map((step, stepIndex) => {
-              if (!step.id || !step.title || !step.why) {
-                return null;
-              }
-
-              return {
-                id: step.id,
-                phaseId: phase.id,
-                title: step.title,
-                why: step.why,
-                estimatedTime: step.estimatedTime,
-                difficulty: step.difficulty ?? 'medium',
-                prerequisites: step.prerequisites ?? [],
-                resources: (step.resources ?? []).filter(
-                  (resource) => !!resource?.title
-                ),
-                evidenceOfCompletion: step.evidenceOfCompletion,
-                status: step.status ?? 'pending',
-                order: step.order ?? stepIndex + 1,
-              } satisfies RoadmapStep;
-            })
-            .filter((step): step is RoadmapStep => step !== null);
-
-          if (!steps.length) {
-            return null;
-          }
-
-          collectedSteps.push(...steps);
 
           return {
             id: phase.id,
@@ -181,18 +139,52 @@ export class RoadmapGenerationService {
         })
         .filter((phase): phase is RoadmapPhase => phase !== null);
 
-      if (phases.length !== 3 || !collectedSteps.length) {
+      const phaseIds = new Set(phases.map((phase) => phase.id));
+      const steps = parsed.steps
+        .map((step, stepIndex) => {
+          if (
+            !step.id ||
+            !step.phaseId ||
+            !step.title ||
+            !step.why ||
+            !phaseIds.has(step.phaseId)
+          ) {
+            return null;
+          }
+
+          return {
+            id: step.id,
+            phaseId: step.phaseId,
+            title: step.title,
+            why: step.why,
+            estimatedTime: step.estimatedTime,
+            difficulty: step.difficulty ?? 'medium',
+            prerequisites: step.prerequisites ?? [],
+            resources: (step.resources ?? []).filter(
+              (resource) => !!resource?.title
+            ),
+            evidenceOfCompletion: step.evidenceOfCompletion,
+            status: step.status ?? 'pending',
+            order: step.order ?? stepIndex + 1,
+          } satisfies RoadmapStep;
+        })
+        .filter((step): step is RoadmapStep => step !== null);
+
+      if (phases.length !== 3 || !steps.length) {
         return null;
       }
 
       return {
         title: parsed.title,
         summary: parsed.summary,
-        goal: parsed.goal,
-        aiSummary: parsed.aiSummary,
-        guidanceNote: parsed.guidanceNote,
         phases,
-        steps: collectedSteps.sort((a, b) => a.order - b.order),
+        steps: steps.sort((a, b) => {
+          if (a.phaseId !== b.phaseId) {
+            return a.phaseId.localeCompare(b.phaseId);
+          }
+
+          return a.order - b.order;
+        }),
       };
     } catch {
       return null;
@@ -233,9 +225,6 @@ export class RoadmapGenerationService {
           ? `${input.pathway.title} next action plan`
           : `${input.pathway.title} roadmap`,
       summary: this.buildFallbackSummary(input.pathway, input.setup),
-      goal: this.buildGoal(input.pathway, input.setup),
-      aiSummary: `This roadmap is tailored to your current stage, weekly capacity, and preferred pace for progressing toward ${input.pathway.title}.`,
-      guidanceNote: input.pathway.verificationNote,
       phases,
       steps,
     };
@@ -251,64 +240,96 @@ export class RoadmapGenerationService {
     const beginnerMode = input.setup.constraints.includes('beginner');
     const noLaptop = input.setup.constraints.includes('no_laptop');
     const lowBudget = input.setup.constraints.includes('low_budget');
+    const phaseId = `phase_${input.phaseIndex + 1}`;
+    const primarySkill =
+      input.pathway.keySkills[input.phaseIndex] ??
+      input.pathway.keySkills[0] ??
+      'core pathway skill';
+    const opportunity =
+      input.pathway.opportunities[input.phaseIndex] ??
+      input.pathway.opportunities[0] ??
+      input.pathway.title;
+    const proofFormat = noLaptop
+      ? 'a one-page notebook summary or phone note'
+      : 'a one-page case study or short digital note';
 
     const baseSteps = [
       {
         id: `step_${input.phaseIndex + 1}_1`,
-        phaseId: `phase_${input.phaseIndex + 1}`,
-        title:
+        phaseId,
+        title: this.buildFirstFallbackStepTitle(input),
+        why:
           input.phaseIndex === 0
-            ? `Clarify what ${input.pathway.title} really requires`
-            : `Advance the ${input.journeyPhase.name.toLowerCase()} phase`,
-        why: input.journeyPhase.focus,
+            ? 'You need a clear view of entry requirements, time commitment, cost, and local expectations before investing deeper effort.'
+            : `This turns the ${input.journeyPhase.name.toLowerCase()} phase into one visible output instead of vague study.`,
         estimatedTime,
         difficulty: beginnerMode ? 'easy' : 'medium',
         prerequisites: [],
         resources: this.buildFallbackResources(lowBudget, noLaptop),
         evidenceOfCompletion:
           input.phaseIndex === 0
-            ? 'You can explain the pathway requirements, commitment level, and next realistic checkpoint.'
-            : 'You complete one concrete milestone related to this phase.',
+            ? `You have ${proofFormat} listing requirements, likely duration, cost concerns, and the next checkpoint.`
+            : `You have ${proofFormat} that shows the milestone, what you produced, and what you learned.`,
         status: 'pending',
         order: 1,
       },
       {
         id: `step_${input.phaseIndex + 1}_2`,
-        phaseId: `phase_${input.phaseIndex + 1}`,
-        title: `Build progress in ${input.pathway.keySkills[input.phaseIndex] ?? input.pathway.keySkills[0] ?? 'core pathway skills'}`,
+        phaseId,
+        title: `Create one proof item for ${primarySkill}`,
         why:
           input.setup.roadmapStyle === 'fast_track'
-            ? 'This keeps the roadmap practical and momentum-driven.'
-            : 'This creates usable skill proof before the next stage.',
+            ? 'A small visible output is the fastest way to test whether the work feels real and worth continuing.'
+            : 'Skill proof makes the roadmap practical instead of just a list of intentions.',
         estimatedTime,
         difficulty: input.setup.roadmapStyle === 'deep' ? 'medium' : 'easy',
         prerequisites: [],
         resources: this.buildFallbackResources(lowBudget, noLaptop),
-        evidenceOfCompletion:
-          'You finish one visible output, reflection, or proof-of-work item.',
+        evidenceOfCompletion: `You finish ${proofFormat} that explains what you tried, what you learned, and one next improvement.`,
         status: 'pending',
         order: 2,
       },
       {
         id: `step_${input.phaseIndex + 1}_3`,
-        phaseId: `phase_${input.phaseIndex + 1}`,
+        phaseId,
         title:
           input.phaseIndex === 2
-            ? 'Review fit and choose the next serious move'
-            : 'Check constraints and adjust the plan early',
-        why: 'A realistic roadmap should adapt to your time, access, and current stage instead of assuming perfect conditions.',
+            ? `Choose your next move toward ${opportunity}`
+            : 'Write a continue, change, or stop decision',
+        why:
+          input.phaseIndex === 2
+            ? 'The final phase should turn learning into a clear next action, not leave the user with unfinished notes.'
+            : 'A useful roadmap should change based on real time, access, budget, and confidence instead of assuming perfect conditions.',
         estimatedTime: '1 week',
         difficulty: 'easy',
         prerequisites: [],
         resources: [],
         evidenceOfCompletion:
-          'You update the next step based on real progress, not just intention.',
+          input.phaseIndex === 2
+            ? 'You choose one concrete next move, write why it fits, and define the first action date.'
+            : 'You write one continue/change/stop decision for the next phase based on actual progress.',
         status: 'pending',
         order: 3,
       },
     ] satisfies RoadmapStep[];
 
     return baseSteps;
+  }
+
+  private buildFirstFallbackStepTitle(input: {
+    pathway: PathwayRoadmapContext;
+    journeyPhase: PathwayJourneyPhase;
+    phaseIndex: number;
+  }) {
+    if (input.phaseIndex === 0) {
+      return `Map what ${input.pathway.title} requires in your area`;
+    }
+
+    if (input.phaseIndex === 1) {
+      return `Finish one ${input.journeyPhase.name.toLowerCase()} milestone`;
+    }
+
+    return `Prepare one entry move for ${input.pathway.title}`;
   }
 
   private buildFallbackResources(lowBudget: boolean, noLaptop: boolean) {
@@ -336,17 +357,6 @@ export class RoadmapGenerationService {
     setup: RoadmapSetupAssessmentFormValues
   ) {
     return `A ${setup.timeline}-window roadmap for ${pathway.title}, tailored to your ${setup.currentStage.replaceAll('_', ' ')} stage and ${this.mapTimeBudget(setup.weeklyTime).toLowerCase()} weekly pace.`;
-  }
-
-  private buildGoal(
-    pathway: PathwayRoadmapContext,
-    setup: RoadmapSetupAssessmentFormValues
-  ) {
-    if (pathway.durationProfile.commitmentLevel === 'long') {
-      return `Use the next ${setup.timeline} planning window to prepare for entry into ${pathway.title}.`;
-    }
-
-    return `Use the next ${setup.timeline} planning window to move closer to realistic entry into ${pathway.title}.`;
   }
 
   private mapTimeBudget(

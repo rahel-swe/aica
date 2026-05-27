@@ -52,10 +52,10 @@ export type RoadmapGenerateRequest = {
 
 export type RoadmapSourceRecommendation = {
   pathwayId: string;
-  reasons: string[];
   explanation?: string;
   totalScore: number;
 };
+
 export type PathwayRoadmap = {
   _id: string;
   pathwayId: string;
@@ -63,15 +63,11 @@ export type PathwayRoadmap = {
   status: RoadmapStatus;
   title: string;
   summary: string;
-  goal?: string;
   currentLevel?: string;
   timeBudgetPerWeek?: string;
   roadmapStyle?: RoadmapStyle;
   phases: RoadmapPhase[];
   steps: RoadmapStep[];
-  aiSummary?: string;
-  guidanceNote?: string;
-  userEdits: string[];
   lastGeneratedAt?: string;
   nextReviewAt?: string;
   sourceRecommendation?: RoadmapSourceRecommendation;

@@ -8,6 +8,7 @@ import { ExternalLink } from 'lucide-react';
 import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
 import { roadmapPhaseStatusMeta } from './roadmap-view-utils';
 import { useRoadmapStepsAndPhases } from '@/hooks/use-roadmap-steps-and-phases';
+import RoadmapStepAdvisorButton from './roadmap-step-advisor-button';
 
 const RoadmapStepDetailsCard = ({
   steps,
@@ -91,7 +92,14 @@ const RoadmapStepDetailsCard = ({
         </div>
       )}
 
-      <RoadmapStepStatusActionButton roadmapId={roadmapId} step={step} />
+      <div className="grid gap-3">
+        <RoadmapStepAdvisorButton
+          roadmapId={roadmapId}
+          phase={activePhase}
+          step={step}
+        />
+        <RoadmapStepStatusActionButton roadmapId={roadmapId} step={step} />
+      </div>
     </div>
   );
 };

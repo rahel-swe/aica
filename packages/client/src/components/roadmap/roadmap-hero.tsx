@@ -1,7 +1,7 @@
-import { Badge } from '@/components/ui/badge';
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
 import { motion } from 'motion/react';
 import { formatRoadmapStyle } from './roadmap-view-utils';
+import { Badge } from '@/components/ui/badge';
 
 type RoadmapHeroProps = {
   roadmap: PathwayRoadmap;
@@ -31,23 +31,6 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
               {roadmap.summary}
             </p>
           </div>
-
-          {/* <Sheet>
-            <SheetTrigger asChild>
-              <Button className="w-fit">
-                <Sparkles className="size-4" />
-                Guidance note
-              </Button>
-            </SheetTrigger>
-            <SheetContent className="sm:max-w-md">
-              <SheetHeader>
-                <SheetTitle>Roadmap guidance</SheetTitle>
-                <SheetDescription className="leading-6">
-                  {roadmap.guidanceNote}
-                </SheetDescription>
-              </SheetHeader>
-            </SheetContent>
-          </Sheet> */}
         </div>
       </div>
     </motion.section>

@@ -38,7 +38,6 @@ export interface IRoadmap extends Document {
 
   title: string;
   summary: string;
-  goal?: string;
 
   currentLevel?: string;
   timeBudgetPerWeek?: string;
@@ -47,17 +46,11 @@ export interface IRoadmap extends Document {
   phases: IRoadmapPhase[];
   steps: IRoadmapStep[];
 
-  aiSummary?: string;
-  userEdits?: string[];
-
-  guidanceNote?: string;
-
   lastGeneratedAt?: Date;
   nextReviewAt?: Date;
 
   sourceRecommendation?: {
     pathwayId: string;
-    reasons: string[];
     explanation?: string;
     totalScore: number;
   };
@@ -156,10 +149,6 @@ const roadmapSchema = new Schema<IRoadmap>(
       required: true,
       trim: true,
     },
-    goal: {
-      type: String,
-      trim: true,
-    },
 
     currentLevel: {
       type: String,
@@ -183,20 +172,6 @@ const roadmapSchema = new Schema<IRoadmap>(
       default: [],
     },
 
-    aiSummary: {
-      type: String,
-      trim: true,
-    },
-    userEdits: {
-      type: [String],
-      default: [],
-    },
-
-    guidanceNote: {
-      type: String,
-      trim: true,
-    },
-
     lastGeneratedAt: {
       type: Date,
     },
@@ -207,7 +182,6 @@ const roadmapSchema = new Schema<IRoadmap>(
     sourceRecommendation: {
       type: {
         pathwayId: String,
-        reasons: [String],
         explanation: String,
         totalScore: Number,
       },

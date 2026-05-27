@@ -24,6 +24,13 @@ export const advisorContextSourceSchema = z.enum([
 
 export const advisorChatRequestSchema = z.object({
   message: z.string().trim().min(3).max(800),
+  roadmapStep: z
+    .object({
+      roadmapId: z.string().min(1),
+      phaseId: z.string().min(1),
+      stepId: z.string().min(1),
+    })
+    .optional(),
   // Reserved for conversation history support — not active yet.
   // Include now so clients don't need a breaking change when we wire it up.
   conversationId: z.string().uuid().optional(),

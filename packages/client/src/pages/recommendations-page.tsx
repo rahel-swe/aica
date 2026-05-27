@@ -33,11 +33,10 @@ export default function RecommendationPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        {directionMatches.map((direction, index) => (
+        {directionMatches.map((direction) => (
           <RecommendationDirectionCard
             key={direction.slug}
             item={direction}
-            index={index}
             // className="shadow-[7px_9px_0px] shadow-primary"
           />
         ))}
@@ -52,7 +51,7 @@ export default function RecommendationPage() {
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {familyMatches.map((item) => (
-            <RecommendationFamilyStrip item={item} />
+            <RecommendationFamilyStrip key={item.slug} item={item} />
           ))}
         </div>
       </div>

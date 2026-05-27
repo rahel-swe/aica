@@ -22,30 +22,40 @@ type RecommendationItem = {
   slug: string;
   rank: number;
   totalScore: number;
-  reasons: string[];
+  reasons?: string[];
 };
 
 type RoadmapPhase = {
+  id: string;
+  phase: string;
   title: string;
   objective: string;
-  steps: Array<{
-    title: string;
-    status: string;
-    estimatedTime: string;
-    difficulty: string;
-  }>;
+  status: string;
+  order: number;
+};
+
+type RoadmapStep = {
+  id: string;
+  phaseId: string;
+  title: string;
+  why: string;
+  status: string;
+  estimatedTime?: string;
+  difficulty?: string;
+  evidenceOfCompletion?: string;
+  order: number;
 };
 
 type RoadmapData = {
   pathwayId: string;
   title: string;
   summary: string;
-  goal: string;
-  currentLevel: string;
-  timeBudgetPerWeek: number;
-  roadmapStyle: string;
-  nextReviewAt: Date | string;
+  currentLevel?: string;
+  timeBudgetPerWeek?: string;
+  roadmapStyle?: string;
+  nextReviewAt?: Date | string;
   phases: RoadmapPhase[];
+  steps: RoadmapStep[];
 };
 
 type PathwayData = {
@@ -72,6 +82,10 @@ type AdvisorContext = {
   selectedPathway: PathwayData | null;
   roadmapSetup: RoadmapSetupData | null;
   roadmap: RoadmapData | null;
+  selectedRoadmapStep: {
+    phase: RoadmapPhase | null;
+    step: RoadmapStep;
+  } | null;
 };
 
 // ─── Static fallback ─────────────────────────────────────────────────────────
@@ -163,12 +177,15 @@ export class AdvisorService {
           .then((p) => p as PathwayData | null)
       : null;
 
+    const roadmapContext = roadmap as RoadmapData | null;
+
     return {
       onboarding,
       recommendations,
       selectedPathway,
       roadmapSetup: roadmapSetup as RoadmapSetupData | null,
-      roadmap: roadmap as RoadmapData | null,
+      roadmap: roadmapContext,
+      selectedRoadmapStep: null,
     };
   }
 
@@ -182,11 +199,19 @@ export class AdvisorService {
       .replace('{{message}}', request.message)
       .replace(
         '{{context}}',
-        JSON.stringify(this.summarizeContext(context), null, 2)
+        JSON.stringify(this.summarizeContext(request, context), null, 2)
       );
   }
 
-  private summarizeContext(context: AdvisorContext) {
+  private summarizeContext(
+    request: AdvisorChatRequest,
+    context: AdvisorContext
+  ) {
+    const selectedRoadmapStep = this.resolveSelectedRoadmapStep(
+      request,
+      context.roadmap
+    );
+
     return {
       onboarding: context.onboarding,
 
@@ -195,7 +220,7 @@ export class AdvisorService {
         slug: r.slug,
         rank: r.rank,
         totalScore: r.totalScore,
-        reasons: r.reasons,
+        reasons: r.reasons ?? [],
       })),
 
       selectedPathway: context.selectedPathway
@@ -219,23 +244,62 @@ export class AdvisorService {
         ? {
             title: context.roadmap.title,
             summary: context.roadmap.summary,
-            goal: context.roadmap.goal,
             currentLevel: context.roadmap.currentLevel,
             timeBudgetPerWeek: context.roadmap.timeBudgetPerWeek,
             roadmapStyle: context.roadmap.roadmapStyle,
             nextReviewAt: context.roadmap.nextReviewAt,
             phases: context.roadmap.phases?.map((phase) => ({
+              id: phase.id,
+              phase: phase.phase,
               title: phase.title,
               objective: phase.objective,
-              steps: phase.steps?.map((step) => ({
-                title: step.title,
-                status: step.status,
-                estimatedTime: step.estimatedTime,
-                difficulty: step.difficulty,
-              })),
+              status: phase.status,
+              order: phase.order,
+            })),
+            steps: context.roadmap.steps?.map((step) => ({
+              id: step.id,
+              phaseId: step.phaseId,
+              title: step.title,
+              why: step.why,
+              status: step.status,
+              estimatedTime: step.estimatedTime,
+              difficulty: step.difficulty,
+              evidenceOfCompletion: step.evidenceOfCompletion,
+              order: step.order,
             })),
           }
         : null,
+
+      selectedRoadmapStep,
+    };
+  }
+
+  private resolveSelectedRoadmapStep(
+    request: AdvisorChatRequest,
+    roadmap: RoadmapData | null
+  ) {
+    if (!request.roadmapStep || !roadmap) {
+      return null;
+    }
+
+    const step = roadmap.steps?.find(
+      (item) =>
+        item.id === request.roadmapStep?.stepId &&
+        item.phaseId === request.roadmapStep?.phaseId
+    );
+
+    if (!step) {
+      return null;
+    }
+
+    const phase =
+      roadmap.phases?.find(
+        (item) => item.id === request.roadmapStep?.phaseId
+      ) ?? null;
+
+    return {
+      phase,
+      step,
     };
   }
 

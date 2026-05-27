@@ -14,8 +14,8 @@ export default function AppHeader() {
   const currentTheme = theme === 'dark' ? 'dark' : 'light';
 
   return (
-    <div className="sticky top-1 px-1 md:top-2 md:mx-auto md:max-w-lg z-50 w-full">
-      <header className=" border-x md:border bg-background/20 backdrop-blur-lg supports-backdrop-filter:bg-background/20  rounded-full w-full">
+    <div className="sticky top-1 px-1 max-w-sm mx-auto md:top-2 md:mx-auto md:max-w-lg z-50 w-full">
+      <header className="border-x md:border bg-background/20 backdrop-blur-lg supports-backdrop-filter:bg-background/20  rounded-full w-full">
         <div className="mx-auto flex h-16 items-center justify-between gap-3 px-3 sm:px-5">
           <Link
             to="/app/dashboard"

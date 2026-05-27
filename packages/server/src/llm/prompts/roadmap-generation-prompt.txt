@@ -15,6 +15,7 @@ Important rules:
 - Match the output to the roadmap model and types exactly.
 - Include every required field from the schema, including phase status, step status, and step phaseId.
 - Make steps belong to phases through phaseId.
+- Return steps as a top-level array, not nested inside phases.
 - Keep phase IDs and step IDs unique.
 - Do not invent extra fields outside the schema.
 
@@ -31,12 +32,6 @@ Return JSON in this exact shape:
 {
   "title": "string",
   "summary": "string",
-  "goal": "string",
-  "currentLevel": "string",
-  "timeBudgetPerWeek": "string",
-  "roadmapStyle": "fast_track | balanced | deep",
-  "aiSummary": "string",
-  "guidanceNote": "string",
   "phases": [
     {
       "id": "phase_1",
@@ -87,6 +82,10 @@ Requirements for steps:
 - Keep the first phase simpler for beginners.
 - Prefer lightweight or free-friendly actions for low budget or weak internet.
 - If the user has no laptop, do not make laptop-dependent work an immediate requirement unless unavoidable.
+- Every step title must name a concrete action and output.
+- Avoid generic titles such as "Advance the phase", "Build progress", "Learn more", or "Check constraints".
+- Each step must create visible evidence: a checklist, short note, comparison table, mini project, practice result, portfolio item, application draft, interview summary, or decision record.
+- Use resources only when they are generally useful; do not add fake URLs.
 
 Requirements for quality:
 - Tailor difficulty and estimated time to the user's weekly time, constraints, and roadmap style.
