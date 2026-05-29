@@ -1,7 +1,7 @@
 import type {
   PathwayDurationProfile,
   PathwayJourneyPhase,
-  RecommendationResult,
+  RecommendationItem,
 } from '@contracts/shared/types/pathway-domain-types';
 import type {
   RoadmapPhase,
@@ -11,9 +11,14 @@ import type {
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 import { llmClient } from '../llm/llm-client';
 import roadmapGenerationPrompt from '@/src/llm/prompts/roadmap-generation-prompt.txt';
+import {
+  roadmapSourceRefreshService,
+  type RoadmapSourceNote,
+} from './roadmap-source-refresh-service';
 
 type PathwayRoadmapContext = {
   title: string;
+  slug: string;
   summary: string;
   description: string;
   keySkills: string[];
@@ -30,49 +35,91 @@ type GeneratedRoadmap = {
   steps: RoadmapStep[];
 };
 
+type RoadmapGenerationInput = {
+  pathway: PathwayRoadmapContext;
+  setup: RoadmapSetupAssessmentFormValues;
+  recommendation?: RecommendationItem;
+};
+
+type RoadmapTargetContext = {
+  level: 'pathway';
+  title: string;
+  slug: string;
+  timelineType: PathwayDurationProfile['timelineType'];
+  commitmentLevel: PathwayDurationProfile['commitmentLevel'];
+  degreeRequirement: PathwayDurationProfile['degreeRequirement'];
+  requiresLicense: boolean;
+  localRulesRequired: boolean;
+  roadmapWindowLabel: string;
+};
+
 export class RoadmapGenerationService {
   private readonly llmClient = llmClient;
+  private readonly sourceRefreshService = roadmapSourceRefreshService;
 
-  async generateStructuredRoadmap(input: {
-    pathway: PathwayRoadmapContext;
-    setup: RoadmapSetupAssessmentFormValues;
-    recommendation?: RecommendationResult;
-  }): Promise<GeneratedRoadmap> {
-    if (!process.env.HF_TOKEN) {
-      return this.buildFallbackRoadmap(input);
-    }
+  async generateStructuredRoadmap(
+    input: RoadmapGenerationInput
+  ): Promise<GeneratedRoadmap> {
+    const targetContext = this.buildTargetContext(input.pathway);
 
-    try {
-      const response = await this.llmClient.createTextCompletion(
-        this.renderPrompt(input)
-      );
-      const parsed = this.parseGeneratedRoadmap(response);
+    if (!process.env.HF_TOKEN)
+      throw new Error('Roadmap generation failed because HF_TOKEN is missing.');
 
-      if (!parsed) {
-        return this.buildFallbackRoadmap(input);
-      }
+    const sourceNotes = await this.sourceRefreshService.getSourceNotes(
+      input.pathway
+    );
 
-      return parsed;
-    } catch {
-      return this.buildFallbackRoadmap(input);
-    }
+    const response = await this.llmClient.createTextCompletion(
+      this.renderPrompt({ ...input, targetContext, sourceNotes })
+    );
+
+    const parsed = this.parseGeneratedRoadmap(response);
+
+    if (!parsed) throw new Error('Roadmap parsing failed');
+
+    return parsed;
   }
 
-  private renderPrompt(input: {
-    pathway: PathwayRoadmapContext;
-    setup: RoadmapSetupAssessmentFormValues;
-    recommendation?: RecommendationResult;
-  }) {
+  private renderPrompt(
+    input: RoadmapGenerationInput & {
+      targetContext: RoadmapTargetContext;
+      sourceNotes: RoadmapSourceNote[];
+    }
+  ) {
     return roadmapGenerationPrompt
       .replace(
         '{{pathway_json}}',
         JSON.stringify(input.pathway, null, 2) || '{}'
       )
+      .replace(
+        '{{target_context_json}}',
+        JSON.stringify(input.targetContext, null, 2) || '{}'
+      )
       .replace('{{setup_json}}', JSON.stringify(input.setup, null, 2) || '{}')
       .replace(
         '{{recommendation_json}}',
         JSON.stringify(input.recommendation ?? null, null, 2)
+      )
+      .replace(
+        '{{source_notes_json}}',
+        JSON.stringify(input.sourceNotes, null, 2) || '[]'
       );
+  }
+
+  private buildTargetContext(
+    pathway: PathwayRoadmapContext
+  ): RoadmapTargetContext {
+    return {
+      level: 'pathway',
+      title: pathway.title,
+      slug: pathway.slug,
+      timelineType: pathway.durationProfile.timelineType,
+      commitmentLevel: pathway.durationProfile.commitmentLevel,
+      degreeRequirement: pathway.durationProfile.degreeRequirement,
+      requiresLicense: pathway.durationProfile.requiresLicense,
+      localRulesRequired: pathway.durationProfile.localRulesRequired,
+      roadmapWindowLabel: pathway.durationProfile.roadmapWindowLabel,
+    };
   }
 
   private parseGeneratedRoadmap(response: string): GeneratedRoadmap | null {
@@ -82,9 +129,7 @@ export class RoadmapGenerationService {
     const startIndex = jsonText.indexOf('{');
     const endIndex = jsonText.lastIndexOf('}');
 
-    if (startIndex === -1 || endIndex === -1) {
-      return null;
-    }
+    if (startIndex === -1 || endIndex === -1) return null;
 
     try {
       const parsed = JSON.parse(jsonText.slice(startIndex, endIndex + 1)) as {
@@ -158,21 +203,17 @@ export class RoadmapGenerationService {
             title: step.title,
             why: step.why,
             estimatedTime: step.estimatedTime,
-            difficulty: step.difficulty ?? 'medium',
+            difficulty: this.normalizeStepDifficulty(step.difficulty),
             prerequisites: step.prerequisites ?? [],
-            resources: (step.resources ?? []).filter(
-              (resource) => !!resource?.title
-            ),
+            resources: this.normalizeResources(step.resources),
             evidenceOfCompletion: step.evidenceOfCompletion,
-            status: step.status ?? 'pending',
+            status: this.normalizeStepStatus(step.status),
             order: step.order ?? stepIndex + 1,
           } satisfies RoadmapStep;
         })
         .filter((step): step is RoadmapStep => step !== null);
 
-      if (phases.length !== 3 || !steps.length) {
-        return null;
-      }
+      if (phases.length !== 3 || !steps.length) return null;
 
       return {
         title: parsed.title,
@@ -191,181 +232,37 @@ export class RoadmapGenerationService {
     }
   }
 
-  private buildFallbackRoadmap(input: {
-    pathway: PathwayRoadmapContext;
-    setup: RoadmapSetupAssessmentFormValues;
-    recommendation?: RecommendationResult;
-  }): GeneratedRoadmap {
-    const journeyPhases = input.pathway.journeyPhases.slice(0, 3);
-    const phaseNames = ['foundation', 'practice', 'positioning'];
+  private normalizeStepDifficulty(value?: RoadmapStep['difficulty']) {
+    if (value === 'easy' || value === 'medium' || value === 'hard')
+      return value;
 
-    const steps = journeyPhases.flatMap((journeyPhase, index) =>
-      this.buildFallbackSteps({
-        pathway: input.pathway,
-        setup: input.setup,
-        journeyPhase,
-        phaseIndex: index,
-      })
-    );
-
-    const phases = journeyPhases.map((journeyPhase, index) => {
-      return {
-        id: `phase_${index + 1}`,
-        phase: phaseNames[index] ?? `phase_${index + 1}`,
-        title: journeyPhase.name,
-        objective: journeyPhase.focus,
-        order: index + 1,
-        status: 'pending',
-      } satisfies RoadmapPhase;
-    });
-
-    return {
-      title:
-        input.pathway.durationProfile.commitmentLevel === 'long'
-          ? `${input.pathway.title} next action plan`
-          : `${input.pathway.title} roadmap`,
-      summary: this.buildFallbackSummary(input.pathway, input.setup),
-      phases,
-      steps,
-    };
+    return 'medium';
   }
 
-  private buildFallbackSteps(input: {
-    pathway: PathwayRoadmapContext;
-    setup: RoadmapSetupAssessmentFormValues;
-    journeyPhase: PathwayJourneyPhase;
-    phaseIndex: number;
-  }): RoadmapStep[] {
-    const estimatedTime = this.mapTimeBudget(input.setup.weeklyTime);
-    const beginnerMode = input.setup.constraints.includes('beginner');
-    const noLaptop = input.setup.constraints.includes('no_laptop');
-    const lowBudget = input.setup.constraints.includes('low_budget');
-    const phaseId = `phase_${input.phaseIndex + 1}`;
-    const primarySkill =
-      input.pathway.keySkills[input.phaseIndex] ??
-      input.pathway.keySkills[0] ??
-      'core pathway skill';
-    const opportunity =
-      input.pathway.opportunities[input.phaseIndex] ??
-      input.pathway.opportunities[0] ??
-      input.pathway.title;
-    const proofFormat = noLaptop
-      ? 'a one-page notebook summary or phone note'
-      : 'a one-page case study or short digital note';
+  private normalizeStepStatus(value?: RoadmapStep['status']) {
+    if (value === 'pending' || value === 'in_progress' || value === 'completed')
+      return value;
 
-    const baseSteps = [
-      {
-        id: `step_${input.phaseIndex + 1}_1`,
-        phaseId,
-        title: this.buildFirstFallbackStepTitle(input),
-        why:
-          input.phaseIndex === 0
-            ? 'You need a clear view of entry requirements, time commitment, cost, and local expectations before investing deeper effort.'
-            : `This turns the ${input.journeyPhase.name.toLowerCase()} phase into one visible output instead of vague study.`,
-        estimatedTime,
-        difficulty: beginnerMode ? 'easy' : 'medium',
-        prerequisites: [],
-        resources: this.buildFallbackResources(lowBudget, noLaptop),
-        evidenceOfCompletion:
-          input.phaseIndex === 0
-            ? `You have ${proofFormat} listing requirements, likely duration, cost concerns, and the next checkpoint.`
-            : `You have ${proofFormat} that shows the milestone, what you produced, and what you learned.`,
-        status: 'pending',
-        order: 1,
-      },
-      {
-        id: `step_${input.phaseIndex + 1}_2`,
-        phaseId,
-        title: `Create one proof item for ${primarySkill}`,
-        why:
-          input.setup.roadmapStyle === 'fast_track'
-            ? 'A small visible output is the fastest way to test whether the work feels real and worth continuing.'
-            : 'Skill proof makes the roadmap practical instead of just a list of intentions.',
-        estimatedTime,
-        difficulty: input.setup.roadmapStyle === 'deep' ? 'medium' : 'easy',
-        prerequisites: [],
-        resources: this.buildFallbackResources(lowBudget, noLaptop),
-        evidenceOfCompletion: `You finish ${proofFormat} that explains what you tried, what you learned, and one next improvement.`,
-        status: 'pending',
-        order: 2,
-      },
-      {
-        id: `step_${input.phaseIndex + 1}_3`,
-        phaseId,
-        title:
-          input.phaseIndex === 2
-            ? `Choose your next move toward ${opportunity}`
-            : 'Write a continue, change, or stop decision',
-        why:
-          input.phaseIndex === 2
-            ? 'The final phase should turn learning into a clear next action, not leave the user with unfinished notes.'
-            : 'A useful roadmap should change based on real time, access, budget, and confidence instead of assuming perfect conditions.',
-        estimatedTime: '1 week',
-        difficulty: 'easy',
-        prerequisites: [],
-        resources: [],
-        evidenceOfCompletion:
-          input.phaseIndex === 2
-            ? 'You choose one concrete next move, write why it fits, and define the first action date.'
-            : 'You write one continue/change/stop decision for the next phase based on actual progress.',
-        status: 'pending',
-        order: 3,
-      },
-    ] satisfies RoadmapStep[];
-
-    return baseSteps;
+    return 'pending';
   }
 
-  private buildFirstFallbackStepTitle(input: {
-    pathway: PathwayRoadmapContext;
-    journeyPhase: PathwayJourneyPhase;
-    phaseIndex: number;
-  }) {
-    if (input.phaseIndex === 0) {
-      return `Map what ${input.pathway.title} requires in your area`;
-    }
+  private normalizeResources(resources?: RoadmapResource[]) {
+    const allowedTypes = new Set<RoadmapResource['type']>([
+      'course',
+      'video',
+      'article',
+      'project',
+      'tool',
+      'other',
+    ]);
 
-    if (input.phaseIndex === 1) {
-      return `Finish one ${input.journeyPhase.name.toLowerCase()} milestone`;
-    }
-
-    return `Prepare one entry move for ${input.pathway.title}`;
-  }
-
-  private buildFallbackResources(lowBudget: boolean, noLaptop: boolean) {
-    const resources: RoadmapResource[] = [];
-
-    if (lowBudget) {
-      resources.push({
-        title: 'Prefer free or low-cost learning resources for this step',
-        type: 'other',
-      });
-    }
-
-    if (noLaptop) {
-      resources.push({
-        title: 'Use mobile-friendly or offline-light materials where possible',
-        type: 'other',
-      });
-    }
-
-    return resources;
-  }
-
-  private buildFallbackSummary(
-    pathway: PathwayRoadmapContext,
-    setup: RoadmapSetupAssessmentFormValues
-  ) {
-    return `A ${setup.timeline}-window roadmap for ${pathway.title}, tailored to your ${setup.currentStage.replaceAll('_', ' ')} stage and ${this.mapTimeBudget(setup.weeklyTime).toLowerCase()} weekly pace.`;
-  }
-
-  private mapTimeBudget(
-    weeklyTime: RoadmapSetupAssessmentFormValues['weeklyTime']
-  ) {
-    if (weeklyTime === 'low') return '2-4 hours per week';
-    if (weeklyTime === 'medium') return '5-7 hours per week';
-    if (weeklyTime === 'high') return '8-12 hours per week';
-    return '13+ hours per week';
+    return (resources ?? [])
+      .filter((resource) => !!resource?.title)
+      .map((resource) => ({
+        title: resource.title,
+        url: resource.url,
+        type: allowedTypes.has(resource.type) ? resource.type : 'other',
+      }));
   }
 }
 

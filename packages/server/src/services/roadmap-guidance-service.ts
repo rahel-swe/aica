@@ -1,7 +1,7 @@
 import type {
   PathwayDurationProfile,
   PathwayJourneyPhase,
-  RecommendationResult,
+  RecommendationItem,
 } from '@contracts/shared/types/pathway-domain-types';
 import { llmClient } from '../llm/llm-client';
 import roadmapGuidancePrompt from '@/src/llm/prompts/roadmap-guidance-prompt.txt';
@@ -14,7 +14,7 @@ type RoadmapPromptInput = {
   durationProfile: PathwayDurationProfile;
   journeyPhases: PathwayJourneyPhase[];
   verificationNote?: string;
-  recommendation?: RecommendationResult;
+  recommendation?: RecommendationItem;
 };
 
 export class RoadmapGuidanceService {

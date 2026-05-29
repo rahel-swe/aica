@@ -5,26 +5,6 @@ import type {
 
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
-// export type RoadmapCurrentStage =
-//   | 'high_school'
-//   | 'university'
-//   | 'graduate'
-//   | 'self_learning'
-//   | 'working';
-
-// export type RoadmapWeeklyTime = 'low' | 'medium' | 'high' | 'intense';
-
-// export type RoadmapTimeline = 'short' | 'medium' | 'long';
-
-// export type RoadmapConstraint =
-//   | 'low_budget'
-//   | 'weak_internet'
-//   | 'no_laptop'
-//   | 'beginner'
-//   | 'fast_track';
-
-// export type RoadmapStyle = 'fast_track' | 'balanced' | 'deep';
-
 export const roadmapSetupDefaultValues: RoadmapSetupAssessmentFormValues = {
   constraints: [],
   currentStage: 'self_learning',
@@ -33,7 +13,6 @@ export const roadmapSetupDefaultValues: RoadmapSetupAssessmentFormValues = {
   weeklyTime: 'medium',
 };
 
-// Roadmap step IDs
 export type RoadmapStepId =
   | 'welcome'
   | 'current-stage'
@@ -43,7 +22,6 @@ export type RoadmapStepId =
   | 'roadmap-style'
   | 'finish';
 
-// Roadmap step type (reuse existing OnboardingStepType)
 export type RoadmapSetupStep = {
   id: RoadmapStepId;
   type: PathwayAssessmentStepType;
@@ -96,25 +74,25 @@ const currentStageOptions: PathwayAssessmentOption[] = [
 const weeklyTimeOptions: PathwayAssessmentOption[] = [
   {
     value: 'low',
-    label: '2-4 hours',
+    label: '2-4 hours / week',
     description: 'Light pace for small consistent progress each week.',
     emoji: '🐢',
   },
   {
     value: 'medium',
-    label: '5-7 hours',
+    label: '5-8 hours / week',
     description: 'A realistic steady pace for most people.',
     emoji: '⚖️',
   },
   {
     value: 'high',
-    label: '8-12 hours',
+    label: '9-12 hours / week',
     description: 'Focused effort with faster visible progress.',
     emoji: '🚀',
   },
   {
     value: 'intense',
-    label: '13+ hours',
+    label: '13+ hours / week',
     description: 'An accelerated pace that needs strong weekly consistency.',
     emoji: '🔥',
   },
@@ -124,20 +102,21 @@ const timelineOptions: PathwayAssessmentOption[] = [
   {
     value: 'short',
     label: '4-6 weeks',
-    description: 'Optimize for a quick start and immediate traction.',
+    description: 'A short first action window for quick clarity and traction.',
     emoji: '⚡',
   },
   {
     value: 'medium',
     label: '2-3 months',
-    description: 'A balanced planning window with strong visible progress.',
+    description:
+      'A balanced first action window for visible progress without overload.',
     emoji: '📈',
   },
   {
     value: 'long',
     label: '4-6 months',
     description:
-      'A longer action window for stronger foundations and better sequencing.',
+      'The longest first action window, useful for foundations and sequencing.',
     emoji: '🏗️',
   },
 ];
@@ -178,7 +157,7 @@ const constraintOptions: PathwayAssessmentOption[] = [
 const roadmapStyleOptions: PathwayAssessmentOption[] = [
   {
     value: 'fast_track',
-    label: 'Move faster',
+    label: 'Fast practical progress',
     description:
       'Bias toward practical momentum, earlier output, and faster entry steps.',
     emoji: '🚀',
@@ -203,14 +182,14 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
   {
     id: 'welcome',
     type: 'intro',
-    title: "Let's Setup your Roadmap",
+    title: "Let's set up your first action plan",
     helperText:
-      'Be realistic. The better your inputs, the more useful your roadmap will be.',
+      'This will shape your next realistic roadmap window, not your full career timeline.',
   },
   {
     id: 'current-stage',
     type: 'single-select',
-    title: 'Where are you starting from right now?',
+    title: 'Where are you starting from?',
     fieldName: 'currentStage',
     options: currentStageOptions,
   },
@@ -224,16 +203,16 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
   {
     id: 'timeline',
     type: 'single-select',
-    title: 'What planning window should this roadmap optimize for?',
+    title: 'How far should this first roadmap plan ahead?',
     helperText:
-      'This is the first action window, not the full career duration.',
+      'AICA plans the next action window here. Long careers still have a separate full pathway timeline.',
     fieldName: 'timeline',
     options: timelineOptions,
   },
   {
     id: 'constraints',
     type: 'multi-select',
-    title: 'What should the roadmap work around?',
+    title: 'What could make progress harder?',
     fieldName: 'constraints',
     minSelect: 0,
     maxSelect: 3,
@@ -242,7 +221,7 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
   {
     id: 'roadmap-style',
     type: 'single-select',
-    title: 'How should the roadmap feel?',
+    title: 'What kind of plan fits you best?',
     fieldName: 'roadmapStyle',
     options: roadmapStyleOptions,
   },

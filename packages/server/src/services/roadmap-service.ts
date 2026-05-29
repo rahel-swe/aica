@@ -1,7 +1,7 @@
 import type {
   PathwayDurationProfile,
   PathwayJourneyPhase,
-  RecommendationResult,
+  RecommendationItem,
 } from '@contracts/shared/types/pathway-domain-types';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 import { pathwayRepository } from '../repositories/pathway-repository';
@@ -9,11 +9,7 @@ import { recommendationRepository } from '../repositories/recommendation-reposit
 import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 import { roadmapGenerationService } from './roadmap-generation-service';
-import type {
-  PathwayRoadmap,
-  RoadmapStep,
-  RoadmapStepStatus,
-} from '@contracts/shared/types/roadmap-types';
+import type { RoadmapStepStatus } from '@contracts/shared/types/roadmap-types';
 import type { IRoadmap, IRoadmapStep } from '../models/roadmap-model';
 
 type PathwayDetailRecord = {
@@ -41,33 +37,29 @@ export class RoadmapService {
     const pathway =
       await this.pathwayRepository.findActiveDetailByIdOrSlug(pathwayId);
 
-    if (!pathway) {
-      throw new Error('Pathway not found.');
-    }
+    if (!pathway) throw new Error('Pathway not found.');
 
     const roadmapSetup =
       await this.roadmapSetupAssessmentRepository.findByUserId(userId);
 
-    if (!roadmapSetup) {
+    if (!roadmapSetup)
       throw new Error(
         'Complete roadmap setup assessment before generating a roadmap.'
       );
-    }
 
     const savedRecommendations =
       await this.recommendationRepository.findByUserId(userId);
     const recommendation = savedRecommendations.find(
-      (item) => String(item.pathwayId) === String(pathway._id)
+      (recom) => String(recom.pathwayId) === String(pathway._id)
     );
 
     const pathwayContext = pathway as unknown as PathwayDetailRecord;
+
     const generated =
       await this.roadmapGenerationService.generateStructuredRoadmap({
         pathway: pathwayContext,
         setup: roadmapSetup as unknown as RoadmapSetupAssessmentFormValues,
-        recommendation: recommendation
-          ? this.mapRecommendation(recommendation)
-          : undefined,
+        recommendation: recommendation as unknown as RecommendationItem,
       });
 
     const currentLevel = this.mapCurrentLevel(
@@ -133,7 +125,11 @@ export class RoadmapService {
     if (!roadmap) return result;
 
     const updatedStep = roadmap.steps.find((s) => s.id === stepId);
-    if (!updatedStep) return result; // defensive
+    if (!updatedStep) return result;
+
+    // Start next step automaticly, later we might controll through settings
+
+    this.startNextStep(roadmap, roadmapId, userId, updatedStep.id);
 
     this.syncPhaseStatus(roadmap, roadmapId, userId, updatedStep.phaseId);
 
@@ -179,10 +175,35 @@ export class RoadmapService {
       );
 
     if (newStatus === 'completed')
-      await this.advanceToNextPhase(roadmap, roadmapId, userId, phase.order);
+      await this.startNextPhase(roadmap, roadmapId, userId, phase.order);
   }
 
-  private async advanceToNextPhase(
+  private async startNextStep(
+    roadmap: IRoadmap,
+    roadmapId: string,
+    userId: string,
+    updatedStepId: string
+  ) {
+    const step = roadmap.steps.find((s) => s.id === updatedStepId);
+
+    if (!step) return;
+
+    if (step.status === 'completed') {
+      const nextStep = roadmap.steps
+        .sort((a, b) => a.order - b.order)
+        .find((s) => s.order > step.order && s.status === 'pending');
+
+      if (nextStep)
+        this.roadmapRepository.changeStepStatus(
+          roadmapId,
+          userId,
+          nextStep.id,
+          'in_progress'
+        );
+    }
+  }
+
+  private async startNextPhase(
     roadmap: IRoadmap,
     roadmapId: string,
     userId: string,
@@ -220,22 +241,6 @@ export class RoadmapService {
     return result;
   }
 
-  private mapRecommendation(recommendation: any): RecommendationResult {
-    return {
-      pathwayId: String(recommendation.pathwayId),
-      title: recommendation.title,
-      slug: recommendation.slug,
-      type: recommendation.type,
-      summary: recommendation.summary,
-      totalScore: recommendation.totalScore,
-      dimensionScores: recommendation.dimensionScores,
-      reasons: recommendation.reasons ?? [],
-      explanation: recommendation.explanation,
-      rank: recommendation.rank,
-      matchingVersion: recommendation.matchingVersion,
-    };
-  }
-
   private mapCurrentLevel(setup: RoadmapSetupAssessmentFormValues) {
     if (setup.currentStage === 'high_school') return 'school';
     if (setup.currentStage === 'university') return 'student';
@@ -246,8 +251,8 @@ export class RoadmapService {
 
   private mapTimeBudget(setup: RoadmapSetupAssessmentFormValues) {
     if (setup.weeklyTime === 'low') return '2-4 hours per week';
-    if (setup.weeklyTime === 'medium') return '5-7 hours per week';
-    if (setup.weeklyTime === 'high') return '8-12 hours per week';
+    if (setup.weeklyTime === 'medium') return '5-8 hours per week';
+    if (setup.weeklyTime === 'high') return '9-12 hours per week';
     return '13+ hours per week';
   }
 

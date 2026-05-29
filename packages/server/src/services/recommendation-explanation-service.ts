@@ -1,7 +1,7 @@
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import type {
   PathwayMatchProfile,
-  RecommendationResult,
+  RecommendationItem,
 } from '@contracts/shared/types/pathway-domain-types';
 import { llmClient } from '../llm/llm-client';
 import explainRecommendationPrompt from '@/src/llm/prompts/recommendation-explanation-prompt.txt';
@@ -10,9 +10,9 @@ export class RecommendationExplanationService {
   private readonly llmClient = llmClient;
 
   async enrichRecommendations(
-    recommendations: RecommendationResult[],
+    recommendations: RecommendationItem[],
     profile: PathwayAssessmentFormValues
-  ): Promise<RecommendationResult[]> {
+  ): Promise<RecommendationItem[]> {
     if (!Bun.env.HF_TOKEN) return recommendations;
 
     // Explanations are optional enrichment, not part of core matching.
@@ -40,7 +40,7 @@ export class RecommendationExplanationService {
 
   private renderPrompt(
     template: string,
-    recommendation: RecommendationResult,
+    recommendation: RecommendationItem,
     profile: PathwayAssessmentFormValues
   ): string {
     return template

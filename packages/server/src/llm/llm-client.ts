@@ -4,7 +4,7 @@ import aicaSystemPrompt from '@/src/llm/prompts/aica-llm-system-prompt.txt';
 
 export class LlmClient {
   private readonly client: OpenAI;
-  private readonly model = 'openai/gpt-oss-safeguard-20b:groq';
+  private readonly model = 'openai/gpt-oss-20b:together';
 
   constructor() {
     this.client = new OpenAI({

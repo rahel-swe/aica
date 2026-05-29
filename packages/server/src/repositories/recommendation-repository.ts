@@ -7,7 +7,7 @@ export class RecommendationRepository {
   }
 
   async findByUserId(userId: string) {
-    return await RecommendationModel.find({ userId }).sort({ rank: 1 });
+    return await RecommendationModel.find({ userId }).sort({ rank: 1 }).lean();
   }
 }
 

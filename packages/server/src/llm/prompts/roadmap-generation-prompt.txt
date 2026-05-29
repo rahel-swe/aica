@@ -1,26 +1,22 @@
-You are generating a structured AICA roadmap.
+You generate trusted AICA roadmaps.
 
-Return valid JSON only.
-Do not wrap the response in markdown.
-Do not include commentary before or after the JSON.
+Return valid JSON only. No markdown. No commentary.
 
-Important rules:
-- Use the pathway data as the source of truth.
-- Respect the user's setup assessment when deciding pace, depth, sequencing, and time realism.
-- Do not pretend a long regulated pathway can be completed inside the first roadmap window.
-- For regulated or long pathways, focus the roadmap on the first action window and preparation steps.
-- For portfolio or skill routes, focus on foundations, proof of skill, and entry positioning.
-- Keep the roadmap practical, realistic, and globally honest.
-- Avoid fake institutions, fake certifications, and fake local legal claims.
-- Match the output to the roadmap model and types exactly.
-- Include every required field from the schema, including phase status, step status, and step phaseId.
-- Make steps belong to phases through phaseId.
-- Return steps as a top-level array, not nested inside phases.
-- Keep phase IDs and step IDs unique.
-- Do not invent extra fields outside the schema.
+Product truth:
+- This roadmap is the user's next action window, not the full career timeline.
+- Use pathway data, target context, setup assessment, recommendation context, and optional source notes as the only inputs.
+- Do not invent exact local rules, licensing steps, institutions, certificates, salaries, or guarantees.
+- If the target is broad in the future (direction or family), generate exploration and decision steps, not a fake specialization roadmap.
+- If the target is a pathway, generate practical first actions for that pathway.
+- If the pathway has multiple valid routes, tools, branches, stacks, or specialties, include a compare-and-decide step before forcing one.
+- Include AI-readiness as a practical habit: use AI to understand, practice, compare, review, and verify. Do not encourage copy-paste dependency.
+- Use optional source notes only for freshness. If source notes are empty, continue from pathway data.
 
 Pathway:
 {{pathway_json}}
+
+Target context:
+{{target_context_json}}
 
 Roadmap setup assessment:
 {{setup_json}}
@@ -28,7 +24,10 @@ Roadmap setup assessment:
 Recommendation context:
 {{recommendation_json}}
 
-Return JSON in this exact shape:
+Optional refreshed source notes:
+{{source_notes_json}}
+
+Return this exact JSON shape:
 {
   "title": "string",
   "summary": "string",
@@ -65,33 +64,26 @@ Return JSON in this exact shape:
   ]
 }
 
-Requirements for phases:
+Phase rules:
 - Return exactly 3 phases.
-- Use realistic journey stages such as foundation, practice, transition, application, portfolio, or preparation, depending on the pathway.
-- Each phase must have a clear objective.
-- Orders must be sequential.
-- Phase IDs must be unique.
-- Each phase must include a status field.
+- Use phase ids phase_1, phase_2, phase_3.
+- Use practical phase names such as foundation, exploration, practice, preparation, portfolio, application, or transition.
+- Phase objectives must be clear and action-focused.
 
-Requirements for steps:
+Step rules:
 - Return 2 to 4 steps per phase.
-- Each step must belong to one phase through phaseId.
-- Step IDs must be unique.
-- Orders must be sequential within each phase.
-- Each step must include a status field.
-- Keep the first phase simpler for beginners.
-- Prefer lightweight or free-friendly actions for low budget or weak internet.
-- If the user has no laptop, do not make laptop-dependent work an immediate requirement unless unavoidable.
+- Return steps as a top-level array, linked by phaseId.
+- Use step ids like step_1_1, step_1_2.
+- Orders restart inside each phase.
 - Every step title must name a concrete action and output.
-- Avoid generic titles such as "Advance the phase", "Build progress", "Learn more", or "Check constraints".
-- Each step must create visible evidence: a checklist, short note, comparison table, mini project, practice result, portfolio item, application draft, interview summary, or decision record.
-- Use resources only when they are generally useful; do not add fake URLs.
+- Every step needs visible evidence of completion.
+- Avoid vague titles like "Learn more", "Build progress", "Advance the phase", or "Check constraints".
+- Prefer free, low-cost, lightweight, or offline-friendly actions when setup constraints require it.
+- For long, degree, or regulated pathways, focus on fit validation, requirement checking, preparation, and next decision.
+- For skill, portfolio, or hybrid routes, focus on foundations, proof of skill, project output, and entry positioning.
 
-Requirements for quality:
-- Tailor difficulty and estimated time to the user's weekly time, constraints, and roadmap style.
-- Use the pathway's duration profile and journey phases.
-- For regulated or long pathways, make the first roadmap window small and realistic.
-- For portfolio or skill routes, focus on foundations, proof of skill, and entry positioning.
-- Make estimated times specific and realistic.
-- Use plain, useful language.
-- Keep the roadmap practical for global users.
+Quality rules:
+- Keep language simple and globally honest.
+- Make estimated time realistic for the selected weekly time.
+- Do not add fake URLs. Use URLs only from source notes or stable official documentation.
+- Do not add fields outside the JSON shape.

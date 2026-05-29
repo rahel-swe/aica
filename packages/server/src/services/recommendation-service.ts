@@ -7,7 +7,7 @@ import type {
   RecommendationFamilyMatch,
   RecommendationGroupRef,
   RecommendationOverview,
-  RecommendationResult,
+  RecommendationItem,
 } from '@contracts/shared/types/pathway-domain-types';
 import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 import { pathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
@@ -31,14 +31,14 @@ type PathwayRecord = {
   _id: unknown;
   title: string;
   slug: string;
-  type: RecommendationResult['type'];
+  type: RecommendationItem['type'];
   summary: string;
   visibilityLayer?: PathwayVisibilityLayer;
   taxonomyNodeIds: PathwayTaxonomyNode[];
 };
 
 type RecommendationScoreSnapshot = Omit<
-  RecommendationResult,
+  RecommendationItem,
   'matchPercent' | 'visibilityLayer' | 'direction' | 'family'
 > & {
   matchPercent: number;
@@ -224,7 +224,7 @@ export class RecommendationService {
   }
 
   private async enrichPathwaysIfNeeded(
-    recommendations: RecommendationResult[],
+    recommendations: RecommendationItem[],
     onboarding: PathwayAssessmentFormValues
   ) {
     const ready = recommendations.filter((item) => item.explanation);
@@ -477,7 +477,7 @@ export class RecommendationService {
   }
 
   private calculateTotalScore(
-    dimensionScores: RecommendationResult['dimensionScores']
+    dimensionScores: RecommendationItem['dimensionScores']
   ) {
     return Number(
       (

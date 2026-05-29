@@ -84,7 +84,7 @@ export type RecommendationFamilyMatch = RecommendationGroupRef & {
   topPathwaySlugs: string[];
 };
 
-export type RecommendationResult = {
+export type RecommendationItem = {
   pathwayId: string;
   title: string;
   slug: string;
@@ -105,5 +105,5 @@ export type RecommendationResult = {
 export type RecommendationOverview = {
   directionMatches: RecommendationDirectionMatch[];
   familyMatches: RecommendationFamilyMatch[];
-  pathwayRecommendations: RecommendationResult[];
+  pathwayRecommendations: RecommendationItem[];
 };

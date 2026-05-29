@@ -11,52 +11,14 @@ import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 import { llmClient } from '../llm/llm-client';
 import advisorGuidancePrompt from '@/src/llm/prompts/advisor-guidance-prompt.txt';
+import type {
+  RoadmapPhase,
+  RoadmapStep,
+  PathwayRoadmap,
+} from '@contracts/shared/types/roadmap-types';
+import type { RecommendationItem } from '@contracts/shared/types/pathway-domain-types';
 
 // ─── Internal context types ───────────────────────────────────────────────────
-// Typed to what we actually extract — not the full mongoose document shape.
-// When the real model types are exported from repositories, replace these.
-
-type RecommendationItem = {
-  pathwayId: string;
-  title: string;
-  slug: string;
-  rank: number;
-  totalScore: number;
-  reasons?: string[];
-};
-
-type RoadmapPhase = {
-  id: string;
-  phase: string;
-  title: string;
-  objective: string;
-  status: string;
-  order: number;
-};
-
-type RoadmapStep = {
-  id: string;
-  phaseId: string;
-  title: string;
-  why: string;
-  status: string;
-  estimatedTime?: string;
-  difficulty?: string;
-  evidenceOfCompletion?: string;
-  order: number;
-};
-
-type RoadmapData = {
-  pathwayId: string;
-  title: string;
-  summary: string;
-  currentLevel?: string;
-  timeBudgetPerWeek?: string;
-  roadmapStyle?: string;
-  nextReviewAt?: Date | string;
-  phases: RoadmapPhase[];
-  steps: RoadmapStep[];
-};
 
 type PathwayData = {
   title: string;
@@ -81,7 +43,7 @@ type AdvisorContext = {
   recommendations: RecommendationItem[];
   selectedPathway: PathwayData | null;
   roadmapSetup: RoadmapSetupData | null;
-  roadmap: RoadmapData | null;
+  roadmap: PathwayRoadmap | null;
   selectedRoadmapStep: {
     phase: RoadmapPhase | null;
     step: RoadmapStep;
@@ -158,13 +120,12 @@ export class AdvisorService {
 
     const onboarding = onboardingRaw
       ? ((onboardingRaw as any).toObject?.() ??
-        (onboardingRaw as Record<string, unknown>))
+        (onboardingRaw as unknown as Record<string, unknown>))
       : null;
 
-    const recommendations = (recommendationsRaw as RecommendationItem[]).slice(
-      0,
-      3
-    );
+    const recommendations = (
+      recommendationsRaw as unknown as RecommendationItem[]
+    ).slice(0, 3);
 
     const selectedPathwayId =
       roadmap?.pathwayId ??
@@ -177,7 +138,7 @@ export class AdvisorService {
           .then((p) => p as PathwayData | null)
       : null;
 
-    const roadmapContext = roadmap as RoadmapData | null;
+    const roadmapContext = roadmap as PathwayRoadmap | null;
 
     return {
       onboarding,
@@ -276,11 +237,9 @@ export class AdvisorService {
 
   private resolveSelectedRoadmapStep(
     request: AdvisorChatRequest,
-    roadmap: RoadmapData | null
+    roadmap: PathwayRoadmap | null
   ) {
-    if (!request.roadmapStep || !roadmap) {
-      return null;
-    }
+    if (!request.roadmapStep || !roadmap) return null;
 
     const step = roadmap.steps?.find(
       (item) =>
