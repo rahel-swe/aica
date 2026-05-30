@@ -170,7 +170,7 @@ export const stepStatusMeta: Record<
   },
 };
 
-export const roadmapStepTextColors = [
+export const roadmapStepFlagColors = [
   'text-emerald-400',
   'text-sky-300',
   'text-violet-400',

@@ -1,14 +1,20 @@
+import { useRoadmapStepsAndPhases } from '@/hooks/use-roadmap-steps-and-phases';
+import { cn } from '@/lib/utils';
 import type {
   RoadmapPhase,
   RoadmapStep,
 } from '@contracts/shared/types/roadmap-types';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../ui/accordion';
 import { Badge } from '../ui/badge';
-import { cn } from '@/lib/utils';
-import { ExternalLink } from 'lucide-react';
-import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
-import { roadmapPhaseStatusMeta } from './roadmap-view-utils';
-import { useRoadmapStepsAndPhases } from '@/hooks/use-roadmap-steps-and-phases';
 import RoadmapStepAdvisorButton from './roadmap-step-advisor-button';
+import RoadmapStepCardResources from './roadmap-step-card-resources';
+import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
+import { roadmapPhaseStatusMeta, stepStatusMeta } from './roadmap-view-utils';
 
 const RoadmapStepDetailsCard = ({
   steps,
@@ -20,7 +26,11 @@ const RoadmapStepDetailsCard = ({
   roadmapId: string;
 }) => {
   const { activePhase, step } = useRoadmapStepsAndPhases({ steps, phases });
-
+  const {
+    icon: StatusIcon,
+    label,
+    iconClassName,
+  } = stepStatusMeta[step.status];
   const { titleClassName } =
     roadmapPhaseStatusMeta[activePhase?.id ?? 'phase_1'];
 
@@ -28,7 +38,7 @@ const RoadmapStepDetailsCard = ({
     <div className="flex flex-col gap-6 py-4">
       <Badge
         className={cn(
-          'text-2xl font-semibold capitalize py-6 px-4 mx-auto  relative rotate-8',
+          'text-2xl font-semibold capitalize py-6 px-10 mx-auto  relative rotate-8',
           titleClassName
         )}
       >
@@ -37,6 +47,17 @@ const RoadmapStepDetailsCard = ({
           Phase {activePhase?.order}
         </span>
       </Badge>
+
+      <div className="flex flex-wrap gap-2">
+        <Badge variant={'secondary'}>
+          {label}
+          <StatusIcon className={iconClassName} fill="currentColor" />
+        </Badge>
+        {step.estimatedTime ? (
+          <Badge className="border">{step.estimatedTime}</Badge>
+        ) : null}
+      </div>
+
       <div className="flex flex-wrap gap-2">
         <h3 className="text-lg font-semibold">{activePhase?.title}</h3>
         <p className="text-sm text-muted-foreground">
@@ -45,61 +66,60 @@ const RoadmapStepDetailsCard = ({
       </div>
       <Badge
         variant={'secondary'}
-        className={cn('text-md font-semibold py-5 px-4 mx-auto -rotate-12')}
+        className={cn('text-md font-semibold py-5 px-5 mx-auto -rotate-14')}
       >
         Step {step.order}
       </Badge>
+
+      <Accordion type="single" collapsible className="border-0">
+        <AccordionItem
+          value="prerequisites"
+          className="border-none data-open:bg-transparent"
+        >
+          <AccordionTrigger className="px-0 py-2">
+            Prerequisites
+          </AccordionTrigger>
+          <AccordionContent>
+            {step.prerequisites.length > 0 ? (
+              <ul className="space-y-1 text-sm leading-6 text-muted-foreground">
+                {step.prerequisites.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm leading-6 text-muted-foreground">
+                No formal prerequisites.
+              </p>
+            )}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
 
       <div>
         <h3 className="text-lg mb-2 font-semibold">{step.title}</h3>
         <p className="text-sm text-muted-foreground">{step.why}</p>
       </div>
-      <div>
-        <h4>Evidence Of Completion</h4>
-        {step.evidenceOfCompletion && (
-          <p className="text-sm text-muted-foreground mt-2">
-            {step.evidenceOfCompletion}
-          </p>
-        )}
-      </div>
 
-      {step.resources.length > 0 && (
-        <div className="grid gap-2">
-          <h3>Suggested resources</h3>
-          <p className="text-muted-foreground">
-            {step.resources.map((resource) =>
-              resource.url ? (
-                <a
-                  key={`${resource.title}-${resource.url}`}
-                  href={resource.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium"
-                >
-                  {resource.title}
-                  <ExternalLink className="size-3" />
-                </a>
-              ) : (
-                <span
-                  key={resource.title}
-                  className="inline-flex rounded-full px-3 py-1 text-xs font-medium"
-                >
-                  {resource.title}
-                </span>
-              )
-            )}
-          </p>
-        </div>
-      )}
+      <RoadmapStepCardResources stepResources={step.resources} />
 
-      <div className="grid gap-3">
-        <RoadmapStepAdvisorButton
-          roadmapId={roadmapId}
-          phase={activePhase}
-          step={step}
-        />
-        <RoadmapStepStatusActionButton roadmapId={roadmapId} step={step} />
-      </div>
+      <Accordion type="single" collapsible className="border-0">
+        <AccordionItem value="evidence" className="data-open:bg-transparent">
+          <AccordionTrigger className="px-0 py-2">
+            Evidence of completion
+          </AccordionTrigger>
+          <AccordionContent className="text-muted-foreground">
+            {step.evidenceOfCompletion ??
+              'A visible artifact, note, or review that proves this step is complete.'}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <RoadmapStepStatusActionButton roadmapId={roadmapId} step={step} />
+      <RoadmapStepAdvisorButton
+        roadmapId={roadmapId}
+        phase={activePhase}
+        step={step}
+      />
     </div>
   );
 };

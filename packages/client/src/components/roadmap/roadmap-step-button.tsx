@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Check, FlagTriangleRight } from 'lucide-react';
 import { Button } from '../ui/button';
-import { roadmapStepTextColors } from './roadmap-view-utils';
+import { roadmapStepFlagColors } from './roadmap-view-utils';
 
 const RoadmapStepButton = ({
   order,
@@ -38,8 +38,8 @@ const RoadmapStepButton = ({
           fill="currentColor"
           className={cn(
             'size-12 absolute -top-8 inset-s-2',
-            roadmapStepTextColors[(order - 1) % roadmapStepTextColors.length],
-            isInProgress && 'animate-pulse'
+            roadmapStepFlagColors[(order - 1) % roadmapStepFlagColors.length],
+            isInProgress && 'animate-bounce inset-s-1/2'
           )}
         />
       )}

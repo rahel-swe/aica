@@ -150,7 +150,7 @@ export class AdvisorService {
     };
   }
 
-  // ─── Prompt building ────────────────────────────────────────────────────────
+  // ─── Prompt building
 
   private buildPrompt(
     request: AdvisorChatRequest,
@@ -265,7 +265,7 @@ export class AdvisorService {
   // ─── JSON extraction ────────────────────────────────────────────────────────
   // Handles: plain JSON, markdown fences (```json ... ```), and LLM preamble text.
 
-  private extractJson(raw: string): unknown {
+  private extractJson(raw: string) {
     const stripped = raw.replace(/```json|```/gi, '').trim();
 
     try {
@@ -283,7 +283,7 @@ export class AdvisorService {
     return JSON.parse(stripped.slice(start, end + 1));
   }
 
-  // ─── Context source resolution ──────────────────────────────────────────────
+  // ─── Context source resolution
 
   private resolveContextSources(
     context: AdvisorContext

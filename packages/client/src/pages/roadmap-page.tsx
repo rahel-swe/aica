@@ -18,10 +18,14 @@ export default function RoadmapPage() {
   if (!roadmap) return <RoadmapEmptyState />;
 
   return (
-    <main className="lg:px-8 flex flex-col md:flex-row gap-6 items-start">
+    <main className="lg:px-8 flex flex-col lg:flex-row gap-6">
       <div className="mx-auto max-w-7xl flex flex-col gap-10">
         <RoadmapHero roadmap={roadmap} />
-        <RoadmapSteps steps={roadmap.steps} />
+        <RoadmapSteps
+          steps={roadmap.steps}
+          phases={roadmap.phases}
+          roadmapId={roadmap._id}
+        />
       </div>
       <RoadmapActionableSection roadmap={roadmap} />
     </main>

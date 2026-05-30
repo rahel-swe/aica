@@ -56,13 +56,12 @@ export default function RoadmapStepAdvisorButton({
     <Sheet>
       <SheetTrigger asChild>
         <Button
-          type="button"
-          variant="outline"
-          className="w-full justify-center gap-2 rounded-full backdrop-blur"
+          variant="secondary"
           onClick={() => askAboutStep()}
+          className="w-min cursor-pointer"
         >
-          <Sparkles className="size-4" />
-          Ask Advisor about this step
+          <Sparkles className="size-3.5" />
+          <p className="text-xs">Explain this step!</p>
         </Button>
       </SheetTrigger>
       <SheetContent className="overflow-y-auto sm:max-w-xl">
@@ -73,7 +72,7 @@ export default function RoadmapStepAdvisorButton({
           </SheetDescription>
         </SheetHeader>
 
-        <div className="mt-6">
+        <div>
           <AdvisorResponsePanel
             response={data?.data}
             isPending={isPending}

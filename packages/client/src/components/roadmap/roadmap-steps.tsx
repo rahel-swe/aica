@@ -1,33 +1,51 @@
 import { useRoadmapStepsAndPhasesParams } from '@/hooks/roadmap-steps-and-phases-params';
-import type { RoadmapStep } from '@contracts/shared/types/roadmap-types';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import type {
+  RoadmapPhase,
+  RoadmapStep,
+} from '@contracts/shared/types/roadmap-types';
+import { useState } from 'react';
 import RoadmapStepButton from './roadmap-step-button';
-import RoadmapStepCard from './roadmap-step-card';
+import RoadmapStepCardDrawer from './roadmap-step-card-drawer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
-const RoadmapSteps = ({ steps }: { steps: RoadmapStep[] }) => {
+const RoadmapSteps = ({
+  steps,
+  phases,
+  roadmapId,
+}: {
+  steps: RoadmapStep[];
+  phases: RoadmapPhase[];
+  roadmapId: string;
+}) => {
   const [, setRoadmapParams] = useRoadmapStepsAndPhasesParams();
+  const [open, setOpen] = useState(false);
+  const isMobile = useIsMobile(1024);
 
   return (
     <div className="flex flex-wrap items-center justify-evenly gap-20 px-4 sm:gap-25">
+      {isMobile && (
+        <RoadmapStepCardDrawer
+          phases={phases}
+          steps={steps}
+          roadmapId={roadmapId}
+          onOpenChage={setOpen}
+          open={open}
+        />
+      )}
       {steps.map((step, idx) => (
-        <Popover key={step.id}>
-          <PopoverTrigger>
-            <RoadmapStepButton
-              order={idx + 1}
-              isInProgress={step.status === 'in_progress'}
-              isCompleted={step.status === 'completed'}
-              onClick={() =>
-                setRoadmapParams({
-                  phaseId: step.phaseId,
-                  stepId: step.id,
-                })
-              }
-            />
-          </PopoverTrigger>
-          <PopoverContent side="right">
-            <RoadmapStepCard step={step} />
-          </PopoverContent>
-        </Popover>
+        <RoadmapStepButton
+          order={idx + 1}
+          key={step.id}
+          isInProgress={step.status === 'in_progress'}
+          isCompleted={step.status === 'completed'}
+          onClick={() => {
+            setRoadmapParams({
+              phaseId: step.phaseId,
+              stepId: step.id,
+            });
+            setOpen(true);
+          }}
+        />
       ))}
     </div>
   );

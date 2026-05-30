@@ -22,7 +22,7 @@ const RoadmapEditButton = ({ roadmapId }: { roadmapId: string }) => {
       trigger={
         <Button
           variant="secondary"
-          className="w-min mx-auto px-4 text-xs sm:text-sm"
+          className="w-min px-4 text-xs sm:text-sm"
           disabled={isPending}
         >
           Edit Roadmap
