@@ -1,20 +1,28 @@
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { authClient } from '@/lib/auth-client';
-import { Bell } from 'lucide-react';
+import { Bell, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import ModeToggle from './toggle-mode';
 import { Button } from './ui/button';
 import { useTheme } from '@/providers/theme-provider';
 import { appImgSources } from '@/constants/app-image-sources';
+import { useIsTabActive } from '@/hooks/use-active-route';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export default function AppHeader() {
   const { data, isPending } = authClient.useSession();
   const { theme } = useTheme();
+
+  const isTabActive = useIsTabActive();
+  const isMobile = useIsMobile();
+
+  if (isPending || (!isTabActive && isMobile)) return null;
+
   const currentTheme = theme === 'dark' ? 'dark' : 'light';
 
   return (
-    <div className="sticky top-1 px-1 max-w-sm mx-auto md:top-2 md:mx-auto md:max-w-lg z-50 w-full">
+    <div className="sticky top-1 px-1 max-w-sm mx-auto md:top-2 md:mx-auto md:max-w-xl z-50 w-full">
       <header className="border-x md:border bg-background/20 backdrop-blur-lg supports-backdrop-filter:bg-background/20  rounded-full w-full">
         <div className="mx-auto flex h-16 items-center justify-between gap-3 px-3 sm:px-5">
           <Link
@@ -51,6 +59,12 @@ export default function AppHeader() {
             </Button>
 
             <ModeToggle />
+
+            <Link to="/app/settings">
+              <Button variant={'outline'} size={'icon-lg'}>
+                <Settings className="size-5" />
+              </Button>
+            </Link>
 
             {/* Profile */}
             <Link

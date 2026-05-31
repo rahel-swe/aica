@@ -15,10 +15,10 @@ import {
 } from '@/components/ui/card';
 
 import { cn } from '@/lib/utils';
-import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
+import type { RecommendationItem } from '@contracts/shared/types/pathway-domain-types';
 
 interface Props {
-  item: RecommendationResult;
+  item: RecommendationItem;
 }
 
 const RecommendationDetailsCard = ({ item }: Props) => {

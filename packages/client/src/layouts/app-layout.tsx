@@ -2,11 +2,16 @@ import AppDesktopTabs from '@/components/app-desktop-tabs';
 import AppHeader from '@/components/app-header';
 import AppTabs from '@/components/app-tabs';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
-import { useUserStatus } from '@/hooks/use-user-status';
+import ErrorPage from '@/pages/error-page';
+import { useProfileStatusQuery } from '@/queries/profile-query';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export default function AppLayout() {
-  const { userData, isPending, isPathwayAssessmentCompleted } = useUserStatus();
+  const {
+    isPending,
+    data: userProfileStatusResponse,
+    error,
+  } = useProfileStatusQuery();
 
   if (isPending)
     return (
@@ -15,9 +20,13 @@ export default function AppLayout() {
       </div>
     );
 
-  if (!userData?.user) return <Navigate to="/auth/sign-in" replace />;
+  if (error) return <ErrorPage />;
 
-  if (!isPathwayAssessmentCompleted?.data.completed)
+  const { assessments, user } = userProfileStatusResponse.data;
+
+  if (!user) return <Navigate to="/auth/sign-in" replace />;
+
+  if (!assessments.pathwayCompleted)
     return <Navigate to="/pathway-assessment/welcome" replace />;
 
   return (

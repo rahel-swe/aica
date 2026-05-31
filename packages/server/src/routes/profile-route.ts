@@ -1,25 +1,9 @@
-import { Router, type Request, type Response } from 'express';
+import { Router } from 'express';
+import { authorize } from '../middleware/auth-middleware';
+import { profileController } from '../controller/profile-controller';
 
 const profileRouter = Router();
 
-profileRouter.get('/me', (_req: Request, res: Response) => {
-  res.send({
-    success: true,
-    data: { profileStatus: 'draft' },
-    message: 'Current user profile fetched.',
-  });
-});
-
-profileRouter.put('/me/profile', (req: Request, res: Response) => {
-  res.send({
-    success: true,
-    data: req.body,
-    message: 'Current user profile updated.',
-  });
-});
-
-profileRouter.delete('/me', (_req: Request, res: Response) => {
-  res.send({ success: true, message: 'Current user account deleted.' });
-});
+profileRouter.get('/me', authorize, profileController.getMe);
 
 export default profileRouter;

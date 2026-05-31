@@ -1,9 +1,9 @@
 import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps';
-import { useUserStatus } from '@/hooks/use-user-status';
+import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
+import { useProfileStatusQuery } from '@/queries/profile-query';
 import { FormProvider } from 'react-hook-form';
 import { Navigate, Outlet } from 'react-router-dom';
 import SpinnerBars from '../components/shadcn-space/spinner/spinner-06';
-import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
 
 export type PathwayAssessmentOutletContext = {
   currentIndex: number;
@@ -13,8 +13,11 @@ export type PathwayAssessmentOutletContext = {
 };
 
 const PathwayAssessmentLayout = () => {
-  const { isPending, error, isPathwayAssessmentCompleted, userData } =
-    useUserStatus();
+  const {
+    isPending,
+    error,
+    data: userProfileStatusResponse,
+  } = useProfileStatusQuery();
 
   const {
     currentIndex,
@@ -37,9 +40,11 @@ const PathwayAssessmentLayout = () => {
       </p>
     );
 
-  if (!userData?.user) return <Navigate to="/auth/sign-in" replace />;
+  const { assessments, user } = userProfileStatusResponse.data;
 
-  if (isPathwayAssessmentCompleted?.data.completed)
+  if (!user) return <Navigate to="/auth/sign-in" replace />;
+
+  if (assessments.pathwayCompleted)
     return <Navigate to="/app/dashboard" replace />;
 
   if (currentIndex === -1)

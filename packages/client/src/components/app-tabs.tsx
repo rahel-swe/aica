@@ -3,9 +3,10 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
 import { Avatar, AvatarFallback } from './ui/avatar';
-import { useIsActive } from '@/hooks/use-active-route';
+import { useIsTabActive } from '@/hooks/use-active-route';
 import { motion } from 'motion/react';
 import { tabItems } from '@/constants/app-tabs';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 type TabItemProps = {
   label: string;
@@ -14,7 +15,7 @@ type TabItemProps = {
 };
 
 function TabItem({ label, to, icon: Icon }: TabItemProps) {
-  const isActive = useIsActive(to);
+  const isActive = useIsTabActive(false, to);
 
   return (
     <Link to={to}>
@@ -62,10 +63,10 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
 
 export default function AppTabs() {
   const { data, isPending } = authClient.useSession();
+  const isTabActive = useIsTabActive();
+  const isMobile = useIsMobile();
 
-  if (isPending) {
-    return null;
-  }
+  if (isPending || (!isTabActive && isMobile)) return null;
 
   return (
     <div className="sticky inset-x-0 bottom-3 z-50 flex items-center justify-between px-4 md:hidden">

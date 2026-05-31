@@ -1,11 +1,11 @@
 import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-steps';
-import { useUserStatus } from '@/hooks/use-user-status';
 import { FormProvider } from 'react-hook-form';
 import { Navigate, Outlet } from 'react-router-dom';
 
 import SpinnerBars from '../components/shadcn-space/spinner/spinner-06';
 
 import { useRoadmapSetupAssessment } from '@/hooks/use-roadmap-setup-assessment';
+import { useProfileStatusQuery } from '@/queries/profile-query';
 
 export type RoadmapSetupOutletContext = {
   currentIndex: number;
@@ -15,8 +15,11 @@ export type RoadmapSetupOutletContext = {
 };
 
 const RoadmapSetupLayout = () => {
-  const { isPending, error, userData, isRoadmapSetupCompleted } =
-    useUserStatus();
+  const {
+    isPending,
+    error,
+    data: userProfileStatusResponse,
+  } = useProfileStatusQuery();
 
   const { currentIndex, form, isRoadmapSetupCreating, submitRoadmapSetup } =
     useRoadmapSetupAssessment();
@@ -28,9 +31,6 @@ const RoadmapSetupLayout = () => {
       </div>
     );
 
-  if (!isRoadmapSetupCompleted?.data.completed)
-    return <Navigate to={'/pathway-recommendations'} />;
-
   if (error)
     return (
       <p className="text-destructive">
@@ -38,7 +38,12 @@ const RoadmapSetupLayout = () => {
       </p>
     );
 
-  if (!userData?.user) return <Navigate to="/auth/sign-in" replace />;
+  const { assessments, user } = userProfileStatusResponse.data;
+
+  if (!assessments.roadmapSetupCompleted)
+    return <Navigate to={'/pathway-recommendations'} />;
+
+  if (!user) return <Navigate to="/auth/sign-in" replace />;
 
   if (currentIndex === -1) {
     return <Navigate to="/roadmap-setup-assessment/welcome" replace />;

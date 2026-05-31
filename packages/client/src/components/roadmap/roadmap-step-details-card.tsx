@@ -49,16 +49,6 @@ const RoadmapStepDetailsCard = ({
       </Badge>
 
       <div className="flex flex-wrap gap-2">
-        <Badge variant={'secondary'}>
-          {label}
-          <StatusIcon className={iconClassName} fill="currentColor" />
-        </Badge>
-        {step.estimatedTime ? (
-          <Badge className="border">{step.estimatedTime}</Badge>
-        ) : null}
-      </div>
-
-      <div className="flex flex-wrap gap-2">
         <h3 className="text-lg font-semibold">{activePhase?.title}</h3>
         <p className="text-sm text-muted-foreground">
           {activePhase?.objective}
@@ -70,6 +60,16 @@ const RoadmapStepDetailsCard = ({
       >
         Step {step.order}
       </Badge>
+
+      <div className="flex flex-wrap gap-2">
+        <Badge variant={'secondary'}>
+          {label}
+          <StatusIcon className={iconClassName} fill="currentColor" />
+        </Badge>
+        {step.estimatedTime ? (
+          <Badge className="border">{step.estimatedTime}</Badge>
+        ) : null}
+      </div>
 
       <Accordion type="single" collapsible className="border-0">
         <AccordionItem

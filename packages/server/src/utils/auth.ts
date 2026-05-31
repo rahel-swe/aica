@@ -11,12 +11,4 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  socialProviders: {
-    google: {
-      clientId: Bun.env.GOOGLE_CLIENT_ID!,
-      clientSecret: Bun.env.GOOGLE_CLIENT_SECRET,
-      accessType: 'offline',
-      prompt: 'select_account consent',
-    },
-  },
 });

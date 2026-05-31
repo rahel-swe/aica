@@ -1,12 +1,12 @@
 import GetStartedButton from '@/components/get-started-button';
 import PathwayRecommendationCard from '@/components/pathway-recommendation-card';
 import { cn } from '@/lib/utils';
-import type { RecommendationResult } from '@contracts/shared/types/pathway-domain-types';
+import type { RecommendationItem } from '@contracts/shared/types/pathway-domain-types';
 import BackdropShapes from './backdrop-shapes';
 import RecommendationStageCheckedRadio from './recommendation-stage-checked-radio';
 
 type Props = {
-  pathways: RecommendationResult[];
+  pathways: RecommendationItem[];
   selectedPathwaySlug: string;
   isSubmitting: boolean;
   onSelectPathway: (slug: string) => void;
@@ -27,9 +27,8 @@ const PathwayStage = ({
 
     <div className="grid gap-7 lg:grid-cols-2 xl:grid-cols-3 items-start">
       {pathways.map((item, index) => (
-        <div className="relative">
+        <div key={item.pathwayId} className="relative">
           <PathwayRecommendationCard
-            key={item.pathwayId}
             className={cn(
               'rounded-[2rem] bg-card/50 backdrop-blur-sm z-20 relative',
               selectedPathwaySlug === item.slug && 'ring-7 bg-card/70'

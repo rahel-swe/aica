@@ -1,12 +1,14 @@
+import { tabItems } from '@/constants/app-tabs';
 import { useLocation } from 'react-router-dom';
 
-/**
- * Returns true if the current pathname matches the given path.
- * By default uses prefix matching to handle nested routes (/app/advisor/chat).
- * Pass `exact: true` to require an exact match.
- */
-export function useIsActive(to: string, exact = false): boolean {
+export function useIsTabActive(exact = true, to?: string): boolean {
   const { pathname } = useLocation();
-  if (exact) return pathname === to;
+
+  if (exact) {
+    const isTabAtive = tabItems.find((tab) => tab.to === pathname);
+
+    return Boolean(isTabAtive);
+  }
+
   return pathname === to || pathname.startsWith(to + '/');
 }

@@ -1,5 +1,5 @@
 import { tabItems } from '@/constants/app-tabs';
-import { useIsActive } from '@/hooks/use-active-route';
+import { useIsTabActive } from '@/hooks/use-active-route';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
@@ -12,7 +12,7 @@ type NavItemProps = {
 };
 
 function NavItem({ label, to, icon: Icon }: NavItemProps) {
-  const isActive = useIsActive(to);
+  const isActive = useIsTabActive(false, to);
   const [hovered, setHovered] = useState(false);
 
   return (
