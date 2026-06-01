@@ -2,13 +2,22 @@ import { z } from 'zod';
 
 // ─── Enums ────────────────────────────────────────────────────────────────────
 
-export const advisorIntentSchema = z.enum([
-  'fit', // "does this pathway fit me?"
-  'compare', // "how do I choose between options?"
-  'adjust', // "I need to change the plan"
-  'decide', // "should I commit to this?"
-  'roadmap', // "what should I do next?"
-  'general', // catch-all for out-of-bucket questions
+export const advisorModeSchema = z.enum([
+  'explain',
+  'decide',
+  'guide_step',
+  'reflect',
+  'adjust',
+  'verify',
+  'general',
+]);
+
+export const advisorSourceSchema = z.enum([
+  'profile',
+  'recommendation',
+  'pathway',
+  'roadmap',
+  'advisor',
 ]);
 
 export const advisorContextSourceSchema = z.enum([
@@ -24,6 +33,8 @@ export const advisorContextSourceSchema = z.enum([
 
 export const advisorChatRequestSchema = z.object({
   message: z.string().trim().min(3).max(800),
+  mode: advisorModeSchema.optional(),
+  source: advisorSourceSchema.optional(),
   roadmapStep: z
     .object({
       roadmapId: z.string().min(1),
@@ -46,11 +57,13 @@ export const advisorChatRequestSchema = z.object({
 //   contextUsed       → source pills for transparency / trust
 
 export const advisorResponseSchema = z.object({
-  intent: advisorIntentSchema,
+  mode: advisorModeSchema,
+  source: advisorSourceSchema,
+  title: z.string().min(1).max(90),
   answer: z.string().min(1),
-  nextActions: z.array(z.string()).min(1).max(5),
+  nextActions: z.array(z.string()).max(5).default([]),
   cautions: z.array(z.string()).default([]),
-  suggestedFollowUps: z.array(z.string()).min(2).max(3),
+  suggestedFollowUps: z.array(z.string()).max(3).default([]),
   contextUsed: z.array(advisorContextSourceSchema).default([]),
 });
 
@@ -60,4 +73,19 @@ export const advisorChatResponseSchema = z.object({
   success: z.boolean(),
   message: z.string(),
   data: advisorResponseSchema,
+});
+
+export const advisorHistoryItemSchema = z.object({
+  _id: z.string(),
+  message: z.string(),
+  mode: advisorModeSchema,
+  source: advisorSourceSchema,
+  response: advisorResponseSchema,
+  createdAt: z.string(),
+});
+
+export const advisorHistoryResponseSchema = z.object({
+  success: z.boolean(),
+  message: z.string(),
+  data: z.array(advisorHistoryItemSchema),
 });

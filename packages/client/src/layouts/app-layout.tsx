@@ -34,7 +34,7 @@ export default function AppLayout() {
       <AppDesktopTabs />
       <div className="flex min-w-0  flex-col flex-1">
         <AppHeader />
-        <div className="flex-1 grow grid place-items-center px-4 pb-7 pt-7 md:pb-8 md:px-6">
+        <div className="flex-1 grow grid place-items-center px-4 pb-6 pt-6 md:pb-8 md:px-6">
           <Outlet />
         </div>
         <AppTabs />

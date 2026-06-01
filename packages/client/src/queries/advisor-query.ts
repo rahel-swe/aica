@@ -1,12 +1,28 @@
-import { askAdvisor } from '@/services/advisor-service';
+import { askAdvisor, getAdvisorHistory } from '@/services/advisor-service';
 import type { AdvisorChatRequest } from '@contracts/shared/types/advisor-types';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-export const advisorMutationKey = ['advisor', 'chat'] as const;
+export const advisorKeys = {
+  all: ['advisor'] as const,
+  chat: () => [...advisorKeys.all, 'chat'] as const,
+  history: () => [...advisorKeys.all, 'history'] as const,
+};
 
 export const useAdvisorMutation = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
-    mutationKey: advisorMutationKey,
+    mutationKey: advisorKeys.chat(),
     mutationFn: (payload: AdvisorChatRequest) => askAdvisor(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: advisorKeys.history() });
+    },
+  });
+};
+
+export const useAdvisorHistoryQuery = () => {
+  return useQuery({
+    queryKey: advisorKeys.history(),
+    queryFn: getAdvisorHistory,
   });
 };

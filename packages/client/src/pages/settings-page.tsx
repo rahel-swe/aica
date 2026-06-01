@@ -5,15 +5,21 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ShellPage, StatusList } from '@/pages/page-primitives';
+import { StatusList } from '@/pages/page-primitives';
 
 export default function SettingsPage() {
   return (
-    <ShellPage
-      eyebrow="Settings"
-      title="Account and platform preferences"
-      description="Settings should stay focused on security, privacy, notifications, and language, without cluttering the main product flow."
-    >
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-semibold tracking-tight">
+          Settings and platform preferences
+        </h1>
+        <p className="max-w-3xl text-muted-foreground">
+          Settings should stay focused on security, privacy, notifications, and
+          language, without cluttering the main product flow.
+        </p>
+      </div>
+
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="rounded-2xl">
           <CardHeader>
@@ -48,6 +54,6 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
       </div>
-    </ShellPage>
+    </div>
   );
 }

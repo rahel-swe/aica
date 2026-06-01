@@ -1,4 +1,7 @@
-import type { AdvisorIntent } from '@contracts/shared/types/advisor-types';
+import type {
+  AdvisorMode,
+  AdvisorSource,
+} from '@contracts/shared/types/advisor-types';
 import {
   BadgeQuestionMark,
   Compass,
@@ -10,12 +13,10 @@ import {
 } from 'lucide-react';
 
 // ─── Prompt cards ─────────────────────────────────────────────────────────────
-// `intent` is display metadata only — it is NOT sent to the API.
-// The advisor infers intent server-side from the message content.
-
 export type AdvisorPrompt = {
   id: string;
-  intent: AdvisorIntent;
+  mode: AdvisorMode;
+  source: AdvisorSource;
   title: string;
   prompt: string;
   description: string;
@@ -26,7 +27,8 @@ export type AdvisorPrompt = {
 export const advisorPrompts: AdvisorPrompt[] = [
   {
     id: 'fit',
-    intent: 'fit',
+    mode: 'explain',
+    source: 'recommendation',
     icon: BadgeQuestionMark,
     title: 'Why does this pathway match me?',
     prompt: 'Explain why this pathway fits me based on my AICA profile.',
@@ -35,7 +37,8 @@ export const advisorPrompts: AdvisorPrompt[] = [
   },
   {
     id: 'first-focus',
-    intent: 'roadmap',
+    mode: 'guide_step',
+    source: 'roadmap',
     icon: Route,
     title: 'What should I focus on first?',
     prompt: 'What should I focus on first in my roadmap?',
@@ -44,7 +47,8 @@ export const advisorPrompts: AdvisorPrompt[] = [
   },
   {
     id: 'adjust',
-    intent: 'adjust',
+    mode: 'adjust',
+    source: 'roadmap',
     icon: RefreshCcw,
     title: 'Adjust this plan for my constraints',
     prompt: 'Adjust this roadmap for my time, budget, and constraints.',
@@ -53,7 +57,8 @@ export const advisorPrompts: AdvisorPrompt[] = [
   },
   {
     id: 'compare',
-    intent: 'compare',
+    mode: 'decide',
+    source: 'recommendation',
     icon: GitCompare,
     title: 'Compare my top options',
     prompt: 'Compare my top two pathway options in a practical way.',
@@ -62,22 +67,24 @@ export const advisorPrompts: AdvisorPrompt[] = [
   },
   {
     id: 'risk',
-    intent: 'decide',
+    mode: 'verify',
+    source: 'pathway',
     icon: Compass,
     title: 'What are the risks?',
     prompt: 'What are the main risks or challenges in this pathway?',
     description: 'Add realism without discouraging momentum.',
     tone: 'text-rose-300',
   },
-  {
-    id: 'weekly',
-    intent: 'roadmap',
-    icon: ListChecks,
-    title: 'What should I do this week?',
-    prompt: 'What should I do this week based on my roadmap?',
-    description: 'Make the next action small and realistic.',
-    tone: 'text-yellow-300',
-  },
+  // {
+  //   id: 'weekly',
+  //   mode: 'guide_step',
+  //   source: 'roadmap',
+  //   icon: ListChecks,
+  //   title: 'What should I do this week?',
+  //   prompt: 'What should I do this week based on my roadmap?',
+  //   description: 'Make the next action small and realistic.',
+  //   tone: 'text-yellow-300',
+  // },
 ];
 
 export const advisorBoundaries = [

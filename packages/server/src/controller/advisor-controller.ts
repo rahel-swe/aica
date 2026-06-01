@@ -37,6 +37,26 @@ export class AdvisorController {
       });
     }
   };
+
+  history = async (req: AuthRequest, res: Response): Promise<void> => {
+    try {
+      const userId = req.user!.id;
+      const data = await this.service.getHistory(userId);
+
+      res.status(200).json({
+        success: true,
+        message: 'Advisor history fetched.',
+        data,
+      });
+    } catch (error) {
+      console.error('[AdvisorController] History error:', error);
+
+      res.status(500).json({
+        success: false,
+        message: 'Could not fetch advisor history.',
+      });
+    }
+  };
 }
 
 export const advisorController = new AdvisorController();

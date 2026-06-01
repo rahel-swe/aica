@@ -1,5 +1,18 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
+import { Skeleton } from '@/components/ui/skeleton';
+import { authClient } from '@/lib/auth-client';
+import { useProfileStatusQuery } from '@/queries/profile-query';
 import {
   CheckCircle2,
   CircleDashed,
@@ -8,22 +21,8 @@ import {
   Save,
   User,
 } from 'lucide-react';
-import { authClient } from '@/lib/auth-client';
-import { useProfileStatusQuery } from '@/queries/profile-query';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { Skeleton } from '@/components/ui/skeleton';
-import { ShellPage } from '@/pages/page-primitives';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProfilePage() {
   const { data: sessionData, isPending: isSessionPending } =
@@ -72,11 +71,17 @@ export default function ProfilePage() {
   };
 
   return (
-    <ShellPage
-      eyebrow="Profile"
-      title="Keep your guidance profile accurate"
-      description="Your account details and assessment status control how AICA personalizes recommendations, roadmaps, and advisor context."
-    >
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-semibold tracking-tight">
+          Keep your guidance profile accurate
+        </h1>
+        <p className="max-w-3xl text-muted-foreground">
+          Your account details and assessment status control how AICA
+          personalizes recommendations, roadmaps, and advisor context.
+        </p>
+      </div>
+      <Separator />
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_380px]">
         <Card>
           <CardHeader>
@@ -170,7 +175,7 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
       </div>
-    </ShellPage>
+    </div>
   );
 }
 

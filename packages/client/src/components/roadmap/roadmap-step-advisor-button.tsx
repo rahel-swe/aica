@@ -44,6 +44,8 @@ export default function RoadmapStepAdvisorButton({
   const askAboutStep = (message = buildStepPrompt(phase, step)) => {
     mutate({
       message,
+      mode: 'guide_step',
+      source: 'roadmap',
       roadmapStep: {
         roadmapId,
         phaseId: step.phaseId,

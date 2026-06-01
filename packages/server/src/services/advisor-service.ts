@@ -1,7 +1,9 @@
 import type {
   AdvisorChatRequest,
   AdvisorContextSource,
+  AdvisorMode,
   AdvisorResponse,
+  AdvisorSource,
 } from '@contracts/shared/types/advisor-types';
 import { advisorResponseSchema } from '@contracts/shared/schemas/advisor-schema';
 import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
@@ -11,6 +13,7 @@ import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 import { llmClient } from '../llm/llm-client';
 import advisorGuidancePrompt from '@/src/llm/prompts/advisor-guidance-prompt.txt';
+import { advisorMessageRepository } from '../repositories/advisor-message-repository';
 import type {
   RoadmapPhase,
   RoadmapStep,
@@ -55,7 +58,9 @@ type AdvisorContext = {
 // Intentionally minimal — no hand-coded routing logic.
 
 const FALLBACK_RESPONSE: Omit<AdvisorResponse, 'contextUsed'> = {
-  intent: 'general',
+  mode: 'general',
+  source: 'advisor',
+  title: 'Advisor unavailable',
   answer:
     'The advisor is temporarily unavailable. Your pathway data and roadmap are saved — try again in a moment.',
   nextActions: ['Return to your roadmap and continue the current step.'],
@@ -74,6 +79,7 @@ export class AdvisorService {
   private readonly pathways = pathwayRepository;
   private readonly roadmaps = roadmapRepository;
   private readonly roadmapSetup = roadmapSetupAssessmentRepository;
+  private readonly advisorMessages = advisorMessageRepository;
   private readonly llm = llmClient;
 
   async answer(
@@ -81,30 +87,59 @@ export class AdvisorService {
     request: AdvisorChatRequest
   ): Promise<AdvisorResponse> {
     const context = await this.buildContext(userId);
+    const mode = this.resolveMode(request);
+    const source = this.resolveSource(request, mode);
 
     if (!process.env.HF_TOKEN) {
-      return {
+      const response = {
         ...FALLBACK_RESPONSE,
+        mode,
+        source,
         contextUsed: this.resolveContextSources(context),
       };
+
+      await this.saveAnswer(userId, request.message, response);
+      return response;
     }
 
     try {
       const raw = await this.llm.createTextCompletion(
-        this.buildPrompt(request, context)
+        this.buildPrompt(request, context, mode, source)
       );
       const parsed = this.extractJson(raw);
-
-      return advisorResponseSchema.parse({
+      const response = advisorResponseSchema.parse({
         ...parsed,
+        mode,
+        source,
         contextUsed: this.resolveContextSources(context),
       });
+
+      await this.saveAnswer(userId, request.message, response);
+      return response;
     } catch {
-      return {
+      const response = {
         ...FALLBACK_RESPONSE,
+        mode,
+        source,
         contextUsed: this.resolveContextSources(context),
       };
+
+      await this.saveAnswer(userId, request.message, response);
+      return response;
     }
+  }
+
+  async getHistory(userId: string) {
+    const items = await this.advisorMessages.findRecentByUserId(userId);
+
+    return items.map((item) => ({
+      _id: String(item._id),
+      message: item.message,
+      mode: item.mode,
+      source: item.source,
+      response: item.response,
+      createdAt: item.createdAt.toISOString(),
+    }));
   }
 
   // ─── Context assembly ───────────────────────────────────────────────────────
@@ -154,10 +189,14 @@ export class AdvisorService {
 
   private buildPrompt(
     request: AdvisorChatRequest,
-    context: AdvisorContext
+    context: AdvisorContext,
+    mode: AdvisorMode,
+    source: AdvisorSource
   ): string {
     return advisorGuidancePrompt
       .replace('{{message}}', request.message)
+      .replace('{{mode}}', mode)
+      .replace('{{source}}', source)
       .replace(
         '{{context}}',
         JSON.stringify(this.summarizeContext(request, context), null, 2)
@@ -300,6 +339,67 @@ export class AdvisorService {
     if (context.roadmap) sources.push('roadmap');
 
     return sources;
+  }
+
+  private resolveMode(request: AdvisorChatRequest): AdvisorMode {
+    if (request.mode) return request.mode;
+    if (request.roadmapStep) return 'guide_step';
+
+    const message = request.message.toLowerCase();
+
+    if (message.includes('compare') || message.includes(' vs ')) {
+      return 'decide';
+    }
+
+    if (message.includes('adjust') || message.includes('change my plan')) {
+      return 'adjust';
+    }
+
+    if (
+      message.includes('license') ||
+      message.includes('degree') ||
+      message.includes('verify')
+    ) {
+      return 'verify';
+    }
+
+    if (message.includes('unsure') || message.includes('confused')) {
+      return 'reflect';
+    }
+
+    if (message.includes('fit') || message.includes('why')) {
+      return 'explain';
+    }
+
+    return 'general';
+  }
+
+  private resolveSource(
+    request: AdvisorChatRequest,
+    mode: AdvisorMode
+  ): AdvisorSource {
+    if (request.source) return request.source;
+    if (request.roadmapStep || mode === 'guide_step' || mode === 'adjust') {
+      return 'roadmap';
+    }
+    if (mode === 'explain' || mode === 'decide') return 'recommendation';
+    if (mode === 'verify') return 'pathway';
+    if (mode === 'reflect') return 'profile';
+    return 'advisor';
+  }
+
+  private async saveAnswer(
+    userId: string,
+    message: string,
+    response: AdvisorResponse
+  ) {
+    await this.advisorMessages.create({
+      userId,
+      message,
+      mode: response.mode,
+      source: response.source,
+      response,
+    });
   }
 }
 

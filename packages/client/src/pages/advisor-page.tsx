@@ -1,46 +1,76 @@
+import { AdvisorHistoryList } from '@/components/advisor/advisor-history-list';
 import { AdvisorInputBox } from '@/components/advisor/advisor-input-box';
-import { AdvisorPromptGrid } from '@/components/advisor/advisor-prompt-grid';
 import { AdvisorResponsePanel } from '@/components/advisor/advisor-response-panel';
-import { useAdvisorMutation } from '@/queries/advisor-query';
+import type { AdvisorPrompt } from '@/components/advisor/advisor-ui-data';
+import {
+  useAdvisorHistoryQuery,
+  useAdvisorMutation,
+} from '@/queries/advisor-query';
+import type {
+  AdvisorHistoryItem,
+  AdvisorResponse,
+} from '@contracts/shared/types/advisor-types';
 import { useState } from 'react';
 
 export default function AdvisorPage() {
-  const [message, setMessage] = useState('');
-  const {
-    mutate: advisorMutate,
-    isPending,
-    data: advisorResponse,
-    isSuccess: avisorMutateSuccess,
-  } = useAdvisorMutation();
+  const [selectedHistory, setSelectedHistory] =
+    useState<AdvisorHistoryItem | null>(null);
+  const { data: history, isPending: isHistoryPending } =
+    useAdvisorHistoryQuery();
+  const { mutate, isPending, data } = useAdvisorMutation();
 
-  const handleBuiltInPrompt = (prompt = message) => {
-    const cleanPrompt = prompt.trim();
+  const activeResponse: AdvisorResponse | undefined =
+    selectedHistory?.response ?? data?.data;
 
-    if (cleanPrompt.length < 3 || isPending) return;
-    setMessage(cleanPrompt);
+  const askAdvisor = (payload: {
+    message: string;
+    mode?: AdvisorPrompt['mode'];
+    source?: AdvisorPrompt['source'];
+  }) => {
+    const cleanMessage = payload.message.trim();
+    if (cleanMessage.length < 3 || isPending) return;
+
+    setSelectedHistory(null);
+    mutate({
+      message: cleanMessage,
+      mode: payload.mode,
+      source: payload.source,
+    });
   };
 
   return (
-    <main className="h-full flex flex-col items-center justify-center">
-      <section className="grid gap-4">
+    <main className="flex flex-col gap-5 md:flex-row w-full">
+      <section className="mx-auto flex flex-col items-center justify-center w-full gap-4">
         <AdvisorResponsePanel
-          response={advisorResponse?.data}
+          response={activeResponse}
           isPending={isPending}
-          onFollowUp={handleBuiltInPrompt}
+          onFollowUp={(followUp) =>
+            askAdvisor({
+              message: followUp,
+              mode: activeResponse?.mode,
+              source: activeResponse?.source,
+            })
+          }
         />
+
         <AdvisorInputBox
-          value={message}
           isPending={isPending}
-          onChange={setMessage}
-          onSubmit={() => {
-            advisorMutate({
+          onSubmit={(message) =>
+            askAdvisor({
               message,
-            });
-            if (avisorMutateSuccess) setMessage('');
-          }}
+              mode: 'general',
+              source: 'advisor',
+            })
+          }
         />
-        <AdvisorPromptGrid onPromptSelect={handleBuiltInPrompt} />
       </section>
+
+      <AdvisorHistoryList
+        items={history?.data}
+        isPending={isHistoryPending}
+        selectedId={selectedHistory?._id}
+        onSelect={setSelectedHistory}
+      />
     </main>
   );
 }
