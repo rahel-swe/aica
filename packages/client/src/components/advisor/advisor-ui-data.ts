@@ -33,7 +33,7 @@ export const advisorPrompts: AdvisorPrompt[] = [
     title: 'Why does this pathway match me?',
     prompt: 'Explain why this pathway fits me based on my AICA profile.',
     description: 'Connect recommendation reasons to your actual traits.',
-    tone: 'text-blue-300',
+    tone: 'text-blue-400',
   },
   {
     id: 'first-focus',
@@ -43,7 +43,7 @@ export const advisorPrompts: AdvisorPrompt[] = [
     title: 'What should I focus on first?',
     prompt: 'What should I focus on first in my roadmap?',
     description: 'Turn the roadmap into a clear first move.',
-    tone: 'text-green-300',
+    tone: 'text-green-400',
   },
   {
     id: 'adjust',
@@ -53,7 +53,7 @@ export const advisorPrompts: AdvisorPrompt[] = [
     title: 'Adjust this plan for my constraints',
     prompt: 'Adjust this roadmap for my time, budget, and constraints.',
     description: 'Keep the goal but change the pace and sequence.',
-    tone: 'text-orange-300',
+    tone: 'text-orange-400',
   },
   {
     id: 'compare',
@@ -63,7 +63,7 @@ export const advisorPrompts: AdvisorPrompt[] = [
     title: 'Compare my top options',
     prompt: 'Compare my top two pathway options in a practical way.',
     description: 'Look at effort, fit, risk, and next steps.',
-    tone: 'text-blue-300',
+    tone: 'text-blue-400',
   },
   {
     id: 'risk',
@@ -73,7 +73,7 @@ export const advisorPrompts: AdvisorPrompt[] = [
     title: 'What are the risks?',
     prompt: 'What are the main risks or challenges in this pathway?',
     description: 'Add realism without discouraging momentum.',
-    tone: 'text-rose-300',
+    tone: 'text-rose-400',
   },
   // {
   //   id: 'weekly',

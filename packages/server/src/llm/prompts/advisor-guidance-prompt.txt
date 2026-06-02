@@ -12,7 +12,7 @@ AICA context:
 Return strict JSON only:
 {
   "title": "short title",
-  "answer": "direct answer in 2 to 5 short sentences",
+  "answer": "direct answer in 2 to 12 short sentences",
   "nextActions": ["0 to 5 concrete actions"],
   "cautions": ["real warnings only, or empty array"],
   "suggestedFollowUps": ["0 to 3 useful follow-ups"]

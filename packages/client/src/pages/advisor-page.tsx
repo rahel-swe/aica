@@ -1,23 +1,28 @@
+import AdvisorHeader from '@/components/advisor/advisor-header';
 import { AdvisorHistoryList } from '@/components/advisor/advisor-history-list';
 import { AdvisorInputBox } from '@/components/advisor/advisor-input-box';
 import { AdvisorResponsePanel } from '@/components/advisor/advisor-response-panel';
 import type { AdvisorPrompt } from '@/components/advisor/advisor-ui-data';
-import {
-  useAdvisorHistoryQuery,
-  useAdvisorMutation,
-} from '@/queries/advisor-query';
+import { useAdvisorHistoryListParams } from '@/hooks/use-advisor-history-list-params';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { useAdvisorMutation } from '@/queries/advisor-query';
 import type {
   AdvisorHistoryItem,
   AdvisorResponse,
 } from '@contracts/shared/types/advisor-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function AdvisorPage() {
   const [selectedHistory, setSelectedHistory] =
     useState<AdvisorHistoryItem | null>(null);
-  const { data: history, isPending: isHistoryPending } =
-    useAdvisorHistoryQuery();
+  const isMobile = useIsMobile(768);
+  const [{ historyId }] = useAdvisorHistoryListParams();
+
   const { mutate, isPending, data } = useAdvisorMutation();
+
+  useEffect(() => {
+    if (!historyId) setSelectedHistory(null);
+  }, [historyId]);
 
   const activeResponse: AdvisorResponse | undefined =
     selectedHistory?.response ?? data?.data;
@@ -39,8 +44,13 @@ export default function AdvisorPage() {
   };
 
   return (
-    <main className="flex flex-col gap-5 md:flex-row w-full">
-      <section className="mx-auto flex flex-col items-center justify-center w-full gap-4">
+    <main className="flex flex-col justify-center gap-5 md:flex-row h-full w-full max-h-[86dvh]">
+      {!isMobile && <AdvisorHistoryList onSelect={setSelectedHistory} />}
+      <section className="flex flex-col items-center justify-center flex-1 h-full">
+        <div className="mb-4 -mt-1 sticky top-19 z-20 w-full px-6">
+          <AdvisorHeader onSelect={setSelectedHistory} />
+        </div>
+
         <AdvisorResponsePanel
           response={activeResponse}
           isPending={isPending}
@@ -64,13 +74,6 @@ export default function AdvisorPage() {
           }
         />
       </section>
-
-      <AdvisorHistoryList
-        items={history?.data}
-        isPending={isHistoryPending}
-        selectedId={selectedHistory?._id}
-        onSelect={setSelectedHistory}
-      />
     </main>
   );
 }

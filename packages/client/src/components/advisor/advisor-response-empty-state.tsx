@@ -6,7 +6,7 @@ const AdvisorResponseEmptyState = () => {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
-      className="flex flex-col gap-4 text-center sm:justify-between"
+      className="flex flex-col gap-4 text-center sm:justify-between py-5 px-6"
     >
       <h1 className="text-4xl tracking-tight text-foreground font-heading">
         Pathway &amp; roadmap guidance

@@ -64,9 +64,9 @@ export function AdvisorPromptGrid({ onPromptSelect }: AdvisorPromptGridProps) {
                 whileHover={{ y: -2 }}
                 transition={{ duration: 0.2, ease: 'easeOut' }}
                 onClick={() => onPromptSelect(prompt)}
-                className="shrink-0 group rounded-xl border bg-card py-2 px-3 transition-colors hover:bg-muted/60 h-min"
+                className="shrink-0 group rounded-lg border bg-card py-2 px-3 transition-colors hover:bg-muted/60 h-min"
               >
-                <div className="flex items-center gap-2 text-sm">
+                <div className="flex items-center gap-1.5 text-sm">
                   <Icon className={cn('size-4', tone)} />
                   <p className="capitalize text-muted-foreground">
                     {mode === 'guide_step' ? 'Guide' : mode.replace('_', ' ')}

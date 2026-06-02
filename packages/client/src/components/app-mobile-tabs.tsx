@@ -61,7 +61,7 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
   );
 }
 
-export default function AppTabs() {
+export default function AppMobileTabs() {
   const { data, isPending } = authClient.useSession();
   const isTabActive = useIsTabActive();
   const isMobile = useIsMobile();
@@ -69,7 +69,7 @@ export default function AppTabs() {
   if (isPending || (!isTabActive && isMobile)) return null;
 
   return (
-    <div className="sticky inset-x-0 bottom-3 z-50 flex items-center justify-between px-4 md:hidden">
+    <div className="sticky inset-x-0 bottom-3 z-10 flex items-center justify-between px-4 md:hidden">
       {/* Tabs */}
       <div
         className={cn(

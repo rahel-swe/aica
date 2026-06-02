@@ -1,6 +1,6 @@
 import AppDesktopTabs from '@/components/app-desktop-tabs';
 import AppHeader from '@/components/app-header';
-import AppTabs from '@/components/app-tabs';
+import AppMobileTabs from '@/components/app-mobile-tabs';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import ErrorPage from '@/pages/error-page';
 import { useProfileStatusQuery } from '@/queries/profile-query';
@@ -30,14 +30,14 @@ export default function AppLayout() {
     return <Navigate to="/pathway-assessment/welcome" replace />;
 
   return (
-    <div className="min-h-screen flex flex-row">
+    <div className="min-h-screen flex flex-row gap-4">
       <AppDesktopTabs />
-      <div className="flex min-w-0  flex-col flex-1">
+      <div className="flex min-w-0 max-h-full flex-col flex-1 gap-4">
         <AppHeader />
-        <div className="flex-1 grow grid place-items-center px-4 pb-6 pt-6 md:pb-8 md:px-6">
+        <div className="flex-1 grow grid place-items-center h-full">
           <Outlet />
         </div>
-        <AppTabs />
+        <AppMobileTabs />
       </div>
     </div>
   );

@@ -41,10 +41,10 @@ export function AdvisorResponsePanel({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -6 }}
         transition={{ duration: 0.22, ease: 'easeOut' }}
-        className="w-full md:max-h-[calc(100dvh-15rem)]"
+        className="w-full md:h-full md:min-h-0"
       >
-        <ScrollArea className="h-full rounded-2xl">
-          <div className="rounded-2xl">
+        <ScrollArea className="h-full">
+          <div className="w-full pb-6">
             <CardHeader className="pb-4">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="default" className="capitalize">

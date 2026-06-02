@@ -4,22 +4,20 @@ import type {
   AdvisorHistoryItem,
   AdvisorResponse,
 } from '@contracts/shared/types/advisor-types';
-import { Clock3 } from 'lucide-react';
+import { Clock3, ReplaceIcon } from 'lucide-react';
 import { ScrollArea } from '../ui/scroll-area';
+import { useAdvisorHistoryQuery } from '@/queries/advisor-query';
+import { Button } from '../ui/button';
+import { useAdvisorHistoryListParams } from '@/hooks/use-advisor-history-list-params';
 
-type AdvisorHistoryListProps = {
-  items?: AdvisorHistoryItem[];
-  isPending: boolean;
-  selectedId?: string;
+export type AdvisorHistoryListProps = {
   onSelect: (item: AdvisorHistoryItem) => void;
 };
 
-export function AdvisorHistoryList({
-  items,
-  isPending,
-  selectedId,
-  onSelect,
-}: AdvisorHistoryListProps) {
+export function AdvisorHistoryList({ onSelect }: AdvisorHistoryListProps) {
+  const { data: history, isPending, error, refetch } = useAdvisorHistoryQuery();
+  const [{ historyId }, setHistoryParams] = useAdvisorHistoryListParams();
+
   if (isPending) {
     return (
       <aside className="space-y-3">
@@ -30,31 +28,49 @@ export function AdvisorHistoryList({
     );
   }
 
+  if (error)
+    return (
+      <div>
+        <p className="text-destructive">
+          Something went wrong, please try again.
+        </p>
+        <Button onClick={() => refetch()}>
+          Try Again
+          <ReplaceIcon />
+        </Button>
+      </div>
+    );
+
   return (
-    <aside className="flex-col gap-4 sticky top-0 hidden md:flex">
+    <aside className="flex-col gap-4 sticky top-0 shrink  flex max-w-sm h-full">
       <div className="flex items-center gap-2 text-sm font-medium">
         <Clock3 className="size-4 text-muted-foreground" />
         Recent advisor
       </div>
 
-      {!items?.length ? (
+      {!history?.data?.length ? (
         <p className="text-sm leading-6 text-muted-foreground">
           Your useful advisor answers will appear here.
         </p>
       ) : (
-        <div className="max-h-[calc(100dvh-11rem)]">
+        <div className="h-full min-h-0">
           <ScrollArea className="h-full">
             <div className="grid gap-2">
-              {items.map((item) => (
+              {history?.data.map((item) => (
                 <button
                   key={item._id}
                   type="button"
                   className={
-                    selectedId === item._id
+                    historyId === item._id
                       ? 'rounded-xl border bg-secondary px-3 py-3 text-left transition-colors'
                       : 'rounded-xl border bg-card px-3 py-3 text-left transition-colors hover:bg-muted/60'
                   }
-                  onClick={() => onSelect(item)}
+                  onClick={() => {
+                    onSelect(item);
+                    setHistoryParams({
+                      historyId: item._id,
+                    });
+                  }}
                 >
                   <div className="min-w-0 space-y-2">
                     <div className="flex flex-wrap gap-1.5">

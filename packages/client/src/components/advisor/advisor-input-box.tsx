@@ -32,7 +32,7 @@ export function AdvisorInputBox({ isPending, onSubmit }: AdvisorInputBoxProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl bg-muted flex flex-col items-center sm:items-center sm:justify-between max-w-sm sm:max-w-2xl mx-auto sticky bottom-22 md:bottom-4 h-min"
+      className="rounded-2xl bg-muted flex flex-col items-center sm:items-center sm:justify-between max-w-sm sm:max-w-2xl mx-auto sticky bottom-22 md:bottom-4 h-min"
     >
       <Textarea
         value={message}
@@ -48,9 +48,9 @@ export function AdvisorInputBox({ isPending, onSubmit }: AdvisorInputBoxProps) {
           type="submit"
           size={'icon-lg'}
           disabled={isPending || message.trim().length < 3}
-          className="size-11.5"
+          className="size-11"
         >
-          <ArrowUp className="size-6" strokeWidth={2.7} />
+          <ArrowUp className="size-5.5" strokeWidth={2.7} />
         </Button>
       </div>
     </form>
