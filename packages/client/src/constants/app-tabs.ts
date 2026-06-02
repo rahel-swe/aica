@@ -1,4 +1,10 @@
-import { LayoutDashboard, Compass, BrainCircuit, Route } from 'lucide-react';
+import {
+  BrainCircuit,
+  Compass,
+  LayoutDashboard,
+  Route,
+  Settings,
+} from 'lucide-react';
 
 export const tabItems = [
   {
@@ -20,5 +26,10 @@ export const tabItems = [
     label: 'Roadmap',
     to: '/app/roadmap',
     icon: Route,
+  },
+  {
+    label: 'Settings',
+    to: '/app/settings',
+    icon: Settings,
   },
 ];
