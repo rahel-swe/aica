@@ -9,6 +9,7 @@ import { ScrollArea } from '../ui/scroll-area';
 import { useAdvisorHistoryQuery } from '@/queries/advisor-query';
 import { Button } from '../ui/button';
 import { useAdvisorHistoryListParams } from '@/hooks/use-advisor-history-list-params';
+import StartNewAdvisor from './start-new-advisor';
 
 export type AdvisorHistoryListProps = {
   onSelect: (item: AdvisorHistoryItem) => void;
@@ -42,10 +43,13 @@ export function AdvisorHistoryList({ onSelect }: AdvisorHistoryListProps) {
     );
 
   return (
-    <aside className="flex-col gap-4 sticky top-0 shrink  flex max-w-sm h-full">
-      <div className="flex items-center gap-2 text-sm font-medium">
-        <Clock3 className="size-4 text-muted-foreground" />
-        Recent advisor
+    <aside className="flex-col gap-2 sticky top-0 shrink  flex max-w-sm h-full">
+      <div className="flex items-center justify-between gap-2 text-sm font-medium">
+        <div className="flex gap-2">
+          <Clock3 className="size-5 text-muted-foreground" />
+          <p className="self-end">Recent advisor</p>
+        </div>
+        <StartNewAdvisor />
       </div>
 
       {!history?.data?.length ? (

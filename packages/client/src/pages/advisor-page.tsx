@@ -7,6 +7,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { useAdvisorMutation } from '@/queries/advisor-query';
 import { useAdvisorHistoryStore } from '@/stores/advisor-history-store';
 import type { AdvisorResponse } from '@contracts/shared/types/advisor-types';
+import { useEffect } from 'react';
 
 export default function AdvisorPage() {
   const { setSelectedHistory, selectedHistory } = useAdvisorHistoryStore();
@@ -16,6 +17,10 @@ export default function AdvisorPage() {
 
   const activeResponse: AdvisorResponse | undefined =
     selectedHistory?.response ?? data?.data;
+
+  useEffect(() => {
+    setSelectedHistory(null);
+  }, []);
 
   const askAdvisor = (payload: {
     message: string;
@@ -35,12 +40,7 @@ export default function AdvisorPage() {
 
   return (
     <main className="flex flex-col gap-5 md:flex-row w-full min-h-0 h-full md:overflow-hidden pb-28 md:pb-0">
-      {!isMobile && (
-        <div className="h-full">
-          <AdvisorHeader onSelect={setSelectedHistory} />
-          <AdvisorHistoryList onSelect={setSelectedHistory} />
-        </div>
-      )}
+      {!isMobile && <AdvisorHistoryList onSelect={setSelectedHistory} />}
       <section className="flex flex-col items-center justify-center flex-1 md:border rounded-tl-2xl md:min-h-0">
         {isMobile && (
           <AdvisorHeader
