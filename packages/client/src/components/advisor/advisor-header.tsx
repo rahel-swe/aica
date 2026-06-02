@@ -1,21 +1,20 @@
-import { Button } from '../ui/button';
-import { PencilLine } from 'lucide-react';
-import AdvisorHistoryListDrawer from './advisor-history-list-drawer';
+import { cn } from '@/lib/utils';
 import type { AdvisorHistoryListProps } from './advisor-history-list';
-import { useAdvisorHistoryListParams } from '@/hooks/use-advisor-history-list-params';
+import AdvisorHistoryListDrawer from './advisor-history-list-drawer';
+import StartNewAdvisor from './start-new-advisor';
+import { useIsMobile } from '@/hooks/use-mobile';
 
-const AdvisorHeader = ({ onSelect }: AdvisorHistoryListProps) => {
-  const [, setAdvisorHistolyParams] = useAdvisorHistoryListParams();
+type Props = {
+  className?: string;
+} & AdvisorHistoryListProps;
+
+const AdvisorHeader = ({ onSelect, className }: Props) => {
+  const isMobile = useIsMobile(768);
+
   return (
-    <div className="flex justify-between border w-full">
-      <Button
-        onClick={() => {
-          setAdvisorHistolyParams({ historyId: null });
-        }}
-      >
-        <PencilLine />
-      </Button>
-      <AdvisorHistoryListDrawer onSelect={onSelect} />
+    <div className={cn('flex flex-col gap-2 items-start', className)}>
+      {isMobile && <AdvisorHistoryListDrawer onSelect={onSelect} />}
+      <StartNewAdvisor />
     </div>
   );
 };

@@ -26,65 +26,75 @@ export type AdvisorPrompt = {
 
 export const advisorPrompts: AdvisorPrompt[] = [
   {
-    id: 'fit',
-    mode: 'explain',
-    source: 'recommendation',
-    icon: BadgeQuestionMark,
-    title: 'Why does this pathway match me?',
-    prompt: 'Explain why this pathway fits me based on my AICA profile.',
-    description: 'Connect recommendation reasons to your actual traits.',
-    tone: 'text-blue-400',
-  },
-  {
-    id: 'first-focus',
+    id: 'next-step',
     mode: 'guide_step',
     source: 'roadmap',
     icon: Route,
-    title: 'What should I focus on first?',
-    prompt: 'What should I focus on first in my roadmap?',
-    description: 'Turn the roadmap into a clear first move.',
-    tone: 'text-green-400',
+    title: 'What should I do next?',
+    prompt: 'Based on my roadmap, what is the single best next step?',
+    description: 'Turn my roadmap into one clear action.',
+    tone: 'green',
   },
+
   {
-    id: 'adjust',
-    mode: 'adjust',
-    source: 'roadmap',
-    icon: RefreshCcw,
-    title: 'Adjust this plan for my constraints',
-    prompt: 'Adjust this roadmap for my time, budget, and constraints.',
-    description: 'Keep the goal but change the pace and sequence.',
-    tone: 'text-orange-400',
+    id: 'why-fit',
+    mode: 'explain',
+    source: 'recommendation',
+    icon: BadgeQuestionMark,
+    title: 'Why is this a good fit?',
+    prompt:
+      'Explain why this pathway matches my profile, strengths, and interests.',
+    description: 'Understand the reasoning behind the recommendation.',
+    tone: 'blue',
   },
+
   {
     id: 'compare',
     mode: 'decide',
     source: 'recommendation',
     icon: GitCompare,
-    title: 'Compare my top options',
-    prompt: 'Compare my top two pathway options in a practical way.',
-    description: 'Look at effort, fit, risk, and next steps.',
-    tone: 'text-blue-400',
+    title: 'Help me choose',
+    prompt:
+      'Compare my top pathway options and tell me the practical trade-offs.',
+    description: 'Compare effort, opportunity, risk, and long-term fit.',
+    tone: 'blue',
   },
+
   {
-    id: 'risk',
+    id: 'fastest-path',
+    mode: 'guide_step',
+    source: 'roadmap',
+    icon: Compass,
+    title: 'What is the fastest path?',
+    prompt:
+      'Show me the fastest realistic path to reach this goal from where I am now.',
+    description: 'Prioritize speed while staying realistic.',
+    tone: 'yellow',
+  },
+
+  {
+    id: 'adjust-plan',
+    mode: 'adjust',
+    source: 'roadmap',
+    icon: RefreshCcw,
+    title: 'Adapt this plan',
+    prompt:
+      'Adjust this roadmap based on my available time, budget, and constraints.',
+    description: 'Make the roadmap work for my situation.',
+    tone: 'orange',
+  },
+
+  {
+    id: 'risks',
     mode: 'verify',
     source: 'pathway',
-    icon: Compass,
-    title: 'What are the risks?',
-    prompt: 'What are the main risks or challenges in this pathway?',
-    description: 'Add realism without discouraging momentum.',
-    tone: 'text-rose-400',
+    icon: ListChecks,
+    title: 'What could go wrong?',
+    prompt:
+      'What challenges, risks, or common mistakes should I expect in this pathway?',
+    description: 'Spot obstacles before they become blockers.',
+    tone: 'rose',
   },
-  // {
-  //   id: 'weekly',
-  //   mode: 'guide_step',
-  //   source: 'roadmap',
-  //   icon: ListChecks,
-  //   title: 'What should I do this week?',
-  //   prompt: 'What should I do this week based on my roadmap?',
-  //   description: 'Make the next action small and realistic.',
-  //   tone: 'text-yellow-300',
-  // },
 ];
 
 export const advisorBoundaries = [

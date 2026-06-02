@@ -2,8 +2,9 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowUp } from 'lucide-react';
 import { useState, type SubmitEvent } from 'react';
-import { AdvisorPromptGrid } from './advisor-prompt-grid';
+import { ScrollArea } from '../ui/scroll-area';
 import type { AdvisorPrompt } from './advisor-ui-data';
+import PromptMenu from './prompt-menu';
 
 type AdvisorInputBoxProps = {
   isPending: boolean;
@@ -32,27 +33,31 @@ export function AdvisorInputBox({ isPending, onSubmit }: AdvisorInputBoxProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl bg-muted flex flex-col items-center sm:items-center sm:justify-between max-w-sm sm:max-w-2xl mx-auto sticky bottom-22 md:bottom-4 h-min"
+      className="rounded-2xl flex items-center gap-2 justify-center w-[90%] sm:max-w-2xl mx-auto sticky bottom-4 md:bottom-4 h-min p-2"
     >
-      <Textarea
-        value={message}
-        onChange={(event) => setMessage(event.target.value)}
-        placeholder="Ask about your context anything!"
-        // Ask about your pathway, roadmap, comparison, or next steps
-        className="min-h-10 border-0 text-sm placeholder:text-sm placeholder: bg-transparent focus-visible:ring-0 max-h-40 no-scrollbar"
-      />
-      <div className="flex self-end gap-2 px-2 overflow-hidden">
-        <AdvisorPromptGrid onPromptSelect={handlePromptSelect} />
+      <PromptMenu onPromptSelect={handlePromptSelect} />
 
-        <Button
-          type="submit"
-          size={'icon-lg'}
-          disabled={isPending || message.trim().length < 3}
-          className="size-11"
-        >
-          <ArrowUp className="size-5.5" strokeWidth={2.7} />
-        </Button>
+      <div className="flex-1 max-h-45 h-full w-full rounded-2xl overflow-hidden  ring ring-ring">
+        <ScrollArea className="h-full">
+          <Textarea
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
+            placeholder="Ask about your context anything!"
+            // Ask about your pathway, roadmap, comparison, or next steps
+            className="min-h-10 text-sm placeholder:text-sm focus-visible:ring-0  focus-visible:border-border/0"
+            maxLength={3000}
+          />
+        </ScrollArea>
       </div>
+
+      <Button
+        type="submit"
+        size={'icon-lg'}
+        disabled={isPending || message.trim().length < 3}
+        className="size-11 self-end"
+      >
+        <ArrowUp className="size-5.5" strokeWidth={2.7} />
+      </Button>
     </form>
   );
 }

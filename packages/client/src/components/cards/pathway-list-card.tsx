@@ -26,10 +26,7 @@ export default function PathwayListCard({ pathway }: Props) {
         if (e.key === 'Enter' || e.key === ' ') handleClick();
       }}
       className="
-        group cursor-pointer overflow-hidden rounded-2xl border
-        transition-all duration-300
-        hover:-translate-y-1 hover:shadow-xl
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
+        group flex-1
       "
     >
       <CardContent className="space-y-5 p-6">

@@ -14,21 +14,29 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ScrollArea } from '../ui/scroll-area';
 import AdvisorResponseEmptyState from './advisor-response-empty-state';
 import AdvisorResponsePendingState from './advisor-response-pending-state';
+import { cn } from '@/lib/utils';
 
 type AdvisorResponsePanelProps = {
   response?: AdvisorResponse;
   isPending: boolean;
   onFollowUp: (question: string) => void;
+  className?: string;
 };
 
 export function AdvisorResponsePanel({
   response,
   isPending,
   onFollowUp,
+  className,
 }: AdvisorResponsePanelProps) {
   if (isPending) return <AdvisorResponsePendingState />;
 
-  if (!response) return <AdvisorResponseEmptyState />;
+  if (!response)
+    return (
+      <div className="">
+        <AdvisorResponseEmptyState />
+      </div>
+    );
 
   const actionLabel = getActionLabel(response.mode);
   const ModeIcon = getModeIcon(response.mode);
@@ -41,10 +49,10 @@ export function AdvisorResponsePanel({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -6 }}
         transition={{ duration: 0.22, ease: 'easeOut' }}
-        className="w-full md:h-full md:min-h-0"
+        className={cn('md:flex-1 w-full md:min-h-0', className)}
       >
-        <ScrollArea className="h-full">
-          <div className="w-full pb-6">
+        <ScrollArea className="md:h-full">
+          <div className="w-full pb-6 pt-4">
             <CardHeader className="pb-4">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="default" className="capitalize">

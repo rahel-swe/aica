@@ -1,9 +1,6 @@
 import PathwayListCard from '@/components/cards/pathway-list-card';
-
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
-
-import { ShellPage } from '@/pages/page-primitives';
-
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { usePathwaysQuery } from '@/queries/pathway-query';
 
 export default function ExplorePage() {
@@ -22,22 +19,29 @@ export default function ExplorePage() {
   const pathways = data?.data;
 
   return (
-    <ShellPage
-      eyebrow="Explore"
-      title="Browse aligned pathways"
-      description="Use explore to review faculties and careers before entering recommendation mode."
-    >
-      {pathways.length === 0 ? (
-        <div className="flex items-center justify-center py-20 text-muted-foreground">
-          No pathways found.
+    <div className="flex flex-colc flex-1 md:min-h-0 md:h-full gap-6">
+      <ScrollArea className="md:h-full">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Browse aligned pathways
+          </h1>
+          <p className="max-w-3xl text-muted-foreground">
+            Use explore to review faculties and careers before entering
+            recommendation mode.
+          </p>
         </div>
-      ) : (
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {pathways.map((pathway) => (
-            <PathwayListCard key={pathway.slug} pathway={pathway} />
-          ))}
-        </div>
-      )}
-    </ShellPage>
+        {pathways.length === 0 ? (
+          <div className="flex items-center justify-center py-20 text-muted-foreground">
+            No pathways found.
+          </div>
+        ) : (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {pathways.map((pathway) => (
+              <PathwayListCard key={pathway.slug} pathway={pathway} />
+            ))}
+          </div>
+        )}
+      </ScrollArea>
+    </div>
   );
 }
