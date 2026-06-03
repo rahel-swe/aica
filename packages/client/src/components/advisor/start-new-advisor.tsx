@@ -1,23 +1,31 @@
-import { useAdvisorHistoryListParams } from '@/hooks/use-advisor-history-list-params';
 import { useAdvisorHistoryStore } from '@/stores/advisor-history-store';
 import { PencilLine } from 'lucide-react';
 import { Button } from '../ui/button';
 
-const StartNewAdvisor = () => {
-  const [{ historyId }, setAdvisorHistolyParams] =
-    useAdvisorHistoryListParams();
-  const { clearSelectedHistory } = useAdvisorHistoryStore();
+const StartNewAdvisor = ({
+  size,
+}: {
+  size?:
+    | 'default'
+    | 'xs'
+    | 'sm'
+    | 'lg'
+    | 'icon'
+    | 'icon-xs'
+    | 'icon-sm'
+    | 'icon-lg';
+}) => {
+  const { clearSelectedHistory, selectedHistory } = useAdvisorHistoryStore();
 
-  if (!historyId) return null;
+  if (!selectedHistory) return null;
 
   return (
     <Button
       variant={'outline'}
       className=""
-      onClick={() => {
-        setAdvisorHistolyParams({ historyId: null });
-        clearSelectedHistory();
-      }}
+      size={size ?? 'default'}
+      onClick={() => clearSelectedHistory()}
+      aria-label="Start new Chat"
     >
       <PencilLine />
     </Button>

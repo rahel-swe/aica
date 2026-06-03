@@ -20,3 +20,46 @@ export type AdvisorHistoryItem = z.infer<typeof advisorHistoryItemSchema>;
 export type AdvisorHistoryResponse = z.infer<
   typeof advisorHistoryResponseSchema
 >;
+
+export type AdvisorConversationDeleteResponse = {
+  success: boolean;
+  message: string;
+  data: {
+    _id: string;
+    message: string;
+    mode:
+      | 'explain'
+      | 'decide'
+      | 'guide_step'
+      | 'reflect'
+      | 'adjust'
+      | 'verify'
+      | 'general';
+    source: 'profile' | 'recommendation' | 'pathway' | 'roadmap' | 'advisor';
+    response: {
+      mode:
+        | 'explain'
+        | 'decide'
+        | 'guide_step'
+        | 'reflect'
+        | 'adjust'
+        | 'verify'
+        | 'general';
+      source: 'profile' | 'recommendation' | 'pathway' | 'roadmap' | 'advisor';
+      title: string;
+      answer: string;
+      nextActions: string[];
+      cautions: string[];
+      suggestedFollowUps: string[];
+      contextUsed: (
+        | 'pathway'
+        | 'roadmap'
+        | 'onboarding'
+        | 'recommendations'
+        | 'pathwayKnowledge'
+        | 'roadmapSetup'
+      )[];
+    };
+    createdAt: string;
+  };
+};

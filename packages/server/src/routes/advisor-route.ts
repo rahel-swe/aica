@@ -7,4 +7,9 @@ const advisorRouter = Router();
 advisorRouter.post('/chat', authorize, advisorController.chat);
 advisorRouter.get('/history', authorize, advisorController.history);
 
+advisorRouter.delete(
+  '/conversations/:id',
+  advisorController.deleteConversationById
+);
+
 export default advisorRouter;

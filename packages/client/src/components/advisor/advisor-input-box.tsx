@@ -37,18 +37,15 @@ export function AdvisorInputBox({ isPending, onSubmit }: AdvisorInputBoxProps) {
     >
       <PromptMenu onPromptSelect={handlePromptSelect} />
 
-      <div className="flex-1 max-h-45 h-full w-full rounded-2xl overflow-hidden  ring ring-ring">
-        <ScrollArea className="h-full">
-          <Textarea
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-            placeholder="Ask about your context anything!"
-            // Ask about your pathway, roadmap, comparison, or next steps
-            className="min-h-10 text-sm placeholder:text-sm focus-visible:ring-0  focus-visible:border-border/0"
-            maxLength={3000}
-          />
-        </ScrollArea>
-      </div>
+      <ScrollArea className="flex-1 max-h-45 h-full w-full rounded-2xl overflow-hidden  ring ring-ring/70">
+        <Textarea
+          value={message}
+          onChange={(event) => setMessage(event.target.value)}
+          placeholder="Ask about your context anything!"
+          className="min-h-10 text-sm placeholder:text-sm focus-visible:ring-0 focus-visible:border-border/0"
+          maxLength={3000}
+        />
+      </ScrollArea>
 
       <Button
         type="submit"

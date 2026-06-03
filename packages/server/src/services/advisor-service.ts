@@ -85,7 +85,7 @@ export class AdvisorService {
   async answer(
     userId: string,
     request: AdvisorChatRequest
-  ): Promise<AdvisorResponse> {
+  ): Promise<AdvisorResponse | null> {
     const context = await this.buildContext(userId);
     const mode = this.resolveMode(request);
     const source = this.resolveSource(request, mode);
@@ -116,16 +116,9 @@ export class AdvisorService {
 
       await this.saveAnswer(userId, request.message, response);
       return response;
-    } catch {
-      const response = {
-        ...FALLBACK_RESPONSE,
-        mode,
-        source,
-        contextUsed: this.resolveContextSources(context),
-      };
-
-      await this.saveAnswer(userId, request.message, response);
-      return response;
+    } catch (err) {
+      console.log('Something went wrong please try again', err);
+      return null;
     }
   }
 
@@ -400,6 +393,10 @@ export class AdvisorService {
       source: response.source,
       response,
     });
+  }
+
+  async deleteConversationById(id: string) {
+    return await this.advisorMessages.deleteById(id);
   }
 }
 

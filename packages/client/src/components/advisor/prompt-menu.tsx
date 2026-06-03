@@ -50,7 +50,7 @@ const PromptMenu = ({ onPromptSelect }: PromptMenuProps) => {
                   className="shrink-0 group transition-colors h-min"
                 >
                   <div className="flex items-center gap-3 text-sm">
-                    <Icon className={cn('size-5', tone)} />
+                    <Icon className={cn('size-4.5', tone)} />
                     <p className="capitalize text-muted-foreground">
                       {/* {mode.replace('_', ' ')} */}
                       {title}

@@ -22,6 +22,10 @@ export class AdvisorMessageRepository {
       .limit(limit)
       .lean();
   }
+
+  async deleteById(id: string) {
+    return AdvisorMessageModel.findByIdAndDelete(id);
+  }
 }
 
 export const advisorMessageRepository = new AdvisorMessageRepository();

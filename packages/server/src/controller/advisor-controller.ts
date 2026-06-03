@@ -57,6 +57,30 @@ export class AdvisorController {
       });
     }
   };
+
+  deleteConversationById = async (
+    req: AuthRequest,
+    res: Response
+  ): Promise<void> => {
+    try {
+      const { id } = req.params as { id: string };
+
+      const data = await this.service.deleteConversationById(id);
+
+      res.status(200).json({
+        success: true,
+        message: 'Conversation deleted.',
+        data,
+      });
+    } catch (error) {
+      console.error('[AdvisorController] delete error:', error);
+
+      res.status(500).json({
+        success: false,
+        message: 'Could not delete advisor conversation history.',
+      });
+    }
+  };
 }
 
 export const advisorController = new AdvisorController();

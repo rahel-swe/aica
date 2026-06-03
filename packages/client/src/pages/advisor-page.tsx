@@ -41,7 +41,7 @@ export default function AdvisorPage() {
   return (
     <main className="flex flex-col gap-5 md:flex-row w-full min-h-0 h-full md:overflow-hidden pb-28 md:pb-0">
       {!isMobile && <AdvisorHistoryList onSelect={setSelectedHistory} />}
-      <section className="flex flex-col items-center justify-center flex-1 md:border rounded-tl-2xl md:min-h-0">
+      <section className="flex flex-col items-center justify-center flex-1 md:border-t md:border-s rounded-tl-2xl md:min-h-0">
         {isMobile && (
           <AdvisorHeader
             onSelect={setSelectedHistory}
