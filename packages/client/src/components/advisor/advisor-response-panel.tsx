@@ -33,7 +33,7 @@ export function AdvisorResponsePanel({
 
   if (!response)
     return (
-      <div className="">
+      <div className={cn('', className)}>
         <AdvisorResponseEmptyState />
       </div>
     );
@@ -49,7 +49,7 @@ export function AdvisorResponsePanel({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -6 }}
         transition={{ duration: 0.22, ease: 'easeOut' }}
-        className={cn('md:flex-1 w-full md:min-h-0', className)}
+        className={cn('md:flex-1 h-full w-full md:min-h-0', className)}
       >
         <ScrollArea className="md:h-full">
           <div className="w-full pb-6 pt-4">

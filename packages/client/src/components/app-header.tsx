@@ -1,22 +1,21 @@
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { authClient } from '@/lib/auth-client';
-import { Bell, Settings } from 'lucide-react';
+import { Bell, Search, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import ModeToggle from './toggle-mode';
-import { Button } from './ui/button';
-import { useTheme } from '@/providers/theme-provider';
 import { appImgSources } from '@/constants/app-image-sources';
 import { useIsTabActive } from '@/hooks/use-active-route';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/providers/theme-provider';
+import { Button } from './ui/button';
+import UserAvatar from './user-avatar';
 
 export default function AppHeader({ className }: { className?: string }) {
   const { data, isPending } = authClient.useSession();
   const { theme } = useTheme();
 
   const isTabActive = useIsTabActive();
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(768);
 
   if (isPending || (!isTabActive && isMobile)) return null;
 
@@ -60,11 +59,16 @@ export default function AppHeader({ className }: { className?: string }) {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {!isMobile && (
+              <Link to="/app/explore">
+                <Button variant={'outline'} size={'icon-lg'}>
+                  <Search className="size-5" />
+                </Button>
+              </Link>
+            )}
             <Button variant={'outline'} size={'icon-lg'}>
               <Bell className="size-5" />
             </Button>
-
-            <ModeToggle />
 
             <Link to="/app/settings">
               <Button variant={'outline'} size={'icon-lg'}>
@@ -77,25 +81,17 @@ export default function AppHeader({ className }: { className?: string }) {
               to="/app/profile"
               className="hidden items-center gap-3 rounded-full bg-background/40 p-1.5 transition-all hover:bg-accent md:flex"
             >
-              <Avatar className="size-11">
-                <AvatarFallback className="bg-primary/10 text-sm font-semibold">
-                  {isPending
-                    ? '..'
-                    : data?.user.name?.slice(0, 2).toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
+              <UserAvatar username={data!.user.name} />
 
-              {!isPending && (
-                <div className="max-w-40 overflow-hidden">
-                  <h6 className="truncate text-sm font-semibold">
-                    {data?.user.name}
-                  </h6>
+              <div className="max-w-40 overflow-hidden">
+                <h6 className="truncate text-sm font-semibold">
+                  {data?.user.name}
+                </h6>
 
-                  <p className="truncate text-xs text-muted-foreground">
-                    {data?.user.email}
-                  </p>
-                </div>
-              )}
+                <p className="truncate text-xs text-muted-foreground">
+                  {data?.user.email}
+                </p>
+              </div>
             </Link>
           </div>
         </div>

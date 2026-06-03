@@ -206,8 +206,8 @@ export default function DashboardPage() {
   if (isError) return <DashboardErrorState onRetry={refetch} />;
 
   return (
-    <div className="min-h-screen">
-      <div className="mx-auto flex w-full flex-col gap-2">
+    <div className="h-full pt-18 md:pt-0">
+      <div className="mx-auto flex w-full flex-col gap-2 p-4 md:ps-0">
         <div className="grid gap-6 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-8">
             <NextActionCard dashboard={dashboard} />

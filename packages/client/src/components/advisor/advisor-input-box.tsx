@@ -5,13 +5,19 @@ import { useState, type SubmitEvent } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
 import type { AdvisorPrompt } from './advisor-ui-data';
 import PromptMenu from './prompt-menu';
+import { cn } from '@/lib/utils';
 
 type AdvisorInputBoxProps = {
   isPending: boolean;
   onSubmit: (message: string) => void;
+  className?: string;
 };
 
-export function AdvisorInputBox({ isPending, onSubmit }: AdvisorInputBoxProps) {
+export function AdvisorInputBox({
+  isPending,
+  onSubmit,
+  className,
+}: AdvisorInputBoxProps) {
   const [message, setMessage] = useState('');
 
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
@@ -33,7 +39,10 @@ export function AdvisorInputBox({ isPending, onSubmit }: AdvisorInputBoxProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl flex items-center gap-2 justify-center w-[90%] sm:max-w-2xl mx-auto sticky bottom-4 md:bottom-4 h-min p-2"
+      className={cn(
+        'rounded-2xl flex items-center gap-2 justify-center w-[90%] sm:max-w-2xl mx-auto sticky bottom-4 md:bottom-4 h-min p-2',
+        className
+      )}
     >
       <PromptMenu onPromptSelect={handlePromptSelect} />
 

@@ -1,6 +1,6 @@
 import AppDesktopTabs from '@/components/app-desktop-tabs';
 import AppHeader from '@/components/app-header';
-import AppMobileTabs from '@/components/app-mobile-tabs';
+import MobileMainTabs from '@/components/mobile-main-tabs';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import ErrorPage from '@/pages/error-page';
 import { useProfileStatusQuery } from '@/queries/profile-query';
@@ -35,11 +35,10 @@ export default function AppLayout() {
       <div className="flex min-h-0 flex-1 flex-col gap-4">
         <AppHeader className="shrink-0" />
 
-        <div className="min-h-0 flex-1 pt-18 md:pt-0">
+        <div className="min-h-0 flex-1">
           <Outlet />
         </div>
-
-        {/* <AppMobileTabs className="shrink-0" /> */}
+        <MobileMainTabs />
       </div>
     </div>
   );

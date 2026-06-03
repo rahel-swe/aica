@@ -19,8 +19,8 @@ export default function ExplorePage() {
   const pathways = data?.data;
 
   return (
-    <div className="flex flex-colc flex-1 md:min-h-0 md:h-full gap-6">
-      <ScrollArea className="md:h-full">
+    <div className="flex flex-colc flex-1 md:min-h-0 md:h-full gap-6 pt-18 pb-20 md:pt-0 md:pb-0">
+      <ScrollArea className="p-4 md:p-0 md:pe-4">
         <div className="space-y-2">
           <h1 className="text-3xl font-semibold tracking-tight">
             Browse aligned pathways

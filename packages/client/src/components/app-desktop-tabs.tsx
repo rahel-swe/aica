@@ -1,4 +1,4 @@
-import { tabItems } from '@/constants/app-tabs';
+import { DESKTOP_TABS } from '@/constants/app-tabs';
 import { useIsTabActive } from '@/hooks/use-active-route';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'motion/react';
@@ -91,9 +91,9 @@ function NavItem({ label, to, icon: Icon }: NavItemProps) {
 
 export default function AppDesktopTabs() {
   return (
-    <aside className="hidden md:flex md:items-start ps-2">
-      <nav className="sticky top-1/2 -translate-y-1/2 flex h-fit w-18.5 flex-col gap-2 rounded-full border bg-background/20 p-3 items-start justify-center backdrop-blur-sm">
-        {tabItems.map((item) => (
+    <aside className="hidden md:flex md:items-start ps-4 w-22">
+      <nav className="fixed top-1/2 -translate-y-1/2 flex h-fit w-18.5 flex-col gap-2 rounded-full border bg-background/20 p-2.5 items-start justify-center backdrop-blur-sm z-20">
+        {DESKTOP_TABS.map((item) => (
           <NavItem key={item.to} {...item} />
         ))}
       </nav>

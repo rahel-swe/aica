@@ -11,7 +11,7 @@ export default function NotFoundPage() {
           The route does not exist in the current AICA application structure.
         </p>
         <Button asChild>
-          <Link to="/">Return home</Link>
+          <Link to="/app/dashboard">Return home</Link>
         </Button>
       </div>
     </div>

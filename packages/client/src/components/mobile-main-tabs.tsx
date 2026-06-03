@@ -1,17 +1,19 @@
-import { authClient } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
-import { Avatar, AvatarFallback } from './ui/avatar';
+import { MAIN_TABS } from '@/constants/app-tabs';
 import { useIsTabActive } from '@/hooks/use-active-route';
-import { motion } from 'motion/react';
-import { tabItems } from '@/constants/app-tabs';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { authClient } from '@/lib/auth-client';
+import type { LucideIcon } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Separator } from './ui/separator';
+import UserAvatar from './user-avatar';
 
 type TabItemProps = {
   label: string;
   to: string;
-  icon: React.ElementType;
+  icon: LucideIcon;
 };
 
 function TabItem({ label, to, icon: Icon }: TabItemProps) {
@@ -21,14 +23,14 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
     <Link to={to}>
       <motion.div
         whileTap={{ scale: 0.96 }}
-        whileHover={{ y: -2 }}
+        // whileHover={{ y: -2 }}
         transition={{
           type: 'spring',
           stiffness: 400,
           damping: 20,
         }}
         className={cn(
-          'group relative  flex min-w-16 flex-col items-center rounded-full px-3 py-2 text-xs font-medium transition-all duration-200',
+          'group relative  flex items-center rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 ',
           isActive
             ? 'text-primary-foreground shadow-lg shadow-primary/20'
             : 'text-muted-foreground hover:text-foreground'
@@ -55,15 +57,19 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
           )}
         />
 
-        <span className={cn('relative z-10 mt-1 text-[0.6rem]')}>{label}</span>
+        {isActive && (
+          <span className={cn('relative z-10 text-sm font-bold ms-2')}>
+            {label}
+          </span>
+        )}
       </motion.div>
     </Link>
   );
 }
 
-export default function AppMobileTabs({ className }: { className?: string }) {
-  const { data, isPending } = authClient.useSession();
+const MobileMainTabs = ({ className }: { className?: string }) => {
   const isTabActive = useIsTabActive();
+  const { data, isPending } = authClient.useSession();
   const isMobile = useIsMobile();
 
   if (isPending || (!isTabActive && isMobile)) return null;
@@ -71,30 +77,32 @@ export default function AppMobileTabs({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'sticky inset-x-0 bottom-3 z-10 flex items-center justify-between px-4 md:hidden',
+        'flex items-center justify-between md:hidden w-full',
         className
       )}
     >
-      {/* Tabs */}
       <div
         className={cn(
-          'flex h-16 items-center justify-evenly rounded-full border',
-          'backdrop-blur-md supports-backdrop-filter:bg-background/10 px-1.5'
+          'flex py-2 items-center rounded-full border fixed inset-s-4 inset-x-0 bottom-3 z-10',
+          'backdrop-blur-md supports-backdrop-filter:bg-background/ px-2 w-min z-50'
         )}
       >
-        {tabItems.map((item) => (
+        {MAIN_TABS.map((item) => (
           <TabItem key={item.to} {...item} />
         ))}
       </div>
-
-      {/* Profile */}
-      <Link to="/app/profile" className="shrink-0">
-        <Avatar className="size-12 border backdrop-blur-sm">
-          <AvatarFallback className="bg-background/20 backdrop-blur-xl">
-            {data?.user.name?.slice(0, 2).toUpperCase()}
-          </AvatarFallback>
-        </Avatar>
+      <Separator
+        decorative
+        className="fixed z-0 inset-e-7 border rounded-2xl ms-auto bottom-9 inset-x-0 max-w-[80%]"
+      />
+      <Link
+        to="/app/profile"
+        className="items-center rounded-full bg-background/40 transition-all md:flex fixed inset-e-5 ms-auto bottom-3 w-min z-10 backdrop-blur-sm"
+      >
+        <UserAvatar className="size-12" username={data!.user.name} />
       </Link>
     </div>
   );
-}
+};
+
+export default MobileMainTabs;

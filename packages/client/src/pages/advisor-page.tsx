@@ -4,6 +4,7 @@ import { AdvisorInputBox } from '@/components/advisor/advisor-input-box';
 import { AdvisorResponsePanel } from '@/components/advisor/advisor-response-panel';
 import type { AdvisorPrompt } from '@/components/advisor/advisor-ui-data';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
 import { useAdvisorMutation } from '@/queries/advisor-query';
 import { useAdvisorHistoryStore } from '@/stores/advisor-history-store';
 import type { AdvisorResponse } from '@contracts/shared/types/advisor-types';
@@ -39,9 +40,9 @@ export default function AdvisorPage() {
   };
 
   return (
-    <main className="flex flex-col gap-5 md:flex-row w-full min-h-0 h-full md:overflow-hidden pb-28 md:pb-0">
+    <main className="flex flex-col gap-5 md:flex-row w-full min-h-0 h-full pt-28  md:pt-0 md:overflow-hidden">
       {!isMobile && <AdvisorHistoryList onSelect={setSelectedHistory} />}
-      <section className="flex flex-col items-center justify-center flex-1 md:border-t md:border-s rounded-tl-2xl md:min-h-0">
+      <section className="md:flex md:flex-col md:justify-center flex-1 rounded-2xl md:border-t md:border-s md:min-h-0">
         {isMobile && (
           <AdvisorHeader
             onSelect={setSelectedHistory}
@@ -59,11 +60,15 @@ export default function AdvisorPage() {
               source: activeResponse?.source,
             })
           }
-          className="flex flex-col self-center"
+          className={cn(
+            'flex flex-col self-center',
+            !activeResponse && 'mt-[25%]'
+          )}
         />
 
         <AdvisorInputBox
           isPending={isPending}
+          className="bottom-18 mb-auto "
           onSubmit={(message) =>
             askAdvisor({
               message,

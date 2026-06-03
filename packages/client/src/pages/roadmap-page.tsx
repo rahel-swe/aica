@@ -20,7 +20,7 @@ export default function RoadmapPage() {
   if (!roadmap) return <RoadmapEmptyState />;
 
   return (
-    <main className="lg:px-8 flex flex-col lg:flex-row gap-6 pb-4 px-4 md:px-6">
+    <main className="lg:px-8 flex flex-col lg:flex-row gap-6 px-4 md:px-6 pt-18 pb-20 md:pt-0 md:pb-4">
       <div className="mx-auto max-w-7xl flex flex-col gap-10">
         <RoadmapHero roadmap={roadmap} />
         <RoadmapSteps
