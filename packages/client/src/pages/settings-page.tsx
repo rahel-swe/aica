@@ -1,20 +1,22 @@
 import { CardContent } from '@/components/ui/card';
 import {
   Bell,
-  ChevronLeft,
   ChevronRight,
-  CreditCard,
+  CircleHelp,
   Globe,
   Lock,
   Monitor,
-  Shield,
   User,
   UserCircle,
 } from 'lucide-react';
 import { useState } from 'react';
 
+import SignOutButton from '@/components/sign-out-button';
+import NavigationBackButton from '@/components/navigation-back-button';
+import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import UserAvatar from '@/components/user-avatar';
 import { cn } from '@/lib/utils';
 
 const settingsSections = [
@@ -36,24 +38,19 @@ const settingsSections = [
     description: 'Choose which updates and reminders you want to receive.',
     icon: Bell,
   },
-  {
-    id: 'privacy',
-    title: 'Privacy',
-    description: 'Control your data, visibility, and personalization settings.',
-    icon: Shield,
-  },
+  // {
+  //   id: 'privacy',
+  //   title: 'Privacy',
+  //   description: 'Control your data, visibility, and personalization settings.',
+  //   icon: Shield,
+  // },
   {
     id: 'security',
     title: 'Security',
     description: 'Manage password, sessions, and login protection.',
     icon: Lock,
   },
-  {
-    id: 'billing',
-    title: 'Billing',
-    description: 'Manage your plan, invoices, and payment methods.',
-    icon: CreditCard,
-  },
+
   {
     id: 'appearance',
     title: 'Appearance',
@@ -65,6 +62,12 @@ const settingsSections = [
     title: 'Language',
     description: 'Choose your preferred language and region.',
     icon: Globe,
+  },
+  {
+    id: 'about',
+    title: 'About',
+    description: 'About us and our services.',
+    icon: CircleHelp,
   },
 ];
 
@@ -120,12 +123,7 @@ function SettingsDetail({ sectionId }: { sectionId: string }) {
         <SettingsPanel
           title="Account"
           description="Update the basic information connected to your account."
-          items={[
-            'Email address',
-            'Username',
-            'Account status',
-            'Connected accounts',
-          ]}
+          items={['Email address', 'Username']}
         />
       );
 
@@ -171,26 +169,12 @@ function SettingsDetail({ sectionId }: { sectionId: string }) {
         />
       );
 
-    case 'billing':
-      return (
-        <SettingsPanel
-          title="Billing"
-          description="Manage your subscription and payments."
-          items={['Current plan', 'Payment method', 'Invoices', 'Cancel plan']}
-        />
-      );
-
     case 'appearance':
       return (
         <SettingsPanel
           title="Appearance"
           description="Adjust how AICA looks for you."
-          items={[
-            'Theme',
-            'Font preference',
-            'Compact mode',
-            'Motion settings',
-          ]}
+          items={['Theme']}
         />
       );
 
@@ -222,57 +206,46 @@ export default function SettingsPage() {
   }
   return (
     <div className="space-y-6 p-4">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight">
-          Settings and platform preferences
-        </h1>
-        <p className="max-w-3xl text-muted-foreground">
-          Settings should stay focused on security, privacy, notifications, and
-          language, without cluttering the main product flow.
-        </p>
-      </div>
       {/* Mobile section list */}
       {!isMobileDetailOpen && (
-        <div className="grid gap-3 md:hidden">
+        <div className="flex flex-col items-center gap-2 md:hidden max-w-xs mx-auto">
+          <NavigationBackButton
+            title="Back"
+            className="self-start absolute inset-s-6 top-6"
+          />
+          <UserAvatar
+            username="Rahel"
+            className="size-23 my-5"
+            fallBackClassName="text-xl"
+          />
           {settingsSections.map((section) => {
             const Icon = section.icon;
 
             return (
-              <button
+              <Button
                 key={section.id}
-                type="button"
+                variant={'outline'}
                 onClick={() => handleSectionClick(section.id)}
-                className="flex items-center gap-4 rounded-xl border bg-card p-4 text-left transition-colors hover:bg-accent"
+                className="flex items-center gap-4 text-left  w-full py-7 px-4 dark:bg-secondary/20"
               >
-                <div className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
-                  <Icon className="size-5" />
-                </div>
-
+                <Icon className="size-7" />
                 <div className="min-w-0 flex-1">
                   <h2 className="font-medium">{section.title}</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {section.description}
-                  </p>
                 </div>
 
                 <ChevronRight className="size-5 shrink-0 text-muted-foreground" />
-              </button>
+              </Button>
             );
           })}
+
+          <SignOutButton className="gap-4 text-left mt-5 w-full py-7 px-4 max-w-40" />
         </div>
       )}
 
       {/* Mobile detail */}
       {isMobileDetailOpen && (
         <div className="space-y-4 md:hidden">
-          <button
-            type="button"
-            onClick={() => setIsMobileDetailOpen(false)}
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground"
-          >
-            <ChevronLeft className="size-4" />
-            Back to settings
-          </button>
+          <NavigationBackButton title="Back" />
 
           <SettingsDetail sectionId={activeSection.id} />
         </div>

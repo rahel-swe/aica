@@ -51,7 +51,7 @@ export function AdvisorInputBox({
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           placeholder="Ask about your context anything!"
-          className="min-h-10 text-sm placeholder:text-sm focus-visible:ring-0 focus-visible:border-border/0"
+          className="min-h-10 text-sm placeholder:text-sm focus-visible:ring-0 focus-visible:border-border/0 placeholder:line-clamp-1"
           maxLength={3000}
         />
       </ScrollArea>

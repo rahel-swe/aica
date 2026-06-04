@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
 import { MAIN_TABS } from '@/constants/app-tabs';
-import { useIsTabActive } from '@/hooks/use-active-route';
+import { useIsTabActive } from '@/hooks/use-active-tab';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { authClient } from '@/lib/auth-client';
 import type { LucideIcon } from 'lucide-react';

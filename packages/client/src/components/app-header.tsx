@@ -3,7 +3,7 @@ import { Bell, Search, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { appImgSources } from '@/constants/app-image-sources';
-import { useIsTabActive } from '@/hooks/use-active-route';
+import { useIsTabActive } from '@/hooks/use-active-tab';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/providers/theme-provider';

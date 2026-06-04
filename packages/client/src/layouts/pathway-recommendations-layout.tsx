@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-steps';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
-import { usePathwayPickerParams } from '@/hooks/use-picker-pathway-params';
+import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
 import DirectionStage from '@/components/direction-stage';
 import FamilyStage from '@/components/family-stage';
 import PathwayStage from '@/components/pathway-stage';

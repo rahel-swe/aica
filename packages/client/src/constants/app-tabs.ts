@@ -53,13 +53,8 @@ export const DESKTOP_TABS = [
 ];
 
 export const SECONDARY_TABS = [
-  { label: 'Help Support', to: '/help-support', icon: CircleHelp },
+  { label: 'About', to: '/About', icon: CircleHelp },
   { label: 'Notifications', to: '/app/notifications', icon: Bell },
   { label: 'Settings', to: '/app/settings', icon: Settings },
   { label: 'Admin', to: '/app/admin', icon: UserCog },
-  // {
-  //   label: 'Dashboard',
-  //   to: '/app/dashboard',
-  //   icon: LayoutDashboard,
-  // },
 ];
