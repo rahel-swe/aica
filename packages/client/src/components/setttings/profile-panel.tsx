@@ -75,7 +75,11 @@ const ProfilePanel = () => {
           </div>
         </div>
 
-        <Button onClick={handleSave} disabled={isSaving} className="self-end">
+        <Button
+          onClick={handleSave}
+          disabled={isSaving || name === user?.name}
+          className="self-end"
+        >
           {isSaving ? 'Saving...' : 'Save changes'}
         </Button>
       </div>
