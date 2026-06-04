@@ -8,7 +8,6 @@ import RecommendationsPage from '@/pages/recommendations-page';
 import PathwayDetailPage from '@/pages/pathway-detail-page';
 import AdvisorPage from '@/pages/advisor-page';
 import RoadmapPage from '@/pages/roadmap-page';
-import ProfilePage from '@/pages/profile-page';
 import SettingsPage from '@/pages/settings-page';
 import ErrorPage from '@/pages/error-page';
 import NotFoundPage from '@/pages/not-found-page';
@@ -83,7 +82,6 @@ const router = createBrowserRouter([
           { path: 'pathways/:pathwayId', element: <PathwayDetailPage /> },
           { path: 'advisor', element: <AdvisorPage /> },
           { path: 'roadmap', element: <RoadmapPage /> },
-          { path: 'profile', element: <ProfilePage /> },
           { path: 'settings', element: <SettingsPage /> },
         ],
       },

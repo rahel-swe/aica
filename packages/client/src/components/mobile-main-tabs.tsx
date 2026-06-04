@@ -96,7 +96,7 @@ const MobileMainTabs = ({ className }: { className?: string }) => {
         className="fixed z-0 inset-e-7 border rounded-2xl ms-auto bottom-9 inset-x-0 max-w-[80%]"
       />
       <Link
-        to="/app/profile"
+        to="/app/settings"
         className="items-center rounded-full bg-background/40 transition-all md:flex fixed inset-e-5 ms-auto bottom-3 w-min z-10 backdrop-blur-sm"
       >
         <UserAvatar className="size-12" username={data!.user.name} />

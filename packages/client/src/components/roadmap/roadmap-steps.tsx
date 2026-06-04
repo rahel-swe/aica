@@ -1,4 +1,4 @@
-import { useRoadmapStepsAndPhasesParams } from '@/params/roadmap-steps-and-phases-params';
+import { useRoadmapStepsAndPhasesParams } from '@/params/use-roadmap-steps-and-phases-params';
 import type {
   RoadmapPhase,
   RoadmapStep,

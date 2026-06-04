@@ -5,9 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 const NavigationBackButton = ({
   title,
+  onClick,
   className,
 }: {
   title?: string;
+  onClick?: () => void;
   className?: string;
 }) => {
   const navigate = useNavigate();
@@ -16,9 +18,7 @@ const NavigationBackButton = ({
     <Button
       variant={'outline'}
       className={cn(className)}
-      onClick={() => {
-        navigate(-1);
-      }}
+      onClick={() => (onClick ? onClick() : navigate(-1))}
     >
       <ArrowLeft />
       {title}

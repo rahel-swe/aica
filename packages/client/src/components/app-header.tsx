@@ -2,24 +2,20 @@ import { authClient } from '@/lib/auth-client';
 import { Bell, Search, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import { appImgSources } from '@/constants/app-image-sources';
 import { useIsTabActive } from '@/hooks/use-active-tab';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
-import { useTheme } from '@/providers/theme-provider';
+import AppLogo from './app-logo';
 import { Button } from './ui/button';
 import UserAvatar from './user-avatar';
 
 export default function AppHeader({ className }: { className?: string }) {
   const { data, isPending } = authClient.useSession();
-  const { theme } = useTheme();
 
   const isTabActive = useIsTabActive();
   const isMobile = useIsMobile(768);
 
   if (isPending || (!isTabActive && isMobile)) return null;
-
-  const currentTheme = theme === 'dark' ? 'dark' : 'light';
 
   return (
     <div
@@ -34,27 +30,7 @@ export default function AppHeader({ className }: { className?: string }) {
             to="/app/dashboard"
             className="flex shrink-0 items-center gap-2"
           >
-            <div className="flex items-center gap-1">
-              <img
-                src={appImgSources[currentTheme].logo}
-                alt="Logo"
-                width={40}
-                height={40}
-                loading="eager"
-                decoding="async"
-                className="h-10 w-10 object-contain"
-              />
-
-              <img
-                src={appImgSources[currentTheme].name}
-                alt="App Name"
-                width={56}
-                height={20}
-                loading="eager"
-                decoding="async"
-                className="h-5 w-14 self-end mb-1 object-contain"
-              />
-            </div>
+            <AppLogo logoClassName="" nameClassName="" />
           </Link>
 
           {/* Right Actions */}
@@ -78,7 +54,7 @@ export default function AppHeader({ className }: { className?: string }) {
 
             {/* Profile */}
             <Link
-              to="/app/profile"
+              to="/app/settings"
               className="hidden items-center gap-3 rounded-full bg-background/40 p-1.5 transition-all hover:bg-accent md:flex"
             >
               <UserAvatar username={data!.user.name} />

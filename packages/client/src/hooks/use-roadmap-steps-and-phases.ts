@@ -2,7 +2,7 @@ import type {
   RoadmapPhase,
   RoadmapStep,
 } from '@contracts/shared/types/roadmap-types';
-import { useRoadmapStepsAndPhasesParams } from '../params/roadmap-steps-and-phases-params';
+import { useRoadmapStepsAndPhasesParams } from '../params/use-roadmap-steps-and-phases-params';
 
 export const useRoadmapStepsAndPhases = ({
   steps,

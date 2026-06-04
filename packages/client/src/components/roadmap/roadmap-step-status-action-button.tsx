@@ -7,7 +7,7 @@ import type {
 import { Check, LoaderCircle, Play, type LucideIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 import SpinnerBars from '../shadcn-space/spinner/spinner-06';
-import { useRoadmapStepsAndPhasesParams } from '@/params/roadmap-steps-and-phases-params';
+import { useRoadmapStepsAndPhasesParams } from '@/params/use-roadmap-steps-and-phases-params';
 
 const roadmapStepActionButtonMeta: Record<
   RoadmapStepStatus,

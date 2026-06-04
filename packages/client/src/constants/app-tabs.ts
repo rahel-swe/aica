@@ -49,7 +49,6 @@ export const DESKTOP_TABS = [
     icon: Route,
   },
   { label: 'Admin', to: '/app/admin', icon: UserCog },
-  { label: 'Help Support', to: '/help-support', icon: CircleHelp },
 ];
 
 export const SECONDARY_TABS = [
