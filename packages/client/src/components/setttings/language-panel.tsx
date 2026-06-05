@@ -1,13 +1,21 @@
-import { useEffect, useState } from 'react';
 import { Globe } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
 import { sleep } from '@/lib/settings-utils';
 import type {
   SettingsData,
   SettingsSaveHandler,
 } from '@contracts/shared/types/settings-types';
+import { Label } from '../ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
 import SettingsPanelShell from './settings-panel-shell';
+import SettingsSaveButton from './settings-save-button';
 
 type LanguagePanelProps = {
   data: SettingsData;
@@ -34,57 +42,67 @@ const LanguagePanel = ({ data, onSave }: LanguagePanelProps) => {
       icon={Globe}
       title="Language"
       description="Choose your preferred language and region."
-      footer={
-        <div className="flex justify-end">
-          <Button onClick={handleSave} disabled={isSaving}>
-            {isSaving ? 'Saving...' : 'Save changes'}
-          </Button>
-        </div>
-      }
     >
       <div className="grid gap-2">
-        <label htmlFor="app-language" className="text-sm font-medium">
+        <Label htmlFor="app-language" className="text-sm font-medium">
           App language
-        </label>
-        <select
-          id="app-language"
+        </Label>
+
+        <Select
           value={form.appLanguage}
-          onChange={(e) =>
+          onValueChange={(value) =>
             setForm((prev) => ({
               ...prev,
-              appLanguage: e.target.value,
+              appLanguage: value,
             }))
           }
-          className="h-10 w-full rounded-md border bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <option>English</option>
-          <option>Pashto</option>
-          <option>Dari</option>
-          <option>Arabic</option>
-        </select>
+          <SelectTrigger id="app-language" className="w-full py-5">
+            <SelectValue placeholder="Select language" />
+          </SelectTrigger>
+
+          <SelectContent>
+            <SelectItem value="English">English</SelectItem>
+            <SelectItem value="Pashto">Pashto</SelectItem>
+            <SelectItem value="Dari">Dari</SelectItem>
+            <SelectItem value="Arabic">Arabic</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="grid gap-2">
-        <label htmlFor="region" className="text-sm font-medium">
+        <Label htmlFor="region" className="text-sm font-medium">
           Region
-        </label>
-        <select
-          id="region"
+        </Label>
+
+        <Select
           value={form.region}
-          onChange={(e) =>
+          onValueChange={(value) =>
             setForm((prev) => ({
               ...prev,
-              region: e.target.value,
+              region: value,
             }))
           }
-          className="h-10 w-full rounded-md border bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <option>Afghanistan</option>
-          <option>United States</option>
-          <option>United Kingdom</option>
-          <option>Other</option>
-        </select>
+          <SelectTrigger id="region" className="w-full py-5">
+            <SelectValue placeholder="Select region" />
+          </SelectTrigger>
+
+          <SelectContent>
+            <SelectItem value="Afghanistan">Afghanistan</SelectItem>
+            <SelectItem value="United States">United States</SelectItem>
+            <SelectItem value="United Kingdom">United Kingdom</SelectItem>
+            <SelectItem value="Other">Other</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
+      <SettingsSaveButton
+        onSave={handleSave}
+        isSaving={isSaving}
+        disabled={
+          isSaving || JSON.stringify(form) === JSON.stringify(data.language)
+        }
+      />
     </SettingsPanelShell>
   );
 };

@@ -58,7 +58,7 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className="space-y-6 p-4 md:pt-0 h-full min-h-0">
+    <div className="space-y-6 p-4 md:py-0 h-full min-h-0">
       <SettingsMobileSectionsList
         isMobileDetailOpen={Boolean(section)}
         onSectionClick={setSection}
@@ -73,7 +73,7 @@ const SettingsPage = () => {
       />
 
       {/* Desktop layout */}
-      <div className="hidden gap-6 md:grid md:grid-cols-[260px_1fr] h-full h-min-0 ov">
+      <div className="hidden gap-6 md:grid md:grid-cols-[260px_1fr]">
         <SettingsDesktopSectionsList
           activeSectionId={activeSectionId}
           onSectionClick={setSection}

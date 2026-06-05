@@ -2,7 +2,6 @@
 import { User, UserCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { authClient } from '@/lib/auth-client';
 import { useProfileStatusQuery } from '@/queries/profile-query';
@@ -17,6 +16,7 @@ import { Label } from '../ui/label';
 import { Separator } from '../ui/separator';
 import { AssessmentStatusRow } from './assessment-status-row';
 import SettingsPanelShell from './settings-panel-shell';
+import SettingsSaveButton from './settings-save-button';
 
 const ProfilePanel = () => {
   const [name, setName] = useState('');
@@ -75,13 +75,12 @@ const ProfilePanel = () => {
           </div>
         </div>
 
-        <Button
-          onClick={handleSave}
+        <SettingsSaveButton
+          onSave={handleSave}
+          isSaving={isSaving}
           disabled={isSaving || name === user?.name}
           className="self-end"
-        >
-          {isSaving ? 'Saving...' : 'Save changes'}
-        </Button>
+        />
       </div>
 
       <Card className="shadow-none">

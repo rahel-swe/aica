@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
 import { Bell } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
 import { sleep } from '@/lib/settings-utils';
 import type {
   SettingsData,
   SettingsSaveHandler,
 } from '@contracts/shared/types/settings-types';
 import SettingsPanelShell from './settings-panel-shell';
+import SettingsSaveButton from './settings-save-button';
 import SettingToggleRow from './settings-toggle-row';
 
 type NotificationsPanelProps = {
@@ -35,13 +35,6 @@ const NotificationsPanel = ({ data, onSave }: NotificationsPanelProps) => {
       icon={Bell}
       title="Notifications"
       description="Choose which updates and reminders you want to receive."
-      footer={
-        <div className="flex justify-end">
-          <Button onClick={handleSave} disabled={isSaving}>
-            {isSaving ? 'Saving...' : 'Save changes'}
-          </Button>
-        </div>
-      }
     >
       <SettingToggleRow
         title="Email updates"
@@ -76,6 +69,14 @@ const NotificationsPanel = ({ data, onSave }: NotificationsPanelProps) => {
         checked={form.productNews}
         onCheckedChange={(checked) =>
           setForm((prev) => ({ ...prev, productNews: checked }))
+        }
+      />
+      <SettingsSaveButton
+        onSave={handleSave}
+        isSaving={isSaving}
+        disabled={
+          isSaving ||
+          JSON.stringify(form) === JSON.stringify(data.notifications)
         }
       />
     </SettingsPanelShell>

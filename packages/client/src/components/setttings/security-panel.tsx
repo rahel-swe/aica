@@ -1,5 +1,5 @@
+import { Key, Lock } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Lock } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { sleep } from '@/lib/settings-utils';
@@ -8,9 +8,11 @@ import type {
   SettingsSaveHandler,
 } from '@contracts/shared/types/settings-types';
 
-import SettingsPanelShell from './settings-panel-shell';
-import SettingToggleRow from './settings-toggle-row';
 import SignOutButton from '@/components/sign-out-button';
+import { useNavigate } from 'react-router-dom';
+import SettingsPanelShell from './settings-panel-shell';
+import SettingsSaveButton from './settings-save-button';
+import SettingToggleRow from './settings-toggle-row';
 
 type SecurityPanelProps = {
   data: SettingsData;
@@ -18,12 +20,13 @@ type SecurityPanelProps = {
 };
 
 const SecurityPanel = ({ data, onSave }: SecurityPanelProps) => {
-  const [loginAlerts, setLoginAlerts] = useState(data.security.loginAlerts);
+  const [form, setForm] = useState(data.security);
+  const navigate = useNavigate();
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
-    setLoginAlerts(data.security.loginAlerts);
-  }, [data.security.loginAlerts]);
+    setForm(data.security);
+  }, [data.security]);
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -33,15 +36,12 @@ const SecurityPanel = ({ data, onSave }: SecurityPanelProps) => {
     onSave({
       security: {
         ...data.security,
-        loginAlerts,
+        loginAlerts: form.loginAlerts,
+        twoFactorAuth: form.twoFactorAuth,
       },
     });
 
     setIsSaving(false);
-  };
-
-  const handleChangePassword = () => {
-    // TODO: connect password reset flow
   };
 
   return (
@@ -49,36 +49,44 @@ const SecurityPanel = ({ data, onSave }: SecurityPanelProps) => {
       icon={Lock}
       title="Security"
       description="Manage your account security and login preferences."
-      footer={
-        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
-          <SignOutButton />
-
-          <div className="flex gap-3">
-            <Button variant="outline" onClick={handleChangePassword}>
-              Change password
-            </Button>
-
-            <Button onClick={handleSave} disabled={isSaving}>
-              {isSaving ? 'Saving...' : 'Save changes'}
-            </Button>
-          </div>
-        </div>
-      }
     >
       <SettingToggleRow
         title="Login alerts"
         description="Receive a notification when a new login is detected."
-        checked={loginAlerts}
-        onCheckedChange={setLoginAlerts}
+        checked={form.loginAlerts}
+        onCheckedChange={(checked) =>
+          setForm((prev) => ({ ...prev, loginAlerts: checked }))
+        }
       />
       <SettingToggleRow
         title="Two-factor authentication"
         description="Add another layer of protection to your account."
-        checked={true}
-        onCheckedChange={() => {
-          // setForm((prev) => ({ ...prev, twoFactorAuth: checked }))
+        checked={form.twoFactorAuth}
+        onCheckedChange={(checked) => {
+          setForm((prev) => ({ ...prev, twoFactorAuth: checked }));
         }}
       />
+
+      <SettingsSaveButton
+        onSave={handleSave}
+        isSaving={isSaving}
+        disabled={
+          isSaving || JSON.stringify(form) === JSON.stringify(data.security)
+        }
+      />
+
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <Button
+          variant="outline"
+          onClick={() => navigate('/auth/change-password')}
+          className="p-6"
+        >
+          <Key />
+          Change password
+        </Button>
+
+        <SignOutButton className="p-6" />
+      </div>
     </SettingsPanelShell>
   );
 };

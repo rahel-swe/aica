@@ -14,7 +14,7 @@ const SettingToggleRow = ({
   onCheckedChange,
 }: SettingToggleRowProps) => {
   return (
-    <div className="flex items-center justify-between gap-4 rounded-lg border px-4 py-3 bg-card">
+    <div className="flex items-center justify-between gap-4 rounded-3xl border px-4 py-4 bg-card">
       <div className="space-y-1">
         <p className="font-medium">{title}</p>
         <p className="text-sm text-muted-foreground">{description}</p>
