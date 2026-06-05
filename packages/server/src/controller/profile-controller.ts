@@ -5,12 +5,11 @@ import { profileService } from '../services/profile-service';
 export class ProfileController {
   getMe = async (req: AuthRequest, res: Response) => {
     try {
-      if (!req.user) {
+      if (!req.user)
         return res.status(401).json({
           success: false,
           message: 'You are not logged in.',
         });
-      }
 
       const profile = await profileService.getProfileStatus(req.user);
 

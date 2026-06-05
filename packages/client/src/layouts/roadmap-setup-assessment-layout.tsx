@@ -6,6 +6,7 @@ import SpinnerBars from '../components/shadcn-space/spinner/spinner-06';
 
 import { useRoadmapSetupAssessment } from '@/hooks/use-roadmap-setup-assessment';
 import { useProfileStatusQuery } from '@/queries/profile-query';
+import ErrorState from '@/components/error-state';
 
 export type RoadmapSetupOutletContext = {
   currentIndex: number;
@@ -19,6 +20,7 @@ const RoadmapSetupLayout = () => {
     isPending,
     error,
     data: userProfileStatusResponse,
+    refetch,
   } = useProfileStatusQuery();
 
   const { currentIndex, form, isRoadmapSetupCreating, submitRoadmapSetup } =
@@ -33,17 +35,17 @@ const RoadmapSetupLayout = () => {
 
   if (error)
     return (
-      <p className="text-destructive">
-        Failed fetching user status {error.message}
-      </p>
+      <ErrorState
+        title="Failed fetching profile status"
+        message={error.message}
+        onRetry={refetch}
+      />
     );
 
-  const { assessments, user } = userProfileStatusResponse.data;
+  const { assessments } = userProfileStatusResponse.data;
 
   if (!assessments.roadmapSetupCompleted)
     return <Navigate to={'/pathway-recommendations'} />;
-
-  if (!user) return <Navigate to="/auth/sign-in" replace />;
 
   if (currentIndex === -1) {
     return <Navigate to="/roadmap-setup-assessment/welcome" replace />;

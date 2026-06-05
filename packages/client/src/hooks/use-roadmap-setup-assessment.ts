@@ -19,6 +19,7 @@ export const useRoadmapSetupAssessment = () => {
   const {
     mutateAsync: roadmapSetupMutateAsync,
     isPending: isRoadmapSetupCreating,
+    isSuccess: isRoadmapSetupCreateSuccess,
   } = useRoadmapSetupAssessmentSubmitMutation();
 
   // FORM
@@ -37,13 +38,10 @@ export const useRoadmapSetupAssessment = () => {
 
   // 🚀 SUBMIT (CREATE)
   const submitRoadmapSetup = form.handleSubmit(async (payload) => {
-    await roadmapSetupMutateAsync(payload, {
-      onSuccess: (result) => {
-        if (result?.success) {
-          navigate('/roadmap-setup-assessment/finish');
-        }
-      },
-    });
+    await roadmapSetupMutateAsync(payload);
+
+    if (isRoadmapSetupCreateSuccess)
+      navigate('/roadmap-setup-assessment/finish');
   });
 
   return {

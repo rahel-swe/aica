@@ -189,21 +189,15 @@ function NextActionCard({ dashboard }: { dashboard: DashboardResponse }) {
 }
 
 export default function DashboardPage() {
-  const { data, isLoading, isError, refetch } = useDashboardQuery();
+  const { data, isPending, isError, refetch } = useDashboardQuery();
 
-  if (isLoading) {
-    return <DashboardSkeleton />;
-  }
+  if (isPending) return <DashboardSkeleton />;
 
-  if (isError) {
-    return <DashboardErrorState onRetry={refetch} />;
-  }
+  if (isError) return <DashboardErrorState onRetry={refetch} />;
 
   const dashboard: DashboardResponse | undefined = data?.data;
 
   if (!dashboard) return <DashboardErrorState onRetry={refetch} />;
-
-  if (isError) return <DashboardErrorState onRetry={refetch} />;
 
   return (
     <div className="h-full pt-18 md:pt-0">

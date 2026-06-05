@@ -2,7 +2,7 @@ import {
   PATHWAY_ASSESSMENT_STEPS,
   pathwayAssessmentDefaultValues,
 } from '@/constants/pathway-assessment-steps';
-import { usePathwayAssessmentCreateQuery } from '@/queries/pathway-assessment-query';
+import { usePathwayAssessmentMutationQuery } from '@/queries/pathway-assessment-query';
 import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -17,7 +17,8 @@ export const usePathwayAssessment = () => {
   const {
     mutateAsync: pathwayAssessmentMutateAsync,
     isPending: isPathwayAssessmentCreating,
-  } = usePathwayAssessmentCreateQuery();
+    isSuccess: isPathwayAssessmentCreated,
+  } = usePathwayAssessmentMutationQuery();
 
   const form = useForm<PathwayAssessmentFormValues>({
     resolver: zodResolver(pathwayAssessmentFormSchema),
@@ -33,17 +34,15 @@ export const usePathwayAssessment = () => {
   );
 
   const submitPathwayAssisment = form.handleSubmit(async (payload) => {
-    await pathwayAssessmentMutateAsync(payload, {
-      onSuccess: (result) => {
-        if (result?.success) navigate('/pathway-recommendations');
-      },
-    });
+    await pathwayAssessmentMutateAsync(payload);
+    if (isPathwayAssessmentCreated) navigate('/pathway-recommendations');
   });
 
   return {
     currentIndex,
     form,
     isPathwayAssessmentCreating,
+    isPathwayAssessmentCreated,
     submitPathwayAssisment,
   };
 };

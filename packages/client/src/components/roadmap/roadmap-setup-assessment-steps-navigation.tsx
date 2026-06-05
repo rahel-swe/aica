@@ -31,12 +31,16 @@ const RoadmapSetupAssessmentStepsNavigation = ({
     useOutletContext<RoadmapSetupOutletContext>();
   const navigate = useNavigate();
 
-  const { mutate: generateRoadmap, isSuccess: isRoadmapGenerateSuccessed } =
-    useGenerateRoadmapMutation();
+  const {
+    mutate: generateRoadmap,
+    isSuccess: isRoadmapGenerateSuccessed,
+    isPending: isRoadmapGenerating,
+  } = useGenerateRoadmapMutation();
   const {
     data: roadmapSetupStatusResponse,
     isPending: roadmpaSetupStatusPending,
   } = useRoadmapSetupAssessmentStatusQuery();
+
   const watchedValues = useWatch<RoadmapSetupAssessmentFormValues>();
 
   const lastIndex = ROADMAP_SETUP_STEPS.length - 1;
@@ -111,13 +115,13 @@ const RoadmapSetupAssessmentStepsNavigation = ({
       initial={animation.shouldAnimate ? 'hidden' : false}
       animate="visible"
       className="flex flex-col-reverse sm:items-center sm:flex-row max-w-xs sm:max-w-full mx-auto w-full
-        gap-3 sm:gap-16 sm:justify-center"
+        gap-3 sm:gap-10 sm:justify-center"
     >
       <AssessmentNavigationButton
         type="button"
         variant="outline"
         onClick={handleSecondButtonNavigation}
-        disabled={isSubmitting}
+        disabled={isSubmitting || isRoadmapGenerating}
         className="py-6 sm:px-12"
         label={actions.secondary.label}
         icon={actions.secondary.icon}
@@ -127,7 +131,7 @@ const RoadmapSetupAssessmentStepsNavigation = ({
       <AssessmentNavigationButton
         type="button"
         onClick={goNext}
-        disabled={isSubmitting}
+        disabled={isSubmitting || isRoadmapGenerating}
         className="py-6 sm:px-12"
         label={actions.primary.label}
         icon={actions.primary.icon}

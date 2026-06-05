@@ -3,6 +3,7 @@ import {
   getRoadmapSetupAssessmentStatus,
 } from '@/services/roadmap-setup-assessment-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { profileKeys } from './profile-query';
 
 const roadmapKeys = {
   all: ['roadmap-setup-assessment'],
@@ -24,6 +25,9 @@ export const useRoadmapSetupAssessmentSubmitMutation = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: roadmapKeys.status(),
+      });
+      queryClient.invalidateQueries({
+        queryKey: [profileKeys.me],
       });
     },
   });

@@ -25,7 +25,9 @@ const PathwayAssessmentStepsNavigations = ({
 }) => {
   const form = useFormContext<PathwayAssessmentFormValues>();
   const navigate = useNavigate();
+
   const watchedValues = useWatch<PathwayAssessmentFormValues>();
+
   const { currentIndex, isSubmitting, submitPathwayAssisment } =
     useOutletContext<PathwayAssessmentOutletContext>();
   const lastIndex = PATHWAY_ASSESSMENT_STEPS.length - 1;
@@ -76,7 +78,7 @@ const PathwayAssessmentStepsNavigations = ({
       initial={animation.shouldAnimate ? 'hidden' : false}
       animate="visible"
       className="flex flex-col-reverse sm:items-center sm:flex-row max-w-xs sm:max-w-full mx-auto w-full
-            gap-3 sm:gap-16 sm:justify-center"
+            gap-3 sm:gap-10 sm:justify-center"
     >
       {navigationActions.secondary && (
         <AssessmentNavigationButton

@@ -20,6 +20,7 @@ import PathwayRecommendedPathwaysLayout from './layouts/pathway-recommendations-
 import PathwayCongratulations from './layouts/pathway-congratulations';
 import RoadmapSetupLayout from './layouts/roadmap-setup-assessment-layout';
 import RoadmapSetupAssesmentStepsPage from './pages/roadmap-setup-assessment-steps-page.tsx';
+import RouterProtector from './router-protector.tsx';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'pathway-assessment',
-        element: <PathwayAssessmentLayout />,
+        element: (
+          <RouterProtector>
+            <PathwayAssessmentLayout />
+          </RouterProtector>
+        ),
         children: [
           {
             index: true,
@@ -59,7 +64,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'roadmap-setup-assessment',
-        element: <RoadmapSetupLayout />,
+        element: (
+          <RouterProtector>
+            <RoadmapSetupLayout />
+          </RouterProtector>
+        ),
         children: [
           {
             index: true,
@@ -73,7 +82,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'app',
-        element: <AppLayout />,
+        element: (
+          <RouterProtector>
+            <AppLayout />
+          </RouterProtector>
+        ),
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> },
           { path: 'dashboard', element: <DashboardPage /> },

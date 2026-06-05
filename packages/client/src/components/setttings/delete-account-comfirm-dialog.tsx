@@ -1,5 +1,5 @@
+import { AlertTriangle, Trash, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { AlertTriangle, ArrowRight, ShieldCheck, Trash } from 'lucide-react';
 
 import {
   AlertDialog,
@@ -12,8 +12,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
+import { Button } from '../ui/button';
 import { ScrollArea, ScrollBar } from '../ui/scroll-area';
 
 const DeleteAccountComfirmDialog = ({
@@ -78,16 +78,16 @@ const DeleteAccountComfirmDialog = ({
 
             <AlertDialogFooter>
               <AlertDialogCancel>
-                <ShieldCheck className="size-4" />
-                Keep My Account
+                <X className="size-4" />
+                Keep Account
               </AlertDialogCancel>
 
               <AlertDialogAction
-                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                variant="destructive"
                 onClick={() => navigate('/settings/delete-account')}
               >
-                Review Deletion Request
-                <ArrowRight className="size-4" />
+                Continue to Deletion
+                <Trash className="size-4" />
               </AlertDialogAction>
             </AlertDialogFooter>
           </div>

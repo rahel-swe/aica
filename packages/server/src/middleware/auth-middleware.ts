@@ -17,9 +17,13 @@ export const authorize = async (
   });
 
   if (!session || !session.user) {
-    return res.status(401).json({
-      message: 'You are not logged in',
+    res.status(401).json({
+      success: false,
+      data: null,
+      message: 'UNAUTHORIZED',
     });
+
+    return;
   }
 
   req.user = session.user;

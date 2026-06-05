@@ -10,5 +10,7 @@ export const useProfileStatusQuery = () => {
   return useQuery({
     queryKey: profileKeys.me(),
     queryFn: getProfileStatus,
+    refetchOnWindowFocus: true,
+    staleTime: 1500_0,
   });
 };

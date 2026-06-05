@@ -1,16 +1,16 @@
 import { ChevronLeft } from 'lucide-react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
-import { Button } from '@/components/ui/button';
-import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-steps';
-import { useRecommendationQuery } from '@/queries/recommendation-query';
-import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
-import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
 import DirectionStage from '@/components/direction-stage';
 import FamilyStage from '@/components/family-stage';
 import PathwayStage from '@/components/pathway-stage';
-import { usePathwayAssessmentStatusQuery } from '@/queries/pathway-assessment-query';
+import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
+import { Button } from '@/components/ui/button';
+import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-steps';
+import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
+import { useProfileStatusQuery } from '@/queries/profile-query';
+import { useRecommendationQuery } from '@/queries/recommendation-query';
+import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
 
 const FINAL_PATHWAY_COUNT = 3;
 
@@ -20,13 +20,14 @@ const PathwayRecommendedPathwaysLayout = () => {
     isPending: isRecommendationsPending,
     error,
   } = useRecommendationQuery();
-  const { mutate, isPending: isPathwayPicking } =
-    useRoadmapSetupAssessmentSubmitMutation();
-  const navigate = useNavigate();
   const {
-    data: pathwayAssessmentStatusResponse,
-    isPending: isPathwayAssessmentStatusPending,
-  } = usePathwayAssessmentStatusQuery();
+    mutate,
+    isPending: isPathwayPicking,
+    isSuccess: isRoadmapSetupCompleted,
+  } = useRoadmapSetupAssessmentSubmitMutation();
+  const navigate = useNavigate();
+  const { data: profileStatusResponse, isPending: isProfileStatusPending } =
+    useProfileStatusQuery();
 
   const {
     params,
@@ -39,14 +40,14 @@ const PathwayRecommendedPathwaysLayout = () => {
     goBack,
   } = usePathwayPickerParams();
 
-  if (isPathwayAssessmentStatusPending || isRecommendationsPending)
+  if (isProfileStatusPending || isRecommendationsPending)
     return (
       <div className="grid min-h-dvh place-items-center">
         <SpinnerBars />
       </div>
     );
 
-  if (!pathwayAssessmentStatusResponse?.data.completed)
+  if (!profileStatusResponse?.data.assessments.pathwayCompleted)
     return <Navigate to={'/pathway-assessment'} />;
 
   if (error)
@@ -100,17 +101,13 @@ const PathwayRecommendedPathwaysLayout = () => {
   );
 
   const handleSubmit = () => {
-    mutate(
-      {
-        ...roadmapSetupDefaultValues,
-        pickedPathwayId: selectedPathway!.pathwayId,
-      },
-      {
-        onSuccess: () => {
-          navigate('/pathway-congratulations', { viewTransition: true });
-        },
-      }
-    );
+    mutate({
+      ...roadmapSetupDefaultValues,
+      pickedPathwayId: selectedPathway!.pathwayId,
+    });
+
+    if (isRoadmapSetupCompleted)
+      navigate('/pathway-congratulations', { viewTransition: true });
   };
 
   return (

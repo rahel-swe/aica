@@ -4,6 +4,7 @@ import { useProfileStatusQuery } from '@/queries/profile-query';
 import { FormProvider } from 'react-hook-form';
 import { Navigate, Outlet } from 'react-router-dom';
 import SpinnerBars from '../components/shadcn-space/spinner/spinner-06';
+import ErrorState from '@/components/error-state';
 
 export type PathwayAssessmentOutletContext = {
   currentIndex: number;
@@ -17,12 +18,14 @@ const PathwayAssessmentLayout = () => {
     isPending,
     error,
     data: userProfileStatusResponse,
+    refetch,
   } = useProfileStatusQuery();
 
   const {
     currentIndex,
     form,
     isPathwayAssessmentCreating,
+    isPathwayAssessmentCreated,
     submitPathwayAssisment,
   } = usePathwayAssessment();
 
@@ -35,20 +38,24 @@ const PathwayAssessmentLayout = () => {
 
   if (error)
     return (
-      <p className="text-destructive">
-        Failed fetching onboarding status {error.message}
-      </p>
+      <ErrorState
+        title="Failed fetching profile status"
+        message={error.message}
+        onRetry={refetch}
+      />
     );
 
-  const { assessments, user } = userProfileStatusResponse.data;
+  const {
+    assessments: { pathwayCompleted },
+  } = userProfileStatusResponse.data;
 
-  if (!user) return <Navigate to="/auth/sign-in" replace />;
-
-  if (assessments.pathwayCompleted)
-    return <Navigate to="/app/dashboard" replace />;
+  if (pathwayCompleted) return <Navigate to="/app/dashboard" replace />;
 
   if (currentIndex === -1)
     return <Navigate to="/pathway-assessment/welcome" replace />;
+
+  if (isPathwayAssessmentCreated)
+    return <Navigate to="/pathway-recommendations" />;
 
   return (
     <FormProvider {...form}>
