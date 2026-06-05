@@ -1,10 +1,12 @@
+import { AlertCircle, Clock, Layers, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Clock, ShieldCheck, Layers } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 
 import type { PathwayDetail } from '@contracts/shared/types/pathway-domain-types';
+import NavigationBackButton from '../navigation-back-button';
+import { ScrollArea } from '../ui/scroll-area';
 
 type Props = {
   pathway: PathwayDetail;
@@ -13,22 +15,12 @@ type Props = {
 export default function PathwayDetailsCard({ pathway }: Props) {
   const navigate = useNavigate();
 
-  const handleBack = () => navigate(-1);
-
   return (
-    <div className="space-y-6">
-      <Card className="rounded-2xl">
-        <CardContent className="space-y-10 p-6">
+    <div className="h-full min-h-0 flex-1">
+      <ScrollArea className="md:h-full">
+        <div className="flex flex-col gap-6 pb-4 pt-2">
+          <NavigationBackButton title="Back" className="w-min" />
           {/* HEADER ACTION */}
-          <div className="flex items-center justify-between">
-            <button
-              onClick={handleBack}
-              className="group inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
-            >
-              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-              Back
-            </button>
-          </div>
 
           {/* TITLE SECTION */}
           <div className="space-y-2">
@@ -66,7 +58,7 @@ export default function PathwayDetailsCard({ pathway }: Props) {
           {/* SKILLS */}
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Key Skills</h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 capitalize">
               {pathway.keySkills.map((skill) => (
                 <Badge key={skill} variant="secondary">
                   {skill}
@@ -78,37 +70,61 @@ export default function PathwayDetailsCard({ pathway }: Props) {
           {/* OPPORTUNITIES */}
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Opportunities</h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 capitalize">
               {pathway.opportunities.map((item) => (
                 <Badge key={item}>{item}</Badge>
               ))}
             </div>
           </div>
 
-          {/* DURATION PROFILE (NEW STRUCTURED UI) */}
+          {/* DURATION PROFILE  */}
           <div className="space-y-3">
             <h2 className="text-lg font-semibold">Duration Profile</h2>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-              <div className="flex items-center gap-2 rounded-lg border p-3">
-                <Clock className="size-4 text-muted-foreground" />
-                <span className="text-sm">
-                  {pathway.durationProfile.commitmentLevel}
-                </span>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 mt-5">
+              <div className="relative">
+                <Badge
+                  className="absolute inset-s-7 -top-3 px-1 py-0 text-[0.6rem]"
+                  variant={'secondary'}
+                >
+                  Commit Level
+                </Badge>
+                <div className="flex items-center gap-2 rounded-4xl border p-3">
+                  <Clock className="size-4 text-muted-foreground" />
+                  <span className="text-sm capitalize">
+                    {pathway.durationProfile.commitmentLevel}
+                  </span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-2 rounded-lg border p-3">
-                <Layers className="size-4 text-muted-foreground" />
-                <span className="text-sm">
-                  {pathway.durationProfile.timelineType}
-                </span>
+              <div className="relative">
+                <Badge
+                  className="absolute inset-s-7 -top-3 px-1 py-0 text-[0.6rem]"
+                  variant={'secondary'}
+                >
+                  Timeline Type
+                </Badge>
+                <div className="flex items-center gap-2 rounded-4xl border p-3">
+                  <Layers className="size-4 text-muted-foreground" />
+                  <span className="text-sm capitalize">
+                    {pathway.durationProfile.timelineType}
+                  </span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-2 rounded-lg border p-3">
-                <ShieldCheck className="size-4 text-muted-foreground" />
-                <span className="text-sm">
-                  {pathway.durationProfile.degreeRequirement}
-                </span>
+              <div className="relative">
+                <Badge
+                  className="absolute inset-s-7 -top-3 px-1 py-0 text-[0.6rem]"
+                  variant={'secondary'}
+                >
+                  Degree Requirement
+                </Badge>
+                <div className="flex items-center gap-2 rounded-4xl border p-3 capitalize">
+                  <ShieldCheck className="size-4 text-muted-foreground" />
+                  <span className="text-sm">
+                    {pathway.durationProfile.degreeRequirement}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -119,12 +135,11 @@ export default function PathwayDetailsCard({ pathway }: Props) {
 
             <div className="space-y-4">
               {pathway.journeyPhases.map((phase, index) => (
-                <Card key={index} className="rounded-xl">
-                  <CardContent className="space-y-1 p-4">
+                <Card key={index} className="">
+                  <CardContent className="space-y-2">
+                    <Badge>{phase.duration}</Badge>
                     <h3 className="font-semibold">{phase.name}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {phase.duration}
-                    </p>
+                    <p className="text-sm">{phase.focus}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -141,7 +156,7 @@ export default function PathwayDetailsCard({ pathway }: Props) {
                   <Card
                     key={item.id}
                     onClick={() => navigate(`/app/pathways/${item.id}`)}
-                    className="cursor-pointer rounded-xl transition hover:-translate-y-1 hover:shadow-md"
+                    className="cursor-pointer transition hover:-translate-y-1 hover:shadow-md"
                   >
                     <CardContent className="p-4">
                       <h3 className="font-semibold">{item.title}</h3>
@@ -157,14 +172,15 @@ export default function PathwayDetailsCard({ pathway }: Props) {
 
           {/* VERIFICATION */}
           {pathway.verificationNote && (
-            <div className="rounded-xl border bg-muted p-4">
-              <p className="text-sm text-muted-foreground">
+            <div className="rounded-3xl border bg-card p-4 flex items-center gap-2">
+              <AlertCircle className="opacity-90 size-5 self-start shrink" />
+              <p className="text-sm text-muted-foreground flex-1">
                 {pathway.verificationNote}
               </p>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </ScrollArea>
     </div>
   );
 }

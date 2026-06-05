@@ -1,5 +1,6 @@
 import { usePathwaysQuery } from '@/queries/pathway-query';
 import { useNavigate } from 'react-router-dom';
+import { ScrollArea } from './ui/scroll-area';
 
 export default function PathwaySidebar() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export default function PathwaySidebar() {
 
   return (
     <aside className="hidden md:flex w-80 flex-col">
-      <div className="sticky top-20 flex h-[calc(100vh-10rem)] flex-col rounded-xl border bg-card">
+      <div className="sticky top-20 flex flex-col rounded-4xl border bg-card h-[98%] min-h-0 pb-14 overflow-hidden">
         {/* Header */}
         <div className="border-b p-4">
           <h2 className="text-sm font-semibold text-muted-foreground">
@@ -18,21 +19,23 @@ export default function PathwaySidebar() {
         </div>
 
         {/* LIST */}
-        <div className="flex-1 overflow-y-auto p-2 space-y-2">
-          {data?.data.map((item) => (
-            <div
-              key={item._id}
-              onClick={() => navigate(`/app/pathways/${item._id}`)}
-              className={`
+        <ScrollArea className="h-full">
+          <div className="flex-1 p-2 space-y-2 h-full">
+            {data?.data.map((item) => (
+              <div
+                key={item._id}
+                onClick={() => navigate(`/app/pathways/${item._id}`)}
+                className={`
                 cursor-pointer rounded-lg px-3 py-2 text-sm transition
                 hover:bg-muted
               
               `}
-            >
-              {item.title}
-            </div>
-          ))}
-        </div>
+              >
+                {item.title}
+              </div>
+            ))}
+          </div>
+        </ScrollArea>
       </div>
     </aside>
   );

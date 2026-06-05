@@ -29,7 +29,7 @@ export default function PathwayListCard({ pathway }: Props) {
         group flex-1
       "
     >
-      <CardContent className="space-y-5 p-6">
+      <CardContent className="space-y-5">
         {/* HEADER */}
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
@@ -58,7 +58,7 @@ export default function PathwayListCard({ pathway }: Props) {
 
         {/* SKILLS */}
         {pathway.keySkills?.length > 0 && (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 capitalize">
             {pathway.keySkills.slice(0, 4).map((skill) => (
               <Badge key={skill} variant="secondary" className="rounded-full">
                 {skill}
