@@ -1,5 +1,4 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import LandingPage from '@/pages/landing-page';
 import SignInPage from '@/pages/auth/sign-in-page';
 import SignUpPage from '@/pages/auth/sign-up-page';
 import DashboardPage from '@/pages/dashboard-page';
@@ -23,6 +22,7 @@ import RoadmapSetupAssesmentStepsPage from './pages/roadmap-setup-assessment-ste
 import RouterProtector from './router-protector.tsx';
 import ChangePasswordPage from './pages/auth/change-password-page.tsx';
 import ChangePasswordSucceedPage from './pages/auth/change-password-succeed-page.tsx';
+import LandingPage from './pages/LandingPage.tsx';
 
 const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import { MAIN_TABS } from '@/constants/app-tabs';
+import { MAIN_TABS } from '@/constants/app-tabs-data';
 import { useLocation } from 'react-router-dom';
 
 export function useIsTabActive(exact = true, to?: string): boolean {

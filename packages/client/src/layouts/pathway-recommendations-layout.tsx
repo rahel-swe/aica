@@ -6,7 +6,7 @@ import FamilyStage from '@/components/family-stage';
 import PathwayStage from '@/components/pathway-stage';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { Button } from '@/components/ui/button';
-import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-steps';
+import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-steps-data';
 import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
 import { useProfileStatusQuery } from '@/queries/profile-query';
 import { useRecommendationQuery } from '@/queries/recommendation-query';

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/refs */
-import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
+import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps-data';
 import MultiSelectField from '../form/multi-select-field';
 import SingleSelectField from '../form/single-select-field';
 import { cn } from '@/lib/utils';

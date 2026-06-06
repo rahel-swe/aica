@@ -1,4 +1,4 @@
-import type { RoadmapSetupStep } from '@/constants/roadmap-setup-steps';
+import type { RoadmapSetupStep } from '@/constants/roadmap-setup-assessment-steps-data';
 import { cn } from '@/lib/utils';
 
 type RoadmapSetupIntroPanelProps = {

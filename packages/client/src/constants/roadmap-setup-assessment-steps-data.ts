@@ -1,7 +1,7 @@
 import type {
   PathwayAssessmentOption,
   PathwayAssessmentStepType,
-} from './pathway-assessment-steps';
+} from './pathway-assessment-steps-data';
 
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 

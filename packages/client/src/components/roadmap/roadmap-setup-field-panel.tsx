@@ -1,4 +1,4 @@
-import type { RoadmapSetupStep } from '@/constants/roadmap-setup-steps';
+import type { RoadmapSetupStep } from '@/constants/roadmap-setup-assessment-steps-data';
 
 import MultiSelectField from '../form/multi-select-field';
 import SingleSelectField from '../form/single-select-field';

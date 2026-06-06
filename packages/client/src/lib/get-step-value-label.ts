@@ -1,5 +1,5 @@
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
-import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
+import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps-data';
 
 export const getStepValueLabel = (
   step: PathwayAssessmentStep,

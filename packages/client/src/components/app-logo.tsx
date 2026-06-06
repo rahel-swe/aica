@@ -1,4 +1,4 @@
-import { appImgSources } from '@/constants/app-image-sources';
+import { appImgSources } from '@/constants/app-image-sources-data';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/providers/theme-provider';
 

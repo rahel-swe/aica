@@ -1,7 +1,7 @@
 import {
   PATHWAY_ASSESSMENT_STEPS,
   pathwayAssessmentDefaultValues,
-} from '@/constants/pathway-assessment-steps';
+} from '@/constants/pathway-assessment-steps-data';
 import { usePathwayAssessmentMutationQuery } from '@/queries/pathway-assessment-query';
 import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';

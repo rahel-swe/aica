@@ -1,4 +1,4 @@
-import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps';
+import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps-data';
 import { Controller, useFormContext } from 'react-hook-form';
 import { Twemoji } from '../twemoji';
 import { Field, FieldContent, FieldLabel, FieldTitle } from '../ui/field';

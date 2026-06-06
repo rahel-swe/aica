@@ -5,7 +5,7 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import {
   ROADMAP_SETUP_STEPS,
   type RoadmapSetupStep,
-} from '@/constants/roadmap-setup-steps';
+} from '@/constants/roadmap-setup-assessment-steps-data';
 import {
   containerVariants,
   useAssissmentStepsNavigationAnimation,

@@ -1,4 +1,4 @@
-import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-steps';
+import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-assessment-steps-data';
 import { FormProvider } from 'react-hook-form';
 import { Navigate, Outlet } from 'react-router-dom';
 

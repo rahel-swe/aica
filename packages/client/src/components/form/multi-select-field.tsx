@@ -2,7 +2,7 @@ import { useFormContext, Controller } from 'react-hook-form';
 import { Field, FieldLabel, FieldTitle, FieldContent } from '../ui/field';
 import { Checkbox } from '../ui/checkbox';
 import { Twemoji } from '../twemoji';
-import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps';
+import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps-data';
 
 interface MultiSelectFieldProps {
   name: string;

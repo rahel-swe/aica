@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
-import { SECONDARY_TABS } from '@/constants/app-tabs';
+import { SECONDARY_TABS } from '@/constants/app-tabs-data';
 import { useIsTabActive } from '@/hooks/use-active-tab';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion } from 'motion/react';

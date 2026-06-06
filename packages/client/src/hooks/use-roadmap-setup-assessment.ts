@@ -1,5 +1,5 @@
-import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-steps';
-import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-steps';
+import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-assessment-steps-data';
+import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-steps-data';
 
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
 

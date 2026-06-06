@@ -126,6 +126,7 @@
 
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -138,4 +139,77 @@
     margin: 0 0.05em 0 0.1em;
     vertical-align: -0.1em;
   }
+}
+
+@keyframes aica-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aica-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes aica-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  33% {
+    transform: translateY(-9px) rotate(0.4deg);
+  }
+  66% {
+    transform: translateY(-4px) rotate(-0.3deg);
+  }
+}
+@keyframes aica-badge-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.afu {
+  animation: aica-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.afi {
+  animation: aica-fade-in 0.7s ease forwards;
+  opacity: 0;
+}
+.afl {
+  animation: aica-float 6s ease-in-out infinite;
+}
+.abfl {
+  animation: aica-badge-float 4.5s ease-in-out infinite;
+}
+.d2 {
+  animation-delay: 180ms;
+}
+.d3 {
+  animation-delay: 280ms;
+}
+.d4 {
+  animation-delay: 380ms;
+}
+.d5 {
+  animation-delay: 480ms;
+}
+.d6 {
+  animation-delay: 640ms;
+}
+.d7 {
+  animation-delay: 820ms;
 }

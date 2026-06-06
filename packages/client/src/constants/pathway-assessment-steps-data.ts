@@ -114,7 +114,7 @@ const strengthOptions: PathwayAssessmentOption[] = [
   },
 ];
 
-const subjectOptions: PathwayAssessmentOption[] = [
+export const subjectOptions: PathwayAssessmentOption[] = [
   {
     value: 'math' satisfies PathwayAssessmentSubject,
     label: 'Math and numbers',

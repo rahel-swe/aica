@@ -1,4 +1,4 @@
-import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps';
+import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps-data';
 import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
 import { useProfileStatusQuery } from '@/queries/profile-query';
 import { FormProvider } from 'react-hook-form';

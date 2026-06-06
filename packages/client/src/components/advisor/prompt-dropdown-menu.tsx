@@ -10,11 +10,11 @@ import {
 } from '../ui/dropdown-menu';
 import { advisorPrompts, type AdvisorPrompt } from './advisor-ui-data';
 
-type PromptMenuProps = {
+type PromptDropDownMenuProps = {
   onPromptSelect: (prompt: AdvisorPrompt) => void;
 };
 
-const PromptMenu = ({ onPromptSelect }: PromptMenuProps) => {
+const PromptDropDownMenu = ({ onPromptSelect }: PromptDropDownMenuProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -66,4 +66,4 @@ const PromptMenu = ({ onPromptSelect }: PromptMenuProps) => {
   );
 };
 
-export default PromptMenu;
+export default PromptDropDownMenu;
