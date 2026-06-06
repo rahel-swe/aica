@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import PasswordInput from '@/components/form/password-input';
 import { Button } from '@/components/ui/button';
 import { Field, FieldGroup } from '@/components/ui/field';
@@ -6,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { authClient } from '@/lib/auth-client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowUpRight, Loader } from 'lucide-react';
+import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
@@ -26,6 +28,8 @@ export default function SignInPage() {
     setError,
     register,
     control,
+    watch,
+    clearErrors,
   } = useForm<SignInForm>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -33,6 +37,11 @@ export default function SignInPage() {
       password: '',
     },
   });
+
+  useEffect(() => {
+    if (!watch('email') || !watch('password') || isSubmitting)
+      clearErrors('root');
+  }, [clearErrors, isSubmitting, watch('email'), watch('password')]);
 
   const onSubmit = async (data: SignInForm) => {
     await authClient.signIn.email(

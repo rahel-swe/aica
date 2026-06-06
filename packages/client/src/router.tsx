@@ -21,6 +21,8 @@ import PathwayCongratulations from './layouts/pathway-congratulations';
 import RoadmapSetupLayout from './layouts/roadmap-setup-assessment-layout';
 import RoadmapSetupAssesmentStepsPage from './pages/roadmap-setup-assessment-steps-page.tsx';
 import RouterProtector from './router-protector.tsx';
+import ChangePasswordPage from './pages/auth/change-password-page.tsx';
+import ChangePasswordSucceedPage from './pages/auth/change-password-succeed-page.tsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,11 @@ const router = createBrowserRouter([
           { index: true, element: <LandingPage /> },
           { path: 'auth/sign-in', element: <SignInPage /> },
           { path: 'auth/sign-up', element: <SignUpPage /> },
+          { path: 'auth/change-password', element: <ChangePasswordPage /> },
+          {
+            path: 'auth/change-password-succeed',
+            element: <ChangePasswordSucceedPage />,
+          },
         ],
       },
       {
