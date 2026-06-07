@@ -5,12 +5,21 @@ import type {
   PathwayDetailResponse,
 } from '@contracts/shared/types/pathway-domain-types';
 
-export const getPathways = async (): Promise<PathwaysListResponse> => {
-  const response = await apiClient.get('/api/pathways');
+export const getPathways = async (
+  search?: string,
+  type?: string,
+  cursor?: string | null
+): Promise<PathwaysListResponse> => {
+  const response = await apiClient.get('/api/pathways', {
+    params: {
+      search,
+      type,
+      cursor,
+      limit: 12,
+    },
+  });
 
-  const data = await response.data;
-
-  return data;
+  return response.data;
 };
 
 export const getPathwayDetail = async (
@@ -18,7 +27,5 @@ export const getPathwayDetail = async (
 ): Promise<PathwayDetailResponse> => {
   const response = await apiClient.get(`/api/pathways/${id}`);
 
-  const data = await response.data;
-
-  return data;
+  return response.data;
 };

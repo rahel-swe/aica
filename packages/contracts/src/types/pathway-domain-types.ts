@@ -50,7 +50,15 @@ export type RelatedPathwaySummary = z.infer<typeof relatedPathwaySummarySchema>;
 export type PathwayListItem = z.infer<typeof pathwayListItemSchema>;
 
 export type PathwayDetail = z.infer<typeof pathwayDetailSchema>;
-export type PathwaysListResponse = z.infer<typeof pathwaysListResponseSchema>;
+export type PathwaysListResponse = {
+  success: boolean;
+  data: {
+    items: PathwayListItem[];
+    nextCursor: string | null;
+    hasMore: boolean;
+  };
+  message: string;
+};
 export type PathwayDetailResponse = z.infer<typeof pathwayDetailResponseSchema>;
 
 export type RecommendationDimensionScores = {
