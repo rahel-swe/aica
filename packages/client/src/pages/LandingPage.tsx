@@ -16,6 +16,7 @@
  */
 
 import { Navbar } from '@/components/landing/navbar';
+import { roadmapStepFlagColors } from '@/components/roadmap/roadmap-view-utils';
 import { Twemoji } from '@/components/twemoji';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -37,6 +38,7 @@ import {
   Briefcase,
   Check,
   ChevronRight,
+  Database,
   FlagTriangleRight,
   GraduationCap,
   Map,
@@ -62,12 +64,8 @@ function AssessmentCard() {
       <div className="px-5 pt-5 pb-4 border-b border-border">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <div className="size-6 rounded-lg bg-secondary flex items-center justify-center">
-              <Brain className="size-4 text-violet-500" />
-            </div>
-            <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-muted-foreground">
-              Profile Assessment
-            </span>
+            <Database className="size-6 text-violet-500" />
+            <span className="text-sm mt-auto">Profile Assessment</span>
           </div>
           <Badge variant="secondary" className="rounded-full text-[11px]">
             Step 2 / 5
@@ -76,7 +74,7 @@ function AssessmentCard() {
 
         <Progress
           value={40}
-          className="h-2 rounded-full transition-all duration-500"
+          className="h-1.5 rounded-full transition-all duration-500"
         />
       </div>
 
@@ -87,27 +85,34 @@ function AssessmentCard() {
         </p>
 
         <div className="space-y-2">
-          <RadioGroup className="">
-            {subjectOptions.slice(0, 3).map((opt) => (
-              <FieldLabel
-                key={opt.value}
-                className="max-w-md mx-auto rounded-full backdrop-blur-xl relative"
-              >
-                <Field orientation="horizontal" className="items-center">
-                  <RadioGroupItem
-                    value={opt.value}
-                    id={opt.value}
-                    className="size-5"
-                  />
-                  <FieldContent className="">
-                    <FieldTitle className="flex gap-1 text-xs">
-                      <Twemoji className="text-xl">{opt.emoji}</Twemoji>
-                      {opt.label}
-                    </FieldTitle>
-                  </FieldContent>
-                </Field>
-              </FieldLabel>
-            ))}
+          <RadioGroup className="" defaultChecked>
+            {subjectOptions
+              .slice(0, 4)
+              .map(({ label, value, icon: Icon, description }, idx) => (
+                <FieldLabel
+                  key={value}
+                  className="max-w-md mx-auto rounded-full backdrop-blur-xl relative"
+                >
+                  <Field orientation="horizontal" className="items-center">
+                    <RadioGroupItem
+                      value={value}
+                      id={value}
+                      className="size-5"
+                    />
+                    <FieldContent className="">
+                      <FieldTitle className="flex gap-1 text-xs">
+                        <Icon
+                          className={cn(
+                            'size-4',
+                            roadmapStepFlagColors[idx + 2]
+                          )}
+                        />
+                        {label}
+                      </FieldTitle>
+                    </FieldContent>
+                  </Field>
+                </FieldLabel>
+              ))}
           </RadioGroup>
           {/* {options.map((opt, i) => (
             <div
@@ -171,7 +176,7 @@ function FloatingBadge({ style, delay = '0ms', children }: FloatingBadgeProps) {
 // ── Hero ───────────────────────────────────────────────────────────────────────
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-30 pb-16 overflow-hidden">
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"

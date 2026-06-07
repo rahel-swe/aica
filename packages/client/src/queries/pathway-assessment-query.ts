@@ -15,11 +15,12 @@ export const usePathwayAssessmentMutationQuery = () => {
       queryClient.invalidateQueries({
         queryKey: ['pathway-assesment-status'],
       });
+
       queryClient.invalidateQueries({
-        queryKey: [profileKeys.me],
+        queryKey: profileKeys.me(),
       });
       queryClient.invalidateQueries({
-        queryKey: [recommendationsKeys.my()],
+        queryKey: recommendationsKeys.my(),
       });
     },
   });

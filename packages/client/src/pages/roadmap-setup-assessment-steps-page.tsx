@@ -2,7 +2,7 @@ import RoadmapSetupFieldPanel from '@/components/roadmap/roadmap-setup-field-pan
 
 import RoadmapSetupAssessmentStepsNavigation from '@/components/roadmap/roadmap-setup-assessment-steps-navigation';
 
-import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-assessment-steps-data';
+import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-assessment-data';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
 import RoadmapSetupIntroPanel from '@/components/roadmap/roadmap-setup-assessment-intro-panel';

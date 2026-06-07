@@ -1,8 +1,16 @@
 import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps-data';
 import { Controller, useFormContext } from 'react-hook-form';
-import { Twemoji } from '../twemoji';
 import { Field, FieldContent, FieldLabel, FieldTitle } from '../ui/field';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
+import { cn } from '@/lib/utils';
+import { roadmapStepFlagColors } from '../roadmap/roadmap-view-utils';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { Info } from 'lucide-react';
+import { useState } from 'react';
 
 interface SingleSelectFieldProps {
   name: string;
@@ -15,6 +23,7 @@ const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
   options,
 }) => {
   const { control } = useFormContext();
+  const [openPopover, setOpenPopover] = useState<string | null>(null);
 
   if (!options?.length) return null;
 
@@ -28,24 +37,65 @@ const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
         <RadioGroup
           name={field.name}
           value={field.value ?? ''}
-          onValueChange={field.onChange}
+          onValueChange={(value) => {
+            field.onChange(value);
+            if (value) setOpenPopover(value);
+          }}
           className=""
         >
-          {options.map((opt) => (
+          {options.map(({ value, label, description, icon: Icon }, idx) => (
             <FieldLabel
-              key={opt.value}
+              key={value}
               className="max-w-md mx-auto rounded-full backdrop-blur-xl relative"
             >
               <Field orientation="horizontal" className="items-center">
-                <RadioGroupItem
-                  value={opt.value}
-                  id={opt.value}
-                  className="size-7"
-                />
+                <RadioGroupItem value={value} id={value} className="size-7" />
                 <FieldContent className="">
                   <FieldTitle className="flex gap-1 text-base">
-                    <Twemoji className="text-2xl">{opt.emoji}</Twemoji>
-                    {opt.label}
+                    <Icon
+                      className={cn(
+                        'text-2xl me-1',
+                        roadmapStepFlagColors[idx]
+                      )}
+                    />
+                    {label}
+                    <Popover
+                      open={openPopover === value}
+                      onOpenChange={(open) =>
+                        setOpenPopover(open ? value : null)
+                      }
+                    >
+                      <PopoverTrigger asChild>
+                        <button
+                          type="button"
+                          className="text-muted-foreground hover:text-foreground ms-4"
+                        >
+                          <Info className="size-4" />
+                        </button>
+                      </PopoverTrigger>
+
+                      <PopoverContent
+                        side="top"
+                        align="start"
+                        className="max-w-sm"
+                      >
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2">
+                            <Icon
+                              className={cn(
+                                'text-lg',
+                                roadmapStepFlagColors[idx]
+                              )}
+                            />
+                            <h4 className="font-medium">{label}</h4>
+                          </div>
+
+                          <p className="text-muted-foreground text-sm">
+                            {description}
+                          </p>
+                        </div>
+                      </PopoverContent>
+                    </Popover>
                   </FieldTitle>
                 </FieldContent>
               </Field>

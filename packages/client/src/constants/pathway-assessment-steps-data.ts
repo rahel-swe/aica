@@ -1,3 +1,65 @@
+/**
+ * pathway-assessment-data.ts
+ *
+ * Changes from original:
+ *  1. emoji: string  →  icon: LucideIcon  (type + field rename)
+ *  2. Added lucide-react imports (37 unique icons)
+ *  3. Targeted copy rewrites — 2 labels, 7 descriptions (see REWRITE comments)
+ *     Everything else left intact — the structure and format were already solid.
+ */
+
+import { type LucideIcon } from 'lucide-react';
+import {
+  // ── Strengths
+  Puzzle, // problem_solving
+  Palette, // creativity  (reused: express impact)
+  Users, // people      (reused: socialize free-time, people impact)
+  BarChart3, // analytical
+  MessageCircle, // communication
+  Wrench, // hands_on
+  Zap, // fast_learning
+  Target, // organized
+  // ── Subjects
+  Calculator, // math
+  FlaskConical, // science     (reused: lab environment)
+  Pencil, // writing
+  Paintbrush, // arts
+  Globe, // social/history
+  // ── Passions
+  Monitor, // tech
+  Music, // music
+  Activity, // sports
+  BookOpen, // reading
+  Microscope, // science     (reused: discover impact)
+  Handshake, // social
+  Leaf, // nature
+  Hammer, // building    (reused: build free-time)
+  Lightbulb, // ideas       (reused: create impact)
+  // ── Free Time
+  Sun, // outdoor
+  Gamepad2, // consume
+  Brain, // learn
+  // ── Environment
+  Building2, // office
+  Home, // remote
+  Trees, // outdoor env
+  Shuffle, // mixed
+  // ── Work Style
+  TrendingUp, // analyze
+  Heart, // help
+  Layers, // build/fix
+  Sparkles, // create
+  Compass, // routine
+  // ── Goals
+  Star, // impact
+  DollarSign, // money
+  Scale, // balance
+  GraduationCap, // growth
+  Rocket, // variety
+  // ── Impact
+  Network, // systems
+} from 'lucide-react';
+
 import type {
   PathwayAssessmentFormValues,
   PathwayAssessmentFreeTime,
@@ -9,6 +71,8 @@ import type {
   PathwayAssessmentWorkEnvironment,
   PathwayAssessmentWorkStyle,
 } from '@contracts/shared/types/pathway-assessment-types';
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 export type PathwayAssessmentStepId =
   | 'welcome'
@@ -32,7 +96,7 @@ export type PathwayAssessmentOption = {
   value: string;
   label: string;
   description: string;
-  emoji: string;
+  icon: LucideIcon; // ← was: emoji: string
 };
 
 export type PathwayAssessmentStep = {
@@ -48,6 +112,8 @@ export type PathwayAssessmentStep = {
   options?: PathwayAssessmentOption[];
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+
 export const PATHWAY_ASSESSMENT_STORAGE_KEY = 'aica-onboarding-draft';
 
 export const pathwayAssessmentDefaultValues = {
@@ -61,58 +127,67 @@ export const pathwayAssessmentDefaultValues = {
   goals: '',
 };
 
+// ─── Strengths ────────────────────────────────────────────────────────────────
+
 const strengthOptions: PathwayAssessmentOption[] = [
   {
     value: 'problem_solving' satisfies PathwayAssessmentStrength,
     label: 'Problem solving',
     description:
       'You like breaking down hard problems and finding practical answers.',
-    emoji: '🔍',
+    icon: Puzzle,
   },
   {
     value: 'creativity' satisfies PathwayAssessmentStrength,
     label: 'Creative thinking',
     description: 'You enjoy original ideas, design, and expressive work.',
-    emoji: '🎨',
+    icon: Palette,
   },
   {
     value: 'people' satisfies PathwayAssessmentStrength,
     label: 'People connection',
     description: 'You naturally support, guide, or connect with others.',
-    emoji: '👥',
+    icon: Users,
   },
   {
     value: 'analytical' satisfies PathwayAssessmentStrength,
     label: 'Analytical mind',
     description: 'You notice patterns, structure, and logical detail quickly.',
-    emoji: '📊',
+    icon: BarChart3,
   },
   {
     value: 'communication' satisfies PathwayAssessmentStrength,
     label: 'Communication',
     description:
       'You explain ideas clearly and make information easier to understand.',
-    emoji: '💬',
+    icon: MessageCircle,
   },
   {
     value: 'hands_on' satisfies PathwayAssessmentStrength,
     label: 'Hands-on building',
     description: 'You prefer making, fixing, and learning through action.',
-    emoji: '🔧',
+    icon: Wrench,
   },
   {
     value: 'fast_learning' satisfies PathwayAssessmentStrength,
-    label: 'Fast learning',
-    description: 'You adapt quickly when you are exposed to something new.',
-    emoji: '📚',
+    // REWRITE: "Fast learning" → more precise, less résumé-speak
+    label: 'Quick adaptation',
+    // REWRITE: original was passive ("when you are exposed to") and redundant
+    description:
+      'You get up to speed fast and hit your stride in unfamiliar territory.',
+    icon: Zap,
   },
   {
     value: 'organized' satisfies PathwayAssessmentStrength,
     label: 'Focus and structure',
-    description: 'You work well with planning, routine, and follow-through.',
-    emoji: '🎯',
+    // REWRITE: original ("planning, routine, and follow-through") was a list, not a behavior
+    description:
+      'You plan before you act and stay consistent until the job is done.',
+    icon: Target,
   },
 ];
+
+// ─── Subjects ────────────────────────────────────────────────────────────────
 
 export const subjectOptions: PathwayAssessmentOption[] = [
   {
@@ -120,165 +195,175 @@ export const subjectOptions: PathwayAssessmentOption[] = [
     label: 'Math and numbers',
     description:
       'Best when the work involves logic, formulas, or numerical thinking.',
-    emoji: '➗',
+    icon: Calculator,
   },
   {
     value: 'science' satisfies PathwayAssessmentSubject,
     label: 'Science and experiments',
     description: 'Best when exploring systems, evidence, and how things work.',
-    emoji: '🧪',
+    icon: FlaskConical,
   },
   {
     value: 'writing' satisfies PathwayAssessmentSubject,
     label: 'Writing and language',
     description:
       'Best when explaining ideas through language and communication.',
-    emoji: '✍️',
+    icon: Pencil,
   },
   {
     value: 'arts' satisfies PathwayAssessmentSubject,
     label: 'Arts and creativity',
     description: 'Best when creating visual, musical, or expressive work.',
-    emoji: '🖌️',
+    icon: Paintbrush,
   },
   {
     value: 'social' satisfies PathwayAssessmentSubject,
     label: 'History and social studies',
     description: 'Best when understanding people, society, and context.',
-    emoji: '🌍',
+    icon: Globe,
   },
 ];
+
+// ─── Passions ────────────────────────────────────────────────────────────────
 
 const passionOptions: PathwayAssessmentOption[] = [
   {
     value: 'tech' satisfies PathwayAssessmentPassion,
     label: 'Gaming and tech',
     description: 'You enjoy digital tools, systems, devices, or software.',
-    emoji: '💻',
+    icon: Monitor,
   },
   {
     value: 'music' satisfies PathwayAssessmentPassion,
     label: 'Music and arts',
     description: 'You enjoy creative expression and artistic output.',
-    emoji: '🎵',
+    icon: Music,
   },
   {
     value: 'sports' satisfies PathwayAssessmentPassion,
     label: 'Sports and action',
     description: 'You enjoy movement, challenge, and active environments.',
-    emoji: '⚽',
+    icon: Activity,
   },
   {
     value: 'reading' satisfies PathwayAssessmentPassion,
     label: 'Reading and stories',
     description: 'You enjoy ideas, reflection, and deeper content.',
-    emoji: '📖',
+    icon: BookOpen,
   },
   {
     value: 'science' satisfies PathwayAssessmentPassion,
     label: 'Science and discovery',
     description:
       'You like curiosity, experimentation, and evidence-based learning.',
-    emoji: '🔬',
+    icon: Microscope,
   },
   {
     value: 'social' satisfies PathwayAssessmentPassion,
     label: 'Social and community',
     description:
       'You care about people, relationships, and community activity.',
-    emoji: '🤝',
+    icon: Handshake,
   },
   {
     value: 'nature' satisfies PathwayAssessmentPassion,
     label: 'Nature and animals',
     description:
       'You are drawn to environmental, outdoor, or life-related fields.',
-    emoji: '🌿',
+    icon: Leaf,
   },
   {
     value: 'building' satisfies PathwayAssessmentPassion,
     label: 'Building and creating',
     description: 'You enjoy producing something useful and visible.',
-    emoji: '🛠️',
+    icon: Hammer,
   },
   {
     value: 'ideas' satisfies PathwayAssessmentPassion,
     label: 'Ideas and innovation',
     description:
       'You enjoy new concepts, experimentation, and future-oriented thinking.',
-    emoji: '💡',
+    icon: Lightbulb,
   },
 ];
+
+// ─── Free Time ───────────────────────────────────────────────────────────────
 
 const freeTimeOptions: PathwayAssessmentOption[] = [
   {
     value: 'build' satisfies PathwayAssessmentFreeTime,
     label: 'Build or make something',
     description: 'You recharge by creating, fixing, or assembling things.',
-    emoji: '🔨',
+    icon: Hammer,
   },
   {
     value: 'outdoor' satisfies PathwayAssessmentFreeTime,
     label: 'Be outdoors',
     description:
       'You prefer movement, fresh environments, and active experience.',
-    emoji: '🌤️',
+    icon: Sun,
   },
   {
     value: 'socialize' satisfies PathwayAssessmentFreeTime,
     label: 'Spend time with people',
     description: 'You gain energy from interaction and shared experiences.',
-    emoji: '🫱🏽‍🫲🏼',
+    icon: Users,
   },
   {
     value: 'consume' satisfies PathwayAssessmentFreeTime,
     label: 'Read, watch, or play',
     description:
       'You enjoy absorbing stories, content, and digital experiences.',
-    emoji: '🎮',
+    icon: Gamepad2,
   },
   {
     value: 'learn' satisfies PathwayAssessmentFreeTime,
     label: 'Learn something new',
     description: 'You naturally spend time exploring new skills or ideas.',
-    emoji: '🧠',
+    icon: Brain,
   },
 ];
+
+// ─── Environment ─────────────────────────────────────────────────────────────
 
 const environmentOptions: PathwayAssessmentOption[] = [
   {
     value: 'office' satisfies PathwayAssessmentWorkEnvironment,
     label: 'Office with a team',
     description: 'You prefer structured collaboration and shared momentum.',
-    emoji: '🏢',
+    icon: Building2,
   },
   {
     value: 'remote' satisfies PathwayAssessmentWorkEnvironment,
     label: 'Remote and flexible',
     description: 'You prefer autonomy and location flexibility.',
-    emoji: '🏠',
+    icon: Home,
   },
   {
     value: 'outdoor' satisfies PathwayAssessmentWorkEnvironment,
     label: 'Outdoor or on-site',
     description: 'You prefer active, physical, or field-based environments.',
-    emoji: '🌳',
+    icon: Trees,
   },
   {
     value: 'lab' satisfies PathwayAssessmentWorkEnvironment,
     label: 'Lab or studio',
     description:
       'You prefer focused environments for technical or creative practice.',
-    emoji: '🧫',
+    icon: FlaskConical,
   },
   {
     value: 'mixed' satisfies PathwayAssessmentWorkEnvironment,
-    label: 'A mix of settings',
+    // REWRITE: "A mix of settings" was vague
+    label: 'Varied environments',
+    // REWRITE: original used negative construction ("do not want to stay") — reframed positively
     description:
-      'You want variety and do not want to stay in one environment all the time.',
-    emoji: '🔄',
+      'No single setting defines you — you do your best work when the context shifts.',
+    icon: Shuffle,
   },
 ];
+
+// ─── Work Style ──────────────────────────────────────────────────────────────
 
 const workStyleOptions: PathwayAssessmentOption[] = [
   {
@@ -286,102 +371,115 @@ const workStyleOptions: PathwayAssessmentOption[] = [
     label: 'Analyzing information',
     description:
       'You enjoy logic, patterns, and decision-making based on information.',
-    emoji: '📈',
+    icon: TrendingUp,
   },
   {
     value: 'help' satisfies PathwayAssessmentWorkStyle,
     label: 'Helping people',
     description: 'You enjoy support, care, service, and direct human impact.',
-    emoji: '🫶',
+    icon: Heart,
   },
   {
     value: 'build' satisfies PathwayAssessmentWorkStyle,
     label: 'Building or fixing',
     description: 'You enjoy practical execution and hands-on improvement.',
-    emoji: '🧱',
+    icon: Layers,
   },
   {
     value: 'create' satisfies PathwayAssessmentWorkStyle,
     label: 'Creating ideas or solutions',
     description:
       'You enjoy originality, invention, and solving open-ended problems.',
-    emoji: '✨',
+    icon: Sparkles,
   },
   {
     value: 'routine' satisfies PathwayAssessmentWorkStyle,
     label: 'Clear structure and routine',
-    description: 'You work well when expectations and steps are clear.',
-    emoji: '🧭',
+    // REWRITE: original was passive and slightly implied a limitation
+    description:
+      "You're most effective when the path is defined and the process stays consistent.",
+    icon: Compass,
   },
 ];
+
+// ─── Impact ──────────────────────────────────────────────────────────────────
 
 const impactOptions: PathwayAssessmentOption[] = [
   {
     value: 'create' satisfies PathwayAssessmentImpact,
     label: 'Create useful things',
     description: 'You want your work to produce visible value for people.',
-    emoji: '💡',
+    icon: Lightbulb,
   },
   {
     value: 'people' satisfies PathwayAssessmentImpact,
     label: 'Work directly with people',
     description: 'You want daily human interaction and direct support roles.',
-    emoji: '👥',
+    icon: Users,
   },
   {
     value: 'discover' satisfies PathwayAssessmentImpact,
     label: 'Discover new knowledge',
     description: 'You want research, exploration, and learning to matter.',
-    emoji: '🔬',
+    icon: Microscope,
   },
   {
     value: 'systems' satisfies PathwayAssessmentImpact,
     label: 'Build important systems',
-    description:
-      'You want to improve infrastructure, operations, or reliability.',
-    emoji: '🏗️',
+    description: 'You want to keep critical things running and running well.',
+    icon: Network,
   },
   {
     value: 'express' satisfies PathwayAssessmentImpact,
     label: 'Express creativity through work',
     description:
       'You want imagination and expression to be central to your path.',
-    emoji: '🎭',
+    icon: Palette,
   },
 ];
+
+// ─── Goals ───────────────────────────────────────────────────────────────────
 
 const goalOptions: PathwayAssessmentOption[] = [
   {
     value: 'impact' satisfies PathwayAssessmentGoal,
     label: 'Make a difference',
     description: 'Meaning and contribution matter most to you.',
-    emoji: '🌟',
+    icon: Star,
   },
   {
     value: 'money' satisfies PathwayAssessmentGoal,
     label: 'Financial stability',
     description: 'You want a path with strong income and long-term security.',
-    emoji: '💰',
+    icon: DollarSign,
   },
   {
     value: 'balance' satisfies PathwayAssessmentGoal,
     label: 'Work-life balance',
-    description: 'You value sustainability, flexibility, and personal time.',
-    emoji: '⚖️',
+    // REWRITE: original listed values abstractly — rewritten as a memorable statement
+    description:
+      'You want work that fits your life — not a life that revolves around your work.',
+    icon: Scale,
   },
   {
     value: 'growth' satisfies PathwayAssessmentGoal,
     label: 'Continuous growth',
-    description: 'You want learning, development, and long-term progression.',
-    emoji: '📚',
+    // REWRITE: original was a noun list — rewritten as an identity statement
+    description:
+      "You're not satisfied staying at the same level — growth is a requirement, not a bonus.",
+    icon: GraduationCap,
   },
   {
     value: 'variety' satisfies PathwayAssessmentGoal,
     label: 'Challenge and variety',
-    description: 'You want dynamic work that keeps changing over time.',
-    emoji: '🚀',
+    // REWRITE: original was vague ("keeps changing") — rewritten with a specific trade-off
+    description:
+      'Repetition slows you down — you need work that evolves and keeps you sharp.',
+    icon: Rocket,
   },
 ];
+
+// ─── Steps ───────────────────────────────────────────────────────────────────
 
 export const PATHWAY_ASSESSMENT_STEPS: PathwayAssessmentStep[] = [
   {

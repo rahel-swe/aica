@@ -25,7 +25,7 @@ const PathwayAssessmentLayout = () => {
     currentIndex,
     form,
     isPathwayAssessmentCreating,
-    isPathwayAssessmentCreated,
+
     submitPathwayAssisment,
   } = usePathwayAssessment();
 
@@ -53,9 +53,6 @@ const PathwayAssessmentLayout = () => {
 
   if (currentIndex === -1)
     return <Navigate to="/pathway-assessment/welcome" replace />;
-
-  if (isPathwayAssessmentCreated)
-    return <Navigate to="/pathway-recommendations" />;
 
   return (
     <FormProvider {...form}>

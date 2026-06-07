@@ -1,5 +1,5 @@
-import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-assessment-steps-data';
-import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-steps-data';
+import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-assessment-data';
+import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-data';
 
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
 
@@ -7,7 +7,7 @@ import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/road
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -19,8 +19,15 @@ export const useRoadmapSetupAssessment = () => {
   const {
     mutateAsync: roadmapSetupMutateAsync,
     isPending: isRoadmapSetupCreating,
-    isSuccess: isRoadmapSetupCreateSuccess,
+    isSuccess: isRoadmapSetupSucceeded,
   } = useRoadmapSetupAssessmentSubmitMutation();
+
+  useEffect(() => {
+    if (isRoadmapSetupSucceeded)
+      navigate('/roadmap-setup-assessment/finish', {
+        viewTransition: true,
+      });
+  }, [isRoadmapSetupSucceeded, navigate]);
 
   // FORM
   const form = useForm<RoadmapSetupAssessmentFormValues>({
@@ -39,9 +46,6 @@ export const useRoadmapSetupAssessment = () => {
   // 🚀 SUBMIT (CREATE)
   const submitRoadmapSetup = form.handleSubmit(async (payload) => {
     await roadmapSetupMutateAsync(payload);
-
-    if (isRoadmapSetupCreateSuccess)
-      navigate('/roadmap-setup-assessment/finish');
   });
 
   return {

@@ -1,8 +1,16 @@
 import { useFormContext, Controller } from 'react-hook-form';
 import { Field, FieldLabel, FieldTitle, FieldContent } from '../ui/field';
 import { Checkbox } from '../ui/checkbox';
-import { Twemoji } from '../twemoji';
 import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps-data';
+import { cn } from '@/lib/utils';
+import { roadmapStepFlagColors } from '../roadmap/roadmap-view-utils';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { Info } from 'lucide-react';
+import { useState } from 'react';
 
 interface MultiSelectFieldProps {
   name: string;
@@ -17,6 +25,7 @@ const MultiSelectField: React.FC<MultiSelectFieldProps> = ({
   maxSelect,
 }) => {
   const { control } = useFormContext();
+  const [openPopover, setOpenPopover] = useState<string | null>(null);
 
   return (
     <Controller
@@ -26,30 +35,79 @@ const MultiSelectField: React.FC<MultiSelectFieldProps> = ({
       render={({ field }) => {
         const values: string[] = field.value || [];
 
-        const toggleValue = (val: string) => {
-          if (values.includes(val)) {
+        // Toggle value in array
+        const toggleValue = (val: string, description?: string) => {
+          const isSelected = values.includes(val);
+
+          if (isSelected) {
             field.onChange(values.filter((v) => v !== val));
           } else {
-            if (maxSelect && values.length >= maxSelect) return; // enforce max
+            if (maxSelect && values.length >= maxSelect) return;
+
             field.onChange([...values, val]);
+
+            // Auto-open description
+            if (description) setOpenPopover(val);
           }
         };
 
         return (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {options.map((opt) => (
-              <FieldLabel key={opt.value} className="backdrop-blur-xl">
-                <Field orientation="horizontal">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {options.map(({ value, label, description, icon: Icon }, idx) => (
+              <FieldLabel key={value} className="backdrop-blur-xl">
+                <Field orientation="horizontal" className="items-center">
                   <Checkbox
-                    id={opt.value}
-                    checked={values.includes(opt.value)}
-                    onCheckedChange={() => toggleValue(opt.value)}
+                    id={value}
+                    checked={values.includes(value)}
+                    onCheckedChange={() => toggleValue(value, description)}
                     className="size-7 rounded-full"
                   />
                   <FieldContent>
                     <FieldTitle className="flex gap-1 text-base">
-                      <Twemoji className="text-2xl">{opt.emoji}</Twemoji>
-                      {opt.label}
+                      <Icon
+                        className={cn(
+                          'text-2xl me-1',
+                          roadmapStepFlagColors[idx]
+                        )}
+                      />
+                      {label}
+                      <Popover
+                        open={openPopover === value}
+                        onOpenChange={(open) =>
+                          setOpenPopover(open ? value : null)
+                        }
+                      >
+                        <PopoverTrigger asChild>
+                          <button
+                            type="button"
+                            className="text-muted-foreground hover:text-foreground ms-4"
+                          >
+                            <Info className="size-4" />
+                          </button>
+                        </PopoverTrigger>
+
+                        <PopoverContent
+                          side="top"
+                          align="start"
+                          className="max-w-sm"
+                        >
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-2">
+                              <Icon
+                                className={cn(
+                                  'text-lg',
+                                  roadmapStepFlagColors[idx]
+                                )}
+                              />
+                              <h4 className="font-medium">{label}</h4>
+                            </div>
+
+                            <p className="text-muted-foreground text-sm">
+                              {description}
+                            </p>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
                     </FieldTitle>
                   </FieldContent>
                 </Field>

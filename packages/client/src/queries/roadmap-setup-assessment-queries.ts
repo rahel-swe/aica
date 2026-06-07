@@ -26,8 +26,9 @@ export const useRoadmapSetupAssessmentSubmitMutation = () => {
       queryClient.invalidateQueries({
         queryKey: roadmapKeys.status(),
       });
+
       queryClient.invalidateQueries({
-        queryKey: [profileKeys.me],
+        queryKey: profileKeys.me(),
       });
     },
   });

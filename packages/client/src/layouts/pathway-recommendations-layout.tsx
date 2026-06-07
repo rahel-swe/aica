@@ -6,11 +6,12 @@ import FamilyStage from '@/components/family-stage';
 import PathwayStage from '@/components/pathway-stage';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { Button } from '@/components/ui/button';
-import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-steps-data';
+import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-data';
 import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
 import { useProfileStatusQuery } from '@/queries/profile-query';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
+import { useEffect } from 'react';
 
 const FINAL_PATHWAY_COUNT = 3;
 
@@ -23,7 +24,7 @@ const PathwayRecommendedPathwaysLayout = () => {
   const {
     mutate,
     isPending: isPathwayPicking,
-    isSuccess: isRoadmapSetupCompleted,
+    isSuccess: isRoadmapSetupSumitted,
   } = useRoadmapSetupAssessmentSubmitMutation();
   const navigate = useNavigate();
   const { data: profileStatusResponse, isPending: isProfileStatusPending } =
@@ -39,6 +40,11 @@ const PathwayRecommendedPathwaysLayout = () => {
     goToPathway,
     goBack,
   } = usePathwayPickerParams();
+
+  useEffect(() => {
+    if (isRoadmapSetupSumitted)
+      navigate('/pathway-congratulations', { viewTransition: true });
+  }, [isRoadmapSetupSumitted, navigate]);
 
   if (isProfileStatusPending || isRecommendationsPending)
     return (
@@ -105,9 +111,6 @@ const PathwayRecommendedPathwaysLayout = () => {
       ...roadmapSetupDefaultValues,
       pickedPathwayId: selectedPathway!.pathwayId,
     });
-
-    if (isRoadmapSetupCompleted)
-      navigate('/pathway-congratulations', { viewTransition: true });
   };
 
   return (

@@ -1,4 +1,4 @@
-import type { RoadmapSetupStep } from '@/constants/roadmap-setup-assessment-steps-data';
+import type { RoadmapSetupStep } from '@/constants/roadmap-setup-assessment-data';
 
 import MultiSelectField from '../form/multi-select-field';
 import SingleSelectField from '../form/single-select-field';
@@ -36,27 +36,30 @@ const RoadmapSetupFieldPanel = ({
           : 'slide-in-from-left-6'
       )}
     >
-      <h1 className="max-w-3xl text-4xl font-semibold tracking-tight mb-10 mx-auto text-center">
+      <h1 className="max-w-3xl text-4xl font-semibold tracking-tight mb-10 mx-auto font-heading md:text-5xl">
         {step.title}
       </h1>
 
-      {step.type === 'multi-select' ? (
-        <MultiSelectField
-          name={step.fieldName}
-          label={step.title}
-          options={step.options}
-        />
-      ) : (
-        <SingleSelectField
-          name={step.fieldName}
-          label={step.title}
-          options={step.options}
-        />
-      )}
+      <div className="max-h-[60dvh] h-full overflow-auto pe-1">
+        {step.type === 'multi-select' ? (
+          <MultiSelectField
+            name={step.fieldName}
+            label={step.title}
+            options={step.options}
+          />
+        ) : (
+          <SingleSelectField
+            name={step.fieldName}
+            label={step.title}
+            options={step.options}
+          />
+        )}
+      </div>
       {step.helperText && (
-        <div className="mx-auto flex justify-center gap-1.5">
-          <MessageCircleWarning className="size-5 md:size-5.5" />
-          <p className="text-muted-foreground md:text-sm text-center text-xs self-end">
+        <div className="flex items-center justify-center gap-2 flex-col">
+          <MessageCircleWarning className="shrink md:size-5.5 text-xl text-yellow-300" />
+
+          <p className="text-muted-foreground text-center text-sm grow max-">
             {step.helperText}
           </p>
         </div>
