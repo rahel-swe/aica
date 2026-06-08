@@ -22,12 +22,52 @@ export class PathwayRepository {
     return await PathwayModel.find({ status: 'active' });
   }
 
-  async findAllActiveWithDetails() {
-    return await PathwayModel.find({ status: 'active' })
+  async findAllActiveWithCursor(
+    search?: string,
+    type?: string,
+    cursor?: string,
+    limit: number = 12
+  ) {
+    const query: any = {
+      status: 'active',
+    };
+
+    if (search) {
+      query.title = {
+        $regex: search,
+        $options: 'i',
+      };
+    }
+
+    if (type) {
+      query.type = type;
+    }
+
+    if (cursor) {
+      query._id = { $lt: cursor };
+    }
+
+    const items = await PathwayModel.find(query)
       .populate('taxonomyNodeIds', 'id name slug kind parentId')
       .populate('relatedPathwayIds', 'id title slug type summary')
-      .sort({ title: 1 })
+      .sort({ _id: -1 })
+      .limit(limit + 1)
       .lean();
+
+    let hasMore = false;
+    let nextCursor: string | null = null;
+
+    if (items.length > limit) {
+      hasMore = true;
+      const nextItem = items.pop();
+      nextCursor = nextItem?._id.toString() || null;
+    }
+
+    return {
+      items,
+      nextCursor,
+      hasMore,
+    };
   }
 
   async findActiveDetailByIdOrSlug(idOrSlug: string) {

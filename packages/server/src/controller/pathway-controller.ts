@@ -4,9 +4,16 @@ import { pathwayService } from '../services/pathway-service';
 export class PathwayController {
   private readonly service = pathwayService;
 
-  getPathways = async (_req: Request, res: Response) => {
+  getPathways = async (req: Request, res: Response) => {
     try {
-      const result = await this.service.getPathways();
+      const { search, type, cursor, limit } = req.query;
+
+      const result = await this.service.getPathways(
+        search as string,
+        type as string,
+        cursor as string,
+        Number(limit) || 12
+      );
 
       res.json({
         success: true,
@@ -23,6 +30,7 @@ export class PathwayController {
 
   getPathwayDetail = async (req: Request, res: Response) => {
     const { id } = req.params as { id: string };
+
     try {
       const result = await this.service.getPathwayDetail(id);
 
