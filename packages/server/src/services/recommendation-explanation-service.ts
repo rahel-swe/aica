@@ -3,23 +3,19 @@ import type {
   PathwayMatchProfile,
   RecommendationItem,
 } from '@contracts/shared/types/pathway-domain-types';
-import { llmClient } from '../llm/llm-client';
 import explainRecommendationPrompt from '@/src/llm/prompts/recommendation-explanation-prompt.txt';
+import { createTextCompletion } from '../llm/llm-client';
 
 export class RecommendationExplanationService {
-  private readonly llmClient = llmClient;
-
   async enrichRecommendations(
     recommendations: RecommendationItem[],
     profile: PathwayAssessmentFormValues
   ): Promise<RecommendationItem[]> {
-    if (!Bun.env.HF_TOKEN) return recommendations;
-
     // Explanations are optional enrichment, not part of core matching.
     return await Promise.all(
       recommendations.map(async (recommendation) => {
         try {
-          const explanation = await this.llmClient.createTextCompletion(
+          const explanation = await createTextCompletion(
             this.renderPrompt(
               explainRecommendationPrompt,
               recommendation,

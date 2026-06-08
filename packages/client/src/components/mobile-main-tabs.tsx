@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { MAIN_TABS } from '@/constants/app-tabs-data';
 import { useIsTabActive } from '@/hooks/use-active-tab';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { authClient } from '@/lib/auth-client';
-import type { LucideIcon } from 'lucide-react';
+import { MessageCircleMore, type LucideIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Separator } from './ui/separator';
-import UserAvatar from './user-avatar';
+import { useIsAdvisorOpen } from '@/hooks/use-is-advisor-open';
 
 type TabItemProps = {
   label: string;
@@ -69,22 +68,23 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
 
 const MobileMainTabs = ({ className }: { className?: string }) => {
   const isTabActive = useIsTabActive();
-  const { data, isPending } = authClient.useSession();
   const isMobile = useIsMobile();
+  const isAdvisorOpen = useIsAdvisorOpen();
 
-  if (isPending || (!isTabActive && isMobile)) return null;
+  if (!isTabActive && isMobile) return null;
 
   return (
     <div
       className={cn(
         'flex items-center justify-between md:hidden w-full',
-        className
+        className,
+        isMobile && isAdvisorOpen && 'translate-y-12'
       )}
     >
       <div
         className={cn(
           'flex py-2 items-center rounded-full border fixed inset-s-4 inset-x-0 bottom-3 z-10',
-          'backdrop-blur-md supports-backdrop-filter:bg-background/ px-2 w-min z-50'
+          'backdrop-blur-md supports-backdrop-filter:bg-background/ px-2 w-min z-10'
         )}
       >
         {MAIN_TABS.map((item) => (
@@ -93,13 +93,43 @@ const MobileMainTabs = ({ className }: { className?: string }) => {
       </div>
       <Separator
         decorative
-        className="fixed z-0 inset-e-7 border rounded-2xl ms-auto bottom-9 inset-x-0 max-w-[80%]"
+        className="fixed z-0 inset-e-7 border rounded-2xl ms-auto bottom-10 inset-x-0 max-w-[80%]"
       />
       <Link
-        to="/app/settings"
-        className="items-center rounded-full bg-background/40 transition-all md:flex fixed inset-e-5 ms-auto bottom-3 w-min z-10 backdrop-blur-sm"
+        to="/app/advisor"
+        className="items-center rounded-full bg-background/40 transition-all md:flex fixed inset-e-5 ms-auto bottom-5 w-min z-10 backdrop-blur-sm"
       >
-        <UserAvatar className="size-12" username={data!.user.name} />
+        <motion.div
+          whileHover={{ y: -2 }}
+          transition={{
+            type: 'spring',
+            stiffness: 400,
+            damping: 20,
+          }}
+          className={cn(
+            'group relative flex items-center rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 text-primary-foreground shadow-lg shadow-primary/20 font-heading'
+          )}
+        >
+          <motion.span
+            className="absolute inset-0 rounded-full bg-primary"
+            transition={{
+              type: 'tween',
+              stiffness: 900,
+              damping: 100,
+            }}
+          />
+
+          <MessageCircleMore
+            size={25}
+            className={cn(
+              'relative z-10 transition-all duration-300 . roup-hover:scale-110 group-hover:rotate-40'
+            )}
+          />
+
+          <span className={cn('relative z-10 text-sm font-bold ms-2')}>
+            Advisor
+          </span>
+        </motion.div>
       </Link>
     </div>
   );

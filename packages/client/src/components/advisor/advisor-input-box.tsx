@@ -46,7 +46,7 @@ export function AdvisorInputBox({
     >
       <PromptDropDownMenu onPromptSelect={handlePromptSelect} />
 
-      <ScrollArea className="flex-1 max-h-45 h-full w-full rounded-2xl overflow-hidden  ring ring-ring/70">
+      <ScrollArea className="flex-1 max-h-45 h-full w-full rounded-2xl overflow-hidden ring ring-ring/70">
         <Textarea
           value={message}
           onChange={(event) => setMessage(event.target.value)}

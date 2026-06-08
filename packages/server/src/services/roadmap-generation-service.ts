@@ -9,12 +9,12 @@ import type {
   RoadmapStep,
 } from '@contracts/shared/types/roadmap-types';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
-import { llmClient } from '../llm/llm-client';
 import roadmapGenerationPrompt from '@/src/llm/prompts/roadmap-generation-prompt.txt';
 import {
   roadmapSourceRefreshService,
   type RoadmapSourceNote,
 } from './roadmap-source-refresh-service';
+import { createTextCompletion } from '../llm/llm-client';
 
 type PathwayRoadmapContext = {
   title: string;
@@ -54,7 +54,6 @@ type RoadmapTargetContext = {
 };
 
 export class RoadmapGenerationService {
-  private readonly llmClient = llmClient;
   private readonly sourceRefreshService = roadmapSourceRefreshService;
 
   async generateStructuredRoadmap(
@@ -62,14 +61,11 @@ export class RoadmapGenerationService {
   ): Promise<GeneratedRoadmap> {
     const targetContext = this.buildTargetContext(input.pathway);
 
-    if (!process.env.HF_TOKEN)
-      throw new Error('Roadmap generation failed because HF_TOKEN is missing.');
-
     const sourceNotes = await this.sourceRefreshService.getSourceNotes(
       input.pathway
     );
 
-    const response = await this.llmClient.createTextCompletion(
+    const response = await createTextCompletion(
       this.renderPrompt({ ...input, targetContext, sourceNotes })
     );
 

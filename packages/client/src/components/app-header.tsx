@@ -8,9 +8,11 @@ import { cn } from '@/lib/utils';
 import AppLogo from './app-logo';
 import { Button } from './ui/button';
 import UserAvatar from './user-avatar';
+import { useIsAdvisorOpen } from '@/hooks/use-is-advisor-open';
 
 export default function AppHeader({ className }: { className?: string }) {
   const { data, isPending } = authClient.useSession();
+  const isAdvisorOpen = useIsAdvisorOpen();
 
   const isTabActive = useIsTabActive();
   const isMobile = useIsMobile(768);
@@ -20,8 +22,9 @@ export default function AppHeader({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'fixed left-1/2 -translate-x-1/2 top-1 px-1 max-w-sm md:sticky md:translate-x-0 md:left-auto md:top-2 md:max-w-xl z-50 w-full md:mx-auto',
-        className
+        'fixed left-1/2 -translate-x-1/2 top-1 px-1 max-w-sm md:sticky md:translate-x-0 md:left-auto md:top-2 md:max-w-xl z-50 w-full md:mx-auto transition-transform duration-700',
+        className,
+        isMobile && isAdvisorOpen && '-translate-y-12'
       )}
     >
       <header className="border-x md:border bg-background/20 backdrop-blur-lg supports-backdrop-filter:bg-background/20  rounded-full w-full">

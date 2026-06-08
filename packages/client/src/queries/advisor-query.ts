@@ -1,44 +1,69 @@
-import {
-  askAdvisor,
-  deleteConversationById,
-  getAdvisorHistory,
-} from '@/services/advisor-service';
-import type { AdvisorChatRequest } from '@contracts/shared/types/advisor-types';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  listConversations,
+  getConversation,
+  deleteConversation,
+} from '@/services/advisor-service';
+import { useAdvisorStore } from '@/stores/advisor-store';
+
+// ─── Query keys ────────────────────────────────────────────────────────────────
 
 export const advisorKeys = {
   all: ['advisor'] as const,
-  chat: () => [...advisorKeys.all, 'chat'] as const,
-  history: () => [...advisorKeys.all, 'history'] as const,
+  conversations: () => [...advisorKeys.all, 'conversations'] as const,
+  conversation: (id: string) => [...advisorKeys.conversations(), id] as const,
 };
 
-export const useAdvisorMutation = () => {
+// ─── Conversation list ─────────────────────────────────────────────────────────
+
+export const useConversationsQuery = () =>
+  useQuery({
+    queryKey: advisorKeys.conversations(),
+    queryFn: listConversations,
+    staleTime: 30_000,
+  });
+
+// ─── Load a single conversation into the store ─────────────────────────────────
+// Not a useQuery — this is imperative (triggered by sidebar click).
+// Returns a loading function the caller invokes directly.
+
+export const useLoadConversation = () => {
   const queryClient = useQueryClient();
+  const { loadConversation } = useAdvisorStore();
+
+  return async (id: string, title: string) => {
+    // Use cached data if available, otherwise fetch
+    const cached = queryClient.getQueryData(advisorKeys.conversation(id));
+    const conversation =
+      (cached as Awaited<ReturnType<typeof getConversation>> | undefined) ??
+      (await queryClient.fetchQuery({
+        queryKey: advisorKeys.conversation(id),
+        queryFn: () => getConversation(id),
+        staleTime: 60_000,
+      }));
+
+    loadConversation(id, title, conversation?.messages as any);
+  };
+};
+
+// ─── Delete conversation ───────────────────────────────────────────────────────
+
+export const useDeleteConversationMutation = () => {
+  const queryClient = useQueryClient();
+  const { activeConversationId, startNewConversation } = useAdvisorStore();
 
   return useMutation({
-    mutationKey: advisorKeys.chat(),
-    mutationFn: (payload: AdvisorChatRequest) => askAdvisor(payload),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: advisorKeys.history() });
-    },
-  });
-};
-
-export const useAdvisorHistoryQuery = () => {
-  return useQuery({
-    queryKey: advisorKeys.history(),
-    queryFn: getAdvisorHistory,
-  });
-};
-
-export const useDeleteConversationByIdQuery = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationKey: advisorKeys.history(),
-    mutationFn: deleteConversationById,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: advisorKeys.history() });
+    mutationFn: deleteConversation,
+    onSuccess: (_, deletedId) => {
+      // If the deleted conversation was active, reset to empty state
+      if (deletedId === activeConversationId) {
+        startNewConversation();
+      }
+      // Invalidate both the list and the cached single conversation
+      queryClient.invalidateQueries({ queryKey: advisorKeys.conversations() });
+      queryClient.removeQueries({
+        queryKey: advisorKeys.conversation(deletedId),
+      });
     },
   });
 };

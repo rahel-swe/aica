@@ -11,7 +11,7 @@ import {
 } from '../ui/dropdown-menu';
 import ModeToggle from '../toggle-mode';
 
-const MotionDropdownMenuContent = motion(DropdownMenuContent);
+const MotionDropdownMenuContent = motion.create(DropdownMenuContent);
 
 const MobileNavDropDownMenu = () => {
   const [open, setOpen] = useState(false);

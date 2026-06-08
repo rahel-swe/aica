@@ -2,11 +2,11 @@ import {
   Bell,
   CircleHelp,
   Home,
-  MessageCircle,
   Route,
   Search,
   Settings,
   UserCog,
+  MessageCircleMore,
 } from 'lucide-react';
 
 export const MAIN_TABS = [
@@ -15,11 +15,11 @@ export const MAIN_TABS = [
     to: '/app/dashboard',
     icon: Home,
   },
-  {
-    label: 'Advisor',
-    to: '/app/advisor',
-    icon: MessageCircle,
-  },
+  // {
+  //   label: 'Advisor',
+  //   to: '/app/advisor',
+  //   icon: MessageCircle,
+  // },
   {
     label: 'Roadmap',
     to: '/app/roadmap',
@@ -41,14 +41,14 @@ export const DESKTOP_TABS = [
   {
     label: 'Advisor',
     to: '/app/advisor',
-    icon: MessageCircle,
+    icon: MessageCircleMore,
   },
   {
     label: 'Roadmap',
     to: '/app/roadmap',
     icon: Route,
   },
-  { label: 'Admin', to: '/app/admin', icon: UserCog },
+  // { label: 'Admin', to: '/app/admin', icon: UserCog },
 ];
 
 export const SECONDARY_TABS = [

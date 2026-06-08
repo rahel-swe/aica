@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "test": "bun --filter '*' test",
-    "dev": "bun --filter '*' dev",
+    "dev": "bun run index.ts",
     "start": "bun --filter '*' start",
     "format": "prettier --write .",
     "prepare": "husky"
@@ -20,5 +20,8 @@
   ],
   "peerDependencies": {
     "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "concurrently": "^10.0.3"
   }
 }
