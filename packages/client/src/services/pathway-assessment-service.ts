@@ -23,3 +23,11 @@ export const getPathwayAssessmentStatus =
     const data = await response.data;
     return data;
   };
+
+export const deletePathwayAssessmentStatus = async (
+  id: string
+): Promise<PathwayAssessmentStatusResponse> => {
+  const response = await apiClient.delete(`/api/pathway-assessment/${id}`);
+  const data = await response.data;
+  return data;
+};

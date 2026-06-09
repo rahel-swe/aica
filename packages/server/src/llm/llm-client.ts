@@ -22,14 +22,13 @@ import type {
 
 // ─── Client bootstrap ──────────────────────────────────────────────────────────
 
-const useHuggingFace = process.env.HF_TOKEN ?? process.env.OPENAI_API_KEY;
-
 export const openaiClient = new OpenAI({
-  apiKey: useHuggingFace ? process.env.HF_TOKEN : process.env.OPENAI_API_KEY,
-  baseURL: useHuggingFace ? 'https://router.huggingface.co/v1' : undefined, // undefined → OpenAI default
+  apiKey: process.env.HF_TOKEN,
+  baseURL: 'https://router.huggingface.co/v1',
 });
 
-export const LLM_MODEL = 'Qwen/Qwen2.5-72B-Instruct:novita';
+export const LLM_MODEL = 'deepseek-ai/DeepSeek-V4-Pro:fireworks-ai';
+// ('Qwen/Qwen2.5-72B-Instruct:novita');
 //  'openai/gpt-oss-20b:together'
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
@@ -149,7 +148,6 @@ export async function runAdvisorCompletion(
 
   for await (const chunk of stream) {
     const delta = chunk.choices[0]?.delta;
-
     if (delta?.content) {
       fullContent += delta.content;
       callbacks.onDelta(delta.content);
@@ -189,13 +187,15 @@ export async function runAdvisorCompletion(
 export async function createTextCompletion(
   prompt: string,
   options: { maxTokens?: number; model?: string } = {}
-): Promise<string> {
-  const response = await openaiClient.chat.completions.create({
-    model: options.model ?? LLM_MODEL,
-    messages: [{ role: 'user', content: prompt }],
-    max_tokens: options.maxTokens ?? 400,
-    stream: false,
-  });
+) {
+  try {
+    const response = await openaiClient.chat.completions.create({
+      model: LLM_MODEL,
+      messages: [{ role: 'user', content: prompt }],
+    });
 
-  return response.choices[0]?.message?.content?.trim() ?? '';
+    return response.choices[0]?.message?.content;
+  } catch (error) {
+    console.log(error);
+  }
 }

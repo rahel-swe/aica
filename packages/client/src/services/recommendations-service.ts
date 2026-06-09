@@ -14,3 +14,12 @@ export const getMyRecommendations = async (): Promise<{
   const response = await apiClient.get(`/api/recommendations/me`);
   return response.data;
 };
+
+export const deleteMyRecommendations = async (): Promise<{
+  success: boolean;
+  message: string;
+  data?: unknown;
+}> => {
+  const response = await apiClient.delete(`/api/recommendations`);
+  return response.data;
+};

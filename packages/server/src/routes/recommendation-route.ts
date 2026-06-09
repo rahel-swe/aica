@@ -16,4 +16,10 @@ recommendationRouter.get(
   recommendationController.getMyRecommendations
 );
 
+recommendationRouter.delete(
+  '/',
+  authorize,
+  recommendationController.deleteMyRecommendations
+);
+
 export default recommendationRouter;

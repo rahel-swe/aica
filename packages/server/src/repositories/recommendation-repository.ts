@@ -9,6 +9,10 @@ export class RecommendationRepository {
   async findByUserId(userId: string) {
     return await RecommendationModel.find({ userId }).sort({ rank: 1 }).lean();
   }
+
+  async deleteMyRecommendations(userId: string) {
+    return await RecommendationModel.deleteMany({ userId });
+  }
 }
 
 export const recommendationRepository = new RecommendationRepository();

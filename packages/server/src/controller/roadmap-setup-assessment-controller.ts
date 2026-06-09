@@ -57,6 +57,35 @@ export class RoadmapSetupAssessmentController {
       });
     }
   };
+
+  deleteRoadmapSetupAssessment = async (req: AuthRequest, res: Response) => {
+    try {
+      const userId = req.user?.id || 'dummyUserId';
+      const { id } = req.params as { id: string };
+      const assessment = await this.service.deleteRoadmapSetup(id, userId);
+
+      if (!assessment) {
+        return res.json({
+          success: true,
+          message: 'Assessment status faild to fetch fetched.',
+          data: {
+            completed: false,
+          },
+        });
+      }
+
+      return res.json({
+        success: true,
+        message: 'Roadmap setup assessment deleted successfully.',
+        data: assessment,
+      });
+    } catch (error: any) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  };
 }
 
 export const roadmapSetupAssessmentController =

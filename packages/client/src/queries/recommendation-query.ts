@@ -1,5 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { getMyRecommendations } from '@/services/recommendations-service';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  deleteMyRecommendations,
+  getMyRecommendations,
+} from '@/services/recommendations-service';
 
 export const recommendationsKeys = {
   all: ['recommendations'],
@@ -8,7 +11,20 @@ export const recommendationsKeys = {
 
 export const useRecommendationQuery = () => {
   return useQuery({
-    queryKey: [recommendationsKeys.my()],
+    queryKey: recommendationsKeys.my(),
     queryFn: () => getMyRecommendations(),
+  });
+};
+
+export const useRecommendationDeleteMutationQuery = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteMyRecommendations,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: recommendationsKeys.my(),
+      });
+    },
   });
 };

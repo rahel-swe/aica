@@ -30,7 +30,7 @@ export function AdvisorChatThread({
 
   return (
     <ScrollArea className={cn('flex-1 min-h-0', className)}>
-      <div className="mx-auto px-4 space-y-6 max-w-dvw md:w-[85%] pt-6 pb-27 md:pt-6 md:pb-30">
+      <div className="mx-auto px-4 space-y-6 w-full md:w-[80%] pt-6 pb-27 md:pt-6 md:pb-30">
         {isEmpty ? (
           <AdvisorEmptyState
           // onPromptSelect={onSend}

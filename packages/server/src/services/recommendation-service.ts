@@ -88,6 +88,10 @@ export class RecommendationService {
     return await this.buildRecommendationOverview(userId);
   }
 
+  async deleteRecommendations(userId: string) {
+    return await recommendationRepository.deleteMyRecommendations(userId);
+  }
+
   async getRecommendations(userId: string): Promise<RecommendationOverview> {
     return await this.buildRecommendationOverview(userId);
   }

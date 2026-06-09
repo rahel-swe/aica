@@ -12,6 +12,7 @@ import { useProfileStatusQuery } from '@/queries/profile-query';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
 import { useEffect } from 'react';
+import ErrorState from '@/components/error-state';
 
 const FINAL_PATHWAY_COUNT = 3;
 
@@ -20,6 +21,7 @@ const PathwayRecommendedPathwaysLayout = () => {
     data: recommendationsResponse,
     isPending: isRecommendationsPending,
     error,
+    refetch,
   } = useRecommendationQuery();
   const {
     mutate,
@@ -53,14 +55,16 @@ const PathwayRecommendedPathwaysLayout = () => {
       </div>
     );
 
-  if (!profileStatusResponse?.data.assessments.pathwayCompleted)
+  if (!profileStatusResponse?.data.assessments.pathwayAssessmentCompleted)
     return <Navigate to={'/pathway-assessment'} />;
-
+  console.log(error);
   if (error)
     return (
-      <p className="p-6 text-destructive">
-        Failed fechting, Please reload the page.
-      </p>
+      <ErrorState
+        onRetry={refetch}
+        title="Recommendation fechting failed!"
+        message={error.message}
+      />
     );
 
   const recommendationData = recommendationsResponse?.data;

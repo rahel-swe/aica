@@ -1,111 +1,75 @@
 import { authClient } from '@/lib/auth-client';
-import { roadmapStepFlagColors as accentColors } from '../roadmap/roadmap-view-utils';
 import { cn } from '@/lib/utils';
+import { Bird, CloudSun, Coffee, MoonStar, Sun } from 'lucide-react';
 
-// cache colors per title so they don't change on rerender
-const titleColorCache = new Map<string, string>();
+type DayPeriod = 'sunrise' | 'morning' | 'afternoon' | 'sunset' | 'night';
 
-function getRandomColor() {
-  return accentColors[Math.floor(Math.random() * accentColors.length)];
-}
-
-function getWelcomeTitle(name: string) {
-  const parts = name.trim().split(' ');
-  const displayName = parts[1] || parts[0];
-
+function getDayPeriod(): DayPeriod {
   const hour = new Date().getHours();
 
-  const morning = [
-    `${displayName} Returns`,
-    `${displayName} Rises`,
-    'A Fresh Direction',
-    'Dreams & Direction',
-    'Curiosity & Courage',
-    'The Future Calls',
-    'Ready for Discovery?',
-    'A New Chapter Begins',
-    'Morning Momentum',
-  ];
+  if (hour >= 5 && hour < 8) return 'sunrise';
+  if (hour >= 8 && hour < 12) return 'morning';
+  if (hour >= 12 && hour < 17) return 'afternoon';
+  if (hour >= 17 && hour < 20) return 'sunset';
 
-  const afternoon = [
-    `${displayName} Advances`,
-    `${displayName} Continues`,
-    'Focus & Momentum',
-    'Purpose & Progress',
-    'The Next Move',
-    'Momentum Returns',
-    'Future in Motion',
-    'Pathways Await',
-    'Forward, Always Forward',
-  ];
-
-  const evening = [
-    `${displayName} Explores`,
-    `${displayName} Discovers`,
-    'Still Becoming',
-    'The Journey Continues...',
-    'Your Story Evolves',
-    "What's Next?",
-    'Opportunity Awaits',
-    'A New Perspective',
-    'Progress, Not Perfection',
-  ];
-
-  const night = [
-    `${displayName} Keeps Building`,
-    `${displayName} Dreams Bigger`,
-    'Tomorrow Starts Here',
-    'One More Step',
-    'Vision & Velocity',
-    'The Story Continues...',
-    'Future in Motion',
-    'End Strong',
-    'Big Things Take Time',
-  ];
-
-  const pool =
-    hour < 12 ? morning : hour < 17 ? afternoon : hour < 21 ? evening : night;
-
-  const daySeed = Math.floor(
-    (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000
-  );
-
-  return pool[daySeed % pool.length];
+  return 'night';
 }
 
-// split last word + color it
-function renderColoredTitle(title: string) {
-  const words = title.split(' ');
-  const lastWord = words.pop()!;
-  const base = words.join(' ');
+function getGreeting(name: string) {
+  const lastName = name.trim().split(' ')[1] || name;
+  const period = getDayPeriod();
 
-  // stable per-title color
-  if (!titleColorCache.has(title)) {
-    titleColorCache.set(title, getRandomColor());
+  switch (period) {
+    case 'sunrise':
+      return {
+        title: `Rise & Shine, ${lastName}`,
+        Icon: Bird,
+        color: 'text-sky-400',
+      };
+
+    case 'morning':
+      return {
+        title: `Fuel Up, ${lastName}`,
+        Icon: Coffee,
+        color: 'text-orange-300',
+      };
+
+    case 'afternoon':
+      return {
+        title: `Good Afternoon, ${lastName}`,
+        Icon: CloudSun,
+        color: 'text-amber-300',
+      };
+
+    case 'sunset':
+      return {
+        title: `Winding Down, ${lastName}`,
+        Icon: Sun,
+        color: 'text-rose-400',
+      };
+
+    case 'night':
+    default:
+      return {
+        title: `Good Evening, ${lastName}`,
+        Icon: MoonStar,
+        color: 'text-indigo-400',
+      };
   }
-
-  const color = titleColorCache.get(title)!;
-
-  return (
-    <>
-      {base} <span className={cn('font-semibold', color)}>{lastWord}</span>
-    </>
-  );
 }
 
 export function AdvisorEmptyState() {
   const { isPending, data } = authClient.useSession();
 
-  if (isPending) return null;
-  if (!data) return null;
+  if (isPending || !data) return null;
 
-  const title = getWelcomeTitle(data.user.name);
+  const { title, Icon, color } = getGreeting(data.user.name);
 
   return (
-    <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
-      <h2 className="font-heading text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
-        {renderColoredTitle(title)}
-      </h2>
+    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-4 text-center">
+      <Icon className={cn('size-16 md:size-20', color)} />
+
+      <h2 className="text-4xl sm:text-5xl md:text-6xl">{title}</h2>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import {
 } from '@/services/roadmap-setup-assessment-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { profileKeys } from './profile-query';
+import { deleteRoadmapSetupAssessment } from '../services/roadmap-setup-assessment-service';
 
 const roadmapKeys = {
   all: ['roadmap-setup-assessment'],
@@ -22,6 +23,23 @@ export const useRoadmapSetupAssessmentSubmitMutation = () => {
 
   return useMutation({
     mutationFn: createRoadmapSetupAssessment,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: roadmapKeys.status(),
+      });
+
+      queryClient.invalidateQueries({
+        queryKey: profileKeys.me(),
+      });
+    },
+  });
+};
+
+export const useRoadmapSetupAssessmentDeleteMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteRoadmapSetupAssessment,
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: roadmapKeys.status(),

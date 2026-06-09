@@ -69,6 +69,8 @@ export class RoadmapGenerationService {
       this.renderPrompt({ ...input, targetContext, sourceNotes })
     );
 
+    if (!response) throw new Error('Roadmap generation faild');
+
     const parsed = this.parseGeneratedRoadmap(response);
 
     if (!parsed) throw new Error('Roadmap parsing failed');

@@ -34,6 +34,25 @@ export class RecommendationController {
         message: 'Current user recommendations fetched.',
       });
     } catch (error: any) {
+      console.log(error);
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  };
+
+  deleteMyRecommendations = async (req: AuthRequest, res: Response) => {
+    try {
+      const userId = req.user?.id || 'dummyUserId';
+      const result = await this.service.deleteRecommendations(userId);
+
+      res.json({
+        success: true,
+        data: result,
+        message: 'All your recommendation deleted successfully.',
+      });
+    } catch (error: any) {
       res.status(400).json({
         success: false,
         message: error.message,

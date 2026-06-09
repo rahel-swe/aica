@@ -4,19 +4,11 @@ import { useEffect, useState } from 'react';
 
 import { Input } from '@/components/ui/input';
 import { authClient } from '@/lib/auth-client';
-import { useProfileStatusQuery } from '@/queries/profile-query';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '../ui/card';
 import { Label } from '../ui/label';
-import { Separator } from '../ui/separator';
-import { AssessmentStatusRow } from './assessment-status-row';
+import ProfileReadness from './profile-readness';
 import SettingsPanelShell from './settings-panel-shell';
 import SettingsSaveButton from './settings-save-button';
+import { useProfileStatusQuery } from '@/queries/profile-query';
 
 const ProfilePanel = () => {
   const [name, setName] = useState('');
@@ -25,13 +17,9 @@ const ProfilePanel = () => {
   const { data: sessionData, isPending: isSessionPending } =
     authClient.useSession();
 
-  const {
-    data: profileStatus,
-    isPending: isProfilePending,
-    refetch,
-  } = useProfileStatusQuery();
+  const { isPending: isProfilePending, refetch } = useProfileStatusQuery();
 
-  const user = sessionData?.user ?? profileStatus?.data?.user;
+  const user = sessionData?.user;
   const isPending = isSessionPending || isProfilePending;
 
   // Initialize name from user once
@@ -83,33 +71,7 @@ const ProfilePanel = () => {
         />
       </div>
 
-      <Card className="shadow-none">
-        <CardHeader>
-          <CardTitle className="text-lg">Readiness</CardTitle>
-          <CardDescription>
-            These are the profile inputs AICA uses before stronger guidance.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <AssessmentStatusRow
-            title="Pathway profile"
-            description="Strengths, interests, goals, and work preferences."
-            completed={
-              profileStatus?.data?.assessments?.pathwayCompleted ?? false
-            }
-            to="/pathway-assessment"
-          />
-          <Separator />
-          <AssessmentStatusRow
-            title="Roadmap setup"
-            description="Starting point, weekly time, constraints, and plan style."
-            completed={
-              profileStatus?.data?.assessments?.roadmapSetupCompleted ?? false
-            }
-            to="/roadmap-setup-assessment"
-          />
-        </CardContent>
-      </Card>
+      <ProfileReadness />
     </SettingsPanelShell>
   );
 };

@@ -24,7 +24,9 @@ export class ProfileService {
         updatedAt: user.updatedAt,
       },
       assessments: {
-        pathwayCompleted: !!pathwayAssessment?.completed,
+        pathwayAssessmentCompleted: !!pathwayAssessment?.completed,
+        pathwayAssessmentId: pathwayAssessment?._id,
+        roadmapSetupAssessmentId: roadmapSetupAssessment?._id,
         roadmapSetupCompleted: !!roadmapSetupAssessment?.completed,
       },
     };

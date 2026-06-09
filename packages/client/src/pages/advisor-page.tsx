@@ -15,7 +15,7 @@ export default function AdvisorPage() {
       {!isMobile && <AdvisorSidebar className="hidden md:flex" />}
 
       {/* Chat area */}
-      <main className="flex flex-col flex-1 min-w-0 min-h-0 relative">
+      <main className="flex flex-col flex-1 max-w-dvw min-w-0 min-h-0 relative">
         {isMobile && <AdvisorChatHeader />}
 
         <AdvisorChatThread className="flex-1" onSend={send} />

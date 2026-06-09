@@ -93,7 +93,7 @@ const MobileMainTabs = ({ className }: { className?: string }) => {
       </div>
       <Separator
         decorative
-        className="fixed z-0 inset-e-7 border rounded-2xl ms-auto bottom-10 inset-x-0 max-w-[80%]"
+        className="fixed z-0 inset-e-7 rounded-2xl ms-auto bottom-10 inset-x-0 max-w-[80%]"
       />
       <Link
         to="/app/advisor"
@@ -107,7 +107,7 @@ const MobileMainTabs = ({ className }: { className?: string }) => {
             damping: 20,
           }}
           className={cn(
-            'group relative flex items-center rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 text-primary-foreground shadow-lg shadow-primary/20 font-heading'
+            'group relative flex items-center rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 text-primary-foreground shadow-lg shadow-primary/20'
           )}
         >
           <motion.span
@@ -127,7 +127,7 @@ const MobileMainTabs = ({ className }: { className?: string }) => {
           />
 
           <span className={cn('relative z-10 text-sm font-bold ms-2')}>
-            Advisor
+            Chat
           </span>
         </motion.div>
       </Link>

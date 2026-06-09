@@ -1,4 +1,7 @@
-import { createPathwayAssessmentProfile } from '@/services/pathway-assessment-service';
+import {
+  createPathwayAssessmentProfile,
+  deletePathwayAssessmentStatus,
+} from '@/services/pathway-assessment-service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { useQuery } from '@tanstack/react-query';
@@ -32,5 +35,25 @@ export const usePathwayAssessmentStatusQuery = () => {
     refetchInterval: 60_000,
     refetchOnWindowFocus: false,
     queryFn: getPathwayAssessmentStatus,
+  });
+};
+
+export const usePathwayAssessmentDeleteMutationQuery = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: deletePathwayAssessmentStatus,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['pathway-assesment-status'],
+      });
+
+      queryClient.invalidateQueries({
+        queryKey: profileKeys.me(),
+      });
+      queryClient.invalidateQueries({
+        queryKey: recommendationsKeys.my(),
+      });
+    },
   });
 };

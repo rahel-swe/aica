@@ -25,7 +25,6 @@ const PathwayAssessmentLayout = () => {
     currentIndex,
     form,
     isPathwayAssessmentCreating,
-
     submitPathwayAssisment,
   } = usePathwayAssessment();
 
@@ -46,7 +45,7 @@ const PathwayAssessmentLayout = () => {
     );
 
   const {
-    assessments: { pathwayCompleted },
+    assessments: { pathwayAssessmentCompleted: pathwayCompleted },
   } = userProfileStatusResponse.data;
 
   if (pathwayCompleted) return <Navigate to="/app/dashboard" replace />;

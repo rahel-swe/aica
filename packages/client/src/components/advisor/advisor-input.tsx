@@ -65,13 +65,13 @@ export function AdvisorInput({
   return (
     <div
       className={cn(
-        'px-4 pb-4 sm:pb-3 pt-2 fixed md:absolute -bottom-34 w-full z-12 md:-translate-x-1/2 md:left-1/2 transition-all duration-400',
+        'px-4 pb-4 sm:pb-3 fixed md:absolute -bottom-34 w-full z-12 md:-translate-x-1/2 md:left-1/2 transition-all duration-400',
         className,
         isAdvisorOpen && isMobile && '-bottom-5',
         !isMobile && 'bottom-0'
       )}
     >
-      <div className="relative flex flex-col gap-1 rounded-4xl bg-card  focus-within:ring-ring transition-shadow max-w-2xl mx-auto mb-4 sm:mb-0">
+      <div className="relative flex flex-col gap-1 rounded-4xl bg-card  focus-within:ring-ring transition-shadow md:w-[80%] mx-auto mb-4 sm:mb-0">
         <textarea
           ref={textareaRef}
           value={value}

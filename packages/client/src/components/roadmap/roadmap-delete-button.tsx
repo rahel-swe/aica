@@ -2,7 +2,7 @@ import { useRoadmapDeleteMutation } from '@/queries/roadmap-query';
 import { Trash } from 'lucide-react';
 import { Button } from '../ui/button';
 import SpinnerBars from '../shadcn-space/spinner/spinner-06';
-import RoadmapActionDialog from './roadmap-action-dialog';
+import ActionDialog from '../action-dialog';
 
 const RoadmapDeleteButton = ({ roadmapId }: { roadmapId: string }) => {
   const { mutateAsync, isPending } = useRoadmapDeleteMutation();
@@ -16,7 +16,7 @@ const RoadmapDeleteButton = ({ roadmapId }: { roadmapId: string }) => {
   };
 
   return (
-    <RoadmapActionDialog
+    <ActionDialog
       trigger={
         <Button
           variant="destructive"

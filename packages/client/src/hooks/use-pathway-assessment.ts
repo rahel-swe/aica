@@ -49,7 +49,6 @@ export const usePathwayAssessment = () => {
     currentIndex,
     form,
     isPathwayAssessmentCreating,
-    isPathwayAssessmentCreated,
     submitPathwayAssisment,
   };
 };

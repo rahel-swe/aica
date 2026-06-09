@@ -15,11 +15,6 @@ export const MAIN_TABS = [
     to: '/app/dashboard',
     icon: Home,
   },
-  // {
-  //   label: 'Advisor',
-  //   to: '/app/advisor',
-  //   icon: MessageCircle,
-  // },
   {
     label: 'Roadmap',
     to: '/app/roadmap',

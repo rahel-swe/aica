@@ -46,6 +46,30 @@ export class PathwayAssessmentController {
       });
     }
   };
+
+  deletePathwayAssessment = async (req: AuthRequest, res: Response) => {
+    try {
+      const userId = req.user?.id || 'dummyUserId';
+      const { id } = req.params as { id: string };
+      const isCompleted = await this.service.deletePathwayAssessment(
+        id,
+        userId
+      );
+
+      res.json({
+        success: true,
+        message: 'Pathway Assessment deleted successfully.',
+        data: {
+          completed: !!isCompleted,
+        },
+      });
+    } catch (error: any) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  };
 }
 
 export const assessmentController = new PathwayAssessmentController();

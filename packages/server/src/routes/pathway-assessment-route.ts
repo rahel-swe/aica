@@ -18,4 +18,10 @@ pathwayAssessmentRouter.get(
   assessmentController.getPathwayAssessmentStatus
 );
 
+pathwayAssessmentRouter.delete(
+  '/:id',
+  authorize,
+  assessmentController.deletePathwayAssessment
+);
+
 export default pathwayAssessmentRouter;

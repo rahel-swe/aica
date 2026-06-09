@@ -1,63 +1,45 @@
-/**
- * pathway-assessment-data.ts
- *
- * Changes from original:
- *  1. emoji: string  →  icon: LucideIcon  (type + field rename)
- *  2. Added lucide-react imports (37 unique icons)
- *  3. Targeted copy rewrites — 2 labels, 7 descriptions (see REWRITE comments)
- *     Everything else left intact — the structure and format were already solid.
- */
-
 import { type LucideIcon } from 'lucide-react';
 import {
-  // ── Strengths
-  Puzzle, // problem_solving
-  Palette, // creativity  (reused: express impact)
-  Users, // people      (reused: socialize free-time, people impact)
-  BarChart3, // analytical
-  MessageCircle, // communication
-  Wrench, // hands_on
-  Zap, // fast_learning
-  Target, // organized
-  // ── Subjects
-  Calculator, // math
-  FlaskConical, // science     (reused: lab environment)
-  Pencil, // writing
-  Paintbrush, // arts
-  Globe, // social/history
-  // ── Passions
-  Monitor, // tech
-  Music, // music
-  Activity, // sports
-  BookOpen, // reading
-  Microscope, // science     (reused: discover impact)
-  Handshake, // social
-  Leaf, // nature
-  Hammer, // building    (reused: build free-time)
-  Lightbulb, // ideas       (reused: create impact)
-  // ── Free Time
-  Sun, // outdoor
-  Gamepad2, // consume
-  Brain, // learn
-  // ── Environment
-  Building2, // office
-  Home, // remote
-  Trees, // outdoor env
-  Shuffle, // mixed
-  // ── Work Style
-  TrendingUp, // analyze
-  Heart, // help
-  Layers, // build/fix
-  Sparkles, // create
-  Compass, // routine
-  // ── Goals
-  Star, // impact
-  DollarSign, // money
-  Scale, // balance
-  GraduationCap, // growth
-  Rocket, // variety
-  // ── Impact
-  Network, // systems
+  Puzzle,
+  Palette,
+  Users,
+  BarChart3,
+  MessageCircle,
+  Wrench,
+  Zap,
+  Target,
+  Calculator,
+  FlaskConical,
+  Pencil,
+  Paintbrush,
+  Globe,
+  Monitor,
+  Music,
+  Activity,
+  BookOpen,
+  Microscope,
+  Handshake,
+  Leaf,
+  Hammer,
+  Lightbulb,
+  Sun,
+  Gamepad2,
+  Brain,
+  Building2,
+  Home,
+  Trees,
+  Shuffle,
+  TrendingUp,
+  Heart,
+  Layers,
+  Sparkles,
+  Compass,
+  Star,
+  DollarSign,
+  Scale,
+  GraduationCap,
+  Rocket,
+  Network,
 } from 'lucide-react';
 
 import type {
@@ -71,8 +53,6 @@ import type {
   PathwayAssessmentWorkEnvironment,
   PathwayAssessmentWorkStyle,
 } from '@contracts/shared/types/pathway-assessment-types';
-
-// ─────────────────────────────────────────────────────────────────────────────
 
 export type PathwayAssessmentStepId =
   | 'welcome'
@@ -112,8 +92,6 @@ export type PathwayAssessmentStep = {
   options?: PathwayAssessmentOption[];
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const PATHWAY_ASSESSMENT_STORAGE_KEY = 'aica-onboarding-draft';
 
 export const pathwayAssessmentDefaultValues = {
@@ -126,8 +104,6 @@ export const pathwayAssessmentDefaultValues = {
   impact: '',
   goals: '',
 };
-
-// ─── Strengths ────────────────────────────────────────────────────────────────
 
 const strengthOptions: PathwayAssessmentOption[] = [
   {
@@ -187,8 +163,6 @@ const strengthOptions: PathwayAssessmentOption[] = [
   },
 ];
 
-// ─── Subjects ────────────────────────────────────────────────────────────────
-
 export const subjectOptions: PathwayAssessmentOption[] = [
   {
     value: 'math' satisfies PathwayAssessmentSubject,
@@ -223,8 +197,6 @@ export const subjectOptions: PathwayAssessmentOption[] = [
     icon: Globe,
   },
 ];
-
-// ─── Passions ────────────────────────────────────────────────────────────────
 
 const passionOptions: PathwayAssessmentOption[] = [
   {
