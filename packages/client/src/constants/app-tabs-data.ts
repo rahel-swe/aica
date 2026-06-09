@@ -43,6 +43,7 @@ export const DESKTOP_TABS = [
     to: '/app/roadmap',
     icon: Route,
   },
+  { label: 'Settings', to: '/app/settings', icon: Settings },
   // { label: 'Admin', to: '/app/admin', icon: UserCog },
 ];
 

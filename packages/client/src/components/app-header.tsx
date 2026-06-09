@@ -49,11 +49,13 @@ export default function AppHeader({ className }: { className?: string }) {
               <Bell className="size-5" />
             </Button>
 
-            <Link to="/app/settings">
-              <Button variant={'outline'} size={'icon-lg'}>
-                <Settings className="size-5" />
-              </Button>
-            </Link>
+            {isMobile && (
+              <Link to="/app/settings">
+                <Button variant={'outline'} size={'icon-lg'}>
+                  <Settings className="size-5" />
+                </Button>
+              </Link>
+            )}
 
             {/* Profile */}
             <Link

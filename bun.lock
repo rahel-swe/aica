@@ -25,6 +25,8 @@
         "@contracts/shared": "workspace:*",
         "@fontsource-variable/dm-sans": "^5.2.8",
         "@fontsource-variable/inter": "^5.2.8",
+        "@fontsource-variable/merriweather": "^5.2.6",
+        "@fontsource-variable/roboto-slab": "^5.2.8",
         "@fontsource-variable/space-grotesk": "^5.2.10",
         "@hookform/resolvers": "^5.2.2",
         "@streamdown/cjk": "^1.0.3",
@@ -336,6 +338,10 @@
     "@fontsource-variable/dm-sans": ["@fontsource-variable/dm-sans@5.2.8", "", {}, "sha512-AxkvMTvNWgfrmlyjiV05vlHYJa+nRQCf1EfvIrQAPBpFJW0O9VTz7oAFr9S3lvbWdmnFoBk7yFqQL86u64nl2g=="],
 
     "@fontsource-variable/inter": ["@fontsource-variable/inter@5.2.8", "", {}, "sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ=="],
+
+    "@fontsource-variable/merriweather": ["@fontsource-variable/merriweather@5.2.6", "", {}, "sha512-bHCDt99f/M48eUcFA86uh/oSPyn8r/ZxXR9l578wqLvjTwDzXx8A/XOAI05WfJ3LnH1rDufQX5RJwiZtbXUCkw=="],
+
+    "@fontsource-variable/roboto-slab": ["@fontsource-variable/roboto-slab@5.2.8", "", {}, "sha512-cdvOSwocP50xS01gXqnGxw7uFcCZQgn1IDlqiAmNuZP4uEVScYAKMDC+aWsbP1grn9QdMJ2frhcuVBNXniBVGA=="],
 
     "@fontsource-variable/space-grotesk": ["@fontsource-variable/space-grotesk@5.2.10", "", {}, "sha512-yJQO/o35/hAP3CFnpdFTwQku2yzJOae2HIpBmqkOVoxhhXJaQP3g+b6Jrz7u+eI7A5ZdCIf88uMWpBJdFiGr5w=="],
 

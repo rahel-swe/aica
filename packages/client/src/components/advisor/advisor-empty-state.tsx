@@ -69,7 +69,7 @@ export function AdvisorEmptyState() {
     <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-4 text-center">
       <Icon className={cn('size-16 md:size-20', color)} />
 
-      <h2 className="text-4xl sm:text-5xl md:text-6xl">{title}</h2>
+      <h2 className="text-4xl sm:text-5xl font-heading">{title}</h2>
     </div>
   );
 }

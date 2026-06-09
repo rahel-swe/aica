@@ -19,7 +19,7 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
   const isActive = useIsTabActive(false, to);
 
   return (
-    <Link to={to}>
+    <Link to={to} viewTransition>
       <motion.div
         whileTap={{ scale: 0.96 }}
         // whileHover={{ y: -2 }}
@@ -57,9 +57,7 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
         />
 
         {isActive && (
-          <span className={cn('relative z-10 text-sm font-bold ms-2')}>
-            {label}
-          </span>
+          <span className={cn('relative z-10 text-sm ms-2')}>{label}</span>
         )}
       </motion.div>
     </Link>
@@ -98,6 +96,7 @@ const MobileMainTabs = ({ className }: { className?: string }) => {
       <Link
         to="/app/advisor"
         className="items-center rounded-full bg-background/40 transition-all md:flex fixed inset-e-5 ms-auto bottom-5 w-min z-10 backdrop-blur-sm"
+        viewTransition
       >
         <motion.div
           whileHover={{ y: -2 }}
@@ -126,7 +125,7 @@ const MobileMainTabs = ({ className }: { className?: string }) => {
             )}
           />
 
-          <span className={cn('relative z-10 text-sm font-bold ms-2')}>
+          <span className={cn('relative z-10 text-sm font-semibold ms-2')}>
             Chat
           </span>
         </motion.div>

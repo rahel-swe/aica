@@ -16,7 +16,7 @@ function NavItem({ label, to, icon: Icon }: NavItemProps) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link to={to}>
+    <Link to={to} viewTransition>
       <motion.div
         layout
         onHoverStart={() => setHovered(true)}

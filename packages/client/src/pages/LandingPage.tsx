@@ -199,10 +199,10 @@ function HeroSection() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left: copy */}
           <div className="flex-1 flex flex-col gap-8  text-center lg:mx-auto ">
-            <h1 className="afu d2 text-6xl sm:text-7xl lg:text-[5.5rem] font-bold leading-[1.03] tracking-tight text-foreground font-heading capitalize">
+            <h1 className="afu d2 text-6xl sm:text-7xl lg:text-[5.5rem] font-bold leading-[1.03] tracking-tight text-foreground font-heading">
               Discover your
               <br />
-              right path.
+              right path
             </h1>
 
             <p className="afu d3 text-muted-foreground leading-relaxed max-w-[480px] mb-3">

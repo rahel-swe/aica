@@ -18,7 +18,7 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
       <div className="px-5 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl text-center py-6">
-            <h1 className="text-5xl font-semibold tracking-normal relative font-heading mx-auto">
+            <h1 className="text-3xl md:text-4xl font-semibold tracking-normal relative font-heading mx-auto">
               {roadmap.title}
               <Badge
                 variant={'outline'}
@@ -27,9 +27,7 @@ export function RoadmapHero({ roadmap }: RoadmapHeroProps) {
                 {formatRoadmapStyle(roadmap.roadmapStyle)}
               </Badge>
             </h1>
-            <p className="mt-4 font-heading hidden sm:block">
-              {roadmap.summary}
-            </p>
+            <p className="mt-4  hidden sm:block">{roadmap.summary}</p>
           </div>
         </div>
       </div>

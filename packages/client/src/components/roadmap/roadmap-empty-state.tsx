@@ -5,8 +5,9 @@ import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-as
 import { ArrowRight, ClipboardList } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import RoadmapStepsPreview from './roadmap-steps-preview';
+import { cn } from '@/lib/utils';
 
-export function RoadmapEmptyState() {
+export function RoadmapEmptyState({ className }: { className?: string }) {
   const { mutate, isPending: isGenerating } = useGenerateRoadmapMutation();
 
   const { data: roadmapStatusData, isPending } =
@@ -14,7 +15,7 @@ export function RoadmapEmptyState() {
 
   if (isPending) {
     return (
-      <div className="flex min-h-[70vh] items-center justify-center">
+      <div className={cn('flex min-h-[70vh] items-center justify-center')}>
         <SpinnerBars
           className="gap-1"
           barClassName="w-1"
@@ -29,11 +30,16 @@ export function RoadmapEmptyState() {
   const hasSetup = !!roadmapSetupData?.completed;
 
   return (
-    <section className="relative flex min-h-[75vh] items-center overflow-hidden px-4">
-      <div className="flex items-center justify-evenly flex-col-reverse md:flex-row  w-full gap-20 md:gap-0">
+    <section
+      className={cn(
+        'relative flex min-h-[75vh] items-center overflow-hidden px-4',
+        className
+      )}
+    >
+      <div className="flex items-center justify-evenly flex-col-reverse lg:flex-row  w-full gap-10 lg:gap-0">
         {/* Left Side */}
         <div className="order-2 lg:order-1">
-          <h1 className="max-w-2xl text-4xl font-semibold tracking-tight md:text-6xl">
+          <h1 className="max-w-2xl text-4xl font-semibold md:text-6xl font-heading">
             {hasSetup
               ? 'Generate your next learning roadmap'
               : 'Setup your roadmap journey first'}
@@ -45,11 +51,10 @@ export function RoadmapEmptyState() {
               : 'Complete the roadmap assessment first so we can understand your goals, current level, and build a personalized learning path for you.'}
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
             {hasSetup ? (
               <Button
-                size="lg"
-                className="h-12 gap-2 px-6 text-base"
+                className="gap-2 px-6 py-7 md:py-7"
                 disabled={isGenerating}
                 onClick={() => {
                   mutate({
@@ -74,7 +79,7 @@ export function RoadmapEmptyState() {
                 )}
               </Button>
             ) : (
-              <Button asChild size="lg" className="h-12 gap-2 px-6 text-base">
+              <Button asChild className="gap-2 px-6 py-7">
                 <Link to="/roadmap-setup-assessment">
                   Start Assessment
                   <ClipboardList className="size-4" />

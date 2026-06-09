@@ -40,12 +40,14 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
     <aside className={cn('h-full md:py-2 md:pt-4', className)}>
       <div
         className={cn(
-          'flex flex-col md:max-w-xs w-full shrink-0 md:border md:rounded-4xl md:bg-card h-full min-h-0 md:overflow-hidden'
+          'flex flex-col md:w-xs shrink-0 md:border md:rounded-4xl md:bg-card h-full min-h-0 md:overflow-hidden'
         )}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4">
-          <p className="font-heading text-base font-medium">Conversations</p>
+        <div className="flex items-center justify-between px-4">
+          <p className="font-heading text-base font-medium py-4">
+            Conversations
+          </p>
           <StartNewConversation title="New chat" />
         </div>
 
@@ -59,7 +61,7 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
                 <Loader className="size-4 animate-spin text-muted-foreground" />
               </div>
             ) : conversations.length === 0 ? (
-              <div className="flex flex-col items-center gap-2 py-12 text-center">
+              <div className="flex flex-col items-center gap-2 py-12 text-center w-full flex-1">
                 <MessageCircleOff className="size-5 text-muted-foreground/50" />
                 <p className="text-xs text-muted-foreground">
                   No conversations yet

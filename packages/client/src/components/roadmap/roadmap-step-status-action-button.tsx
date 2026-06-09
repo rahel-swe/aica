@@ -73,7 +73,7 @@ const RoadmapStepStatusActionButton = ({
 
   return (
     <Button
-      className={cn('px-6 relative', className)}
+      className={cn('px-6 py-6 relative font-heading', className)}
       onClick={handleStepStatusChanges}
       disabled={isPending}
     >

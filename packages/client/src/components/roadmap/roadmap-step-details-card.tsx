@@ -37,31 +37,30 @@ const RoadmapStepDetailsCard = ({
     <div className="flex flex-col gap-6 py-4 lg:max-w-sm lg:w-full">
       <div className=" flex items-center justify-center">
         <RoadmapStepStatusActionButton roadmapId={roadmapId} step={step} />
-        {/* <Button variant={'secondary'} size={'sm'}>
-          Ask AI
-        </Button> */}
       </div>
       <Badge
         className={cn(
-          'text-2xl font-semibold capitalize py-6 px-10 mx-auto  relative rotate-8 mt-5',
+          'text-2xl font-semibold capitalize pb-6 pt-7 px-10 mx-auto  relative -rotate-8 mt-5 font-heading',
           titleClassName
         )}
       >
         {activePhase!.phase}
-        <span className={'absolute text-xs top-0'}>
+        <span className={'absolute text-xs top-0 font-sans'}>
           Phase {activePhase?.order}
         </span>
       </Badge>
 
       <div className="flex flex-wrap gap-2">
-        <h3 className="text-lg font-semibold">{activePhase?.title}</h3>
+        <h3 className="text-lg font-heading">{activePhase?.title}</h3>
         <p className="text-sm text-muted-foreground">
           {activePhase?.objective}
         </p>
       </div>
       <Badge
         variant={'secondary'}
-        className={cn('text-md font-semibold py-5 px-5 mx-auto -rotate-14')}
+        className={cn(
+          'text-md font-semibold font-heading py-5 px-5 mx-auto rotate-14'
+        )}
       >
         Step {step.order}
       </Badge>
@@ -101,7 +100,7 @@ const RoadmapStepDetailsCard = ({
       </Accordion>
 
       <div>
-        <h3 className="text-lg mb-2 font-semibold">{step.title}</h3>
+        <h3 className="text-base mb-2 font-heading">{step.title}</h3>
         <p className="text-sm text-muted-foreground">{step.why}</p>
       </div>
 

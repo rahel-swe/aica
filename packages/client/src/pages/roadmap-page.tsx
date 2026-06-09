@@ -25,7 +25,10 @@ export default function RoadmapPage() {
       />
     );
 
-  if (!roadmap) return <RoadmapEmptyState />;
+  if (!roadmap)
+    return (
+      <RoadmapEmptyState className="px-4 md:px-6 pt-26 pb-22 md:pt-6 md:pb-4" />
+    );
 
   return (
     <main className="lg:px-8 flex flex-col lg:flex-row gap-6 px-4 md:px-6 pt-18 pb-20 md:pt-0 md:pb-4">

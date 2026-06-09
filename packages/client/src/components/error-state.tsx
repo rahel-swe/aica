@@ -16,12 +16,12 @@ const ErrorState = ({
   onRetry,
   retryLabel = 'Retry',
   isRetrying = false,
-  fullScreen = false,
+  fullScreen = true,
 }: ErrorStateProps) => {
   return (
     <div
       className={`flex items-center justify-center p-6 ${
-        fullScreen ? 'min-h-screen' : 'min-h-50'
+        fullScreen ? 'max-h-dvh h-full' : 'min-h-50'
       }`}
     >
       <div className="w-full max-w-md rounded-2xl border bg-background p-6 text-center shadow-sm">

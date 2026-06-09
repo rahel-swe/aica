@@ -10,9 +10,7 @@ const RoadmapStepCardResources = ({
 
   return (
     <section className="space-y-3">
-      <h3 className="text-sm font-semibold tracking-tight">
-        Suggested resources
-      </h3>
+      <h3 className="text-sm">Suggested resources</h3>
 
       <ul className="flex flex-wrap">
         {stepResources.map((resource) => (

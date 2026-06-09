@@ -23,7 +23,7 @@ const ConversationItem = ({
   onSelect,
   onDeleteRequest,
 }: ConversationItemProps) => {
-  const isTextLong = (text: string) => text.length > 26;
+  const isTextLong = (text: string) => text.length > 22;
   const { title, lastMessage, _id: conversationId, updatedAt } = conversation;
 
   return (
@@ -33,7 +33,7 @@ const ConversationItem = ({
       onClick={onSelect}
       onKeyDown={(e) => e.key === 'Enter' && onSelect()}
       className={cn(
-        'group relative flex items-center gap-4 rounded-xl px-3 py-2.5 cursor-pointer',
+        'group relative flex items-center gap-3 rounded-2xl px-3 py-2.5 cursor-pointer',
         'transition-colors text-left',
         isActive
           ? 'bg-muted text-foreground'
@@ -43,7 +43,7 @@ const ConversationItem = ({
       <div className="flex-1">
         <div className="flex items-start justify-between gap-0">
           <p className="text-[13px] font-medium leading-tight flex-1">
-            {title.slice(0, 26)}
+            {title.slice(0, 22)}
             {isTextLong(title) && '...'}
           </p>
           <span className="text-[10px] text-muted-foreground shrink-0 mt-0.5">
@@ -53,7 +53,7 @@ const ConversationItem = ({
 
         {lastMessage && (
           <p className="text-[11px] text-muted-foreground leading-snug line-clamp-1 pr-6">
-            {lastMessage.slice(0, 26)}
+            {lastMessage.slice(0, 22)}
             {isTextLong(lastMessage) && '...'}
           </p>
         )}
