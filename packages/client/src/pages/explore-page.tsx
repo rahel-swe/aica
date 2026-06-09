@@ -17,11 +17,18 @@ import { Button } from '@/components/ui/button';
 
 import { usePathwaysQuery } from '@/queries/pathway-query';
 import { usePathwaysStore } from '@/stores/pathways-store';
+import { useSavedStore } from '@/stores/saved-resource-store';
 
 export default function ExplorePage() {
   const { search, type, setSearch, setType } = usePathwaysStore();
 
+  const loadSaved = useSavedStore((s) => s.loadSaved);
+
   const [inputValue, setInputValue] = useState(search);
+
+  useEffect(() => {
+    loadSaved();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -66,6 +73,7 @@ export default function ExplorePage() {
           </p>
         </div>
 
+        {/* SEARCH + FILTER */}
         <div className="flex flex-wrap gap-3 items-center my-4">
           <Input
             placeholder="Search pathways..."

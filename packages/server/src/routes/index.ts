@@ -9,6 +9,7 @@ import roadmapRouter from './roadmap-router';
 import dashboardRouter from './dashboard-router';
 import { llmClient } from '../llm/llm-client';
 import roadmapSetupAssessmentRouter from './roadmap-setup-assessment-router';
+import savedResourceRouter from '../routes/saved-resource-routes';
 
 const apiRouter = Router();
 
@@ -22,5 +23,6 @@ apiRouter.use('/advisor', advisorRouter);
 apiRouter.use('/dashboard', dashboardRouter);
 apiRouter.use('/admin', adminRouter);
 apiRouter.post('/test-llm', llmClient.testLLMClient);
+apiRouter.use('/saved-resources', savedResourceRouter);
 
 export default apiRouter;
