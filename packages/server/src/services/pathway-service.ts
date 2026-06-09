@@ -3,6 +3,10 @@ import { pathwayRepository } from '../repositories/pathway-repository';
 export class PathwayService {
   private readonly repository = pathwayRepository;
 
+  async getAllPathways() {
+    return this.repository.findAllActiveWithDetails();
+  }
+
   async getPathways(
     search?: string,
     type?: string,
@@ -15,7 +19,9 @@ export class PathwayService {
   async getPathwayDetail(idOrSlug: string) {
     const pathway = await this.repository.findActiveDetailByIdOrSlug(idOrSlug);
 
-    if (!pathway) throw new Error('Pathway not found.');
+    if (!pathway) {
+      throw new Error('Pathway not found.');
+    }
 
     return pathway;
   }

@@ -1,4 +1,4 @@
-import { rankedButtonColor } from '@/constants/recommendation-constant';
+import { rankedButtonColor } from '@/constants/recommendation-ui-data';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 

@@ -1,18 +1,17 @@
-import { Button } from '@/components/ui/button';
-import { CheckCircle2, CircleDashed, Pencil, Play } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { CheckCircle2, CircleDashed } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { Badge } from '../ui/badge';
 
 export function AssessmentStatusRow({
   title,
   description,
   completed,
-  to,
+  actionTrigger,
 }: {
   title: string;
   description: string;
   completed: boolean;
-  to: string;
+  actionTrigger: ReactNode;
 }) {
   const Icon = completed ? CheckCircle2 : CircleDashed;
 
@@ -33,12 +32,7 @@ export function AssessmentStatusRow({
         </div>
       </div>
 
-      <Button asChild variant="outline" size="lg">
-        <Link to={to}>
-          {completed ? <Pencil /> : <Play />}
-          {completed ? 'Edit' : 'Start'}
-        </Link>
-      </Button>
+      {actionTrigger}
     </div>
   );
 }

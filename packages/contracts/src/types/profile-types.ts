@@ -12,7 +12,9 @@ export type ProfileStatusResponse = {
       updatedAt?: string | Date;
     };
     assessments: {
-      pathwayCompleted: boolean;
+      pathwayAssessmentCompleted: boolean;
+      pathwayAssessmentId: string;
+      roadmapSetupAssessmentId: string;
       roadmapSetupCompleted: boolean;
     };
   };

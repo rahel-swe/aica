@@ -1,4 +1,4 @@
-import { appImgSources } from '@/constants/app-image-sources';
+import { appImgSources } from '@/constants/app-image-sources-data';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/providers/theme-provider';
 
@@ -6,10 +6,12 @@ const AppLogo = ({
   logoClassName,
   nameClassName,
   className,
+  showTitle = true,
 }: {
   logoClassName?: string;
   nameClassName?: string;
   className?: string;
+  showTitle?: boolean;
 }) => {
   const { theme } = useTheme();
   const currentTheme = theme === 'dark' ? 'dark' : 'light';
@@ -26,15 +28,17 @@ const AppLogo = ({
         className={cn('size-10 object-contain', logoClassName)}
       />
 
-      <img
-        src={appImgSources[currentTheme].name}
-        alt="App Name"
-        width={56}
-        height={20}
-        loading="eager"
-        decoding="async"
-        className={cn('h-5 w-14 self-end mb-1 object-contain', nameClassName)}
-      />
+      {showTitle && (
+        <img
+          src={appImgSources[currentTheme].name}
+          alt="App Name"
+          width={56}
+          height={20}
+          loading="eager"
+          decoding="async"
+          className={cn('h-5 w-14 self-end mb-1 object-contain', nameClassName)}
+        />
+      )}
     </div>
   );
 };

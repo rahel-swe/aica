@@ -26,7 +26,14 @@ export class RoadmapSetupAssessmentService {
     });
   }
 
-  getRoadmapSetupStatus(userId: string) {
-    return this.roadmapSetupRepository.findByUserId(userId);
+  async getRoadmapSetupStatus(userId: string) {
+    return await this.roadmapSetupRepository.findByUserId(userId);
+  }
+
+  async deleteRoadmapSetup(roadmapSetupId: string, userId: string) {
+    return await this.roadmapSetupRepository.deleteByUserId(
+      roadmapSetupId,
+      userId
+    );
   }
 }

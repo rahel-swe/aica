@@ -1,4 +1,4 @@
-import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-steps';
+import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-assessment-data';
 import { FormProvider } from 'react-hook-form';
 import { Navigate, Outlet } from 'react-router-dom';
 
@@ -47,9 +47,8 @@ const RoadmapSetupLayout = () => {
   if (!assessments.roadmapSetupCompleted)
     return <Navigate to={'/pathway-recommendations'} />;
 
-  if (currentIndex === -1) {
+  if (currentIndex === -1)
     return <Navigate to="/roadmap-setup-assessment/welcome" replace />;
-  }
 
   return (
     <FormProvider {...form}>

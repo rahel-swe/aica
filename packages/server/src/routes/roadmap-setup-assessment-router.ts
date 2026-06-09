@@ -17,4 +17,10 @@ roadmapSetupAssessmentRouter.get(
   roadmapSetupAssessmentController.getRoadmapSetupAssessmentStatus
 );
 
+roadmapSetupAssessmentRouter.delete(
+  '/:id',
+  authorize,
+  roadmapSetupAssessmentController.deleteRoadmapSetupAssessment
+);
+
 export default roadmapSetupAssessmentRouter;

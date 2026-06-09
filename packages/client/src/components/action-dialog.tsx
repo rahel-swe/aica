@@ -7,8 +7,8 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogClose,
-} from '../ui/dialog';
-import { Button } from '../ui/button';
+} from './ui/dialog';
+import { Button } from './ui/button';
 import React from 'react';
 
 type ActionDialogProps = {
@@ -21,7 +21,7 @@ type ActionDialogProps = {
   isPending?: boolean;
 };
 
-const RoadmapActionDialog = ({
+const ActionDialog = ({
   trigger,
   title,
   description,
@@ -67,4 +67,4 @@ const RoadmapActionDialog = ({
   );
 };
 
-export default RoadmapActionDialog;
+export default ActionDialog;

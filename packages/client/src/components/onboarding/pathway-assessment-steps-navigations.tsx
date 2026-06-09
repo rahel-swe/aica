@@ -1,7 +1,7 @@
 import {
   PATHWAY_ASSESSMENT_STEPS,
   type PathwayAssessmentStep,
-} from '@/constants/pathway-assessment-steps';
+} from '@/constants/pathway-assessment-steps-data';
 import {
   containerVariants,
   useAssissmentStepsNavigationAnimation,

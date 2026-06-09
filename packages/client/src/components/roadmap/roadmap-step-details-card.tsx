@@ -11,7 +11,6 @@ import {
   AccordionTrigger,
 } from '../ui/accordion';
 import { Badge } from '../ui/badge';
-import RoadmapStepAdvisorButton from './roadmap-step-advisor-button';
 import RoadmapStepCardResources from './roadmap-step-card-resources';
 import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
 import { roadmapPhaseStatusMeta, stepStatusMeta } from './roadmap-view-utils';
@@ -35,10 +34,16 @@ const RoadmapStepDetailsCard = ({
     roadmapPhaseStatusMeta[activePhase?.id ?? 'phase_1'];
 
   return (
-    <div className="flex flex-col gap-6 py-4">
+    <div className="flex flex-col gap-6 py-4 lg:max-w-sm lg:w-full">
+      <div className=" flex items-center justify-center">
+        <RoadmapStepStatusActionButton roadmapId={roadmapId} step={step} />
+        {/* <Button variant={'secondary'} size={'sm'}>
+          Ask AI
+        </Button> */}
+      </div>
       <Badge
         className={cn(
-          'text-2xl font-semibold capitalize py-6 px-10 mx-auto  relative rotate-8',
+          'text-2xl font-semibold capitalize py-6 px-10 mx-auto  relative rotate-8 mt-5',
           titleClassName
         )}
       >
@@ -113,13 +118,6 @@ const RoadmapStepDetailsCard = ({
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
-      <RoadmapStepStatusActionButton roadmapId={roadmapId} step={step} />
-      <RoadmapStepAdvisorButton
-        roadmapId={roadmapId}
-        phase={activePhase}
-        step={step}
-      />
     </div>
   );
 };

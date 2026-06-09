@@ -25,4 +25,8 @@ export class PathwayAssessmentService {
   getPathwayAssessmentStatus(userId: string) {
     return this.repository.findByUserId(userId);
   }
+
+  async deletePathwayAssessment(pathwayAssessmentId: string, userId: string) {
+    return await this.repository.deleteByUserId(pathwayAssessmentId, userId);
+  }
 }

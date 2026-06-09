@@ -4,7 +4,7 @@ import { ArrowUp } from 'lucide-react';
 import { useState, type SubmitEvent } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
 import type { AdvisorPrompt } from './advisor-ui-data';
-import PromptMenu from './prompt-menu';
+import PromptDropDownMenu from './prompt-dropdown-menu';
 import { cn } from '@/lib/utils';
 
 type AdvisorInputBoxProps = {
@@ -44,9 +44,9 @@ export function AdvisorInputBox({
         className
       )}
     >
-      <PromptMenu onPromptSelect={handlePromptSelect} />
+      <PromptDropDownMenu onPromptSelect={handlePromptSelect} />
 
-      <ScrollArea className="flex-1 max-h-45 h-full w-full rounded-2xl overflow-hidden  ring ring-ring/70">
+      <ScrollArea className="flex-1 max-h-45 h-full w-full rounded-2xl overflow-hidden ring ring-ring/70">
         <Textarea
           value={message}
           onChange={(event) => setMessage(event.target.value)}

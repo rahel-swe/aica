@@ -6,11 +6,13 @@ import FamilyStage from '@/components/family-stage';
 import PathwayStage from '@/components/pathway-stage';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { Button } from '@/components/ui/button';
-import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-steps';
+import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-data';
 import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
 import { useProfileStatusQuery } from '@/queries/profile-query';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
+import { useEffect } from 'react';
+import ErrorState from '@/components/error-state';
 
 const FINAL_PATHWAY_COUNT = 3;
 
@@ -19,11 +21,12 @@ const PathwayRecommendedPathwaysLayout = () => {
     data: recommendationsResponse,
     isPending: isRecommendationsPending,
     error,
+    refetch,
   } = useRecommendationQuery();
   const {
     mutate,
     isPending: isPathwayPicking,
-    isSuccess: isRoadmapSetupCompleted,
+    isSuccess: isRoadmapSetupSumitted,
   } = useRoadmapSetupAssessmentSubmitMutation();
   const navigate = useNavigate();
   const { data: profileStatusResponse, isPending: isProfileStatusPending } =
@@ -40,6 +43,11 @@ const PathwayRecommendedPathwaysLayout = () => {
     goBack,
   } = usePathwayPickerParams();
 
+  useEffect(() => {
+    if (isRoadmapSetupSumitted)
+      navigate('/pathway-congratulations', { viewTransition: true });
+  }, [isRoadmapSetupSumitted, navigate]);
+
   if (isProfileStatusPending || isRecommendationsPending)
     return (
       <div className="grid min-h-dvh place-items-center">
@@ -47,14 +55,16 @@ const PathwayRecommendedPathwaysLayout = () => {
       </div>
     );
 
-  if (!profileStatusResponse?.data.assessments.pathwayCompleted)
+  if (!profileStatusResponse?.data.assessments.pathwayAssessmentCompleted)
     return <Navigate to={'/pathway-assessment'} />;
-
+  console.log(error);
   if (error)
     return (
-      <p className="p-6 text-destructive">
-        Failed fechting, Please reload the page.
-      </p>
+      <ErrorState
+        onRetry={refetch}
+        title="Recommendation fechting failed!"
+        message={error.message}
+      />
     );
 
   const recommendationData = recommendationsResponse?.data;
@@ -105,9 +115,6 @@ const PathwayRecommendedPathwaysLayout = () => {
       ...roadmapSetupDefaultValues,
       pickedPathwayId: selectedPathway!.pathwayId,
     });
-
-    if (isRoadmapSetupCompleted)
-      navigate('/pathway-congratulations', { viewTransition: true });
   };
 
   return (

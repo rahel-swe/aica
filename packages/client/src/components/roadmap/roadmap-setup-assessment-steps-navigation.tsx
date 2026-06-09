@@ -5,7 +5,7 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import {
   ROADMAP_SETUP_STEPS,
   type RoadmapSetupStep,
-} from '@/constants/roadmap-setup-steps';
+} from '@/constants/roadmap-setup-assessment-data';
 import {
   containerVariants,
   useAssissmentStepsNavigationAnimation,
@@ -18,6 +18,7 @@ import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-as
 import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/roadmap-setup-assessment-schema';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 import AssessmentNavigationButton from './assessment-navigation-button';
+import { useEffect } from 'react';
 
 type RoadmapSetupStepsNavigationProps = {
   step: RoadmapSetupStep;
@@ -50,6 +51,15 @@ const RoadmapSetupAssessmentStepsNavigation = ({
     lastIndex
   );
 
+  useEffect(() => {
+    if (isRoadmapGenerateSuccessed) {
+      navigate('/app/roadmap', {
+        replace: true,
+        viewTransition: true,
+      });
+    }
+  }, [isRoadmapGenerateSuccessed, navigate]);
+
   const actions = getRoadmapNavigationActions(step.id);
 
   const handleSecondButtonNavigation = () => {
@@ -78,7 +88,7 @@ const RoadmapSetupAssessmentStepsNavigation = ({
 
     if (currentIndex === lastIndex - 1) {
       submitRoadmapSetup();
-      return;
+      // return;
     }
 
     const next = ROADMAP_SETUP_STEPS[currentIndex + 1];
@@ -88,13 +98,6 @@ const RoadmapSetupAssessmentStepsNavigation = ({
       generateRoadmap({
         pathwayId: roadmapSetupStatusResponse!.data.pickedPathwayId,
       });
-
-      if (isRoadmapGenerateSuccessed) {
-        navigate('/app/roadmap', {
-          replace: true,
-          viewTransition: true,
-        });
-      }
 
       return;
     }
@@ -121,7 +124,9 @@ const RoadmapSetupAssessmentStepsNavigation = ({
         type="button"
         variant="outline"
         onClick={handleSecondButtonNavigation}
-        disabled={isSubmitting || isRoadmapGenerating}
+        disabled={
+          isSubmitting || isRoadmapGenerating || roadmpaSetupStatusPending
+        }
         className="py-6 sm:px-12"
         label={actions.secondary.label}
         icon={actions.secondary.icon}
@@ -131,7 +136,9 @@ const RoadmapSetupAssessmentStepsNavigation = ({
       <AssessmentNavigationButton
         type="button"
         onClick={goNext}
-        disabled={isSubmitting || isRoadmapGenerating}
+        disabled={
+          isSubmitting || isRoadmapGenerating || roadmpaSetupStatusPending
+        }
         className="py-6 sm:px-12"
         label={actions.primary.label}
         icon={actions.primary.icon}

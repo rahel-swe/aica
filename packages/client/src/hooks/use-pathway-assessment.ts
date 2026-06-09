@@ -1,12 +1,12 @@
 import {
   PATHWAY_ASSESSMENT_STEPS,
   pathwayAssessmentDefaultValues,
-} from '@/constants/pathway-assessment-steps';
+} from '@/constants/pathway-assessment-steps-data';
 import { usePathwayAssessmentMutationQuery } from '@/queries/pathway-assessment-query';
 import { pathwayAssessmentFormSchema } from '@contracts/shared/schemas/pathway-assessment-schema';
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -33,16 +33,22 @@ export const usePathwayAssessment = () => {
     [stepId]
   );
 
+  useEffect(() => {
+    if (isPathwayAssessmentCreated)
+      navigate('/pathway-recommendations', {
+        viewTransition: true,
+        replace: true,
+      });
+  }, [isPathwayAssessmentCreated, navigate]);
+
   const submitPathwayAssisment = form.handleSubmit(async (payload) => {
     await pathwayAssessmentMutateAsync(payload);
-    if (isPathwayAssessmentCreated) navigate('/pathway-recommendations');
   });
 
   return {
     currentIndex,
     form,
     isPathwayAssessmentCreating,
-    isPathwayAssessmentCreated,
     submitPathwayAssisment,
   };
 };

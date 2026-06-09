@@ -25,3 +25,14 @@ export const getRoadmapSetupAssessmentStatus =
     const data = await response.data;
     return data;
   };
+
+export const deleteRoadmapSetupAssessment = async (
+  id: string
+): Promise<RoadmapSetupAssessmentStatusResponse> => {
+  const response = await apiClient.delete(
+    `/api/roadmap-setup-assessment/${id}`
+  );
+  const data = await response.data;
+
+  return data;
+};

@@ -50,7 +50,7 @@ export type RoadmapSetupAssessmentSubmitResponse = {
 export type RoadmapSetupAssessmentStatusResponse = {
   success: boolean;
   message: string;
-  data: {
+  data?: {
     pickedPathwayId: string;
     constraints: RoadmapSetupAssessmentConstraint[];
     currentStage?: RoadmapSetupAssessmentCurrentStage;

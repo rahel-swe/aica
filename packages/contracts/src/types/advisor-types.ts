@@ -1,65 +1,89 @@
 import type { z } from 'zod';
 import type {
-  advisorChatRequestSchema,
-  advisorChatResponseSchema,
+  advisorIntentSchema,
+  advisorResponseModeSchema,
   advisorContextSourceSchema,
-  advisorHistoryItemSchema,
-  advisorHistoryResponseSchema,
-  advisorModeSchema,
-  advisorResponseSchema,
-  advisorSourceSchema,
+  searchResultSchema,
+  advisorChatMessageSchema,
+  advisorConversationSchema,
+  advisorConversationSummarySchema,
+  advisorChatRequestSchema,
+  advisorStreamEventSchema,
+  advisorConversationListResponseSchema,
+  advisorConversationDetailResponseSchema,
 } from '../schemas/advisor-schema';
 
-export type AdvisorMode = z.infer<typeof advisorModeSchema>;
-export type AdvisorSource = z.infer<typeof advisorSourceSchema>;
+// ─── Public contract types ─────────────────────────────────────────────────────
+
+export type AdvisorIntent = z.infer<typeof advisorIntentSchema>;
+export type AdvisorResponseMode = z.infer<typeof advisorResponseModeSchema>;
 export type AdvisorContextSource = z.infer<typeof advisorContextSourceSchema>;
+export type SearchResult = z.infer<typeof searchResultSchema>;
+export type AdvisorChatMessage = z.infer<typeof advisorChatMessageSchema>;
+export type AdvisorConversation = z.infer<typeof advisorConversationSchema>;
+export type AdvisorConversationSummary = z.infer<
+  typeof advisorConversationSummarySchema
+>;
 export type AdvisorChatRequest = z.infer<typeof advisorChatRequestSchema>;
-export type AdvisorResponse = z.infer<typeof advisorResponseSchema>;
-export type AdvisorChatResponse = z.infer<typeof advisorChatResponseSchema>;
-export type AdvisorHistoryItem = z.infer<typeof advisorHistoryItemSchema>;
-export type AdvisorHistoryResponse = z.infer<
-  typeof advisorHistoryResponseSchema
+export type AdvisorStreamEvent = z.infer<typeof advisorStreamEventSchema>;
+export type AdvisorConversationListResponse = z.infer<
+  typeof advisorConversationListResponseSchema
+>;
+export type AdvisorConversationDetailResponse = z.infer<
+  typeof advisorConversationDetailResponseSchema
 >;
 
-export type AdvisorConversationDeleteResponse = {
-  success: boolean;
-  message: string;
-  data: {
-    _id: string;
-    message: string;
-    mode:
-      | 'explain'
-      | 'decide'
-      | 'guide_step'
-      | 'reflect'
-      | 'adjust'
-      | 'verify'
-      | 'general';
-    source: 'profile' | 'recommendation' | 'pathway' | 'roadmap' | 'advisor';
-    response: {
-      mode:
-        | 'explain'
-        | 'decide'
-        | 'guide_step'
-        | 'reflect'
-        | 'adjust'
-        | 'verify'
-        | 'general';
-      source: 'profile' | 'recommendation' | 'pathway' | 'roadmap' | 'advisor';
-      title: string;
-      answer: string;
-      nextActions: string[];
-      cautions: string[];
-      suggestedFollowUps: string[];
-      contextUsed: (
-        | 'pathway'
-        | 'roadmap'
-        | 'onboarding'
-        | 'recommendations'
-        | 'pathwayKnowledge'
-        | 'roadmapSetup'
-      )[];
-    };
-    createdAt: string;
-  };
+// ─── LLM tool call types ───────────────────────────────────────────────────────
+
+export type AdvisorToolCall =
+  | { name: 'surface_actions'; input: { actions: string[] } }
+  | { name: 'surface_follow_ups'; input: { questions: string[] } }
+  | { name: 'flag_caution'; input: { message: string } };
+
+// ─── Internal context types ────────────────────────────────────────────────────
+
+export type AdvisorContext = {
+  onboarding: Record<string, unknown> | null;
+  recommendations: AdvisorRecommendationItem[];
+  selectedPathway: AdvisorPathwayData | null;
+  roadmapSetup: Record<string, unknown> | null;
+  roadmap: AdvisorRoadmapData | null;
+  selectedRoadmapStep: {
+    phase: Record<string, unknown> | null;
+    step: Record<string, unknown>;
+  } | null;
+};
+
+export type AdvisorRecommendationItem = {
+  title: string;
+  slug: string;
+  rank: number;
+  totalScore: number;
+  reasons: string[];
+  pathwayId: string;
+};
+
+export type AdvisorPathwayData = {
+  title: string;
+  slug: string;
+  type: string;
+  summary: string;
+  description: string;
+  keySkills: string[];
+  opportunities: string[];
+  durationProfile: Record<string, unknown>;
+  journeyPhases: unknown[];
+  verificationNote?: string;
+};
+
+export type AdvisorRoadmapData = {
+  title: string;
+  summary: string;
+  currentLevel: string;
+  timeBudgetPerWeek: unknown;
+  roadmapStyle: string;
+  nextReviewAt: unknown;
+  pathwayId: string;
+  phases: Array<Record<string, unknown>>;
+  steps: Array<Record<string, unknown>>;
 };

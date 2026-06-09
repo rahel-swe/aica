@@ -126,6 +126,7 @@
 
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -138,4 +139,175 @@
     margin: 0 0.05em 0 0.1em;
     vertical-align: -0.1em;
   }
+
+  @keyframes show-top-mask {
+    to {
+      --top-mask-height: var(--mask-height);
+    }
+  }
+
+  @keyframes hide-bottom-mask {
+    to {
+      --bottom-mask-height: 0px;
+    }
+  }
+
+  @keyframes show-left-mask {
+    to {
+      --left-mask-width: var(--mask-width);
+    }
+  }
+
+  @keyframes hide-right-mask {
+    to {
+      --right-mask-width: 0px;
+    }
+  }
+}
+
+@keyframes aica-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aica-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes aica-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  33% {
+    transform: translateY(-9px) rotate(0.4deg);
+  }
+  66% {
+    transform: translateY(-4px) rotate(-0.3deg);
+  }
+}
+@keyframes aica-badge-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.afu {
+  animation: aica-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.afi {
+  animation: aica-fade-in 0.7s ease forwards;
+  opacity: 0;
+}
+.afl {
+  animation: aica-float 6s ease-in-out infinite;
+}
+.abfl {
+  animation: aica-badge-float 4.5s ease-in-out infinite;
+}
+.d2 {
+  animation-delay: 180ms;
+}
+.d3 {
+  animation-delay: 280ms;
+}
+.d4 {
+  animation-delay: 380ms;
+}
+.d5 {
+  animation-delay: 480ms;
+}
+.d6 {
+  animation-delay: 640ms;
+}
+.d7 {
+  animation-delay: 820ms;
+}
+@property --top-mask-height {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+@property --bottom-mask-height {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 64px;
+}
+@property --left-mask-width {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+@property --right-mask-width {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 64px;
+}
+
+@utility scroll-fade-effect-y {
+  --mask-height: 64px;
+  --mask-offset-top: 0px;
+  --mask-offset-bottom: 0px;
+  --scroll-buffer: 2rem;
+  mask-image:
+    linear-gradient(to top, transparent, black 90%),
+    linear-gradient(to bottom, transparent 0%, black 100%),
+    linear-gradient(black, black);
+  mask-size:
+    100% var(--top-mask-height),
+    100% var(--bottom-mask-height),
+    100% 100%;
+  mask-repeat: no-repeat, no-repeat, no-repeat;
+  mask-position:
+    0 var(--mask-offset-top),
+    0 calc(100% - var(--mask-offset-bottom)),
+    0 0;
+  mask-composite: exclude;
+  animation-name: show-top-mask, hide-bottom-mask;
+  animation-timeline: scroll(self), scroll(self);
+  animation-range:
+    0 var(--scroll-buffer),
+    calc(100% - var(--scroll-buffer)) 100%;
+  animation-fill-mode: both;
+}
+
+@utility scroll-fade-effect-x {
+  --mask-width: 64px;
+  --mask-offset-left: 0px;
+  --mask-offset-right: 0px;
+  --scroll-buffer: 2rem;
+  mask-image:
+    linear-gradient(to left, transparent, black 90%),
+    linear-gradient(to right, transparent 0%, black 100%),
+    linear-gradient(black, black);
+  mask-size:
+    var(--left-mask-width) 100%,
+    var(--right-mask-width) 100%,
+    100% 100%;
+  mask-repeat: no-repeat, no-repeat, no-repeat;
+  mask-position:
+    var(--mask-offset-left) 0,
+    calc(100% - var(--mask-offset-right)) 0,
+    0 0;
+  mask-composite: exclude;
+  animation-name: show-left-mask, hide-right-mask;
+  animation-timeline: scroll(self inline), scroll(self inline);
+  animation-range:
+    0 var(--scroll-buffer),
+    calc(100% - var(--scroll-buffer)) 100%;
+  animation-fill-mode: both;
 }

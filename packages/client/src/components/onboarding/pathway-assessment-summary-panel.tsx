@@ -1,4 +1,4 @@
-import { type PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
+import { type PathwayAssessmentStep } from '@/constants/pathway-assessment-steps-data';
 import { cn } from '@/lib/utils';
 
 type PathwayAssessmentSummaryPanelProps = {

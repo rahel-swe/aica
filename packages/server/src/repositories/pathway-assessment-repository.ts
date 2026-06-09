@@ -14,6 +14,13 @@ export class PathwayAssessmentRepository {
       new: true,
     });
   }
+
+  async deleteByUserId(id: string, userId: string) {
+    return await PathwayAssessmentModel.deleteOne({
+      _id: id,
+      userId,
+    });
+  }
 }
 
 export const pathwayAssessmentRepository = new PathwayAssessmentRepository();

@@ -1,4 +1,4 @@
-import { backdropShapeVariants } from '@/constants/recommendation-constant';
+import { backdropShapeVariants } from '@/constants/recommendation-ui-data';
 import { cn } from '@/lib/utils';
 
 const BackdropShapes = ({ index }: { index: number }) => {

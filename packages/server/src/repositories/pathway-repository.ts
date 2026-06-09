@@ -69,6 +69,13 @@ export class PathwayRepository {
       hasMore,
     };
   }
+  async findAllActiveWithDetails() {
+    return await PathwayModel.find({ status: 'active' })
+      .populate('taxonomyNodeIds', 'id name slug kind parentId')
+      .populate('relatedPathwayIds', 'id title slug type summary')
+      .sort({ title: 1 })
+      .lean();
+  }
 
   async findActiveDetailByIdOrSlug(idOrSlug: string) {
     const orConditions: { slug?: string; _id?: string }[] = [

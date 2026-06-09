@@ -2,7 +2,7 @@ import PathwayAssessmentFieldPanel from '@/components/onboarding/pathway-assessm
 import PathwayAssessmentIntroPanel from '@/components/onboarding/pathway-assessment-intro-panel';
 import PathwayAssessmentStepsNavigations from '@/components/onboarding/pathway-assessment-steps-navigations';
 import PathwayAssessmentSummaryPanel from '@/components/onboarding/pathway-assessment-summary-panel';
-import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps';
+import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps-data';
 import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import { useFormContext } from 'react-hook-form';

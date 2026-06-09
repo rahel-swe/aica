@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/refs */
-import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps';
-import MultiSelectField from '../form/multi-select-field';
-import SingleSelectField from '../form/single-select-field';
+import type { PathwayAssessmentStep } from '@/constants/pathway-assessment-steps-data';
 import { cn } from '@/lib/utils';
 import { useEffect, useRef } from 'react';
+import MultiSelectField from '../form/multi-select-field';
+import SingleSelectField from '../form/single-select-field';
 
 type OnboardingFieldPanelProps = {
   step: PathwayAssessmentStep;
@@ -33,25 +33,27 @@ const PathwayAssessmentFieldPanel = ({
           : 'slide-in-from-left-6'
       )}
     >
-      <h1 className="max-w-3xl text-4xl font-semibold tracking-tight mb-10 mx-auto">
+      <h1 className="max-w-3xl text-4xl font-semibold tracking-tight mb-10 mx-auto font-heading md:text-5xl">
         {step.title}
       </h1>
 
-      {step.type === 'multi-select' ? (
-        <>
-          <MultiSelectField
+      <div className="max-h-[60dvh] h-full overflow-auto pe-1">
+        {step.type === 'multi-select' ? (
+          <>
+            <MultiSelectField
+              name={step.fieldName}
+              label={step.title}
+              options={step.options}
+            />
+          </>
+        ) : step.type === 'single-select' ? (
+          <SingleSelectField
             name={step.fieldName}
             label={step.title}
             options={step.options}
           />
-        </>
-      ) : step.type === 'single-select' ? (
-        <SingleSelectField
-          name={step.fieldName}
-          label={step.title}
-          options={step.options}
-        />
-      ) : null}
+        ) : null}
+      </div>
     </div>
   );
 };

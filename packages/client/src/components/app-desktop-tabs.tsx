@@ -1,4 +1,4 @@
-import { DESKTOP_TABS } from '@/constants/app-tabs';
+import { DESKTOP_TABS } from '@/constants/app-tabs-data';
 import { useIsTabActive } from '@/hooks/use-active-tab';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'motion/react';

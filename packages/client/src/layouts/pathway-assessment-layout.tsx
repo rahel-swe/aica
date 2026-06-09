@@ -1,4 +1,4 @@
-import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps';
+import { PATHWAY_ASSESSMENT_STEPS } from '@/constants/pathway-assessment-steps-data';
 import { usePathwayAssessment } from '@/hooks/use-pathway-assessment';
 import { useProfileStatusQuery } from '@/queries/profile-query';
 import { FormProvider } from 'react-hook-form';
@@ -25,7 +25,6 @@ const PathwayAssessmentLayout = () => {
     currentIndex,
     form,
     isPathwayAssessmentCreating,
-    isPathwayAssessmentCreated,
     submitPathwayAssisment,
   } = usePathwayAssessment();
 
@@ -46,16 +45,13 @@ const PathwayAssessmentLayout = () => {
     );
 
   const {
-    assessments: { pathwayCompleted },
+    assessments: { pathwayAssessmentCompleted: pathwayCompleted },
   } = userProfileStatusResponse.data;
 
   if (pathwayCompleted) return <Navigate to="/app/dashboard" replace />;
 
   if (currentIndex === -1)
     return <Navigate to="/pathway-assessment/welcome" replace />;
-
-  if (isPathwayAssessmentCreated)
-    return <Navigate to="/pathway-recommendations" />;
 
   return (
     <FormProvider {...form}>

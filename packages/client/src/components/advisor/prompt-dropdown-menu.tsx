@@ -10,16 +10,37 @@ import {
 } from '../ui/dropdown-menu';
 import { advisorPrompts, type AdvisorPrompt } from './advisor-ui-data';
 
-type PromptMenuProps = {
+type PromptDropDownMenuProps = {
   onPromptSelect: (prompt: AdvisorPrompt) => void;
 };
 
-const PromptMenu = ({ onPromptSelect }: PromptMenuProps) => {
+const SUGGESTED_PROMPTS = [
+  {
+    label: 'Why this pathway?',
+    prompt: 'Why does my recommended pathway match my profile?',
+  },
+  {
+    label: 'What to focus on',
+    prompt: 'What should I focus on this week based on my roadmap?',
+  },
+  {
+    label: 'Unsure about direction',
+    prompt:
+      "I'm not sure my current pathway is the right fit — can we talk through it?",
+  },
+  {
+    label: 'Compare my options',
+    prompt: 'Can you compare my top pathway recommendations?',
+  },
+] as const;
+
+const PromptDropDownMenu = ({ onPromptSelect }: PromptDropDownMenuProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button type="button" size={'icon-lg'} className="size-11 self-end">
-          <Lightbulb className="size-5.5" strokeWidth={2.7} />
+        <Button variant={'secondary'} className="self-start py-0 px-2">
+          <Lightbulb strokeWidth={2.7} />
+          Prompt
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-full py-4 my-1">
@@ -66,4 +87,4 @@ const PromptMenu = ({ onPromptSelect }: PromptMenuProps) => {
   );
 };
 
-export default PromptMenu;
+export default PromptDropDownMenu;

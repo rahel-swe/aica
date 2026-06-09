@@ -1,13 +1,13 @@
 import { cn } from '@/lib/utils';
+import { useRoadmapStepsAndPhasesParams } from '@/params/use-roadmap-steps-and-phases-params';
 import { useRoadmapStepStatusMutation } from '@/queries/roadmap-query';
 import type {
   RoadmapStep,
   RoadmapStepStatus,
 } from '@contracts/shared/types/roadmap-types';
-import { Check, LoaderCircle, Play, type LucideIcon } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Loader, Play, RefreshCcw, type LucideIcon } from 'lucide-react';
 import SpinnerBars from '../shadcn-space/spinner/spinner-06';
-import { useRoadmapStepsAndPhasesParams } from '@/params/use-roadmap-steps-and-phases-params';
+import { Button } from '../ui/button';
 
 const roadmapStepActionButtonMeta: Record<
   RoadmapStepStatus,
@@ -23,20 +23,22 @@ const roadmapStepActionButtonMeta: Record<
   },
   in_progress: {
     lable: 'Complete',
-    icon: LoaderCircle,
+    icon: Loader,
   },
   completed: {
-    lable: 'Completed',
-    icon: Check,
+    lable: 'Reset',
+    icon: RefreshCcw,
   },
 };
 
 const RoadmapStepStatusActionButton = ({
   roadmapId,
   step,
+  className,
 }: {
   roadmapId: string;
   step: RoadmapStep;
+  className?: string;
 }) => {
   const { mutate, isPending, isSuccess } = useRoadmapStepStatusMutation();
   const { icon: Icon, lable } = roadmapStepActionButtonMeta[step.status];
@@ -71,7 +73,7 @@ const RoadmapStepStatusActionButton = ({
 
   return (
     <Button
-      className={cn('px-6 mx-auto relative')}
+      className={cn('px-6 relative', className)}
       onClick={handleStepStatusChanges}
       disabled={isPending}
     >

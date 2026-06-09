@@ -1,4 +1,4 @@
-import type { PathwayAssessmentStepType } from '@/constants/pathway-assessment-steps';
+import type { PathwayAssessmentStepType } from '@/constants/pathway-assessment-steps-data';
 
 import {
   ChevronLeft,

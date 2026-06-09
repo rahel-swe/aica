@@ -1,5 +1,5 @@
 // roadmap-resource-item.tsx
-import { resourceMeta } from '@/constants/roadmap-step-card-constants';
+import { resourceMeta } from '@/constants/roadmap-step-card-data';
 import type { RoadmapResource } from '@contracts/shared/types/roadmap-types';
 import { ArrowUpRight } from 'lucide-react';
 

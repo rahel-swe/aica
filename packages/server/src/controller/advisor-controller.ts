@@ -1,84 +1,108 @@
-import { ZodError } from 'zod';
-import { advisorChatRequestSchema } from '@contracts/shared/schemas/advisor-schema';
-import type { Response } from 'express';
-import type { AuthRequest } from '../middleware/auth-middleware';
+import type { Request, Response } from 'express';
 import { advisorService } from '../services/advisor-service';
+import { advisorChatRequestSchema } from '@contracts/shared/schemas/advisor-schema';
+import { ZodError } from 'zod';
 
-export class AdvisorController {
-  private readonly service = advisorService;
+// ─── Controller ────────────────────────────────────────────────────────────────
+// Note: userId comes from req.user (set by the authorize middleware).
+// This assumes your auth middleware attaches `user: { id: string }` to the request.
 
-  chat = async (req: AuthRequest, res: Response): Promise<void> => {
+class AdvisorController {
+  // POST /chat
+  // Sets SSE headers BEFORE calling the service — once headers are sent, you can't change them.
+  // The service writes directly to res and calls res.end().
+  chat = async (req: Request, res: Response): Promise<void> => {
     try {
-      const payload = advisorChatRequestSchema.parse(req.body);
-      const userId = req.user!.id;
+      const userId = (req as any).user?.id as string;
+      const request = advisorChatRequestSchema.parse(req.body);
 
-      const data = await this.service.answer(userId, payload);
+      // SSE setup — must happen before any async work that could throw
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Connection', 'keep-alive');
+      res.setHeader('X-Accel-Buffering', 'no'); // disables Nginx buffering for SSE
+      res.flushHeaders();
 
-      res.status(200).json({
-        success: true,
-        message: 'Advisor response generated.',
-        data,
-      });
-    } catch (error) {
-      if (error instanceof ZodError) {
-        res.status(422).json({
-          success: false,
-          message: 'Invalid request.',
-          errors: error.flatten().fieldErrors,
-        });
+      await advisorService.chat(userId, request, res);
+    } catch (err) {
+      if (err instanceof ZodError) {
+        // Headers may not be sent yet if Zod threw before we flushed
+        if (!res.headersSent) {
+          res.status(400).json({
+            success: false,
+            message: 'Invalid request',
+            errors: err.flatten().fieldErrors,
+          });
+        }
+        return;
+      }
+      // If headers were already sent (SSE started), the service handles cleanup
+      if (!res.headersSent) {
+        res
+          .status(500)
+          .json({ success: false, message: 'Internal server error' });
+      }
+    }
+  };
+
+  // GET /conversations
+  listConversations = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const userId = (req as any).user?.id as string;
+      const data = await advisorService.listConversations(userId);
+      res.json({ success: true, data });
+    } catch {
+      res
+        .status(500)
+        .json({ success: false, message: 'Internal server error' });
+    }
+  };
+
+  // GET /conversations/:id
+  getConversation = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const userId = (req as any).user?.id as string;
+      const conversation = await advisorService.getConversation(
+        req.params.id,
+        userId
+      );
+
+      if (!conversation) {
+        res
+          .status(404)
+          .json({ success: false, message: 'Conversation not found' });
         return;
       }
 
-      console.error('[AdvisorController] Unhandled error:', error);
-
-      res.status(500).json({
-        success: false,
-        message: 'An unexpected error occurred. Please try again.',
-      });
+      res.json({ success: true, data: conversation });
+    } catch {
+      res
+        .status(500)
+        .json({ success: false, message: 'Internal server error' });
     }
   };
 
-  history = async (req: AuthRequest, res: Response): Promise<void> => {
+  // DELETE /conversations/:id
+  deleteConversation = async (req: Request, res: Response): Promise<void> => {
     try {
-      const userId = req.user!.id;
-      const data = await this.service.getHistory(userId);
+      const userId = (req as any).user?.id as string;
+      const deleted = await advisorService.deleteConversation(
+        req.params.id,
+        userId
+      );
 
-      res.status(200).json({
-        success: true,
-        message: 'Advisor history fetched.',
-        data,
-      });
-    } catch (error) {
-      console.error('[AdvisorController] History error:', error);
+      if (!deleted) {
+        res
+          .status(404)
+          .json({ success: false, message: 'Conversation not found' });
+        return;
+      }
 
-      res.status(500).json({
-        success: false,
-        message: 'Could not fetch advisor history.',
-      });
-    }
-  };
-
-  deleteConversationById = async (
-    req: AuthRequest,
-    res: Response
-  ): Promise<void> => {
-    try {
-      const { id } = req.params as { id: string };
-
-      const data = await this.service.deleteConversationById(id);
-
-      res.status(200).json({
-        success: true,
-        message: 'Conversation deleted.',
-        data,
-      });
-    } catch (error) {
-      console.error('[AdvisorController] delete error:', error);
-
-      res.status(500).json({
-        success: false,
-        message: 'Could not delete advisor conversation history.',
-      });
+      res.json({ success: true, message: 'Conversation deleted' });
+    } catch {
+      res
+        .status(500)
+        .json({ success: false, message: 'Internal server error' });
     }
   };
 }

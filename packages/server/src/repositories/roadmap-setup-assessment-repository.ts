@@ -17,8 +17,11 @@ export class RoadmapSetupAssessmentRepository {
     ).lean();
   }
 
-  async deleteByUserId(userId: string) {
-    return await RoadmapSetupAssessmentModel.deleteOne({ userId });
+  async deleteByUserId(id: string, userId: string) {
+    return await RoadmapSetupAssessmentModel.deleteOne({
+      _id: id,
+      userId,
+    });
   }
 }
 

@@ -1,12 +1,38 @@
+import {
+  School,
+  GraduationCap,
+  Award,
+  Laptop,
+  Briefcase,
+  Coffee,
+  Clock,
+  Zap,
+  Flame,
+  Wind,
+  CalendarDays,
+  TrendingUp,
+  Map,
+  Wallet,
+  WifiOff,
+  Smartphone,
+  Leaf,
+  CalendarOff,
+  Rocket,
+  Scale,
+  Brain,
+} from 'lucide-react';
+
 import type {
   PathwayAssessmentOption,
   PathwayAssessmentStepType,
-} from './pathway-assessment-steps';
+} from './pathway-assessment-steps-data';
 
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
+// ─────────────────────────────────────────────────────────────────────────────
+
 export const roadmapSetupDefaultValues: RoadmapSetupAssessmentFormValues = {
-  constraints: [],
+  constraints: ['beginner'],
   currentStage: 'self_learning',
   roadmapStyle: 'balanced',
   timeline: 'medium',
@@ -39,85 +65,94 @@ const currentStageOptions: PathwayAssessmentOption[] = [
     label: 'In school',
     description:
       'You are still in school and need a realistic starting direction.',
-    emoji: '🏫',
+    icon: School,
   },
   {
     value: 'university',
     label: 'University student',
     description:
       'You are studying now and want a clearer path, stronger skills, or both.',
-    emoji: '🎓',
+    icon: GraduationCap,
   },
   {
     value: 'graduate',
     label: 'Recent graduate',
     description:
       'You finished formal study and want to move into the next real step.',
-    emoji: '📜',
+    icon: Award,
   },
   {
     value: 'self_learning',
     label: 'Self-learner',
     description:
       'You are learning on your own and need structure, focus, and proof of progress.',
-    emoji: '💻',
+    icon: Laptop,
   },
   {
     value: 'working',
     label: 'Working now',
     description:
       'You are already working and want to grow, switch, or reposition carefully.',
-    emoji: '💼',
+    icon: Briefcase,
   },
 ];
 
 const weeklyTimeOptions: PathwayAssessmentOption[] = [
   {
     value: 'low',
-    label: '2-4 hours / week',
+    label: '2–4 hours / week',
     description: 'Light pace for small consistent progress each week.',
-    emoji: '🐢',
+    icon: Coffee,
   },
   {
     value: 'medium',
-    label: '5-8 hours / week',
-    description: 'A realistic steady pace for most people.',
-    emoji: '⚖️',
+    label: '5–8 hours / week',
+    description:
+      'Steady progress without burning out — fits most lifestyles and commitments.',
+    icon: Clock,
   },
   {
     value: 'high',
-    label: '9-12 hours / week',
+    label: '9–12 hours / week',
     description: 'Focused effort with faster visible progress.',
-    emoji: '🚀',
+    icon: Zap,
   },
   {
     value: 'intense',
     label: '13+ hours / week',
     description: 'An accelerated pace that needs strong weekly consistency.',
-    emoji: '🔥',
+    icon: Flame,
   },
 ];
 
 const timelineOptions: PathwayAssessmentOption[] = [
   {
+    value: 'sprint',
+    label: '4–8 weeks',
+    description:
+      'A quick-start window — fast clarity, first wins, and immediate momentum.',
+    icon: Wind,
+  },
+  {
     value: 'short',
-    label: '4-6 weeks',
-    description: 'A short first action window for quick clarity and traction.',
-    emoji: '⚡',
+    label: '2–3 months',
+    description:
+      'One structured quarter — meaningful progress you can measure and build on.',
+    icon: CalendarDays,
   },
   {
     value: 'medium',
-    label: '2-3 months',
+    label: '6 months',
     description:
-      'A balanced first action window for visible progress without overload.',
-    emoji: '📈',
+      'Half-year plan — a complete roadmap for most tech and creative paths.',
+    icon: TrendingUp,
   },
   {
     value: 'long',
-    label: '4-6 months',
+    label: '12 months',
     description:
-      'The longest first action window, useful for foundations and sequencing.',
-    emoji: '🏗️',
+      'Full-year commitment — complete for self-contained paths, first major phase for complex careers.',
+    icon: Map,
   },
 ];
 
@@ -126,31 +161,31 @@ const constraintOptions: PathwayAssessmentOption[] = [
     value: 'low_budget',
     label: 'Low budget',
     description: 'Prefer free or low-cost learning resources.',
-    emoji: '💸',
+    icon: Wallet,
   },
   {
     value: 'weak_internet',
     label: 'Limited internet',
     description: 'Need offline-friendly or lightweight content.',
-    emoji: '📡',
+    icon: WifiOff,
   },
   {
     value: 'no_laptop',
     label: 'No laptop access',
     description: 'Must work with mobile or limited devices.',
-    emoji: '📱',
+    icon: Smartphone,
   },
   {
     value: 'beginner',
     label: 'Start from basics',
     description: 'Need beginner-friendly steps and explanations.',
-    emoji: '🌱',
+    icon: Leaf,
   },
   {
     value: 'inconsistent_schedule',
     label: 'Schedule changes often',
     description: 'Need a roadmap that can survive busy or unpredictable weeks.',
-    emoji: '🗓️',
+    icon: CalendarOff,
   },
 ];
 
@@ -158,23 +193,24 @@ const roadmapStyleOptions: PathwayAssessmentOption[] = [
   {
     value: 'fast_track',
     label: 'Fast practical progress',
+
     description:
-      'Bias toward practical momentum, earlier output, and faster entry steps.',
-    emoji: '🚀',
+      'Jump into projects early — learn by building, not by waiting to feel ready.',
+    icon: Rocket,
   },
   {
     value: 'balanced',
     label: 'Balanced growth',
     description:
       'Mix fundamentals and practical work in a steady, sustainable way.',
-    emoji: '⚖️',
+    icon: Scale,
   },
   {
     value: 'deep',
     label: 'Strong foundations',
     description:
       'Go deeper on core understanding before pushing hard on speed.',
-    emoji: '🧠',
+    icon: Brain,
   },
 ];
 
@@ -203,9 +239,10 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
   {
     id: 'timeline',
     type: 'single-select',
-    title: 'How far should this first roadmap plan ahead?',
+    title: 'How far should this roadmap plan ahead?',
+
     helperText:
-      'AICA plans the next action window here. Long careers still have a separate full pathway timeline.',
+      'For tech paths like frontend or backend development, 6–12 months can be your complete roadmap. For longer careers like civil engineering or medicine, the same window is your first major action phase — not your full timeline.',
     fieldName: 'timeline',
     options: timelineOptions,
   },

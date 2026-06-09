@@ -1,24 +1,19 @@
 import { z } from 'zod';
 
-// ─── Enums ────────────────────────────────────────────────────────────────────
+// ─── Enums ─────────────────────────────────────────────────────────────────────
 
-export const advisorModeSchema = z.enum([
+export const advisorIntentSchema = z.enum([
   'explain',
   'decide',
-  'guide_step',
+  'guide',
   'reflect',
   'adjust',
   'verify',
   'general',
 ]);
 
-export const advisorSourceSchema = z.enum([
-  'profile',
-  'recommendation',
-  'pathway',
-  'roadmap',
-  'advisor',
-]);
+// What the USER picks — controls which tools are active and how the LLM responds
+export const advisorResponseModeSchema = z.enum(['guided', 'focused', 'deep']);
 
 export const advisorContextSourceSchema = z.enum([
   'onboarding',
@@ -29,12 +24,57 @@ export const advisorContextSourceSchema = z.enum([
   'roadmap',
 ]);
 
-// ─── Request ──────────────────────────────────────────────────────────────────
+// ─── Search result ─────────────────────────────────────────────────────────────
+
+export const searchResultSchema = z.object({
+  title: z.string(),
+  url: z.string(),
+  content: z.string(),
+  source: z.string(), // domain name, e.g. "bls.gov"
+  score: z.number().optional(),
+});
+
+// ─── Conversation message ──────────────────────────────────────────────────────
+
+export const advisorChatMessageSchema = z.object({
+  role: z.enum(['user', 'assistant']),
+  content: z.string().min(1),
+  intent: advisorIntentSchema.optional(),
+  actions: z.array(z.string()).max(5).default([]),
+  followUps: z.array(z.string()).max(3).default([]),
+  cautions: z.array(z.string()).default([]),
+  contextUsed: z.array(advisorContextSourceSchema).default([]),
+  resources: z.array(searchResultSchema).default([]), // ← web search results
+  createdAt: z.coerce.date(),
+});
+
+// ─── Conversation ──────────────────────────────────────────────────────────────
+
+export const advisorConversationSchema = z.object({
+  _id: z.string(),
+  userId: z.string(),
+  title: z.string(),
+  messages: z.array(advisorChatMessageSchema),
+  contextSnapshot: z.record(z.unknown()),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+});
+
+export const advisorConversationSummarySchema = z.object({
+  _id: z.string(),
+  title: z.string(),
+  lastMessage: z.string().optional(),
+  messageCount: z.number().int().min(0),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+});
+
+// ─── Request ───────────────────────────────────────────────────────────────────
 
 export const advisorChatRequestSchema = z.object({
-  message: z.string().trim().min(3).max(800),
-  mode: advisorModeSchema.optional(),
-  source: advisorSourceSchema.optional(),
+  conversationId: z.string().optional(),
+  message: z.string().trim().min(1).max(2000),
+  responseMode: advisorResponseModeSchema.optional().default('guided'),
   roadmapStep: z
     .object({
       roadmapId: z.string().min(1),
@@ -42,50 +82,56 @@ export const advisorChatRequestSchema = z.object({
       stepId: z.string().min(1),
     })
     .optional(),
-  // Reserved for conversation history support — not active yet.
-  // Include now so clients don't need a breaking change when we wire it up.
-  conversationId: z.string().uuid().optional(),
 });
 
-// ─── Response ─────────────────────────────────────────────────────────────────
-// Shape is designed around what the chat UI actually renders:
-//   answer            → main message bubble content
-//   intent            → optional badge/icon the UI can surface
-//   nextActions       → action cards below the bubble (1–5 items)
-//   cautions          → warning chips (licensing, missing data, etc.)
-//   suggestedFollowUps → quick-reply chips the user can tap
-//   contextUsed       → source pills for transparency / trust
+// ─── SSE stream events ─────────────────────────────────────────────────────────
+//
+// Full event sequence with search:
+//   start → searching → delta(n) → resources → metadata → done
+//
+// Without search:
+//   start → delta(n) → metadata → done
 
-export const advisorResponseSchema = z.object({
-  mode: advisorModeSchema,
-  source: advisorSourceSchema,
-  title: z.string().min(1).max(90),
-  answer: z.string().min(1),
-  nextActions: z.array(z.string()).max(5).default([]),
-  cautions: z.array(z.string()).default([]),
-  suggestedFollowUps: z.array(z.string()).max(3).default([]),
-  contextUsed: z.array(advisorContextSourceSchema).default([]),
-});
+export const advisorStreamEventSchema = z.discriminatedUnion('type', [
+  z.object({
+    type: z.literal('start'),
+    conversationId: z.string(),
+    messageId: z.string(),
+  }),
+  // ← NEW: emitted before Tavily call, lets the UI show "Searching..."
+  z.object({
+    type: z.literal('searching'),
+    query: z.string(),
+  }),
+  z.object({
+    type: z.literal('delta'),
+    content: z.string(),
+  }),
+  // ← NEW: emitted after search completes, before metadata
+  z.object({
+    type: z.literal('resources'),
+    items: z.array(searchResultSchema),
+  }),
+  z.object({
+    type: z.literal('metadata'),
+    intent: advisorIntentSchema.optional(),
+    actions: z.array(z.string()).default([]),
+    followUps: z.array(z.string()).default([]),
+    cautions: z.array(z.string()).default([]),
+    contextUsed: z.array(advisorContextSourceSchema).default([]),
+  }),
+  z.object({ type: z.literal('done') }),
+  z.object({ type: z.literal('error'), message: z.string() }),
+]);
 
-// ─── HTTP envelope ────────────────────────────────────────────────────────────
+// ─── HTTP envelopes ────────────────────────────────────────────────────────────
 
-export const advisorChatResponseSchema = z.object({
+export const advisorConversationListResponseSchema = z.object({
   success: z.boolean(),
-  message: z.string(),
-  data: advisorResponseSchema,
+  data: z.array(advisorConversationSummarySchema),
 });
 
-export const advisorHistoryItemSchema = z.object({
-  _id: z.string(),
-  message: z.string(),
-  mode: advisorModeSchema,
-  source: advisorSourceSchema,
-  response: advisorResponseSchema,
-  createdAt: z.string(),
-});
-
-export const advisorHistoryResponseSchema = z.object({
+export const advisorConversationDetailResponseSchema = z.object({
   success: z.boolean(),
-  message: z.string(),
-  data: z.array(advisorHistoryItemSchema),
+  data: advisorConversationSchema,
 });

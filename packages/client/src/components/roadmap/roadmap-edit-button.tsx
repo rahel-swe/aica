@@ -1,6 +1,6 @@
 import { Pencil } from 'lucide-react';
 import { Button } from '../ui/button';
-import RoadmapActionDialog from './roadmap-action-dialog';
+import ActionDialog from '../action-dialog';
 import { useRoadmapDeleteMutation } from '@/queries/roadmap-query';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ const RoadmapEditButton = ({ roadmapId }: { roadmapId: string }) => {
   };
 
   return (
-    <RoadmapActionDialog
+    <ActionDialog
       trigger={
         <Button
           variant="secondary"
