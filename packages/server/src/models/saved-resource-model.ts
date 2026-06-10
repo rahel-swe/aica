@@ -1,9 +1,9 @@
-import { Schema, model, type Document } from 'mongoose';
+import { Schema, model, type Document, Types } from 'mongoose';
 
 export interface ISavedResource extends Document {
   userId: string;
   resourceType: string;
-  resourceId: string;
+  resourceId: Types.ObjectId;
 }
 
 const savedResourceSchema = new Schema<ISavedResource>(
@@ -19,7 +19,8 @@ const savedResourceSchema = new Schema<ISavedResource>(
     },
 
     resourceId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'Pathway',
       required: true,
     },
   },

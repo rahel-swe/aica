@@ -19,7 +19,12 @@ export class SavedResourceRepository {
   async findByUser(userId: string) {
     return await SavedResourceModel.find({
       userId,
-    }).lean();
+    })
+      .populate(
+        'resourceId',
+        'title slug type summary durationProfile taxonomyNodeIds keySkills'
+      )
+      .lean();
   }
 
   async findOne(userId: string, resourceId: string) {

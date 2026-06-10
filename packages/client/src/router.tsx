@@ -23,6 +23,7 @@ import RouterProtector from './router-protector.tsx';
 import ChangePasswordPage from './pages/auth/change-password-page.tsx';
 import ChangePasswordSucceedPage from './pages/auth/change-password-succeed-page.tsx';
 import LandingPage from './pages/LandingPage.tsx';
+import SavedPathwaysPage from './pages/saved-pathways-page.tsx';
 
 const router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
           { path: 'advisor', element: <AdvisorPage /> },
           { path: 'roadmap', element: <RoadmapPage /> },
           { path: 'settings', element: <SettingsPage /> },
+          {
+            path: '/app/saved-pathways',
+            element: <SavedPathwaysPage />,
+          },
         ],
       },
       { path: '*', element: <NotFoundPage /> },

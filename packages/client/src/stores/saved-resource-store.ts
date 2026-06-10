@@ -6,8 +6,10 @@ import {
   removeSavedResource,
 } from '@/services/saved-resource-service';
 
-type SavedResource = {
-  resourceId: string;
+type SavedResourceItem = {
+  resourceId: {
+    _id: string;
+  };
 };
 
 type SavedState = {
@@ -20,39 +22,49 @@ type SavedState = {
 
 export const useSavedStore = create<SavedState>((set, get) => ({
   savedIds: [],
-  userId: '123', // later replace with real auth user
+  userId: '123',
 
   loadSaved: async () => {
-    const res = await getSavedResources(get().userId);
+    try {
+      const res = await getSavedResources(get().userId);
 
-    const ids = (res.data as SavedResource[]).map((item) => item.resourceId);
+      const ids =
+        res?.data?.map((item: SavedResourceItem) => item.resourceId._id) ?? [];
 
-    set({ savedIds: ids });
+      set({ savedIds: ids });
+    } catch (err) {
+      console.error('Failed to load saved resources', err);
+      set({ savedIds: [] });
+    }
   },
 
   toggleSave: async (resourceId: string) => {
     const { savedIds, userId } = get();
     const isSaved = savedIds.includes(resourceId);
 
-    if (isSaved) {
-      await removeSavedResource({
-        userId,
-        resourceId,
-      });
+    try {
+      if (isSaved) {
+        await removeSavedResource({
+          userId,
+          resourceId,
+        });
 
-      set({
-        savedIds: savedIds.filter((id) => id !== resourceId),
-      });
-    } else {
-      await saveResource({
-        userId,
-        resourceId,
-        resourceType: 'pathway',
-      });
+        set({
+          savedIds: savedIds.filter((id) => id !== resourceId),
+        });
+      } else {
+        await saveResource({
+          userId,
+          resourceId,
+          resourceType: 'pathway',
+        });
 
-      set({
-        savedIds: [...savedIds, resourceId],
-      });
+        set({
+          savedIds: [...savedIds, resourceId],
+        });
+      }
+    } catch (err) {
+      console.error('Toggle save failed', err);
     }
   },
 }));
