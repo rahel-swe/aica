@@ -2,32 +2,24 @@ import PathwayListCard from '@/components/cards/pathway-list-card';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 
 import type { PathwayListItem } from '@contracts/shared/types/pathway-domain-types';
-import { useSavedResourcesQuery } from '@/queries/saved-resource-query';
-
-type SavedResourceItem = {
-  _id: string;
-  userId: string;
-  resourceType: string;
-  resourceId: PathwayListItem;
-};
+import { usePathwaysQuery } from '@/queries/pathway-query';
+import { useSavedStore } from '@/stores/saved-resource-store';
 
 export default function SavedPathwaysPage() {
-  const userId = '123';
+  const savedIds = useSavedStore((s) => s.savedIds);
 
-  const { data, isPending, isError } = useSavedResourcesQuery(userId);
+  const { data, isPending, isError } = usePathwaysQuery();
 
   if (isPending) return <SpinnerBars />;
 
   if (isError) {
-    return (
-      <div className="p-6 text-red-500">Failed to load saved pathways.</div>
-    );
+    return <div className="p-6 text-red-500">Failed to load pathways.</div>;
   }
 
-  const pathways: PathwayListItem[] =
-    (data?.data as SavedResourceItem[] | undefined)?.map(
-      (item) => item.resourceId
-    ) ?? [];
+  const allPathways: PathwayListItem[] =
+    data?.pages.flatMap((page) => page.data.items) ?? [];
+
+  const savedPathways = allPathways.filter((p) => savedIds.includes(p._id));
 
   return (
     <div className="p-6">
@@ -37,11 +29,11 @@ export default function SavedPathwaysPage() {
         Your saved pathways appear here.
       </p>
 
-      {pathways.length === 0 ? (
+      {savedPathways.length === 0 ? (
         <div className="text-muted-foreground">No saved pathways yet.</div>
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {pathways.map((pathway) => (
+          {savedPathways.map((pathway) => (
             <PathwayListCard key={pathway._id} pathway={pathway} />
           ))}
         </div>

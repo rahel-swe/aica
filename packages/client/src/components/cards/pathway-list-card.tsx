@@ -21,7 +21,8 @@ type Props = {
 export default function PathwayListCard({ pathway }: Props) {
   const navigate = useNavigate();
 
-  const { savedIds, toggleSave } = useSavedStore();
+  const savedIds = useSavedStore((s) => s.savedIds);
+  const toggleSave = useSavedStore((s) => s.toggleSave);
 
   const isSaved = savedIds.includes(pathway._id);
 
@@ -108,10 +109,9 @@ export default function PathwayListCard({ pathway }: Props) {
                 e.stopPropagation();
                 toggleSave(pathway._id);
               }}
-              className="transition"
             >
               <Bookmark
-                className={`size-5 transition ${
+                className={`size-5 ${
                   isSaved
                     ? 'fill-primary text-primary'
                     : 'text-muted-foreground'
