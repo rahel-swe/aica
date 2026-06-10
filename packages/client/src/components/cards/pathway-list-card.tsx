@@ -1,8 +1,16 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 
-import { ArrowRight, Clock3, Layers3, ShieldAlert } from 'lucide-react';
+import {
+  ArrowRight,
+  Clock3,
+  Layers3,
+  ShieldAlert,
+  Bookmark,
+} from 'lucide-react';
+
 import { useNavigate } from 'react-router-dom';
+import { useSavedStore } from '@/stores/saved-resource-store';
 
 import type { PathwayListItem } from '@contracts/shared/types/pathway-domain-types';
 
@@ -12,6 +20,10 @@ type Props = {
 
 export default function PathwayListCard({ pathway }: Props) {
   const navigate = useNavigate();
+
+  const { savedIds, toggleSave } = useSavedStore();
+
+  const isSaved = savedIds.includes(pathway._id);
 
   const handleClick = () => {
     navigate(`/app/pathways/${pathway._id}`);
@@ -25,9 +37,7 @@ export default function PathwayListCard({ pathway }: Props) {
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') handleClick();
       }}
-      className="
-        group flex-1
-      "
+      className="group flex-1"
     >
       <CardContent className="space-y-5">
         {/* HEADER */}
@@ -45,7 +55,7 @@ export default function PathwayListCard({ pathway }: Props) {
           <Badge className="shrink-0 capitalize">{pathway.type}</Badge>
         </div>
 
-        {/* TAXONOMY (NEW) */}
+        {/* TAXONOMY */}
         {pathway.taxonomyNodes?.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {pathway.taxonomyNodes.slice(0, 3).map((node) => (
@@ -71,13 +81,11 @@ export default function PathwayListCard({ pathway }: Props) {
         <div className="flex items-center justify-between border-t pt-4">
           {/* LEFT INFO */}
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            {/* Timeline */}
             <div className="flex items-center gap-2">
               <Clock3 className="size-4" />
               <span>{pathway.durationProfile.timelineType}</span>
             </div>
 
-            {/* Commitment */}
             <div className="flex items-center gap-2">
               <Layers3 className="size-4" />
               <span className="capitalize">
@@ -85,7 +93,6 @@ export default function PathwayListCard({ pathway }: Props) {
               </span>
             </div>
 
-            {/* Estimated years */}
             {pathway.durationProfile.estimatedYearsMax && (
               <span className="text-xs text-muted-foreground">
                 ~{pathway.durationProfile.estimatedYearsMax} yrs
@@ -94,8 +101,25 @@ export default function PathwayListCard({ pathway }: Props) {
           </div>
 
           {/* RIGHT INFO */}
-          <div className="flex items-center gap-2">
-            {/* WARNING: LICENSE */}
+          <div className="flex items-center gap-3">
+            {/* SAVE BUTTON */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleSave(pathway._id);
+              }}
+              className="transition"
+            >
+              <Bookmark
+                className={`size-5 transition ${
+                  isSaved
+                    ? 'fill-primary text-primary'
+                    : 'text-muted-foreground'
+                }`}
+              />
+            </button>
+
+            {/* LICENSE WARNING */}
             {pathway.durationProfile.requiresLicense && (
               <div className="flex items-center gap-1 text-amber-600">
                 <ShieldAlert className="size-4" />
@@ -103,6 +127,7 @@ export default function PathwayListCard({ pathway }: Props) {
               </div>
             )}
 
+            {/* ARROW */}
             <ArrowRight
               className="
                 size-5 text-muted-foreground

@@ -17,11 +17,20 @@ import { Button } from '@/components/ui/button';
 
 import { usePathwaysQuery } from '@/queries/pathway-query';
 import { usePathwaysStore } from '@/stores/pathways-store';
+import { useSavedStore } from '@/stores/saved-resource-store';
+import { useNavigate } from 'react-router-dom';
 
 export default function ExplorePage() {
   const { search, type, setSearch, setType } = usePathwaysStore();
+  const navigate = useNavigate();
+
+  const loadSaved = useSavedStore((s) => s.loadSaved);
 
   const [inputValue, setInputValue] = useState(search);
+
+  useEffect(() => {
+    loadSaved();
+  }, [loadSaved]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -66,6 +75,7 @@ export default function ExplorePage() {
           </p>
         </div>
 
+        {/* SEARCH + FILTER */}
         <div className="flex flex-wrap gap-3 items-center my-4">
           <Input
             placeholder="Search pathways..."
@@ -95,6 +105,10 @@ export default function ExplorePage() {
             }}
           >
             Reset
+          </Button>
+
+          <Button onClick={() => navigate('/app/saved-pathways')}>
+            View Saved Pathways
           </Button>
         </div>
 

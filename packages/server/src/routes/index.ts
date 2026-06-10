@@ -8,6 +8,7 @@ import recommendationRouter from './recommendation-route';
 import roadmapRouter from './roadmap-router';
 import dashboardRouter from './dashboard-router';
 import roadmapSetupAssessmentRouter from './roadmap-setup-assessment-router';
+import savedResourceRouter from '../routes/saved-resource-routes';
 
 const apiRouter = Router();
 
@@ -20,5 +21,7 @@ apiRouter.use('/roadmaps', roadmapRouter);
 apiRouter.use('/advisor', advisorRouter);
 apiRouter.use('/dashboard', dashboardRouter);
 apiRouter.use('/admin', adminRouter);
+
+apiRouter.use('/saved-resources', savedResourceRouter);
 
 export default apiRouter;
