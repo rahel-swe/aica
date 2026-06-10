@@ -140,7 +140,7 @@ export function StreamingBubble({
             <div className="flex gap-x-1">
               <Lightbulb className="size-4" />
               <p className="flex text-xs self-end mt-1 gap-1">
-                Thinking{' '}
+                Thinking
                 <SpinnerBars
                   className="gap-0.5 top-3 h-3"
                   barClassName="w-0.5"
@@ -152,11 +152,11 @@ export function StreamingBubble({
           </>
         ) : !searchingQuery ? (
           // Default loading dots when no search and no content yet
-          <div className="flex items-center gap-1.5 text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-muted-foreground animate-bounce [animation-delay:0ms]" />
-            <span className="size-1.5 rounded-full bg-muted-foreground animate-bounce [animation-delay:150ms]" />
-            <span className="size-1.5 rounded-full bg-muted-foreground animate-bounce [animation-delay:300ms]" />
-          </div>
+          <SpinnerBars
+            className="gap-1 h-3 text-muted-foreground"
+            barClassName="w-1"
+            heights={['2px', '13px', '2px']}
+          />
         ) : null}
       </div>
 
