@@ -1,34 +1,9 @@
-/**
- * ─────────────────────────────────────────────────────────────────────────
- * Design system: uses your --primary / shadcn tokens throughout.
- * Vibrant palette (emerald, sky, violet, amber, rose, cyan) used as
- * decorative accent colors for icons, flags, and step indicators —
- * never overriding your primary.
- *
- * Deps: Button + Badge from shadcn, cn from @/lib/utils
- *
- * Logo: place light-logo.png in /public — referenced as "/light-logo.png"
- *
- * To import RoadmapStepsPreview from your own file instead:
- *   import RoadmapStepsPreview from '@/components/roadmap/roadmap-steps-preview'
- *   and remove the LandingRoadmapPreview component below.
- * ─────────────────────────────────────────────────────────────────────────
- */
-
+import AppLogo from '@/components/app-logo';
+import HeroSection from '@/components/landing/hero-section';
 import { Navbar } from '@/components/landing/navbar';
-import { roadmapStepFlagColors } from '@/components/roadmap/roadmap-view-utils';
-import { Twemoji } from '@/components/twemoji';
+import RoadmapStepsPreview from '@/components/roadmap/roadmap-steps-preview';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Field,
-  FieldContent,
-  FieldLabel,
-  FieldTitle,
-} from '@/components/ui/field';
-import { Progress } from '@/components/ui/progress';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { subjectOptions } from '@/constants/pathway-assessment-steps-data';
 import { cn } from '@/lib/utils';
 import {
   ArrowRight,
@@ -37,266 +12,17 @@ import {
   Brain,
   Briefcase,
   Check,
-  ChevronRight,
-  Database,
-  FlagTriangleRight,
   GraduationCap,
   Map,
   MessageCircle,
   Route,
   Star,
   Target,
-  TrendingUp,
   UserCheck,
   Users,
-  Zap,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-// ── CSS keyframes ──────────────────────────────────────────────────────────────
-
-// ── Navbar ─────────────────────────────────────────────────────────────────────
-
-// ── Assessment Card (hero mock UI) ────────────────────────────────────────────
-function AssessmentCard() {
-  return (
-    <div className="relative w-full max-w-[370px] rounded-3xl border border-border bg-card/70 backdrop-blur-xl overflow-hidden shadow-2xl dark:shadow-border">
-      {/* Header */}
-      <div className="px-5 pt-5 pb-4 border-b border-border">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            <Database className="size-6 text-violet-500" />
-            <span className="text-sm mt-auto">Profile Assessment</span>
-          </div>
-          <Badge variant="secondary" className="rounded-full text-[11px]">
-            Step 2 / 5
-          </Badge>
-        </div>
-
-        <Progress
-          value={40}
-          className="h-1.5 rounded-full transition-all duration-500"
-        />
-      </div>
-
-      {/* Body */}
-      <div className="px-5 py-4 backdrop-blur-xl">
-        <p className="text-base font-semibold text-foreground leading-relaxed mb-3.5">
-          Which subject are you best at explaining?
-        </p>
-
-        <div className="space-y-2">
-          <RadioGroup className="" defaultChecked>
-            {subjectOptions
-              .slice(0, 4)
-              .map(({ label, value, icon: Icon, description }, idx) => (
-                <FieldLabel
-                  key={value}
-                  className="max-w-md mx-auto rounded-full backdrop-blur-xl relative"
-                >
-                  <Field orientation="horizontal" className="items-center">
-                    <RadioGroupItem
-                      value={value}
-                      id={value}
-                      className="size-5"
-                    />
-                    <FieldContent className="">
-                      <FieldTitle className="flex gap-1 text-xs">
-                        <Icon
-                          className={cn(
-                            'size-4',
-                            roadmapStepFlagColors[idx + 2]
-                          )}
-                        />
-                        {label}
-                      </FieldTitle>
-                    </FieldContent>
-                  </Field>
-                </FieldLabel>
-              ))}
-          </RadioGroup>
-          {/* {options.map((opt, i) => (
-            <div
-              key={i}
-              className={cn(
-                'flex items-center gap-3 px-3.5 py-2.5 rounded-2xl border cursor-pointer transition-all',
-                opt.active
-                  ? 'border-primary bg-primary text-primary-foreground'
-                  : 'border-border hover:border-muted-foreground'
-              )}
-            >
-              <div
-                className={cn(
-                  'w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center',
-                  opt.active
-                    ? 'border-primary-foreground'
-                    : 'border-muted-foreground'
-                )}
-              >
-                {opt.active && (
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary-foreground" />
-                )}
-              </div>
-              <span className="text-xs font-medium leading-tight">
-                {opt.label}
-              </span>
-            </div>
-          ))} */}
-        </div>
-
-        <Button className="mt-4 w-full rounded-full gap-1.5 py-5">
-          Next <ArrowRight className="w-3.5 h-3.5" />
-        </Button>
-      </div>
-    </div>
-  );
-}
-
-// ── Floating result badge ──────────────────────────────────────────────────────
-interface FloatingBadgeProps {
-  style?: React.CSSProperties;
-  delay?: string;
-  children: React.ReactNode;
-}
-
-function FloatingBadge({ style, delay = '0ms', children }: FloatingBadgeProps) {
-  return (
-    <div
-      className="absolute px-3.5 py-2.5 rounded-2xl bg-card border border-border text-xs font-semibold whitespace-nowrap abfl"
-      style={{
-        boxShadow: '0 4px 24px -6px oklch(0 0 0 / 0.14)',
-        animationDelay: delay,
-        ...style,
-      }}
-    >
-      {children}
-    </div>
-  );
-}
-
-// ── Hero ───────────────────────────────────────────────────────────────────────
-function HeroSection() {
-  return (
-    <section className="relative min-h-screen flex items-center pt-30 pb-16 overflow-hidden">
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle, oklch(0.80 0 0) 1.5px, transparent 1.5px)`,
-          backgroundSize: '28px 28px',
-          opacity: 0.45,
-        }}
-      />
-      {/* Bottom fade */}
-      <div
-        className="absolute bottom-0 inset-x-0 h-40 pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(to bottom, transparent, var(--background))',
-        }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Left: copy */}
-          <div className="flex-1 flex flex-col gap-8  text-center lg:mx-auto ">
-            <h1 className="afu d2 text-6xl sm:text-7xl lg:text-[5.5rem] font-bold leading-[1.03] tracking-tight text-foreground font-heading">
-              Discover your
-              <br />
-              right path
-            </h1>
-
-            <p className="afu d3 text-muted-foreground leading-relaxed max-w-[480px] mb-3">
-              AICA analyzes your strengths, interests, and goals — delivering
-              personalized academic and career guidance with a concrete roadmap
-              you can act on today.
-            </p>
-
-            <div className="afu d4 flex flex-col sm:flex-row sm:items-center gap-3 mb-10 items-center mx-auto">
-              <Button className="px-8 text-base py-7">
-                Start Free Assessment
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-              <Button variant="outline" className="px-7 text-base py-7">
-                See How It Works
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </div>
-
-            {/* Social proof */}
-            <div className="afu d5 flex items-center gap-3">
-              <div className="flex -space-x-2">
-                {(['#0ea5e9', '#8b5cf6', '#10b981', '#f59e0b'] as const).map(
-                  (c, i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-full border-2 border-background flex items-center justify-center"
-                      style={{ background: c }}
-                    >
-                      <span className="text-[10px] font-bold text-white">
-                        {['S', 'A', 'M', 'J'][i]}
-                      </span>
-                    </div>
-                  )
-                )}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground">12,000+</span>{' '}
-                students guided ·{' '}
-                <span className="inline-flex gap-0.5 ml-0.5 align-middle">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star
-                      key={s}
-                      className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
-                    />
-                  ))}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: floating card */}
-          <div className="afi d6 flex-1 flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="afl">
-                <AssessmentCard />
-              </div>
-
-              <FloatingBadge
-                delay="300ms"
-                style={{ top: '-18px', right: '-14px' }}
-              >
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                  Top Match:{' '}
-                  <strong className="ml-0.5 text-emerald-600 dark:text-emerald-400">
-                    UX Design
-                  </strong>
-                </div>
-              </FloatingBadge>
-
-              <FloatingBadge
-                delay="600ms"
-                style={{ bottom: '-16px', left: '-14px' }}
-              >
-                <div className="flex items-center gap-1.5">
-                  <TrendingUp className="w-3.5 h-3.5 text-sky-500" />
-                  <span>
-                    92%{' '}
-                    <span className="text-muted-foreground font-normal">
-                      Match Score
-                    </span>
-                  </span>
-                </div>
-              </FloatingBadge>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Stats bar ──────────────────────────────────────────────────────────────────
 function StatsBar() {
   const stats = [
     { value: '12,000+', label: 'Students Guided', color: 'text-emerald-500' },
@@ -364,16 +90,10 @@ function ProblemSection() {
     <section className="py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-12">
-          <Badge variant="outline" className="rounded-full mb-4 text-xs">
-            The Problem
-          </Badge>
-          <h2
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
             The guidance gap is real.
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-[500px] mx-auto leading-relaxed">
+          <p className="mt-4 text-lg text-muted-foreground max-w-[500px] mx-auto font-heading">
             Every year, millions make critical decisions with generic advice
             that doesn't reflect who they truly are.
           </p>
@@ -381,13 +101,10 @@ function ProblemSection() {
 
         <div className="grid md:grid-cols-3 gap-5">
           {problems.map((p, i) => (
-            <div
-              key={i}
-              className="group p-7 rounded-3xl border border-border bg-card hover:shadow-md transition-all duration-200"
-            >
+            <div key={i} className="group p-7 transition-all duration-200">
               <div
                 className={cn(
-                  'w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-105',
+                  'w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-105 border',
                   p.bgCls
                 )}
               >
@@ -446,32 +163,18 @@ function HowItWorksSection() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-card border-y border-border">
+    <section
+      className="py-20 md:py-28 bg-card border-y border-border"
+      id="how-it-works"
+    >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
-          <Badge variant="outline" className="rounded-full mb-4 text-xs">
-            How It Works
-          </Badge>
-          <h2
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold">
             Three steps to clarity.
           </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-10 relative">
-          {/* Connector line */}
-          <div
-            className="hidden md:block absolute top-[22px] h-px"
-            style={{
-              left: 'calc(16.67% + 24px)',
-              right: 'calc(16.67% + 24px)',
-              background:
-                'linear-gradient(90deg, transparent, var(--border), var(--border), transparent)',
-            }}
-          />
-
           {steps.map((step, i) => (
             <div key={i} className="flex flex-col">
               <div className="flex items-center gap-3 mb-5">
@@ -513,96 +216,6 @@ function HowItWorksSection() {
   );
 }
 
-// ── Roadmap Preview (adapted standalone from RoadmapStepsPreview) ──────────────
-// Colors mirror your roadmapStepFlagColors array (same lightness/saturation)
-const STEP_FLAG_COLORS: Record<number, string> = {
-  1: 'text-violet-400',
-  2: 'text-amber-300',
-};
-
-interface LandingStep {
-  title: string;
-  status: 'completed' | 'in-progress' | 'upcoming';
-}
-
-function LandingRoadmapPreview() {
-  const steps: LandingStep[] = [
-    { title: 'Define Your Direction', status: 'completed' },
-    { title: 'Build Core Academic Skills', status: 'in-progress' },
-    { title: 'Enter Your Career Field', status: 'upcoming' },
-  ];
-
-  const statusLabels: Record<LandingStep['status'], string> = {
-    completed: 'Completed foundation',
-    'in-progress': 'Currently in progress',
-    upcoming: 'Upcoming milestone',
-  };
-
-  return (
-    <div className="relative flex w-full max-w-xl flex-col gap-8">
-      {steps.map((step, index) => {
-        const isCompleted = step.status === 'completed';
-        const isInProgress = step.status === 'in-progress';
-
-        return (
-          <div
-            key={step.title}
-            className={cn(
-              'flex items-center gap-6',
-              index % 2 === 0 ? 'lg:translate-x-0' : 'lg:translate-x-16'
-            )}
-          >
-            {/* Step button — mirrors your component exactly */}
-            <div className="relative shrink-0">
-              <Button
-                variant={isCompleted ? 'default' : 'outline'}
-                className={cn(
-                  'relative h-20 w-24 rounded-3xl border-2 text-2xl font-semibold',
-                  !isCompleted && 'border-dashed'
-                )}
-              >
-                {isCompleted ? (
-                  <Check className="absolute size-10" />
-                ) : (
-                  <FlagTriangleRight
-                    fill="currentColor"
-                    className={cn(
-                      'absolute -top-7 left-1 size-12',
-                      STEP_FLAG_COLORS[index] ?? 'text-foreground',
-                      isInProgress && 'animate-pulse'
-                    )}
-                  />
-                )}
-                {!isCompleted && index + 1}
-              </Button>
-            </div>
-
-            {/* Title card */}
-            <div className="flex-1 rounded-2xl border border-border bg-card p-5 backdrop-blur-sm">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <h3 className="text-base font-semibold text-foreground leading-tight">
-                    {step.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {statusLabels[step.status]}
-                  </p>
-                </div>
-                <div className="hidden rounded-xl border border-border px-3 py-1 text-xs text-muted-foreground sm:block whitespace-nowrap">
-                  Step {index + 1}
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-
-      {/* Decorative connector — from your original component */}
-      <div className="pointer-events-none absolute left-10 top-16 hidden h-[75%] border-l border-dashed opacity-50 lg:block" />
-    </div>
-  );
-}
-
 function RoadmapPreviewSection() {
   return (
     <section className="py-20 md:py-28">
@@ -610,18 +223,12 @@ function RoadmapPreviewSection() {
         <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
           {/* Left: copy */}
           <div className="flex-1 max-w-[480px]">
-            <Badge variant="outline" className="rounded-full mb-4 text-xs">
-              Your Roadmap
-            </Badge>
-            <h2
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-5"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">
               Your roadmap,
               <br />
               in minutes.
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-heading">
               After your assessment, AICA generates a step-by-step plan tailored
               to your exact profile — not a template, a personalized roadmap you
               can start following today.
@@ -654,15 +261,17 @@ function RoadmapPreviewSection() {
               ))}
             </ul>
 
-            <Button size="lg" className="rounded-full px-8 gap-2">
-              See My Roadmap
-              <ArrowRight className="w-4 h-4" />
+            <Button asChild className="px-8 py-6 gap-2">
+              <Link to="/app/roadmap" viewTransition>
+                See My Roadmap
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </Button>
           </div>
 
           {/* Right: roadmap visual */}
           <div className="flex-1 flex justify-center lg:justify-end">
-            <LandingRoadmapPreview />
+            <RoadmapStepsPreview />
           </div>
         </div>
       </div>
@@ -724,16 +333,13 @@ function FeaturesSection() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-card border-y border-border">
+    <section
+      className="py-20 md:py-28 bg-card border-y border-border"
+      id="features"
+    >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
-          <Badge variant="outline" className="rounded-full mb-4 text-xs">
-            Features
-          </Badge>
-          <h2
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold">
             Everything to decide
             <br className="hidden sm:block" /> with confidence.
           </h2>
@@ -821,16 +427,10 @@ function ForWhoSection() {
   ];
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-28" id="for-you">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
-          <Badge variant="outline" className="rounded-full mb-4 text-xs">
-            Who It's For
-          </Badge>
-          <h2
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold">
             Built for people
             <br className="hidden sm:block" /> at crossroads.
           </h2>
@@ -923,13 +523,7 @@ function TestimonialsSection() {
     <section className="py-20 md:py-28 bg-card border-t border-border">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
-          <Badge variant="outline" className="rounded-full mb-4 text-xs">
-            Testimonials
-          </Badge>
-          <h2
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold">
             Real people,
             <br className="hidden sm:block" /> real clarity.
           </h2>
@@ -991,49 +585,30 @@ function CTASection() {
       />
 
       <div className="relative max-w-3xl mx-auto px-5 sm:px-8 text-center">
-        <Badge
-          variant="outline"
-          className="mb-7 rounded-full gap-2 border-white/20 text-white/60 bg-white/5"
-        >
-          <Zap className="w-3.5 h-3.5" />
-          Free to start · No account required
-        </Badge>
-
-        <h2
-          className="text-4xl md:text-5xl lg:text-[3.75rem] font-bold tracking-tight leading-[1.05] mb-5 text-background"
-          style={{ fontFamily: 'var(--font-heading)' }}
-        >
+        <h2 className="text-5xl md:text-6xl lg:text-[4rem] font-bold tracking-tight leading-[1.05] mb-5 text-background">
           Ready to find
           <br />
           your path?
         </h2>
 
-        <p className="text-lg leading-relaxed mb-9 max-w-[480px] mx-auto text-background/60">
+        <p className="text-base mb-9 max-w-[480px] mx-auto text-background/85">
           Take the 5-minute assessment and receive a personalized roadmap built
           around who you actually are.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          {/* Inverted primary: bg-background on bg-foreground */}
-          <Button
-            size="lg"
-            className="rounded-full px-8 text-base h-12 gap-2 bg-background text-foreground hover:bg-background/90"
-          >
+          <Button className="px-8 py-6 gap-2 bg-background text-foreground hover:bg-background/90">
             Start Free Assessment
             <ArrowRight className="w-4 h-4" />
           </Button>
-          <Button
-            size="lg"
-            variant="ghost"
-            className="rounded-full px-7 text-base h-12 text-white/60 hover:text-white hover:bg-white/10"
-          >
+          <Button variant="link" className="px-7 text-base text-background/60">
             Learn More
           </Button>
         </div>
 
-        <p className="mt-5 text-xs text-white/30">
-          No credit card · No account · 5 minutes
-        </p>
+        <h3 className="mt-7 md:mt-10 text-base text-background/50 font-heading">
+          No credit card , No account , 5 minutes
+        </h3>
       </div>
     </section>
   );
@@ -1048,23 +623,13 @@ function Footer() {
   };
 
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-card" id="about">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 mb-3">
-              <img
-                src="/light-logo.png"
-                alt="AICA"
-                className="w-8 h-8 rounded-xl object-cover"
-              />
-              <span
-                className="text-base font-bold tracking-tight"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                AICA
-              </span>
+              <AppLogo />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-50">
               AI-powered guidance for academic and career decisions.
@@ -1106,8 +671,7 @@ function Footer() {
   );
 }
 
-// ── Page root ──────────────────────────────────────────────────────────────────
-export default function LandingPage() {
+const LandingPage = () => {
   return (
     <>
       <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -1127,4 +691,6 @@ export default function LandingPage() {
       </div>
     </>
   );
-}
+};
+
+export default LandingPage;

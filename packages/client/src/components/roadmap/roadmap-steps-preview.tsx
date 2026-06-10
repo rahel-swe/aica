@@ -25,7 +25,7 @@ const RoadmapStepsPreview = () => {
               <Button
                 variant={isCompleted ? 'default' : 'outline'}
                 className={cn(
-                  'relative h-20 w-24 border-2 border-dashed text-2xl font-semibold'
+                  'relative h-20 w-24 border-2 border-dashed text-2xl font-semibold z-10 font-heading'
                 )}
               >
                 {isCompleted ? (
@@ -53,7 +53,7 @@ const RoadmapStepsPreview = () => {
             </div>
 
             {/* Title Card */}
-            <div className="flex-1 rounded-2xl border p-5 backdrop-blur-sm">
+            <div className="max-w-xs flex-1 rounded-4xl border p-5 backdrop-blur-sm">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <h3 className="text-lg font-semibold h-5 rounded-full max-w-100 w-full bg-secondary" />
@@ -75,9 +75,6 @@ const RoadmapStepsPreview = () => {
           </div>
         );
       })}
-
-      {/* Decorative Connector */}
-      <div className="pointer-events-none absolute left-10 top-16 hidden h-[75%] border-l border-dashed lg:block" />
     </div>
   );
 };

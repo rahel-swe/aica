@@ -100,9 +100,30 @@ const router = createBrowserRouter([
           { path: 'explore', element: <ExplorePage /> },
           { path: 'recommendations', element: <RecommendationsPage /> },
           { path: 'pathways/:pathwayId', element: <PathwayDetailPage /> },
-          { path: 'advisor', element: <AdvisorPage /> },
-          { path: 'roadmap', element: <RoadmapPage /> },
-          { path: 'settings', element: <SettingsPage /> },
+          {
+            path: 'advisor',
+            element: (
+              <RouterProtector>
+                <AdvisorPage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'roadmap',
+            element: (
+              <RouterProtector>
+                <RoadmapPage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'settings',
+            element: (
+              <RouterProtector>
+                <SettingsPage />
+              </RouterProtector>
+            ),
+          },
         ],
       },
       { path: '*', element: <NotFoundPage /> },

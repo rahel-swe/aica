@@ -9,6 +9,25 @@ import {
   MessageCircleMore,
 } from 'lucide-react';
 
+export const navLinks = [
+  {
+    to: '#features',
+    label: 'Features',
+  },
+  {
+    to: '#how-it-works',
+    label: 'How It Works',
+  },
+  {
+    to: '#for-you',
+    label: 'For You',
+  },
+  {
+    to: '#about',
+    label: 'About',
+  },
+];
+
 export const MAIN_TABS = [
   {
     label: 'Home',

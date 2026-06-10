@@ -1,6 +1,7 @@
 import { ExternalLink, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { SearchResult } from '@contracts/shared/types/advisor-types';
+import SpinnerBars from '../shadcn-space/spinner/spinner-06';
 
 // ─── Single resource card ──────────────────────────────────────────────────────
 
@@ -73,14 +74,16 @@ type SearchingIndicatorProps = {
 
 export function SearchingIndicator({ query }: SearchingIndicatorProps) {
   return (
-    <div className="flex items-center gap-2 text-xs text-muted-foreground py-1">
-      <Globe className="size-3.5 animate-pulse" />
-      <span>
+    <div className="flex items-center gap-2 text-xs text-muted-foreground py-1 font-heading">
+      <Globe className="size-4 animate-pulse" />
+      <span className="relative">
         Searching for{' '}
-        <span className="font-medium text-foreground">"{query}"</span>
-        <span className="animate-[ellipsis_1.5s_steps(4,end)_infinite]">
-          ...
-        </span>
+        <span className="font-sans text-foreground">"{query}"</span>
+        <SpinnerBars
+          className="absolute gap-0.5 top-3 -inset-e-4 h-0"
+          barClassName="w-0.5"
+          heights={['1px', '10px', '1px']}
+        />
       </span>
     </div>
   );

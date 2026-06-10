@@ -1,4 +1,3 @@
-import { navLinks } from '@/components/landing/navbar';
 import { ChevronRight, Menu } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
@@ -10,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 import ModeToggle from '../toggle-mode';
+import { navLinks } from '@/constants/app-tabs-data';
 
 const MotionDropdownMenuContent = motion.create(DropdownMenuContent);
 
@@ -24,7 +24,7 @@ const MobileNavDropDownMenu = () => {
       >
         <Button
           variant="ghost"
-          className="md:hidden dark:hover:bg-transparent hover:bg-transparent"
+          className="md:hidden dark:hover:bg-transparent hover:bg-transparent backdrop-blur-lg"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -43,8 +43,8 @@ const MobileNavDropDownMenu = () => {
         {navLinks.map((l) => {
           return (
             <motion.a
-              key={l}
-              href="#"
+              key={l.label}
+              href={l.to}
               type="button"
               variants={{
                 hidden: { opacity: 0, y: 10 },
@@ -54,7 +54,7 @@ const MobileNavDropDownMenu = () => {
               className="flex items-center justify-between"
             >
               <DropdownMenuItem className="py-3 px-4 dark:hover:bg-muted rounded-full text-sm font-medium text-muted-foreground cursor-pointer w-full justify-between">
-                {l}
+                {l.label}
                 <ChevronRight className="w-4 h-4 opacity-40" />
               </DropdownMenuItem>
             </motion.a>

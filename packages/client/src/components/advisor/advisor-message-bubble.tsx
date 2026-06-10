@@ -1,9 +1,10 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { AlertCircle, ArrowRight } from 'lucide-react';
+import { AlertCircle, ArrowRight, Lightbulb } from 'lucide-react';
 import { AdvisorResources, SearchingIndicator } from './advisor-resource-card';
 import type { AdvisorChatMessage } from '@contracts/shared/types/advisor-types';
 import { Streamdown } from 'streamdown';
+import SpinnerBars from '../shadcn-space/spinner/spinner-06';
 
 // ─── Committed message ──────────────────────────────────────────────────────────
 
@@ -19,9 +20,9 @@ export function AdvisorMessageBubble({
   if (message.role === 'user') {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[78%] bg-card rounded-4xl px-4 py-3 text-sm leading-relaxed">
+        <p className="max-w-[78%] bg-card rounded-4xl px-4 py-3 text-sm">
           {message.content}
-        </div>
+        </p>
       </div>
     );
   }
@@ -136,8 +137,18 @@ export function StreamingBubble({
 
         {content ? (
           <>
+            <div className="flex gap-x-1">
+              <Lightbulb className="size-4" />
+              <p className="flex text-xs self-end mt-1 gap-1">
+                Thinking{' '}
+                <SpinnerBars
+                  className="gap-0.5 top-3 h-3"
+                  barClassName="w-0.5"
+                  heights={['1px', '10px', '1px']}
+                />
+              </p>
+            </div>
             <MessageContent content={content} />
-            <span className="inline-block w-[2px] h-[14px] bg-foreground/70 align-middle ml-0.5 animate-pulse rounded-full" />
           </>
         ) : !searchingQuery ? (
           // Default loading dots when no search and no content yet
@@ -156,7 +167,7 @@ export function StreamingBubble({
 }
 
 function MessageContent({ content }: { content: string }) {
-  return <Streamdown>{content}</Streamdown>;
+  return <Streamdown className="font-heading">{content}</Streamdown>;
 }
 
 const contextSourceLabels: Record<string, string> = {
