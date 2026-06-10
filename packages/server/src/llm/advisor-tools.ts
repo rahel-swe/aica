@@ -1,7 +1,7 @@
 import type OpenAI from 'openai';
 import type { AdvisorResponseMode } from '@contracts/shared/types/advisor-types';
 
-// ─── Tool definitions ──────────────────────────────────────────────────────────
+// ─── Tool definitions ────────────
 // These are the only two categories of tools:
 //   1. web_search  — executed by the service (calls Tavily), runs in Phase 1
 //   2. metadata    — declared to the LLM, collected from stream, never executed
@@ -21,6 +21,7 @@ export const WEB_SEARCH_TOOL: OpenAI.ChatCompletionTool = {
 
 Do NOT search for information already present in the user's profile, pathway, or roadmap context.
 Keep your query specific and targeted (3–8 words).`,
+
     parameters: {
       type: 'object' as const,
       properties: {
@@ -92,7 +93,7 @@ const FLAG_CAUTION_TOOL: OpenAI.ChatCompletionTool = {
   },
 };
 
-// ─── Mode → tool configuration ────────────────────────────────────────────────
+// ─── Mode → tool configuration ───
 //
 // guided: full feature set — actions + follow-ups + cautions + search
 // focused: minimal chrome — direct answers, search when needed, real cautions only

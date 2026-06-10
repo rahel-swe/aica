@@ -3,14 +3,13 @@ import type {
   AdvisorChatRequest,
   AdvisorStreamEvent,
   AdvisorToolCall,
-  AdvisorIntent,
   AdvisorContextSource,
   SearchResult,
 } from '@contracts/shared/types/advisor-types';
 import { advisorConversationRepository } from '../repositories/advisor-conversation-repository';
 import { advisorContextBuilder } from './advisor-context-builder';
-import { runAdvisorCompletion } from '../llm/llm-client';
 import advisorSystemPromptTemplate from '@/src/llm/prompts/advisor-guidance-prompt.txt';
+import { runAdvisorCompletion } from '../llm/advisor-chat-completion';
 
 const LLM_HISTORY_WINDOW = 20;
 const TITLE_MAX_LENGTH = 80;
@@ -105,14 +104,12 @@ export class AdvisorService {
 
       const { actions, followUps, cautions } =
         this.extractToolResults(toolCalls);
-      const intent = this.inferIntent(request);
       const contextUsed = this.resolveContextSources(
         (conversation as any).contextSnapshot
       );
 
       this.sendEvent(res, {
         type: 'metadata',
-        intent,
         actions,
         followUps,
         cautions,
@@ -126,7 +123,6 @@ export class AdvisorService {
         .appendMessage(conversationId, {
           role: 'assistant',
           content: fullContent,
-          intent,
           actions,
           followUps,
           cautions,
@@ -277,11 +273,6 @@ export class AdvisorService {
       }
     }
     return { actions, followUps, cautions };
-  }
-
-  private inferIntent(request: AdvisorChatRequest): AdvisorIntent {
-    if (request.roadmapStep) return 'guide';
-    return 'general';
   }
 
   private resolveContextSources(

@@ -3,7 +3,6 @@ import type {
   AdvisorChatRequest,
   AdvisorConversation,
   AdvisorConversationSummary,
-  AdvisorIntent,
   AdvisorContextSource,
   AdvisorStreamEvent,
   SearchResult,
@@ -12,7 +11,6 @@ import type {
 // ─── Streaming metadata + resources shapes ─────────────────────────────────────
 
 export type AdvisorStreamMetadata = {
-  intent?: AdvisorIntent;
   actions: string[];
   followUps: string[];
   cautions: string[];
@@ -36,7 +34,7 @@ export function streamAdvisorChat(
   handlers: StreamHandlers,
   signal: AbortSignal
 ): void {
-  const baseUrl = (import.meta as any).env?.VITE_API_URL ?? '';
+  const baseUrl = import.meta.env?.VITE_API_URL ?? '';
   const token = localStorage.getItem('token');
 
   fetch(`${baseUrl}/api/advisor/chat`, {
@@ -86,7 +84,6 @@ export function streamAdvisorChat(
                 break;
               case 'metadata':
                 handlers.onMetadata({
-                  intent: event.intent,
                   actions: event.actions,
                   followUps: event.followUps,
                   cautions: event.cautions,

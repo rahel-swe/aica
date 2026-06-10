@@ -1,13 +1,9 @@
 import { Schema, model, type Document } from 'mongoose';
-import type {
-  AdvisorIntent,
-  AdvisorContextSource,
-} from '@contracts/shared/types/advisor-types';
+import type { AdvisorContextSource } from '@contracts/shared/types/advisor-types';
 
 export interface IAdvisorChatMessage {
   role: 'user' | 'assistant';
   content: string;
-  intent?: AdvisorIntent;
   actions: string[];
   followUps: string[];
   cautions: string[];
@@ -31,18 +27,6 @@ const advisorChatMessageSubSchema = new Schema<IAdvisorChatMessage>(
       required: true,
     },
     content: { type: String, required: true },
-    intent: {
-      type: String,
-      enum: [
-        'explain',
-        'decide',
-        'guide',
-        'reflect',
-        'adjust',
-        'verify',
-        'general',
-      ],
-    },
     actions: { type: [String], default: [] },
     followUps: { type: [String], default: [] },
     cautions: { type: [String], default: [] },

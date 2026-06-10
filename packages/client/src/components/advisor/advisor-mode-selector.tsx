@@ -7,9 +7,7 @@ import { cn } from '@/lib/utils';
 import type { AdvisorResponseMode } from '@contracts/shared/types/advisor-types';
 import { MessageCircleCheck, Target, Zap } from 'lucide-react';
 
-// ─── Mode config
-
-const colors = ['text-indigo-300', 'text-yellow-300', 'text-purple-400'];
+const colors = ['text-yellow-300', 'text-indigo-300', 'text-purple-400'];
 
 const MODES: {
   value: AdvisorResponseMode;
@@ -18,16 +16,16 @@ const MODES: {
   Icon: React.ElementType;
 }[] = [
   {
-    value: 'guided',
-    label: 'Guided',
-    tooltip: 'Full guidance — actions, suggestions, and web search',
-    Icon: MessageCircleCheck,
-  },
-  {
     value: 'focused',
     label: 'Focused',
     tooltip: 'Direct answers only — no suggestions, web search when needed',
     Icon: Target,
+  },
+  {
+    value: 'guided',
+    label: 'Guided',
+    tooltip: 'Full guidance — actions, suggestions, and web search',
+    Icon: MessageCircleCheck,
   },
   {
     value: 'deep',

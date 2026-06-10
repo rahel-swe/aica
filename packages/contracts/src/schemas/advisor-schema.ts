@@ -1,16 +1,6 @@
 import { z } from 'zod';
 
-// ─── Enums ─────────────────────────────────────────────────────────────────────
-
-export const advisorIntentSchema = z.enum([
-  'explain',
-  'decide',
-  'guide',
-  'reflect',
-  'adjust',
-  'verify',
-  'general',
-]);
+// ─── Enums ──────────
 
 // What the USER picks — controls which tools are active and how the LLM responds
 export const advisorResponseModeSchema = z.enum(['guided', 'focused', 'deep']);
@@ -39,7 +29,6 @@ export const searchResultSchema = z.object({
 export const advisorChatMessageSchema = z.object({
   role: z.enum(['user', 'assistant']),
   content: z.string().min(1),
-  intent: advisorIntentSchema.optional(),
   actions: z.array(z.string()).max(5).default([]),
   followUps: z.array(z.string()).max(3).default([]),
   cautions: z.array(z.string()).default([]),
@@ -114,7 +103,6 @@ export const advisorStreamEventSchema = z.discriminatedUnion('type', [
   }),
   z.object({
     type: z.literal('metadata'),
-    intent: advisorIntentSchema.optional(),
     actions: z.array(z.string()).default([]),
     followUps: z.array(z.string()).default([]),
     cautions: z.array(z.string()).default([]),

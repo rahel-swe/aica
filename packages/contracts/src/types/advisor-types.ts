@@ -1,6 +1,5 @@
 import type { z } from 'zod';
 import type {
-  advisorIntentSchema,
   advisorResponseModeSchema,
   advisorContextSourceSchema,
   searchResultSchema,
@@ -15,7 +14,6 @@ import type {
 
 // ─── Public contract types ─────────────────────────────────────────────────────
 
-export type AdvisorIntent = z.infer<typeof advisorIntentSchema>;
 export type AdvisorResponseMode = z.infer<typeof advisorResponseModeSchema>;
 export type AdvisorContextSource = z.infer<typeof advisorContextSourceSchema>;
 export type SearchResult = z.infer<typeof searchResultSchema>;

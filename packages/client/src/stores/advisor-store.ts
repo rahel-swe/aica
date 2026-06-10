@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import type {
   AdvisorChatMessage,
-  AdvisorIntent,
   AdvisorContextSource,
   AdvisorResponseMode,
   SearchResult,
@@ -53,7 +52,7 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
   activeConversationTitle: null,
   messages: [],
   streaming: null,
-  responseMode: 'guided',
+  responseMode: 'focused',
 
   startNewConversation: () =>
     set({
@@ -146,7 +145,6 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
     const assistantMessage: AdvisorChatMessage = {
       role: 'assistant',
       content: streaming.content,
-      intent: streaming.metadata?.intent,
       actions: streaming.metadata?.actions ?? [],
       followUps: streaming.metadata?.followUps ?? [],
       cautions: streaming.metadata?.cautions ?? [],
