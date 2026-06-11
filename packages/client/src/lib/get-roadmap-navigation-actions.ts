@@ -1,9 +1,9 @@
 import {
   ChevronLeft,
   ChevronRight,
-  Sparkles,
   ClipboardPen,
   type LucideIcon,
+  Check,
 } from 'lucide-react';
 
 type StepId = 'welcome' | 'finish' | string;
@@ -37,10 +37,10 @@ export function getRoadmapNavigationActions(stepId: StepId): NavigationActions {
       label: isWelcome
         ? 'Let’s build it'
         : isFinish
-          ? 'Create my roadmap'
+          ? 'Submit answers'
           : 'Keep going',
 
-      icon: isFinish ? Sparkles : ChevronRight,
+      icon: isFinish ? Check : ChevronRight,
     },
   };
 }

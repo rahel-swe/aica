@@ -20,16 +20,20 @@ import ActionDialog from '../action-dialog';
 import { Link, useNavigate } from 'react-router-dom';
 import { usePathwayAssessmentDeleteMutationQuery } from '@/queries/pathway-assessment-query';
 import { useRecommendationDeleteMutationQuery } from '@/queries/recommendation-query';
+import { useState } from 'react';
 
 const ProfileReadness = () => {
   const { mutateAsync: deleteRoadmap, isPending: isRoadmapDeleting } =
     useRoadmapDeleteMutation();
+
   const { mutateAsync: deleteRoadmapSetup, isPending: isRoadmpaSetupDeleting } =
     useRoadmapSetupAssessmentDeleteMutation();
+
   const {
     mutateAsync: deleteMyRecommendations,
     isPending: isRecommendationsDeleting,
   } = useRecommendationDeleteMutationQuery();
+
   const {
     mutateAsync: deletePathwayAssessment,
     isPending: isPathwayAssessmentDeleting,
@@ -37,6 +41,7 @@ const ProfileReadness = () => {
 
   const { data: roadmapQueryResponse, isPending: isRoadmapPending } =
     useRoadmapQuery();
+
   const navigate = useNavigate();
 
   const {
@@ -44,6 +49,11 @@ const ProfileReadness = () => {
     isPending: isProfilePending,
     refetch,
   } = useProfileStatusQuery();
+
+  const [openPathwayAssessmentDialog, setOpenPathwayAssessmentDialog] =
+    useState(false);
+  const [openRoadmapAssessmentDialog, setOpenRoadmapAssessmentDialog] =
+    useState(false);
 
   if (isProfilePending || isRoadmapPending) return <p>Pending...</p>;
 
@@ -81,6 +91,8 @@ const ProfileReadness = () => {
               </Button>
             ) : (
               <ActionDialog
+                open={openPathwayAssessmentDialog}
+                setOpen={setOpenPathwayAssessmentDialog}
                 trigger={
                   <Button
                     variant="outline"
@@ -91,6 +103,7 @@ const ProfileReadness = () => {
                       isPathwayAssessmentDeleting ||
                       isRecommendationsDeleting
                     }
+                    onClick={() => setOpenPathwayAssessmentDialog(true)}
                   >
                     <Pencil />
                     Edit
@@ -137,6 +150,8 @@ const ProfileReadness = () => {
                 </Button>
               ) : (
                 <ActionDialog
+                  open={openRoadmapAssessmentDialog}
+                  setOpen={setOpenRoadmapAssessmentDialog}
                   trigger={
                     <Button
                       variant="outline"
@@ -147,6 +162,13 @@ const ProfileReadness = () => {
                         isPathwayAssessmentDeleting ||
                         isRecommendationsDeleting
                       }
+                      onClick={() => {
+                        if (roadmapData) setOpenRoadmapAssessmentDialog(true);
+                        else
+                          navigate('/roadmap-setup-assessment', {
+                            viewTransition: true,
+                          });
+                      }}
                     >
                       <Pencil />
                       Edit

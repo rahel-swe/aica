@@ -24,7 +24,7 @@ export const useRoadmapSetupAssessment = () => {
 
   useEffect(() => {
     if (isRoadmapSetupSucceeded)
-      navigate('/roadmap-setup-assessment/finish', {
+      navigate('/app/roadmap', {
         viewTransition: true,
       });
   }, [isRoadmapSetupSucceeded, navigate]);
@@ -52,6 +52,7 @@ export const useRoadmapSetupAssessment = () => {
     currentIndex,
     form,
     isRoadmapSetupCreating,
+    isRoadmapSetupSucceeded,
     submitRoadmapSetup,
   };
 };

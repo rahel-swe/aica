@@ -27,7 +27,7 @@ export default function RootLayout() {
             </main>
           </TooltipProvider>
 
-          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+          <ReactQueryDevtools initialIsOpen={false} position="top" />
         </QueryClientProvider>
       </ThemeProvider>
     </NuqsAdapter>

@@ -3,7 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { Field, FieldContent, FieldLabel, FieldTitle } from '../ui/field';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { cn } from '@/lib/utils';
-import { roadmapStepFlagColors } from '../roadmap/roadmap-view-utils';
+import { roadmapStepFlagColors } from '../../lib/roadmap-view-utils';
 import {
   Popover,
   PopoverContent,

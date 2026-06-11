@@ -3,7 +3,7 @@ import { Field, FieldLabel, FieldTitle, FieldContent } from '../ui/field';
 import { Checkbox } from '../ui/checkbox';
 import type { PathwayAssessmentOption } from '@/constants/pathway-assessment-steps-data';
 import { cn } from '@/lib/utils';
-import { roadmapStepFlagColors } from '../roadmap/roadmap-view-utils';
+import { roadmapStepFlagColors } from '../../lib/roadmap-view-utils';
 import {
   Popover,
   PopoverContent,

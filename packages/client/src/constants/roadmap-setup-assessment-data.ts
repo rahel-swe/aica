@@ -29,8 +29,6 @@ import type {
 
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const roadmapSetupDefaultValues: RoadmapSetupAssessmentFormValues = {
   constraints: ['beginner'],
   currentStage: 'self_learning',
@@ -52,6 +50,7 @@ export type RoadmapSetupStep = {
   id: RoadmapStepId;
   type: PathwayAssessmentStepType;
   title: string;
+  description?: string;
   helperText?: string;
   fieldName?: keyof RoadmapSetupAssessmentFormValues;
   minSelect?: number;
@@ -266,6 +265,6 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
     id: 'finish',
     type: 'cta',
     title: 'Your roadmap setup is ready',
-    helperText: 'Submit to save your setup and continue.',
+    description: 'Submit to save your setup and continue.',
   },
 ] as const;

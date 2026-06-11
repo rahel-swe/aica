@@ -1,6 +1,6 @@
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
 import { motion } from 'motion/react';
-import { formatRoadmapStyle } from './roadmap-view-utils';
+import { formatRoadmapStyle } from '../../lib/roadmap-view-utils';
 import { Badge } from '@/components/ui/badge';
 
 type RoadmapHeroProps = {
