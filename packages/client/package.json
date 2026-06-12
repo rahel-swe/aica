@@ -68,6 +68,7 @@
     "globals": "^16.5.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.59.1",
-    "vite": "^7.3.2"
+    "vite": "^7.3.2",
+    "@inlang/paraglide-js": "^2.19.0"
   }
 }

@@ -9,9 +9,15 @@ export const strengthsEnum = [
   'hands_on',
   'fast_learning',
   'organized',
-];
+] as const;
 
-export const subjectsEnum = ['math', 'science', 'writing', 'arts', 'social'];
+export const subjectsEnum = [
+  'math',
+  'science',
+  'writing',
+  'arts',
+  'social',
+] as const;
 
 export const passionsEnum = [
   'tech',
@@ -23,7 +29,7 @@ export const passionsEnum = [
   'nature',
   'building',
   'ideas',
-];
+] as const;
 
 export const freeTimeEnum = [
   'build',
@@ -31,7 +37,7 @@ export const freeTimeEnum = [
   'socialize',
   'consume',
   'learn',
-];
+] as const;
 
 export const workEnvironmentEnum = [
   'office',
@@ -39,9 +45,15 @@ export const workEnvironmentEnum = [
   'outdoor',
   'lab',
   'mixed',
-];
+] as const;
 
-export const workStyleEnum = ['analyze', 'help', 'build', 'create', 'routine'];
+export const workStyleEnum = [
+  'analyze',
+  'help',
+  'build',
+  'create',
+  'routine',
+] as const;
 
 export const impactEnum = [
   'create',
@@ -49,9 +61,15 @@ export const impactEnum = [
   'discover',
   'systems',
   'express',
-];
+] as const;
 
-export const goalsEnum = ['impact', 'money', 'balance', 'growth', 'variety'];
+export const goalsEnum = [
+  'impact',
+  'money',
+  'balance',
+  'growth',
+  'variety',
+] as const;
 
 export const pathwayAssessmentStrengthSchema = z.enum(strengthsEnum);
 
