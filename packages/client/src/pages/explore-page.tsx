@@ -49,8 +49,6 @@ export default function ExplorePage() {
     isFetchingNextPage,
   } = usePathwaysQuery();
 
-  if (isPending) return <SpinnerBars />;
-
   if (isError) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -64,6 +62,7 @@ export default function ExplorePage() {
   return (
     <div className="flex flex-col flex-1 md:min-h-0 md:h-full gap-6 pt-18 pb-20 md:pt-0 md:pb-0">
       <ScrollArea className="p-4 md:p-0 md:pe-4">
+        {/* HEADER */}
         <div className="space-y-2">
           <h1 className="text-3xl font-semibold tracking-tight">
             Browse aligned pathways
@@ -112,8 +111,12 @@ export default function ExplorePage() {
           </Button>
         </div>
 
-        {/* LIST */}
-        {pathways.length === 0 ? (
+        {/* ONLY PATHWAYS LOADING */}
+        {isPending ? (
+          <div className="flex justify-center py-20">
+            <SpinnerBars />
+          </div>
+        ) : pathways.length === 0 ? (
           <div className="flex items-center justify-center py-20 text-muted-foreground">
             No pathways found.
           </div>
