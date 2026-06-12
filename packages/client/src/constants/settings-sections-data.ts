@@ -25,14 +25,14 @@ export const settingsSections: Array<{
     icon: User,
   },
   {
-    id: 'notifications',
-    title: 'Notifications',
-    icon: Bell,
-  },
-  {
     id: 'security',
     title: 'Security',
     icon: Lock,
+  },
+  {
+    id: 'notifications',
+    title: 'Notifications',
+    icon: Bell,
   },
   {
     id: 'language',

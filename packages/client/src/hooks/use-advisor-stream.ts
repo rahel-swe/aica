@@ -36,14 +36,14 @@ export function useAdvisorStream() {
           onStart: (conversationId) => {
             useAdvisorStore.getState().confirmConversationId(conversationId);
           },
-          // ← NEW: surface "searching" state to the streaming bubble
+          // ← surface "searching" state to the streaming bubble
           onSearching: (query) => {
             useAdvisorStore.getState().setSearchingQuery(query);
           },
           onDelta: (content) => {
             useAdvisorStore.getState().pushDelta(content);
           },
-          // ← NEW: commit resources before metadata
+          // commit resources before metadata
           onResources: (items) => {
             useAdvisorStore.getState().applyResources(items);
           },

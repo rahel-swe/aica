@@ -29,7 +29,7 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left: copy */}
           <div className="flex-1 flex flex-col gap-8  text-center lg:mx-auto ">
-            <h1 className="afu d2 text-6xl sm:text-7xl lg:text-[5rem] font-bold leading-[1.2] text-foreground">
+            <h1 className="afu d2 text-6xl sm:text-7xl lg:text-[5rem] font-bold leading-[1.2] text-foreground font-heading">
               Discover your
               <br />
               right path

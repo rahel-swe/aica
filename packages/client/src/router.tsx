@@ -37,7 +37,14 @@ const router = createBrowserRouter([
           { index: true, element: <LandingPage /> },
           { path: 'auth/sign-in', element: <SignInPage /> },
           { path: 'auth/sign-up', element: <SignUpPage /> },
-          { path: 'auth/change-password', element: <ChangePasswordPage /> },
+          {
+            path: 'auth/change-password',
+            element: (
+              <RouterProtector>
+                <ChangePasswordPage />
+              </RouterProtector>
+            ),
+          },
           {
             path: 'auth/change-password-succeed',
             element: <ChangePasswordSucceedPage />,
@@ -58,17 +65,29 @@ const router = createBrowserRouter([
           },
           {
             path: ':stepId',
-            element: <PathwayAssessmentStepsPage />,
+            element: (
+              <RouterProtector>
+                <PathwayAssessmentStepsPage />
+              </RouterProtector>
+            ),
           },
         ],
       },
       {
         path: 'pathway-recommendations',
-        element: <PathwayRecommendedPathwaysLayout />,
+        element: (
+          <RouterProtector>
+            <PathwayRecommendedPathwaysLayout />
+          </RouterProtector>
+        ),
       },
       {
         path: 'pathway-congratulations',
-        element: <PathwayCongratulations />,
+        element: (
+          <RouterProtector>
+            <PathwayCongratulations />
+          </RouterProtector>
+        ),
       },
       {
         path: 'roadmap-setup-assessment',
@@ -84,7 +103,11 @@ const router = createBrowserRouter([
           },
           {
             path: ':stepId',
-            element: <RoadmapSetupAssesmentStepsPage />,
+            element: (
+              <RouterProtector>
+                <RoadmapSetupAssesmentStepsPage />
+              </RouterProtector>
+            ),
           },
         ],
       },
@@ -97,10 +120,38 @@ const router = createBrowserRouter([
         ),
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> },
-          { path: 'dashboard', element: <DashboardPage /> },
-          { path: 'explore', element: <ExplorePage /> },
-          { path: 'recommendations', element: <RecommendationsPage /> },
-          { path: 'pathways/:pathwayId', element: <PathwayDetailPage /> },
+          {
+            path: 'dashboard',
+            element: (
+              <RouterProtector>
+                <DashboardPage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'explore',
+            element: (
+              <RouterProtector>
+                <ExplorePage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'recommendations',
+            element: (
+              <RouterProtector>
+                <RecommendationsPage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'pathways/:pathwayId',
+            element: (
+              <RouterProtector>
+                <PathwayDetailPage />
+              </RouterProtector>
+            ),
+          },
           {
             path: 'advisor',
             element: (

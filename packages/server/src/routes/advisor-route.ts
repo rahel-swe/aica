@@ -5,11 +5,9 @@ import { authorize } from '../middleware/auth-middleware';
 const advisorRouter = Router();
 
 // All advisor routes require an authenticated user.
-// The previous version was missing `authorize` on DELETE — this is fixed.
 advisorRouter.use(authorize);
 
 // POST /chat → SSE stream (Content-Type: text/event-stream)
-// Body: AdvisorChatRequest
 // Client must read the stream and parse 'data: {...}' SSE events.
 advisorRouter.post('/chat', advisorController.chat);
 

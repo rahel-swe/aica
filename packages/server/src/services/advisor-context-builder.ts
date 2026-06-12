@@ -17,8 +17,8 @@ import type {
 import type { RecommendationItem } from '@contracts/shared/types/pathway-domain-types';
 
 export class AdvisorContextBuilder {
-  // ─── Build fresh context from DB ────────────────────────────────────────────
-  // Call once per conversation creation only — not every message.
+  // ─── Building fresh context from DB ────────────────────────────────────────────
+  // Calling once per conversation creation only — not every message.
 
   async build(
     userId: string,
@@ -34,11 +34,11 @@ export class AdvisorContextBuilder {
 
     // Strip Mongoose document wrapper without casting every type
     const onboarding = onboardingRaw
-      ? ((onboardingRaw as any).toObject?.() ??
+      ? (onboardingRaw.toObject?.() ??
         (onboardingRaw as Record<string, unknown>))
       : null;
 
-    const recommendations: AdvisorContext['recommendations'] = (
+    const recommendations = (
       (recommendationsRaw as unknown as RecommendationItem[]) ?? []
     )
       .slice(0, 3)

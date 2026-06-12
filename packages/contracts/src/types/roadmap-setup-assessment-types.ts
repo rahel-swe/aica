@@ -53,10 +53,10 @@ export type RoadmapSetupAssessmentStatusResponse = {
   data?: {
     pickedPathwayId: string;
     constraints: RoadmapSetupAssessmentConstraint[];
-    currentStage?: RoadmapSetupAssessmentCurrentStage;
-    weeklyTime?: RoadmapSetupAssessmentWeeklyTime;
-    timeline?: RoadmapSetupAssessmentTimeline;
-    roadmapStyle?: RoadmapSetupAssessmentStyle;
+    currentStage: RoadmapSetupAssessmentCurrentStage;
+    weeklyTime: RoadmapSetupAssessmentWeeklyTime;
+    timeline: RoadmapSetupAssessmentTimeline;
+    roadmapStyle: RoadmapSetupAssessmentStyle;
     completed: boolean;
     _id: string;
     stepsCompleted: number;

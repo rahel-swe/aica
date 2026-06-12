@@ -106,7 +106,7 @@ export type RecommendationItem = {
   visibilityLayer?: PathwayVisibilityLayer;
   direction?: RecommendationGroupRef;
   family?: RecommendationGroupRef;
-  rank?: number;
+  rank: number;
   matchingVersion?: number;
 };
 

@@ -63,9 +63,9 @@ export type PathwayRoadmap = {
   status: RoadmapStatus;
   title: string;
   summary: string;
-  currentLevel?: string;
+  currentLevel: string;
   timeBudgetPerWeek?: string;
-  roadmapStyle?: RoadmapStyle;
+  roadmapStyle: RoadmapStyle;
   phases: RoadmapPhase[];
   steps: RoadmapStep[];
   lastGeneratedAt?: string;
