@@ -1,113 +1,228 @@
-import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
-import type {
-  PathwayMatchProfile,
-  RecommendationItem,
-} from '@contracts/shared/types/pathway-domain-types';
-import explainRecommendationPrompt from '@/src/llm/prompts/recommendation-explanation-prompt.txt';
-import { createTextCompletion } from '../llm/llm-client';
+/**
+ * recommendation-explanation.service.ts
+ *
+ * LLM-generated explanation for a single recommendation.
+ * Called ONLY when the user explicitly clicks "Why?" — never at scoring time.
+ * Result is cached in the recommendation document after first generation.
+ *
+ * Cost model:
+ *   - First "Why?" request: ~400 tokens (prompt + response)
+ *   - Subsequent requests: 0 tokens (served from DB cache)
+ *   - Scoring time: 0 tokens (reasons[] are rule-based, no LLM)
+ */
 
-export class RecommendationExplanationService {
-  async enrichRecommendations(
-    recommendations: RecommendationItem[],
-    profile: PathwayAssessmentFormValues
-  ): Promise<RecommendationItem[]> {
-    // Explanations are optional enrichment, not part of core matching.
-    return await Promise.all(
-      recommendations.map(async (recommendation) => {
-        try {
-          const explanation = await createTextCompletion(
-            this.renderPrompt(
-              explainRecommendationPrompt,
-              recommendation,
-              profile
-            )
-          );
+import { createTextCompletion, LLM_MODEL } from '../llm/llm-client';
+import { PathwayModel } from '../models/pathway-model';
+import { recommendationRepository } from '../repositories/recommendation-repository';
 
-          return {
-            ...recommendation,
-            explanation: explanation.trim() || undefined,
-          };
-        } catch {
-          return recommendation;
-        }
-      })
-    );
+import type { RecommendationExplanationResponse } from '@contracts/shared/schemas/recommendation-schema';
+
+// ── Retry utility ─────────────────────────────────────────────────────────────
+// Exponential backoff: 700ms → 1400ms → 2800ms
+// Retries transient failures (network, 5xx, rate-limit).
+// Does NOT retry 4xx — those indicate a bad prompt or auth issue.
+
+type RetryOptions = { attempts: number; baseDelayMs: number };
+
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  { attempts, baseDelayMs }: RetryOptions
+): Promise<T> {
+  let lastError: Error = new Error('Unknown error');
+
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastError = err instanceof Error ? err : new Error(String(err));
+
+      const isClientError =
+        lastError.message.includes('400') ||
+        lastError.message.includes('401') ||
+        lastError.message.includes('403');
+
+      if (isClientError || i === attempts) throw lastError;
+
+      // Exponential backoff: 700ms, 1400ms, 2800ms
+      await new Promise((r) => setTimeout(r, baseDelayMs * i));
+    }
   }
 
-  private renderPrompt(
-    template: string,
-    recommendation: RecommendationItem,
-    profile: PathwayAssessmentFormValues
-  ): string {
-    return template
-      .replace('{{pathway_title}}', recommendation.title)
-      .replace('{{pathway_summary}}', recommendation.summary)
-      .replace('{{system_reasons}}', recommendation.reasons.join(' '))
-      .replace('{{user_strengths}}', profile.strengths.join(', ') || 'none')
-      .replace('{{user_subject}}', profile.subjects)
-      .replace('{{user_passions}}', profile.passions.join(', ') || 'none')
-      .replace('{{user_work_style}}', profile.workStyle)
-      .replace('{{user_impact}}', profile.impact)
-      .replace('{{user_goals}}', profile.goals);
-  }
+  throw lastError;
+}
 
-  buildReasons(
-    onboarding: PathwayAssessmentFormValues,
-    profile: PathwayMatchProfile
-  ) {
-    const reasons: string[] = [];
+// ── Prompt template ───────────────────────────────────────────────────────────
+// Lean and focused. No filler. The model's job is to connect
+// the specific user profile signals to the specific pathway — not to
+// write a generic career overview.
 
-    const strongestStrength = profile.strengths
-      .filter((item) => onboarding.strengths.includes(item.value))
-      .sort((a, b) => b.weight - a.weight)[0];
+function buildExplanationPrompt(params: {
+  pathwayTitle: string;
+  pathwaySummary: string;
+  strengths: string[];
+  passions: string[];
+  workStyle: string[];
+  impact: string[];
+  goals: string;
+  collaborationStyle: string;
+  learningPreference: string[];
+  matchPercent: number;
+  reasons: string[];
+}): string {
+  const {
+    pathwayTitle,
+    pathwaySummary,
+    strengths,
+    passions,
+    workStyle,
+    impact,
+    goals,
+    collaborationStyle,
+    learningPreference,
+    matchPercent,
+    reasons,
+  } = params;
 
-    if (strongestStrength) {
-      reasons.push(
-        `Matches your strength in ${strongestStrength.value.replaceAll('_', ' ')}.`
+  return `You are AICA's career guidance system. Write a short, honest explanation of why a specific career path was recommended to a specific user.
+
+PATHWAY
+Title: ${pathwayTitle}
+Summary: ${pathwaySummary}
+
+USER PROFILE
+Strengths: ${strengths.join(', ') || 'not specified'}
+Passions: ${passions.join(', ') || 'not specified'}
+Work style: ${workStyle.join(', ') || 'not specified'}
+Impact preference: ${impact.join(', ') || 'not specified'}
+Primary goal: ${goals}
+Collaboration preference: ${collaborationStyle}
+Learning preference: ${learningPreference.join(', ') || 'not specified'}
+
+MATCH
+Score: ${matchPercent}%
+Top signals already identified: ${reasons.join(' | ')}
+
+INSTRUCTIONS
+- Write 3–4 sentences maximum.
+- Reference the user's specific traits — do not write generic career advice.
+- Be honest: if the match is moderate (below 65%), acknowledge what is uncertain.
+- Never use phrases like "exciting opportunity" or "rewarding career".
+- End with one concrete reason why this path is worth exploring for this specific person.
+- Do not repeat the top signals verbatim — add depth to them.
+- Write in second person ("Your analytical strength...").
+
+Return only the explanation text. No headers. No bullet points.`;
+}
+
+// ── Service ───────────────────────────────────────────────────────────────────
+
+class RecommendationExplanationService {
+  /**
+   * Returns a cached explanation if one exists.
+   * If not cached, calls the LLM, caches the result, and returns it.
+   *
+   * The recommendation must belong to the requesting user — the repository
+   * query enforces ownership before this is called.
+   */
+  async getOrGenerate(
+    recommendationId: string,
+    userId: string
+  ): Promise<RecommendationExplanationResponse> {
+    // ── 1. Load recommendation (ownership verified) ────────────────────────
+    const rec = await recommendationRepository.findOneByIdAndUserId(
+      recommendationId,
+      userId
+    );
+
+    if (!rec) {
+      throw new Error('Recommendation not found.');
+    }
+
+    // ── 2. Return cached explanation if available ─────────────────────────
+    if (rec.explanation && rec.explanationGeneratedAt) {
+      return {
+        success: true,
+        message: 'Explanation retrieved from cache.',
+        data: {
+          recommendationId,
+          pathwaySlug: rec.pathwaySlug,
+          explanation: rec.explanation,
+          generatedAt: rec.explanationGeneratedAt.toISOString(),
+          generatedByModel: rec.explanationModel ?? LLM_MODEL,
+        },
+      };
+    }
+
+    // ── 3. Load pathway English content for prompt context ─────────────────
+    const pathway = await PathwayModel.findOne(
+      { slug: rec.pathwaySlug },
+      { 'translations.en.title': 1, 'translations.en.summary': 1 }
+    ).lean();
+
+    const titleEn =
+      pathway?.translations?.get?.('en')?.title ?? rec.pathwaySlug;
+    const summaryEn = pathway?.translations?.get?.('en')?.summary ?? '';
+
+    // ── 4. Extract profile values from snapshot ────────────────────────────
+    const snapshot = rec.sourceProfileSnapshot as Record<string, unknown>;
+
+    const prompt = buildExplanationPrompt({
+      pathwayTitle: titleEn,
+      pathwaySummary: summaryEn,
+      strengths: (snapshot.strengths as string[]) ?? [],
+      passions: (snapshot.passions as string[]) ?? [],
+      workStyle: (snapshot.workStyle as string[]) ?? [],
+      impact: (snapshot.impact as string[]) ?? [],
+      goals: (snapshot.goals as string) ?? '',
+      collaborationStyle: (snapshot.collaborationStyle as string) ?? '',
+      learningPreference: (snapshot.learningPreference as string[]) ?? [],
+      matchPercent: rec.matchPercent,
+      reasons: rec.reasons,
+    });
+
+    // ── 5. Call LLM with retry ─────────────────────────────────────────────
+    let explanation: string;
+
+    try {
+      explanation = await withRetry(
+        () => createTextCompletion(prompt, { maxTokens: 300 }),
+        { attempts: 3, baseDelayMs: 700 }
+      );
+    } catch (err) {
+      throw new Error(
+        `Explanation generation failed after retries: ${
+          err instanceof Error ? err.message : String(err)
+        }`
       );
     }
 
-    const subjectMatch = profile.subjects.find(
-      (item) => item.value === onboarding.subjects
-    );
-
-    if (subjectMatch) {
-      reasons.push(
-        `Aligns with your subject preference in ${subjectMatch.value}.`
-      );
+    if (!explanation.trim()) {
+      throw new Error('LLM returned an empty explanation.');
     }
 
-    const passionMatch = profile.passions.find((item) =>
-      onboarding.passions.includes(item.value)
+    // ── 6. Cache in DB ─────────────────────────────────────────────────────
+    await recommendationRepository.updateExplanation(
+      recommendationId,
+      explanation.trim(),
+      LLM_MODEL
     );
 
-    if (passionMatch) {
-      reasons.push(`Connects with your interest in ${passionMatch.value}.`);
-    }
+    const generatedAt = new Date().toISOString();
 
-    const workStyleMatch = profile.workStyle.find(
-      (item) => item.value === onboarding.workStyle
-    );
-
-    if (workStyleMatch) {
-      reasons.push(
-        `Fits your preferred work style: ${workStyleMatch.value.replaceAll('_', ' ')}.`
-      );
-    }
-
-    const impactMatch = profile.impact.find(
-      (item) => item.value === onboarding.impact
-    );
-
-    if (impactMatch) {
-      reasons.push(
-        `Supports the kind of impact you value: ${impactMatch.value}.`
-      );
-    }
-
-    return reasons.slice(0, 4);
+    return {
+      success: true,
+      message: 'Explanation generated.',
+      data: {
+        recommendationId,
+        pathwaySlug: rec.pathwaySlug,
+        explanation: explanation.trim(),
+        generatedAt,
+        generatedByModel: LLM_MODEL,
+      },
+    };
   }
 }
 
 export const recommendationExplanationService =
   new RecommendationExplanationService();
+// NOTE: withRetry was added inline above the class definition

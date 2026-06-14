@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 import '../models/taxonomy-node-model';
 import { PathwayModel } from '../models/pathway-model';
+import type { SupportedLocale } from '@contracts/shared/schemas/i18n';
+import type {
+  PathwayDocument,
+  PathwayTranslatableFields,
+} from '@contracts/shared/schemas/pathway-domain-schema';
 
 export class PathwayRepository {
   async createMany(data: any[]) {
@@ -20,6 +25,13 @@ export class PathwayRepository {
 
   async findAllActive() {
     return await PathwayModel.find({ status: 'active' });
+  }
+
+  private resolveTranslation(
+    doc: PathwayDocument,
+    locale: SupportedLocale
+  ): PathwayTranslatableFields {
+    return doc.translations[locale] ?? doc.translations['en'];
   }
 
   async findAllActiveWithCursor(

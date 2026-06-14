@@ -32,13 +32,18 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: '/',
+        index: true,
+        element: <LandingPage />,
+      },
+      {
         element: <AuthLayout />,
+        path: 'auth',
         children: [
-          { index: true, element: <LandingPage /> },
-          { path: 'auth/sign-in', element: <SignInPage /> },
-          { path: 'auth/sign-up', element: <SignUpPage /> },
+          { path: 'sign-in', index: true, element: <SignInPage /> },
+          { path: 'sign-up', element: <SignUpPage /> },
           {
-            path: 'auth/change-password',
+            path: 'change-password',
             element: (
               <RouterProtector>
                 <ChangePasswordPage />
@@ -46,7 +51,7 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: 'auth/change-password-succeed',
+            path: 'change-password-succeed',
             element: <ChangePasswordSucceedPage />,
           },
         ],

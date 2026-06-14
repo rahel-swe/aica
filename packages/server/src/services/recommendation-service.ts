@@ -1,629 +1,437 @@
+/**
+ * recommendation.service.ts
+ *
+ * Owns the full recommendation lifecycle:
+ *   generate()    — score all pathways, write to DB (POST /recommendations/generate)
+ *   getOverview() — read stored results as 3-layer structure (GET /recommendations/me)
+ *
+ * Critical rule: getOverview() is READ-ONLY.
+ * It never calls the scoring engine. generate() writes. getOverview() reads.
+ *
+ * 3-layer response architecture:
+ *   Layer 1 — Family    (domain-level:  "Technology broadly")
+ *   Layer 2 — Direction (field-level:   "Software Development")
+ *   Layer 3 — Pathway   (individual:    "Frontend Development, 87%")
+ *
+ * Pathway display data (title, summary) is NOT stored in recommendations.
+ * Frontend enriches each pathwaySlug by calling GET /pathways/:slug?locale=fa.
+ * Taxonomy labels (direction name, family name) are resolved the same way.
+ */
+
+import mongoose from 'mongoose';
+
+import { recommendationRepository } from '../repositories/recommendation-repository';
+
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import type {
-  MatchWeight,
+  PathwayScoringProjection,
   PathwayMatchProfile,
-  PathwayVisibilityLayer,
-  RecommendationDirectionMatch,
-  RecommendationFamilyMatch,
-  RecommendationGroupRef,
-  RecommendationOverview,
-  RecommendationItem,
+  RecommendationDimensionScores,
+  TaxonomyNodeKind,
 } from '@contracts/shared/types/pathway-domain-types';
-import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
-import { pathwayMatchProfileRepository } from '../repositories/pathway-match-profile-repository';
-import { pathwayRepository } from '../repositories/pathway-repository';
-import { recommendationRepository } from '../repositories/recommendation-repository';
-import { recommendationExplanationService } from './recommendation-explanation-service';
+import type {
+  RecommendationOverview,
+  PathwayRecommendation,
+  DirectionRecommendation,
+  FamilyRecommendation,
+} from '@contracts/shared/schemas/recommendation-schema';
+import type { RecommendationInsertDoc } from '../repositories/recommendation-repository';
+import { PathwayAssessmentModel } from '../models/pathway-assessment-model';
+import { PathwayMatchProfileModel } from '../models/pathway-match-profile-model';
+import { PathwayModel } from '../models/pathway-model';
+import { TaxonomyNodeModel } from '../models/taxonomy-node-model';
 import {
-  DIMENSION_WEIGHTS,
   pathwayScoringEngine,
+  CURRENT_MATCHING_VERSION,
 } from '../utils/pathway-scoring-engin';
+import { buildReasons } from '../utils/recommendation-reasons';
 
-type PathwayProfileShape = PathwayMatchProfile;
+// ── Internal types ────────────────────────────────────────────────────────────
 
-type PathwayTaxonomyNode = {
-  name: string;
-  slug: string;
-  kind: 'domain' | 'field' | 'specialization';
-};
-
-type PathwayRecord = {
-  _id: unknown;
-  title: string;
-  slug: string;
-  type: RecommendationItem['type'];
-  summary: string;
-  visibilityLayer?: PathwayVisibilityLayer;
-  taxonomyNodeIds: PathwayTaxonomyNode[];
-};
-
-type RecommendationScoreSnapshot = Omit<
-  RecommendationItem,
-  'matchPercent' | 'visibilityLayer' | 'direction' | 'family'
-> & {
-  matchPercent: number;
-  visibilityLayer: PathwayVisibilityLayer;
-  direction: RecommendationGroupRef;
-  family?: RecommendationGroupRef;
-  rankingSignals: {
-    strongMatches: number;
-    supportingMatches: number;
-    penaltyConflicts: number;
-    matchedDimensions: number;
-  };
-};
-
-type RecommendationGroupCandidate = {
-  key: string;
-  title: string;
-  direction?: RecommendationGroupRef;
-  topEntries: RecommendationScoreSnapshot[];
+interface ScoredPathway {
+  pathwayId: string;
+  pathwaySlug: string;
+  directionSlug?: string;
+  familySlug?: string;
+  dimensionScores: RecommendationDimensionScores;
   totalScore: number;
   matchPercent: number;
-  pathwayCount: number;
-  topPathwaySlugs: string[];
-};
+  reasons: string[];
+}
 
-const DIRECTION_COUNT = 3;
-const FAMILY_COUNT = 15;
+interface TaxonomyNodeMinimal {
+  id: string;
+  slug: string;
+  kind: TaxonomyNodeKind;
+  parentId: string | null;
+}
 
-const VISIBILITY_SCORE_WEIGHTS: Record<PathwayVisibilityLayer, number> = {
-  primary: 1,
-  adjacent: 0.84,
-  specialized: 0.68,
-};
+// ── Service ───────────────────────────────────────────────────────────────────
 
-export class RecommendationService {
-  private readonly pathwayRepository = pathwayRepository;
-  private readonly pathwayMatchProfileRepository =
-    pathwayMatchProfileRepository;
-  private readonly recommendationRepository = recommendationRepository;
-  private readonly explanationService = recommendationExplanationService;
-  private readonly pathwayAssessment = pathwayAssessmentRepository;
-  private readonly scoringEngine = pathwayScoringEngine;
+class RecommendationService {
+  // ── Generate ────────────────────────────────────────────────────────────────
 
-  async generateRecommendations(
-    userId: string
-  ): Promise<RecommendationOverview> {
-    return await this.buildRecommendationOverview(userId);
-  }
-
-  async deleteRecommendations(userId: string) {
-    return await recommendationRepository.deleteMyRecommendations(userId);
-  }
-
-  async getRecommendations(userId: string): Promise<RecommendationOverview> {
-    return await this.buildRecommendationOverview(userId);
-  }
-
-  private async buildRecommendationOverview(
-    userId: string
-  ): Promise<RecommendationOverview> {
-    const onboarding = await this.pathwayAssessment.findByUserId(userId);
-
-    if (!onboarding) {
-      throw new Error(
-        'Complete onboarding first before generating recommendations.'
-      );
-    }
-
-    const [profiles, pathwaysRaw, existingRecommendations] = await Promise.all([
-      this.pathwayMatchProfileRepository.findAllActive() as Promise<
-        PathwayProfileShape[]
-      >,
-      this.pathwayRepository.findAllActiveWithDetails(),
-      this.recommendationRepository.findByUserId(userId),
-    ]);
-
-    const pathways = pathwaysRaw as unknown as PathwayRecord[];
-
-    if (!profiles.length) {
-      throw new Error('No active pathway match profiles found.');
-    }
-
-    const pathwayById = new Map(
-      pathways.map((pathway) => [String(pathway._id), pathway])
-    );
-    const explanationBySlug = new Map(
-      existingRecommendations.map((item) => [item.slug, item.explanation])
-    );
-
-    const rankedPathways = profiles
-      .map((profile): RecommendationScoreSnapshot | null => {
-        const pathway = pathwayById.get(String(profile.pathwayId));
-
-        if (!pathway) return null;
-
-        const direction = this.resolveDirection(pathway);
-
-        if (!direction) return null;
-
-        const family = this.resolveFamily(pathway);
-        const dimensionScores = this.buildDimensionScores(onboarding, profile);
-        const totalScore = this.calculateTotalScore(dimensionScores);
-        const visibilityLayer = pathway.visibilityLayer ?? 'adjacent';
-
-        const candidate: RecommendationScoreSnapshot = {
-          pathwayId: String(pathway._id),
-          title: pathway.title,
-          slug: pathway.slug,
-          type: pathway.type,
-          summary: pathway.summary,
-          totalScore,
-          matchPercent: this.toPercent(totalScore),
-          dimensionScores,
-          reasons: this.explanationService.buildReasons(onboarding, profile),
-          visibilityLayer,
-          direction,
-          family,
-          rankingSignals: this.buildRankingSignals(onboarding, profile),
-        };
-
-        return candidate;
-      })
-      .filter((item): item is RecommendationScoreSnapshot => item !== null)
-      .sort((a, b) => this.compareRecommendations(a, b));
-
-    const directionMatches = this.buildDirectionMatches(rankedPathways);
-    const familyMatches = this.buildFamilyMatches(
-      rankedPathways,
-      directionMatches
-    );
-
-    const pathwayRecommendationsBase = rankedPathways.map((pathway) => ({
-      ...pathway,
-      explanation: explanationBySlug.get(pathway.slug) || undefined,
-    }));
-
-    const topPathwaysForExplanation = this.selectTopPathways(
-      pathwayRecommendationsBase
-    );
-    const enrichedTopPathways = await this.enrichPathwaysIfNeeded(
-      topPathwaysForExplanation,
-      onboarding
-    );
-
-    const enrichedTopPathwaysBySlug = new Map(
-      enrichedTopPathways.map((item) => [item.slug, item.explanation])
-    );
-
-    const pathwayRecommendations = pathwayRecommendationsBase.map(
-      (item, index) => ({
-        ...item,
-        explanation:
-          item.explanation ?? enrichedTopPathwaysBySlug.get(item.slug),
-        rank: index + 1,
-        matchingVersion: 2,
-      })
-    );
-
-    await this.recommendationRepository.replaceForUser(
+  /**
+   * Full scoring pipeline. Runs on POST /recommendations/generate.
+   *
+   * Flow:
+   *   1. Load user's completed assessment
+   *   2. Load all active pathway scoring projections (no translations)
+   *   3. Load all active match profiles, keyed by their _id
+   *   4. Load all active taxonomy nodes for direction/family resolution
+   *   5. Score each pathway, resolve taxonomy slugs, build reasons
+   *   6. Sort by totalScore, assign ranks
+   *   7. Atomic replace in MongoDB (transaction)
+   *   8. Return the 3-layer overview
+   */
+  async generate(userId: string): Promise<RecommendationOverview> {
+    // ── 1. Load assessment ─────────────────────────────────────────────────
+    const assessmentDoc = await PathwayAssessmentModel.findOne({
       userId,
-      pathwayRecommendations.map((item) => ({
-        userId,
-        pathwayId: item.pathwayId,
-        title: item.title,
-        slug: item.slug,
-        type: item.type,
-        summary: item.summary,
-        totalScore: item.totalScore,
-        matchPercent: item.matchPercent,
-        visibilityLayer: item.visibilityLayer,
-        direction: item.direction,
-        family: item.family,
-        dimensionScores: item.dimensionScores,
-        reasons: item.reasons,
-        explanation: item.explanation,
-        rank: item.rank,
-        matchingVersion: item.matchingVersion,
-        sourceProfileSnapshot: onboarding,
-      }))
-    );
+      completed: true,
+    }).lean();
 
-    return {
-      directionMatches,
-      familyMatches,
-      pathwayRecommendations,
-    };
-  }
-
-  private async enrichPathwaysIfNeeded(
-    recommendations: RecommendationItem[],
-    onboarding: PathwayAssessmentFormValues
-  ) {
-    const ready = recommendations.filter((item) => item.explanation);
-    const missing = recommendations.filter((item) => !item.explanation);
-
-    if (!missing.length) {
-      return recommendations;
+    if (!assessmentDoc) {
+      throw new Error('No completed assessment found for this user.');
     }
 
-    const enrichedMissing = await this.explanationService.enrichRecommendations(
-      missing,
-      onboarding
-    );
-    const enrichedBySlug = new Map(
-      enrichedMissing.map((item) => [item.slug, item.explanation])
-    );
+    const assessment = this.extractAssessmentValues(assessmentDoc);
+    const profileVersion = assessmentDoc.version ?? 1;
+    const profileVersionId = String(assessmentDoc._id);
 
-    return recommendations.map((item) => ({
-      ...item,
-      explanation: item.explanation ?? enrichedBySlug.get(item.slug),
-    }));
-  }
-
-  private buildDirectionMatches(
-    rankedPathways: RecommendationScoreSnapshot[]
-  ): RecommendationDirectionMatch[] {
-    const candidates = this.buildGroupCandidates(
-      rankedPathways,
-      (item) => ({
-        key: item.direction.slug,
-        title: item.direction.title,
-      }),
-      DIRECTION_COUNT
-    );
-
-    return candidates.map((item) => ({
-      slug: item.key,
-      title: item.title,
-      totalScore: item.totalScore,
-      matchPercent: item.matchPercent,
-      pathwayCount: item.pathwayCount,
-      topPathwaySlugs: item.topPathwaySlugs,
-    }));
-  }
-
-  private buildFamilyMatches(
-    rankedPathways: RecommendationScoreSnapshot[],
-    directionMatches: RecommendationDirectionMatch[]
-  ): RecommendationFamilyMatch[] {
-    const topDirectionSlugs = new Set(
-      directionMatches.slice(0, DIRECTION_COUNT).map((item) => item.slug)
-    );
-
-    const candidates = this.buildGroupCandidates(
-      rankedPathways.filter(
-        (item) => item.family && topDirectionSlugs.has(item.direction.slug)
-      ),
-      (item) =>
-        item.family
-          ? {
-              key: item.family.slug,
-              title: item.family.title,
-              direction: item.direction,
-            }
-          : null,
-      FAMILY_COUNT
-    );
-
-    return candidates.map((item) => ({
-      slug: item.key,
-      title: item.title,
-      direction: item.direction!,
-      totalScore: item.totalScore,
-      matchPercent: item.matchPercent,
-      pathwayCount: item.pathwayCount,
-      topPathwaySlugs: item.topPathwaySlugs,
-    }));
-  }
-
-  private buildGroupCandidates(
-    rankedPathways: RecommendationScoreSnapshot[],
-    pickGroup: (item: RecommendationScoreSnapshot) => {
-      key: string;
-      title: string;
-      direction?: RecommendationGroupRef;
-    } | null,
-    limit: number
-  ) {
-    const grouped = new Map<string, RecommendationGroupCandidate>();
-
-    for (const item of rankedPathways) {
-      const group = pickGroup(item);
-
-      if (!group) {
-        continue;
+    // ── 2. Load pathway scoring projections ───────────────────────────────
+    const pathwayDocs = await PathwayModel.find(
+      { status: 'active' },
+      {
+        slug: 1,
+        type: 1,
+        visibilityLayer: 1,
+        durationProfile: 1,
+        taxonomyNodeIds: 1,
+        matchProfileId: 1,
+        'translations.en.title': 1,
+        'translations.en.summary': 1,
       }
+    ).lean();
 
-      const existing = grouped.get(group.key);
-
-      if (!existing) {
-        grouped.set(group.key, {
-          key: group.key,
-          title: group.title,
-          direction: group.direction,
-          topEntries: [item],
-          totalScore: 0,
-          matchPercent: 0,
-          pathwayCount: 1,
-          topPathwaySlugs: [],
-        });
-        continue;
-      }
-
-      existing.topEntries.push(item);
-      existing.pathwayCount += 1;
+    if (!pathwayDocs.length) {
+      throw new Error('No active pathways found. Seed the database first.');
     }
 
-    const scored = [...grouped.values()].map((group) => {
-      const topEntries = group.topEntries
-        .sort((a, b) => this.compareRecommendations(a, b))
-        .slice(0, 3);
-      const totalScore = Number(
-        (
-          topEntries.reduce(
-            (sum, item) => sum + this.applyVisibilityWeight(item),
-            0
-          ) / topEntries.length
-        ).toFixed(4)
+    // ── 3. Load all active match profiles, keyed by _id string ────────────
+    const profileDocs = await PathwayMatchProfileModel.find(
+      { status: 'active' },
+      {
+        strengths: 1,
+        passions: 1,
+        subjects: 1,
+        learningPreference: 1,
+        workEnvironment: 1,
+        workStyle: 1,
+        collaborationStyle: 1,
+        impact: 1,
+        goals: 1,
+        version: 1,
+      }
+    ).lean();
+
+    const profileById = new Map(profileDocs.map((p) => [String(p._id), p]));
+
+    // ── 4. Load taxonomy nodes for direction/family resolution ─────────────
+    const taxonomyDocs = await TaxonomyNodeModel.find(
+      { status: 'active' },
+      { slug: 1, kind: 1, parentId: 1 }
+    ).lean();
+
+    const taxonomyById = new Map<string, TaxonomyNodeMinimal>(
+      taxonomyDocs.map((t) => [
+        String(t._id),
+        {
+          id: String(t._id),
+          slug: t.slug,
+          kind: t.kind as TaxonomyNodeKind,
+          parentId: t.parentId ? String(t.parentId) : null,
+        },
+      ])
+    );
+
+    // ── 5. Score each pathway ──────────────────────────────────────────────
+    const scored: ScoredPathway[] = [];
+
+    for (const pathway of pathwayDocs) {
+      const profile = profileById.get(String(pathway.matchProfileId));
+      if (!profile) continue; // no match profile → skip, don't crash
+
+      const matchProfile = profile as unknown as PathwayMatchProfile;
+
+      const dimensionScores = pathwayScoringEngine.buildDimensionScores(
+        assessment,
+        matchProfile
+      );
+      const totalScore =
+        pathwayScoringEngine.calculateTotalScore(dimensionScores);
+      const matchPercent = pathwayScoringEngine.toMatchPercent(totalScore);
+
+      const { directionSlug, familySlug } = this.resolveTaxonomySlugs(
+        pathway.taxonomyNodeIds.map(String),
+        taxonomyById
       );
 
-      return {
-        ...group,
-        topEntries,
+      const reasons = buildReasons(assessment, matchProfile, dimensionScores);
+
+      scored.push({
+        pathwayId: String(pathway._id),
+        pathwaySlug: pathway.slug,
+        directionSlug,
+        familySlug,
+        dimensionScores,
         totalScore,
-        matchPercent: this.toPercent(totalScore),
-        topPathwaySlugs: topEntries.map((item) => item.slug),
+        matchPercent,
+        reasons,
+      });
+    }
+
+    // ── 6. Sort and assign ranks ───────────────────────────────────────────
+    scored.sort((a, b) => b.totalScore - a.totalScore);
+
+    // ── 7. Atomic replace in a transaction ────────────────────────────────
+    const session = await mongoose.startSession();
+
+    try {
+      await session.withTransaction(async () => {
+        const insertDocs: RecommendationInsertDoc[] = scored.map((s, i) => ({
+          userId: new mongoose.Types.ObjectId(userId),
+          pathwayId: new mongoose.Types.ObjectId(s.pathwayId),
+          pathwaySlug: s.pathwaySlug,
+          directionSlug: s.directionSlug,
+          familySlug: s.familySlug,
+          totalScore: s.totalScore,
+          matchPercent: s.matchPercent,
+          dimensionScores: s.dimensionScores,
+          rank: i + 1,
+          matchingVersion: CURRENT_MATCHING_VERSION,
+          profileVersion,
+          profileVersionId: new mongoose.Types.ObjectId(profileVersionId),
+          reasons: s.reasons,
+          sourceProfileSnapshot: assessment as unknown as Record<
+            string,
+            unknown
+          >,
+        }));
+
+        await recommendationRepository.replaceAllForUser(
+          userId,
+          insertDocs,
+          session
+        );
+      });
+    } finally {
+      await session.endSession();
+    }
+
+    // ── 8. Return 3-layer overview ─────────────────────────────────────────
+    return this.buildOverview(scored);
+  }
+
+  // ── Get overview (read-only) ────────────────────────────────────────────────
+
+  /**
+   * Returns stored recommendations as a 3-layer overview.
+   * Does NOT score. Does NOT write. If nothing is stored, returns empty layers.
+   * Caller decides whether to redirect the user to generate().
+   */
+  async getOverview(userId: string): Promise<RecommendationOverview> {
+    const stored = await recommendationRepository.findAllByUserId(userId);
+
+    if (!stored.length) {
+      return { families: [], directions: [], pathways: [] };
+    }
+
+    // Map stored IRecommendation documents to ScoredPathway for buildOverview
+    const asScored: ScoredPathway[] = stored.map((r) => ({
+      pathwayId: String(r.pathwayId),
+      pathwaySlug: r.pathwaySlug,
+      directionSlug: r.directionSlug,
+      familySlug: r.familySlug,
+      dimensionScores: r.dimensionScores,
+      totalScore: r.totalScore,
+      matchPercent: r.matchPercent,
+      reasons: r.reasons,
+    }));
+
+    return this.buildOverview(asScored, stored);
+  }
+
+  // ── Overview builder ────────────────────────────────────────────────────────
+
+  /**
+   * Builds the 3-layer overview from a scored + ranked list.
+   *
+   * storedDocs is optional — when passed, hasExplanation and
+   * recommendation ids are populated on Layer 3.
+   */
+  private buildOverview(
+    scored: ScoredPathway[],
+    storedDocs?: {
+      _id: unknown;
+      pathwaySlug: string;
+      explanation?: string;
+      rank: number;
+    }[]
+  ): RecommendationOverview {
+    // ── Layer 3: pathways ────────────────────────────────────────────────
+    const storedBySlug = new Map(
+      (storedDocs ?? []).map((d) => [d.pathwaySlug, d])
+    );
+
+    const pathways: PathwayRecommendation[] = scored.map((s, i) => {
+      const stored = storedBySlug.get(s.pathwaySlug);
+      return {
+        id: stored ? String(stored._id) : '',
+        pathwaySlug: s.pathwaySlug,
+        directionSlug: s.directionSlug,
+        familySlug: s.familySlug,
+        totalScore: s.totalScore,
+        matchPercent: s.matchPercent,
+        dimensionScores: s.dimensionScores,
+        rank: i + 1,
+        reasons: s.reasons,
+        hasExplanation: Boolean(stored?.explanation),
+        explanation: stored?.explanation,
       };
     });
 
-    return scored
-      .sort((a, b) => {
-        if (b.totalScore !== a.totalScore) {
-          return b.totalScore - a.totalScore;
-        }
+    // ── Layer 2: directions (field-level grouping) ────────────────────────
+    const directionMap = new Map<string, ScoredPathway[]>();
 
-        if (b.pathwayCount !== a.pathwayCount) {
-          return b.pathwayCount - a.pathwayCount;
-        }
+    for (const s of scored) {
+      if (!s.directionSlug) continue;
+      const existing = directionMap.get(s.directionSlug) ?? [];
+      existing.push(s);
+      directionMap.set(s.directionSlug, existing);
+    }
 
-        return a.title.localeCompare(b.title);
+    const directions: DirectionRecommendation[] = Array.from(
+      directionMap.entries()
+    )
+      .map(([directionSlug, pathways]) => {
+        const sorted = [...pathways].sort(
+          (a, b) => b.totalScore - a.totalScore
+        );
+        const top3 = sorted.slice(0, 3);
+        const avgScore =
+          top3.reduce((s, p) => s + p.totalScore, 0) / top3.length;
+        const familySlug = pathways[0]?.familySlug;
+
+        return {
+          directionSlug,
+          familySlug,
+          totalScore: Number(avgScore.toFixed(4)),
+          matchPercent: Math.round(avgScore * 100),
+          pathwayCount: pathways.length,
+          topPathwaySlugs: top3.map((p) => p.pathwaySlug),
+        };
       })
-      .slice(0, limit);
-  }
+      .sort((a, b) => b.totalScore - a.totalScore);
 
-  private selectTopPathways(
-    rankedPathways: Array<
-      RecommendationScoreSnapshot & { explanation?: string | undefined }
-    >
-  ) {
-    const visibleFirst = rankedPathways.filter(
-      (item) => item.visibilityLayer !== 'specialized'
-    );
-    const selected = visibleFirst.slice(0, 3);
+    // ── Layer 1: families (domain-level grouping) ─────────────────────────
+    const familyMap = new Map<string, ScoredPathway[]>();
 
-    if (selected.length >= 3) {
-      return selected;
+    for (const s of scored) {
+      if (!s.familySlug) continue;
+      const existing = familyMap.get(s.familySlug) ?? [];
+      existing.push(s);
+      familyMap.set(s.familySlug, existing);
     }
 
-    const selectedSlugs = new Set(selected.map((item) => item.slug));
+    const families: FamilyRecommendation[] = Array.from(familyMap.entries())
+      .map(([familySlug, pathways]) => {
+        const sorted = [...pathways].sort(
+          (a, b) => b.totalScore - a.totalScore
+        );
+        const top3 = sorted.slice(0, 3);
+        const avgScore =
+          top3.reduce((s, p) => s + p.totalScore, 0) / top3.length;
 
-    for (const item of rankedPathways) {
-      if (selectedSlugs.has(item.slug)) {
-        continue;
+        const familyDirections = directions.filter(
+          (d) => d.familySlug === familySlug
+        );
+
+        return {
+          familySlug,
+          totalScore: Number(avgScore.toFixed(4)),
+          matchPercent: Math.round(avgScore * 100),
+          pathwayCount: pathways.length,
+          directionCount: familyDirections.length,
+          topPathwaySlugs: top3.map((p) => p.pathwaySlug),
+          directions: familyDirections,
+        };
+      })
+      .sort((a, b) => b.totalScore - a.totalScore);
+
+    return { families, directions, pathways };
+  }
+
+  // ── Taxonomy resolution ─────────────────────────────────────────────────────
+
+  /**
+   * Given the taxonomyNodeIds of a pathway, resolves:
+   *   directionSlug — the field-level node slug
+   *   familySlug    — the domain-level node slug (parent of direction)
+   *
+   * A pathway's taxonomyNodeIds should include domain, field, and
+   * specialization nodes. We find the field-level node as the direction,
+   * then walk up to its parent to get the domain/family.
+   */
+  private resolveTaxonomySlugs(
+    taxonomyNodeIds: string[],
+    taxonomyById: Map<string, TaxonomyNodeMinimal>
+  ): { directionSlug?: string; familySlug?: string } {
+    let directionSlug: string | undefined;
+    let familySlug: string | undefined;
+
+    for (const id of taxonomyNodeIds) {
+      const node = taxonomyById.get(id);
+      if (!node) continue;
+
+      if (node.kind === 'field') {
+        directionSlug = node.slug;
+
+        // Walk up one level to get the domain
+        if (node.parentId) {
+          const parent = taxonomyById.get(node.parentId);
+          if (parent?.kind === 'domain') {
+            familySlug = parent.slug;
+          }
+        }
+        break; // Only one field node expected per pathway
       }
-
-      selected.push(item);
-
-      if (selected.length >= 3) {
-        break;
-      }
     }
 
-    return selected;
+    return { directionSlug, familySlug };
   }
 
-  private resolveDirection(pathway: PathwayRecord) {
-    const directionNode = pathway.taxonomyNodeIds.find(
-      (node) => node.kind === 'domain'
-    );
+  // ── Assessment value extractor ──────────────────────────────────────────────
 
-    if (!directionNode) return null;
-
+  /**
+   * Extracts PathwayAssessmentFormValues from the raw Mongoose document.
+   * Guards against any nullish fields from older documents.
+   */
+  private extractAssessmentValues(
+    doc: Record<string, unknown>
+  ): PathwayAssessmentFormValues {
     return {
-      slug: directionNode.slug,
-      title: directionNode.name,
-    } satisfies RecommendationGroupRef;
-  }
-
-  private resolveFamily(pathway: PathwayRecord) {
-    const familyNode = pathway.taxonomyNodeIds.find(
-      (node) => node.kind === 'field'
-    );
-
-    if (!familyNode) return undefined;
-
-    return {
-      slug: familyNode.slug,
-      title: familyNode.name,
-    } satisfies RecommendationGroupRef;
-  }
-
-  private buildDimensionScores(
-    onboarding: PathwayAssessmentFormValues,
-    profile: PathwayProfileShape
-  ) {
-    return {
-      strengths: this.scoringEngine.scoreMultiValueDimension(
-        onboarding.strengths,
-        profile.strengths
-      ),
-      subjects: this.scoringEngine.scoreSingleValueDimension(
-        onboarding.subjects,
-        profile.subjects
-      ),
-      passions: this.scoringEngine.scoreMultiValueDimension(
-        onboarding.passions,
-        profile.passions
-      ),
-      freeTime: this.scoringEngine.scoreSingleValueDimension(
-        onboarding.freeTime,
-        profile.freeTime
-      ),
-      workEnvironment: this.scoringEngine.scoreSingleValueDimension(
-        onboarding.workEnvironment,
-        profile.workEnvironment
-      ),
-      workStyle: this.scoringEngine.scoreSingleValueDimension(
-        onboarding.workStyle,
-        profile.workStyle
-      ),
-      impact: this.scoringEngine.scoreSingleValueDimension(
-        onboarding.impact,
-        profile.impact
-      ),
-      goals: this.scoringEngine.scoreSingleValueDimension(
-        onboarding.goals,
-        profile.goals
-      ),
+      strengths: (doc.strengths as string[]) ?? [],
+      passions: (doc.passions as string[]) ?? [],
+      subjects: (doc.subjects as string) ?? '',
+      learningPreference: (doc.learningPreference as string[]) ?? [],
+      workEnvironment: (doc.workEnvironment as string) ?? '',
+      workStyle: (doc.workStyle as string[]) ?? [],
+      collaborationStyle: (doc.collaborationStyle as string) ?? '',
+      impact: (doc.impact as string[]) ?? [],
+      goals: (doc.goals as string) ?? '',
     };
-  }
-
-  private calculateTotalScore(
-    dimensionScores: RecommendationItem['dimensionScores']
-  ) {
-    return Number(
-      (
-        dimensionScores.strengths * DIMENSION_WEIGHTS.strengths +
-        dimensionScores.subjects * DIMENSION_WEIGHTS.subjects +
-        dimensionScores.passions * DIMENSION_WEIGHTS.passions +
-        dimensionScores.freeTime * DIMENSION_WEIGHTS.freeTime +
-        dimensionScores.workEnvironment * DIMENSION_WEIGHTS.workEnvironment +
-        dimensionScores.workStyle * DIMENSION_WEIGHTS.workStyle +
-        dimensionScores.impact * DIMENSION_WEIGHTS.impact +
-        dimensionScores.goals * DIMENSION_WEIGHTS.goals
-      ).toFixed(7)
-    );
-  }
-
-  private buildRankingSignals(
-    onboarding: PathwayAssessmentFormValues,
-    profile: PathwayProfileShape
-  ) {
-    const matchedStrengths = this.collectMultiValueMatches(
-      onboarding.strengths,
-      profile.strengths
-    );
-
-    const matchedPassions = this.collectMultiValueMatches(
-      onboarding.passions,
-      profile.passions
-    );
-
-    const matchedSingles = [
-      this.collectSingleValueMatch(onboarding.subjects, profile.subjects),
-      this.collectSingleValueMatch(onboarding.freeTime, profile.freeTime),
-      this.collectSingleValueMatch(
-        onboarding.workEnvironment,
-        profile.workEnvironment
-      ),
-      this.collectSingleValueMatch(onboarding.workStyle, profile.workStyle),
-      this.collectSingleValueMatch(onboarding.impact, profile.impact),
-      this.collectSingleValueMatch(onboarding.goals, profile.goals),
-    ].filter((item): item is MatchWeight => item !== null);
-
-    const matchedDimensions = [
-      matchedStrengths.length > 0,
-      matchedPassions.length > 0,
-      this.collectSingleValueMatch(onboarding.subjects, profile.subjects) !==
-        null,
-      this.collectSingleValueMatch(onboarding.freeTime, profile.freeTime) !==
-        null,
-      this.collectSingleValueMatch(
-        onboarding.workEnvironment,
-        profile.workEnvironment
-      ) !== null,
-      this.collectSingleValueMatch(onboarding.workStyle, profile.workStyle) !==
-        null,
-      this.collectSingleValueMatch(onboarding.impact, profile.impact) !== null,
-      this.collectSingleValueMatch(onboarding.goals, profile.goals) !== null,
-    ].filter(Boolean).length;
-
-    const allMatches = [
-      ...matchedStrengths,
-      ...matchedPassions,
-      ...matchedSingles,
-    ];
-
-    return {
-      strongMatches: allMatches.filter((item) => item.band === 'strong').length,
-      supportingMatches: allMatches.filter((item) => item.band === 'supporting')
-        .length,
-      penaltyConflicts: allMatches.filter((item) => item.band === 'penalty')
-        .length,
-      matchedDimensions,
-    };
-  }
-
-  private compareRecommendations(
-    a: RecommendationScoreSnapshot,
-    b: RecommendationScoreSnapshot
-  ) {
-    if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
-
-    if (b.rankingSignals.strongMatches !== a.rankingSignals.strongMatches)
-      return b.rankingSignals.strongMatches - a.rankingSignals.strongMatches;
-
-    if (
-      b.rankingSignals.matchedDimensions !== a.rankingSignals.matchedDimensions
-    )
-      return (
-        b.rankingSignals.matchedDimensions - a.rankingSignals.matchedDimensions
-      );
-
-    if (
-      a.visibilityLayer !== b.visibilityLayer &&
-      VISIBILITY_SCORE_WEIGHTS[a.visibilityLayer] !==
-        VISIBILITY_SCORE_WEIGHTS[b.visibilityLayer]
-    )
-      return (
-        VISIBILITY_SCORE_WEIGHTS[b.visibilityLayer] -
-        VISIBILITY_SCORE_WEIGHTS[a.visibilityLayer]
-      );
-
-    if (
-      b.rankingSignals.supportingMatches !== a.rankingSignals.supportingMatches
-    ) {
-      return (
-        b.rankingSignals.supportingMatches - a.rankingSignals.supportingMatches
-      );
-    }
-
-    if (
-      a.rankingSignals.penaltyConflicts !== b.rankingSignals.penaltyConflicts
-    ) {
-      return (
-        a.rankingSignals.penaltyConflicts - b.rankingSignals.penaltyConflicts
-      );
-    }
-
-    return a.slug.localeCompare(b.slug);
-  }
-
-  private applyVisibilityWeight(item: RecommendationScoreSnapshot) {
-    return Number(
-      (
-        item.totalScore * VISIBILITY_SCORE_WEIGHTS[item.visibilityLayer]
-      ).toFixed(4)
-    );
-  }
-
-  private toPercent(score: number) {
-    return Math.max(0, Math.min(100, Math.round(score * 100)));
-  }
-
-  private collectMultiValueMatches(
-    selectedValues: string[],
-    weights: MatchWeight[]
-  ) {
-    return weights.filter((item) => selectedValues.includes(item.value));
-  }
-
-  private collectSingleValueMatch(
-    selectedValue: string,
-    weights: MatchWeight[]
-  ) {
-    return weights.find((item) => item.value === selectedValue) ?? null;
   }
 }
+
+export const recommendationService = new RecommendationService();

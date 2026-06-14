@@ -4,11 +4,11 @@ import advisorRouter from './advisor-route';
 import adminRouter from './admin-route';
 import pathwayRouter from './pathway-route';
 import profileRouter from './profile-route';
-import recommendationRouter from './recommendation-route';
 import roadmapRouter from './roadmap-router';
 import dashboardRouter from './dashboard-router';
 import roadmapSetupAssessmentRouter from './roadmap-setup-assessment-router';
 import savedResourceRouter from '../routes/saved-resource-routes';
+import recommendationRouter from './recommendation-routes';
 
 const apiRouter = Router();
 

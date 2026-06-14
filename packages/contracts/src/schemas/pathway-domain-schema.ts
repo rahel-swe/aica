@@ -1,8 +1,10 @@
 import { z } from 'zod';
+import { contentStatusSchema } from './content-status';
 import {
-  freeTimeEnum,
+  collaborationStyleEnum,
   goalsEnum,
   impactEnum,
+  learningPreferenceEnum,
   passionsEnum,
   strengthsEnum,
   subjectsEnum,
@@ -10,33 +12,57 @@ import {
   workStyleEnum,
 } from './pathway-assessment-schema';
 
+// TAXONOMY
+// ─────────────────────────────────────────────────────────────────────────────
+
 export const taxonomyNodeKindEnum = [
-  'domain',
-  'field',
-  'specialization',
+  'domain', // top level — Technology, Healthcare, Business …
+  'field', // mid level — Software Development, Clinical Medicine …
+  'specialization', // leaf level — Frontend Development, General Practice …
 ] as const;
 
-export const taxonomyNodeStatusEnum = ['active', 'draft', 'archived'] as const;
+export const taxonomyNodeKindSchema = z.enum(taxonomyNodeKindEnum);
+
+// Zod schemas for taxonomy API responses
+export const taxonomyNodeViewSchema = z.object({
+  id: z.string(),
+  slug: z.string(),
+  kind: taxonomyNodeKindSchema,
+  parentId: z.string().nullable(),
+  order: z.number().int().nonnegative(),
+  name: z.string().min(1),
+  description: z.string().optional(),
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PATHWAY ENUMS
+// ─────────────────────────────────────────────────────────────────────────────
 
 export const pathwayTypeEnum = ['study', 'career', 'hybrid'] as const;
+export const pathwayTypeSchema = z.enum(pathwayTypeEnum);
 
-export const pathwayStatusEnum = ['active', 'draft', 'archived'] as const;
 export const pathwayVisibilityLayerEnum = [
-  'primary',
-  'adjacent',
-  'specialized',
+  'primary', // broad-appeal pathways — always surfaced for relevant profiles
+  'adjacent', // require more specific profile alignment to surface
+  'specialized', // niche — only surfaces for highly specific profiles
 ] as const;
+export const pathwayVisibilityLayerSchema = z.enum(pathwayVisibilityLayerEnum);
+
+// Renamed from pathwayTimelineTypeEnum — "route" better describes what this is.
+// Hyphens → underscores for consistency. Added certification_route.
+export const pathwayRouteTypeEnum = [
+  'skill_route', // learned independently, no formal credential required
+  'portfolio_route', // proven through a body of work (design, dev, writing)
+  'vocational_route', // trade-school or apprenticeship path
+  'certification_route', // professional certification without a full degree (CPA, AWS, ACCA)
+  'degree_route', // standard university degree
+  'regulated_degree', // degree with mandatory state/professional licensing
+  'hybrid_route', // combination of the above (e.g. degree + portfolio)
+] as const;
+export const pathwayRouteTypeSchema = z.enum(pathwayRouteTypeEnum);
 
 export const pathwayCommitmentLevelEnum = ['short', 'medium', 'long'] as const;
-
-export const pathwayTimelineTypeEnum = [
-  'skill-route',
-  'portfolio-route',
-  'vocational-route',
-  'degree-route',
-  'regulated-degree',
-  'hybrid-route',
-] as const;
+export const pathwayCommitmentLevelSchema = z.enum(pathwayCommitmentLevelEnum);
 
 export const degreeRequirementEnum = [
   'not_required',
@@ -45,42 +71,16 @@ export const degreeRequirementEnum = [
   'required',
 ] as const;
 
-export const scoreBandEnum = [
-  'strong',
-  'supporting',
-  'weak',
-  'penalty',
-] as const;
-
-export const taxonomyNodeKindSchema = z.enum(taxonomyNodeKindEnum);
-export const taxonomyNodeStatusSchema = z.enum(taxonomyNodeStatusEnum);
-export const pathwayTypeSchema = z.enum(pathwayTypeEnum);
-export const pathwayStatusSchema = z.enum(pathwayStatusEnum);
-export const pathwayVisibilityLayerSchema = z.enum(pathwayVisibilityLayerEnum);
-export const pathwayCommitmentLevelSchema = z.enum(pathwayCommitmentLevelEnum);
-export const pathwayTimelineTypeSchema = z.enum(pathwayTimelineTypeEnum);
 export const degreeRequirementSchema = z.enum(degreeRequirementEnum);
-export const scoreBandSchema = z.enum(scoreBandEnum);
 
-export const matchWeightSchema = z.object({
-  value: z.string().min(1),
-  weight: z.number().min(0).max(1),
-  band: scoreBandSchema.default('supporting'),
-});
-
-export const taxonomyNodeSchema = z.object({
-  name: z.string().min(1),
-  slug: z.string().min(1),
-  kind: taxonomyNodeKindSchema,
-  parentId: z.string().nullable().default(null),
-  description: z.string().optional(),
-  order: z.number().int().nonnegative().default(0),
-  status: taxonomyNodeStatusSchema.default('draft'),
-});
+// ─────────────────────────────────────────────────────────────────────────────
+// PATHWAY DURATION PROFILE
+// Note: roadmapWindowLabel moved to PathwayTranslatableFields (it's user-facing text)
+// ─────────────────────────────────────────────────────────────────────────────
 
 export const pathwayDurationProfileSchema = z.object({
   commitmentLevel: pathwayCommitmentLevelSchema,
-  timelineType: pathwayTimelineTypeSchema,
+  routeType: pathwayRouteTypeSchema, // was timelineType
   degreeRequirement: degreeRequirementSchema,
   estimatedMonthsMin: z.number().int().positive().optional(),
   estimatedMonthsMax: z.number().int().positive().optional(),
@@ -88,8 +88,10 @@ export const pathwayDurationProfileSchema = z.object({
   estimatedYearsMax: z.number().int().positive().optional(),
   requiresLicense: z.boolean().default(false),
   localRulesRequired: z.boolean().default(false),
-  roadmapWindowLabel: z.string().min(1).default('Next 12 months'),
 });
+
+// PATHWAY TRANSLATABLE FIELDS
+// ─────────────────────────────────────────────────────────────────────────────
 
 export const pathwayJourneyPhaseSchema = z.object({
   name: z.string().min(1),
@@ -97,123 +99,122 @@ export const pathwayJourneyPhaseSchema = z.object({
   focus: z.string().min(1),
 });
 
-export const pathwaySchema = z.object({
+export const pathwayTranslatableFieldsSchema = z.object({
   title: z.string().min(1),
-  slug: z.string().min(1),
-  type: pathwayTypeSchema,
-  taxonomyNodeIds: z.array(z.string()).min(1),
   summary: z.string().min(1),
   description: z.string().min(1),
-  keySkills: z.array(z.string()).default([]),
-  opportunities: z.array(z.string()).default([]),
-  visibilityLayer: pathwayVisibilityLayerSchema.default('adjacent'),
-  durationProfile: pathwayDurationProfileSchema,
-  journeyPhases: z.array(pathwayJourneyPhaseSchema).min(1),
-  verificationNote: z.string().optional(),
-  relatedPathwayIds: z.array(z.string()).default([]),
-  status: pathwayStatusSchema.default('draft'),
+  keySkills: z.array(z.string()).min(4),
+  opportunities: z.array(z.string()).min(4),
+  verificationNote: z.string().optional(), // localized licensing/cert notes
+  journeyPhases: z.array(pathwayJourneyPhaseSchema).min(3),
+  roadmapWindowLabel: z.string().min(1), // e.g. "Next 12 months" (was in durationProfile)
 });
 
-export const pathwayMatchProfileSchema = z.object({
-  pathwayId: z.string().min(1),
-  version: z.number().int().positive().default(1),
-  strengths: z.array(
-    matchWeightSchema.extend({
-      value: z.enum(strengthsEnum),
-    })
-  ),
-  subjects: z.array(
-    matchWeightSchema.extend({
-      value: z.enum(subjectsEnum),
-    })
-  ),
-  passions: z.array(
-    matchWeightSchema.extend({
-      value: z.enum(passionsEnum),
-    })
-  ),
-  freeTime: z.array(
-    matchWeightSchema.extend({
-      value: z.enum(freeTimeEnum),
-    })
-  ),
-  workEnvironment: z.array(
-    matchWeightSchema.extend({
-      value: z.enum(workEnvironmentEnum),
-    })
-  ),
-  workStyle: z.array(
-    matchWeightSchema.extend({
-      value: z.enum(workStyleEnum),
-    })
-  ),
-  impact: z.array(
-    matchWeightSchema.extend({
-      value: z.enum(impactEnum),
-    })
-  ),
-  goals: z.array(
-    matchWeightSchema.extend({
-      value: z.enum(goalsEnum),
-    })
-  ),
-  notes: z.array(z.string()).default([]),
-  status: pathwayStatusSchema.default('draft'),
-});
+// ─────────────────────────────────────────────────────────────────────────────
+// API RESPONSE SCHEMAS
+// ─────────────────────────────────────────────────────────────────────────────
 
-export const taxonomyNodeSummarySchema = z.object({
+export const pathwayListViewSchema = z.object({
   id: z.string(),
-  name: z.string(),
-  slug: z.string(),
-  kind: taxonomyNodeKindSchema,
-  parentId: z.string().nullable(),
-});
-
-export const relatedPathwaySummarySchema = z.object({
-  id: z.string(),
-  title: z.string(),
   slug: z.string(),
   type: pathwayTypeSchema,
-  summary: z.string(),
-});
-
-export const pathwayListItemSchema = z.object({
-  _id: z.string(),
-  title: z.string(),
-  slug: z.string(),
-  type: pathwayTypeSchema,
-  summary: z.string(),
+  status: contentStatusSchema,
   visibilityLayer: pathwayVisibilityLayerSchema,
-  taxonomyNodes: z.array(taxonomyNodeSummarySchema),
-  keySkills: z.array(z.string()),
   durationProfile: pathwayDurationProfileSchema,
-});
-
-export const pathwayDetailSchema = z.object({
-  _id: z.string(),
+  taxonomyNodes: z.array(taxonomyNodeViewSchema),
   title: z.string(),
-  slug: z.string(),
-  type: pathwayTypeSchema,
   summary: z.string(),
-  description: z.string(),
-  visibilityLayer: pathwayVisibilityLayerSchema,
-  taxonomyNodes: z.array(taxonomyNodeSummarySchema),
   keySkills: z.array(z.string()),
-  opportunities: z.array(z.string()),
-  durationProfile: pathwayDurationProfileSchema,
-  journeyPhases: z.array(pathwayJourneyPhaseSchema),
-  verificationNote: z.string().optional(),
-  relatedPathways: z.array(relatedPathwaySummarySchema),
+  roadmapWindowLabel: z.string(),
 });
 
 export const pathwaysListResponseSchema = z.object({
   success: z.boolean(),
   message: z.string(),
-  data: z.array(pathwayListItemSchema),
+  data: z.array(pathwayListViewSchema),
 });
 
 export const pathwayDetailResponseSchema = z.object({
   success: z.boolean(),
   message: z.string(),
-  data: pathwayDetailSchema,
+  data: pathwayListViewSchema.extend({
+    description: z.string(),
+    opportunities: z.array(z.string()),
+    verificationNote: z.string().optional(),
+    journeyPhases: z.array(pathwayJourneyPhaseSchema),
+    relatedPathways: z.array(
+      z.object({
+        id: z.string(),
+        slug: z.string(),
+        type: pathwayTypeSchema,
+        title: z.string(),
+        summary: z.string(),
+      })
+    ),
+  }),
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SCORE BAND  (match profile weighting bands)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const scoreBandEnum = [
+  'strong',
+  'supporting',
+  'weak',
+  'penalty',
+] as const;
+
+export const scoreBandSchema = z.enum(scoreBandEnum);
+
+export const matchWeightEntrySchema = z.object({
+  value: z.string().min(1),
+  weight: z.number().min(0).max(1),
+  band: scoreBandSchema.default('supporting'),
+});
+
+// Typed entry factory — use inside dimension-specific schemas
+const dimensionWeightSchema = <T extends readonly [string, ...string[]]>(
+  valuesEnum: T
+) =>
+  matchWeightEntrySchema.extend({
+    value: z.enum(valuesEnum),
+  });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PATHWAY MATCH PROFILE  (9-dimension scoring data)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const pathwayMatchProfileSchema = z
+  .object({
+    pathwayId: z.string().min(1),
+    version: z.number().int().positive().default(1),
+    status: contentStatusSchema.default('draft'),
+
+    // Dimension arrays — each value must match the assessment enum for that dimension
+    strengths: z.array(dimensionWeightSchema(strengthsEnum)),
+    passions: z.array(dimensionWeightSchema(passionsEnum)),
+    subjects: z.array(dimensionWeightSchema(subjectsEnum)),
+    learningPreference: z.array(dimensionWeightSchema(learningPreferenceEnum)), // ← NEW
+    workEnvironment: z.array(dimensionWeightSchema(workEnvironmentEnum)),
+    workStyle: z.array(dimensionWeightSchema(workStyleEnum)),
+    collaborationStyle: z.array(dimensionWeightSchema(collaborationStyleEnum)), // ← NEW
+    impact: z.array(dimensionWeightSchema(impactEnum)),
+    goals: z.array(dimensionWeightSchema(goalsEnum)),
+
+    notes: z.array(z.string()).default([]),
+  })
+  .refine(
+    // Minimum coverage guard — prevents silent 0-score dimensions
+    (p) =>
+      p.passions.length >= 3 &&
+      p.strengths.length >= 3 &&
+      p.goals.length >= 2 &&
+      p.learningPreference.length >= 2 &&
+      p.collaborationStyle.length >= 2,
+    {
+      message:
+        'Match profile must define ≥ 3 passions, ≥ 3 strengths, ≥ 2 goals, ' +
+        '≥ 2 learningPreference, and ≥ 2 collaborationStyle entries.',
+    }
+  );

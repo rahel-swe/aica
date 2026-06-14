@@ -1,10 +1,11 @@
 import {
-  freeTimeEnum,
   goalsEnum,
   impactEnum,
   passionsEnum,
   strengthsEnum,
   subjectsEnum,
+  learningPreferenceEnum,
+  collaborationStyleEnum,
   workEnvironmentEnum,
   workStyleEnum,
 } from '@contracts/shared/schemas/pathway-assessment-schema';
@@ -23,9 +24,20 @@ const pathwayAssessmentSchema = new Schema(
     strengths: {
       type: [String],
       enum: strengthsEnum,
+      required: true,
       validate: [
-        (val: string[]) => val.length >= 1 && val.length <= 4,
-        'Select 1 to 4 strengths',
+        (val: string[]) => val.length >= 1 && val.length <= 3,
+        'Select 1 to 3 strengths',
+      ],
+    },
+
+    passions: {
+      type: [String],
+      enum: passionsEnum,
+      required: true,
+      validate: [
+        (val: string[]) => val.length >= 1 && val.length <= 3,
+        'Select 1 to 3 passions',
       ],
     },
 
@@ -35,19 +47,24 @@ const pathwayAssessmentSchema = new Schema(
       required: true,
     },
 
-    passions: {
+    learningPreference: {
       type: [String],
-      enum: passionsEnum,
+      enum: learningPreferenceEnum,
+      required: true,
       validate: [
-        (val: string[]) => val.length >= 1 && val.length <= 4,
-        'Select 1 to 4 passions',
+        (val: string[]) => val.length >= 1 && val.length <= 3,
+        'Select 1 to 3 learning preferences',
       ],
     },
 
-    freeTime: {
-      type: String,
-      enum: freeTimeEnum,
+    workStyle: {
+      type: [String],
+      enum: workStyleEnum,
       required: true,
+      validate: [
+        (val: string[]) => val.length >= 1 && val.length <= 2,
+        'Select 1 to 2 work styles',
+      ],
     },
 
     workEnvironment: {
@@ -56,16 +73,20 @@ const pathwayAssessmentSchema = new Schema(
       required: true,
     },
 
-    workStyle: {
+    collaborationStyle: {
       type: String,
-      enum: workStyleEnum,
+      enum: collaborationStyleEnum,
       required: true,
     },
 
     impact: {
-      type: String,
+      type: [String],
       enum: impactEnum,
       required: true,
+      validate: [
+        (val: string[]) => val.length >= 1 && val.length <= 2,
+        'Select 1 to 2 impact preferences',
+      ],
     },
 
     goals: {
@@ -82,6 +103,10 @@ const pathwayAssessmentSchema = new Schema(
     stepsCompleted: {
       type: Number,
       default: 0,
+    },
+    version: {
+      type: Number,
+      default: 1,
     },
   },
   {
