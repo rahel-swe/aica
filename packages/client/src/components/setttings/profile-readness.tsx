@@ -85,9 +85,11 @@ const ProfileReadness = () => {
           completed={pathwayAssessmentCompleted ?? false}
           actionTrigger={
             !pathwayAssessmentCompleted ? (
-              <Button variant="outline" size="lg">
-                <Play />
-                Start
+              <Button asChild variant="outline" size="lg">
+                <Link to="/pathway-assessment">
+                  <Play />
+                  Start
+                </Link>
               </Button>
             ) : (
               <ActionDialog

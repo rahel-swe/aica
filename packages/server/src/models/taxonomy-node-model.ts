@@ -111,15 +111,6 @@ taxonomyNodeSchema.index({
   status: 1,
 });
 
-taxonomyNodeSchema.index(
-  {
-    slug: 1,
-  },
-  {
-    unique: true,
-  }
-);
-
 export const TaxonomyNodeModel = model<TaxonomyNodeDbDocument>(
   'TaxonomyNode',
   taxonomyNodeSchema

@@ -150,7 +150,7 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: 'pathways/:pathwayId',
+            path: 'pathways/:pathwaySlug',
             element: (
               <RouterProtector>
                 <PathwayDetailPage />

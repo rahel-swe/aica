@@ -265,6 +265,5 @@ const pathwaySchema = new Schema<PathwayDbDocument>(
 
 pathwaySchema.index({ taxonomyNodeIds: 1, status: 1 });
 pathwaySchema.index({ visibilityLayer: 1, status: 1 });
-pathwaySchema.index({ matchProfileId: 1 });
 
 export const PathwayModel = model<PathwayDbDocument>('Pathway', pathwaySchema);

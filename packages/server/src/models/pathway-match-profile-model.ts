@@ -191,14 +191,6 @@ const pathwayMatchProfileSchema = new Schema<PathwayMatchProfileDbDocument>(
   }
 );
 
-pathwayMatchProfileSchema.index({
-  pathwayId: 1,
-});
-
-pathwayMatchProfileSchema.index({
-  status: 1,
-});
-
 export const PathwayMatchProfileModel = model<PathwayMatchProfileDbDocument>(
   'PathwayMatchProfile',
   pathwayMatchProfileSchema

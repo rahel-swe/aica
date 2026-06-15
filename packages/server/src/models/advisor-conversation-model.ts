@@ -72,8 +72,6 @@ const advisorConversationSchema = new Schema<IAdvisorConversation>(
   { timestamps: true }
 );
 
-advisorConversationSchema.index({ userId: 1, updatedAt: -1 });
-
 export const AdvisorConversationModel = model<IAdvisorConversation>(
   'AdvisorConversation',
   advisorConversationSchema
