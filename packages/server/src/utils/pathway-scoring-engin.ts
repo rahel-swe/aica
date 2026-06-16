@@ -1,6 +1,4 @@
 /**
- * pathway-scoring-engine.ts
- *
  * Fixes from previous version:
  *   1. scoreSingleValueDimension now normalizes against totalPossible
  *      (was returning raw weight — inconsistent scale with multi-value)
@@ -34,10 +32,11 @@ export const CURRENT_MATCHING_VERSION = 2;
 //   workStyle:             0.12      — multi-select, captures composite work identity
 //   impact:                0.10      — multi-select, professional values
 //   subjects:              0.08      — academic alignment signal
-//   learningPreference:    0.08      — replaced freeTime (stronger predictor)
+//   learningPreference:    0.08      — the way user can learn well (stronger predictor)
 //   workEnvironment:       0.05      — location context, less differentiating
-//   collaborationStyle:    0.05      — new dimension, conservative start
+//   collaborationStyle:    0.05      — conservative start
 // Sum: 1.00
+
 export const DIMENSION_WEIGHTS = {
   strengths: 0.2,
   passions: 0.2,
@@ -106,6 +105,7 @@ class PathwayScoringEngine {
     // Denominator: sum of positive-band contributions only
     const totalPossible = weights.reduce((sum, w) => {
       const m = this.getBandMultiplier(w.band);
+
       return m > 0 ? sum + w.weight * m : sum;
     }, 0);
 
@@ -148,6 +148,7 @@ class PathwayScoringEngine {
 
     const raw =
       (match.weight * this.getBandMultiplier(match.band)) / totalPossible;
+
     return Number(Math.min(1, Math.max(MIN_DIMENSION_SCORE, raw)).toFixed(4));
   }
 

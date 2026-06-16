@@ -1,0 +1,1921 @@
+[
+  {
+    "name": "ټکنالوژي",
+    "description": "د نننۍ نړۍ د سافټویر، زیرمیز جوړښت، او هوښیارو سیسټمونو ودانول. زموږ د وخت پراخه او ترټولو ګړندۍ مسلکي ساحه.",
+    "slug": "technology",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "روغتیا پاملرنه",
+    "description": "د انسان روغتیا تشخیص، درملنه، او ساتنه — د کلینیک کې د انفرادي ناروغانو نه نیولې تر ډګر کې د ټولو وګړو پورې.",
+    "slug": "healthcare",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "سوداګري",
+    "description": "سازمانونه جوړ کړئ، اداره کړئ، او وده ورکړئ. هر صنعت ته ستراتیژي، مارکیټینګ، عملیات، او خلک اړین دي.",
+    "slug": "business",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "مالي چارې",
+    "description": "پانګه لیږدول، ساتل، او زیاتول. هغه ځای چیرې چې ریاضي، بازارونه، او لوی پریکړې سره یوځای کیږي.",
+    "slug": "finance",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "خلاقه هنرونه",
+    "description": "داسې کارونه ډیزاین کړئ، تولید کړئ، او وړاندې کړئ چې کلتور، اړیکه، او د انسان تجربه بڼه ورکوي.",
+    "slug": "creative-arts",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "علومه",
+    "description": "له مالیکولونو نه نیولې تر کهکشانونو پورې د طبیعي نړۍ مطالعه. دلته موندنې د سبا طب، ټکنالوژي، او پالیسۍ بڼه اختیاروي.",
+    "slug": "sciences",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "ټولنیزې علومه او قانون",
+    "description": "د انسانۍ ټولنې پوهاوی، اداره، او ښه والی — له انفرادي ساکولوژۍ نه نیولې تر نړیوالو سیسټمونو او هغه قانون پورې چې دوی یوځای ساتي.",
+    "slug": "social-sciences-and-law",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "name": "انجینري",
+    "description": "هغه فزیکي سیسټمونه ډیزاین او جوړ کړئ چې تمدن ورباندې تکیه کوي — له پلونو نه نیولې تر فضایي کشتیو او برقي شبکو پورې.",
+    "slug": "engineering",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "name": "فني مسلکونه او راپورته کیدونکي ساحې",
+    "description": "عملي، انسان محوره، او د زیاتیدونکي لوړ معاش خاوندان. له جواز لرونکو فني کارونو نه نیولې تر مخکښو صنعتونو پورې، دا لارې راتلونکی اقتصاد جوړوي.",
+    "slug": "trades-vocational-and-emerging",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 9,
+    "status": "active"
+  },
+
+  {
+    "name": "سافټویر پراختیا",
+    "description": "هغه کوډ ولیکئ چې د ملیاردونو خلکو ورځني کارونکي اپلیکیشنونو، خدمتونو، او پلیټفارمونو چلوي.",
+    "slug": "software-development",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مصنوعي ځیرکتیا (AI) او ډاټا",
+    "description": "هوښیار سیسټمونه جوړ کړئ او له ډاټا نه پوهه راوباسئ — د هرې هغې ماشین شاته انجینري چې فکر کوي، وړاندوینه کوي، او سپارښتنه کوي.",
+    "slug": "ai-and-data",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "زیرمیز جوړښت او امنیت",
+    "description": "سافټویر باوري، خوندي، او لوی پیمانه پر چلند وساتئ. هغه ډسپلین چې د تولیدي سیسټمونه له ډیموګانو بیلوي.",
+    "slug": "infrastructure-and-security",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "پروډکټ او ډیزاین",
+    "description": "مشخص کړئ چه څه جوړیږي، د هغه بڼه وټاکئ، او ډاډ ترلاسه کړئ چې واقعي خلکو ته کار کوي.",
+    "slug": "product-and-design",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "راپورته کیدونکې ټکنالوژي",
+    "description": "روبوټیک، منغمره چاپیریالونه، غیرمرکزي سیسټمونه — هغه کټیګوریانې چې لاهم بشپړ شتون نه لري خو د راتلونکي لسیزې تعریف به کوي.",
+    "slug": "emerging-technology",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "فرنټ اینډ پراختیا (Frontend Development)",
+    "description": "تاسې هغه شی جوړوئ چې خلک واقعاً ویني او کلیک کوي. د ویب پر هر انترفیس، متقابل عمل، او ترتیب تاسې پیل کوئ.",
+    "slug": "frontend-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "بیک اینډ پراختیا (Backend Development)",
+    "description": "د هر اپلیکیشن نه لیدونکی انجن. تاسې هغه APIs، خدمتونه، او ډیټابیسونه ډیزاین کوئ چې د سطحې پر هر شی کار کولو اسباب کیږي.",
+    "slug": "backend-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "فل سټیک پراختیا (Full-Stack Development)",
+    "description": "تاسې له انترفیس نه نیولې تر زیرمیز جوړښت پورې پروډکټ خپل وساتئ — د خپل ځانه بشپړ شی جوړولو ترټولو نږدې لار.",
+    "slug": "full-stack-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "موبایل پراختیا (Mobile Development)",
+    "description": "هغه اپلیکیشنونه چې خلک سهار د لومړي شي لپاره لاس وروغزوي. تاسې داسې تجربې جوړوئ چې د چا جیب کې اوسیږي، تل د لاسرسي وړ.",
+    "slug": "mobile-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "بلاکچین (Blockchain) پراختیا",
+    "description": "تاسې غیرمرکزي سیسټمونه او سمارټ قراردادونه جوړوئ — د پروګرامولي وړ، بې باوري ډیجیټلي لیږدونو زیرمیز جوړښت.",
+    "slug": "blockchain-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "AR / VR / XR پراختیا",
+    "description": "تاسې منغمره چاپیریالونه جوړوئ چیرې چې ډیجیټل او فزیکي فضا سره یوځای کیږي — له روزنیزو سیمولیشنونو نه نیولې تر لوبو او مجازي کاري ځایونو پورې.",
+    "slug": "ar-vr-xr-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "نو کوډ / لو کوډ پراختیا (No-Code / Low-Code)",
+    "description": "تاسې پرته له دودیز کوډ نه پیاوړي اپلیکیشنونه، اتوماسیونونه، او کاري جریانونه جوړوئ — د سافټویر جوړول د خلکو بالکل نویو ډلو لپاره د لاسرسي وړ کوي.",
+    "slug": "no-code-low-code-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 7,
+    "status": "active"
+  },
+
+  {
+    "name": "AI / ماشین لرنینګ (Machine Learning) انجینري",
+    "description": "تاسې ماشینونو ته زده کړه، پیژندنه، او پریکړه کولو ښوونه کوئ. هغه ساحه چې اوس مهال هر صنعت بیا بڼه ورکوي.",
+    "slug": "ai-machine-learning-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "پرامپټ انجینري (Prompt Engineering)",
+    "description": "تاسې هغه انپټونه ډیزاین کوئ چې د AI اوتپوټونه بڼه ورکوي — د ژبني ماډلونو سره د اړیکو ډسپلین ترڅو باوري، د تولیدي درجې AI ځانګړتیاوې جوړ کړئ.",
+    "slug": "prompt-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "ډاټا ساینس (Data Science)",
+    "description": "تاسې د غوغا کې سیګنال موندئ. د ملیونونو ډاټا پوائنټونو کې پراته نمونې داسې پریکړو ته بدلیږي چې د سازمانونو کار کولو طریقه بدلوي.",
+    "slug": "data-science",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "ډاټا انجینري (Data Engineering)",
+    "description": "تاسې هغه پایپلاینونه او زیرمیز جوړښت جوړوئ چې ډاټا د کارولو وړ کوي. ستاسې پرته، ډاټا ساینس شتون نشي کولای.",
+    "slug": "data-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "ډاټا تحلیل (Data Analysis)",
+    "description": "تاسې خام عددونه پریکړو ته بدلوئ. د نړۍ هر سوداګري او حکومت د هغه روښانتیا پر بنسټ چلیږي چې ډاټا تحلیلوونکي وړاندې کوي.",
+    "slug": "data-analysis",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "DevOps / پلیټفارم انجینري (Platform Engineering)",
+    "description": "تاسې ډاډ ترلاسه کوئ چې سافټویر باوري توب سره لیږل کیږي او لوی پیمانه پر چلیږي — د کوډ لیکلو او د تولید پر مهال چلولو تر منځ پل.",
+    "slug": "devops-platform-engineering",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "کلاوډ آرکیټکچر (Cloud Architecture)",
+    "description": "تاسې هغه زیرمیز جوړښت ډیزاین کوئ چې عصري سافټویر پر ژوند کوي. د پراخیدو وړ، مقاوم، او تل د لاسرسي وړ.",
+    "slug": "cloud-architecture",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "سایبر امنیت (Cybersecurity)",
+    "description": "تاسې سیسټمونه، شبکې، او خلک له هغه ګواښونو ساتئ چې هر کال ډیر پیچلي کیږي. د ۲۰۲۶ کال یوه له ترټولو مهمو او د کارمندانو کمښت لرونکو دندو.",
+    "slug": "cybersecurity",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "د سایبر امنیت تحلیل (Cybersecurity Analysis)",
+    "description": "تاسې بریدونه تحقیقوئ، د امنیت نقضونه تعقیبوئ، او د ګواښونو له ننوتو وروسته زیرمیز جوړښت ساتئ. نیمایي کارآگاه او نیمایي انجینیر.",
+    "slug": "cybersecurity-analysis",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "د IT سیسټمونو اداره",
+    "description": "تاسې د سازمانونو ټکنالوژي پر چلند ساتئ. هغه متخصص چې هر وخت هر شی بند شي، ټول یې زنګ وهي.",
+    "slug": "it-systems-administration",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "ایمبیډ شوي سیسټمونه / IoT (Embedded Systems / IoT)",
+    "description": "تاسې داسې کوډ لیکئ چې د فزیکي وسیلو دننه چلیږي — موټرونه، حسیات، طبي هارډویر، هوښیارې وسیلې. هغه سافټویر چې نړۍ ورپرته نه لیدونکي توب سره چلیږي.",
+    "slug": "embedded-systems-iot",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "UI / UX ډیزاین (UI / UX Design)",
+    "description": "تاسې ډیجیټل محصولات اسانه، ډیر انساني، او ډیر طبیعي کوئ. ډیزاین ښکلاوه نه ده — دا پروډکټ دی.",
+    "slug": "ui-ux-design",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "پروډکټ مینیجمنټ (Product Management)",
+    "description": "تاسې پریکړه کوئ چه څه جوړیږي او ولې. تاسې د کارونکي اړتیاوې، د سوداګرۍ اهداف، او د انجینري واقعیت یو واقعي شي ته وصل کوئ.",
+    "slug": "product-management",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "AI پروډکټ مینیجمنټ (AI Product Management)",
+    "description": "تاسې د AI پر بنسټ محصولات له نظر نه نیولې تر لانچ پورې رانږدې کوئ — دواړه پوهیږئ چې ماډل کولای شي او کارونکي واقعاً څه ته اړتیا لري.",
+    "slug": "ai-product-management",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "تخنیکي لیکنه",
+    "description": "تاسې پیچلتیا وضاحت ته ژباړئ. هغه کس چې پیاوړي وسیلې د واقعي خلکو لپاره د کارولو وړ کوي.",
+    "slug": "technical-writing",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "QA / د ازمایشنو انجینري (QA / Test Engineering)",
+    "description": "تاسې هغه شی موندئ چې مخکې له کارونکو نه ماریږي. هغه ډسپلین چې مسلکي سافټویر د هواس باز جوړولو نه بیلوي.",
+    "slug": "qa-test-engineering",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "لوبو پراختیا (Game Development)",
+    "description": "تاسې هغه نړۍ جوړوئ چیرې چې خلک ورننوځي — د فزیک، AI، رینډرینګ، او ریل ټایم اندارفعالیت شاته کوډ لیکئ.",
+    "slug": "game-development",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "روبوټیک انجینري (Robotics Engineering)",
+    "description": "تاسې داسې ماشینونه جوړوئ چې فزیکي نړۍ کې احساس کوي، حرکت کوي، او عمل کوي. هغه ساحه چې د راتلونکي اقتصاد بڼه تعریفوي.",
+    "slug": "robotics-engineering",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "ډرون او UAV ټکنالوژي (Drone and UAV Technology)",
+    "description": "تاسې د لیږد، کرنې، بیړني غبرګون، او نظارت کې کارول شوي بې چلوونکي سیسټمونه ډیزاین، اداره، یا پروګرام کوئ.",
+    "slug": "drone-uav-technology",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "د رواني روغتیا ټکنالوژي",
+    "description": "تاسې هغه اپلیکیشنونه او پلیټفارمونه جوړوئ چې د رواني روغتیا ملاتړ ته لاسرسی پراخوي — چیرې چې سافټویر انجینري د انساني همدردۍ سره مخ کیږي.",
+    "slug": "mental-health-technology",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "فنتک پراختیا (Fintech Development)",
+    "description": "تاسې د بانکولۍ، تادیاتو، او مالي وسیلو راتلونکی نسل جوړوئ — چیرې چې سافټویر انجینري د پیسو د لیږد سره مخ کیږي.",
+    "slug": "fintech-development",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "کلینیکي طب",
+    "description": "د ناروغانو مستقیم پاملرنه — تشخیص، درملنه، او د طب د زړه اړیکه.",
+    "slug": "clinical-medicine",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "نرسینګ او متحده روغتیایي خدمتونه",
+    "description": "هغه کلینیکي متخصصین چې هره ورځ د ناروغانو ترټولو نږدې کار کوي — له بستره کنار پاملرنې نه نیولې تر بیاروغتیا، انځورګیرۍ، او تغذیې پورې.",
+    "slug": "nursing-and-allied-health",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "رواني روغتیا او ساکیاتري (Psychiatry)",
+    "description": "هغه متخصصین چې ذهن درملنه کوي — تراپي، درمل، او د انساني ساکولوژۍ علم سره یوځای کار کوي.",
+    "slug": "mental-health-and-psychiatry",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "بیومیډیکل (Biomedical) او تحقیق",
+    "description": "هغه لابراتوار، تحقیق، او ټکنالوژیک زیرمیز جوړښت چې عصري طب ممکن کوي.",
+    "slug": "biomedical-and-research",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "طب (عمومي طبابت)",
+    "description": "تاسې ډیری وخت لومړی کس یاست چې چا د خپلې روغتیا پر وخت باور پرې کوي — اوږدمهاله د ناروغانو اړیکې او د تشخیص درنه بار، هره ورځ.",
+    "slug": "medicine-general-practice",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "درملیزه (Pharmacy)",
+    "description": "تاسې د هغه چیز متخصص یاست چې بدن کې ورننوځي او ولې. د درملو امنیت، دقیق مقدار، او د پاملرنې پر ځای د ناروغانو مشوره.",
+    "slug": "pharmacy",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "غاښپزشکي (Dentistry)",
+    "description": "تاسې خلکو ته هغه شی ورکوئ چې هره ورځ یې پرته له فکر کولو نه کاروي: روغه، فعاله، او ډاډمنه خندا.",
+    "slug": "dentistry",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "د سترګو پزشکي (Optometry)",
+    "description": "تاسې هغه حس ساتئ او بیا راولئ چې خلک ترټولو زیات ورباندې تکیه کوي. د مبارزې او د روښانه لیدو تر منځ توپیر.",
+    "slug": "optometry",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "د حیواناتو درملنه (Veterinary Medicine)",
+    "description": "تاسې د هغه حیواناتو پاملرنه کوئ چې نشي کولای درته ووایي چیرې درد لري. د تشخیص مهارت او ریښتینی همدردي یو شان اړین دي.",
+    "slug": "veterinary-medicine",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "بیړنۍ درملنه / پاراميډیسین (Emergency Medicine / Paramedicine)",
+    "description": "تاسې خلکو ته د خپلو ژوند تر ټولو بد شیبو کې درملنه کوئ — ګړندي، غیر متوقعو حالاتو کې، کله چې هر دقیقه مهمه وي.",
+    "slug": "emergency-medicine-paramedicine",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "قابلګي (Midwifery)",
+    "description": "تاسې د انسان د ژوند یوه له ترټولو مهمو تجربو لارښوونه او ساتنه کوئ — له حمل نه نیولې تر زیږون او د پلارمورتوب پیل پورې.",
+    "slug": "midwifery",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 7,
+    "status": "active"
+  },
+
+  {
+    "name": "نرسینګ (Nursing)",
+    "description": "تاسې د ناروغ د پاملرنې کې ترټولو دوامداره شتون یاست — کلینیکي مهارت، ریښتینۍ عاطفي هوښیاري، او هره شیفت کې ریښتینې انساني اړیکه.",
+    "slug": "nursing",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "فزیوتراپي (Physiotherapy)",
+    "description": "تاسې خلکو ته د ټپ، ناروغۍ، یا عملیاتو وروسته بیا حرکت کې مرسته کوئ. بیاروغتیا ډیره شخصي ده، او تاسې د هغې مرکز کې یاست.",
+    "slug": "physiotherapy",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "مسلکي تراپي (Occupational Therapy)",
+    "description": "تاسې خلکو ته د ناروغۍ یا معلولیت وروسته د ورځني ژوند کې خپلواکي بیرته راوستلو کې مرسته کوئ. عملي، همدردانه، او واقعاً د ژوند بدلوونکی کار.",
+    "slug": "occupational-therapy",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "ریډیوګرافي / طبي انځورګیري (Radiography / Medical Imaging)",
+    "description": "تاسې پرته له خلاصولو نه بدن دننه ویني. ستاسو انځورونه هره ورځ د هر روغتیالي کې تشخیصونه او جراحي پریکړې لارښوونه کوي.",
+    "slug": "radiography-medical-imaging",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "تغذیه او ډایتیتیکس (Nutrition and Dietetics)",
+    "description": "تاسې د خوراک علم شخصي لارښوونې ته ژباړئ چې د خلکو احساس او ژوندانه بدلوي. هغه ساحه چې د روغتیایي پوهاوي د ژوریدو سره وده کوي.",
+    "slug": "nutrition-and-dietetics",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "د ژبې-ژغورونکي پیتولوژي (Speech-Language Pathology)",
+    "description": "تاسې خلکو ته د سکتې، ټپ، یا د ودې ستونزو وروسته بیا اړیکه نیولو او غذا چکولو کې مرسته کوئ — یو مسلک چې د ترټولو بنسټیزو انساني اړیکو یو بیا راوستل کوي.",
+    "slug": "speech-language-pathology",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "کلینیکي ساکولوژي (Clinical Psychology)",
+    "description": "تاسې خلکو ته خپل ذهنونه پوهیدلو او بدلولو کې مرسته کوئ. د شتو ترټولو انساني او واقعاً اغیزمنو ډسپلینونو یو.",
+    "slug": "clinical-psychology",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "ساکیاتري (Psychiatry)",
+    "description": "تاسې د طبي علم بشپړ درنښت سره رواني ناروغي درملنه کوئ. بدنامي کمیږي او غوښتنه د متخصصینو عرضې نه ګړندۍ وده کوي.",
+    "slug": "psychiatry",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "د رواني روغتیا او روږدتیا مشوره",
+    "description": "تاسې د روږدتیا، صدمې، او رواني روغتیا د بحران سره لارښوونکو خلکو ملاتړ کوئ — د کلینیکي مهارت او ریښتیني انساني همدردۍ د یوځای کیدو ځای.",
+    "slug": "mental-health-addiction-counseling",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "بیومیډیکل ساینس (Biomedical Science)",
+    "description": "تاسې هغه لابراتواري ازمایښتونه ترسره کوئ چې نږدې هره کلینیکي پریکړه پرې ولاړه ده. طب بې له تاسې د پردو شاته به کار نه کوله.",
+    "slug": "biomedical-science",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د اعصابو علم (Neuroscience)",
+    "description": "تاسې د پیژندل شوې کاینات ترټولو پیچلی شی مطالعه کوئ: د انسان دماغ. بیولوژي، ساکولوژي، او ټکنالوژي یوه ساحه کې سره یوځای کیږي.",
+    "slug": "neuroscience",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "عامه روغتیا",
+    "description": "تاسې بشپړ نفوسونه ساتئ، نه یوازې انفرادي ناروغان — پالیسي، مخنیوی، او د سیسټمونو فکر یوه پیمانه کې چې ډیری مسلکونه هیڅکله نه رسیږي.",
+    "slug": "public-health",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "بیومیډیکل انجینري (Biomedical Engineering)",
+    "description": "تاسې هغه وسیلې ډیزاین او جوړوئ چې طب ورباندې تکیه کوي — د زړه رنګ کونکي، مصنوعي غړي، د انځورګیرۍ سیسټمونه، او جراحي وسیلې.",
+    "slug": "biomedical-engineering",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "د روغتیا معلوماتي ساینس (Health Informatics)",
+    "description": "تاسې کلینیکي پوهه ټکنالوژۍ سره وصل کوئ ترڅو د روغتیا سیسټمونه د ټولو لپاره هوښیارتر، ګړندي، او خوندي کړئ.",
+    "slug": "health-informatics",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "ستراتیژي او مشورتي خدمتونه",
+    "description": "مشخص کړئ چه سازمانونه څه کوي او څنګه یې کوي. د سوداګرۍ کې ترټولو لوړ اغیزه لرونکي فکري دندې.",
+    "slug": "strategy-and-consulting",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مارکیټینګ او وده (Marketing and Growth)",
+    "description": "د خلکو د محصولاتو او برانډونو موندلو، احساس کولو، او غوراوي طریقه مشري کوئ. نیمایي علم، نیمایي خلاقیت، تل خلک محوره.",
+    "slug": "marketing-and-growth",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "عملیات او لوجستیک (Operations and Logistics)",
+    "description": "د سوداګرۍ سیسټمونه فعال وساتئ — د اچولو زنځیرونه، د توکو حرکت، او د لوی پیمانه لیږد ماشینري.",
+    "slug": "operations-and-logistics",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "کارآفریني",
+    "description": "له هیڅ نه یو شی جوړ کړئ. د سوداګرۍ ترټولو غیریقیني، ترټولو شخصي، او احتمالاً ترټولو اغیزمنه لار.",
+    "slug": "entrepreneurship",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "خلک او سازمان",
+    "description": "هغه کلتور او خلک وګومارئ، وده ورکړئ، او وساتئ چې سازمانونه چلوي.",
+    "slug": "people-and-organisation",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "د سوداګرۍ تحلیل (Business Analysis)",
+    "description": "تاسې د سوداګرۍ ستونزو او تخنیکي حلونو تر منځ ژباړه کوئ — هغه کس چې مخکې له هر شي جوړیدو نه سم پوښتنې کوي.",
+    "slug": "business-analysis",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د مدیریت مشورتي خدمات (Management Consulting)",
+    "description": "تاسې د هغو سازمانونو لپاره پیچلې سوداګریزې ستونزې حل کوئ چې خپل نه لیدل کیدونکي ځایونه نشي لیدلای. هر صنعت، د ننګونو هر ډول.",
+    "slug": "management-consulting",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "د پروژو مدیریت",
+    "description": "تاسې شیان د وخت سره، د کاري دایرې دننه، او د بودیجې لاندې سپاروئ. هغه ډسپلین چې نظرونه واقعي پایلو ته بدلوي.",
+    "slug": "project-management",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "د دوامداري پراختیا مشورتي خدمات (Sustainability Consulting)",
+    "description": "تاسې سازمانونو ته د چاپیریالي او ټولنیز اغیزو کمولو کې مرسته کوئ د سوداګریز توان وړ لارو سره. د ترټولو ګړندي وده کونکو مشورتي مسلکونو یو.",
+    "slug": "sustainability-consulting",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "مارکیټینګ (Marketing)",
+    "description": "تاسې بڼه ورکوئ چې خلک د خپلو لپاره مهم شیانو سره موندل، احساس کول، او اړیکه ونیسي. نیمایي علم، نیمایي خلاقیت، تل خلک محوره.",
+    "slug": "marketing",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "ډیجیټل مارکیټینګ (Digital Marketing)",
+    "description": "SEO، پیول رسنۍ، منځپانګه، ټولنیزه ستراتیژي — تاسې د برانډونو آنلاین ودې طریقه مشري کوئ. د اندازه کولو وړ، تل بدلیدونکی، هیڅکله دوه ځله یو شان نه.",
+    "slug": "digital-marketing",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "د برانډ ستراتیژي (Brand Strategy)",
+    "description": "تاسې مشخص کوئ چه یو سازمان د چا لپاره ولاړ دی او دا دنیا ته څنګه څرګندوي — د هر هغه برانډ شاته فکر چې ورسره وحدت او ریښتونتیا احساسیږي.",
+    "slug": "brand-strategy",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "د ای کامرس (E-commerce) او خرده فروشۍ ستراتیژي",
+    "description": "تاسې ډیزاین او غوره کوئ چه محصولات له انبار نه نیولې تر دروازې پورې څنګه حرکت کوي. د نړۍ یو له ترټولو ګړندي وده کونکو سوداګریزو سکټورونو.",
+    "slug": "e-commerce-retail-strategy",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "د عرضه زنځیر مدیریت (Supply Chain Management)",
+    "description": "تاسې د توکو نړیوالي جریان پر حرکت ساتئ. هغه ساحه چې کله ۲۰۲۰ کې مات شوه، د ټولې نړۍ لپاره د هغې اهمیت ښکاره شو.",
+    "slug": "supply-chain-management",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "لوجستیک او عملیات (Logistics and Operations)",
+    "description": "تاسې ډاډ ترلاسه کوئ چه د سوداګرۍ سیسټمونه واقعاً کار کوي. د هر وخت سره سپارلو او هر ښه چلیدونکي سوداګرۍ شاته.",
+    "slug": "logistics-and-operations",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "ملکي سوداګري (Real Estate)",
+    "description": "ملک د سوداګرۍ له توکه — پانګونه، پراختیا، او د هغه ځای شاته سوداګریزه ستراتیژي چیرې چې خلک ژوند کوي، کار کوي، او پیسې خرڅوي.",
+    "slug": "real-estate",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "پلور او د سوداګرۍ پراختیا",
+    "description": "تاسې دروازې خلاصوئ، اړیکې جوړوئ، او عاید راوړئ — هغه دنده چه هر سازمان ورته اړتیا لري او لږه کسان یې واقعاً ښه کوي.",
+    "slug": "sales-and-business-development",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "عمومي کارآفریني",
+    "description": "تاسې له هیڅ نه یو شی جوړ کوئ. ترټولو غیریقیني، ترټولو شخصي، او احتمالاً ترټولو اغیزمنه لار چه شته.",
+    "slug": "general-entrepreneurship",
+    "kind": "specialization",
+    "parentSlug": "entrepreneurship",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د ای کامرس (E-commerce) کارآفریني",
+    "description": "تاسې د ډیجیټل اول اقتصاد کې د محصول پر بنسټ سوداګري جوړوئ او چلوئ. د ننوتو خنډ له تل نه کم — بیا هم هر شی ته اړتیا لري.",
+    "slug": "e-commerce-entrepreneurship",
+    "kind": "specialization",
+    "parentSlug": "entrepreneurship",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "د انساني سرچینو مدیریت (Human Resources)",
+    "description": "تاسې د یوه سازمان کلتور او خلک جوړوئ او ساتئ — ستراتیژي، همدردي، او واقعاً ستونزمنې پریکړې یو شان مقدار کې.",
+    "slug": "human-resources",
+    "kind": "specialization",
+    "parentSlug": "people-and-organisation",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "پانګونه او بازارونه",
+    "description": "د شرکتونو، بازارونو، او لوړ خطر ستراتیژیو د یوځای کیدو ځای کې پانګه تحلیل کړئ، قیمت وټاکئ، او حرکت ورکړئ.",
+    "slug": "investment-and-markets",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مالي پلان کول او مشورتي خدمتونه",
+    "description": "افرادو او سازمانونو ته د یوه ژوند پر مهال د خپلې شتمنۍ ساتلو او زیاتولو کې مرسته وکړئ.",
+    "slug": "financial-planning-and-advisory",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "خطر او بیمه",
+    "description": "غیریقیني اندازه وکړئ، قیمت ورکړئ، او اداره یې کړئ — د مالي ثبات ریاضیکي ستون.",
+    "slug": "risk-and-insurance",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "د پانګونې بانکداري (Investment Banking)",
+    "description": "د پانګې، شرکتونو، او بازارونو د یوځای کیدو ځای کې لوړ خطر سودا جوړول. غوښتنه کونکی، ګړندی، او ډیر اغیزمن.",
+    "slug": "investment-banking",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مالي تحلیل",
+    "description": "تاسې د پانګونې، ستراتیژۍ، او مهمو پریکړو لارښوونې لپاره عددونه مانا لرونکي کوئ — چیرې چې ریاضي د سوداګرۍ قضاوت سره مخ کیږي.",
+    "slug": "financial-analysis",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "د خطر محاسبه علم (Actuarial Science) ⚠",
+    "description": "تاسې ریاضي او احتمال کارولو سره خطر اندازه کوئ — د بیمې، پنشن، او لوړ مسلکي کچه پالیسۍ پلي کیږي.",
+    "slug": "actuarial-science",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "مالي پلان کول او د شتمنۍ مدیریت (Financial Planning and Wealth Management)",
+    "description": "تاسې افرادو او کورنیو ته د یوه ژوند پر مهال د مالي امنیت جوړولو کې مرسته کوئ — د هدفونو ټاکل، پانګونه، د مالیې ستراتیژي، او اوږدمهاله باور.",
+    "slug": "financial-planning-wealth-management",
+    "kind": "specialization",
+    "parentSlug": "financial-planning-and-advisory",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "بیمه او د خطر مدیریت (Insurance and Risk Management)",
+    "description": "تاسې سازمانونو ته د هغه شي پوهیدلو او پرې خوندي کیدلو کې مرسته کوئ چه ورسره ستونزه پیدا کیدای شي — د غیریقیني قیمت ټاکل او د سوداګرۍ ستراتیژۍ کې مقاومت ودانول.",
+    "slug": "insurance-risk-management",
+    "kind": "specialization",
+    "parentSlug": "risk-and-insurance",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "بصري ډیزاین (Visual Design)",
+    "description": "د شیانو د لید بڼه ورکړئ — له برانډ هویتونو او انځورونو نه نیولې تر انترفیسونو او د محصول ښکلاوه پورې.",
+    "slug": "visual-design",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "رسنۍ او تولید",
+    "description": "هغه منځپانګه جوړ کړئ چه سکرینونه، لوډ سپیکرونه، او فیډونه ډکوي — ویډیو، آډیو، لوبې، او د دوی تر منځ چینلونه.",
+    "slug": "media-and-production",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "معماري او فضایي ډیزاین (Architecture and Spatial Design)",
+    "description": "هغه ودانۍ، ځایونه، او اشیاء ډیزاین کړئ چې خلک هره ورځ کې اوسیږي، کاروي، او خوښوي.",
+    "slug": "architecture-and-spatial-design",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "لیکنه او منځپانګه",
+    "description": "د کلماتو سره اړیکه ونیسئ — ژورنالیزم، کیسه ویل، UX لیکنه، او هر هغه شی چه لیکل شوی کلمه یې کولای شي.",
+    "slug": "writing-and-content",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "سټیج هنر (Performing Arts)",
+    "description": "ژوندۍ وړاندې کول، حرکت، او سټیج. د انساني اظهار ترټولو زوړ او ترټولو سمدستي بڼه.",
+    "slug": "performing-arts",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "ګرافیک ډیزاین (Graphic Design)",
+    "description": "تاسې نظرونو بصري بڼه ورکوئ چه سمدستي اړیکه نیسي. هر هغه برانډ، کمپاین، او ترتیب چه هیڅکله چا ودروولی دی دلته پیل کیږي.",
+    "slug": "graphic-design",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "انځور کول او مفهوم هنر (Illustration and Concept Art)",
+    "description": "تاسې اصیل بصري نړۍ جوړوئ — له ادارتي انځور کولو نه نیولې تر هغه مفهوم هنر پورې چه د لوبو، فلمونو، او برانډونو لید تعریفوي.",
+    "slug": "illustration-concept-art",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "انیمیشن او د حرکت ګرافیکس (Animation and Motion Graphics)",
+    "description": "تاسې ساکت شیانو ته ژوند ورکوئ. فلم، اعلان، لوبې، او تعلیم ټول ورباندې تکیه کوي چه تاسې یې حرکت کولای شئ.",
+    "slug": "animation-motion-graphics",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "عکاسي (Photography)",
+    "description": "تاسې شیبې، خلک، محصولات، او ځایونه یو فریم کې نیسئ چه له تاسو نه اوږد عمر لري. هنري، سوداګریز، او ژورنالیستي ټول یوه وخت.",
+    "slug": "photography",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "UI / UX تحقیق (UI / UX Research)",
+    "description": "تاسې موندئ چه واقعي خلک واقعاً ټکنالوژي سره د کومې تجربه لري او هغه حقیقت بیرته د ډیزاین پروسې ته راوړئ. د شواهدو پر بنسټ خلاقیت.",
+    "slug": "ui-ux-research",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "د ملبوسو ډیزاین (Fashion Design)",
+    "description": "تاسې خلک جامه اغوندئ او کلتور خپل ته بیرته انعکاس کوئ — چیرې چه هنرمندي، هویت، سوداګري، او د ځان اظهار ټول سره لیدل کیږي.",
+    "slug": "fashion-design",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "د فلم او ویډیو تولید (Film and Video Production)",
+    "description": "تاسې د حرکت کونکو انځورونو له لارې کیسې وایئ — له ډاکومنټري نه نیولې تر لنډ بڼه منځپانګې پورې، تاسې کنټرولوئ چه خلک وويني او احساس کوي.",
+    "slug": "film-video-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د موسیقۍ تولید (Music Production)",
+    "description": "تاسې هغه غږ جوړوئ چه د کلتور لاندې کیني. ټریکونه، د فلم نمرات، د لوبو آډیو، د پاډکاسټ بستر — هر شی شاته یو د غږ ډیزاینر لري.",
+    "slug": "music-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "د غږ ډیزاین او آډیو انجینري (Sound Design and Audio Engineering)",
+    "description": "تاسې د غږ نړۍ جوړوئ — د فلم، موسیقۍ، ژوندیو پیښو، او لوبو لپاره. نه لیدل کیدونکي کار د لوی عاطفي اغیز سره.",
+    "slug": "sound-design-audio-engineering",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "د پاډکاسټ تولید (Podcast Production)",
+    "description": "د اوریدونکو لپاره اوږد بڼه آډیو کیسه ویل چه یو ساعت د باور وړ غږ سره تیرولو غوره کوي. یو صمیمي، وده کونکی، او د عایدو وړ رسنۍ.",
+    "slug": "podcast-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "د ټولنیزو رسنیو منځپانګه جوړول (Social Media Content Creation)",
+    "description": "تاسې مستقیماً د لوی پیمانه اوریدونکو سره، بې له منځګړیو نه، اړیکه نیسئ — یو خلاق مسلک چه شل کاله مخکې نه و، او اوس کلتور مشري کوي.",
+    "slug": "social-media-content-creation",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "د لوبو ډیزاین (Game Design)",
+    "description": "تاسې د لوبو سیسټمونه او تجربې ډیزاین کوئ — میخانیک، روایت، او د لوبغاړي ساکولوژي یوه ډسپلین کې چه ملیونونه یې د هر شي پر ځای غوره کوي.",
+    "slug": "game-design",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "معماري (Architecture)",
+    "description": "تاسې داسې ودانۍ ډیزاین کوئ چه له تاسو نه یو پیړۍ اوږد عمر لري. پناه، ښکلا، دنده، او هویت دایمي فزیکي جوړښتونو کې ودانیږي.",
+    "slug": "architecture",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د کورني چاپیریال ډیزاین (Interior Design)",
+    "description": "تاسې هغه ځایونه بڼه ورکوئ چه خلک هره ورځ کې ژوند کوي او کار کوي. هر هغه خونه چه چا خوښوي، یو کس یې ډیزاین کړی ده.",
+    "slug": "interior-design",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "صنعتي / د محصول ډیزاین (Industrial / Product Design)",
+    "description": "تاسې هغه اشیاء ډیزاین کوئ چه خلک لري، کاروي، او خوښوي — له فرنیچر نه نیولې تر طبي وسیلو او د هر چا لاس کې بریکي پورې.",
+    "slug": "industrial-product-design",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "ژورنالیزم او خلاق لیکنه (Journalism and Creative Writing)",
+    "description": "تاسې هغه کیسې وایئ چه خلک خبروي، ننګوي، او د هغوی د فکر کولو طریقه بدلوي. یوه ساحه چه هیڅکله ددې نه زیاته ضرورت یا ددې نه زیاته منازعه نه وه.",
+    "slug": "journalism-creative-writing",
+    "kind": "specialization",
+    "parentSlug": "writing-and-content",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "UX لیکنه او د منځپانګې ډیزاین (UX Writing and Content Design)",
+    "description": "تاسې د محصولاتو دننه کلمات لیکئ — تڼۍ، د پیل جریانونه، د تیروتنو پیغامونه، ټولتیپونه. د هغه اپلیکیشن تر منځ توپیر چه ګډوډ کوي او هغه چه لارښوونه کوي.",
+    "slug": "ux-writing-content-design",
+    "kind": "specialization",
+    "parentSlug": "writing-and-content",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "تیاتر او سټیج هنر (Theatre and Performing Arts)",
+    "description": "تاسې ژوندی، خونه کې، واقعي خلکو ته وړاندوئ. ترټولو زوړ انساني هنري بڼه او لاهم یوه له ترټولو ژوري پیاوړیو.",
+    "slug": "theatre-performing-arts",
+    "kind": "specialization",
+    "parentSlug": "performing-arts",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "رقص او کوریوګرافي (Dance and Choreography)",
+    "description": "تاسې د حرکت له لارې اړیکه نیسئ — د وړاندې کولو، تعلیم، فلم، او ژوندیو پیښو کې. فزیکي کیسه ویل د خپلې ترټولو مستقیمه بڼه.",
+    "slug": "dance-choreography",
+    "kind": "specialization",
+    "parentSlug": "performing-arts",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "د ژوند علومه",
+    "description": "ژوندي ارګانیزمونه مطالعه کوئ — له یوې یوازینۍ حجرې ژنیتیک نه نیولې تر د بشپړو ایکوسیسټمونو اکولوژۍ پورې.",
+    "slug": "life-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "فزیکي علومه",
+    "description": "ماده، انرژي، او د کاینات خپله د ترټولو بنسټیز کچه کې وپوهیږئ.",
+    "slug": "physical-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "د ځمکې او چاپیریالي علومه",
+    "description": "سیاره مطالعه کوئ — د هغې تاریخ، د هغې سیسټمونه، او هغه ځواکونه چه اوس مهال ورته ګواښ جوړوي.",
+    "slug": "earth-and-environmental-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "پلي کیدونکي علومه",
+    "description": "علمي پوهه عملي کارونو ته ولګوئ — د خوراک، فورینزک، کرنې، او د تمدن ساتونکو سیسټمونو کې.",
+    "slug": "applied-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "بحري بیولوژي (Marine Biology)",
+    "description": "تاسې سمندر مطالعه کوئ چه د ځمکې ډیره برخه پوښي او ترټولو کم پوهیدل شوی دی. تحقیق چه د ټولې سیارې حفاظت او پالیسي بڼه ورکوي.",
+    "slug": "marine-biology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "بایوټکنالوژي (Biotechnology)",
+    "description": "تاسې ژوندي سیسټمونه کاروئ ترڅو د طب، کرنې، او موادو کې ستونزې حل کړئ. د ۲۰۲۶ کال کې د پلي کیدونکي بیولوژۍ مخکښه.",
+    "slug": "biotechnology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "جنیتیک او ژینومیک (Genetics and Genomics)",
+    "description": "تاسې د DNA کې لیکل شوي لارښوونې رمز کوئ — د طب، کرنې، او د خپل ژوند پوهیدلو کې موندنې مشري کوئ.",
+    "slug": "genetics-and-genomics",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "اکولوژي (Ecology)",
+    "description": "تاسې مطالعه کوئ چه ژوندي سیسټمونه سره اندارفعالیت کوي او یو پر بل تکیه کوي — د حفاظت، د اقلیم غبرګون، او د چاپیریال پالیسۍ شاته علم.",
+    "slug": "ecology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "د طبیعت ساتنه بیولوژي (Conservation Biology)",
+    "description": "تاسې د ډولونو او ایکوسیسټمونو د بقا لپاره مبارزه کوئ — د ډګر کار، تحقیق، او د پالیسۍ ملاتړ د یوه مسلکي ژوند له توکه.",
+    "slug": "conservation-biology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "مایکروبیولوژي او ایمیونولوژي (Microbiology and Immunology)",
+    "description": "تاسې ترټولو کوچني ارګانیزمونه او د بدن دفاعونه پرضد یې مطالعه کوئ — د واکسین پراختیا، عفوني ناروغۍ، او د درملو موندنې مرکز کې.",
+    "slug": "microbiology-and-immunology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "کیمیا (Chemistry)",
+    "description": "تاسې ماده د خپلې ترټولو بنسټیزې کچه کې پوهیږئ. درملویزه صنعت، مواد، انرژي، او خوراک ټول د کیمیا پوهانو پورې تړلي دي.",
+    "slug": "chemistry",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "فزیک (Physics)",
+    "description": "تاسې د واقعیت ژورې پوښتنې کوئ او د هغو د ځوابولو لپاره ریاضي کاروئ — د ټول پلي کیدونکي علم او انجینري بنسټ.",
+    "slug": "physics",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "ستورپوهنه او اسټروفزیک (Astronomy and Astrophysics)",
+    "description": "تاسې له ځمکې نه هاخوا کاینات مطالعه کوئ. د لږو مسلکونو یو چیرې چه ریښتینی حیرت یو مسلکي اړتیا ده.",
+    "slug": "astronomy-and-astrophysics",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "د موادو علم (Materials Science)",
+    "description": "تاسې نوي مواد کشف او انجینر کوئ — سپک الوتکې، ګړندي چپسونه، ډیر انعطاف وړ لمریز پینلونه. کله چې مواد ښه شي، هر شی ښه کیږي.",
+    "slug": "materials-science",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "چاپیریالي علم (Environmental Science)",
+    "description": "تاسې هغه سیسټمونه مطالعه کوئ او دفاع کوئ چه ټول ژوند ورباندې تکیه کوي — اقلیم، خاوره، اوبه، هوا. دا کار د انساني تاریخ کې هیڅکله دومره مهم نه و.",
+    "slug": "environmental-science",
+    "kind": "specialization",
+    "parentSlug": "earth-and-environmental-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "جیولوژي (Geology)",
+    "description": "تاسې د ځمکې تاریخ کاڼو او رسوباتو کې لولئ — د انرژۍ، کیندنو، د طبیعي پیښو وړاندوینې، او د اقلیم علم لپاره اړین.",
+    "slug": "geology",
+    "kind": "specialization",
+    "parentSlug": "earth-and-environmental-sciences",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "فورینزک ساینس (Forensic Science)",
+    "description": "تاسې د علمي طریقې جنایي عدالت ته راوړئ. شواهد چه د محکمې پایلې ټاکي — خطر نشي کولای ددې نه لوړ وي.",
+    "slug": "forensic-science",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د خوراک علم او ټکنالوژي (Food Science and Technology)",
+    "description": "تاسې ښه کوئ چه خوراک ملیاردونو خلکو ته څنګه جوړیږي، ساتل کیږي، او خوندي وسپارل کیږي. یوه ژوره عملي او وده کونکې ساحه.",
+    "slug": "food-science-and-technology",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "د کرنې علم (Agricultural Science)",
+    "description": "تاسې ښه کوئ چه موږ د بدلیدونکي اقلیم کې خوراک څنګه وده ورکوو. د سیارې له ویجاړولو پرته د بشریت ورکوونه د دې پیړۍ تعریف کونکه ننګونه ده.",
+    "slug": "agricultural-science",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "قانون او حکومتداري",
+    "description": "هغه قواعد چه ټولنه یوځای ساتي — او هغه خلک چه یې لیکي، پرې استدلال کوي، پلي کوي، او اصلاح کوي.",
+    "slug": "law-and-governance",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "ټولنیزې او رویتي علومه",
+    "description": "پوه شئ چه خلک ولې داسې فکر کوي، احساس کوي، عمل کوي، او ټولنې جوړوي لکه چه یې کوي.",
+    "slug": "social-and-behavioral-sciences",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "نړیوالې او عامه چارې",
+    "description": "د هیوادونو، حکومتونو، او نړیوالو ادارو تر منځ فضا کې لارښوونه کوئ.",
+    "slug": "international-and-public-affairs",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "تعلیم او معلومات",
+    "description": "پوهه وروزئ، لارښوونه وکړئ، او تنظیم کړئ — د انساني پوهیدلو زیرمیز جوړښت.",
+    "slug": "education-and-information",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "انساني علومه",
+    "description": "ژبه، نظرونه، کلتور، او تیر مطالعه کوئ — هغه ډسپلینونه چه د انسان وجود مانا پر بنسټیزه پوښتنه کوي.",
+    "slug": "humanities",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "قانون / حقوق",
+    "description": "تاسې هغه قواعد پوهیږئ، پرې استدلال کوئ، او دفاع کوئ چه ټولنه یوځای ساتي. هر لوی انساني شخړه او هره مهمه معامله یو قانوني اړخ لري.",
+    "slug": "law",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د جرایمو پوهنه (Criminology)",
+    "description": "تاسې جرم، د هغه لاملونه، او د عدالت سیسټمونه څنګه غبرګون کوي مطالعه کوئ — تحقیق، پالیسي، او بیا روغتیا یوه ډسپلین کې وصل کوئ.",
+    "slug": "criminology",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "د ښار پلانجوړونه (Urban Planning)",
+    "description": "تاسې ښارونه ډیزاین کوئ. چیرې چه خلک ژوند کوي، څنګه حرکت کوي، د کوم شي لپاره یې امکان لري — د ښار پلانجوړونکو لخوا کیدونکې پریکړې، ټولو احساسوي.",
+    "slug": "urban-planning",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "د سایبر امنیت پالیسي او قانون (Cybersecurity Policy and Law)",
+    "description": "تاسې د حکومت، قانون، او ټکنالوژۍ د یوځای کیدو ځای کې کار کوئ — د هیوادونو د ډیجیټل زیرمیز جوړښت د سیسټماتیک کچه کې ساتلو طریقه بڼه ورکوئ.",
+    "slug": "cybersecurity-policy-and-law",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "ساکولوژي (Psychology)",
+    "description": "تاسې مطالعه کوئ چه خلک ولې داسې فکر کوي، احساس کوي، او عمل کوي. د هر شتون انساني ساحې ته پلي کیدونکی — هیڅ شی پرته له دې نه ښه نه کار کوي.",
+    "slug": "psychology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د ټولنې پوهنه (Sociology)",
+    "description": "تاسې ټولنه د یوه سیسټم له توکه مطالعه کوئ — ډلې څنګه جوړیږي، کوم معیارونه یې ساتي، او کوم ځواکونه یې پایله کې ماروي.",
+    "slug": "sociology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "اقتصاد",
+    "description": "تاسې ماډل کوئ چه سرچینې، هڅوونکي، او پریکړې نړۍ بڼه ورکوي. پالیسي، مالیه، تحقیق، او سوداګري ټول د اقتصادي فکر پر بنسټ چلیږي.",
+    "slug": "economics",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "ټولنیز کار (Social Work)",
+    "description": "تاسې د خپلو ژوند د ترټولو سختو شیبو کې خلکو ملاتړ کوئ. یو غوښتنه کونکی، اړین، او ژوره انساني مسلک.",
+    "slug": "social-work",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "مشوره ورکونه (Counseling)",
+    "description": "تاسې خلکو ته ځای جوړوئ ترڅو پروسس کړي، روغ شي، او مخ ته ولاړ شي — ښوونځیو، روغتیالیو، د ټولنیزو ترتیباتو، او خصوصي عمل کې.",
+    "slug": "counseling",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "بشرپوهنه (Anthropology)",
+    "description": "تاسې مطالعه کوئ چه د انسان وجود د کلتورونو، وختونو، او ټولنو اوږدو کې مانا لري — د انساني کیسې پر پراخه ممکنه لینز.",
+    "slug": "anthropology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "د سیاست پوهنه او پالیسي (Political Science and Policy)",
+    "description": "تاسې واک، حکومتداري، او هغه سیسټمونه مطالعه کوئ چه ټولنې منظموي. د حکومت، NGOs، او نړیوالو چارو کې د مسلکونو بنسټ.",
+    "slug": "political-science-and-policy",
+    "kind": "specialization",
+    "parentSlug": "international-and-public-affairs",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "نړیوالې اړیکې (International Relations)",
+    "description": "تاسې د هیوادونو، کلتورونو، او نړیوالو ادارو تر منځ فضا کې لارښوونه کوئ — ددیپلوماسۍ، پراختیا، او جیوپولیتیک د ورځني واقعیت له توکه.",
+    "slug": "international-relations",
+    "kind": "specialization",
+    "parentSlug": "international-and-public-affairs",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "تعلیم او ښوونه",
+    "description": "تاسې بڼه ورکوئ چه راتلونکی نسل نړۍ څنګه پوهیږي. د لږو مسلکونو یو چیرې چه ستاسو اغیز د هر هغه کس له لارې ضرب کیږي چه ورزده کوئ.",
+    "slug": "education-and-teaching",
+    "kind": "specialization",
+    "parentSlug": "education-and-information",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د کتابتون او معلوماتي ساینس (Library and Information Science)",
+    "description": "تاسې خلک پوهې ته منظموئ، ساتئ، او وصل کوئ — د معلوماتو د ډیروالي او AI لخوا جوړ شوي منځپانګې د دور کې زیاتیدونکي مهم.",
+    "slug": "library-and-information-science",
+    "kind": "specialization",
+    "parentSlug": "education-and-information",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "ژبپوهنه (Linguistics)",
+    "description": "تاسې ژبه پخپله مطالعه کوئ — څنګه کار کوي، وده کوي، او فکر بڼه ورکوي. AI، ژباړه، اړیکه، او تعلیم ته پلي کیدونکی.",
+    "slug": "linguistics",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "فلسفه (Philosophy)",
+    "description": "تاسې د پوهې، اخلاقو، او واقعیت بنسټونه مطالعه کوئ — نن ورځ د AI اخلاقو، قانون، پالیسۍ، او د علم ترټولو سختو پوښتنو ته پلي کیږي.",
+    "slug": "philosophy",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "لرغونپوهنه (Archaeology)",
+    "description": "تاسې د انساني تاریخ فزیکي ریکارډ بیرته راوئ — د تیرو کیندلو سره ترڅو پوه شئ چه تمدنونه څنګه راپورته شول، بدل شول، او ولوید.",
+    "slug": "archaeology",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "ملکي او جوړښتي انجینري",
+    "description": "هغه دایمي فزیکي زیرمیز جوړښت ډیزاین او جوړ کړئ چه ښارونه او تمدن ورباندې تکیه کوي.",
+    "slug": "civil-and-structural",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مخیني او اتوموبایل انجینري",
+    "description": "هغه ماشینونه، وسایط نقلیه، او فزیکي سیسټمونه انجینر کړئ چه خلک حرکت ورکوي او صنعت پرمخ وړي.",
+    "slug": "mechanical-and-automotive",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "برقي او الیکترونیکي سیسټمونه",
+    "description": "د برق، الیکترونیک، او هغو سیسټمونو سره کار وکړئ چه له کورونو نه نیولې تر ماهوارو پورې هر شي پر چلوي.",
+    "slug": "electrical-and-electronic-systems",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "کیمیایي او نیوکلیري انجینري",
+    "description": "ماده او انرژي د صنعتي او مالیکولي پیمانو کې بدل کړئ — له داروسازۍ نه نیولې تر د انرژۍ تولید پورې.",
+    "slug": "chemical-and-nuclear",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "هوافضایي انجینري",
+    "description": "الوتکې او فضایي کشتۍ ډیزاین کړئ — د انجینري هرې ډسپلین کې د ترټولو تخنیکي غوښتنه کونکو او لوړ خطر کارونو تر منځ.",
+    "slug": "aerospace",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "چاپیریالي او انرژۍ انجینري",
+    "description": "هغه سیسټمونه انجینر کړئ چه د سیارې ترټولو مهمې سرچینې اداروي — صافه اوبه، صافه انرژي، او صافه هوا.",
+    "slug": "environmental-and-energy",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "ملکي انجینري (Civil Engineering)",
+    "description": "تاسې هغه زیرمیز جوړښت جوړوئ چه خلک هره ورځ ورباندې تکیه کوي — پلونه، سړکونه، د اوبو سیسټمونه، د سیلاب دفاعونه. دایمي او لیدل کیدونکی اغیز.",
+    "slug": "civil-engineering",
+    "kind": "specialization",
+    "parentSlug": "civil-and-structural",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "جوړښتي انجینري (Structural Engineering)",
+    "description": "تاسې محاسبه کوئ چه ودانۍ ولاړیږي که نه. امنیت، دقت، او د مسولیت لفظي درنښت هره پروژه کې.",
+    "slug": "structural-engineering",
+    "kind": "specialization",
+    "parentSlug": "civil-and-structural",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "مخیني انجینري (Mechanical Engineering)",
+    "description": "تاسې ماشینونه او فزیکي سیسټمونه ډیزاین کوئ — له د وسایطو انجنونو نه نیولې تر د تولید تجهیزاتو او د طبي وسیلو دننه میخانیزمونو پورې.",
+    "slug": "mechanical-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د اتوموبیل او برقي وسایطو انجینري (Automotive and EV Engineering)",
+    "description": "تاسې د برقي دور وسایط او پاور ټرینونه ډیزاین کوئ. یو پیړۍ پخوانی صنعت د خپلې ترټولو لویې بدلون منځ کې.",
+    "slug": "automotive-ev-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "صنعتي او د تولید انجینري (Industrial and Manufacturing Engineering)",
+    "description": "تاسې هغه سیسټمونه غوره کوئ چه لوی پیمانه کې شیان جوړوي — ضایعات کمول، اوتپوټ ښه کول، او د تولید کرښې پر چلولو ساتل.",
+    "slug": "industrial-manufacturing-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "برقي انجینري (Electrical Engineering)",
+    "description": "تاسې له انرژۍ، الیکترونیک، او هغو سیسټمونو سره کار کوئ چه له کورونو نه نیولې تر ماهوارو او برقي شبکو پورې هر شی چلوي.",
+    "slug": "electrical-engineering",
+    "kind": "specialization",
+    "parentSlug": "electrical-and-electronic-systems",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "کیمیایي انجینري (Chemical Engineering)",
+    "description": "تاسې کیمیا صنعتي پروسسونو ته پراخوئ — د واقعي نړۍ پیمانه کې انرژي، داروسازي، د خوراک تولید، او د موادو جوړونه.",
+    "slug": "chemical-engineering",
+    "kind": "specialization",
+    "parentSlug": "chemical-and-nuclear",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "نیوکلیري انجینري (Nuclear Engineering)",
+    "description": "تاسې هغه سیسټمونه ډیزاین کوئ چه نیوکلیري انرژي مهارولو کار کوي — له د انرژۍ تولید نه نیولې تر طبي انځورګیرۍ پورې. د صافه انرژۍ د غوښتنې د زیاتیدو سره یوه ساحه د پام وړ بیا راپورته کیدو کې.",
+    "slug": "nuclear-engineering",
+    "kind": "specialization",
+    "parentSlug": "chemical-and-nuclear",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "هوافضایي انجینري (Aerospace Engineering)",
+    "description": "تاسې الوتکې او فضایي کشتۍ ډیزاین کوئ — د ترټولو تخنیکي غوښتنه کونکو ساحو یو چه د هر مسلک ترټولو لوړ خطرونو تر منځ دی.",
+    "slug": "aerospace-engineering",
+    "kind": "specialization",
+    "parentSlug": "aerospace",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "چاپیریالي انجینري (Environmental Engineering)",
+    "description": "تاسې د ککړتیا، ضایعاتو، او د اوبو کیفیت حلونه انجینر کوئ — د انجینري ډسپلین مستقیماً د دوامداري پراختیا بحران ته پلي کوئ.",
+    "slug": "environmental-engineering",
+    "kind": "specialization",
+    "parentSlug": "environmental-and-energy",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د بیاتجدیدپذیر انرژۍ انجینري (Renewable Energy Engineering)",
+    "description": "تاسې د لمر، باد، بیټري، او شبکې سیسټمونه ډیزاین کوئ. د ټول ۲۱مې پیړۍ د انجینري ننګونه او سوداګریز فرصت.",
+    "slug": "renewable-energy-engineering",
+    "kind": "specialization",
+    "parentSlug": "environmental-and-energy",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "خوراک او مهمان نوازي",
+    "description": "هغه تجربې جوړ کړئ چه خلک ورلپاره میاشتې پلان کوي او کلونو یادوي — له مسلکي آشپزخانو نه نیولې تر نړیوال سیاحت پورې.",
+    "slug": "food-and-hospitality",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "ماهر فني کارونه او ودانیزي (Construction)",
+    "description": "فزیکي نړۍ جوړ کړئ، نصب کړئ، او ساتئ — هغه جواز لرونکي متخصصین چه هر فعاله ودانۍ او ښار ورته اړتیا لري.",
+    "slug": "skilled-trades-and-construction",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "روغتیایي جوړتیا او هوساینه (Wellness)",
+    "description": "خلک د شواهدو پر بنسټ روزنې، کوچینګ، او د ژوندانه د ملاتړ له لارې دوامداره فزیکي او رواني روغتیا ته لارښوونه وکړئ.",
+    "slug": "fitness-and-wellness",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "تفریح او پیښې (Events)",
+    "description": "هغه شیبې، سیالۍ، او ژوندۍ تجربې تولید کړئ چه مشخصه کوي خلک د فراغت وخت څنګه تیروي.",
+    "slug": "entertainment-and-events",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "تعلیم او د ځوانانو پراختیا",
+    "description": "د ترټولو کوچنیو زده کوونکو ذهنونه بڼه ورکړئ او هغه وسیلې جوړ کړئ چه تعلیم ډیر اغیزمن او د لاسرسي وړ کوي.",
+    "slug": "education-and-youth-development",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "راپورته کیدونکي او مخکښ ساحې",
+    "description": "هغه صنعتونه او ټکنالوژۍ چه یوه لسیزه مخکې ناڅرګند وې او د راتلونکي نسل مسلکونه به تعریف کوي.",
+    "slug": "emerging-and-frontier",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "د آشپزۍ هنر (Culinary Arts)",
+    "description": "تاسې اور، چاقو، خوند، او وخت مهارولو کې مهارت تر لاسه کوئ. مسلکي آشپزخانې د هرې ساحې ترټولو غوښتنه کونکو چاپیریالونو تر منځ دي — او یو ښکلی شی تولیدوي.",
+    "slug": "culinary-arts",
+    "kind": "specialization",
+    "parentSlug": "food-and-hospitality",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "د مهمان نوازۍ او سیاحت مدیریت (Hospitality and Tourism Management)",
+    "description": "تاسې هغه تجربې جوړوئ چه خلک ورلپاره پیسې ساتي او میاشتې پلان کوي. د نړۍ ترټولو لوی د خدمت صنعت.",
+    "slug": "hospitality-tourism-management",
+
+    "kind": "specialization",
+
+    "parentSlug": "food-and-hospitality",
+
+    "order": 2,
+
+    "status": "active"
+  },
+  {
+    "name": "ماهر فني کارونه (برق کار، مستري، HVAC)",
+
+    "description": "تاسې فزیکي نړۍ فعاله ساتئ. ماهر، جواز لرونکی، اړین، او د کمښتونو د زیاتیدو سره زیاتیدونکي ښه معاش لرونکی.",
+
+    "slug": "skilled-trades",
+
+    "kind": "specialization",
+
+    "parentSlug": "skilled-trades-and-construction",
+
+    "order": 1,
+
+    "status": "active"
+  },
+
+  {
+    "name": "د ملک اجنسي (Real Estate Agency)",
+
+    "description": "تاسې خلکو ته د خپل ژوند یوه له ترټولو لویو مالي پریکړو کولو کې مرسته کوئ — د بازار پوهه، خبرې اترې، او باور د مرکز کې.",
+
+    "slug": "real-estate-agency",
+
+    "kind": "specialization",
+
+    "parentSlug": "skilled-trades-and-construction",
+
+    "order": 2,
+
+    "status": "active"
+  },
+
+  {
+    "name": "د ودانیزۍ مدیریت (Construction Management)",
+
+    "description": "تاسې هغه پروژو نظارت کوئ چه فزیکي توب سره ښارونه جوړوي — له کورونو نه نیولې تر اسمان ښکیلو پورې ټولو کې ټیمونه، بودیجې، وختلیستونه، او امنیت همغږي کوئ.",
+
+    "slug": "construction-management",
+
+    "kind": "specialization",
+
+    "parentSlug": "skilled-trades-and-construction",
+
+    "order": 3,
+
+    "status": "active"
+  },
+
+  {
+    "name": "ښکلا او کوسمیتولوژي (Cosmetology)",
+
+    "description": "تاسې مستقیماً خلکو سره کار کوئ ترڅو د هغوی ترټولو ښه لید او احساس کې مرسته وکړئ — یو خلاق، مراجع محوره، او ژوره شخصي مسلک.",
+
+    "slug": "beauty-and-cosmetology",
+
+    "kind": "specialization",
+
+    "parentSlug": "skilled-trades-and-construction",
+
+    "order": 4,
+
+    "status": "active"
+  },
+  {
+    "name": "د کڼاند ساینس او کوچینګ (Sports Science and Coaching)",
+
+    "description": "تاسې فزیولوژي، ساکولوژي، او بایومیخانیک د کڼاند فعالیت ته پلي کوئ. د هر غوره پایلې شاته یوه د کڼاند ساینس ټیم ده.",
+
+    "slug": "sports-science-and-coaching",
+
+    "kind": "specialization",
+
+    "parentSlug": "fitness-and-wellness",
+
+    "order": 1,
+
+    "status": "active"
+  },
+
+  {
+    "name": "شخصي روزنه او جسماني جوړتیا (Personal Training and Fitness)",
+
+    "description": "تاسې خلک فزیکي بدلون کې لارښوونه کوئ — زیاتیدونکي د شواهدو پر بنسټ، زیاتیدونکي غوښتنه کیدونکی، او ژوره شخصي کار.",
+
+    "slug": "personal-training-and-fitness",
+
+    "kind": "specialization",
+
+    "parentSlug": "fitness-and-wellness",
+
+    "order": 2,
+
+    "status": "active"
+  },
+
+  {
+    "name": "د روغتیا او هوساینه کوچینګ (Health and Wellness Coaching)",
+
+    "description": "تاسې خلک د خپل ژوند، ویده، خوړلو، او حرکت کولو طریقه کې دوامداره بدلونونو ته لارښوونه کوئ. د کوچینګ او روغتیا پاملرنې تر منځ کرښه ورته کیږي.",
+
+    "slug": "health-and-wellness-coaching",
+
+    "kind": "specialization",
+
+    "parentSlug": "fitness-and-wellness",
+
+    "order": 3,
+
+    "status": "active"
+  },
+  {
+    "name": "د پیښو مدیریت (Event Management)",
+
+    "description": "تاسې هغه شیبې تولیدوئ چه خلک کلونو یادوي — له سرودونو او کارپوریټ غونډو نه نیولې تر واده ته اور ایستلو او د کڼاند پیښو پورې.",
+
+    "slug": "event-management",
+
+    "kind": "specialization",
+
+    "parentSlug": "entertainment-and-events",
+
+    "order": 1,
+
+    "status": "active"
+  },
+
+  {
+    "name": "ای سپورتس او د لوبو صنعت (Esports and Gaming Industry)",
+
+    "description": "تاسې د سیالۍ مدیریت، خپرونه، تحلیل، یا د پیښو تولید کې د نړۍ یوه له ترټولو ګړندي وده کونکو تفریحي سکټورونو کار کوئ.",
+
+    "slug": "esports-and-gaming-industry",
+
+    "kind": "specialization",
+
+    "parentSlug": "entertainment-and-events",
+
+    "order": 2,
+
+    "status": "active"
+  },
+  {
+    "name": "د وړکتوب لومړني تعلیم",
+
+    "description": "تاسې خلک د هغه عمر کې بڼه ورکوئ کله چه ترټولو زیات اغیزه منونکي وي. تحقیق دوامداره دا ښیي چه دا د انساني پراختیا کې ترټولو لوړ اغیزه لرونکی ټکی دی.",
+
+    "slug": "early-childhood-education",
+
+    "kind": "specialization",
+
+    "parentSlug": "education-and-youth-development",
+
+    "order": 1,
+
+    "status": "active"
+  },
+
+  {
+    "name": "د تعلیمي ټکنالوژۍ او د زده کولو ډیزاین (EdTech and Learning Design)",
+
+    "description": "تاسې هغه وسیلې او نصاب جوړوئ چه د خلکو د زده کولو طریقه بدلوي — د ټکنالوژۍ مشري کونکی تعلیم یوه پیمانه کې چه هیڅ ټولګي هیڅکله نه رسیدلی.",
+
+    "slug": "edtech-and-learning-design",
+
+    "kind": "specialization",
+
+    "parentSlug": "education-and-youth-development",
+
+    "order": 2,
+
+    "status": "active"
+  },
+  {
+    "name": "د فضا ټکنالوژي (Space Technology)",
+
+    "description": "تاسې د سوداګریز فضایي الوتنې، ماهواره زیرمیز جوړښت، او ژوره فضا د کشف نوي دور لپاره سیسټمونه جوړوئ — یوه ساحه چه له هر بل نه ګړندۍ وده کوي.",
+
+    "slug": "space-technology",
+
+    "kind": "specialization",
+
+    "parentSlug": "emerging-and-frontier",
+
+    "order": 1,
+
+    "status": "active"
+  },
+
+  {
+    "name": "د انسان-کمپیوتر اندارفعالیت (Human-Computer Interaction / HCI)",
+
+    "description": "تاسې تحقیق کوئ چه خلک ټکنالوژۍ سره څنګه اندارفعالیت کوي او سیسټمونه ډیزاین کوئ چه د انساني ادراک سره کار کوي نه پرضد.",
+
+    "slug": "human-computer-interaction",
+
+    "kind": "specialization",
+
+    "parentSlug": "emerging-and-frontier",
+
+    "order": 2,
+
+    "status": "active"
+  }
+]

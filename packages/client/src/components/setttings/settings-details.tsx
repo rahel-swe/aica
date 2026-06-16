@@ -32,7 +32,7 @@ const SettingsDetail = ({ sectionId, data, onSave }: SettingsDetailProps) => {
       return <SecurityPanel data={data} onSave={onSave} />;
 
     case 'language':
-      return <LanguagePanel data={data} onSave={onSave} />;
+      return <LanguagePanel />;
 
     case 'appearance':
       return <AppearancePanel />;

@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/popover';
 import { Info } from 'lucide-react';
 import { useState } from 'react';
+import { getDirection } from '@/lib/get-direction';
 
 interface SingleSelectFieldProps {
   name: string;
@@ -41,7 +42,7 @@ const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
             field.onChange(value);
             if (value) setOpenPopover(value);
           }}
-          className=""
+          dir={getDirection().dir}
         >
           {options.map(({ value, label, description, icon: Icon }, idx) => (
             <FieldLabel

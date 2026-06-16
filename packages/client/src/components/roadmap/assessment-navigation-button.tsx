@@ -15,11 +15,11 @@ const AssessmentNavigationButton = ({
 }: RoadmapSetupNavigationButtonProps) => {
   return (
     <Button {...props}>
-      {Icon && iconPosition === 'left' && <Icon />}
+      {Icon && iconPosition === 'left' && <Icon className="rtl:rotate-180" />}
 
       {label}
 
-      {Icon && iconPosition === 'right' && <Icon />}
+      {Icon && iconPosition === 'right' && <Icon className="rtl:rotate-180" />}
     </Button>
   );
 };
