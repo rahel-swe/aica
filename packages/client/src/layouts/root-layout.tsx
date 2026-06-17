@@ -21,7 +21,6 @@ export default function RootLayout() {
   useDocumentDirection();
   return (
     <NuqsAdapter>
-      {/* <DirectionProvider> */}
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
@@ -30,10 +29,9 @@ export default function RootLayout() {
             </main>
           </TooltipProvider>
 
-          <ReactQueryDevtools initialIsOpen={false} position="top" />
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </ThemeProvider>
-      {/* </DirectionProvider> */}
     </NuqsAdapter>
   );
 }

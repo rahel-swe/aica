@@ -1,27 +1,8 @@
-/**
- * pathway.repository.ts
- *
- * Data access only — no translation resolution, no view transformation.
- * All returned documents are raw lean objects; service layer resolves locale.
- *
- * Why lean types are separate from DB types:
- *   Mongoose stores `translations: Map<string, T>` on disk but after `.lean()`
- *   Maps become plain objects. The LeanPathwayDoc type reflects runtime reality.
- *
- * Populate field selectors explicitly include `translations` so the service
- * can resolve locale-specific names for taxonomy nodes and related pathways.
- *
- * findAllActiveForScoring() returns PathwayScoringProjection — used ONLY by
- * the recommendation engine. Zero translation data loaded except English title
- * and summary which are needed for LLM explanation prompt context.
- */
-
 import mongoose, { type Types } from 'mongoose';
 
 import { PathwayModel } from '../models/pathway-model';
 import { DEFAULT_LOCALE } from '@contracts/shared/schemas/i18n';
 
-import type { SupportedLocale } from '@contracts/shared/schemas/i18n';
 import type {
   PathwayDurationProfile,
   PathwayTranslatableFields,
@@ -102,7 +83,9 @@ class PathwayRepository {
     nextCursor: string | null;
     hasMore: boolean;
   }> {
-    const query: Record<string, unknown> = { status: 'active' };
+    // const query: Record<string, unknown> = { status: 'active' };
+
+    const query: Record<string, unknown> = {};
 
     if (search?.trim()) {
       // Dot-notation works on Mongoose Maps stored as subdocuments in MongoDB
@@ -140,19 +123,12 @@ class PathwayRepository {
 
   // ── Detail by slug ────────────────────────────────────────────────────────
 
-  /**
-   * Full pathway document for the detail page.
-   * Populates both taxonomy nodes and related pathways.
-   * Slug is the canonical identifier — ObjectId lookup removed.
-   */
   async findActiveDetailBySlug(slug: string): Promise<LeanPathwayDoc | null> {
-    return PathwayModel.findOne({ status: 'active', slug })
+    return PathwayModel.findOne({ slug })
       .populate('taxonomyNodeIds', TAXONOMY_SELECT)
       .populate('relatedPathwayIds', RELATED_SELECT)
       .lean<LeanPathwayDoc>();
   }
-
-  // ── Scoring projection ────────────────────────────────────────────────────
 
   /**
    * Minimal projection for the recommendation scoring engine.
@@ -161,9 +137,10 @@ class PathwayRepository {
    * explanation prompt context in recommendation-explanation.service.ts.
    * Zero unnecessary data loaded from the DB.
    */
+
   async findAllActiveForScoring(): Promise<PathwayScoringProjection[]> {
     const docs = await PathwayModel.find(
-      { status: 'active' },
+      // { status: 'active' },
       {
         slug: 1,
         type: 1,

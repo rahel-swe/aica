@@ -83,6 +83,7 @@ const PathwayAssessmentStepsNavigations = ({
       {navigationActions.secondary && (
         <AssessmentNavigationButton
           variant="outline"
+          shouldRotate={!!(step.id !== 'finish')}
           onClick={goBack}
           className="py-6 sm:px-12"
           disabled={isSubmitting}
@@ -95,6 +96,7 @@ const PathwayAssessmentStepsNavigations = ({
       <AssessmentNavigationButton
         type="button"
         onClick={goNext}
+        shouldRotate={!!(step.id !== 'finish')}
         className="py-6.5 sm:px-12"
         disabled={disableNext || isSubmitting}
         label={navigationActions.primary.label}

@@ -127,6 +127,7 @@ const RoadmapSetupAssessmentStepsNavigation = ({
         <AssessmentNavigationButton
           type="button"
           variant="outline"
+          shouldRotate={!!(step.id !== 'finish')}
           onClick={handleSecondButtonNavigation}
           disabled={isSubmitting || isRoadmapPending}
           className="py-6 sm:px-12"
@@ -138,6 +139,7 @@ const RoadmapSetupAssessmentStepsNavigation = ({
         <AssessmentNavigationButton
           type="button"
           onClick={goNext}
+          shouldRotate={!!(step.id !== 'finish')}
           disabled={isSubmitting || isRoadmapPending}
           className="py-6 sm:px-12"
           label={actions.primary.label}

@@ -16,17 +16,11 @@
 
 import type { Request, Response, NextFunction } from 'express';
 import { pathwayService } from '../services/pathway-service';
-import { DEFAULT_LOCALE } from '@contracts/shared/schemas/i18n';
 import type { SupportedLocale } from '@contracts/shared/schemas/i18n';
+import type { AuthRequest } from '../middleware/auth-middleware';
 
-// ── Locale helper ─────────────────────────────────────────────────────────────
-
-function getLocale(req: Request): SupportedLocale {
-  // req.locale is set by your locale middleware (e.g. from Accept-Language
-  // header, cookie, or JWT claim). Cast is safe because middleware validates it.
-  return (
-    (req as Request & { locale?: SupportedLocale }).locale ?? DEFAULT_LOCALE
-  );
+function getLocale(req: AuthRequest): SupportedLocale {
+  return req.locale;
 }
 
 // ── Typed error narrowing ─────────────────────────────────────────────────────
@@ -50,12 +44,8 @@ function resolveMessage(err: unknown): string {
 // ── Controller ────────────────────────────────────────────────────────────────
 
 class PathwayController {
-  /**
-   * GET /pathways
-   * Query params: search?, type?, cursor?, limit?
-   */
   getPathways = async (
-    req: Request,
+    req: AuthRequest,
     res: Response,
     next: NextFunction
   ): Promise<void> => {
@@ -99,7 +89,7 @@ class PathwayController {
    * Uses slug (e.g. "frontend-development") — not MongoDB ObjectId.
    */
   getPathwayDetail = async (
-    req: Request,
+    req: AuthRequest,
     res: Response,
     next: NextFunction
   ): Promise<void> => {

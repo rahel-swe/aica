@@ -12,10 +12,10 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useSavedStore } from '@/stores/saved-resource-store';
 
-import type { PathwayListItem } from '@contracts/shared/types/pathway-domain-types';
+import type { PathwayListView } from '@contracts/shared/types/pathway-domain-types';
 
 type Props = {
-  pathway: PathwayListItem;
+  pathway: PathwayListView;
 };
 
 export default function PathwayListCard({ pathway }: Props) {
@@ -24,10 +24,10 @@ export default function PathwayListCard({ pathway }: Props) {
   const savedIds = useSavedStore((s) => s.savedIds);
   const toggleSave = useSavedStore((s) => s.toggleSave);
 
-  const isSaved = savedIds.includes(pathway._id);
+  const isSaved = savedIds.includes(pathway.slug);
 
   const handleClick = () => {
-    navigate(`/app/pathways/${pathway._id}`);
+    navigate(`/app/pathways/${pathway.slug}`);
   };
 
   return (
@@ -84,7 +84,7 @@ export default function PathwayListCard({ pathway }: Props) {
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Clock3 className="size-4" />
-              <span>{pathway.durationProfile.timelineType}</span>
+              <span>{pathway.durationProfile.commitmentLevel}</span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -107,7 +107,7 @@ export default function PathwayListCard({ pathway }: Props) {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                toggleSave(pathway._id);
+                toggleSave(pathway.id);
               }}
             >
               <Bookmark
