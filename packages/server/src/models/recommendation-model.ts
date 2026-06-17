@@ -6,8 +6,8 @@ export interface IRecommendation {
   pathwayId: Types.ObjectId;
 
   pathwaySlug: string;
-  directionSlug?: string;
-  familySlug?: string;
+  fieldSlug?: string;
+  domainSlug?: string;
 
   totalScore: number;
   matchPercent: number;
@@ -70,12 +70,12 @@ const recommendationSchema = new Schema<IRecommendation>(
       trim: true,
       lowercase: true,
     },
-    directionSlug: {
+    fieldSlug: {
       type: String,
       trim: true,
       lowercase: true,
     },
-    familySlug: {
+    domainSlug: {
       type: String,
       trim: true,
       lowercase: true,

@@ -1,41 +1,13 @@
-/**
- * recommendation.types.ts
- *
- * 3-layer recommendation architecture:
- *
- *   LAYER 1 — Family  (domain taxonomy level)
- *     "You have strong alignment with Technology broadly."
- *     User can explore all pathways within this domain.
- *
- *   LAYER 2 — Direction  (field taxonomy level)
- *     "Within Technology, Software Development fits you best."
- *     User can explore all pathways within this field.
- *
- *   LAYER 3 — Pathway  (individual recommendation)
- *     "Frontend Development is your top match at 87%."
- *     User can generate a roadmap or ask "Why?".
- *
- * Pathway reference is slug only — display data (title, summary, type,
- * visibilityLayer) is fetched from the pathway service with the user's locale.
- * Taxonomy slugs (directionSlug, familySlug) are resolved via taxonomy service.
- *
- * reasons[]    → rule-based text, computed at scoring time, no LLM, always present
- * explanation  → LLM-generated, on-demand only (user clicks "Why?"), then cached
- * hasExplanation → true when explanation is already cached in DB
- */
-
 import { z } from 'zod';
 import type { RecommendationDimensionScores } from '../types/pathway-domain-types';
 
-// ─────────────────────────────────────────────────────────────────────────────
 // LAYER 3 — Individual pathway recommendation
-// ─────────────────────────────────────────────────────────────────────────────
 
 export type PathwayRecommendation = {
   id: string; // recommendation document id
   pathwaySlug: string; // use to call pathway service for localized data
-  directionSlug?: string; // use to call taxonomy service
-  familySlug?: string;
+  fieldSlug?: string; // use to call taxonomy service
+  domainSlug?: string;
 
   totalScore: number; // weighted sum, clamped [0, 1]
   matchPercent: number; // Math.round(totalScore * 100)
@@ -75,9 +47,9 @@ export const pathwayRecommendationSchema = z.object({
 // LAYER 2 — Direction recommendation  (field-level grouping)
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type DirectionRecommendation = {
-  directionSlug: string; // use to call taxonomy service for localized name
-  familySlug?: string; // parent domain slug
+export type FieldRecommendation = {
+  fieldSlug: string; // use to call taxonomy service for localized name
+  domainSlug?: string; // parent domain slug
 
   totalScore: number; // average of top-3 pathway scores in this direction
   matchPercent: number;
@@ -86,9 +58,9 @@ export type DirectionRecommendation = {
   topPathwaySlugs: string[]; // top 3 pathway slugs, ordered by score
 };
 
-export const directionRecommendationSchema = z.object({
-  directionSlug: z.string(),
-  familySlug: z.string().optional(),
+export const fieldRecommendationSchema = z.object({
+  fieldSlug: z.string(),
+  domainSlug: z.string().optional(),
   totalScore: z.number().min(0).max(1),
   matchPercent: z.number().min(0).max(100),
   pathwayCount: z.number().int().min(1),
@@ -99,26 +71,26 @@ export const directionRecommendationSchema = z.object({
 // LAYER 1 — Family recommendation  (domain-level grouping)
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type FamilyRecommendation = {
-  familySlug: string; // use to call taxonomy service for localized name
+export type DomainRecommendation = {
+  domainSlug: string; // use to call taxonomy service for localized name
 
   totalScore: number; // average of top-3 pathway scores in this domain
   matchPercent: number;
 
   pathwayCount: number; // total pathways across all directions in this domain
-  directionCount: number; // number of directions in this domain
+  fieldCount: number; // number of directions in this domain
   topPathwaySlugs: string[]; // top 3 pathway slugs across the whole domain
-  directions: DirectionRecommendation[]; // all directions, ordered by score
+  fields: FieldRecommendation[]; // all directions, ordered by score
 };
 
-export const familyRecommendationSchema = z.object({
-  familySlug: z.string(),
+export const domainRecommendationSchema = z.object({
+  domainSlug: z.string(),
   totalScore: z.number().min(0).max(1),
   matchPercent: z.number().min(0).max(100),
   pathwayCount: z.number().int().min(1),
-  directionCount: z.number().int().min(1),
+  fieldCount: z.number().int().min(1),
   topPathwaySlugs: z.array(z.string()).max(3),
-  directions: z.array(directionRecommendationSchema),
+  fields: z.array(fieldRecommendationSchema),
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -126,19 +98,16 @@ export const familyRecommendationSchema = z.object({
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type RecommendationOverview = {
-  // Layer 1: domain groups — "Explore Technology broadly"
-  families: FamilyRecommendation[];
+  domains: DomainRecommendation[];
 
-  // Layer 2: field groups — "Explore Software Development"
-  directions: DirectionRecommendation[];
+  fields: FieldRecommendation[];
 
-  // Layer 3: individual pathway matches — "Frontend Development, 87%"
   pathways: PathwayRecommendation[];
 };
 
 export const recommendationOverviewSchema = z.object({
-  families: z.array(familyRecommendationSchema),
-  directions: z.array(directionRecommendationSchema),
+  domains: z.array(domainRecommendationSchema),
+  fields: z.array(fieldRecommendationSchema),
   pathways: z.array(pathwayRecommendationSchema),
 });
 

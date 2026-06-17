@@ -3,7 +3,6 @@ import SignInPage from '@/pages/auth/sign-in-page';
 import SignUpPage from '@/pages/auth/sign-up-page';
 import DashboardPage from '@/pages/dashboard-page';
 import ExplorePage from '@/pages/explore-page';
-import RecommendationsPage from '@/pages/recommendations-page';
 import PathwayDetailPage from '@/pages/pathway-detail-page';
 import AdvisorPage from '@/pages/advisor-page';
 import RoadmapPage from '@/pages/roadmap-page';
@@ -138,14 +137,6 @@ const router = createBrowserRouter([
             element: (
               <RouterProtector>
                 <ExplorePage />
-              </RouterProtector>
-            ),
-          },
-          {
-            path: 'recommendations',
-            element: (
-              <RouterProtector>
-                <RecommendationsPage />
               </RouterProtector>
             ),
           },

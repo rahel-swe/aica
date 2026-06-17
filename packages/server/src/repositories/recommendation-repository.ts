@@ -1,13 +1,3 @@
-/**
- * recommendation.repository.ts
- *
- * All MongoDB operations for recommendations.
- * Rules:
- *  - Returns plain objects (lean) — no Mongoose documents leak out
- *  - ObjectIds are stringified at this layer
- *  - No business logic here — scoring, grouping, and reasons live in the service
- */
-
 import mongoose, { type ClientSession } from 'mongoose';
 import {
   RecommendationModel,
@@ -73,6 +63,7 @@ class RecommendationRepository {
    * Distinct user IDs that have stale recommendations.
    * Used by rescoring service to find who needs a re-score.
    */
+
   async findStaleUserIds(
     currentVersion: number,
     limit = 100
@@ -101,9 +92,6 @@ class RecommendationRepository {
     return result.map((r) => String(r._id));
   }
 
-  /**
-    Current matching version for a user.
-   */
   async getCurrentMatchingVersion(userId: string): Promise<number | null> {
     const doc = await RecommendationModel.findOne(
       { userId },

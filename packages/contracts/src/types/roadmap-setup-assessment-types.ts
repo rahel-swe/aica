@@ -36,7 +36,7 @@ export type RoadmapSetupAssessmentSubmitResponse = {
   data: {
     _id: string;
     userId: string;
-    pickedPathwayId: string;
+    pickedPathwaySlug: string;
     currentStage: RoadmapSetupAssessmentCurrentStage;
     weeklyTime: RoadmapSetupAssessmentWeeklyTime;
     timeline: RoadmapSetupAssessmentTimeline;
@@ -51,7 +51,7 @@ export type RoadmapSetupAssessmentStatusResponse = {
   success: boolean;
   message: string;
   data?: {
-    pickedPathwayId: string;
+    pickedPathwaySlug: string;
     constraints: RoadmapSetupAssessmentConstraint[];
     currentStage: RoadmapSetupAssessmentCurrentStage;
     weeklyTime: RoadmapSetupAssessmentWeeklyTime;

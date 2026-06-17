@@ -3,23 +3,23 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
-import type { FamilyRecommendation } from '@contracts/shared/schemas/recommendation-schema';
+import type { DomainRecommendation } from '@contracts/shared/schemas/recommendation-schema';
 import { formatSlug } from '@/lib/slug-formatter';
 
 type Props = {
-  families: FamilyRecommendation[];
+  families: DomainRecommendation[];
   selectedFamilySlug: string;
   onSelectFamily: (slug: string) => void;
   onContinue: () => void;
 };
 
-const FamilyStage = ({
+const DomainStage = ({
   families,
   selectedFamilySlug,
   onSelectFamily,
   onContinue,
 }: Props) => {
-  const selected = families.find((f) => f.familySlug === selectedFamilySlug);
+  const selected = families.find((f) => f.domainSlug === selectedFamilySlug);
 
   return (
     <section className="space-y-12">
@@ -39,11 +39,11 @@ const FamilyStage = ({
       {/* Picker buttons — pill chips */}
       <div className="flex flex-wrap gap-3">
         {families.map((family) => {
-          const isSelected = selectedFamilySlug === family.familySlug;
+          const isSelected = selectedFamilySlug === family.domainSlug;
           return (
             <button
-              key={family.familySlug}
-              onClick={() => onSelectFamily(family.familySlug)}
+              key={family.domainSlug}
+              onClick={() => onSelectFamily(family.domainSlug)}
               className={cn(
                 'flex items-center gap-3 rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                 isSelected
@@ -51,7 +51,7 @@ const FamilyStage = ({
                   : 'border-border bg-background text-foreground hover:border-foreground/40'
               )}
             >
-              {formatSlug(family.familySlug)}
+              {formatSlug(family.domainSlug)}
               <span
                 className={cn(
                   'tabular-nums text-xs font-semibold',
@@ -73,7 +73,7 @@ const FamilyStage = ({
           {/* Domain name + match score */}
           <div className="space-y-1">
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-              {formatSlug(selected.familySlug)}
+              {formatSlug(selected.domainSlug)}
             </h2>
             <div className="flex items-baseline gap-2">
               <span className="text-5xl font-bold tabular-nums tracking-tighter">
@@ -87,7 +87,7 @@ const FamilyStage = ({
           <div className="flex flex-wrap gap-10 text-sm text-muted-foreground">
             <div>
               <span className="block text-2xl font-semibold tabular-nums text-foreground">
-                {selected.directionCount}
+                {selected.fieldCount}
               </span>
               fields inside
             </div>
@@ -133,4 +133,4 @@ const FamilyStage = ({
   );
 };
 
-export default FamilyStage;
+export default DomainStage;

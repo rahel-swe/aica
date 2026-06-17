@@ -56,12 +56,12 @@ export class AdvisorContextBuilder {
 
     const selectedPathwayId =
       roadmapData?.pathwayId ??
-      (roadmapSetupData?.pickedPathwayId as string | undefined) ??
+      (roadmapSetupData?.pickedPathwaySlug as string | undefined) ??
       recommendations[0]?.pathwayId;
 
     const selectedPathwayRaw = selectedPathwayId
       ? await pathwayRepository
-          .findActiveDetailByIdOrSlug(String(selectedPathwayId))
+          .findActiveDetailBySlug(String(selectedPathwayId))
           .then((p) => p as any)
       : null;
 

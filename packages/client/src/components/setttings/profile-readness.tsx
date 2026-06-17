@@ -12,32 +12,16 @@ import {
   useRoadmapDeleteMutation,
   useRoadmapQuery,
 } from '@/queries/roadmap-query';
-import { useRoadmapSetupAssessmentDeleteMutation } from '@/queries/roadmap-setup-assessment-queries';
 import { Button } from '../ui/button';
 import { Pencil, Play } from 'lucide-react';
 import ErrorState from '../error-state';
 import ActionDialog from '../action-dialog';
 import { Link, useNavigate } from 'react-router-dom';
-import { usePathwayAssessmentDeleteMutationQuery } from '@/queries/pathway-assessment-query';
-import { useRecommendationDeleteMutationQuery } from '@/queries/recommendation-query';
 import { useState } from 'react';
 
 const ProfileReadness = () => {
   const { mutateAsync: deleteRoadmap, isPending: isRoadmapDeleting } =
     useRoadmapDeleteMutation();
-
-  const { mutateAsync: deleteRoadmapSetup, isPending: isRoadmpaSetupDeleting } =
-    useRoadmapSetupAssessmentDeleteMutation();
-
-  const {
-    mutateAsync: deleteMyRecommendations,
-    isPending: isRecommendationsDeleting,
-  } = useRecommendationDeleteMutationQuery();
-
-  const {
-    mutateAsync: deletePathwayAssessment,
-    isPending: isPathwayAssessmentDeleting,
-  } = usePathwayAssessmentDeleteMutationQuery();
 
   const { data: roadmapQueryResponse, isPending: isRoadmapPending } =
     useRoadmapQuery();
@@ -62,8 +46,7 @@ const ProfileReadness = () => {
   const {
     assessments: {
       pathwayAssessmentCompleted,
-      pathwayAssessmentId,
-      roadmapSetupAssessmentId,
+
       roadmapSetupCompleted,
     },
   } = profileStatus!.data;
@@ -99,12 +82,7 @@ const ProfileReadness = () => {
                   <Button
                     variant="outline"
                     size="lg"
-                    disabled={
-                      isRoadmapDeleting ||
-                      isRoadmpaSetupDeleting ||
-                      isPathwayAssessmentDeleting ||
-                      isRecommendationsDeleting
-                    }
+                    disabled={isRoadmapDeleting}
                     onClick={() => setOpenPathwayAssessmentDialog(true)}
                   >
                     <Pencil />
@@ -112,7 +90,7 @@ const ProfileReadness = () => {
                   </Button>
                 }
                 title="Restart pathway profile?"
-                description="This will remove your pathway profile, recommendations, roadmap setup, and generated roadmap. You'll need to complete the assessment again."
+                description="This will regenarate recommendations, and generated roadmap. You'll need to complete the assessment again."
                 actionLabel="Start over"
                 onAction={async () => {
                   try {
@@ -120,9 +98,6 @@ const ProfileReadness = () => {
                       roadmapData?._id
                         ? deleteRoadmap(roadmapData._id)
                         : Promise.resolve(),
-                      deleteRoadmapSetup(roadmapSetupAssessmentId),
-                      deletePathwayAssessment(pathwayAssessmentId),
-                      deleteMyRecommendations(),
                     ]);
 
                     navigate('/pathway-assessment', {
@@ -158,12 +133,7 @@ const ProfileReadness = () => {
                     <Button
                       variant="outline"
                       size="lg"
-                      disabled={
-                        isRoadmapDeleting ||
-                        isRoadmpaSetupDeleting ||
-                        isPathwayAssessmentDeleting ||
-                        isRecommendationsDeleting
-                      }
+                      disabled={isRoadmapDeleting}
                       onClick={() => {
                         if (roadmapData) setOpenRoadmapAssessmentDialog(true);
                         else

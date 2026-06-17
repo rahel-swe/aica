@@ -30,7 +30,7 @@ class RecommendationController {
       const overview = await recommendationService.getOverview(userId);
 
       const hasData =
-        overview.families.length > 0 || overview.pathways.length > 0;
+        overview.domains.length > 0 || overview.pathways.length > 0;
 
       res.status(200).json({
         success: true,

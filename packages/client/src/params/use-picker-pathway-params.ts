@@ -1,53 +1,46 @@
 import { parseAsString, parseAsStringLiteral, useQueryStates } from 'nuqs';
 
-/**
- * Stage names map 1:1 to RecommendationOverview layers:
- *   family    → Layer 1 — user picks a domain        (Technology, Healthcare …)
- *   direction → Layer 2 — user picks a field          (Software Development …)
- *   pathway   → Layer 3 — user picks a specialization (Frontend Development …)
- */
-const PATHWAY_STAGES = ['family', 'direction', 'pathway'] as const;
+const PATHWAY_STAGES = ['domain', 'field', 'specialization'] as const;
 export type PathwayPickerStage = (typeof PATHWAY_STAGES)[number];
 
 export const usePathwayPickerParams = () => {
   const [params, setParams] = useQueryStates({
-    stage: parseAsStringLiteral(PATHWAY_STAGES).withDefault('family'),
-    familySlug: parseAsString.withDefault(''),
-    directionSlug: parseAsString.withDefault(''),
-    pathwaySlug: parseAsString.withDefault(''),
+    stage: parseAsStringLiteral(PATHWAY_STAGES).withDefault('domain'),
+    domainSlug: parseAsString.withDefault(''),
+    fieldSlug: parseAsString.withDefault(''),
+    specializationSlug: parseAsString.withDefault(''),
   });
 
   // ── Selection setters ───────────────────────────────
 
-  const selectFamily = (slug: string) => setParams({ familySlug: slug });
-  const selectDirection = (slug: string) => setParams({ directionSlug: slug });
-  const selectPathway = (slug: string) => setParams({ pathwaySlug: slug });
+  const selectDomain = (slug: string) => setParams({ domainSlug: slug });
+  const selectField = (slug: string) => setParams({ fieldSlug: slug });
+  const selectSpecialization = (slug: string) =>
+    setParams({ specializationSlug: slug });
 
-  // ── Stage transitions ─────────────────────────────────────────────────────
-
-  const goToDirection = () => setParams({ stage: 'direction' });
-  const goToPathway = () => setParams({ stage: 'pathway' });
+  const goToField = () => setParams({ stage: 'field' });
+  const goToSpecialization = () => setParams({ stage: 'specialization' });
 
   const goBack = () => {
-    if (params.stage === 'pathway') {
-      setParams({ stage: 'direction', pathwaySlug: '' });
+    if (params.stage === 'specialization') {
+      setParams({ stage: 'field', specializationSlug: '' });
       return;
     }
-    if (params.stage === 'direction') {
-      setParams({ stage: 'family', directionSlug: '', familySlug: '' });
+    if (params.stage === 'field') {
+      setParams({ stage: 'domain', fieldSlug: '', domainSlug: '' });
     }
   };
 
-  const isNavigatingBack = params.stage !== 'family';
+  const isNavigatingBack = params.stage !== 'domain';
 
   return {
     params,
     isNavigatingBack,
-    selectFamily,
-    selectDirection,
-    selectPathway,
-    goToDirection,
-    goToPathway,
+    selectDomain,
+    selectField,
+    selectSpecialization,
+    goToField,
+    goToSpecialization,
     goBack,
   };
 };

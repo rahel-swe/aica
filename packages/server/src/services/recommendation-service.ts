@@ -1,9 +1,3 @@
-/**
- * Pathway display data (title, summary) is NOT stored in recommendations.
- * Frontend enriches each pathwaySlug by calling GET /pathways/:slug?locale=fa.
- * Taxonomy labels (direction name, family name) are resolved the same way.
- */
-
 import mongoose from 'mongoose';
 
 import { recommendationRepository } from '../repositories/recommendation-repository';
@@ -21,7 +15,6 @@ import type {
   PathwayAssessmentWorkStyle,
 } from '@contracts/shared/types/pathway-assessment-types';
 import type {
-  PathwayScoringProjection,
   PathwayMatchProfile,
   RecommendationDimensionScores,
   TaxonomyNodeKind,
@@ -29,8 +22,8 @@ import type {
 import type {
   RecommendationOverview,
   PathwayRecommendation,
-  DirectionRecommendation,
-  FamilyRecommendation,
+  FieldRecommendation,
+  DomainRecommendation,
 } from '@contracts/shared/schemas/recommendation-schema';
 import type { RecommendationInsertDoc } from '../repositories/recommendation-repository';
 import { PathwayAssessmentModel } from '../models/pathway-assessment-model';
@@ -47,8 +40,8 @@ import { buildReasons } from '../utils/recommendation-reasons';
 interface ScoredPathway {
   pathwayId: string;
   pathwaySlug: string;
-  directionSlug?: string;
-  familySlug?: string;
+  fieldSlug?: string;
+  domainSlug?: string;
   dimensionScores: RecommendationDimensionScores;
   totalScore: number;
   matchPercent: number;
@@ -117,7 +110,7 @@ class RecommendationService {
 
     const profileById = new Map(profileDocs.map((p) => [String(p._id), p]));
 
-    // ── 4. Load taxonomy nodes for direction/family resolution ─────────────
+    // ── 4. Load taxonomy nodes for field/family resolution ─────────────
     const taxonomyDocs = await TaxonomyNodeModel.find(
       { status: 'active' },
       { slug: 1, kind: 1, parentId: 1 }
@@ -153,7 +146,7 @@ class RecommendationService {
         pathwayScoringEngine.calculateTotalScore(dimensionScores);
       const matchPercent = pathwayScoringEngine.toMatchPercent(totalScore);
 
-      const { directionSlug, familySlug } = this.resolveTaxonomySlugs(
+      const { fieldSlug, domainSlug } = this.resolveTaxonomySlugs(
         pathway.taxonomyNodeIds.map(String),
         taxonomyById
       );
@@ -163,8 +156,8 @@ class RecommendationService {
       scored.push({
         pathwayId: String(pathway._id),
         pathwaySlug: pathway.slug,
-        directionSlug,
-        familySlug,
+        fieldSlug,
+        domainSlug,
         dimensionScores,
         totalScore,
         matchPercent,
@@ -184,8 +177,8 @@ class RecommendationService {
         userId: new mongoose.Types.ObjectId(userId),
         pathwayId: new mongoose.Types.ObjectId(s.pathwayId),
         pathwaySlug: s.pathwaySlug,
-        directionSlug: s.directionSlug,
-        familySlug: s.familySlug,
+        fieldSlug: s.fieldSlug,
+        domainSlug: s.domainSlug,
         totalScore: s.totalScore,
         matchPercent: s.matchPercent,
         dimensionScores: s.dimensionScores,
@@ -220,15 +213,15 @@ class RecommendationService {
     const stored = await recommendationRepository.findAllByUserId(userId);
 
     if (!stored.length) {
-      return { families: [], directions: [], pathways: [] };
+      return { domains: [], fields: [], pathways: [] };
     }
 
     // Map stored IRecommendation documents to ScoredPathway for buildOverview
     const asScored: ScoredPathway[] = stored.map((r) => ({
       pathwayId: String(r.pathwayId),
       pathwaySlug: r.pathwaySlug,
-      directionSlug: r.directionSlug,
-      familySlug: r.familySlug,
+      fieldSlug: r.fieldSlug,
+      domainSlug: r.domainSlug,
       dimensionScores: r.dimensionScores,
       totalScore: r.totalScore,
       matchPercent: r.matchPercent,
@@ -265,8 +258,8 @@ class RecommendationService {
       return {
         id: stored ? String(stored._id) : '',
         pathwaySlug: s.pathwaySlug,
-        directionSlug: s.directionSlug,
-        familySlug: s.familySlug,
+        fieldSlug: s.fieldSlug,
+        domainSlug: s.domainSlug,
         totalScore: s.totalScore,
         matchPercent: s.matchPercent,
         dimensionScores: s.dimensionScores,
@@ -277,31 +270,29 @@ class RecommendationService {
       };
     });
 
-    // ── Layer 2: directions (field-level grouping) ────────────────────────
-    const directionMap = new Map<string, ScoredPathway[]>();
+    // ── Layer 2: fields (field-level grouping) ────────────────────────
+    const fieldMap = new Map<string, ScoredPathway[]>();
 
     for (const s of scored) {
-      if (!s.directionSlug) continue;
-      const existing = directionMap.get(s.directionSlug) ?? [];
+      if (!s.fieldSlug) continue;
+      const existing = fieldMap.get(s.fieldSlug) ?? [];
       existing.push(s);
-      directionMap.set(s.directionSlug, existing);
+      fieldMap.set(s.fieldSlug, existing);
     }
 
-    const directions: DirectionRecommendation[] = Array.from(
-      directionMap.entries()
-    )
-      .map(([directionSlug, pathways]) => {
+    const fields: FieldRecommendation[] = Array.from(fieldMap.entries())
+      .map(([fieldSlug, pathways]) => {
         const sorted = [...pathways].sort(
           (a, b) => b.totalScore - a.totalScore
         );
         const top3 = sorted.slice(0, 3);
         const avgScore =
           top3.reduce((s, p) => s + p.totalScore, 0) / top3.length;
-        const familySlug = pathways[0]?.familySlug;
+        const domainSlug = pathways[0]?.domainSlug;
 
         return {
-          directionSlug,
-          familySlug,
+          fieldSlug,
+          domainSlug,
           totalScore: Number(avgScore.toFixed(4)),
           matchPercent: Math.round(avgScore * 100),
           pathwayCount: pathways.length,
@@ -310,18 +301,18 @@ class RecommendationService {
       })
       .sort((a, b) => b.totalScore - a.totalScore);
 
-    // ── Layer 1: families (domain-level grouping)
+    // ── Layer 1: domains (domain-level grouping)
     const familyMap = new Map<string, ScoredPathway[]>();
 
     for (const s of scored) {
-      if (!s.familySlug) continue;
-      const existing = familyMap.get(s.familySlug) ?? [];
+      if (!s.domainSlug) continue;
+      const existing = familyMap.get(s.domainSlug) ?? [];
       existing.push(s);
-      familyMap.set(s.familySlug, existing);
+      familyMap.set(s.domainSlug, existing);
     }
 
-    const families: FamilyRecommendation[] = Array.from(familyMap.entries())
-      .map(([familySlug, pathways]) => {
+    const domains: DomainRecommendation[] = Array.from(familyMap.entries())
+      .map(([domainSlug, pathways]) => {
         const sorted = [...pathways].sort(
           (a, b) => b.totalScore - a.totalScore
         );
@@ -329,62 +320,62 @@ class RecommendationService {
         const avgScore =
           top3.reduce((s, p) => s + p.totalScore, 0) / top3.length;
 
-        const familyDirections = directions.filter(
-          (d) => d.familySlug === familySlug
+        const familyDirections = fields.filter(
+          (d) => d.domainSlug === domainSlug
         );
 
         return {
-          familySlug,
+          domainSlug,
           totalScore: Number(avgScore.toFixed(4)),
           matchPercent: Math.round(avgScore * 100),
           pathwayCount: pathways.length,
-          directionCount: familyDirections.length,
+          fieldCount: familyDirections.length,
           topPathwaySlugs: top3.map((p) => p.pathwaySlug),
-          directions: familyDirections,
+          fields: familyDirections,
         };
       })
       .sort((a, b) => b.totalScore - a.totalScore);
 
-    return { families, directions, pathways };
+    return { domains, fields, pathways };
   }
 
   // ── Taxonomy resolution ────
 
   /**
    * Given the taxonomyNodeIds of a pathway, resolves:
-   *   directionSlug — the field-level node slug
-   *   familySlug    — the domain-level node slug (parent of direction)
+   *   fieldSlug — the field-level node slug
+   *   domainSlug    — the domain-level node slug (parent of field)
    *
    * A pathway's taxonomyNodeIds should include domain, field, and
-   * specialization nodes. We find the field-level node as the direction,
+   * specialization nodes. We find the field-level node as the field,
    * then walk up to its parent to get the domain/family.
    */
   private resolveTaxonomySlugs(
     taxonomyNodeIds: string[],
     taxonomyById: Map<string, TaxonomyNodeMinimal>
-  ): { directionSlug?: string; familySlug?: string } {
-    let directionSlug: string | undefined;
-    let familySlug: string | undefined;
+  ): { fieldSlug?: string; domainSlug?: string } {
+    let fieldSlug: string | undefined;
+    let domainSlug: string | undefined;
 
     for (const id of taxonomyNodeIds) {
       const node = taxonomyById.get(id);
       if (!node) continue;
 
       if (node.kind === 'field') {
-        directionSlug = node.slug;
+        fieldSlug = node.slug;
 
         // Walk up one level to get the domain
         if (node.parentId) {
           const parent = taxonomyById.get(node.parentId);
           if (parent?.kind === 'domain') {
-            familySlug = parent.slug;
+            domainSlug = parent.slug;
           }
         }
         break; // Only one field node expected per pathway
       }
     }
 
-    return { directionSlug, familySlug };
+    return { fieldSlug, domainSlug };
   }
 
   // ── Assessment value extractor

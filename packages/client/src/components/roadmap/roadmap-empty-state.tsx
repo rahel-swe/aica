@@ -58,7 +58,7 @@ export function RoadmapEmptyState({ className }: { className?: string }) {
                 disabled={isGenerating}
                 onClick={() => {
                   mutate({
-                    pathwayId: roadmapSetupData.pickedPathwayId,
+                    pathwayId: roadmapSetupData.pickedPathwaySlug,
                   });
                 }}
               >

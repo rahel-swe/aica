@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import type {
-  DirectionRecommendation,
+  FieldRecommendation,
   PathwayRecommendation,
 } from '@contracts/shared/schemas/recommendation-schema';
 import { usePathwayDetailQuery } from '@/queries/pathway-query';
@@ -12,12 +12,11 @@ import PathwayDetailPanel from '@/components/recommendations/pathway-detail-pane
 import RecommendationExplanationPanel from '@/components/recommendations/recommendation-explanation-panel';
 
 type Props = {
-  /** Directions already filtered to the selected family */
-  directions: DirectionRecommendation[];
+  fields: FieldRecommendation[];
   /** Full pathways array — used to look up recommendation metadata for the top pathway */
   allPathways: PathwayRecommendation[];
-  selectedDirectionSlug: string;
-  familyName: string;
+  selectedFieldSlug: string;
+  domainName: string;
   onSelectDirection: (slug: string) => void;
   /**
    * User chose "Start in this field" — submit with the top pathway's document id.
@@ -28,27 +27,25 @@ type Props = {
   isSubmitting: boolean;
 };
 
-const DirectionStage = ({
-  directions,
+const FieldStage = ({
+  fields,
   allPathways,
-  selectedDirectionSlug,
-  familyName,
+  selectedFieldSlug,
+  domainName,
   onSelectDirection,
   onStartHere,
   onExploreDeeper,
   isSubmitting,
 }: Props) => {
-  const selectedDirection = directions.find(
-    (d) => d.directionSlug === selectedDirectionSlug
+  const selectedDirection = fields.find(
+    (d) => d.fieldSlug === selectedFieldSlug
   );
 
   // Top pathway slug for the selected direction
   const topSlug = selectedDirection?.topPathwaySlugs[0];
 
-  // NOTE: usePathwayDetailQuery accepts a slug — backend route is /pathways/:slug
-  // If the backend uses ObjectId instead of slug, a slug-to-id endpoint will be needed.
   const { data: pathwayResponse, isLoading: isDetailLoading } =
-    usePathwayDetailQuery(topSlug ?? '');
+    usePathwayDetailQuery(selectedDirection?.fieldSlug ?? '');
 
   const pathwayDetail = pathwayResponse?.data;
 
@@ -56,7 +53,7 @@ const DirectionStage = ({
   const topRec = allPathways.find((p) => p.pathwaySlug === topSlug);
 
   const handleStartHere = () => {
-    if (pathwayDetail) onStartHere(pathwayDetail.id);
+    if (pathwayDetail) onStartHere(pathwayDetail.slug);
   };
 
   return (
@@ -71,19 +68,22 @@ const DirectionStage = ({
         </h1>
         <p className="max-w-lg text-base text-muted-foreground md:text-lg">
           Fields within{' '}
-          <span className="font-medium text-foreground">{familyName}</span>,
+          <span className="font-medium text-foreground">{domainName}</span>,
           ranked by how well they match you.
         </p>
       </div>
 
       {/* Picker buttons */}
       <div className="flex flex-wrap gap-3">
-        {directions.map((dir) => {
-          const isSelected = selectedDirectionSlug === dir.directionSlug;
+        {fields.map((dir) => {
+          const isSelected = selectedFieldSlug === dir.fieldSlug;
           return (
             <button
-              key={dir.directionSlug}
-              onClick={() => onSelectDirection(dir.directionSlug)}
+              key={dir.fieldSlug}
+              onClick={() => {
+                onSelectDirection(dir.fieldSlug);
+                console.log(dir);
+              }}
               className={cn(
                 'flex items-center gap-3 rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                 isSelected
@@ -91,7 +91,7 @@ const DirectionStage = ({
                   : 'border-border bg-background text-foreground hover:border-foreground/40'
               )}
             >
-              {formatSlug(dir.directionSlug)}
+              {formatSlug(dir.fieldSlug)}
               <span
                 className={cn(
                   'tabular-nums text-xs font-semibold',
@@ -162,7 +162,7 @@ const DirectionStage = ({
                   Starting…
                 </>
               ) : (
-                `Start in ${formatSlug(selectedDirectionSlug)}`
+                `Start in ${formatSlug(selectedFieldSlug)}`
               )}
             </Button>
 
@@ -170,7 +170,7 @@ const DirectionStage = ({
               size="lg"
               variant="outline"
               className="group gap-2"
-              disabled={!selectedDirectionSlug}
+              disabled={!selectedFieldSlug}
               onClick={onExploreDeeper}
             >
               Pick a specialization
@@ -179,7 +179,7 @@ const DirectionStage = ({
           </div>
 
           <p className="text-xs text-muted-foreground">
-            "Start in {formatSlug(selectedDirectionSlug)}" picks your
+            "Start in {formatSlug(selectedFieldSlug)}" picks your
             highest-matching specialization automatically. You can always refine
             later.
           </p>
@@ -189,4 +189,4 @@ const DirectionStage = ({
   );
 };
 
-export default DirectionStage;
+export default FieldStage;

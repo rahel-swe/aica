@@ -22,7 +22,7 @@ type Props = {
   isSubmitting: boolean;
 };
 
-const PathwayStage = ({
+const SpecializationStage = ({
   pathways,
   selectedPathwaySlug,
   directionName,
@@ -41,7 +41,7 @@ const PathwayStage = ({
   const pathwayDetail = pathwayResponse?.data;
 
   const handleSubmit = () => {
-    if (pathwayDetail) onSubmit(pathwayDetail.id);
+    if (pathwayDetail) onSubmit(pathwayDetail.slug);
   };
 
   return (
@@ -167,4 +167,4 @@ const PathwayStage = ({
   );
 };
 
-export default PathwayStage;
+export default SpecializationStage;

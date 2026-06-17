@@ -5,24 +5,21 @@ import confettiAnimation from '../../public/animations/confetti on transparent b
 import { Button } from '@/components/ui/button';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-assessment-queries';
-import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { Twemoji } from '@/components/twemoji';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { ChevronRight, PartyPopper } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { formatSlug } from '@/lib/slug-formatter';
 
 const PathwayCongratulations = () => {
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
 
   const {
-    data: roadmapSetupAssessmentData,
+    data: roadmapSetupAssessmentResponse,
     isPending: roadmapSetupAssessmentPending,
   } = useRoadmapSetupAssessmentStatusQuery();
 
-  const { data: recommendationData, isPending: recommendationPending } =
-    useRecommendationQuery();
-
-  if (roadmapSetupAssessmentPending || recommendationPending) {
+  if (roadmapSetupAssessmentPending) {
     return (
       <div className="grid place-items-center min-h-dvh">
         <SpinnerBars />
@@ -30,14 +27,14 @@ const PathwayCongratulations = () => {
     );
   }
 
-  const pathwayRecommendations =
-    recommendationData?.data.pathwayRecommendations ?? [];
-  const userPickedRecommendedPathway = pathwayRecommendations.find(
-    (item) =>
-      item.pathwayId === roadmapSetupAssessmentData?.data.pickedPathwayId
-  );
+  if (!roadmapSetupAssessmentResponse?.data)
+    return <Navigate to={'/pathway-recommendatoin'} />;
 
-  const title = userPickedRecommendedPathway?.title ?? 'Your Pathway';
+  const { pickedPathwaySlug } = roadmapSetupAssessmentResponse!.data;
+
+  console.log(roadmapSetupAssessmentResponse);
+
+  const title = formatSlug(pickedPathwaySlug ?? 'your-pathway');
 
   return (
     <div className="relative min-h-dvh border px-4 py-10 flex flex-col items-center justify-center">
@@ -69,11 +66,11 @@ const PathwayCongratulations = () => {
             {title}
           </h2>
 
-          {userPickedRecommendedPathway?.summary ? (
+          {/* {userPickedRecommendedPathway?.summary ? (
             <p className="mx-auto max-w-lg text-sm leading-6 text-slate-600 dark:text-slate-300 md:text-base">
               {userPickedRecommendedPathway.summary}
             </p>
-          ) : null}
+          ) : null} */}
         </div>
 
         <div className="mt-7 flex flex-col gap-4 justify-center">

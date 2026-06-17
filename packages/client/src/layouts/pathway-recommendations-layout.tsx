@@ -5,9 +5,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import ErrorState from '@/components/error-state';
-import FamilyStage from '@/components/recommendations/family-stage';
-import DirectionStage from '@/components/recommendations/direction-stage';
-import PathwayStage from '@/components/recommendations/pathway-stage';
+import DomainStage from '@/components/recommendations/domain-stage';
+import FieldStage from '@/components/recommendations/field-stage';
+import SpecializationStage from '@/components/recommendations/specialization-stage';
 
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { useProfileStatusQuery } from '@/queries/profile-query';
@@ -16,21 +16,6 @@ import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
 import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-data';
 import { formatSlug } from '@/lib/slug-formatter';
 
-/**
- * PathwayRecommendationsLayout
- *
- * Orchestrator only — owns data fetching, auth redirects, and submit mutation.
- * All UI and stage-level data concerns live in the three stage components.
- *
- * Data architecture:
- *   RecommendationOverview.families   → FamilyStage    (Layer 1 — domain)
- *   FamilyRecommendation.directions   → DirectionStage (Layer 2 — field)
- *   RecommendationOverview.pathways   → PathwayStage   (Layer 3 — specialization)
- *
- * Submit:
- *   pickedPathwayId = PathwayDetailView.id (pathway document _id)
- *   resolved inside DirectionStage / PathwayStage from the fetched pathway detail.
- */
 const PathwayRecommendationsLayout = () => {
   const navigate = useNavigate();
 
@@ -53,20 +38,17 @@ const PathwayRecommendationsLayout = () => {
   const {
     params,
     isNavigatingBack,
-    selectFamily,
-    selectDirection,
-    selectPathway,
-    goToDirection,
-    goToPathway,
+    selectDomain,
+    selectField,
+    selectSpecialization,
+    goToField,
+    goToSpecialization,
     goBack,
   } = usePathwayPickerParams();
 
-  useEffect(() => {
-    if (isSubmitted)
-      navigate('/pathway-congratulations', { viewTransition: true });
-  }, [isSubmitted, navigate]);
+  useEffect(() => {}, [isSubmitted, navigate]);
 
-  // ── Loading ──────────────────────────────────────────────────────────────
+  // ── Loading───────
 
   if (isProfilePending || isRecPending) {
     return (
@@ -76,13 +58,13 @@ const PathwayRecommendationsLayout = () => {
     );
   }
 
-  // ── Auth guard ───────────────────────────────────────────────────────────
+  // ── Auth guard────
 
   if (!profileStatus?.data.assessments.pathwayAssessmentCompleted) {
     return <Navigate to="/pathway-assessment" />;
   }
 
-  // ── Error ────────────────────────────────────────────────────────────────
+  // ── Error─────────
 
   if (error) {
     return (
@@ -94,11 +76,11 @@ const PathwayRecommendationsLayout = () => {
     );
   }
 
-  // ── Empty state ──────────────────────────────────────────────────────────
+  // ── Empty state───
 
   const data = recResponse?.data;
 
-  if (!data || data.families.length === 0) {
+  if (!data || data.domains.length === 0) {
     return (
       <div className="grid min-h-dvh place-items-center p-6 text-center">
         <div className="space-y-2">
@@ -113,29 +95,28 @@ const PathwayRecommendationsLayout = () => {
 
   // ── Derived stage data ───────────────────────────────────────────────────
 
-  const { families, pathways } = data;
+  const { domains: families, pathways } = data;
 
   // Directions are embedded inside FamilyRecommendation — no extra filter needed
   const selectedFamily = families.find(
-    (f) => f.familySlug === params.familySlug
+    (f) => f.domainSlug === params.domainSlug
   );
-  const directionsForFamily = selectedFamily?.directions ?? [];
+  const directionsForFamily = selectedFamily?.fields ?? [];
 
   // Pathways for the selected direction, ranked ascending, capped at 5
   const pathwaysForDirection = pathways
-    .filter((p) => p.directionSlug === params.directionSlug)
+    .filter((p) => p.fieldSlug === params.fieldSlug)
     .sort((a, b) => a.rank - b.rank)
     .slice(0, 5);
 
-  // ── Submit handler ───────────────────────────────────────────────────────
+  // ── Submit handler
 
-  // pathwayId = PathwayDetailView.id (MongoDB _id of pathway document)
-  // Resolved inside DirectionStage / PathwayStage from the fetched PathwayDetailView.
-  const handleSubmit = (pathwayId: string) => {
-    mutate({ ...roadmapSetupDefaultValues, pickedPathwayId: pathwayId });
+  const handleSubmit = (pathwaySlug: string) => {
+    mutate({ ...roadmapSetupDefaultValues, pickedPathwaySlug: pathwaySlug });
+    navigate('/pathway-congratulations', { viewTransition: true });
   };
 
-  // ── Render ───────────────────────────────────────────────────────────────
+  // ── Render
 
   return (
     <div className="min-h-dvh px-4 py-10 md:px-8 md:py-16">
@@ -154,36 +135,35 @@ const PathwayRecommendationsLayout = () => {
         )}
 
         {/* Stage 1 — pick a domain */}
-        {params.stage === 'family' && (
-          <FamilyStage
+        {params.stage === 'domain' && (
+          <DomainStage
             families={families}
-            selectedFamilySlug={params.familySlug}
-            onSelectFamily={selectFamily}
-            onContinue={goToDirection}
+            selectedFamilySlug={params.domainSlug}
+            onSelectFamily={selectDomain}
+            onContinue={goToField}
           />
         )}
 
         {/* Stage 2 — pick a field within the selected domain */}
-        {params.stage === 'direction' && selectedFamily && (
-          <DirectionStage
-            directions={directionsForFamily}
+        {params.stage === 'field' && selectedFamily && (
+          <FieldStage
+            fields={directionsForFamily}
             allPathways={pathways}
-            selectedDirectionSlug={params.directionSlug}
-            familyName={formatSlug(params.familySlug)}
-            onSelectDirection={selectDirection}
+            selectedFieldSlug={params.fieldSlug}
+            domainName={formatSlug(params.domainSlug)}
+            onSelectDirection={selectField}
             onStartHere={handleSubmit}
-            onExploreDeeper={goToPathway}
+            onExploreDeeper={goToSpecialization}
             isSubmitting={isSubmitting}
           />
         )}
 
-        {/* Stage 3 — pick a specialization within the selected field */}
-        {params.stage === 'pathway' && (
-          <PathwayStage
+        {params.stage === 'specialization' && (
+          <SpecializationStage
             pathways={pathwaysForDirection}
-            selectedPathwaySlug={params.pathwaySlug}
-            directionName={formatSlug(params.directionSlug)}
-            onSelectPathway={selectPathway}
+            selectedPathwaySlug={params.specializationSlug}
+            directionName={formatSlug(params.fieldSlug)}
+            onSelectPathway={selectSpecialization}
             onSubmit={handleSubmit}
             isSubmitting={isSubmitting}
           />
