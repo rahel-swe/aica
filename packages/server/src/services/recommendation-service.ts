@@ -198,33 +198,30 @@ class RecommendationService {
     const session = await mongoose.startSession();
 
     try {
-      await session.withTransaction(async () => {
-        const insertDocs: RecommendationInsertDoc[] = scored.map((s, i) => ({
-          userId: new mongoose.Types.ObjectId(userId),
-          pathwayId: new mongoose.Types.ObjectId(s.pathwayId),
-          pathwaySlug: s.pathwaySlug,
-          directionSlug: s.directionSlug,
-          familySlug: s.familySlug,
-          totalScore: s.totalScore,
-          matchPercent: s.matchPercent,
-          dimensionScores: s.dimensionScores,
-          rank: i + 1,
-          matchingVersion: CURRENT_MATCHING_VERSION,
-          profileVersion,
-          profileVersionId: new mongoose.Types.ObjectId(profileVersionId),
-          reasons: s.reasons,
-          sourceProfileSnapshot: assessment as unknown as Record<
-            string,
-            unknown
-          >,
-        }));
+      // await session.withTransaction(async () => {
+      const insertDocs: RecommendationInsertDoc[] = scored.map((s, i) => ({
+        userId: new mongoose.Types.ObjectId(userId),
+        pathwayId: new mongoose.Types.ObjectId(s.pathwayId),
+        pathwaySlug: s.pathwaySlug,
+        directionSlug: s.directionSlug,
+        familySlug: s.familySlug,
+        totalScore: s.totalScore,
+        matchPercent: s.matchPercent,
+        dimensionScores: s.dimensionScores,
+        rank: i + 1,
+        matchingVersion: CURRENT_MATCHING_VERSION,
+        profileVersion,
+        profileVersionId: new mongoose.Types.ObjectId(profileVersionId),
+        reasons: s.reasons,
+        sourceProfileSnapshot: assessment as unknown as Record<string, unknown>,
+      }));
 
-        await recommendationRepository.replaceAllForUser(
-          userId,
-          insertDocs,
-          session
-        );
-      });
+      await recommendationRepository.replaceAllForUser(
+        userId,
+        insertDocs,
+        session
+      );
+      // });
     } finally {
       await session.endSession();
     }

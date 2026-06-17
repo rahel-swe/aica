@@ -2,7 +2,7 @@
   {
     "pathwaySlug": "software-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -245,7 +245,7 @@
   {
     "pathwaySlug": "ai-and-data",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -488,7 +488,7 @@
   {
     "pathwaySlug": "infrastructure-and-security",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -731,7 +731,7 @@
   {
     "pathwaySlug": "product-and-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -974,7 +974,7 @@
   {
     "pathwaySlug": "emerging-technology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -1217,7 +1217,7 @@
   {
     "pathwaySlug": "clinical-medicine",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -1470,7 +1470,7 @@
   {
     "pathwaySlug": "nursing-and-allied-health",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -1723,7 +1723,7 @@
   {
     "pathwaySlug": "mental-health-and-psychiatry",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -1976,7 +1976,7 @@
   {
     "pathwaySlug": "biomedical-and-research",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -2229,7 +2229,7 @@
   {
     "pathwaySlug": "strategy-and-consulting",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -2477,7 +2477,7 @@
   {
     "pathwaySlug": "marketing-and-growth",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -2725,7 +2725,7 @@
   {
     "pathwaySlug": "operations-and-logistics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "organized",
@@ -2978,7 +2978,7 @@
   {
     "pathwaySlug": "entrepreneurship",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -3231,7 +3231,7 @@
   {
     "pathwaySlug": "people-and-organisation",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -3479,7 +3479,7 @@
   {
     "pathwaySlug": "investment-and-markets",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -3722,7 +3722,7 @@
   {
     "pathwaySlug": "financial-planning-and-advisory",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -3965,7 +3965,7 @@
   {
     "pathwaySlug": "risk-and-insurance",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -4208,7 +4208,7 @@
   {
     "pathwaySlug": "visual-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -4456,7 +4456,7 @@
   {
     "pathwaySlug": "media-and-production",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -4704,7 +4704,7 @@
   {
     "pathwaySlug": "architecture-and-spatial-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -4957,7 +4957,7 @@
   {
     "pathwaySlug": "writing-and-content",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -5210,7 +5210,7 @@
   {
     "pathwaySlug": "performing-arts",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -5458,7 +5458,7 @@
   {
     "pathwaySlug": "life-sciences",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -5641,7 +5641,7 @@
   {
     "pathwaySlug": "physical-sciences",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -5824,7 +5824,7 @@
   {
     "pathwaySlug": "earth-and-environmental-sciences",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -6012,7 +6012,7 @@
   {
     "pathwaySlug": "applied-sciences",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -6195,7 +6195,7 @@
   {
     "pathwaySlug": "law-and-governance",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -6378,7 +6378,7 @@
   {
     "pathwaySlug": "social-and-behavioral-sciences",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -6561,7 +6561,7 @@
   {
     "pathwaySlug": "international-and-public-affairs",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -6744,7 +6744,7 @@
   {
     "pathwaySlug": "education-and-information",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -6932,7 +6932,7 @@
   {
     "pathwaySlug": "humanities",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -7115,7 +7115,7 @@
   {
     "pathwaySlug": "civil-and-structural",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -7303,7 +7303,7 @@
   {
     "pathwaySlug": "mechanical-and-automotive",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -7491,7 +7491,7 @@
   {
     "pathwaySlug": "electrical-and-electronic-systems",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -7679,7 +7679,7 @@
   {
     "pathwaySlug": "chemical-and-nuclear",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -7867,7 +7867,7 @@
   {
     "pathwaySlug": "aerospace",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -8055,7 +8055,7 @@
   {
     "pathwaySlug": "environmental-and-energy",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -8248,7 +8248,7 @@
   {
     "pathwaySlug": "food-and-hospitality",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -8436,7 +8436,7 @@
   {
     "pathwaySlug": "skilled-trades-and-construction",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -8609,7 +8609,7 @@
   {
     "pathwaySlug": "fitness-and-wellness",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -8792,7 +8792,7 @@
   {
     "pathwaySlug": "entertainment-and-events",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -8960,7 +8960,7 @@
   {
     "pathwaySlug": "education-and-youth-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -9143,7 +9143,7 @@
   {
     "pathwaySlug": "emerging-and-frontier",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -9311,7 +9311,7 @@
   {
     "pathwaySlug": "frontend-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -9554,7 +9554,7 @@
   {
     "pathwaySlug": "backend-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -9797,7 +9797,7 @@
   {
     "pathwaySlug": "full-stack-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -10040,7 +10040,7 @@
   {
     "pathwaySlug": "mobile-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -10283,7 +10283,7 @@
   {
     "pathwaySlug": "blockchain-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -10526,7 +10526,7 @@
   {
     "pathwaySlug": "ar-vr-xr-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -10769,7 +10769,7 @@
   {
     "pathwaySlug": "no-code-low-code-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "organized",
@@ -11012,7 +11012,7 @@
   {
     "pathwaySlug": "ai-machine-learning-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -11255,7 +11255,7 @@
   {
     "pathwaySlug": "prompt-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -11498,7 +11498,7 @@
   {
     "pathwaySlug": "data-science",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -11741,7 +11741,7 @@
   {
     "pathwaySlug": "data-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "organized",
@@ -11984,7 +11984,7 @@
   {
     "pathwaySlug": "data-analysis",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -12227,7 +12227,7 @@
   {
     "pathwaySlug": "devops-platform-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -12470,7 +12470,7 @@
   {
     "pathwaySlug": "cloud-architecture",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -12713,7 +12713,7 @@
   {
     "pathwaySlug": "cybersecurity",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -12961,7 +12961,7 @@
   {
     "pathwaySlug": "cybersecurity-analysis",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -13204,7 +13204,7 @@
   {
     "pathwaySlug": "it-systems-administration",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "organized",
@@ -13447,7 +13447,7 @@
   {
     "pathwaySlug": "embedded-systems-iot",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -13690,7 +13690,7 @@
   {
     "pathwaySlug": "ui-ux-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -13933,7 +13933,7 @@
   {
     "pathwaySlug": "product-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -14176,7 +14176,7 @@
   {
     "pathwaySlug": "ai-product-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -14419,7 +14419,7 @@
   {
     "pathwaySlug": "technical-writing",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -14662,7 +14662,7 @@
   {
     "pathwaySlug": "qa-test-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -14905,7 +14905,7 @@
   {
     "pathwaySlug": "game-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -15153,7 +15153,7 @@
   {
     "pathwaySlug": "robotics-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -15401,7 +15401,7 @@
   {
     "pathwaySlug": "drone-uav-technology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -15649,7 +15649,7 @@
   {
     "pathwaySlug": "mental-health-technology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -15892,7 +15892,7 @@
   {
     "pathwaySlug": "fintech-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -16135,7 +16135,7 @@
   {
     "pathwaySlug": "medicine-general-practice",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -16388,7 +16388,7 @@
   {
     "pathwaySlug": "pharmacy",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -16641,7 +16641,7 @@
   {
     "pathwaySlug": "dentistry",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -16894,7 +16894,7 @@
   {
     "pathwaySlug": "optometry",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -17147,7 +17147,7 @@
   {
     "pathwaySlug": "veterinary-medicine",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -17400,7 +17400,7 @@
   {
     "pathwaySlug": "emergency-medicine-paramedicine",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -17653,7 +17653,7 @@
   {
     "pathwaySlug": "midwifery",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -17906,7 +17906,7 @@
   {
     "pathwaySlug": "nursing",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -18159,7 +18159,7 @@
   {
     "pathwaySlug": "physiotherapy",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -18412,7 +18412,7 @@
   {
     "pathwaySlug": "occupational-therapy",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -18665,7 +18665,7 @@
   {
     "pathwaySlug": "radiography-medical-imaging",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -18918,7 +18918,7 @@
   {
     "pathwaySlug": "nutrition-and-dietetics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -19171,7 +19171,7 @@
   {
     "pathwaySlug": "speech-language-pathology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -19424,7 +19424,7 @@
   {
     "pathwaySlug": "clinical-psychology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -19677,7 +19677,7 @@
   {
     "pathwaySlug": "psychiatry",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -19925,7 +19925,7 @@
   {
     "pathwaySlug": "mental-health-addiction-counseling",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -20178,7 +20178,7 @@
   {
     "pathwaySlug": "biomedical-science",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -20431,7 +20431,7 @@
   {
     "pathwaySlug": "neuroscience",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -20684,7 +20684,7 @@
   {
     "pathwaySlug": "public-health",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -20937,7 +20937,7 @@
   {
     "pathwaySlug": "biomedical-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -21190,7 +21190,7 @@
   {
     "pathwaySlug": "health-informatics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -21438,7 +21438,7 @@
   {
     "pathwaySlug": "business-analysis",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -21686,7 +21686,7 @@
   {
     "pathwaySlug": "management-consulting",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -21934,7 +21934,7 @@
   {
     "pathwaySlug": "project-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "organized",
@@ -22182,7 +22182,7 @@
   {
     "pathwaySlug": "sustainability-consulting",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -22435,7 +22435,7 @@
   {
     "pathwaySlug": "marketing",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -22683,7 +22683,7 @@
   {
     "pathwaySlug": "digital-marketing",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -22931,7 +22931,7 @@
   {
     "pathwaySlug": "brand-strategy",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -23179,7 +23179,7 @@
   {
     "pathwaySlug": "e-commerce-retail-strategy",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -23427,7 +23427,7 @@
   {
     "pathwaySlug": "supply-chain-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -23675,7 +23675,7 @@
   {
     "pathwaySlug": "logistics-and-operations",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "organized",
@@ -23923,7 +23923,7 @@
   {
     "pathwaySlug": "real-estate",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -24171,7 +24171,7 @@
   {
     "pathwaySlug": "sales-and-business-development",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -24424,7 +24424,7 @@
   {
     "pathwaySlug": "general-entrepreneurship",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -24677,7 +24677,7 @@
   {
     "pathwaySlug": "e-commerce-entrepreneurship",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -24925,7 +24925,7 @@
   {
     "pathwaySlug": "human-resources",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -25173,7 +25173,7 @@
   {
     "pathwaySlug": "investment-banking",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -25416,7 +25416,7 @@
   {
     "pathwaySlug": "financial-analysis",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -25659,7 +25659,7 @@
   {
     "pathwaySlug": "actuarial-science",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -25902,7 +25902,7 @@
   {
     "pathwaySlug": "financial-planning-wealth-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -26145,7 +26145,7 @@
   {
     "pathwaySlug": "insurance-risk-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -26388,7 +26388,7 @@
   {
     "pathwaySlug": "graphic-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -26636,7 +26636,7 @@
   {
     "pathwaySlug": "illustration-concept-art",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -26884,7 +26884,7 @@
   {
     "pathwaySlug": "animation-motion-graphics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -27127,7 +27127,7 @@
   {
     "pathwaySlug": "photography",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -27380,7 +27380,7 @@
   {
     "pathwaySlug": "ui-ux-research",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -27628,7 +27628,7 @@
   {
     "pathwaySlug": "fashion-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -27876,7 +27876,7 @@
   {
     "pathwaySlug": "film-video-production",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -28124,7 +28124,7 @@
   {
     "pathwaySlug": "music-production",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -28372,7 +28372,7 @@
   {
     "pathwaySlug": "sound-design-audio-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -28620,7 +28620,7 @@
   {
     "pathwaySlug": "podcast-production",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -28873,7 +28873,7 @@
   {
     "pathwaySlug": "social-media-content-creation",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -29126,7 +29126,7 @@
   {
     "pathwaySlug": "game-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -29374,7 +29374,7 @@
   {
     "pathwaySlug": "architecture",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -29627,7 +29627,7 @@
   {
     "pathwaySlug": "interior-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -29880,7 +29880,7 @@
   {
     "pathwaySlug": "industrial-product-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -30133,7 +30133,7 @@
   {
     "pathwaySlug": "journalism-creative-writing",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -30381,7 +30381,7 @@
   {
     "pathwaySlug": "ux-writing-content-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -30624,7 +30624,7 @@
   {
     "pathwaySlug": "theatre-performing-arts",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "communication",
@@ -30872,7 +30872,7 @@
   {
     "pathwaySlug": "dance-choreography",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "creativity",
@@ -31120,7 +31120,7 @@
   {
     "pathwaySlug": "marine-biology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -31308,7 +31308,7 @@
   {
     "pathwaySlug": "biotechnology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -31491,7 +31491,7 @@
   {
     "pathwaySlug": "genetics-and-genomics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -31674,7 +31674,7 @@
   {
     "pathwaySlug": "ecology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -31862,7 +31862,7 @@
   {
     "pathwaySlug": "conservation-biology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -32050,7 +32050,7 @@
   {
     "pathwaySlug": "microbiology-and-immunology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -32233,7 +32233,7 @@
   {
     "pathwaySlug": "chemistry",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -32416,7 +32416,7 @@
   {
     "pathwaySlug": "physics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -32599,7 +32599,7 @@
   {
     "pathwaySlug": "astronomy-and-astrophysics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -32782,7 +32782,7 @@
   {
     "pathwaySlug": "materials-science",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -32965,7 +32965,7 @@
   {
     "pathwaySlug": "environmental-science",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -33153,7 +33153,7 @@
   {
     "pathwaySlug": "geology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -33341,7 +33341,7 @@
   {
     "pathwaySlug": "forensic-science",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -33524,7 +33524,7 @@
   {
     "pathwaySlug": "food-science-and-technology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -33707,7 +33707,7 @@
   {
     "pathwaySlug": "agricultural-science",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -33895,7 +33895,7 @@
   {
     "pathwaySlug": "law",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -34078,7 +34078,7 @@
   {
     "pathwaySlug": "criminology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -34261,7 +34261,7 @@
   {
     "pathwaySlug": "urban-planning",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -34444,7 +34444,7 @@
   {
     "pathwaySlug": "cybersecurity-policy-and-law",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -34627,7 +34627,7 @@
   {
     "pathwaySlug": "psychology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -34805,7 +34805,7 @@
   {
     "pathwaySlug": "sociology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -34983,7 +34983,7 @@
   {
     "pathwaySlug": "economics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -35166,7 +35166,7 @@
   {
     "pathwaySlug": "social-work",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -35344,7 +35344,7 @@
   {
     "pathwaySlug": "counseling",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -35522,7 +35522,7 @@
   {
     "pathwaySlug": "anthropology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -35700,7 +35700,7 @@
   {
     "pathwaySlug": "political-science-and-policy",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -35883,7 +35883,7 @@
   {
     "pathwaySlug": "international-relations",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -36066,7 +36066,7 @@
   {
     "pathwaySlug": "education-and-teaching",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -36249,7 +36249,7 @@
   {
     "pathwaySlug": "library-and-information-science",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -36432,7 +36432,7 @@
   {
     "pathwaySlug": "linguistics",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -36615,7 +36615,7 @@
   {
     "pathwaySlug": "philosophy",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "analytical",
@@ -36798,7 +36798,7 @@
   {
     "pathwaySlug": "archaeology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -36976,7 +36976,7 @@
   {
     "pathwaySlug": "civil-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -37164,7 +37164,7 @@
   {
     "pathwaySlug": "structural-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -37352,7 +37352,7 @@
   {
     "pathwaySlug": "mechanical-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -37540,7 +37540,7 @@
   {
     "pathwaySlug": "automotive-ev-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -37728,7 +37728,7 @@
   {
     "pathwaySlug": "industrial-manufacturing-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -37916,7 +37916,7 @@
   {
     "pathwaySlug": "electrical-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -38104,7 +38104,7 @@
   {
     "pathwaySlug": "chemical-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -38292,7 +38292,7 @@
   {
     "pathwaySlug": "nuclear-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -38480,7 +38480,7 @@
   {
     "pathwaySlug": "aerospace-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -38668,7 +38668,7 @@
   {
     "pathwaySlug": "environmental-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -38861,7 +38861,7 @@
   {
     "pathwaySlug": "renewable-energy-engineering",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -39049,7 +39049,7 @@
   {
     "pathwaySlug": "culinary-arts",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -39252,7 +39252,7 @@
   {
     "pathwaySlug": "hospitality-tourism-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -39455,7 +39455,7 @@
   {
     "pathwaySlug": "skilled-trades",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -39628,7 +39628,7 @@
   {
     "pathwaySlug": "real-estate-agency",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -39816,7 +39816,7 @@
   {
     "pathwaySlug": "construction-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -40004,7 +40004,7 @@
   {
     "pathwaySlug": "beauty-and-cosmetology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "hands_on",
@@ -40207,7 +40207,7 @@
   {
     "pathwaySlug": "sports-science-and-coaching",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -40390,7 +40390,7 @@
   {
     "pathwaySlug": "personal-training-and-fitness",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -40573,7 +40573,7 @@
   {
     "pathwaySlug": "health-and-wellness-coaching",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -40756,7 +40756,7 @@
   {
     "pathwaySlug": "event-management",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -40939,7 +40939,7 @@
   {
     "pathwaySlug": "esports-and-gaming-industry",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -41127,7 +41127,7 @@
   {
     "pathwaySlug": "early-childhood-education",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -41310,7 +41310,7 @@
   {
     "pathwaySlug": "edtech-and-learning-design",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "people",
@@ -41498,7 +41498,7 @@
   {
     "pathwaySlug": "space-technology",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",
@@ -41681,7 +41681,7 @@
   {
     "pathwaySlug": "human-computer-interaction",
     "version": 1,
-    "status": "draft",
+    "status": "active",
     "strengths": [
       {
         "value": "problem_solving",

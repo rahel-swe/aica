@@ -26,7 +26,7 @@
       "Technical co-founder building a software product",
       "Open-source contributor building publicly available tools"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -66,11 +66,7 @@
     "title": "AI and Data",
     "slug": "ai-and-data",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "technology",
-      "ai-and-data",
-      "ai-and-data"
-    ],
+    "taxonomySlugs": ["technology", "ai-and-data", "ai-and-data"],
     "summary": "Build intelligent systems, extract insight from data, and engineer the infrastructure that makes machine learning real in production. The fastest-moving and most commercially impactful field in technology.",
     "description": "The AI and data field covers everything from building and training machine learning models to engineering the pipelines that feed them, analyzing the outputs they produce, and designing the products they power. It spans data analysis (turning data into decisions), data engineering (building the infrastructure that makes data available), data science (modeling and insight), machine learning engineering (building and deploying models), and prompt engineering (designing the inputs to language models). Entry is possible from a self-taught path with strong programming and mathematics skills, or from a degree in statistics, computer science, or a related discipline. The field rewards people who combine technical rigor with genuine intellectual curiosity about what data actually means.",
     "keySkills": [
@@ -89,7 +85,7 @@
       "Analytics engineer at data-driven product companies",
       "AI consultant advising organizations on data and intelligence strategy"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -152,7 +148,7 @@
       "Embedded systems or IoT engineer at hardware companies",
       "Security engineer protecting applications and infrastructure"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -192,11 +188,7 @@
     "title": "Product and Design",
     "slug": "product-and-design",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "technology",
-      "product-and-design",
-      "product-and-design"
-    ],
+    "taxonomySlugs": ["technology", "product-and-design", "product-and-design"],
     "summary": "Define what gets built, shape how it looks, and make sure it actually works for real people. The discipline that connects user needs to engineering reality.",
     "description": "Product and design covers the roles responsible for what software does and how it feels to use — product managers who define direction and priorities, UI/UX designers who create interfaces and interactions, AI product managers who work specifically with intelligent systems, technical writers who make products understandable, and QA engineers who ensure they work correctly. These roles sit between users and engineers, translating between human needs and technical implementation. Entry is possible from almost any background — what matters most is the ability to understand both the problem and the constraints of building a solution. Many product and design professionals come from engineering, psychology, business, or writing backgrounds.",
     "keySkills": [
@@ -215,7 +207,7 @@
       "AI product manager at LLM-powered product companies",
       "Design system specialist at large technology organizations"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -278,7 +270,7 @@
       "Developer or PM building mental health and digital therapeutics products",
       "Space technology engineer at commercial launch or satellite companies"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -318,11 +310,7 @@
     "title": "Clinical Medicine",
     "slug": "clinical-medicine",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "clinical-medicine",
-      "clinical-medicine"
-    ],
+    "taxonomySlugs": ["healthcare", "clinical-medicine", "clinical-medicine"],
     "summary": "Direct patient care — diagnosis, treatment, and the relationship at the heart of medicine. The longest training path in healthcare and among the most consequential careers in any field.",
     "description": "Clinical medicine covers all the healthcare professions that provide direct diagnostic and treatment services to patients — doctors, pharmacists, dentists, optometrists, veterinarians, emergency medical practitioners, and midwives. Every path in this field requires a degree, a supervised clinical training period, and a government-issued license to practice independently. The training is long, rigorous, and ethically serious — because the decisions you make directly affect people's health and lives. Clinical medicine rewards people who combine intellectual rigor with genuine human empathy, the ability to function well under uncertainty, and the communication skills to build trust with patients who are frightened and vulnerable.",
     "keySkills": [
@@ -341,7 +329,7 @@
       "Veterinarian in companion animal, agricultural, or research roles",
       "Paramedic or emergency medical practitioner in pre-hospital care"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -405,7 +393,7 @@
       "Dietitian in clinical, community, or sports nutrition settings",
       "Speech-language pathologist in pediatric, neurological, or voice specializations"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -469,7 +457,7 @@
       "Addiction specialist at residential or outpatient treatment centers",
       "Mental health academic combining research and clinical practice"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -533,7 +521,7 @@
       "Health informatics specialist at hospital systems or digital health companies",
       "Research scientist at academic medical centers or biotechnology companies"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -596,7 +584,7 @@
       "Sustainability or ESG consultant at advisory firms",
       "Transformation program manager at organizations undergoing significant change"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -659,7 +647,7 @@
       "Social media and content creator for brands or independently",
       "Growth marketer at startups optimizing acquisition and retention"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -722,7 +710,7 @@
       "Sales manager or business development director",
       "Operations director at scale-up companies building commercial systems from scratch"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -762,11 +750,7 @@
     "title": "Entrepreneurship",
     "slug": "entrepreneurship",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "business",
-      "entrepreneurship",
-      "entrepreneurship"
-    ],
+    "taxonomySlugs": ["business", "entrepreneurship", "entrepreneurship"],
     "summary": "Build something from nothing. The most uncertain, most personal, and potentially most impactful path in business — and one that cannot be learned without doing it.",
     "description": "Entrepreneurship covers the full range of paths for people who want to build and run their own businesses rather than work within existing organizations — from founding a venture-backed technology startup to building a bootstrapped e-commerce business. The field does not have a clear credential path because the primary requirement is building something that works, not passing any examination. What determines success is the combination of market insight, execution speed, resilience through failure, and the ability to attract the customers, talent, and capital a growing business needs. Most entrepreneurs work in adjacent roles first — as employees who learn how businesses work before attempting to build one — though some go directly from education to founding.",
     "keySkills": [
@@ -785,7 +769,7 @@
       "Solopreneur building a portfolio of revenue streams as an independent operator",
       "Intrapreneur leading internal ventures within a larger organization"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -848,7 +832,7 @@
       "Compensation and benefits analyst at large enterprises",
       "Chief People Officer or HR director at companies building organizational capability"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -911,7 +895,7 @@
       "Private equity analyst after banking experience",
       "Credit analyst at commercial or investment banks"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -974,7 +958,7 @@
       "Financial coach working with younger clients on financial foundations",
       "Digital financial adviser at a robo-advice or fintech platform"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1015,11 +999,7 @@
     "title": "Risk and Insurance",
     "slug": "risk-and-insurance",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "finance",
-      "risk-and-insurance",
-      "risk-and-insurance"
-    ],
+    "taxonomySlugs": ["finance", "risk-and-insurance", "risk-and-insurance"],
     "summary": "Quantify, price, and manage uncertainty. The mathematical and commercial backbone of financial stability — and a field that matters most when everything else goes wrong.",
     "description": "Risk and insurance covers the professionals who help organizations understand and financially protect against uncertainty — underwriters who price and accept risk for insurers, brokers who place risk in the market for clients, and enterprise risk managers who build frameworks to identify and mitigate the risks their organizations face. The field is more analytically rigorous than its reputation suggests: pricing complex insurance risks requires sophisticated modeling; enterprise risk management requires deep understanding of how organizations fail. Entry is accessible through insurance graduate programs, which offer structured training across the industry. The Lloyd's of London market and specialty insurance sector are particularly well-regarded entry points for those targeting international careers.",
     "keySkills": [
@@ -1038,7 +1018,7 @@
       "Claims manager assessing and settling insurance claims",
       "Risk consultant advising organizations on risk management strategy"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1079,11 +1059,7 @@
     "title": "Visual Design",
     "slug": "visual-design",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "creative-arts",
-      "visual-design",
-      "visual-design"
-    ],
+    "taxonomySlugs": ["creative-arts", "visual-design", "visual-design"],
     "summary": "Shape how things look and how that appearance communicates meaning. Every brand, interface, image, and illustration that has ever caught your attention was made by a visual designer.",
     "description": "Visual design covers all the creative disciplines concerned with visual communication — graphic design, illustration and concept art, animation and motion graphics, photography, UX/UI research, and fashion design. What unifies them is the application of visual thinking to solve communication problems: how do you make this clear, beautiful, and emotionally resonant? Entry into visual design is primarily portfolio-based — employers care what you can make, not what you studied. This makes it one of the most accessible creative fields to enter from a self-taught background, but also one where the bar is high because the portfolio quality of applicants is usually directly visible. Specialization matters — being a strong graphic designer is not the same as being a strong illustrator or motion designer, even though all three fall under the same broad label.",
     "keySkills": [
@@ -1102,7 +1078,7 @@
       "UX researcher applying visual and behavioral analysis to product design",
       "Fashion designer in commercial, luxury, or sustainable fashion sectors"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -1165,7 +1141,7 @@
       "Social media content creator building audiences on digital platforms",
       "Game designer at studios of all sizes"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1228,7 +1204,7 @@
       "Exhibition or retail designer creating branded physical environments",
       "Urban designer working at the intersection of architecture and planning"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -1292,7 +1268,7 @@
       "Content strategist managing editorial frameworks for brands or platforms",
       "Screenwriter or script editor for film, television, or interactive media"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -1332,11 +1308,7 @@
     "title": "Performing Arts",
     "slug": "performing-arts",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "creative-arts",
-      "performing-arts",
-      "performing-arts"
-    ],
+    "taxonomySlugs": ["creative-arts", "performing-arts", "performing-arts"],
     "summary": "Live performance, movement, and the stage. The oldest art forms and still the most immediately powerful — and careers built entirely on what you can do in front of a real audience.",
     "description": "Performing arts covers the disciplines of live performance — theatre, acting, dance, and choreography. These careers are built entirely on demonstrated skill and the ability to hold attention in real time without a screen or edit between you and your audience. The career paths are predominantly portfolio and audition-based, with formal training available through conservatoires and drama schools but not mandatory for all routes. Most performing arts careers are portfolio-based and economically challenging — consistent full-time employment purely through performance is achieved by a minority of practitioners, and most build portfolio careers combining performance with teaching, directing, and other related work. The work itself is profoundly rewarding for those genuinely committed to it.",
     "keySkills": [
@@ -1355,7 +1327,7 @@
       "Theatre director leading productions at fringe, regional, or major venues",
       "Performance coach applying physical and vocal training to non-performance contexts"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1395,11 +1367,7 @@
     "title": "Life Sciences",
     "slug": "life-sciences",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "life-sciences",
-      "life-sciences"
-    ],
+    "taxonomySlugs": ["sciences", "life-sciences", "life-sciences"],
     "summary": "Study living organisms — from the genetics of a single cell to the ecology of entire ecosystems. The scientific foundation of medicine, conservation, agriculture, and biotechnology.",
     "description": "Life sciences covers the biological disciplines that study living organisms and their systems — marine biology, biotechnology, genetics and genomics, ecology, conservation biology, and microbiology and immunology. These disciplines share a common foundation in cell biology, biochemistry, and evolutionary theory, diverging into distinct specializations that range from deep-ocean research to industrial fermentation to CRISPR-based gene editing. Most careers in life sciences require at minimum a bachelor's degree; research and senior positions typically require a master's or PhD. The field attracts people who are genuinely curious about how living systems work and motivated by applications that range from treating disease to protecting endangered species.",
     "keySkills": [
@@ -1418,7 +1386,7 @@
       "Clinical scientist at hospitals or diagnostic laboratories",
       "Science communicator making biological research accessible to wider audiences"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1458,11 +1426,7 @@
     "title": "Physical Sciences",
     "slug": "physical-sciences",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "physical-sciences",
-      "physical-sciences"
-    ],
+    "taxonomySlugs": ["sciences", "physical-sciences", "physical-sciences"],
     "summary": "Understand matter, energy, and the universe at the most fundamental level. The disciplines that answer the deepest questions about reality — and produce the most mathematically transferable graduates.",
     "description": "Physical sciences covers chemistry, physics, astronomy and astrophysics, and materials science — the disciplines that study the non-living world at scales ranging from subatomic particles to galactic structures. These fields share a rigorous mathematical foundation and a commitment to understanding the fundamental laws governing physical systems. Graduates from physical sciences are among the most analytically versatile in the job market — the mathematics and problem-solving skills developed translate directly to finance, engineering, computing, and data science as well as academic and industrial research. Most research careers require a PhD; industry roles in chemistry, materials, and physics applications are accessible at undergraduate and master's level.",
     "keySkills": [
@@ -1481,7 +1445,7 @@
       "Chemical analyst or process chemist at pharmaceutical or industrial companies",
       "Science teacher or communicator bringing physical sciences to broader audiences"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1544,7 +1508,7 @@
       "Climate scientist at research institutes or meteorological organizations",
       "Geohazard specialist assessing landslide, flood, and earthquake risk"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1584,11 +1548,7 @@
     "title": "Applied Sciences",
     "slug": "applied-sciences",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "applied-sciences",
-      "applied-sciences"
-    ],
+    "taxonomySlugs": ["sciences", "applied-sciences", "applied-sciences"],
     "summary": "Put scientific knowledge to practical use. Forensics, food science, and agricultural science — the disciplines that keep society safe, fed, and honestly informed.",
     "description": "Applied sciences covers the scientific disciplines that directly address practical human needs — forensic science (criminal justice), food science and technology (safe and nutritious food production), and agricultural science (sustainable food systems). These fields apply the methods and knowledge of biology, chemistry, and environmental science to real-world problems with direct societal consequence. Day to day, a forensic scientist might be analyzing DNA evidence for a criminal trial; a food technologist might be developing safer preservation methods for a food manufacturer; an agronomist might be advising a farmer on disease management in their crop. All three require degree-level scientific training; postgraduate study is increasingly expected for senior and research positions.",
     "keySkills": [
@@ -1607,7 +1567,7 @@
       "Regulatory affairs specialist for food, crop protection, or forensic applications",
       "Research scientist applying agricultural or food science to sustainability challenges"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1670,7 +1630,7 @@
       "Criminologist at research institutes, probation services, or justice organizations",
       "Cybersecurity policy advisor at government agencies or technology companies"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -1734,7 +1694,7 @@
       "Anthropologist or sociologist in development, NGO, or academic roles",
       "UX researcher applying behavioral science to digital product design"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1797,7 +1757,7 @@
       "Humanitarian coordinator at international NGOs in crisis response settings",
       "Academic political scientist or international relations researcher"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1860,7 +1820,7 @@
       "Digital learning specialist applying technology to educational contexts",
       "Curriculum developer designing educational programs and learning materials"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1901,11 +1861,7 @@
     "title": "Humanities",
     "slug": "humanities",
     "type": "study",
-    "taxonomySlugs": [
-      "social-sciences-and-law",
-      "humanities",
-      "humanities"
-    ],
+    "taxonomySlugs": ["social-sciences-and-law", "humanities", "humanities"],
     "summary": "Study language, ideas, culture, and the past. The disciplines that ask the deepest questions about what it means to be human — and produce some of the most rigorous analytical thinkers in any field.",
     "description": "The humanities covers linguistics, philosophy, and archaeology — the disciplines that study human language, thought, and material history. What unifies these fields is a commitment to understanding the human world through careful analysis of texts, arguments, artifacts, and evidence, rather than through controlled experiment. Humanities graduates develop exceptional analytical writing, critical reasoning, and the ability to construct and evaluate arguments across complex, contested territory. These skills transfer well to law, consulting, policy, journalism, technology ethics, and management — though the career paths are less direct than in professional degrees and require active effort to translate academic skills into professional positioning.",
     "keySkills": [
@@ -1924,7 +1880,7 @@
       "NLP or computational linguist at technology and AI companies",
       "Academic researcher and lecturer continuing scholarship in your discipline"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -1987,7 +1943,7 @@
       "Bridge or tunnel engineer at specialist infrastructure companies",
       "Structural engineer at building contractors or property developers"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2051,7 +2007,7 @@
       "Thermal or fluids engineer at energy or aerospace companies",
       "Industrial engineer optimizing manufacturing systems and production efficiency"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2114,7 +2070,7 @@
       "Electrical design engineer at building services or infrastructure consultancies",
       "RF and communications engineer at telecommunications or satellite companies"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2177,7 +2133,7 @@
       "Environmental process engineer designing industrial waste treatment systems",
       "Research engineer developing new chemical or nuclear processes at industrial or academic labs"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2218,11 +2174,7 @@
     "title": "Aerospace",
     "slug": "aerospace",
     "type": "study",
-    "taxonomySlugs": [
-      "engineering",
-      "aerospace",
-      "aerospace"
-    ],
+    "taxonomySlugs": ["engineering", "aerospace", "aerospace"],
     "summary": "Design aircraft and spacecraft. Among the most technically demanding and highest-stakes engineering disciplines — and a sector accelerating faster than any point in its history.",
     "description": "Aerospace engineering covers the design and development of aircraft, spacecraft, launch vehicles, satellites, propulsion systems, and the control, avionics, and structural systems that make them function. The field combines aerodynamics, structural mechanics, propulsion, materials science, and systems engineering in a discipline where mistakes have catastrophic consequences and the technical barriers to entry are deliberately high. The commercial space revolution has opened a new generation of roles beyond traditional defense and government aerospace programs. Day to day, an aerospace engineer might be running CFD analysis on a wing design, testing composite structural components, simulating propulsion performance, or verifying spacecraft systems before integration. The discipline is genuinely exciting to work in — and the standards it demands reflect that.",
     "keySkills": [
@@ -2241,7 +2193,7 @@
       "Satellite engineer at smallsat manufacturers or Earth observation companies",
       "Test engineer validating aerospace systems through ground and flight test programs"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2304,7 +2256,7 @@
       "Contaminated land specialist at environmental remediation companies",
       "Sustainability engineer at industrial companies reducing environmental impact"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2367,7 +2319,7 @@
       "Revenue or yield manager at hotel groups",
       "Food and beverage director at large hospitality operations"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2430,7 +2382,7 @@
       "Renewable energy systems installer (solar PV, heat pumps)",
       "Trade business owner managing your own workforce and client base"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2494,7 +2446,7 @@
       "Online coach building a remote training and coaching business",
       "Fitness facility manager or wellness program director"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -2557,7 +2509,7 @@
       "Wedding planner or destination events specialist",
       "Experiential marketing manager producing brand activation events"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2620,7 +2572,7 @@
       "Family support worker providing early intervention for at-risk families",
       "Educational content creator producing materials for early years or school-age learners"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2684,7 +2636,7 @@
       "Space data scientist at Earth observation or geospatial analytics companies",
       "Accessibility specialist applying HCI principles to inclusive technology design"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -2748,7 +2700,7 @@
       "Web developer for a media or non-profit organization",
       "Freelance frontend contractor for brand and marketing websites"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -2812,7 +2764,7 @@
       "Backend contractor for early-stage startups",
       "Platform engineer on a data-heavy product team"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -2876,7 +2828,7 @@
       "Freelance developer building client web applications end-to-end",
       "Engineer on a cross-functional product squad"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -2940,7 +2892,7 @@
       "Cross-platform developer at a digital agency",
       "Freelance mobile developer building client apps for small businesses"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3004,7 +2956,7 @@
       "Backend engineer at a digital assets exchange",
       "Blockchain consultant for enterprise tokenization projects"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3068,7 +3020,7 @@
       "WebXR developer building browser-based immersive experiences",
       "VR engineer for healthcare or safety training applications"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3132,7 +3084,7 @@
       "Independent product builder launching SaaS tools using no-code platforms",
       "Workflow automation specialist on a remote operations team"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3196,7 +3148,7 @@
       "ML infrastructure engineer at a data-heavy scale-up",
       "Research engineer at an AI safety or foundation model organization"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -3241,11 +3193,7 @@
     "title": "Prompt Engineering",
     "slug": "prompt-engineering",
     "type": "career",
-    "taxonomySlugs": [
-      "technology",
-      "ai-and-data",
-      "prompt-engineering"
-    ],
+    "taxonomySlugs": ["technology", "ai-and-data", "prompt-engineering"],
     "summary": "Design the inputs that shape AI outputs. Prompt engineering is the discipline of making language models reliable, accurate, and safe enough to trust in production — and it is now a distinct professional role.",
     "description": "Prompt engineers design, test, and optimize the instructions and context that AI language models receive. You work on making model outputs consistent, accurate, and safe for specific use cases — whether that is a customer support bot, a code generation tool, a medical triage assistant, or a document summarization pipeline. Day to day, you might be evaluating hundreds of model outputs for quality, writing chain-of-thought prompts that improve reasoning accuracy, or building evaluation frameworks that can run automatically in CI. This path suits people who combine strong writing ability with an analytical, experimental mindset — and who understand both what the model is doing and what the user actually needs.",
     "keySkills": [
@@ -3265,7 +3213,7 @@
       "Conversational AI developer at a customer experience platform",
       "Freelance AI systems consultant for businesses deploying LLM features"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3305,11 +3253,7 @@
     "title": "Data Science",
     "slug": "data-science",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "technology",
-      "ai-and-data",
-      "data-science"
-    ],
+    "taxonomySlugs": ["technology", "ai-and-data", "data-science"],
     "summary": "Find the signal in the noise. Patterns buried in millions of data points become the decisions that change how organizations operate — and data scientists are the ones who find them.",
     "description": "Data scientists extract insight from large datasets — building models, running analyses, and presenting findings that change how organizations operate. You might build a churn prediction model for a subscription product, analyze why a marketing campaign underperformed, or forecast demand across thousands of SKUs. Your tools are Python, SQL, pandas, scikit-learn, and visualization libraries. Unlike data engineers who build pipelines, you work on what those pipelines produce — turning raw data into actionable decisions. This path works from both a self-taught background with strong Python skills and from a university degree in statistics, economics, or computer science.",
     "keySkills": [
@@ -3329,7 +3273,7 @@
       "Research analyst at a government statistics agency",
       "Applied scientist on a growth or marketing analytics team"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -3369,11 +3313,7 @@
     "title": "Data Engineering",
     "slug": "data-engineering",
     "type": "career",
-    "taxonomySlugs": [
-      "technology",
-      "ai-and-data",
-      "data-engineering"
-    ],
+    "taxonomySlugs": ["technology", "ai-and-data", "data-engineering"],
     "summary": "Build the pipelines and infrastructure that make data useful in the first place. Without data engineers, data science cannot exist and AI systems have nothing to learn from.",
     "description": "Data engineers design and build the pipelines, warehouses, and infrastructure that move data from where it is generated to where it is needed. You work with tools like Apache Spark, dbt, Airflow, Kafka, and cloud data warehouses like Snowflake or BigQuery. On any given day, you might write a batch pipeline that loads e-commerce orders into a warehouse, debug a broken Kafka consumer, or design a schema that analysts can actually use without a guide. This is backend engineering applied to data — it requires strong SQL, Python, and systems thinking, but it is increasingly accessible to engineers who want to specialize in the data layer without going deep on machine learning.",
     "keySkills": [
@@ -3393,7 +3333,7 @@
       "Data infrastructure specialist at a healthcare analytics company",
       "Freelance data engineer for startups setting up their first data stack"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3433,11 +3373,7 @@
     "title": "Data Analysis",
     "slug": "data-analysis",
     "type": "career",
-    "taxonomySlugs": [
-      "technology",
-      "ai-and-data",
-      "data-analysis"
-    ],
+    "taxonomySlugs": ["technology", "ai-and-data", "data-analysis"],
     "summary": "Turn raw numbers into decisions. Every business and every government in the world runs on the clarity that data analysts provide — and the demand for that clarity never stops growing.",
     "description": "Data analysts take structured data and produce insights that change how organizations operate. You query databases, build dashboards, run reports, and present findings to teams who need to make decisions but cannot work with the underlying data themselves. You work in SQL, Excel, and tools like Tableau, Power BI, or Looker. Unlike data scientists, you are less focused on building predictive models and more focused on answering specific business questions — why did revenue drop last quarter, which customer segment is most profitable, how does conversion rate change by acquisition channel. This is one of the most accessible technology-adjacent paths and opens doors across every industry without requiring a computer science degree.",
     "keySkills": [
@@ -3457,7 +3393,7 @@
       "Financial analyst at a bank or investment firm",
       "Public health data analyst at a government or research agency"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3521,7 +3457,7 @@
       "Cloud operations engineer at a government digital services team",
       "DevOps consultant at a system integrator or managed services provider"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3585,7 +3521,7 @@
       "Technical architect at a cloud consulting firm",
       "Cloud cost optimization specialist at a scale-up with growing infrastructure spend"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3625,11 +3561,7 @@
     "title": "Cybersecurity",
     "slug": "cybersecurity",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "technology",
-      "cybersecurity",
-      "cybersecurity"
-    ],
+    "taxonomySlugs": ["technology", "cybersecurity", "cybersecurity"],
     "summary": "Defend systems, data, and people from threats that grow more sophisticated every year. One of the most critical and chronically understaffed technical disciplines in the world.",
     "description": "Cybersecurity professionals protect organizations from attacks on their systems, data, and people. The field is broad — it includes penetration testers who find vulnerabilities before attackers do, security engineers who build defensive systems, threat intelligence analysts who track threat actors, and GRC specialists who manage regulatory compliance. Entry into the field is possible from both self-taught certification paths and university degrees. Day to day you might be running a vulnerability scan, triaging a phishing alert, reviewing a security architecture proposal, or writing a security standard for a new engineering team. What matters most is the ability to think like an attacker.",
     "keySkills": [
@@ -3649,7 +3581,7 @@
       "GRC analyst at a financial services or healthcare firm",
       "Threat intelligence analyst at a government or defense agency"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -3689,11 +3621,7 @@
     "title": "Cybersecurity Analysis",
     "slug": "cybersecurity-analysis",
     "type": "career",
-    "taxonomySlugs": [
-      "technology",
-      "cybersecurity",
-      "cybersecurity-analysis"
-    ],
+    "taxonomySlugs": ["technology", "cybersecurity", "cybersecurity-analysis"],
     "summary": "Investigate attacks, trace breaches, and protect infrastructure when threats get through. Equal parts detective and engineer — and one of the most direct entry paths into the cybersecurity field.",
     "description": "Cybersecurity analysts monitor, detect, investigate, and respond to security incidents inside organizations. You work in Security Operations Centers (SOCs), reviewing alerts from SIEM tools, triaging phishing reports, tracing lateral movement after a breach, and writing incident reports that explain what happened and how to prevent recurrence. Unlike penetration testers who simulate attacks, you deal with real threats in real time. You need a strong mental model of how attackers move through systems — so you can recognize patterns in alerts that would otherwise look like noise. This is the most common entry point into the broader cybersecurity field.",
     "keySkills": [
@@ -3713,7 +3641,7 @@
       "Security analyst at a government cybersecurity agency",
       "Vulnerability management analyst at a large enterprise organization"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3777,7 +3705,7 @@
       "Junior systems engineer at a managed IT services provider",
       "Infrastructure technician at a legal or financial services firm"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3841,7 +3769,7 @@
       "Firmware developer at a consumer electronics manufacturer",
       "Edge computing engineer at an industrial automation company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -3881,11 +3809,7 @@
     "title": "UI / UX Design",
     "slug": "ui-ux-design",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "technology",
-      "product-and-design",
-      "ui-ux-design"
-    ],
+    "taxonomySlugs": ["technology", "product-and-design", "ui-ux-design"],
     "summary": "Make digital products easier, more human, and more intuitive. Design is not decoration — it is the product. And every team that ships software eventually learns this.",
     "description": "UI/UX designers create the look, feel, and structure of digital products — the screens, interactions, and visual systems that determine whether an app feels good to use or constantly frustrating. You work through research, wireframes, prototypes, usability testing, and high-fidelity mockups in tools like Figma. On a given day, you might run a usability test to understand why users keep abandoning a checkout flow, design new onboarding screens based on the findings, and present your reasoning to the product team. This path does not require a design degree — portfolios of real work are what get people hired — but it requires both visual judgment and the ability to ground decisions in how real users actually behave.",
     "keySkills": [
@@ -3905,7 +3829,7 @@
       "Freelance product designer for B2B tools and dashboards",
       "UX designer embedded in a healthcare or fintech product team"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -3945,11 +3869,7 @@
     "title": "Product Management",
     "slug": "product-management",
     "type": "career",
-    "taxonomySlugs": [
-      "technology",
-      "product-and-design",
-      "product-management"
-    ],
+    "taxonomySlugs": ["technology", "product-and-design", "product-management"],
     "summary": "Decide what gets built and why. Product managers connect user needs, business goals, and engineering reality — and are responsible for whether the result actually solves the problem.",
     "description": "Product managers define the direction of software products — they work with users, business stakeholders, and engineering teams to determine what problems are worth solving, what solutions to build, and whether the result actually worked. You spend your time writing specifications, conducting user interviews, analyzing data, running prioritization sessions, and aligning engineering and design around a shared goal. Unlike engineers who build, PMs are responsible for what gets built and why. This role attracts people from technical, business, and design backgrounds — but regardless of where you start, you need to be credible with engineers and able to translate between the language of business and the language of technology.",
     "keySkills": [
@@ -3969,7 +3889,7 @@
       "Internal tools PM at a company with large engineering operations",
       "Product owner coordinating a cross-functional agile software team"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -4033,7 +3953,7 @@
       "Technical PM at an AI infrastructure or tooling company",
       "Product lead for AI copilots and assistants at a SaaS company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -4073,11 +3993,7 @@
     "title": "Technical Writing",
     "slug": "technical-writing",
     "type": "career",
-    "taxonomySlugs": [
-      "technology",
-      "product-and-design",
-      "technical-writing"
-    ],
+    "taxonomySlugs": ["technology", "product-and-design", "technical-writing"],
     "summary": "Translate complexity into clarity. Technical writers make powerful tools actually usable — and every serious engineering organization eventually learns how badly it needs them.",
     "description": "Technical writers create the documentation, guides, API references, tutorials, and changelogs that let developers, users, and teams work effectively with complex technology. You work at the boundary between engineering and everyone else — which means you need to understand what engineers built well enough to explain it accurately, and understand your audience well enough to explain it usefully. Day to day, you might be writing a getting started guide for a developer API, restructuring a disorganized reference section, editing an internal runbook, or setting up a documentation site from scratch. This career rewards people who read broadly, write precisely, and are genuinely curious about how things work.",
     "keySkills": [
@@ -4097,7 +4013,7 @@
       "Documentation lead at a startup scaling its engineering team",
       "Freelance technical writer for developer-facing products and platforms"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -4161,7 +4077,7 @@
       "Performance test engineer at a high-traffic web platform",
       "QA lead setting testing strategy across multiple engineering teams"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -4201,11 +4117,7 @@
     "title": "Game Development",
     "slug": "game-development",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "technology",
-      "software-development",
-      "game-development"
-    ],
+    "taxonomySlugs": ["technology", "software-development", "game-development"],
     "summary": "Write the code behind the worlds people choose to spend hours inside. Game development is one of the most technically demanding forms of software engineering — and one of the most creatively satisfying.",
     "description": "Game developers write the code that powers interactive entertainment — physics engines, AI systems, real-time graphics rendering, multiplayer networking, and gameplay logic. You work in engines like Unity (C#) or Unreal Engine (C++) and build systems that need to run at 60+ frames per second with no perceivable lag. This is not making art or design decisions — that is the job of game designers and artists. Game developers solve hard engineering problems: how do you simulate realistic physics with minimal performance cost, or synchronize game state across 100 simultaneous players? The engineering skills transfer broadly to any real-time interactive software, including robotics, simulation, and XR.",
     "keySkills": [
@@ -4225,7 +4137,7 @@
       "VR/AR game developer building immersive interactive experiences",
       "Game tools engineer building internal pipeline tools for art and content teams"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -4289,7 +4201,7 @@
       "Research engineer at a university robotics lab",
       "Embedded engineer specializing in robot hardware integration and firmware"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -4353,7 +4265,7 @@
       "Agricultural drone technician at a precision farming company",
       "UAV systems engineer at an aerospace or defense organization"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -4418,7 +4330,7 @@
       "AI product specialist at a mental health and wellness startup",
       "Digital health engineer at a health insurance company's digital product division"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -4482,7 +4394,7 @@
       "Blockchain engineer at a crypto financial infrastructure company",
       "Software engineer at a lending or credit technology startup"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -4546,7 +4458,7 @@
       "Occupational physician providing workplace health services for organizations",
       "GP academic combining clinical practice with medical education or research"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -4587,11 +4499,7 @@
     "title": "Pharmacy",
     "slug": "pharmacy",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "clinical-medicine",
-      "pharmacy"
-    ],
+    "taxonomySlugs": ["healthcare", "clinical-medicine", "pharmacy"],
     "summary": "Be the expert on what goes into the body and why. Pharmacists are the medication safety specialists at the intersection of clinical knowledge, chemistry, and direct patient care.",
     "description": "Pharmacists are the professionals responsible for ensuring patients receive the right medication at the right dose with the right counseling about how to use it. You work in hospitals, community pharmacies, clinical settings, research, and industry. Day to day, you might review prescriptions for interactions, counsel a patient about a new medication regimen, advise a physician on optimal dosing, or manage the medication supply chain for a ward. This is a degree-regulated profession in every country — pharmacists require a pharmacy degree plus supervised practice and registration to dispense. It is one of the most consistently in-demand healthcare roles globally.",
     "keySkills": [
@@ -4611,7 +4519,7 @@
       "Pharmacy manager at a healthcare system or hospital network",
       "Specialist pharmacist in oncology, pediatrics, or mental health settings"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -4652,11 +4560,7 @@
     "title": "Dentistry",
     "slug": "dentistry",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "clinical-medicine",
-      "dentistry"
-    ],
+    "taxonomySlugs": ["healthcare", "clinical-medicine", "dentistry"],
     "summary": "Give people something they use every day without thinking about: a healthy, functioning, confident smile. Dentistry combines clinical precision with genuine patient relationships.",
     "description": "Dentists diagnose and treat conditions affecting teeth, gums, and oral structures — and contribute significantly to overall systemic health. Day to day, you might perform fillings, extractions, root canals, cosmetic procedures, or identify early signs of oral cancer during a routine examination. Dentistry requires both fine motor precision and the interpersonal skill to work with patients who are often anxious. You will run a significant amount of your career as a small business owner in private practice, which means business and management decisions come with the clinical ones. This is one of the most autonomous healthcare careers — a practice owner makes clinical and commercial decisions independently.",
     "keySkills": [
@@ -4676,7 +4580,7 @@
       "Academic dentist combining clinical practice with university teaching and research",
       "Military or humanitarian dentist providing care in specialized settings"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -4716,11 +4620,7 @@
     "title": "Optometry",
     "slug": "optometry",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "clinical-medicine",
-      "optometry"
-    ],
+    "taxonomySlugs": ["healthcare", "clinical-medicine", "optometry"],
     "summary": "Protect and restore the sense people rely on most. The difference between struggling and seeing clearly — every single day, for every patient you see.",
     "description": "Optometrists examine eyes, diagnose visual conditions and eye diseases, prescribe corrective lenses, and provide primary eye care. You test visual acuity, assess eye muscle function, check for glaucoma, diabetic retinopathy, and other conditions, and prescribe glasses or contact lenses. You are often the first clinician to detect systemic diseases like diabetes or hypertension through changes in the eye. Most optometrists work in private practice or retail optical settings with significant clinical autonomy. This is a degree-regulated profession requiring licensure in every country, and the demand is consistent because vision problems affect most of the global population.",
     "keySkills": [
@@ -4740,7 +4640,7 @@
       "Specialist optometrist in contact lens practice or pediatric optometry",
       "Optometrist in a humanitarian or remote healthcare setting"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -4780,11 +4680,7 @@
     "title": "Veterinary Medicine",
     "slug": "veterinary-medicine",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "clinical-medicine",
-      "veterinary-medicine"
-    ],
+    "taxonomySlugs": ["healthcare", "clinical-medicine", "veterinary-medicine"],
     "summary": "Care for animals that cannot tell you where it hurts. Veterinary medicine demands diagnostic skill and genuine compassion in equal measure — and the work spans companion animals, wildlife, and entire food systems.",
     "description": "Veterinarians diagnose, treat, and prevent disease across a vast range of species — companion animals in private practice, livestock on farms, wildlife in conservation settings, and laboratory animals in research. You perform surgery, interpret diagnostic imaging, prescribe medications, carry out post-mortem examinations, and advise owners on preventive care. Veterinary medicine is one of the most scientifically rigorous training pathways in healthcare, with entry requirements at least as demanding as human medicine. The field is broader than most people realize: many vets work in public health, food safety, pharmaceutical development, or global disease surveillance rather than clinical practice.",
     "keySkills": [
@@ -4804,7 +4700,7 @@
       "Research veterinarian at a pharmaceutical company or university",
       "Zoo or wildlife vet working with conservation programs"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -4869,7 +4765,7 @@
       "Wilderness medicine practitioner in remote or expedition settings",
       "Disaster response medic with a humanitarian organization or military"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -4910,11 +4806,7 @@
     "title": "Midwifery",
     "slug": "midwifery",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "clinical-medicine",
-      "midwifery"
-    ],
+    "taxonomySlugs": ["healthcare", "clinical-medicine", "midwifery"],
     "summary": "Guide and protect one of the most significant experiences in a person's life. Midwifery sits at the intersection of clinical expertise and profound human trust.",
     "description": "Midwives provide care to pregnant people, those giving birth, and new parents in the postnatal period. You monitor maternal and fetal wellbeing throughout pregnancy, support physiological birth, manage complications and emergencies, and provide postnatal care to mothers and newborns. Midwives hold significant clinical autonomy — in many countries, they manage low-risk pregnancies and births independently without physician involvement. This is a registered profession requiring a degree and national registration in every country. The role requires both advanced clinical skill and exceptional interpersonal sensitivity — you are present for one of the most vulnerable and significant events in any person's life.",
     "keySkills": [
@@ -4934,7 +4826,7 @@
       "Midwifery lecturer or academic in a university program",
       "International development midwife with a humanitarian or global health organization"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -4975,11 +4867,7 @@
     "title": "Nursing",
     "slug": "nursing",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "nursing-and-allied-health",
-      "nursing"
-    ],
+    "taxonomySlugs": ["healthcare", "nursing-and-allied-health", "nursing"],
     "summary": "Be the most constant presence in a patient's care. Clinical skill, genuine emotional intelligence, and real human connection — every single shift, across every setting in healthcare.",
     "description": "Registered nurses are the clinical backbone of healthcare systems — they assess patients, administer medications, perform clinical procedures, monitor for deterioration, and coordinate care across multidisciplinary teams. You work in hospitals, community clinics, schools, aged care facilities, operating theaters, and people's homes. Unlike many healthcare roles, nurses work across every specialty — from emergency departments to neonatal intensive care to mental health to oncology. Nursing requires both technical precision and the emotional capacity to support people through fear, pain, and loss. It is one of the most in-demand professions globally and one of the most reliably employed.",
     "keySkills": [
@@ -4999,7 +4887,7 @@
       "Pediatric nurse in a children's hospital or neonatal unit",
       "Practice nurse at a GP surgery or primary care clinic"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -5064,7 +4952,7 @@
       "Neurological physiotherapist specializing in stroke and brain injury rehabilitation",
       "Physiotherapy practice owner running an independent clinical business"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -5129,7 +5017,7 @@
       "Vocational rehabilitation OT supporting return to work after illness",
       "Assistive technology OT specializing in equipment and home modification assessment"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -5194,7 +5082,7 @@
       "Radiography educator or clinical educator in a university training program",
       "Medical imaging manager overseeing a hospital imaging department"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -5259,7 +5147,7 @@
       "Food industry dietitian in product development, labeling, or corporate nutrition",
       "Public health nutritionist designing population-level food and nutrition policy"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -5324,7 +5212,7 @@
       "Research SLP in a university or clinical research center",
       "SLP working with AAC and assistive technology for individuals with complex communication needs"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -5389,7 +5277,7 @@
       "Private practice clinical psychologist offering direct therapy services",
       "Academic clinical psychologist combining research and clinical teaching"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -5454,7 +5342,7 @@
       "Old age psychiatrist in a dementia or geriatric mental health service",
       "Academic psychiatrist combining clinical practice with research and medical education"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -5519,7 +5407,7 @@
       "Private practice counselor offering individual and group therapy",
       "Recovery support specialist at a peer-led mental health organization"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -5584,7 +5472,7 @@
       "Laboratory manager overseeing quality and operations in a clinical diagnostic lab",
       "Research biomedical scientist at a pharmaceutical company or university"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -5624,11 +5512,7 @@
     "title": "Neuroscience",
     "slug": "neuroscience",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "biomedical-and-research",
-      "neuroscience"
-    ],
+    "taxonomySlugs": ["healthcare", "biomedical-and-research", "neuroscience"],
     "summary": "Study the most complex object in the known universe: the human brain. Biology, psychology, and technology are converging here — and the field has never been more central to medicine, AI, and human understanding.",
     "description": "Neuroscientists study the structure and function of the nervous system — from individual ion channels to whole-brain networks — to understand behavior, cognition, disease, and the biology of mind. The field spans molecular neuroscience, cognitive neuroscience, clinical neuroscience, and computational neuroscience. Graduates work in pharmaceutical research developing treatments for Alzheimer's, Parkinson's, and depression; in clinical settings supporting neurological diagnosis; in AI research drawing on neuroscience principles; and in academic research pushing the boundary of what we understand about the brain. A significant proportion of neuroscience careers require postgraduate study — a PhD is common for research roles.",
     "keySkills": [
@@ -5648,7 +5532,7 @@
       "Science communicator or medical writer specializing in neuroscience",
       "Neurotechnology developer at a brain-computer interface or neurotech startup"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -5688,11 +5572,7 @@
     "title": "Public Health",
     "slug": "public-health",
     "type": "study",
-    "taxonomySlugs": [
-      "healthcare",
-      "biomedical-and-research",
-      "public-health"
-    ],
+    "taxonomySlugs": ["healthcare", "biomedical-and-research", "public-health"],
     "summary": "Protect entire populations, not just individual patients. Policy, prevention, and systems thinking at a scale most healthcare careers never reach.",
     "description": "Public health professionals design and implement the programs, policies, and surveillance systems that protect and improve the health of populations. You might analyze disease outbreak data to inform a government response, evaluate the effectiveness of a national vaccination program, design health communications campaigns to change behavior at scale, or advocate for policy changes that address social determinants of health. Unlike clinical medicine, you rarely treat individuals directly — you change the conditions that affect millions. This is a degree-heavy field that attracts people from medicine, nursing, social science, and research backgrounds, and it is increasingly data-driven.",
     "keySkills": [
@@ -5712,7 +5592,7 @@
       "Health policy advisor at a government ministry or think tank",
       "Disease surveillance specialist at a national communicable disease center"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -5776,7 +5656,7 @@
       "Research biomedical engineer at a university or medical research institute",
       "Software engineer at a digital health or medical device software company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -5840,7 +5720,7 @@
       "Digital health program manager at a national or regional health authority",
       "Clinical data scientist combining informatics and analytics at a healthcare AI company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -5904,7 +5784,7 @@
       "Process analyst at a large enterprise undergoing digital transformation",
       "Junior BA at a digital agency working across multiple client sectors"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -5968,7 +5848,7 @@
       "Healthcare management consultant at a specialist health advisory firm",
       "Independent consultant working across sectors after building experience at a consulting firm"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6032,7 +5912,7 @@
       "Event project manager at a corporate or public events agency",
       "Government project manager on public sector infrastructure or technology programs"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -6096,7 +5976,7 @@
       "Sustainable finance specialist at an impact investment or green bond organization",
       "Carbon accounting specialist at a climate tech startup"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6136,11 +6016,7 @@
     "title": "Marketing",
     "slug": "marketing",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "business",
-      "marketing-and-growth",
-      "marketing"
-    ],
+    "taxonomySlugs": ["business", "marketing-and-growth", "marketing"],
     "summary": "Shape how people discover, feel about, and connect with things that matter to them. Marketing is where human psychology meets commercial strategy — and it is behind every brand you have ever cared about.",
     "description": "Marketers shape the perception and demand for products, services, and ideas — through brand strategy, content, advertising, campaigns, market research, and customer experience. The field is broad: brand marketers build identity and emotional resonance; performance marketers optimize paid acquisition; product marketers launch features and position them to specific audiences; content marketers build organic reach. You need to understand both the human behavior driving decisions and the commercial metrics measuring results. Marketing is one of the most hybrid career paths — accessible from creative, analytical, business, or psychology backgrounds.",
     "keySkills": [
@@ -6160,7 +6036,7 @@
       "Marketing strategist at a creative or digital agency",
       "Head of marketing at a small or medium-sized company with full ownership of the function"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6200,11 +6076,7 @@
     "title": "Digital Marketing",
     "slug": "digital-marketing",
     "type": "career",
-    "taxonomySlugs": [
-      "business",
-      "marketing-and-growth",
-      "digital-marketing"
-    ],
+    "taxonomySlugs": ["business", "marketing-and-growth", "digital-marketing"],
     "summary": "Drive how brands grow in the digital world. SEO, paid media, content, social strategy — measurable, always evolving, and never the same twice.",
     "description": "Digital marketers drive online growth through search engine optimization, paid advertising, social media, email, content, and analytics. You work with data far more than traditional marketers — every decision you make is measurable, and you are expected to optimize continuously based on what the numbers show. Day to day, you might be managing Google Ads campaigns, running an SEO audit, planning a content calendar, analyzing email open rates, or testing two versions of a landing page against each other. This is one of the most accessible marketing paths because skills are demonstrable through personal projects and the tools are mostly free to learn.",
     "keySkills": [
@@ -6224,7 +6096,7 @@
       "Growth marketer at a B2B or consumer startup",
       "Freelance digital marketing consultant for small businesses and startups"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -6264,11 +6136,7 @@
     "title": "Brand Strategy",
     "slug": "brand-strategy",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "business",
-      "marketing-and-growth",
-      "brand-strategy"
-    ],
+    "taxonomySlugs": ["business", "marketing-and-growth", "brand-strategy"],
     "summary": "Define what an organization stands for and how it expresses that to the world. Brand strategy is the thinking behind every brand that feels coherent, honest, and worth trusting.",
     "description": "Brand strategists develop the identity, positioning, voice, and narrative of organizations and products — the decisions that determine how a brand feels to customers over time and how it differentiates from competitors. You conduct audience research, map competitive landscapes, develop positioning frameworks, write brand guidelines, and work with creative teams to express strategy through visual and verbal identity. This role sits between marketing, psychology, and communications. Day to day, you might be running focus groups to understand customer perception, writing a positioning statement for a new product, or presenting a rebrand rationale to a board. It is one of the most abstract business roles — and one of the most influential when done well.",
     "keySkills": [
@@ -6288,7 +6156,7 @@
       "Head of brand at a growing DTC or e-commerce company",
       "Strategic planner at an advertising or integrated communications agency"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6352,7 +6220,7 @@
       "E-commerce growth manager at a subscription or repeat-purchase business",
       "Head of e-commerce at a small brand with full ownership of the digital channel"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -6416,7 +6284,7 @@
       "Supply chain consultant at a management consulting firm",
       "Global supply chain manager at a multinational technology or automotive company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6480,7 +6348,7 @@
       "Operations analyst at a logistics technology startup",
       "Operations manager at a retail or food service chain managing multi-site operations"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6520,11 +6388,7 @@
     "title": "Real Estate",
     "slug": "real-estate",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "business",
-      "strategy-and-consulting",
-      "real-estate"
-    ],
+    "taxonomySlugs": ["business", "strategy-and-consulting", "real-estate"],
     "summary": "Property as a business — investment, development, and the commercial strategy behind where people live, work, and spend money.",
     "description": "Real estate as a business career encompasses property investment, development, asset management, and commercial advisory — distinct from the agency role of helping individuals buy and sell. You might work for a property fund analyzing acquisition targets, a developer assessing the feasibility of a mixed-use scheme, a REIT managing an institutional portfolio, or a corporate real estate team managing a company's office and retail footprint. The role requires financial modeling, market analysis, negotiation, and understanding of planning, valuation, and property law. It is a relationship-intensive field where deals take months and networks matter enormously.",
     "keySkills": [
@@ -6544,7 +6408,7 @@
       "Real estate private equity analyst at an investment firm",
       "Property consultant at a commercial real estate advisory firm (JLL, CBRE, Cushman)"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6608,7 +6472,7 @@
       "Key account manager maintaining and growing enterprise client relationships",
       "Partnership manager building strategic channel and integration relationships"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -6672,7 +6536,7 @@
       "Social entrepreneur building a business around a social or environmental problem",
       "Startup founder transitioning to operator or investor after a successful exit"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6736,7 +6600,7 @@
       "Digital product creator selling templates, courses, or software through an owned store",
       "E-commerce consultant advising brands on growth after building a track record as a seller"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -6776,11 +6640,7 @@
     "title": "Human Resources",
     "slug": "human-resources",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "business",
-      "human-resources",
-      "human-resources"
-    ],
+    "taxonomySlugs": ["business", "human-resources", "human-resources"],
     "summary": "Build and protect the culture and people of an organization. Strategy, empathy, and genuinely difficult decisions — often all in the same week.",
     "description": "HR professionals manage the people systems of organizations — recruitment and hiring, employee relations, performance management, compensation, learning and development, and organizational culture. Day to day, you might be running a hiring process for a senior role, handling a performance issue between a manager and their team member, designing a compensation benchmarking review, or running onboarding for a new cohort of staff. At senior levels, HR is a strategic function — CHROs sit at the executive table and drive culture, organizational design, and workforce planning. At junior levels, it is operational and people-intensive. Both require a genuine commitment to treating people fairly and the ability to make and enforce difficult decisions.",
     "keySkills": [
@@ -6800,7 +6660,7 @@
       "Compensation and benefits analyst at a large enterprise",
       "HR director or CHRO at a scale-up building its people strategy from scratch"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6864,7 +6724,7 @@
       "Leveraged finance analyst at a bank's structured finance desk",
       "Capital markets analyst at a bank focused on equity or debt issuance"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6928,7 +6788,7 @@
       "Financial planning analyst at a private equity-backed portfolio company",
       "Junior analyst at a family office or boutique investment advisory firm"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -6992,7 +6852,7 @@
       "Actuarial consultant at a Big 4 or specialist actuarial consultancy",
       "Qualified actuary in a Chief Actuary or head of reserving role after completing exams"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -7056,7 +6916,7 @@
       "Financial coach providing guidance to younger clients on financial foundations",
       "Senior private banker managing ultra-high-net-worth client relationships"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -7121,7 +6981,7 @@
       "Insurance product developer designing new products at an insurance company",
       "Risk consultant at an advisory firm helping clients build risk management frameworks"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -7162,11 +7022,7 @@
     "title": "Graphic Design",
     "slug": "graphic-design",
     "type": "career",
-    "taxonomySlugs": [
-      "creative-arts",
-      "visual-design",
-      "graphic-design"
-    ],
+    "taxonomySlugs": ["creative-arts", "visual-design", "graphic-design"],
     "summary": "Give ideas a visual form that communicates instantly. Every brand, campaign, and layout that has ever stopped someone in their tracks started with a graphic designer.",
     "description": "Graphic designers create the visual communication that shapes how people perceive brands, products, information, and ideas. You work with typography, color, layout, and imagery to solve communication problems — designing logos, marketing materials, packaging, editorial layouts, social content, and digital interfaces. Day to day, you might be developing a brand identity for a new company, laying out a print magazine spread, creating social media assets for a product launch, or designing an infographic that makes a complex topic immediately clear. This path rewards people who combine strong visual instinct with the discipline to understand what the design needs to communicate before deciding how it should look.",
     "keySkills": [
@@ -7186,7 +7042,7 @@
       "Freelance graphic designer serving small business and marketing clients",
       "Packaging designer at a food, beverage, or lifestyle brand"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7250,7 +7106,7 @@
       "Freelance illustrator working with agencies, publishers, and DTC brands",
       "Surface pattern designer for textiles, stationery, and product licensing"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7314,7 +7170,7 @@
       "Explainer video animator for tech, finance, and healthcare clients",
       "Freelance motion designer creating content for brands and marketing teams"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7354,11 +7210,7 @@
     "title": "Photography",
     "slug": "photography",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "creative-arts",
-      "visual-design",
-      "photography"
-    ],
+    "taxonomySlugs": ["creative-arts", "visual-design", "photography"],
     "summary": "Capture moments, people, products, and places in a frame that outlasts you. Artistic, commercial, and journalistic — photography is one of the most versatile creative careers.",
     "description": "Photographers create images for a vast range of purposes — editorial journalism, commercial advertising, portraiture, wedding and events, product and e-commerce, architecture, sports, and fine art. The technical skills (exposure, lighting, composition, post-processing) are learnable; the commercial skills (finding clients, pricing work, running a shoot) are equally important and often underestimated. Day to day, a commercial photographer might be directing a product shoot for a fashion brand; a photojournalist might be documenting an emergency response; a wedding photographer might be managing a full-day timeline while staying invisible. The path does not require a degree — a strong portfolio and client results are what matter.",
     "keySkills": [
@@ -7378,7 +7230,7 @@
       "Photojournalist covering news, documentary, and human interest stories",
       "Real estate and architectural photographer serving agencies and developers"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7418,11 +7270,7 @@
     "title": "UI / UX Research",
     "slug": "ui-ux-research",
     "type": "career",
-    "taxonomySlugs": [
-      "creative-arts",
-      "visual-design",
-      "ui-ux-research"
-    ],
+    "taxonomySlugs": ["creative-arts", "visual-design", "ui-ux-research"],
     "summary": "Find out how real people actually experience technology and feed that truth back into the design process. Evidence-based creativity — the discipline that keeps intuition honest.",
     "description": "UX researchers plan and conduct studies that reveal how real users think about, interact with, and feel about digital products and services. You run usability tests, conduct in-depth interviews, deploy surveys, analyze behavioral data, and synthesize findings into insights that product and design teams can act on. Unlike designers who build solutions, researchers identify problems — and then rigorously validate whether proposed solutions actually work. Day to day, you might be scripting a moderated usability test, conducting 10 user interviews and finding the patterns across them, or presenting findings to a skeptical stakeholder who disagrees with what the data shows. This role is more analytical than design but more human than pure data analysis.",
     "keySkills": [
@@ -7442,7 +7290,7 @@
       "Freelance UX researcher working with startups and agencies on specific projects",
       "Customer insight researcher at a retail or e-commerce company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -7482,11 +7330,7 @@
     "title": "Fashion Design",
     "slug": "fashion-design",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "creative-arts",
-      "visual-design",
-      "fashion-design"
-    ],
+    "taxonomySlugs": ["creative-arts", "visual-design", "fashion-design"],
     "summary": "Dress people and reflect culture back at itself. Fashion design sits at the intersection of craft, commerce, identity, and self-expression — and it is far more technically rigorous than it appears.",
     "description": "Fashion designers conceptualize and create clothing, accessories, and textile products for commercial or artistic purposes. You sketch designs, select fabrics, create patterns, oversee garment construction, and develop collections that respond to cultural context, commercial demand, and seasonal cycles. The industry spans luxury couture, high street retail, sportswear, sustainable fashion, and theatrical costume — each with different technical requirements and commercial dynamics. Day to day, you might be draping a toile on a dress form, reviewing samples from a factory, presenting a concept board to a buyer, or sourcing sustainable fabrics for a next-season collection. Technical sewing and patternmaking skills remain foundational even in an era of digital design tools.",
     "keySkills": [
@@ -7506,7 +7350,7 @@
       "Freelance pattern maker and sample developer for independent labels",
       "Textile and print designer creating surface patterns for fabric licensing"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -7570,7 +7414,7 @@
       "Cinematographer (DOP) freelancing across narrative and commercial productions",
       "Video producer at a media company or in-house creative team"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7634,7 +7478,7 @@
       "Beat seller building an online catalog for rap and pop artists",
       "Music producer at a podcast or audio production company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7698,7 +7542,7 @@
       "Foley artist creating performance sound effects for film and television",
       "Broadcast audio engineer at a television network or streaming production facility"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7762,7 +7606,7 @@
       "Podcast network producer managing multiple shows and coordinating hosts",
       "Independent podcast creator building an audience and monetizing through advertising or memberships"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7826,7 +7670,7 @@
       "Content lead at a media company or newsletter publication",
       "Influencer marketing specialist connecting brands with creators at a talent agency"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -7866,11 +7710,7 @@
     "title": "Game Design",
     "slug": "game-design",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "creative-arts",
-      "visual-design",
-      "game-design"
-    ],
+    "taxonomySlugs": ["creative-arts", "visual-design", "game-design"],
     "summary": "Design the systems and experiences of play. Mechanics, narrative, and player psychology in a discipline that millions of people choose over everything else.",
     "description": "Game designers design the rules, systems, mechanics, and experiences that make games engaging — they are responsible for how a game feels to play, not how it looks or how the code runs. You design combat systems, progression loops, level layouts, economy balancing, narrative structures, and the feedback mechanisms that make players feel rewarded. The role sits between creative writing, systems thinking, psychology, and mathematics. Day to day, a game designer might be prototyping a new ability for a character, balancing a weapon's damage statistics against player feedback, writing the quest narrative for a new area, or running a playtesting session and documenting what breaks. Programming knowledge is highly valued but not always required — design documentation and rapid prototyping skill matter most.",
     "keySkills": [
@@ -7890,7 +7730,7 @@
       "Tabletop game designer developing board games, card games, or RPG systems",
       "Game producer managing design and production pipelines at a games development company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -7930,11 +7770,7 @@
     "title": "Architecture",
     "slug": "architecture",
     "type": "study",
-    "taxonomySlugs": [
-      "creative-arts",
-      "visual-design",
-      "architecture"
-    ],
+    "taxonomySlugs": ["creative-arts", "visual-design", "architecture"],
     "summary": "Design buildings that will outlast you by a century. Shelter, beauty, function, and identity — all built into permanent physical structures that people inhabit every day.",
     "description": "Architects design the built environment — the buildings, spaces, and structures that people live, work, and gather in. You develop designs through concept sketches, technical drawings, computational models, and construction documents, working with clients, engineers, contractors, and planning authorities across a project that may span years. The path to becoming a licensed architect is one of the longer professional training routes — typically a five or seven-year degree plus supervised experience and professional examinations. Day to day, you might be presenting a concept design to a client, detailing a facade system in drawing, reviewing a structural engineer's proposal, or visiting a construction site during tender. Architecture demands both creative vision and technical precision simultaneously.",
     "keySkills": [
@@ -7954,7 +7790,7 @@
       "BIM specialist architect managing digital design data across large project teams",
       "Sustainability architect integrating low-carbon design across residential and commercial projects"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -7995,11 +7831,7 @@
     "title": "Interior Design",
     "slug": "interior-design",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "creative-arts",
-      "visual-design",
-      "interior-design"
-    ],
+    "taxonomySlugs": ["creative-arts", "visual-design", "interior-design"],
     "summary": "Shape the spaces people live and work in every day. Every room someone loves is a room someone designed — and the decisions that create that feeling are your work.",
     "description": "Interior designers plan and design the interior environments of residential, commercial, hospitality, retail, and healthcare spaces. You develop concepts, select materials and finishes, specify furniture and lighting, produce technical drawings, and coordinate with architects and contractors to deliver spaces that are functional, safe, and beautiful. Day to day, you might be presenting a mood board and material palette to a residential client, producing a reflected ceiling plan for a restaurant fit-out, sourcing custom furniture for a hotel lobby, or on-site during installation ensuring the design is being executed correctly. Interior design combines spatial thinking, material knowledge, technical drawing skills, and client relationship management in equal measure.",
     "keySkills": [
@@ -8019,7 +7851,7 @@
       "In-house designer managing workplace and office environments for a large company",
       "Freelance interior designer serving high-end residential clients"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -8083,7 +7915,7 @@
       "Packaging designer developing structural and branded packaging for FMCG products",
       "Freelance product designer working with startups and hardware companies"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8147,7 +7979,7 @@
       "Content strategist using journalism skills to produce editorial content for brands",
       "Screenwriter developing original scripts for film, television, or streaming"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -8211,7 +8043,7 @@
       "Freelance UX writer working with startups on product language and content systems",
       "Content strategist evolving from UX writing into broader information architecture"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -8275,7 +8107,7 @@
       "Community theatre director leading participatory performance projects",
       "Actor in film and television alongside theatre work in a portfolio career"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8315,11 +8147,7 @@
     "title": "Dance and Choreography",
     "slug": "dance-choreography",
     "type": "hybrid",
-    "taxonomySlugs": [
-      "creative-arts",
-      "performing-arts",
-      "dance-choreography"
-    ],
+    "taxonomySlugs": ["creative-arts", "performing-arts", "dance-choreography"],
     "summary": "Communicate through movement — in performance, education, film, and live events. Physical storytelling at its most direct and its most demanding on the body.",
     "description": "Dancers and choreographers create, perform, and teach movement as an art form — working in ballet, contemporary, commercial, hip-hop, musical theatre, film, live events, and education. Professional performance careers are physically intense and often shorter than other creative careers; many dancers transition into choreography, teaching, direction, or movement direction for theatre and film as their performing career evolves. Choreographers design the movement vocabulary and structure of performances, working with dancers and directors to create work for stage, screen, and event contexts. Day to day, a working dancer might be in morning class, rehearsing in the afternoon, and performing in the evening — or on a commercial shoot, a music video set, or teaching a masterclass.",
     "keySkills": [
@@ -8339,7 +8167,7 @@
       "Movement director for theatre, film, or opera productions",
       "Dance therapist combining movement with therapeutic practice (additional training required)"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8379,11 +8207,7 @@
     "title": "Marine Biology",
     "slug": "marine-biology",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "life-sciences",
-      "marine-biology"
-    ],
+    "taxonomySlugs": ["sciences", "life-sciences", "marine-biology"],
     "summary": "Study the ocean, which covers most of Earth and is least understood. Research that shapes conservation policy and our understanding of planetary life systems.",
     "description": "Marine biologists study the organisms, ecosystems, and physical processes of the ocean — from microscopic plankton to whale migration patterns, from coral reef ecology to deep-sea hydrothermal vent communities. You design and conduct research studies, collect and analyze biological samples, deploy monitoring equipment, and publish findings that inform conservation, fisheries management, and climate science. Most careers in marine biology require postgraduate study — a master's or PhD is the standard for independent research positions. Field work is physically demanding and seasonally intensive, often involving remote locations and extended research voyages. This is a passion-driven field where competition for positions is high relative to available roles.",
     "keySkills": [
@@ -8403,7 +8227,7 @@
       "Science communicator or educator specializing in ocean science",
       "Policy advisor on marine conservation and fisheries at a national or international level"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8443,11 +8267,7 @@
     "title": "Biotechnology",
     "slug": "biotechnology",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "life-sciences",
-      "biotechnology"
-    ],
+    "taxonomySlugs": ["sciences", "life-sciences", "biotechnology"],
     "summary": "Use living systems to solve problems in medicine, agriculture, and materials. The frontier of applied biology — and one of the most commercially consequential scientific fields of 2026.",
     "description": "Biotechnologists apply biological systems, organisms, and derivatives to develop products and technologies that address human problems — pharmaceuticals, vaccines, diagnostic tools, agricultural improvements, biofuels, and biomaterials. You work at the intersection of biology, chemistry, engineering, and regulatory science. Day to day, you might be culturing cells for drug production, optimizing a fermentation process, conducting quality control on a biopharmaceutical batch, or analyzing data from a clinical trial. The field spans academic research, pharmaceutical development, agricultural biotech, environmental biotech, and increasingly AI-driven biological design. Most technical roles require at least a bachelor's degree in biotechnology or a closely related life science.",
     "keySkills": [
@@ -8467,7 +8287,7 @@
       "Agricultural biotechnologist developing crop improvement and biopesticide products",
       "Bioinformatics scientist combining biological and computational approaches"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8507,11 +8327,7 @@
     "title": "Genetics and Genomics",
     "slug": "genetics-and-genomics",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "life-sciences",
-      "genetics-and-genomics"
-    ],
+    "taxonomySlugs": ["sciences", "life-sciences", "genetics-and-genomics"],
     "summary": "Decode the instructions written into DNA. Driving breakthroughs in medicine, agriculture, and our understanding of life itself — and accelerating faster than any other biological science.",
     "description": "Geneticists and genomics scientists study the structure, function, and inheritance of genetic material — from individual gene variants that cause disease to population-scale genomic studies that reveal human evolutionary history. The field has been transformed by next-generation sequencing, which has made it possible to read entire genomes rapidly and cheaply. Applications span clinical diagnostics, pharmacogenomics, cancer genomics, forensics, agricultural plant breeding, and evolutionary biology. Day to day, you might be analyzing whole genome sequencing data to identify pathogenic variants, designing CRISPR experiments, interpreting polygenic risk scores for disease prediction, or managing a genomic database. Computational skills are increasingly essential alongside laboratory techniques.",
     "keySkills": [
@@ -8531,7 +8347,7 @@
       "Agricultural geneticist developing improved crop varieties using genomic selection",
       "Forensic geneticist at a law enforcement agency or forensic laboratory"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8595,7 +8411,7 @@
       "Environmental scientist at a government agency conducting biodiversity monitoring",
       "Restoration ecologist designing and managing habitat restoration programs"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8659,7 +8475,7 @@
       "Conservation genetics researcher at a university or zoo-based conservation program",
       "Environmental policy advisor using conservation science to shape legislation"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8723,7 +8539,7 @@
       "Food safety microbiologist at a food manufacturer or regulatory agency",
       "Biodefense scientist at a government research agency"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8763,11 +8579,7 @@
     "title": "Chemistry",
     "slug": "chemistry",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "physical-sciences",
-      "chemistry"
-    ],
+    "taxonomySlugs": ["sciences", "physical-sciences", "chemistry"],
     "summary": "Understand matter at its most fundamental level. Pharmaceuticals, materials, energy, and food all depend on chemists — and the field underlies virtually every applied science there is.",
     "description": "Chemists study the composition, structure, properties, and transformations of matter — from atomic bonds to industrial chemical processes. The field divides broadly into organic chemistry (carbon-based compounds), inorganic chemistry (metals and non-organic compounds), analytical chemistry (measuring and characterizing matter), physical chemistry (thermodynamics and kinetics), and biochemistry (chemistry within living systems). Chemists work in pharmaceutical development, materials science, petrochemicals, food and flavors, environmental monitoring, forensics, and academic research. Day to day, a pharmaceutical chemist might be synthesizing a new drug candidate; an analytical chemist might be developing methods to detect trace contaminants; a polymer chemist might be characterizing the mechanical properties of a new plastic.",
     "keySkills": [
@@ -8787,7 +8599,7 @@
       "Research chemist at a materials or specialty chemicals company",
       "Chemical patent attorney combining chemistry knowledge with intellectual property law"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8827,11 +8639,7 @@
     "title": "Physics",
     "slug": "physics",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "physical-sciences",
-      "physics"
-    ],
+    "taxonomySlugs": ["sciences", "physical-sciences", "physics"],
     "summary": "Ask the deepest questions about reality and use mathematics to answer them. The foundation of all applied science and engineering — and one of the most intellectually demanding undergraduate degrees.",
     "description": "Physicists study the fundamental laws governing matter, energy, space, and time — from subatomic particles to the large-scale structure of the universe. The field divides broadly into theoretical physics (mathematical models of physical phenomena), experimental physics (laboratory measurement and verification), and applied physics (using physical principles to solve practical problems). Physics graduates are highly sought across finance, technology, data science, engineering, and research because of the mathematical and problem-solving rigor the degree demands. Most academic and research careers require a PhD; applied careers in industry, finance, and technology often work from an undergraduate or master's level.",
     "keySkills": [
@@ -8851,7 +8659,7 @@
       "Medical physicist in a hospital radiotherapy or imaging department",
       "Space systems engineer at a commercial space company or national space agency"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8915,7 +8723,7 @@
       "Science communicator, educator, or planetarium presenter specializing in space science",
       "Aerospace systems analyst using physics and modeling skills in the commercial space sector"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -8955,11 +8763,7 @@
     "title": "Materials Science",
     "slug": "materials-science",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "physical-sciences",
-      "materials-science"
-    ],
+    "taxonomySlugs": ["sciences", "physical-sciences", "materials-science"],
     "summary": "Discover and engineer new substances. Lighter aircraft, faster chips, more flexible solar panels — everything improves when materials do, and materials scientists are the ones making that happen.",
     "description": "Materials scientists study the relationships between the structure, properties, processing, and performance of materials — metals, polymers, ceramics, composites, semiconductors, and biomaterials. You design and test new materials for specific engineering applications, characterize their microstructure and mechanical behavior, and work with engineers to select and optimize materials for products ranging from aircraft structures to surgical implants to battery electrodes. The field sits at the boundary of physics, chemistry, and engineering. Applications span aerospace, automotive, electronics, energy, biomedical, and consumer products. Day to day, you might be testing a new alloy's fatigue behavior, characterizing a polymer's glass transition temperature, or developing a coating to improve corrosion resistance.",
     "keySkills": [
@@ -8979,7 +8783,8 @@
       "Failure analysis engineer at a materials testing laboratory",
       "Research scientist developing novel functional materials at a university or national laboratory"
     ],
-    "status": "draft",
+
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9043,7 +8848,7 @@
       "Environmental scientist at an international environmental NGO",
       "Water resources scientist at a water utility or river basin management organization"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9107,7 +8912,7 @@
       "Geohazard specialist assessing natural hazard risk for development and insurance purposes",
       "Climate geologist using sediment records to reconstruct past climate change"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9147,11 +8952,7 @@
     "title": "Forensic Science",
     "slug": "forensic-science",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "life-sciences",
-      "forensic-science"
-    ],
+    "taxonomySlugs": ["sciences", "life-sciences", "forensic-science"],
     "summary": "Bring scientific method to criminal justice. Evidence that determines outcomes in court — the stakes could not be higher, and the work requires both scientific precision and legal literacy.",
     "description": "Forensic scientists apply scientific methods and techniques to investigate crimes and support the justice system. You might analyze DNA from a crime scene, examine questioned documents, interpret toxicological findings in a suspicious death, perform ballistic analysis on a firearm, or process trace evidence including fibres, glass, and paint. Your findings may be presented as expert witness testimony in court — which means you need both scientific rigor and the ability to communicate technical conclusions clearly and withstand cross-examination. The field is not like television portrays it: most forensic work is methodical laboratory analysis rather than dramatic revelations, and understanding of both the science and its legal context is essential.",
     "keySkills": [
@@ -9171,7 +8972,7 @@
       "Forensic biologist specializing in DNA analysis for criminal and civil casework",
       "Forensic consultant providing independent expert witness services to courts"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9235,7 +9036,7 @@
       "Quality assurance manager at a food processing or packaging facility",
       "Nutrition scientist at a functional food or sports nutrition company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9275,11 +9076,7 @@
     "title": "Agricultural Science",
     "slug": "agricultural-science",
     "type": "study",
-    "taxonomySlugs": [
-      "sciences",
-      "applied-sciences",
-      "agricultural-science"
-    ],
+    "taxonomySlugs": ["sciences", "applied-sciences", "agricultural-science"],
     "summary": "Improve how we grow food in a changing climate. Feeding humanity without destroying the planet is the defining challenge of the century — and agricultural scientists are central to solving it.",
     "description": "Agricultural scientists improve the productivity, sustainability, and resilience of food production systems — working on crop improvement, soil health, animal husbandry, pest and disease management, irrigation, and the environmental impacts of farming. You might breed drought-resistant wheat varieties, develop precision application systems for agrochemicals, study the impact of cover cropping on soil carbon, advise farmers on disease management, or assess the lifecycle environmental impact of different production systems. The field spans plant science, soil science, animal science, agronomy, and agricultural economics. With climate change reshaping crop viability globally and food demand rising, applied agricultural science is one of the more consequential scientific disciplines.",
     "keySkills": [
@@ -9299,7 +9096,7 @@
       "Soil scientist at an environmental consultancy or government land management agency",
       "Agricultural policy advisor at a government ministry or farming organization"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9339,11 +9136,7 @@
     "title": "Law",
     "slug": "law",
     "type": "study",
-    "taxonomySlugs": [
-      "social-sciences-and-law",
-      "law-and-governance",
-      "law"
-    ],
+    "taxonomySlugs": ["social-sciences-and-law", "law-and-governance", "law"],
     "summary": "Understand, argue, and defend the rules that hold society together. Every major human conflict and every significant transaction has a legal dimension — and lawyers are present at all of them.",
     "description": "Lawyers provide advice, representation, and advocacy across every area of human activity where legal rights, obligations, or disputes arise. The practice areas are enormously varied — criminal law, commercial law, family law, immigration, employment, intellectual property, constitutional law, human rights, and international law, among many others. What unifies the profession is a combination of analytical rigor, precise use of language, and the ability to argue a position convincingly while remaining accurate about the law. Day to day, a commercial lawyer might be negotiating a contract or advising on a merger; a criminal barrister might be cross-examining witnesses in court; a human rights lawyer might be preparing a case before an international tribunal.",
     "keySkills": [
@@ -9363,7 +9156,7 @@
       "Human rights or public interest lawyer at an NGO or legal aid organization",
       "Legal technology specialist combining law with digital product development"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -9428,7 +9221,7 @@
       "Police analyst providing intelligence analysis and crime prevention advice",
       "Victim support coordinator at a charitable organization providing direct assistance"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9492,7 +9285,7 @@
       "Transport planner integrating land use and transport planning for new development",
       "Housing policy officer working on affordable housing strategy at a housing authority"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9556,7 +9349,7 @@
       "Cybersecurity compliance manager at a large enterprise or critical infrastructure operator",
       "Cyber intelligence analyst at a government agency combining law, policy, and technical knowledge"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9620,7 +9413,7 @@
       "Research psychologist at a university or applied research institute",
       "Mental health practitioner following specialized postgraduate counseling or psychotherapy training"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9684,7 +9477,7 @@
       "Academic sociologist researching and teaching at a university",
       "Journalist applying sociological insight to investigate and explain social trends"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9748,7 +9541,7 @@
       "Regulatory economist at a competition authority or utility regulator",
       "Academic economist conducting research and teaching at a university"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9812,7 +9605,7 @@
       "Hospital social worker in an acute discharge and care coordination team",
       "Social work team manager leading a statutory child or adult care team"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9877,7 +9670,7 @@
       "Private practice counselor building an independent therapy caseload",
       "Relationship and family counselor at a charity or specialist service"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -9942,7 +9735,7 @@
       "Medical anthropologist working with public health organizations on behavior change",
       "Academic anthropologist researching and teaching at a university"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10006,7 +9799,7 @@
       "Policy advocate at an NGO campaigning on specific legislative or regulatory change",
       "Political risk analyst at a financial institution or consulting firm"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10070,7 +9863,7 @@
       "International affairs researcher at a think tank or academic institution",
       "Humanitarian coordinator at an international NGO working in crisis contexts"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10134,7 +9927,7 @@
       "International school teacher working in schools serving expatriate communities globally",
       "Senior teacher or deputy head with leadership responsibility for curriculum or pastoral systems"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "long",
@@ -10199,7 +9992,7 @@
       "Health librarian providing evidence-based information services to clinical teams",
       "Digital preservation specialist managing born-digital collections at a cultural institution"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10239,11 +10032,7 @@
     "title": "Linguistics",
     "slug": "linguistics",
     "type": "study",
-    "taxonomySlugs": [
-      "social-sciences-and-law",
-      "humanities",
-      "linguistics"
-    ],
+    "taxonomySlugs": ["social-sciences-and-law", "humanities", "linguistics"],
     "summary": "Study language itself — how it works, evolves, and shapes thought. Applied to AI, translation, communication, education, and culture — and more relevant than ever.",
     "description": "Linguists study the structure, function, acquisition, and evolution of language — from the sound patterns of individual languages to the cognitive mechanisms underlying language production and understanding. The field spans phonology, syntax, semantics, pragmatics, sociolinguistics, historical linguistics, psycholinguistics, and computational linguistics. Applied linguistics directly addresses language in social and practical contexts — language teaching, translation, speech pathology, language policy, and natural language processing. As AI language models have become central to technology, linguistic expertise has gained new relevance: understanding how language works is fundamental to building systems that process it reliably.",
     "keySkills": [
@@ -10263,7 +10052,7 @@
       "TESOL or language teacher applying applied linguistics to language education",
       "Academic linguist researching and teaching in a university department"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10303,11 +10092,7 @@
     "title": "Philosophy",
     "slug": "philosophy",
     "type": "study",
-    "taxonomySlugs": [
-      "social-sciences-and-law",
-      "humanities",
-      "philosophy"
-    ],
+    "taxonomySlugs": ["social-sciences-and-law", "humanities", "philosophy"],
     "summary": "Study the foundations of knowledge, ethics, and reality. Applied today to AI ethics, law, policy, and the deepest questions in science — and producing some of the most rigorous thinkers in any field.",
     "description": "Philosophy examines the fundamental questions about knowledge, reality, existence, mind, ethics, and the proper conduct of reasoning itself. The discipline trains students to identify assumptions, construct valid arguments, evaluate evidence critically, and think clearly about questions that resist simple empirical answers. Philosophy graduates develop exceptional analytical writing and reasoning skills that transfer directly to law, consulting, policy, journalism, technology ethics, and academic research. In 2026, philosophy of mind and AI ethics are particularly consequential — the questions about consciousness, moral status, and responsibility that philosophers have debated for centuries are now confronting technologists in urgent and concrete ways.",
     "keySkills": [
@@ -10327,7 +10112,7 @@
       "Technology ethicist advising on the deployment of AI systems in sensitive contexts",
       "Academic philosopher researching and teaching at a university"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10367,11 +10152,7 @@
     "title": "Archaeology",
     "slug": "archaeology",
     "type": "study",
-    "taxonomySlugs": [
-      "social-sciences-and-law",
-      "humanities",
-      "archaeology"
-    ],
+    "taxonomySlugs": ["social-sciences-and-law", "humanities", "archaeology"],
     "summary": "Recover the physical record of human history. Excavating the past to understand how civilizations rose, changed, and fell — and what that tells us about the present.",
     "description": "Archaeologists recover, analyze, and interpret the material remains of past human activity — through excavation, survey, laboratory analysis, and archival research. The field spans prehistoric archaeology, classical and historical periods, maritime archaeology, environmental archaeology, and digital heritage. Applied commercial archaeology is the most common employment path — conducting surveys and excavations required by planning regulations before development destroys sites. Academic archaeology focuses on research questions and publication. Day to day, a commercial archaeologist might be directing a dig on a construction site, writing an assessment report, or processing finds in a laboratory. Physical outdoor fieldwork is central to the career.",
     "keySkills": [
@@ -10391,7 +10172,7 @@
       "Maritime archaeologist conducting underwater survey and excavation",
       "Academic archaeologist leading research excavations and publishing findings"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10455,7 +10236,7 @@
       "Structural engineer at a civil engineering contractor or design firm",
       "Project engineer on a national infrastructure program (rail, highways, energy)"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10520,7 +10301,7 @@
       "Conservation structural engineer working on the repair and adaptation of historic buildings",
       "Technical director at a structural engineering practice leading project delivery"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10585,7 +10366,7 @@
       "Thermal engineer at a power generation or energy efficiency company",
       "Medical device development engineer at a healthcare technology company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10649,7 +10430,7 @@
       "Homologation and type approval engineer at a vehicle manufacturer or regulatory body",
       "Charging infrastructure engineer at an EV charging network company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10713,7 +10494,7 @@
       "Production planning engineer managing capacity and scheduling at a manufacturer",
       "Quality engineer applying statistical methods to defect reduction and process control"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10777,7 +10558,7 @@
       "Embedded systems engineer combining electrical and software engineering skills",
       "RF and communications engineer at a telecommunications or satellite company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10841,7 +10622,7 @@
       "Food process engineer at a food and beverage manufacturing company",
       "Chemical plant engineer at a large industrial chemical production facility"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10905,7 +10686,7 @@
       "Nuclear safety case engineer at a regulatory body or nuclear consultancy",
       "Medical physics engineer working with radiation therapy and nuclear medicine equipment"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -10946,11 +10727,7 @@
     "title": "Aerospace Engineering",
     "slug": "aerospace-engineering",
     "type": "study",
-    "taxonomySlugs": [
-      "engineering",
-      "aerospace",
-      "aerospace-engineering"
-    ],
+    "taxonomySlugs": ["engineering", "aerospace", "aerospace-engineering"],
     "summary": "Design aircraft and spacecraft. One of the most technically demanding engineering disciplines — with among the highest stakes of any profession and a commercial space sector in rapid acceleration.",
     "description": "Aerospace engineers design and develop aircraft, spacecraft, satellites, propulsion systems, and the supporting ground systems. The field divides into aeronautical engineering (aircraft) and astronautical engineering (spacecraft), though the disciplines overlap significantly in thermodynamics, structures, and systems engineering. You apply aerodynamics, structural mechanics, propulsion, avionics, and control theory to create vehicles that operate in some of the harshest environments imaginable — where failure has catastrophic consequences. Day to day, an aerodynamics engineer might be running CFD simulations on a new wing design; a propulsion engineer might be analyzing combustion characteristics in a turbofan; a structures engineer might be designing a composite fuselage section. The commercial space sector has expanded the range of employers significantly beyond traditional defence and aerospace primes.",
     "keySkills": [
@@ -10970,7 +10747,7 @@
       "Structural engineer at an aerospace composite structures manufacturing company",
       "Satellite engineer at a small satellite manufacturer or launch services company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11034,7 +10811,7 @@
       "Waste management engineer designing solid waste infrastructure at a local authority",
       "Environmental project manager at a consultancy delivering remediation and sustainability projects"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11098,7 +10875,7 @@
       "Energy systems consultant at a renewable energy advisory firm",
       "Offshore wind engineer specializing in foundation design or installation engineering"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11162,7 +10939,7 @@
       "Food content creator combining culinary skill with digital media for brand and social work",
       "Recipe developer and food stylist for cookbooks, food magazines, and advertising"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11226,7 +11003,7 @@
       "Events and conference manager at a hotel or venue",
       "Destination management organization officer promoting tourism to a region or country"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11290,7 +11067,7 @@
       "Maintenance electrician or plumber at a large commercial or industrial facility",
       "Site services manager overseeing trade contractors on a construction project"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11355,7 +11132,7 @@
       "Lettings agent managing a rental portfolio for landlords",
       "Self-employed real estate agent building an independent client book"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -11420,7 +11197,7 @@
       "Contracts manager overseeing multiple concurrent projects within a contractor's portfolio",
       "Development manager at a housebuilder or commercial property developer"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11484,7 +11261,7 @@
       "Brand educator or ambassador representing a professional beauty brand",
       "Salon owner or independent booth renter building a personal client book"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11549,7 +11326,7 @@
       "Performance consultant working independently with individual elite athletes",
       "Community sports development officer delivering participation programs"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11613,7 +11390,7 @@
       "Group fitness instructor delivering classes in strength, HIIT, yoga, or cycling",
       "Corporate wellness consultant delivering fitness programs in workplace settings"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -11677,7 +11454,7 @@
       "Chronic disease wellness coach at a healthcare organization supporting lifestyle management",
       "Group coaching facilitator running cohort-based wellness programs"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -11741,7 +11518,7 @@
       "In-house events manager at a large corporation managing internal events calendar",
       "Experiential marketing manager producing brand activation events for clients"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11805,7 +11582,7 @@
       "Partnership and sponsorship manager at an esports team or league",
       "Esports journalist or content creator covering the competitive gaming industry"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "short",
@@ -11869,7 +11646,7 @@
       "EYFS lead coordinating the early years provision across a school",
       "Early childhood education lecturer at a college or university"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "primary",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11934,7 +11711,7 @@
       "EdTech content producer creating video-based learning experiences",
       "Head of learning design at a professional skills or bootcamp company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -11998,7 +11775,7 @@
       "Space software engineer developing flight or ground control software",
       "Remote sensing data analyst at an Earth observation company"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "specialized",
     "durationProfile": {
       "commitmentLevel": "medium",
@@ -12063,7 +11840,7 @@
       "Conversational UI designer applying HCI principles to voice and AI interactions",
       "Game UX researcher applying HCI methods to improve player experience and onboarding"
     ],
-    "status": "draft",
+    "status": "active",
     "visibilityLayer": "adjacent",
     "durationProfile": {
       "commitmentLevel": "medium",

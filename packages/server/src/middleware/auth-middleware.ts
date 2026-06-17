@@ -11,7 +11,7 @@ import {
 
 export interface AuthRequest extends Request {
   user?: User;
-  locale: SupportedLocale;
+  locale?: SupportedLocale;
 }
 
 export const authorize = async (

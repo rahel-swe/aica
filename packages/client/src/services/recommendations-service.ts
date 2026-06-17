@@ -18,15 +18,6 @@ export const getMyRecommendations = async (): Promise<{
   return response.data;
 };
 
-/**
- * GET /recommendations/:id/explanation
- *
- * :id = PathwayRecommendation.id  (the recommendation document's _id, NOT the pathway id)
- *
- * First call: generates via LLM (~400 tokens, 700ms–3s with retries).
- * Subsequent calls: zero tokens — served from DB cache.
- * The backend enforces ownership (userId) before returning.
- */
 export const getExplanation = async (
   recommendationId: string
 ): Promise<RecommendationExplanationResponse> => {

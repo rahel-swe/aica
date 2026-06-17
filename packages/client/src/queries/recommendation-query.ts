@@ -6,7 +6,7 @@ import {
   getMyRecommendations,
 } from '@/services/recommendations-service';
 
-// ── Query key factory ─────────────────────────────────────────────────────────
+// ── Query key factory
 
 export const recommendationsKeys = {
   all: ['recommendations'] as const,
@@ -15,7 +15,7 @@ export const recommendationsKeys = {
     [...recommendationsKeys.all, 'explanation', id] as const,
 } as const;
 
-// ── Queries ───────────────────────────────────────────────────────────────────
+// ── Queries
 
 export const useRecommendationQuery = () =>
   useQuery({
@@ -29,6 +29,7 @@ export const useRecommendationQuery = () =>
  * first LLM call, so there's never a reason to re-fetch within a session.
  * gcTime: 30 min — keeps it in memory for the session.
  */
+
 export const useExplanationQuery = (
   recommendationId: string,
   enabled: boolean
@@ -41,7 +42,7 @@ export const useExplanationQuery = (
     gcTime: 1000 * 60 * 30,
   });
 
-// ── Mutations ─────────────────────────────────────────────────────────────────
+// ── Mutations ────────
 
 export const useGenerateRecommendationsMutation = () => {
   const queryClient = useQueryClient();

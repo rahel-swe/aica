@@ -49,8 +49,6 @@ class RecommendationController {
     }
   };
 
-  // ── GET /recommendations/me ────────────────────────────────────────────────
-
   /**
    * Returns the stored 3-layer overview without re-scoring.
    * If no recommendations exist yet, returns empty layers with a status hint.
@@ -58,6 +56,7 @@ class RecommendationController {
   getOverview = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
       const userId = req.user!.id;
+      const overviewfds = await recommendationService.generate(userId);
       const overview = await recommendationService.getOverview(userId);
 
       const hasData =
@@ -74,8 +73,6 @@ class RecommendationController {
       next(err);
     }
   };
-
-  // ── GET /recommendations/:id/explanation ──────────────────────────────────
 
   /**
    * Returns an LLM-generated explanation for one recommendation.

@@ -145,20 +145,6 @@ const recommendationSchema = new Schema<IRecommendation>(
   {
     timestamps: true,
     versionKey: false,
-    toJSON: {
-      virtuals: true,
-      transform: (_, ret) => {
-        delete ret.__v;
-        return ret;
-      },
-    },
-    toObject: {
-      virtuals: true,
-      transform: (_, ret) => {
-        delete ret.__v;
-        return ret;
-      },
-    },
   }
 );
 
