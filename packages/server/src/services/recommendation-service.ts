@@ -1,18 +1,4 @@
 /**
- * recommendation.service.ts
- *
- * Owns the full recommendation lifecycle:
- *   generate()    — score all pathways, write to DB (POST /recommendations/generate)
- *   getOverview() — read stored results as 3-layer structure (GET /recommendations/me)
- *
- * Critical rule: getOverview() is READ-ONLY.
- * It never calls the scoring engine. generate() writes. getOverview() reads.
- *
- * 3-layer response architecture:
- *   Layer 1 — Family    (domain-level:  "Technology broadly")
- *   Layer 2 — Direction (field-level:   "Software Development")
- *   Layer 3 — Pathway   (individual:    "Frontend Development, 87%")
- *
  * Pathway display data (title, summary) is NOT stored in recommendations.
  * Frontend enriches each pathwaySlug by calling GET /pathways/:slug?locale=fa.
  * Taxonomy labels (direction name, family name) are resolved the same way.
@@ -22,7 +8,18 @@ import mongoose from 'mongoose';
 
 import { recommendationRepository } from '../repositories/recommendation-repository';
 
-import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
+import type {
+  PathwayAssessmentCollaborationStyle,
+  PathwayAssessmentFormValues,
+  PathwayAssessmentGoal,
+  PathwayAssessmentImpact,
+  PathwayAssessmentLearningPreference,
+  PathwayAssessmentPassion,
+  PathwayAssessmentStrength,
+  PathwayAssessmentSubject,
+  PathwayAssessmentWorkEnvironment,
+  PathwayAssessmentWorkStyle,
+} from '@contracts/shared/types/pathway-assessment-types';
 import type {
   PathwayScoringProjection,
   PathwayMatchProfile,
@@ -46,8 +43,7 @@ import {
 } from '../utils/pathway-scoring-engin';
 import { buildReasons } from '../utils/recommendation-reasons';
 
-// ── Internal types ────────────────────────────────────────────────────────────
-
+// ── Internal types
 interface ScoredPathway {
   pathwayId: string;
   pathwaySlug: string;
@@ -66,26 +62,11 @@ interface TaxonomyNodeMinimal {
   parentId: string | null;
 }
 
-// ── Service ───────────────────────────────────────────────────────────────────
-
 class RecommendationService {
-  // ── Generate ────────────────────────────────────────────────────────────────
+  // ── Generate
 
-  /**
-   * Full scoring pipeline. Runs on POST /recommendations/generate.
-   *
-   * Flow:
-   *   1. Load user's completed assessment
-   *   2. Load all active pathway scoring projections (no translations)
-   *   3. Load all active match profiles, keyed by their _id
-   *   4. Load all active taxonomy nodes for direction/family resolution
-   *   5. Score each pathway, resolve taxonomy slugs, build reasons
-   *   6. Sort by totalScore, assign ranks
-   *   7. Atomic replace in MongoDB (transaction)
-   *   8. Return the 3-layer overview
-   */
   async generate(userId: string): Promise<RecommendationOverview> {
-    // ── 1. Load assessment ─────────────────────────────────────────────────
+    // ── 1. Load assessment
     const assessmentDoc = await PathwayAssessmentModel.findOne({
       userId,
       completed: true,
@@ -99,7 +80,7 @@ class RecommendationService {
     const profileVersion = assessmentDoc.version ?? 1;
     const profileVersionId = String(assessmentDoc._id);
 
-    // ── 2. Load pathway scoring projections ───────────────────────────────
+    // ── 2. Load pathway scoring projections
     const pathwayDocs = await PathwayModel.find(
       { status: 'active' },
       {
@@ -114,11 +95,10 @@ class RecommendationService {
       }
     ).lean();
 
-    if (!pathwayDocs.length) {
+    if (!pathwayDocs.length)
       throw new Error('No active pathways found. Seed the database first.');
-    }
 
-    // ── 3. Load all active match profiles, keyed by _id string ────────────
+    // ── 3. Load all active match profiles
     const profileDocs = await PathwayMatchProfileModel.find(
       { status: 'active' },
       {
@@ -155,7 +135,7 @@ class RecommendationService {
       ])
     );
 
-    // ── 5. Score each pathway ──────────────────────────────────────────────
+    // ── 5. Score each pathway
     const scored: ScoredPathway[] = [];
 
     for (const pathway of pathwayDocs) {
@@ -168,6 +148,7 @@ class RecommendationService {
         assessment,
         matchProfile
       );
+
       const totalScore =
         pathwayScoringEngine.calculateTotalScore(dimensionScores);
       const matchPercent = pathwayScoringEngine.toMatchPercent(totalScore);
@@ -191,10 +172,10 @@ class RecommendationService {
       });
     }
 
-    // ── 6. Sort and assign ranks ───────────────────────────────────────────
+    // ── 6. Sort and assign ranks
     scored.sort((a, b) => b.totalScore - a.totalScore);
 
-    // ── 7. Atomic replace in a transaction ────────────────────────────────
+    // ── 7. Atomic replace in a transaction
     const session = await mongoose.startSession();
 
     try {
@@ -230,12 +211,10 @@ class RecommendationService {
     return this.buildOverview(scored);
   }
 
-  // ── Get overview (read-only) ────────────────────────────────────────────────
+  // ── Get overview (read-only) ──
 
   /**
-   * Returns stored recommendations as a 3-layer overview.
-   * Does NOT score. Does NOT write. If nothing is stored, returns empty layers.
-   * Caller decides whether to redirect the user to generate().
+     Returns stored recommendations as a 3-layer overview.
    */
   async getOverview(userId: string): Promise<RecommendationOverview> {
     const stored = await recommendationRepository.findAllByUserId(userId);
@@ -259,7 +238,7 @@ class RecommendationService {
     return this.buildOverview(asScored, stored);
   }
 
-  // ── Overview builder ────────────────────────────────────────────────────────
+  // ── Overview builder
 
   /**
    * Builds the 3-layer overview from a scored + ranked list.
@@ -276,7 +255,7 @@ class RecommendationService {
       rank: number;
     }[]
   ): RecommendationOverview {
-    // ── Layer 3: pathways ────────────────────────────────────────────────
+    // ── Layer 3: pathways ──
     const storedBySlug = new Map(
       (storedDocs ?? []).map((d) => [d.pathwaySlug, d])
     );
@@ -331,7 +310,7 @@ class RecommendationService {
       })
       .sort((a, b) => b.totalScore - a.totalScore);
 
-    // ── Layer 1: families (domain-level grouping) ─────────────────────────
+    // ── Layer 1: families (domain-level grouping)
     const familyMap = new Map<string, ScoredPathway[]>();
 
     for (const s of scored) {
@@ -369,7 +348,7 @@ class RecommendationService {
     return { families, directions, pathways };
   }
 
-  // ── Taxonomy resolution ─────────────────────────────────────────────────────
+  // ── Taxonomy resolution ────
 
   /**
    * Given the taxonomyNodeIds of a pathway, resolves:
@@ -408,25 +387,26 @@ class RecommendationService {
     return { directionSlug, familySlug };
   }
 
-  // ── Assessment value extractor ──────────────────────────────────────────────
+  // ── Assessment value extractor
 
   /**
    * Extracts PathwayAssessmentFormValues from the raw Mongoose document.
-   * Guards against any nullish fields from older documents.
    */
   private extractAssessmentValues(
     doc: Record<string, unknown>
   ): PathwayAssessmentFormValues {
     return {
-      strengths: (doc.strengths as string[]) ?? [],
-      passions: (doc.passions as string[]) ?? [],
-      subjects: (doc.subjects as string) ?? '',
-      learningPreference: (doc.learningPreference as string[]) ?? [],
-      workEnvironment: (doc.workEnvironment as string) ?? '',
-      workStyle: (doc.workStyle as string[]) ?? [],
-      collaborationStyle: (doc.collaborationStyle as string) ?? '',
-      impact: (doc.impact as string[]) ?? [],
-      goals: (doc.goals as string) ?? '',
+      strengths: doc.strengths as PathwayAssessmentStrength[],
+      passions: doc.passions as PathwayAssessmentPassion[],
+      subjects: doc.subjects as PathwayAssessmentSubject,
+      learningPreference:
+        doc.learningPreference as PathwayAssessmentLearningPreference[],
+      workEnvironment: doc.workEnvironment as PathwayAssessmentWorkEnvironment,
+      workStyle: doc.workStyle as PathwayAssessmentWorkStyle[],
+      collaborationStyle:
+        doc.collaborationStyle as PathwayAssessmentCollaborationStyle,
+      impact: doc.impact as PathwayAssessmentImpact[],
+      goals: doc.goals as PathwayAssessmentGoal,
     };
   }
 }

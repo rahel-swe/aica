@@ -1,38 +1,13 @@
-/**
- * recommendation.controller.ts
- *
- * HTTP layer only. No business logic here.
- * All scoring, grouping, explanation, and re-scoring live in their services.
- *
- * Routes (mounted at /recommendations):
- *   POST   /generate               — score all pathways, store, return overview
- *   GET    /me                     — return stored overview (no re-score)
- *   GET    /:id/explanation        — on-demand LLM explanation ("Why?")
- *   POST   /admin/rescore/user/:id — admin: rescore one user
- *   POST   /admin/rescore/pathway  — admin: rescore all users for a pathway
- *   POST   /admin/rescore/stale    — admin: batch rescore stale recommendations
- *   GET    /admin/rescore/stale/count — admin: how many users are stale
- *
- * req.user.id  — set by auth middleware
- * req.locale   — set by locale middleware (unused here; recommendations are locale-independent)
- */
-
-import type { Request, Response, NextFunction } from 'express';
+import type { Response, NextFunction } from 'express';
 
 import { recommendationService } from '../services/recommendation-service';
 import { recommendationExplanationService } from '../services/recommendation-explanation-service';
 import { recommendationReScoringService } from '../services/recommendation-rescoring-service';
 import type { AuthRequest } from '../middleware/auth-middleware';
 
-// ── Controller ────────────────────────────────────────────────────────────────
-
 class RecommendationController {
-  // ── POST /recommendations/generate ────────────────────────────────────────
-
   /**
-   * Runs the full scoring pipeline for the requesting user.
-   * Replaces any existing recommendations.
-   * Returns the 3-layer overview immediately.
+     Runs the full scoring pipeline for the requesting user.
    */
   generate = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
@@ -49,14 +24,9 @@ class RecommendationController {
     }
   };
 
-  /**
-   * Returns the stored 3-layer overview without re-scoring.
-   * If no recommendations exist yet, returns empty layers with a status hint.
-   */
   getOverview = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
       const userId = req.user!.id;
-      const overviewfds = await recommendationService.generate(userId);
       const overview = await recommendationService.getOverview(userId);
 
       const hasData =
@@ -75,11 +45,7 @@ class RecommendationController {
   };
 
   /**
-   * Returns an LLM-generated explanation for one recommendation.
-   * Checks the DB cache first. If not cached, calls the LLM (with retry)
-   * and caches the result before responding.
-   *
-   * The recommendation must belong to the requesting user.
+    Returns an LLM-generated explanation for one recommendation.
    */
   getExplanation = async (
     req: AuthRequest,
@@ -101,7 +67,7 @@ class RecommendationController {
     }
   };
 
-  // ── Admin: rescore one user ────────────────────────────────────────────────
+  // ── Admin: rescore one user
 
   rescoreUser = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
@@ -118,7 +84,7 @@ class RecommendationController {
     }
   };
 
-  // ── Admin: rescore all users affected by a pathway profile change ──────────
+  // ── Admin: rescore all users affected by a pathway profile change
 
   rescoreByPathway = async (
     req: AuthRequest,
@@ -147,7 +113,7 @@ class RecommendationController {
     }
   };
 
-  // ── Admin: batch rescore stale recommendations ────────────────────────────
+  // ── Admin: batch rescore stale recommendations
 
   rescoreStale = async (
     req: AuthRequest,
@@ -168,7 +134,7 @@ class RecommendationController {
     }
   };
 
-  // ── Admin: stale count health check ──────────────────────────────────────
+  // ── Admin: stale count health check
 
   getStaleCount = async (
     req: AuthRequest,

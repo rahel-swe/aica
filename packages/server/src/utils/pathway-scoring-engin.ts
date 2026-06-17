@@ -1,17 +1,3 @@
-/**
- * Fixes from previous version:
- *   1. scoreSingleValueDimension now normalizes against totalPossible
- *      (was returning raw weight — inconsistent scale with multi-value)
- *   2. Penalty band now actually reduces scores instead of being silenced
- *      by Math.max(0). Scores clamp at -0.2 per dimension.
- *   3. calculateTotalScore clamps the final weighted sum to [0, 1].
- *      Negative dimension scores (from penalties) reduce total but
- *      matchPercent is always ≥ 0.
- *   4. DIMENSION_WEIGHTS updated for 9-dimension assessment.
- *   5. MULTI_VALUE_DIMENSIONS / SINGLE_VALUE_DIMENSIONS registry added —
- *      buildDimensionScores no longer hardcodes which method to use.
- */
-
 import type { PathwayAssessmentFormValues } from '@contracts/shared/types/pathway-assessment-types';
 import type {
   MatchWeightEntry,
@@ -20,12 +6,12 @@ import type {
 } from '@contracts/shared/types/pathway-domain-types';
 import type { ScoreBand } from '@contracts/shared/types/pathway-domain-types';
 
-// ── Matching version ──────────────────────────────────────────────────────────
+// ── Matching version
 // Increment this when DIMENSION_WEIGHTS or scoring logic changes.
 // Recommendations with a lower matchingVersion are stale and should be re-scored.
 export const CURRENT_MATCHING_VERSION = 2;
 
-// ── Dimension weights ─────────────────────────────────────────────────────────
+// ── Dimension weights
 // Rationale:
 //   strengths + passions:  0.20 each — strongest long-term career predictors
 //   goals:                 0.12      — forced single-select, high signal
@@ -60,7 +46,7 @@ export const SINGLE_VALUE_DIMENSIONS = new Set<
   keyof RecommendationDimensionScores
 >(['subjects', 'workEnvironment', 'collaborationStyle', 'goals']);
 
-// ── Band multipliers ──────────────────────────────────────────────────────────
+// ── Band multipliers
 // penalty is negative — it actively reduces the dimension score
 // when a user selects a value that is a clear misalignment for this pathway.
 const BAND_MULTIPLIERS: Record<ScoreBand, number> = {
@@ -80,22 +66,21 @@ type MatchWeightItem = {
   band: ScoreBand;
 };
 
-// ── Scoring engine ────────────────────────────────────────────────────────────
+// ── Scoring engine
 class PathwayScoringEngine {
-  // ── Band multiplier ──────────────────────────────────────────────────────────
+  // ── Band multiplier
   getBandMultiplier(band: ScoreBand): number {
     return BAND_MULTIPLIERS[band] ?? BAND_MULTIPLIERS.supporting;
   }
 
-  // ── Multi-value dimension scoring ────────────────────────────────────────────
+  // ── Multi-value dimension scoring
   // For dimensions where the user selects 1–N values (strengths, passions,
   // learningPreference, workStyle, impact).
-  //
+
   // Normalizes matchedScore against the sum of positive-band weights only.
   // Penalty items reduce the numerator but don't inflate the denominator,
   // ensuring a pathway with strong+penalty isn't penalized for having a rich profile.
-  //
-  // Returns a value in [MIN_DIMENSION_SCORE, 1.0].
+
   scoreMultiValueDimension(
     selectedValues: string[],
     weights: MatchWeightItem[]
@@ -193,7 +178,7 @@ class PathwayScoringEngine {
     };
   }
 
-  // ── Total score ───────────────────────────────────────────────────────────────
+  // ── Total score
   // Weighted sum of all dimension scores, clamped to [0, 1].
   // Penalty-driven negative dimension scores reduce the total but
   // the displayed matchPercent is always ≥ 0.
@@ -210,7 +195,7 @@ class PathwayScoringEngine {
     return Number(Math.min(1, Math.max(0, raw)).toFixed(4));
   }
 
-  // ── Match percent ─────────────────────────────────────────────────────────────
+  // ── Match percent ───
   toMatchPercent(totalScore: number): number {
     return Math.round(totalScore * 100);
   }

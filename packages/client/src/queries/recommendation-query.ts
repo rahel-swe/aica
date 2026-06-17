@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
-  deleteMyRecommendations,
   generateRecommendations,
   getExplanation,
   getMyRecommendations,
@@ -23,13 +22,6 @@ export const useRecommendationQuery = () =>
     queryFn: getMyRecommendations,
   });
 
-/**
- * Lazy — only fires when `enabled` is true (user clicked "Why?").
- * staleTime: Infinity — the backend caches the explanation in the DB after the
- * first LLM call, so there's never a reason to re-fetch within a session.
- * gcTime: 30 min — keeps it in memory for the session.
- */
-
 export const useExplanationQuery = (
   recommendationId: string,
   enabled: boolean
@@ -48,16 +40,6 @@ export const useGenerateRecommendationsMutation = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: generateRecommendations,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: recommendationsKeys.my() });
-    },
-  });
-};
-
-export const useRecommendationDeleteMutationQuery = () => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: deleteMyRecommendations,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: recommendationsKeys.my() });
     },

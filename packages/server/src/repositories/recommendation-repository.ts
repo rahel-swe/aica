@@ -102,8 +102,7 @@ class RecommendationRepository {
   }
 
   /**
-   * Current matching version for a user.
-   * If no recommendations exist, returns null.
+    Current matching version for a user.
    */
   async getCurrentMatchingVersion(userId: string): Promise<number | null> {
     const doc = await RecommendationModel.findOne(
@@ -114,12 +113,9 @@ class RecommendationRepository {
     return doc?.matchingVersion ?? null;
   }
 
-  // ── Write ────────────────────────────────────────────────────────────────
-
   /**
    * Atomic bulk replace — deletes all existing recommendations for a user
    * and inserts the new batch in a single session/transaction.
-   *
    * This is the only write path for generation and re-scoring.
    * Explanation updates use updateExplanation separately.
    */
@@ -130,9 +126,8 @@ class RecommendationRepository {
   ): Promise<void> {
     await RecommendationModel.deleteMany({ userId }, { session });
 
-    if (docs.length > 0) {
+    if (docs.length > 0)
       await RecommendationModel.insertMany(docs, { session });
-    }
   }
 
   /**
