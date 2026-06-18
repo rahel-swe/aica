@@ -3,8 +3,15 @@ import { auth } from '../utils/auth';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { User } from 'better-auth';
 
+import { parse } from 'cookie';
+import {
+  SUPPORTED_LOCALES,
+  type SupportedLocale,
+} from '@contracts/shared/schemas/i18n';
+
 export interface AuthRequest extends Request {
   user?: User;
+  locale?: SupportedLocale;
 }
 
 export const authorize = async (
@@ -15,6 +22,9 @@ export const authorize = async (
   const session = await auth.api.getSession({
     headers: fromNodeHeaders(req.headers),
   });
+
+  const cookies = parse(req.headers.cookie ?? '');
+  const locale = cookies.PARAGLIDE_LOCALE as SupportedLocale;
 
   if (!session || !session.user) {
     res.status(401).json({
@@ -27,6 +37,8 @@ export const authorize = async (
   }
 
   req.user = session.user;
+
+  req.locale = SUPPORTED_LOCALES.includes(locale) ? locale : 'en';
 
   next();
 };

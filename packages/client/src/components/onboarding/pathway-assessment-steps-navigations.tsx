@@ -15,6 +15,7 @@ import { motion } from 'motion/react';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import AssessmentNavigationButton from '../roadmap/assessment-navigation-button';
+import { useGenerateRecommendationsMutation } from '@/queries/recommendation-query';
 
 const PathwayAssessmentStepsNavigations = ({
   step,
@@ -25,6 +26,10 @@ const PathwayAssessmentStepsNavigations = ({
 }) => {
   const form = useFormContext<PathwayAssessmentFormValues>();
   const navigate = useNavigate();
+  const {
+    mutate: predictRecommendations,
+    isPending: isPredectingRecommendations,
+  } = useGenerateRecommendationsMutation();
 
   const watchedValues = useWatch<PathwayAssessmentFormValues>();
 
@@ -38,7 +43,7 @@ const PathwayAssessmentStepsNavigations = ({
   );
   const navigationActions = getPathwayAssessmentNavigationActions(
     step.type,
-    isSubmitting
+    isSubmitting || isPredectingRecommendations
   );
 
   const goBack = () => {
@@ -63,6 +68,7 @@ const PathwayAssessmentStepsNavigations = ({
 
     if (step.type === 'cta') {
       await submitPathwayAssisment();
+      await predictRecommendations();
       return;
     }
 
@@ -83,9 +89,10 @@ const PathwayAssessmentStepsNavigations = ({
       {navigationActions.secondary && (
         <AssessmentNavigationButton
           variant="outline"
+          shouldRotate={!!(step.id !== 'finish')}
           onClick={goBack}
           className="py-6 sm:px-12"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isPredectingRecommendations}
           label={navigationActions.secondary.label}
           icon={navigationActions.secondary.icon}
           iconPosition="left"
@@ -95,8 +102,9 @@ const PathwayAssessmentStepsNavigations = ({
       <AssessmentNavigationButton
         type="button"
         onClick={goNext}
+        shouldRotate={!!(step.id !== 'finish')}
         className="py-6.5 sm:px-12"
-        disabled={disableNext || isSubmitting}
+        disabled={disableNext || isSubmitting || isPredectingRecommendations}
         label={navigationActions.primary.label}
         icon={navigationActions.primary.icon}
         iconPosition="right"

@@ -2,7 +2,7 @@ import { subjectOptions } from '@/constants/pathway-assessment-steps-data';
 import { cn } from '@/lib/utils';
 import { Database, ArrowRight } from 'lucide-react';
 import { RadioGroup } from '@/components/ui/radio-group';
-import { roadmapStepFlagColors } from '../roadmap/roadmap-view-utils';
+import { roadmapStepFlagColors } from '../../lib/roadmap-view-utils';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { FieldContent, FieldTitle, FieldLabel, Field } from '../ui/field';

@@ -3,7 +3,6 @@ import SignInPage from '@/pages/auth/sign-in-page';
 import SignUpPage from '@/pages/auth/sign-up-page';
 import DashboardPage from '@/pages/dashboard-page';
 import ExplorePage from '@/pages/explore-page';
-import RecommendationsPage from '@/pages/recommendations-page';
 import PathwayDetailPage from '@/pages/pathway-detail-page';
 import AdvisorPage from '@/pages/advisor-page';
 import RoadmapPage from '@/pages/roadmap-page';
@@ -32,14 +31,26 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: '/',
+        index: true,
+        element: <LandingPage />,
+      },
+      {
         element: <AuthLayout />,
+        path: 'auth',
         children: [
-          { index: true, element: <LandingPage /> },
-          { path: 'auth/sign-in', element: <SignInPage /> },
-          { path: 'auth/sign-up', element: <SignUpPage /> },
-          { path: 'auth/change-password', element: <ChangePasswordPage /> },
+          { path: 'sign-in', index: true, element: <SignInPage /> },
+          { path: 'sign-up', element: <SignUpPage /> },
           {
-            path: 'auth/change-password-succeed',
+            path: 'change-password',
+            element: (
+              <RouterProtector>
+                <ChangePasswordPage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'change-password-succeed',
             element: <ChangePasswordSucceedPage />,
           },
         ],
@@ -58,17 +69,29 @@ const router = createBrowserRouter([
           },
           {
             path: ':stepId',
-            element: <PathwayAssessmentStepsPage />,
+            element: (
+              <RouterProtector>
+                <PathwayAssessmentStepsPage />
+              </RouterProtector>
+            ),
           },
         ],
       },
       {
         path: 'pathway-recommendations',
-        element: <PathwayRecommendedPathwaysLayout />,
+        element: (
+          <RouterProtector>
+            <PathwayRecommendedPathwaysLayout />
+          </RouterProtector>
+        ),
       },
       {
         path: 'pathway-congratulations',
-        element: <PathwayCongratulations />,
+        element: (
+          <RouterProtector>
+            <PathwayCongratulations />
+          </RouterProtector>
+        ),
       },
       {
         path: 'roadmap-setup-assessment',
@@ -84,7 +107,11 @@ const router = createBrowserRouter([
           },
           {
             path: ':stepId',
-            element: <RoadmapSetupAssesmentStepsPage />,
+            element: (
+              <RouterProtector>
+                <RoadmapSetupAssesmentStepsPage />
+              </RouterProtector>
+            ),
           },
         ],
       },
@@ -97,10 +124,30 @@ const router = createBrowserRouter([
         ),
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> },
-          { path: 'dashboard', element: <DashboardPage /> },
-          { path: 'explore', element: <ExplorePage /> },
-          { path: 'recommendations', element: <RecommendationsPage /> },
-          { path: 'pathways/:pathwayId', element: <PathwayDetailPage /> },
+          {
+            path: 'dashboard',
+            element: (
+              <RouterProtector>
+                <DashboardPage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'explore',
+            element: (
+              <RouterProtector>
+                <ExplorePage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'pathways/:pathwaySlug',
+            element: (
+              <RouterProtector>
+                <PathwayDetailPage />
+              </RouterProtector>
+            ),
+          },
           {
             path: 'advisor',
             element: (

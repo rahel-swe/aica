@@ -3,7 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { Field, FieldContent, FieldLabel, FieldTitle } from '../ui/field';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { cn } from '@/lib/utils';
-import { roadmapStepFlagColors } from '../roadmap/roadmap-view-utils';
+import { roadmapStepFlagColors } from '../../lib/roadmap-view-utils';
 import {
   Popover,
   PopoverContent,
@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/popover';
 import { Info } from 'lucide-react';
 import { useState } from 'react';
+import { getDirection } from '@/lib/get-direction';
 
 interface SingleSelectFieldProps {
   name: string;
@@ -41,7 +42,7 @@ const SingleSelectField: React.FC<SingleSelectFieldProps> = ({
             field.onChange(value);
             if (value) setOpenPopover(value);
           }}
-          className=""
+          dir={getDirection().dir}
         >
           {options.map(({ value, label, description, icon: Icon }, idx) => (
             <FieldLabel

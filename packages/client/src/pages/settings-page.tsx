@@ -23,15 +23,16 @@ const SettingsPage = () => {
       username: 'rahel',
       email: 'rahel@example.com',
     },
+    security: {
+      twoFactorAuth: false,
+      loginAlerts: true,
+    },
+
     notifications: {
       emailUpdates: true,
       roadmapReminders: true,
       recommendationUpdates: false,
       productNews: true,
-    },
-    security: {
-      twoFactorAuth: false,
-      loginAlerts: true,
     },
     privacy: {
       profileVisibility: true,

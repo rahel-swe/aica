@@ -1,5 +1,7 @@
 import type { PathwayAssessmentStepType } from '@/constants/pathway-assessment-steps-data';
 
+import { m } from '../paraglide/messages';
+
 import {
   ChevronLeft,
   ChevronRight,
@@ -29,20 +31,20 @@ export function getPathwayAssessmentNavigationActions(
     secondary: isIntro
       ? undefined
       : {
-          label: isCTA ? 'Edit answers' : 'Go back',
-
+          label: isCTA
+            ? m.pathway_assessment_navigation_edit_answers()
+            : m.pathway_assessment_navigation_go_back(),
           icon: isCTA ? Pencil : ChevronLeft,
         },
 
     primary: {
       label: isSubmitting
-        ? 'Saving...'
+        ? m.pathway_assessment_navigation_saving()
         : isIntro
-          ? 'Let’s begin'
+          ? m.pathway_assessment_navigation_lets_begin()
           : isCTA
-            ? 'See my matches'
-            : 'Keep going',
-
+            ? m.pathway_assessment_navigation_see_my_matches()
+            : m.pathway_assessment_navigation_keep_going(),
       icon: isSubmitting ? undefined : isCTA ? Send : ChevronRight,
     },
   };

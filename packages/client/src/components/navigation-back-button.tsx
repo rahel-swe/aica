@@ -20,7 +20,7 @@ const NavigationBackButton = ({
       className={cn(className)}
       onClick={() => (onClick ? onClick() : navigate(-1))}
     >
-      <ArrowLeft />
+      <ArrowLeft className="rtl:rotate-180" />
       {title}
     </Button>
   );

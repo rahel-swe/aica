@@ -13,12 +13,15 @@ import {
 import type { RoadmapSetupOutletContext } from '@/layouts/roadmap-setup-assessment-layout';
 import { getRoadmapNavigationActions } from '@/lib/get-roadmap-navigation-actions';
 import { toKebab } from '@/lib/to-kebab';
-import { useGenerateRoadmapMutation } from '@/queries/roadmap-query';
-import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-assessment-queries';
 import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/roadmap-setup-assessment-schema';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 import AssessmentNavigationButton from './assessment-navigation-button';
-import { useEffect } from 'react';
+import ActionDialog from '../action-dialog';
+import { useState } from 'react';
+import {
+  useRoadmapDeleteMutation,
+  useRoadmapQuery,
+} from '@/queries/roadmap-query';
 
 type RoadmapSetupStepsNavigationProps = {
   step: RoadmapSetupStep;
@@ -28,19 +31,19 @@ const RoadmapSetupAssessmentStepsNavigation = ({
   step,
 }: RoadmapSetupStepsNavigationProps) => {
   const form = useFormContext<RoadmapSetupAssessmentFormValues>();
-  const { currentIndex, isSubmitting, submitRoadmapSetup } =
-    useOutletContext<RoadmapSetupOutletContext>();
+  const {
+    currentIndex,
+    isSubmitting,
+    submitRoadmapSetup,
+    isRoadmapSetupSucceeded,
+  } = useOutletContext<RoadmapSetupOutletContext>();
   const navigate = useNavigate();
+  const [openActionDialog, setOpenActionDialog] = useState(false);
 
-  const {
-    mutate: generateRoadmap,
-    isSuccess: isRoadmapGenerateSuccessed,
-    isPending: isRoadmapGenerating,
-  } = useGenerateRoadmapMutation();
-  const {
-    data: roadmapSetupStatusResponse,
-    isPending: roadmpaSetupStatusPending,
-  } = useRoadmapSetupAssessmentStatusQuery();
+  const { data: roadmapResponse, isPending: isRoadmapPending } =
+    useRoadmapQuery();
+  const { mutate: deleteMyRoadmap, isPending: isRoadmapDeleting } =
+    useRoadmapDeleteMutation();
 
   const watchedValues = useWatch<RoadmapSetupAssessmentFormValues>();
 
@@ -50,15 +53,6 @@ const RoadmapSetupAssessmentStepsNavigation = ({
     currentIndex,
     lastIndex
   );
-
-  useEffect(() => {
-    if (isRoadmapGenerateSuccessed) {
-      navigate('/app/roadmap', {
-        replace: true,
-        viewTransition: true,
-      });
-    }
-  }, [isRoadmapGenerateSuccessed, navigate]);
 
   const actions = getRoadmapNavigationActions(step.id);
 
@@ -86,21 +80,17 @@ const RoadmapSetupAssessmentStepsNavigation = ({
       return;
     }
 
-    if (currentIndex === lastIndex - 1) {
+    if (currentIndex === lastIndex && roadmapResponse?.data) {
+      setOpenActionDialog(true);
+      return;
+    }
+
+    if (currentIndex === lastIndex) {
       submitRoadmapSetup();
-      // return;
+      return;
     }
 
     const next = ROADMAP_SETUP_STEPS[currentIndex + 1];
-
-    if (currentIndex === lastIndex) {
-      if (roadmpaSetupStatusPending) return;
-      generateRoadmap({
-        pathwayId: roadmapSetupStatusResponse!.data.pickedPathwayId,
-      });
-
-      return;
-    }
 
     if (next) {
       navigate(`/roadmap-setup-assessment/${next.id}`, {
@@ -111,40 +101,53 @@ const RoadmapSetupAssessmentStepsNavigation = ({
   };
 
   return (
-    <motion.div
-      key={animation.replayKey}
-      custom={animation.direction}
-      variants={containerVariants}
-      initial={animation.shouldAnimate ? 'hidden' : false}
-      animate="visible"
-      className="flex flex-col-reverse sm:items-center sm:flex-row max-w-xs sm:max-w-full mx-auto w-full
+    <>
+      <ActionDialog
+        title={'Roadmap already exist!'}
+        open={openActionDialog}
+        description="By submiting your new setup, you lose your current roadmap."
+        isPending={isRoadmapDeleting || isSubmitting}
+        setOpen={setOpenActionDialog}
+        actionLabel={'Submit'}
+        onAction={() => {
+          deleteMyRoadmap(roadmapResponse!.data._id);
+          submitRoadmapSetup();
+          if (isRoadmapSetupSucceeded) setOpenActionDialog(false);
+        }}
+      />
+      <motion.div
+        key={animation.replayKey}
+        custom={animation.direction}
+        variants={containerVariants}
+        initial={animation.shouldAnimate ? 'hidden' : false}
+        animate="visible"
+        className="flex flex-col-reverse sm:items-center sm:flex-row max-w-xs sm:max-w-full mx-auto w-full
         gap-3 sm:gap-10 sm:justify-center"
-    >
-      <AssessmentNavigationButton
-        type="button"
-        variant="outline"
-        onClick={handleSecondButtonNavigation}
-        disabled={
-          isSubmitting || isRoadmapGenerating || roadmpaSetupStatusPending
-        }
-        className="py-6 sm:px-12"
-        label={actions.secondary.label}
-        icon={actions.secondary.icon}
-        iconPosition="left"
-      />
+      >
+        <AssessmentNavigationButton
+          type="button"
+          variant="outline"
+          shouldRotate={!!(step.id !== 'finish')}
+          onClick={handleSecondButtonNavigation}
+          disabled={isSubmitting || isRoadmapPending}
+          className="py-6 sm:px-12"
+          label={actions.secondary.label}
+          icon={actions.secondary.icon}
+          iconPosition="left"
+        />
 
-      <AssessmentNavigationButton
-        type="button"
-        onClick={goNext}
-        disabled={
-          isSubmitting || isRoadmapGenerating || roadmpaSetupStatusPending
-        }
-        className="py-6 sm:px-12"
-        label={actions.primary.label}
-        icon={actions.primary.icon}
-        iconPosition="right"
-      />
-    </motion.div>
+        <AssessmentNavigationButton
+          type="button"
+          onClick={goNext}
+          shouldRotate={!!(step.id !== 'finish')}
+          disabled={isSubmitting || isRoadmapPending}
+          className="py-6 sm:px-12"
+          label={actions.primary.label}
+          icon={actions.primary.icon}
+          iconPosition="right"
+        />
+      </motion.div>
+    </>
   );
 };
 

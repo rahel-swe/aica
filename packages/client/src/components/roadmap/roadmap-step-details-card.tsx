@@ -13,7 +13,10 @@ import {
 import { Badge } from '../ui/badge';
 import RoadmapStepCardResources from './roadmap-step-card-resources';
 import RoadmapStepStatusActionButton from './roadmap-step-status-action-button';
-import { roadmapPhaseStatusMeta, stepStatusMeta } from './roadmap-view-utils';
+import {
+  roadmapPhaseStatusMeta,
+  stepStatusMeta,
+} from '../../lib/roadmap-view-utils';
 
 const RoadmapStepDetailsCard = ({
   steps,

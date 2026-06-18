@@ -1,69 +1,117 @@
-import {
-  taxonomyNodeKindEnum,
-  taxonomyNodeStatusEnum,
-} from '@contracts/shared/schemas/pathway-domain-schema';
-import { Schema, model, type Document } from 'mongoose';
+import { Schema, model, type HydratedDocument, type Types } from 'mongoose';
 
-export interface ITaxonomyNode extends Document {
-  name: string;
+import { contentStatusSchema } from '@contracts/shared/schemas/content-status';
+
+import { taxonomyNodeKindEnum } from '@contracts/shared/schemas/pathway-domain-schema';
+
+import type {
+  ContentStatus,
+  TaxonomyNodeKind,
+  TaxonomyNodeTranslatableFields,
+} from '@contracts/shared/types/pathway-domain-types';
+
+const contentStatusEnum = contentStatusSchema.options;
+
+const taxonomyNodeTranslationSchema =
+  new Schema<TaxonomyNodeTranslatableFields>(
+    {
+      name: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+
+      description: {
+        type: String,
+        trim: true,
+      },
+    },
+    {
+      _id: false,
+    }
+  );
+
+export interface TaxonomyNodeDbDocument {
   slug: string;
-  kind: (typeof taxonomyNodeKindEnum)[number];
-  parentId: Schema.Types.ObjectId | null;
-  description?: string;
+
+  kind: TaxonomyNodeKind;
+
+  parentId: Types.ObjectId | null;
+
   order: number;
-  status: (typeof taxonomyNodeStatusEnum)[number];
+
+  status: ContentStatus;
+
+  translations: Map<string, TaxonomyNodeTranslatableFields>;
+
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-const taxonomyNodeSchema = new Schema<ITaxonomyNode>(
-  {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+export type TaxonomyNodeDocumentModel =
+  HydratedDocument<TaxonomyNodeDbDocument>;
 
+const taxonomyNodeSchema = new Schema<TaxonomyNodeDbDocument>(
+  {
     slug: {
       type: String,
       required: true,
       unique: true,
       trim: true,
       lowercase: true,
+      index: true,
     },
 
     kind: {
       type: String,
       enum: taxonomyNodeKindEnum,
       required: true,
+      index: true,
     },
 
     parentId: {
       type: Schema.Types.ObjectId,
       ref: 'TaxonomyNode',
       default: null,
-    },
-
-    description: {
-      type: String,
-      trim: true,
+      index: true,
     },
 
     order: {
       type: Number,
+      required: true,
       default: 0,
+      min: 0,
     },
 
     status: {
       type: String,
-      enum: taxonomyNodeStatusEnum,
+      enum: contentStatusEnum,
+      required: true,
       default: 'draft',
+      index: true,
+    },
+
+    translations: {
+      type: Map,
+      of: taxonomyNodeTranslationSchema,
+      required: true,
+      default: () => new Map<string, TaxonomyNodeTranslatableFields>(),
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    versionKey: false,
+  }
 );
 
 taxonomyNodeSchema.index({ parentId: 1, order: 1 });
 
-export const TaxonomyNodeModel = model<ITaxonomyNode>(
+taxonomyNodeSchema.index({
+  kind: 1,
+  status: 1,
+});
+
+export const TaxonomyNodeModel = model<TaxonomyNodeDbDocument>(
   'TaxonomyNode',
   taxonomyNodeSchema
 );

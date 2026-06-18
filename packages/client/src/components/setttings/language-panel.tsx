@@ -1,11 +1,8 @@
 import { Globe } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { sleep } from '@/lib/settings-utils';
-import type {
-  SettingsData,
-  SettingsSaveHandler,
-} from '@contracts/shared/types/settings-types';
+import type { SupportedLocale } from '@contracts/shared/schemas/i18n';
+import { setLocale } from '../../paraglide/runtime';
 import { Label } from '../ui/label';
 import {
   Select,
@@ -14,26 +11,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
+import LocaleSelectItems from './locale-select-items';
 import SettingsPanelShell from './settings-panel-shell';
 import SettingsSaveButton from './settings-save-button';
 
-type LanguagePanelProps = {
-  data: SettingsData;
-  onSave: SettingsSaveHandler;
+type AppLangaugeType = {
+  locale?: SupportedLocale;
+  region?: string;
 };
 
-const LanguagePanel = ({ data, onSave }: LanguagePanelProps) => {
-  const [form, setForm] = useState(data.language);
+const LanguagePanel = () => {
+  const [form, setForm] = useState<AppLangaugeType>();
   const [isSaving, setIsSaving] = useState(false);
-
-  useEffect(() => {
-    setForm(data.language);
-  }, [data.language]);
 
   const handleSave = async () => {
     setIsSaving(true);
-    await sleep(700);
-    onSave({ language: form });
+
+    setLocale(form?.locale as SupportedLocale);
     setIsSaving(false);
   };
 
@@ -48,26 +42,15 @@ const LanguagePanel = ({ data, onSave }: LanguagePanelProps) => {
           App language
         </Label>
 
-        <Select
-          value={form.appLanguage}
-          onValueChange={(value) =>
-            setForm((prev) => ({
-              ...prev,
-              appLanguage: value,
-            }))
-          }
-        >
-          <SelectTrigger id="app-language" className="w-full py-5">
-            <SelectValue placeholder="Select language" />
-          </SelectTrigger>
-
-          <SelectContent>
-            <SelectItem value="English">English</SelectItem>
-            <SelectItem value="Pashto">Pashto</SelectItem>
-            <SelectItem value="Dari">Dari</SelectItem>
-            <SelectItem value="Arabic">Arabic</SelectItem>
-          </SelectContent>
-        </Select>
+        <LocaleSelectItems
+          value={form?.locale}
+          onSelectChange={(value) => {
+            setForm({
+              ...form,
+              locale: value,
+            });
+          }}
+        />
       </div>
 
       <div className="grid gap-2">
@@ -76,7 +59,7 @@ const LanguagePanel = ({ data, onSave }: LanguagePanelProps) => {
         </Label>
 
         <Select
-          value={form.region}
+          value={form?.region || 'AF'}
           onValueChange={(value) =>
             setForm((prev) => ({
               ...prev,
@@ -89,9 +72,9 @@ const LanguagePanel = ({ data, onSave }: LanguagePanelProps) => {
           </SelectTrigger>
 
           <SelectContent>
-            <SelectItem value="Afghanistan">Afghanistan</SelectItem>
-            <SelectItem value="United States">United States</SelectItem>
-            <SelectItem value="United Kingdom">United Kingdom</SelectItem>
+            <SelectItem value="AF">Afghanistan</SelectItem>
+            <SelectItem value="US">United States</SelectItem>
+            <SelectItem value="UK">United Kingdom</SelectItem>
             <SelectItem value="Other">Other</SelectItem>
           </SelectContent>
         </Select>
@@ -99,9 +82,7 @@ const LanguagePanel = ({ data, onSave }: LanguagePanelProps) => {
       <SettingsSaveButton
         onSave={handleSave}
         isSaving={isSaving}
-        disabled={
-          isSaving || JSON.stringify(form) === JSON.stringify(data.language)
-        }
+        disabled={isSaving}
       />
     </SettingsPanelShell>
   );

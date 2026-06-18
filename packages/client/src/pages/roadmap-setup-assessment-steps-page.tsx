@@ -6,10 +6,10 @@ import { ROADMAP_SETUP_STEPS } from '@/constants/roadmap-setup-assessment-data';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
 import RoadmapSetupIntroPanel from '@/components/roadmap/roadmap-setup-assessment-intro-panel';
-import RoadmapStepsPreview from '@/components/roadmap/roadmap-steps-preview';
 import { useRoadmapSetupAssessment } from '@/hooks/use-roadmap-setup-assessment';
 import { useFormContext } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import RoadmapSetupAssessmentSummaryPanel from '@/components/onboarding/roadmap-setup-assessment-summary-panel';
 
 const RoadmapSetupAssesmentStepsPage = () => {
   const { stepId } = useParams();
@@ -35,9 +35,7 @@ const RoadmapSetupAssesmentStepsPage = () => {
       )}
 
       {step.id === 'finish' && (
-        <div>
-          <RoadmapStepsPreview />
-        </div>
+        <RoadmapSetupAssessmentSummaryPanel step={step} />
       )}
 
       <RoadmapSetupAssessmentStepsNavigation step={step} />

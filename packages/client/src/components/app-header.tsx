@@ -32,6 +32,7 @@ export default function AppHeader({ className }: { className?: string }) {
           <Link
             to="/app/dashboard"
             className="flex shrink-0 items-center gap-2"
+            viewTransition
           >
             <AppLogo logoClassName="" nameClassName="" />
           </Link>
@@ -39,7 +40,7 @@ export default function AppHeader({ className }: { className?: string }) {
           {/* Right Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
             {!isMobile && (
-              <Link to="/app/explore">
+              <Link to="/app/explore" viewTransition>
                 <Button variant={'outline'} size={'icon-lg'}>
                   <Search className="size-5" />
                 </Button>
@@ -50,7 +51,7 @@ export default function AppHeader({ className }: { className?: string }) {
             </Button>
 
             {isMobile && (
-              <Link to="/app/settings">
+              <Link to="/app/settings" viewTransition>
                 <Button variant={'outline'} size={'icon-lg'}>
                   <Settings className="size-5" />
                 </Button>
@@ -61,6 +62,7 @@ export default function AppHeader({ className }: { className?: string }) {
             <Link
               to="/app/settings"
               className="hidden items-center gap-3 rounded-full bg-background/40 p-1.5 transition-all hover:bg-accent md:flex"
+              viewTransition
             >
               <UserAvatar username={data!.user.name} />
 

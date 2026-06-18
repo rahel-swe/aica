@@ -56,11 +56,7 @@ export function RoadmapEmptyState({ className }: { className?: string }) {
               <Button
                 className="gap-2 px-6 py-7 md:py-7"
                 disabled={isGenerating}
-                onClick={() => {
-                  mutate({
-                    pathwayId: roadmapSetupData.pickedPathwayId,
-                  });
-                }}
+                onClick={() => mutate()}
               >
                 {isGenerating ? (
                   <>

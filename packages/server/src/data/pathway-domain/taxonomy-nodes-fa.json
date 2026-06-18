@@ -1,0 +1,1784 @@
+[
+  {
+    "name": "تکنالوژی",
+    "description": "ساخت نرم‌افزار، زیرساخت، و سیستم‌های هوشمندی که دنیای مدرن بر آن‌ها استوار است. گسترده‌ترین و سریع‌ترین حوزه مسلکی عصر ما.",
+    "slug": "technology",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "صحت",
+    "description": "تشخیص، درمان، و حفاظت از سلامت انسان — از بیماران در کلینیک تا جمعیت‌های بزرگ در عرصه.",
+    "slug": "healthcare",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "تجارت",
+    "description": "ساختن، اداره کردن، و رشد دادن سازمان‌ها. هر صنعتی به استراتژی، بازاریابی، عملیات، و نیروی انسانی نیاز دارد.",
+    "slug": "business",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "امور مالی",
+    "description": "جابجایی، حفاظت، و رشد سرمایه. جایی که ریاضیات، بازارها، و تصمیم‌های پرخطر به هم می‌رسند.",
+    "slug": "finance",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "هنرهای خلاق",
+    "description": "طراحی، تولید، و اجرای آثاری که فرهنگ، ارتباطات، و تجربه انسانی را شکل می‌دهند.",
+    "slug": "creative-arts",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "علوم",
+    "description": "مطالعه جهان طبیعی از مولکول‌ها تا کهکشان‌ها. کشفیات اینجا به دارو، تکنالوژی، و سیاست‌های فردا تبدیل می‌شوند.",
+    "slug": "sciences",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "علوم اجتماعی و حقوق",
+    "description": "درک، اداره، و بهبود جامعه انسانی — از روان‌شناسی فردی تا سیستم‌های بین‌المللی و قانونی که آن‌ها را نگه می‌دارد.",
+    "slug": "social-sciences-and-law",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری",
+    "description": "طراحی و ساخت سیستم‌های فیزیکی که تمدن به آن‌ها وابسته است — از پل‌ها تا فضاپیماها تا شبکه‌های برق.",
+    "slug": "engineering",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "name": "مسلک‌های عملی، حرفوی و نوظهور",
+    "description": "عملی، انسان‌محور، و با دستمزدهای رو به رشد. از حرفه‌های دارای جواز تا صنایع پیشگام، این مسیرها اقتصاد بعدی را می‌سازند.",
+    "slug": "trades-vocational-and-emerging",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 9,
+    "status": "active"
+  },
+  {
+    "name": "توسعه نرم‌افزار",
+    "description": "نوشتن کدی که برنامه‌ها، خدمات، و پلتفرم‌هایی را که میلیاردها نفر هر روز استفاده می‌کنند به حرکت در می‌آورد.",
+    "slug": "software-development",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "هوش مصنوعی و داده",
+    "description": "ساخت سیستم‌های هوشمند و استخراج بینش از داده — انجینیری پشت هر ماشینی که فکر می‌کند، پیش‌بینی می‌کند، و پیشنهاد می‌دهد.",
+    "slug": "ai-and-data",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "زیرساخت و امنیت",
+    "description": "اطمینان از کارکرد قابل‌اعتماد، ایمن، و در مقیاس نرم‌افزار. رشته‌ای که سیستم‌های تولیدی را از دمو جدا می‌کند.",
+    "slug": "infrastructure-and-security",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "محصول و طراحی",
+    "description": "تعیین آنچه ساخته می‌شود، شکل دادن به ظاهر آن، و اطمینان از کارکرد واقعی برای انسان‌های واقعی.",
+    "slug": "product-and-design",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "تکنالوژی نوظهور",
+    "description": "رباتیک، محیط‌های همه‌جانبه، سیستم‌های غیرمتمرکز — دسته‌هایی که هنوز به طور کامل وجود ندارند اما دهه بعدی را تعریف خواهند کرد.",
+    "slug": "emerging-technology",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "توسعه فرانت‌اند (Frontend)",
+    "description": "شما آنچه مردم واقعاً می‌بینند و کلیک می‌کنند را می‌سازید. هر رابط، تعامل، و طرح‌بندی در وب از شما شروع می‌شود.",
+    "slug": "frontend-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "توسعه بک‌اند (Backend)",
+    "description": "موتور نامرئی پشت هر برنامه. شما API‌ها، سرویس‌ها، و پایگاه‌های داده‌ای که همه چیز روی سطح را به کار می‌اندازند را طراحی می‌کنید.",
+    "slug": "backend-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "توسعه فول‌استک (Full-Stack)",
+    "description": "شما محصول را از رابط تا زیرساخت در اختیار دارید — نزدیک‌ترین چیز به ساختن یک اثر کاملاً به تنهایی.",
+    "slug": "full-stack-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "توسعه موبایل",
+    "description": "برنامه‌هایی که مردم اول صبح به آن‌ها دست می‌رسند. شما تجربه‌هایی می‌سازید که در جیب کسی زندگی می‌کنند، همیشه در دسترس.",
+    "slug": "mobile-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "توسعه بلاکچین (Blockchain)",
+    "description": "شما سیستم‌های غیرمتمرکز و قراردادهای هوشمند می‌سازید — زیرساخت معاملات دیجیتالی قابل برنامه‌ریزی و بدون نیاز به اعتماد.",
+    "slug": "blockchain-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "توسعه AR / VR / XR",
+    "description": "شما محیط‌های همه‌جانبه‌ای می‌سازید که فضای دیجیتال و فیزیکی در آن‌ها ادغام می‌شوند — از شبیه‌سازی‌های آموزشی تا بازی‌ها تا فضاهای کاری مجازی.",
+    "slug": "ar-vr-xr-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "توسعه بدون کد / کم‌کد (No-Code / Low-Code)",
+    "description": "شما برنامه‌های قدرتمند، اتوماسیون، و جریان‌های کاری بدون کد سنتی می‌سازید — تولید نرم‌افزار را برای گروه‌های کاملاً جدیدی از مردم در دسترس می‌گذارید.",
+    "slug": "no-code-low-code-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری هوش مصنوعی / یادگیری ماشین (AI / Machine Learning Engineering)",
+    "description": "شما به ماشین‌ها یاد می‌دهید که یاد بگیرند، تشخیص دهند، و تصمیم بگیرند. حوزه‌ای که همین الان هر صنعتی را بازشکل می‌دهد.",
+    "slug": "ai-machine-learning-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مهندسی پرامپت (Prompt Engineering)",
+    "description": "شما ورودی‌هایی طراحی می‌کنید که خروجی‌های هوش مصنوعی را شکل می‌دهند — رشته ارتباط با مدل‌های زبانی برای ساختن ویژگی‌های هوش مصنوعی قابل‌اعتماد در سطح تولید.",
+    "slug": "prompt-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "علم داده (Data Science)",
+    "description": "شما سیگنال را در میان نویز پیدا می‌کنید. الگوهای پنهان در میلیون‌ها نقطه داده تبدیل به تصمیماتی می‌شوند که نحوه عملکرد سازمان‌ها را تغییر می‌دهند.",
+    "slug": "data-science",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "مهندسی داده (Data Engineering)",
+    "description": "شما خطوط لوله و زیرساختی می‌سازید که داده را در وهله اول قابل استفاده می‌کند. بدون شما، علم داده نمی‌تواند وجود داشته باشد.",
+    "slug": "data-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "تحلیل داده",
+    "description": "شما اعداد خام را به تصمیم تبدیل می‌کنید. هر کسب‌وکار و دولتی در جهان بر وضوحی که تحلیل‌گران داده فراهم می‌کنند کار می‌کند.",
+    "slug": "data-analysis",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری DevOps / پلتفرم",
+    "description": "شما اطمینان می‌دهید که نرم‌افزار به طور قابل‌اعتماد ارسال و در مقیاس اجرا می‌شود — پل میان نوشتن کد و اجرای آن در تولید.",
+    "slug": "devops-platform-engineering",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "معماری ابر (Cloud Architecture)",
+    "description": "شما زیرساختی طراحی می‌کنید که نرم‌افزار مدرن بر آن زندگی می‌کند. مقیاس‌پذیر، مقاوم، و همیشه در دسترس.",
+    "slug": "cloud-architecture",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "امنیت سایبری (Cybersecurity)",
+    "description": "شما سیستم‌ها، شبکه‌ها، و مردم را در برابر تهدیداتی که هر سال پیچیده‌تر می‌شوند دفاع می‌کنید. یکی از حیاتی‌ترین و کم‌کارمندترین نقش‌ها در سال ۲۰۲۶.",
+    "slug": "cybersecurity",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "تحلیل امنیت سایبری",
+    "description": "شما حملات را بررسی می‌کنید، نقض‌ها را ردیابی می‌کنید، و زیرساخت را پس از عبور تهدیدات محافظت می‌کنید. به یک اندازه کارآگاه و انجینیر.",
+    "slug": "cybersecurity-analysis",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "مدیریت سیستم‌های IT",
+    "description": "شما تکنالوژی سازمان‌ها را در حال کارکرد نگه می‌دارید. متخصصی که همه وقتی همه چیز از کار می‌افتد با او تماس می‌گیرند.",
+    "slug": "it-systems-administration",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "سیستم‌های جاسازی‌شده / IoT",
+    "description": "شما کدی می‌نویسید که داخل دستگاه‌های فیزیکی اجرا می‌شود — خودروها، حسگرها، سخت‌افزار پزشکی، لوازم هوشمند. نرم‌افزاری که جهان بی‌سروصدا بر آن کار می‌کند.",
+    "slug": "embedded-systems-iot",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "طراحی UI / UX",
+    "description": "شما محصولات دیجیتال را آسان‌تر، انسانی‌تر، و شهودی‌تر می‌کنید. طراحی تزئین نیست — محصول است.",
+    "slug": "ui-ux-design",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مدیریت محصول",
+    "description": "شما تصمیم می‌گیرید چه چیزی ساخته شود و چرا. نیازهای کاربران، اهداف تجاری، و واقعیت انجینیری را به چیزی واقعی وصل می‌کنید.",
+    "slug": "product-management",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "مدیریت محصول هوش مصنوعی (AI Product Management)",
+    "description": "شما محصولات مبتنی بر هوش مصنوعی را از ایده تا عرضه می‌برید — درک هم آنچه مدل می‌تواند انجام دهد و هم آنچه کاربران واقعاً نیاز دارند.",
+    "slug": "ai-product-management",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "نگارش تخنیکی",
+    "description": "شما پیچیدگی را به وضوح تبدیل می‌کنید. کسی که ابزارهای قدرتمند را برای مردم واقعی قابل استفاده می‌کند.",
+    "slug": "technical-writing",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری QA / آزمون",
+    "description": "شما آنچه را که می‌شکند قبل از اینکه کاربران بشکنند پیدا می‌کنید. رشته‌ای که نرم‌افزار حرفوی را از ساخت‌های آماتور جدا می‌کند.",
+    "slug": "qa-test-engineering",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "توسعه بازی",
+    "description": "شما دنیاهایی می‌سازید که مردم به آن‌ها پناه می‌برند — نوشتن کد پشت فیزیک، هوش مصنوعی، رندرینگ، و تعامل‌پذیری واقعی.",
+    "slug": "game-development",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری رباتیک (Robotics Engineering)",
+    "description": "شما ماشین‌هایی می‌سازید که در دنیای فیزیکی حس می‌کنند، حرکت می‌کنند، و عمل می‌کنند. حوزه‌ای که تعریف می‌کند اقتصاد بعدی چه شکلی خواهد داشت.",
+    "slug": "robotics-engineering",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "تکنالوژی پهپاد و UAV",
+    "description": "شما سیستم‌های بدون سرنشین مورد استفاده در تحویل، کشاورزی، واکنش اضطراری، و نظارت را طراحی، راه‌اندازی، یا برنامه‌ریزی می‌کنید.",
+    "slug": "drone-uav-technology",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "تکنالوژی سلامت روان",
+    "description": "شما برنامه‌ها و پلتفرم‌هایی می‌سازید که دسترسی به حمایت سلامت روان را گسترش می‌دهند — جایی که انجینیری نرم‌افزار با همدلی انسانی ملاقات می‌کند.",
+    "slug": "mental-health-technology",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "توسعه فین‌تک (Fintech)",
+    "description": "شما نسل بعدی ابزارهای بانکداری، پرداخت، و مالی را می‌سازید — جایی که انجینیری نرم‌افزار با جابجایی پول ملاقات می‌کند.",
+    "slug": "fintech-development",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "طب بالینی",
+    "description": "مراقبت مستقیم از بیمار — تشخیص، درمان، و رابطه‌ای که در قلب پزشکی است.",
+    "slug": "clinical-medicine",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "پرستاری و صحت متحد",
+    "description": "متخصصان بالینی که هر روز به بیماران نزدیک‌ترین هستند — از مراقبت در بالین تا توانبخشی، تصویربرداری، و تغذیه.",
+    "slug": "nursing-and-allied-health",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "سلامت روان و روان‌پزشکی",
+    "description": "متخصصانی که ذهن را درمان می‌کنند — روان‌درمانی، دارو، و علم روان‌شناسی انسانی با هم.",
+    "slug": "mental-health-and-psychiatry",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "بیومدیکال و تحقیقات",
+    "description": "زیرساخت آزمایشگاهی، تحقیقاتی، و تکنالوژیکی که پزشکی مدرن را ممکن می‌سازد.",
+    "slug": "biomedical-and-research",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "طب عمومی",
+    "description": "شما اغلب اولین کسی هستید که کسی سلامتش را به او می‌سپارد — روابط بلندمدت با بیمار و سنگینی تشخیص، هر روز.",
+    "slug": "medicine-general-practice",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "داروسازی",
+    "description": "شما متخصص آن چیزی هستید که وارد بدن می‌شود و چرا. ایمنی دارو، دوزبندی دقیق، و مشاوره بیمار در نقطه مراقبت.",
+    "slug": "pharmacy",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "دندانپزشکی",
+    "description": "شما به مردم چیزی می‌دهید که هر روز بدون فکر کردن از آن استفاده می‌کنند: یک لبخند سالم، کارکردی، و با اعتماد به نفس.",
+    "slug": "dentistry",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "چشم‌پزشکی",
+    "description": "شما حسی را که مردم بیشتر به آن متکی هستند محافظت و بازگردانی می‌کنید. تفاوت بین تلاش کردن و دیدن با وضوح.",
+    "slug": "optometry",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "دامپزشکی",
+    "description": "شما از حیواناتی مراقبت می‌کنید که نمی‌توانند بگویند کجا درد دارند. مهارت تشخیصی و همدلی واقعی به یک اندازه لازم است.",
+    "slug": "veterinary-medicine",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "طب اورژانس / پاراپزشکی",
+    "description": "شما مردم را در بدترین لحظات زندگیشان درمان می‌کنید — سریع، در شرایط غیرقابل پیش‌بینی، وقتی هر دقیقه اهمیت دارد.",
+    "slug": "emergency-medicine-paramedicine",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "ماماگری",
+    "description": "شما یکی از مهم‌ترین تجربیات زندگی یک نفر را هدایت و محافظت می‌کنید — از بارداری تا زایمان و به اوایل دوران والدینی.",
+    "slug": "midwifery",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "name": "پرستاری",
+    "description": "شما ثابت‌ترین حضور در مراقبت از بیمار هستید — مهارت بالینی، هوش عاطفی واقعی، و ارتباط انسانی در هر شیفت.",
+    "slug": "nursing",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "فیزیوتراپی",
+    "description": "شما به مردم کمک می‌کنید پس از آسیب، بیماری، یا جراحی دوباره حرکت کنند. بهبودی عمیقاً شخصی است و شما در مرکز آن هستید.",
+    "slug": "physiotherapy",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "کاردرمانی",
+    "description": "شما به مردم کمک می‌کنید پس از بیماری یا معلولیت استقلال در زندگی روزمره را بازیابند. کاری عملی، مهربانانه، و واقعاً زندگی‌تغییردهنده.",
+    "slug": "occupational-therapy",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "رادیوگرافی / تصویربرداری پزشکی",
+    "description": "شما داخل بدن را بدون باز کردن آن می‌بینید. تصاویر شما تشخیص‌ها و تصمیمات جراحی را در همه بیمارستان‌ها، هر روز هدایت می‌کنند.",
+    "slug": "radiography-medical-imaging",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "تغذیه و رژیم‌درمانی",
+    "description": "شما علم غذا را به راهنمایی شخصی تبدیل می‌کنید که نحوه احساس و زندگی مردم را تغییر می‌دهد. حوزه‌ای که با عمق سواد سلامت در حال رشد است.",
+    "slug": "nutrition-and-dietetics",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "آسیب‌شناسی گفتار و زبان",
+    "description": "شما به مردم کمک می‌کنید پس از سکته، آسیب، یا مشکل رشدی دوباره صحبت کنند — مسلکی که یکی از اساسی‌ترین ارتباطات انسانی را بازمی‌گرداند.",
+    "slug": "speech-language-pathology",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "روان‌شناسی بالینی",
+    "description": "شما به مردم کمک می‌کنید ذهن خودشان را بفهمند و تغییر دهند. یکی از انسانی‌ترین و واقعاً تأثیرگذارترین رشته‌ها.",
+    "slug": "clinical-psychology",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "روان‌پزشکی",
+    "description": "شما بیماری روانی را با تمام وزن علم پزشکی درمان می‌کنید. انگ در حال کاهش و تقاضا سریع‌تر از عرضه متخصصان در حال رشد است.",
+    "slug": "psychiatry",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "مشاوره سلامت روان و اعتیاد",
+    "description": "شما از مردمی حمایت می‌کنید که با اعتیاد، تروما، و بحران سلامت روان دست‌وپنجه نرم می‌کنند — در تلاقی مهارت بالینی و همدلی انسانی واقعی.",
+    "slug": "mental-health-addiction-counseling",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "علم بیومدیکال",
+    "description": "شما آزمایش‌های آزمایشگاهی را انجام می‌دهید که زیر تقریباً هر تصمیم بالینی است. پزشکی بدون شما در پشت‌صحنه کار نمی‌کند.",
+    "slug": "biomedical-science",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "علم اعصاب",
+    "description": "شما پیچیده‌ترین شیء در جهان شناخته‌شده را مطالعه می‌کنید: مغز انسان. بیولوژی، روان‌شناسی، و تکنالوژی در یک حوزه همگرا می‌شوند.",
+    "slug": "neuroscience",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "صحت عامه",
+    "description": "شما از جمعیت‌های کامل، نه فقط بیماران فردی محافظت می‌کنید — سیاست، پیشگیری، و تفکر سیستمی در مقیاسی که اکثر مسلک‌ها هرگز به آن نمی‌رسند.",
+    "slug": "public-health",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری بیومدیکال",
+    "description": "شما دستگاه‌هایی را طراحی و می‌سازید که پزشکی به آن‌ها وابسته است — ضربان‌سازها، پروتزها، سیستم‌های تصویربرداری، و ابزارهای جراحی.",
+    "slug": "biomedical-engineering",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "انفورماتیک صحی",
+    "description": "شما دانش بالینی را با تکنالوژی وصل می‌کنید تا سیستم‌های مراقبت بهداشتی را برای همه داخل آن‌ها هوشمندتر، سریع‌تر، و ایمن‌تر کنید.",
+    "slug": "health-informatics",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "استراتژی و مشاوره",
+    "description": "شکل دادن به آنچه سازمان‌ها انجام می‌دهند و چگونه انجام می‌دهند. نقش‌های تفکر با بالاترین اهرم در کسب‌وکار.",
+    "slug": "strategy-and-consulting",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "بازاریابی و رشد",
+    "description": "هدایت نحوه کشف، احساس، و انتخاب محصولات و برندها توسط مردم. بخشی علم، بخشی خلاقیت، همیشه مردم‌محور.",
+    "slug": "marketing-and-growth",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "عملیات و لجستیک",
+    "description": "نگه داشتن سیستم‌های تجارت در حال کارکرد — زنجیره‌های تامین، جابجایی کالا، و ماشینری تحویل در مقیاس.",
+    "slug": "operations-and-logistics",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "کارآفرینی",
+    "description": "ساختن چیزی از هیچ. نامطمئن‌ترین، شخصی‌ترین، و بالقوه تأثیرگذارترین مسیر در کسب‌وکار.",
+    "slug": "entrepreneurship",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "افراد و سازمان",
+    "description": "استخدام، توسعه، و حفاظت از فرهنگ و افرادی که سازمان‌ها را به کار می‌اندازند.",
+    "slug": "people-and-organisation",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "تحلیل کسب‌وکار",
+    "description": "شما بین مشکلات کسب‌وکار و راه‌حل‌های تخنیکی ترجمه می‌کنید — کسی که سؤالات درست را قبل از ساخته شدن هر چیزی می‌پرسد.",
+    "slug": "business-analysis",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مشاوره مدیریتی",
+    "description": "شما مشکلات پیچیده کسب‌وکار را برای سازمان‌هایی حل می‌کنید که نمی‌توانند نقاط کور خود را ببینند. هر صنعت، هر نوع چالش.",
+    "slug": "management-consulting",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "مدیریت پروژه",
+    "description": "شما چیزها را به موقع، در حوزه، و زیر بودجه تحویل می‌دهید. رشته‌ای که ایده‌ها را به نتایج واقعی تبدیل می‌کند.",
+    "slug": "project-management",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "مشاوره پایداری",
+    "description": "شما به سازمان‌ها کمک می‌کنید تأثیر محیطی و اجتماعی را به روش‌هایی که از نظر تجاری قابل اجرا هستند کاهش دهند. یکی از سریع‌ترین رشد‌کننده‌ترین مسلک‌های مشاوره‌ای.",
+    "slug": "sustainability-consulting",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "بازاریابی",
+    "description": "شما شکل می‌دهید که مردم چگونه چیزهایی را که برایشان مهم است کشف کنند، احساس کنند، و با آن‌ها ارتباط برقرار کنند. بخشی علم، بخشی خلاقیت، همیشه مردم‌محور.",
+    "slug": "marketing",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "بازاریابی دیجیتال",
+    "description": "SEO، رسانه‌های پولی، محتوا، استراتژی اجتماعی — شما هدایت می‌کنید که برندها چگونه به صورت آنلاین رشد کنند. قابل اندازه‌گیری، همیشه در حال تکامل، هرگز دو بار یکسان نیست.",
+    "slug": "digital-marketing",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "استراتژی برند",
+    "description": "شما تعریف می‌کنید یک سازمان چه نمایندگی می‌کند و چگونه آن را به جهان بیان می‌کند — تفکر پشت هر برندی که منسجم و واقعی به نظر می‌رسد.",
+    "slug": "brand-strategy",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "استراتژی تجارت الکترونیک و خرده‌فروشی",
+    "description": "شما طراحی و بهینه‌سازی می‌کنید که محصولات چگونه از انبار به درب خانه می‌رسند. یکی از سریع‌ترین رشد‌کننده‌ترین بخش‌های تجاری در جهان.",
+    "slug": "e-commerce-retail-strategy",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "مدیریت زنجیره تامین",
+    "description": "شما جریان جهانی کالا را در حرکت نگه می‌دارید. حوزه‌ای که در سال ۲۰۲۰ وقتی از کار افتاد به وضوح برای تمام جهان حیاتی شد.",
+    "slug": "supply-chain-management",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "لجستیک و عملیات",
+    "description": "شما اطمینان می‌دهید که سیستم‌های تجارت واقعاً کار می‌کنند. پشت هر تحویل به‌موقع و هر کسب‌وکار خوب‌مدیریت‌شده.",
+    "slug": "logistics-and-operations",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "اموال غیرمنقول",
+    "description": "ملک به عنوان کسب‌وکار — سرمایه‌گذاری، توسعه، و استراتژی تجاری پشت جایی که مردم زندگی، کار، و پول خرج می‌کنند.",
+    "slug": "real-estate",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "فروش و توسعه کسب‌وکار",
+    "description": "شما درها را باز می‌کنید، روابط می‌سازید، و درآمد می‌آورید — نقشی که هر سازمان به آن نیاز دارد و عده کمی واقعاً آن را خوب انجام می‌دهند.",
+    "slug": "sales-and-business-development",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "کارآفرینی عمومی",
+    "description": "شما چیزی از هیچ می‌سازید. نامطمئن‌ترین، شخصی‌ترین، و بالقوه تأثیرگذارترین مسیر موجود.",
+    "slug": "general-entrepreneurship",
+    "kind": "specialization",
+    "parentSlug": "entrepreneurship",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "کارآفرینی تجارت الکترونیک",
+    "description": "شما یک کسب‌وکار مبتنی بر محصول در اقتصاد دیجیتال‌اول می‌سازید و اداره می‌کنید. سد ورود کمتر از همیشه — هنوز همه چیز لازم است.",
+    "slug": "e-commerce-entrepreneurship",
+    "kind": "specialization",
+    "parentSlug": "entrepreneurship",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "منابع انسانی",
+    "description": "شما فرهنگ و افراد یک سازمان را می‌سازید و محافظت می‌کنید — استراتژی، همدلی، و تصمیمات واقعاً دشوار به یک اندازه.",
+    "slug": "human-resources",
+    "kind": "specialization",
+    "parentSlug": "people-and-organisation",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "سرمایه‌گذاری و بازارها",
+    "description": "تحلیل، قیمت‌گذاری، و جابجایی سرمایه در تلاقی شرکت‌ها، بازارها، و استراتژی پرخطر.",
+    "slug": "investment-and-markets",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "برنامه‌ریزی مالی و مشاوره",
+    "description": "کمک به افراد و سازمان‌ها برای حفاظت و رشد ثروتشان در طول یک عمر.",
+    "slug": "financial-planning-and-advisory",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "ریسک و بیمه",
+    "description": "کمیت‌سنجی، قیمت‌گذاری، و مدیریت عدم‌قطعیت — ستون فقرات ریاضی ثبات مالی.",
+    "slug": "risk-and-insurance",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "بانکداری سرمایه‌گذاری",
+    "description": "معامله‌سازی پرخطر در تلاقی سرمایه، شرکت‌ها، و بازارها. سنگین، پرشتاب، و بسیار تأثیرگذار.",
+    "slug": "investment-banking",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "تحلیل مالی",
+    "description": "شما اعداد را برای هدایت سرمایه‌گذاری، استراتژی، و تصمیمات حیاتی معنادار می‌کنید — جایی که ریاضیات با قضاوت کسب‌وکار ملاقات می‌کند.",
+    "slug": "financial-analysis",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "علم بیمه‌سنجی",
+    "description": "شما ریسک را با استفاده از ریاضیات و احتمال کمیت‌سنجی می‌کنید — اعمال‌شده به بیمه، بازنشستگی، و سیاست در بالاترین سطح حرفوی.",
+    "slug": "actuarial-science",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "برنامه‌ریزی مالی و مدیریت ثروت",
+    "description": "شما به افراد و خانواده‌ها کمک می‌کنید در طول یک عمر امنیت مالی بسازند — هدف‌گذاری، سرمایه‌گذاری، استراتژی مالیاتی، و اعتماد بلندمدت.",
+    "slug": "financial-planning-wealth-management",
+    "kind": "specialization",
+    "parentSlug": "financial-planning-and-advisory",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "بیمه و مدیریت ریسک",
+    "description": "شما به سازمان‌ها کمک می‌کنید آنچه ممکن است اشتباه پیش برود را درک کنند و در برابر آن محافظت کنند — قیمت‌گذاری عدم‌قطعیت و ساختن انعطاف در استراتژی کسب‌وکار.",
+    "slug": "insurance-risk-management",
+    "kind": "specialization",
+    "parentSlug": "risk-and-insurance",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "طراحی بصری",
+    "description": "شکل دادن به ظاهر چیزها — از هویت‌های برند و تصویرسازی تا رابط‌ها و زیبایی‌شناسی محصول.",
+    "slug": "visual-design",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "رسانه و تولید",
+    "description": "ایجاد محتوایی که صفحه‌نمایش‌ها، بلندگوها، و فیدها را پر می‌کند — ویدئو، صوت، بازی، و کانال‌های بین آن‌ها.",
+    "slug": "media-and-production",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "معماری و طراحی فضایی",
+    "description": "طراحی ساختمان‌ها، فضاها، و اشیایی که مردم هر روز در آن‌ها زندگی می‌کنند، استفاده می‌کنند، و دوست دارند.",
+    "slug": "architecture-and-spatial-design",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "نگارش و محتوا",
+    "description": "ارتباط با کلمات — روزنامه‌نگاری، داستان‌سرایی، نسخه UX، و هر آنچه کلمه نوشتاری می‌تواند انجام دهد.",
+    "slug": "writing-and-content",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "هنرهای نمایشی",
+    "description": "اجرای زنده، حرکت، و صحنه. قدیمی‌ترین و فوری‌ترین شکل بیان انسانی.",
+    "slug": "performing-arts",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "طراحی گرافیک",
+    "description": "شما به ایده‌ها یک شکل بصری می‌دهید که فوری ارتباط برقرار می‌کند. هر برند، کمپین، و طرح‌بندی که تا به حال کسی را در مسیرش متوقف کرده از اینجا شروع می‌شود.",
+    "slug": "graphic-design",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "تصویرسازی و هنر مفهومی",
+    "description": "شما دنیاهای بصری اصلی می‌آفرینید — از تصویرسازی سردبیری تا هنر مفهومی که ظاهر بازی‌ها، فیلم‌ها، و برندها را تعریف می‌کند.",
+    "slug": "illustration-concept-art",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "انیمیشن و گرافیک متحرک",
+    "description": "شما چیزهای ساکن را زنده می‌کنید. فیلم، تبلیغات، بازی‌ها، و آموزش همه به آنچه می‌توانید به حرکت در بیاورید وابسته هستند.",
+    "slug": "animation-motion-graphics",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "عکاسی",
+    "description": "شما لحظات، مردم، محصولات، و مکان‌ها را در قابی ثبت می‌کنید که از شما طولانی‌تر عمر می‌کند. هنری، تجاری، و روزنامه‌نگارانه به یک باره.",
+    "slug": "photography",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "تحقیق UI / UX",
+    "description": "شما پیدا می‌کنید که مردم واقعی چگونه تکنالوژی را تجربه می‌کنند و آن حقیقت را به فرآیند طراحی بازمی‌گردانید. خلاقیت مبتنی بر شواهد.",
+    "slug": "ui-ux-research",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "طراحی مد",
+    "description": "شما به مردم لباس می‌پوشانید و فرهنگ را به خودش منعکس می‌کنید — جایی که صنعت‌کاری، هویت، تجارت، و بیان خود همه با هم ملاقات می‌کنند.",
+    "slug": "fashion-design",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "تولید فیلم و ویدئو",
+    "description": "شما داستان‌ها را از طریق تصاویر متحرک روایت می‌کنید — از مستند تا محتوای کوتاه، شما کنترل می‌کنید که مردم چه می‌بینند و چه احساس می‌کنند.",
+    "slug": "film-video-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "تولید موسیقی",
+    "description": "شما صدایی می‌سازید که زیر فرهنگ می‌نشیند. آهنگ‌ها، موسیقی فیلم، صدای بازی، بستر پادکست — همه چیز یک طراح صدا پشت آن دارد.",
+    "slug": "music-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "طراحی صدا و انجینیری صوتی",
+    "description": "شما دنیای صوتی را می‌سازید — برای فیلم، موسیقی، رویدادهای زنده، و بازی‌ها. کار نامرئی با تأثیر عاطفی عظیم.",
+    "slug": "sound-design-audio-engineering",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "تولید پادکست (Podcast)",
+    "description": "داستان‌سرایی صوتی بلندمدت برای مخاطبانی که انتخاب می‌کنند یک ساعت با صدایی که به آن اعتماد دارند بگذرانند. رسانه‌ای صمیمی، در حال رشد، و قابل کسب درآمد.",
+    "slug": "podcast-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "تولید محتوای رسانه‌های اجتماعی",
+    "description": "شما مستقیماً با مخاطبان در مقیاس، بدون واسطه، ارتباط برقرار می‌کنید — یک مسلک خلاق که بیست سال پیش وجود نداشت و حالا فرهنگ را هدایت می‌کند.",
+    "slug": "social-media-content-creation",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "طراحی بازی",
+    "description": "شما سیستم‌ها و تجربیات بازی را طراحی می‌کنید — مکانیک، روایت، و روان‌شناسی بازیکن در رشته‌ای که میلیون‌ها نفر آن را بر هر چیز دیگری ترجیح می‌دهند.",
+    "slug": "game-design",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "معماری",
+    "description": "شما ساختمان‌هایی طراحی می‌کنید که صد سال از شما دوام می‌آورند. سرپناه، زیبایی، کارکرد، و هویت ساخته‌شده در ساختارهای فیزیکی دائمی.",
+    "slug": "architecture",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "طراحی داخلی",
+    "description": "شما فضاهایی را شکل می‌دهید که مردم هر روز در آن زندگی و کار می‌کنند. هر اتاقی که کسی دوست دارد اتاقی است که کسی طراحی کرده.",
+    "slug": "interior-design",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "طراحی صنعتی / محصول",
+    "description": "شما اشیایی را طراحی می‌کنید که مردم نگه می‌دارند، استفاده می‌کنند، و دوست دارند — از مبلمان تا دستگاه‌های پزشکی تا گوشی در دست همه.",
+    "slug": "industrial-product-design",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "روزنامه‌نگاری و نگارش خلاق",
+    "description": "شما داستان‌هایی روایت می‌کنید که اطلاع می‌دهند، به چالش می‌کشند، و نحوه تفکر مردم را تغییر می‌دهند. حوزه‌ای که هرگز این قدر ضروری یا مورد مناقشه نبوده.",
+    "slug": "journalism-creative-writing",
+    "kind": "specialization",
+    "parentSlug": "writing-and-content",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "نگارش UX و طراحی محتوا",
+    "description": "شما کلمات داخل محصولات را می‌نویسید — دکمه‌ها، جریان‌های آنبوردینگ، پیام‌های خطا، راهنماها. تفاوت بین برنامه‌ای که گیج می‌کند و یکی که هدایت می‌کند.",
+    "slug": "ux-writing-content-design",
+    "kind": "specialization",
+    "parentSlug": "writing-and-content",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "تئاتر و هنرهای نمایشی",
+    "description": "شما به صورت زنده، در اتاق، برای افراد واقعی اجرا می‌کنید. قدیمی‌ترین شکل هنر انسانی و هنوز یکی از قدرتمندترین‌ها از نظر احساسی.",
+    "slug": "theatre-performing-arts",
+    "kind": "specialization",
+    "parentSlug": "performing-arts",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "رقص و کوریوگرافی",
+    "description": "شما از طریق حرکت ارتباط برقرار می‌کنید — در اجرا، آموزش، فیلم، و رویدادهای زنده. داستان‌سرایی فیزیکی در مستقیم‌ترین شکل آن.",
+    "slug": "dance-choreography",
+    "kind": "specialization",
+    "parentSlug": "performing-arts",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "علوم حیاتی",
+    "description": "مطالعه موجودات زنده — از ژنتیک یک سلول واحد تا بوم‌شناسی اکوسیستم‌های کامل.",
+    "slug": "life-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "علوم فیزیکی",
+    "description": "درک ماده، انرژی، و خود جهان در اساسی‌ترین سطح.",
+    "slug": "physical-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "علوم زمین و محیطی",
+    "description": "مطالعه کره زمین — تاریخ، سیستم‌ها، و نیروهایی که همین الان تهدیدشان می‌کنند.",
+    "slug": "earth-and-environmental-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "علوم کاربردی",
+    "description": "به‌کارگیری دانش علمی برای اهداف عملی — در غذا، پزشکی قانونی، کشاورزی، و سیستم‌هایی که تمدن را حفظ می‌کنند.",
+    "slug": "applied-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "زیست‌شناسی دریایی",
+    "description": "شما اقیانوس را مطالعه می‌کنید، که بیشتر زمین را پوشش می‌دهد و کمترین شناخته شده است. تحقیقی که حفاظت و سیاست را برای کل کره زمین شکل می‌دهد.",
+    "slug": "marine-biology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "بیوتکنالوژی (Biotechnology)",
+    "description": "شما از سیستم‌های زنده برای حل مشکلات در پزشکی، کشاورزی، و مواد استفاده می‌کنید. مرز زیست‌شناسی کاربردی در سال ۲۰۲۶.",
+    "slug": "biotechnology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "ژنتیک و ژنومیک",
+    "description": "شما دستورالعمل‌های نوشته‌شده در DNA را رمزگشایی می‌کنید — هدایت پیشرفت‌ها در پزشکی، کشاورزی، و درک ما از خود زندگی.",
+    "slug": "genetics-and-genomics",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "بوم‌شناسی",
+    "description": "شما مطالعه می‌کنید که سیستم‌های زنده چگونه با یکدیگر تعامل و وابستگی دارند — علم پشت حفاظت، واکنش به تغییرات آب‌وهوا، و سیاست محیطی.",
+    "slug": "ecology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "زیست‌شناسی حفاظت",
+    "description": "شما برای بقای گونه‌ها و اکوسیستم‌ها می‌جنگید — کار میدانی، تحقیق، و حمایت از سیاست به عنوان یک زندگی حرفوی واحد.",
+    "slug": "conservation-biology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "میکروبیولوژی و ایمونولوژی",
+    "description": "شما کوچکترین موجودات و دفاع‌های بدن در برابر آن‌ها را مطالعه می‌کنید — در مرکز توسعه واکسن، بیماری‌های عفونی، و کشف دارو.",
+    "slug": "microbiology-and-immunology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "شیمی",
+    "description": "شما ماده را در اساسی‌ترین سطح درک می‌کنید. داروسازی، مواد، انرژی، و غذا همه به شیمیدان‌ها وابسته هستند.",
+    "slug": "chemistry",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "فیزیک",
+    "description": "شما عمیق‌ترین سؤالات درباره واقعیت را می‌پرسید و از ریاضیات برای پاسخ استفاده می‌کنید — پایه همه علوم و انجینیری کاربردی.",
+    "slug": "physics",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "نجوم و اخترفیزیک",
+    "description": "شما جهان فراتر از زمین را مطالعه می‌کنید. یکی از معدود مسلک‌هایی که شگفتی واقعی یک الزام حرفوی است.",
+    "slug": "astronomy-and-astrophysics",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "علم مواد",
+    "description": "شما مواد جدیدی را کشف و مهندسی می‌کنید — هواپیمای سبک‌تر، چیپ سریع‌تر، پانل‌های خورشیدی انعطاف‌پذیرتر. همه چیز وقتی مواد پیشرفت می‌کنند بهتر می‌شوند.",
+    "slug": "materials-science",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "علم محیطی",
+    "description": "شما سیستم‌هایی را که همه حیات به آن‌ها وابسته است مطالعه و دفاع می‌کنید — آب‌وهوا، خاک، آب، هوا. این کار هرگز در تاریخ بشری بیشتر از این اهمیت نداشته.",
+    "slug": "environmental-science",
+    "kind": "specialization",
+    "parentSlug": "earth-and-environmental-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "زمین‌شناسی",
+    "description": "شما تاریخ زمین را در سنگ و رسوب می‌خوانید — ضروری برای انرژی، معدن، پیش‌بینی بلایای طبیعی، و علم آب‌وهوا.",
+    "slug": "geology",
+    "kind": "specialization",
+    "parentSlug": "earth-and-environmental-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "علم جنایی",
+    "description": "شما روش علمی را به عدالت کیفری می‌آورید. شواهدی که نتایج را در دادگاه تعیین می‌کنند — ریسک نمی‌توانست بالاتر باشد.",
+    "slug": "forensic-science",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "علم و تکنالوژی غذا",
+    "description": "شما بهبود می‌دهید که غذا چگونه برای میلیاردها نفر به طور ایمن ساخته، نگهداری، و تحویل می‌شود. حوزه‌ای عمیقاً عملی و در حال رشد.",
+    "slug": "food-science-and-technology",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "علم کشاورزی",
+    "description": "شما بهبود می‌دهید که چگونه در آب‌وهوایی در حال تغییر غذا می‌رویانیم. تغذیه بشر بدون نابودی کره زمین چالش تعریف‌کننده این قرن است.",
+    "slug": "agricultural-science",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "حقوق و حکومتداری",
+    "description": "قوانینی که جامعه را نگه می‌دارند — و مردمی که آن‌ها را می‌نویسند، استدلال می‌کنند، اجرا می‌کنند، و اصلاح می‌کنند.",
+    "slug": "law-and-governance",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "علوم اجتماعی و رفتاری",
+    "description": "درک اینکه چرا مردم به روشی که می‌اندیشند، احساس می‌کنند، رفتار می‌کنند، و جوامع می‌سازند.",
+    "slug": "social-and-behavioral-sciences",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "امور بین‌المللی و عمومی",
+    "description": "پیمایش فضای میان ملت‌ها، دولت‌ها، و نهادهای جهانی.",
+    "slug": "international-and-public-affairs",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "تعلیم و اطلاعات",
+    "description": "تدریس، هدایت، و سازمان‌دهی دانش — زیرساخت درک انسانی.",
+    "slug": "education-and-information",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "علوم انسانی",
+    "description": "مطالعه زبان، ایده‌ها، فرهنگ، و گذشته — رشته‌هایی که عمیق‌ترین سؤالات را درباره معنای انسان بودن می‌پرسند.",
+    "slug": "humanities",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "حقوق",
+    "description": "شما قوانینی را که جامعه را نگه می‌دارند درک، استدلال، و دفاع می‌کنید. هر تعارض انسانی بزرگ و هر معامله مهمی یک بُعد حقوقی دارد.",
+    "slug": "law",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "جرم‌شناسی",
+    "description": "شما جرم، علل آن، و نحوه پاسخ سیستم‌های عدالت را مطالعه می‌کنید — پیوند دادن تحقیق، سیاست، و توانبخشی در یک رشته.",
+    "slug": "criminology",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "برنامه‌ریزی شهری",
+    "description": "شما شهرها را طراحی می‌کنید. مکانی که مردم زندگی می‌کنند، نحوه حرکتشان، آنچه می‌توانند بپردازند — تصمیماتی که توسط برنامه‌ریزان شهری گرفته می‌شود، توسط همه احساس می‌شود.",
+    "slug": "urban-planning",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "سیاست و حقوق امنیت سایبری",
+    "description": "شما در تلاقی دولت، حقوق، و تکنالوژی کار می‌کنید — شکل دادن به نحوه محافظت ملت‌ها از زیرساخت دیجیتالشان در سطح سیستمی.",
+    "slug": "cybersecurity-policy-and-law",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "روان‌شناسی",
+    "description": "شما مطالعه می‌کنید که چرا مردم به روشی که می‌اندیشند، احساس می‌کنند، و رفتار می‌کنند. قابل اعمال برای هر حوزه انسانی که وجود دارد — بدون آن هیچ چیز بهتر کار نمی‌کند.",
+    "slug": "psychology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "جامعه‌شناسی",
+    "description": "شما جامعه را به عنوان یک سیستم مطالعه می‌کنید — چگونه گروه‌ها شکل می‌گیرند، چه هنجارهایی آن‌ها را حفظ می‌کنند، و چه نیروهایی سرانجام آن‌ها را از هم می‌پاشند.",
+    "slug": "sociology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "اقتصاد",
+    "description": "شما مدل می‌کنید که منابع، انگیزه‌ها، و تصمیمات چگونه جهان را شکل می‌دهند. سیاست، مالی، تحقیق، و کسب‌وکار همه بر تفکر اقتصادی استوار هستند.",
+    "slug": "economics",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "کار اجتماعی",
+    "description": "شما از مردم در سخت‌ترین لحظات زندگیشان حمایت می‌کنید. یک مسلک سنگین، ضروری، و عمیقاً انسانی.",
+    "slug": "social-work",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "مشاوره",
+    "description": "شما فضایی برای مردم ایجاد می‌کنید تا پردازش کنند، بهبود یابند، و پیش بروند — در مدارس، بیمارستان‌ها، محیط‌های اجتماعی، و مطب خصوصی.",
+    "slug": "counseling",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "انسان‌شناسی",
+    "description": "شما مطالعه می‌کنید که انسان بودن در فرهنگ‌ها، دوره‌های زمانی، و جوامع مختلف به چه معناست — گسترده‌ترین عدسی ممکن بر داستان انسانی.",
+    "slug": "anthropology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "علوم سیاسی و سیاست‌گذاری",
+    "description": "شما قدرت، حکومتداری، و سیستم‌هایی که جوامع را سازمان می‌دهند مطالعه می‌کنید. پایه‌ای برای مسلک‌ها در دولت، NGOها، و امور بین‌المللی.",
+    "slug": "political-science-and-policy",
+    "kind": "specialization",
+    "parentSlug": "international-and-public-affairs",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "روابط بین‌الملل",
+    "description": "شما فضای میان ملت‌ها، فرهنگ‌ها، و نهادهای جهانی را پیمایش می‌کنید — دیپلماسی، توسعه، و ژئوپولیتیک به عنوان یک واقعیت روزانه.",
+    "slug": "international-relations",
+    "kind": "specialization",
+    "parentSlug": "international-and-public-affairs",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "تعلیم و تدریس",
+    "description": "شما شکل می‌دهید که نسل بعدی جهان را چگونه درک می‌کند. یکی از معدود مسلک‌هایی که تأثیرتان از طریق هر کسی که تدریس می‌کنید ضرب می‌شود.",
+    "slug": "education-and-teaching",
+    "kind": "specialization",
+    "parentSlug": "education-and-information",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "علم کتابداری و اطلاعات",
+    "description": "شما دانش را سازمان‌دهی، حفظ، و مردم را به آن وصل می‌کنید — در عصر اضافه‌بار اطلاعات و محتوای تولیدشده توسط هوش مصنوعی بیش از پیش حیاتی.",
+    "slug": "library-and-information-science",
+    "kind": "specialization",
+    "parentSlug": "education-and-information",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "زبان‌شناسی",
+    "description": "شما خود زبان را مطالعه می‌کنید — چگونه کار می‌کند، تکامل می‌یابد، و فکر را شکل می‌دهد. اعمال‌شده به هوش مصنوعی، ترجمه، ارتباطات، و آموزش.",
+    "slug": "linguistics",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "فلسفه",
+    "description": "شما مبانی دانش، اخلاق، و واقعیت را مطالعه می‌کنید — امروز اعمال‌شده به اخلاق هوش مصنوعی، حقوق، سیاست، و سخت‌ترین سؤالات در علم.",
+    "slug": "philosophy",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "باستان‌شناسی",
+    "description": "شما سابقه فیزیکی تاریخ بشری را بازیابی می‌کنید — کاوش گذشته برای درک اینکه تمدن‌ها چگونه ظهور کردند، تغییر کردند، و سقوط کردند.",
+    "slug": "archaeology",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "مدنی و سازه‌ای",
+    "description": "طراحی و ساخت زیرساخت فیزیکی دائمی که شهرها و تمدن به آن وابسته هستند.",
+    "slug": "civil-and-structural",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مکانیک و خودرو",
+    "description": "مهندسی ماشین‌ها، وسایل نقلیه، و سیستم‌های فیزیکی که مردم را جابجا می‌کنند و صنعت را تغذیه می‌کنند.",
+    "slug": "mechanical-and-automotive",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "سیستم‌های برقی و الکترونیکی",
+    "description": "کار با برق، الکترونیک، و سیستم‌هایی که همه چیز از خانه‌ها تا ماهواره‌ها را به حرکت در می‌آورند.",
+    "slug": "electrical-and-electronic-systems",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "شیمیایی و هسته‌ای",
+    "description": "تبدیل ماده و انرژی در مقیاس‌های صنعتی و مولکولی — از داروسازی تا تولید برق.",
+    "slug": "chemical-and-nuclear",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "هوافضا",
+    "description": "طراحی هواپیما و فضاپیما — از نظر فنی از سنگین‌ترین و پرریسک‌ترین کارها در هر رشته انجینیری.",
+    "slug": "aerospace",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "محیطی و انرژی",
+    "description": "مهندسی سیستم‌هایی که حیاتی‌ترین منابع کره زمین را مدیریت می‌کنند — آب تمیز، انرژی تمیز، و هوای تمیز.",
+    "slug": "environmental-and-energy",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری مدنی",
+    "description": "شما زیرساختی می‌سازید که مردم هر روز به آن وابسته هستند — پل‌ها، جاده‌ها، سیستم‌های آبی، سدهای سیل. تأثیر دائمی و قابل مشاهده.",
+    "slug": "civil-engineering",
+    "kind": "specialization",
+    "parentSlug": "civil-and-structural",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری سازه",
+    "description": "شما محاسبه می‌کنید که آیا ساختمان‌ها ایستاده می‌مانند یا سقوط می‌کنند. ایمنی، دقت، و وزن واقعی مسئولیت در هر پروژه.",
+    "slug": "structural-engineering",
+    "kind": "specialization",
+    "parentSlug": "civil-and-structural",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری مکانیک",
+    "description": "شما ماشین‌ها و سیستم‌های فیزیکی طراحی می‌کنید — از موتورهای خودرو تا تجهیزات تولیدی تا مکانیزم‌های داخل دستگاه‌های پزشکی.",
+    "slug": "mechanical-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری خودرو و EV",
+    "description": "شما وسایل نقلیه و نیروگاه‌های عصر برقی را طراحی می‌کنید. یک صنعت صد ساله در میان بزرگ‌ترین تحولش.",
+    "slug": "automotive-ev-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری صنعتی و تولیدی",
+    "description": "شما سیستم‌هایی را که چیزها را در مقیاس تولید می‌کنند بهینه می‌کنید — کاهش هدررفت، بهبود خروجی، و نگه داشتن خطوط تولید در حال کار.",
+    "slug": "industrial-manufacturing-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری برق",
+    "description": "شما با برق، الکترونیک، و سیستم‌هایی کار می‌کنید که همه چیز از خانه‌ها تا ماهواره‌ها تا شبکه‌های برق را اجرا می‌کنند.",
+    "slug": "electrical-engineering",
+    "kind": "specialization",
+    "parentSlug": "electrical-and-electronic-systems",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری شیمی",
+    "description": "شما شیمی را در فرآیندهای صنعتی مقیاس‌بندی می‌کنید — انرژی، داروسازی، تولید غذا، و تولید مواد در مقیاس دنیای واقعی.",
+    "slug": "chemical-engineering",
+    "kind": "specialization",
+    "parentSlug": "chemical-and-nuclear",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری هسته‌ای",
+    "description": "شما سیستم‌هایی طراحی می‌کنید که انرژی هسته‌ای را بهره‌برداری می‌کنند — از تولید برق تا تصویربرداری پزشکی. حوزه‌ای در رشد قابل توجه با افزایش تقاضای انرژی تمیز.",
+    "slug": "nuclear-engineering",
+    "kind": "specialization",
+    "parentSlug": "chemical-and-nuclear",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری هوافضا",
+    "description": "شما هواپیما و فضاپیما طراحی می‌کنید — یکی از فنی‌ترین حوزه‌ها با از بالاترین ریسک‌ها در هر مسلک.",
+    "slug": "aerospace-engineering",
+    "kind": "specialization",
+    "parentSlug": "aerospace",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری محیطی",
+    "description": "شما راه‌حل‌هایی برای آلودگی، زباله، و کیفیت آب مهندسی می‌کنید — اعمال انضباط انجینیری مستقیماً به بحران پایداری.",
+    "slug": "environmental-engineering",
+    "kind": "specialization",
+    "parentSlug": "environmental-and-energy",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "انجینیری انرژی تجدیدپذیر",
+    "description": "شما سیستم‌های خورشیدی، بادی، باتری، و شبکه طراحی می‌کنید. چالش انجینیری و فرصت تجاری کل قرن بیست‌ویکم.",
+    "slug": "renewable-energy-engineering",
+    "kind": "specialization",
+    "parentSlug": "environmental-and-energy",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "غذا و مهمان‌نوازی",
+    "description": "ایجاد تجربه‌هایی که مردم ماه‌ها برایشان برنامه‌ریزی می‌کنند و سال‌ها به یاد می‌آورند — از آشپزخانه‌های حرفوی تا توریسم جهانی.",
+    "slug": "food-and-hospitality",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "حرفه‌های ماهر و ساختمان",
+    "description": "ساختن، نصب، و نگهداری دنیای فیزیکی — متخصصان دارای جواز که هر ساختمان و شهر کارکردی به آن‌ها نیاز دارد.",
+    "slug": "skilled-trades-and-construction",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "تناسب اندام و سلامتی",
+    "description": "هدایت مردم به سوی سلامت جسمی و روانی پایدار از طریق آموزش، مربی‌گری، و پشتیبانی سبک زندگی مبتنی بر شواهد.",
+    "slug": "fitness-and-wellness",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "سرگرمی و رویدادها",
+    "description": "تولید لحظاتی، رقابت‌ها، و تجربیات زنده‌ای که تعریف می‌کنند مردم وقت آزادشان را چگونه می‌گذرانند.",
+    "slug": "entertainment-and-events",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "تعلیم و توسعه جوانان",
+    "description": "شکل دادن به ذهن جوان‌ترین یادگیرندگان و ساختن ابزارهایی که تعلیم را مؤثرتر و دردسترس‌تر می‌کنند.",
+    "slug": "education-and-youth-development",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "نوظهور و پیشگام",
+    "description": "صنایع و تکنالوژی‌هایی که یک دهه پیش به سختی وجود داشتند و مسلک‌های نسل بعدی را تعریف خواهند کرد.",
+    "slug": "emerging-and-frontier",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "هنرهای آشپزی",
+    "description": "شما بر آتش، چاقو، طعم، و زمان‌بندی مسلط می‌شوید. آشپزخانه‌های حرفوی از مطالبه‌ترین محیط‌ها در هر حوزه هستند — و چیزی زیبا تولید می‌کنند.",
+    "slug": "culinary-arts",
+    "kind": "specialization",
+    "parentSlug": "food-and-hospitality",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "مدیریت مهمان‌نوازی و توریسم",
+    "description": "شما تجربه‌هایی می‌آفرینید که مردم برای آن‌ها پس‌انداز می‌کنند و ماه‌ها برنامه‌ریزی می‌کنند. بزرگ‌ترین صنعت خدماتی جهان.",
+    "slug": "hospitality-tourism-management",
+    "kind": "specialization",
+    "parentSlug": "food-and-hospitality",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "حرفه‌های ماهر (برقکار، لوله‌کش، HVAC)",
+    "description": "شما دنیای فیزیکی را در حال کارکرد نگه می‌دارید. ماهر، دارای جواز، ضروری، و با افزایش کمبود بیشتر و بیشتر دستمزد خوب.",
+    "slug": "skilled-trades",
+    "kind": "specialization",
+    "parentSlug": "skilled-trades-and-construction",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "آژانس اموال غیرمنقول",
+    "description": "شما به مردم کمک می‌کنید یکی از بزرگ‌ترین تصمیمات مالی زندگیشان را بگیرند — دانش بازار، مذاکره، و اعتماد در مرکز.",
+    "slug": "real-estate-agency",
+    "kind": "specialization",
+    "parentSlug": "skilled-trades-and-construction",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "مدیریت ساختمان",
+    "description": "شما پروژه‌هایی را نظارت می‌کنید که شهرها را به صورت فیزیکی می‌سازند — هماهنگی تیم‌ها، بودجه‌ها، برنامه‌ها، و ایمنی در همه چیز از خانه‌ها تا آسمان‌خراش‌ها.",
+    "slug": "construction-management",
+    "kind": "specialization",
+    "parentSlug": "skilled-trades-and-construction",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "آرایش و زیبایی",
+    "description": "شما مستقیماً با مردم کار می‌کنید تا به آن‌ها کمک کنید بهترین به نظر برسند و احساس کنند — یک مسلک خلاق، مشتری‌محور، و عمیقاً شخصی.",
+    "slug": "beauty-and-cosmetology",
+    "kind": "specialization",
+    "parentSlug": "skilled-trades-and-construction",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "علم ورزش و مربی‌گری",
+    "description": "شما فیزیولوژی، روان‌شناسی، و بیومکانیک را برای عملکرد ورزشی اعمال می‌کنید. پشت هر نتیجه نخبگانی یک تیم علم ورزش است.",
+    "slug": "sports-science-and-coaching",
+    "kind": "specialization",
+    "parentSlug": "fitness-and-wellness",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "تمرین شخصی و تناسب اندام",
+    "description": "شما مردم را در تحول جسمانی هدایت می‌کنید — بیشتر و بیشتر مبتنی بر شواهد، بیشتر و بیشتر مورد تقاضا، و کار عمیقاً شخصی.",
+    "slug": "personal-training-and-fitness",
+    "kind": "specialization",
+    "parentSlug": "fitness-and-wellness",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "مربی‌گری سلامت و بهزیستی",
+    "description": "شما مردم را به سوی تغییرات پایدار در نحوه زندگی، خوابیدن، خوردن، و حرکتشان هدایت می‌کنید. مرز میان مربی‌گری و مراقبت بهداشتی در حال باریک شدن است.",
+    "slug": "health-and-wellness-coaching",
+    "kind": "specialization",
+    "parentSlug": "fitness-and-wellness",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "مدیریت رویداد",
+    "description": "شما لحظاتی را تولید می‌کنید که مردم سال‌ها به یاد می‌آورند — از کنسرت‌ها و اجلاس‌های شرکتی تا عروسی‌ها و رویدادهای ورزشی.",
+    "slug": "event-management",
+    "kind": "specialization",
+    "parentSlug": "entertainment-and-events",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "صنعت اسپورت‌های الکترونیکی و بازی (Esports)",
+    "description": "شما در مدیریت مسابقات، پخش، تحلیل، یا تولید رویداد در یکی از سریع‌ترین رشد‌کننده‌ترین بخش‌های سرگرمی جهان کار می‌کنید.",
+    "slug": "esports-and-gaming-industry",
+    "kind": "specialization",
+    "parentSlug": "entertainment-and-events",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "تعلیم اوایل کودکی",
+    "description": "شما مردم را در سنی شکل می‌دهید که بیشترین تأثیرپذیری را دارند. تحقیقات به طور مداوم نشان می‌دهد این بالاترین نقطه اهرمی در رشد انسانی است.",
+    "slug": "early-childhood-education",
+    "kind": "specialization",
+    "parentSlug": "education-and-youth-development",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "EdTech و طراحی یادگیری",
+    "description": "شما ابزارها و برنامه‌های درسی می‌سازید که نحوه یادگیری مردم را تغییر می‌دهند — تعلیم هدایت‌شده توسط تکنالوژی در مقیاسی که هیچ کلاس درسی هرگز به آن نرسیده.",
+    "slug": "edtech-and-learning-design",
+    "kind": "specialization",
+    "parentSlug": "education-and-youth-development",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "تکنالوژی فضایی",
+    "description": "شما سیستم‌هایی برای عصر جدید پرواز فضایی تجاری، زیرساخت ماهواره‌ای، و اکتشاف فضای عمیق می‌سازید — حوزه‌ای که سریع‌تر از هر حوزه دیگری در حال شتاب است.",
+    "slug": "space-technology",
+    "kind": "specialization",
+    "parentSlug": "emerging-and-frontier",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "تعامل انسان-کامپیوتر (HCI)",
+    "description": "شما تحقیق می‌کنید که مردم چگونه با تکنالوژی تعامل دارند و سیستم‌هایی طراحی می‌کنید که با شناخت انسانی همسو است نه در برابر آن.",
+    "slug": "human-computer-interaction",
+    "kind": "specialization",
+    "parentSlug": "emerging-and-frontier",
+    "order": 2,
+    "status": "active"
+  }
+]

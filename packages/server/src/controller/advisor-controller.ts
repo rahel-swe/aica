@@ -3,10 +3,6 @@ import { advisorService } from '../services/advisor-service';
 import { advisorChatRequestSchema } from '@contracts/shared/schemas/advisor-schema';
 import { ZodError } from 'zod';
 
-// ─── Controller ────────────────────────────────────────────────────────────────
-// Note: userId comes from req.user (set by the authorize middleware).
-// This assumes your auth middleware attaches `user: { id: string }` to the request.
-
 class AdvisorController {
   // POST /chat
   // Sets SSE headers BEFORE calling the service — once headers are sent, you can't change them.
@@ -36,6 +32,7 @@ class AdvisorController {
         }
         return;
       }
+
       // If headers were already sent (SSE started), the service handles cleanup
       if (!res.headersSent) {
         res
@@ -45,7 +42,7 @@ class AdvisorController {
     }
   };
 
-  // GET /conversations
+  // Get all conversation conversations
   listConversations = async (req: Request, res: Response): Promise<void> => {
     try {
       const userId = (req as any).user?.id as string;
@@ -58,12 +55,12 @@ class AdvisorController {
     }
   };
 
-  // GET /conversations/:id
+  // Get conversation by id
   getConversation = async (req: Request, res: Response): Promise<void> => {
     try {
       const userId = (req as any).user?.id as string;
       const conversation = await advisorService.getConversation(
-        req.params.id,
+        req.params.id as string,
         userId
       );
 
@@ -87,7 +84,7 @@ class AdvisorController {
     try {
       const userId = (req as any).user?.id as string;
       const deleted = await advisorService.deleteConversation(
-        req.params.id,
+        req.params.id as string,
         userId
       );
 

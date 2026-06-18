@@ -3,10 +3,12 @@ import { Button } from '../ui/button';
 import ActionDialog from '../action-dialog';
 import { useRoadmapDeleteMutation } from '@/queries/roadmap-query';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const RoadmapEditButton = ({ roadmapId }: { roadmapId: string }) => {
   const { mutateAsync, isPending } = useRoadmapDeleteMutation();
   const navigate = useNavigate();
+  const [openDialog, setOpenDialog] = useState(false);
 
   const onEdit = async () => {
     try {
@@ -19,11 +21,14 @@ const RoadmapEditButton = ({ roadmapId }: { roadmapId: string }) => {
 
   return (
     <ActionDialog
+      open={openDialog}
+      setOpen={setOpenDialog}
       trigger={
         <Button
           variant="secondary"
           className="w-min px-4 text-xs sm:text-sm"
           disabled={isPending}
+          onClick={() => setOpenDialog(true)}
         >
           Edit Roadmap
           <Pencil />

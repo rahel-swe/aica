@@ -1,8 +1,11 @@
 import apiClient from '@/lib/api-client';
-import type { RecommendationOverview } from '@contracts/shared/types/pathway-domain-types';
+import type {
+  RecommendationOverview,
+  RecommendationExplanationResponse,
+} from '@contracts/shared/schemas/recommendation-schema';
 
 export const generateRecommendations = async () => {
-  const response = await apiClient.post(`/api/recommendations/generate`);
+  const response = await apiClient.post('/api/recommendations/generate');
   return response.data;
 };
 
@@ -11,15 +14,15 @@ export const getMyRecommendations = async (): Promise<{
   message: string;
   data: RecommendationOverview;
 }> => {
-  const response = await apiClient.get(`/api/recommendations/me`);
+  const response = await apiClient.get('/api/recommendations/me');
   return response.data;
 };
 
-export const deleteMyRecommendations = async (): Promise<{
-  success: boolean;
-  message: string;
-  data?: unknown;
-}> => {
-  const response = await apiClient.delete(`/api/recommendations`);
+export const getExplanation = async (
+  recommendationId: string
+): Promise<RecommendationExplanationResponse> => {
+  const response = await apiClient.get(
+    `/api/recommendations/${recommendationId}/explanation`
+  );
   return response.data;
 };

@@ -5,6 +5,7 @@ import type {
   AdvisorToolCall,
   AdvisorContextSource,
   SearchResult,
+  AdvisorResponseMode,
 } from '@contracts/shared/types/advisor-types';
 import { advisorConversationRepository } from '../repositories/advisor-conversation-repository';
 import { advisorContextBuilder } from './advisor-context-builder';
@@ -12,7 +13,7 @@ import advisorSystemPromptTemplate from '@/src/llm/prompts/advisor-guidance-prom
 import { runAdvisorCompletion } from '../llm/advisor-chat-completion';
 
 const LLM_HISTORY_WINDOW = 20;
-const TITLE_MAX_LENGTH = 80;
+const TITLE_MAX_LENGTH = 60;
 
 export class AdvisorService {
   private readonly conversations = advisorConversationRepository;
@@ -30,6 +31,7 @@ export class AdvisorService {
         conversationId,
         userId
       );
+
       if (!conversation) {
         this.sendEvent(res, {
           type: 'error',
@@ -46,16 +48,17 @@ export class AdvisorService {
         messageId: new Date().toISOString(),
       });
 
-      const historyMessages = ((conversation as any).messages ?? [])
+      const historyMessages = (conversation.messages ?? [])
         .slice(-LLM_HISTORY_WINDOW)
-        .map((m: any) => ({
-          role: m.role as 'user' | 'assistant',
+        .map((m) => ({
+          role: m.role,
           content: m.content,
         }));
 
-      const responseMode = request.responseMode ?? 'guided';
+      const responseMode = request.responseMode ?? 'focus';
+
       const systemPrompt = this.buildSystemPrompt(
-        (conversation as any).contextSnapshot,
+        conversation.contextSnapshot,
         request,
         responseMode
       );
@@ -70,7 +73,7 @@ export class AdvisorService {
           historyMessages,
           responseMode,
           {
-            // ← NEW: emits SSE event so UI can show "Searching..." before text starts
+            //  emits SSE event so UI can show "Searching..." before text starts
             onSearching: (query) => {
               this.sendEvent(res, { type: 'searching', query });
             },
@@ -97,10 +100,9 @@ export class AdvisorService {
         }
       }
 
-      // ← NEW: emit resources before metadata so UI can render them together
-      if (searchResults.length > 0) {
+      //  emit resources before metadata so UI can render them together
+      if (searchResults.length > 0)
         this.sendEvent(res, { type: 'resources', items: searchResults });
-      }
 
       const { actions, followUps, cautions } =
         this.extractToolResults(toolCalls);
@@ -235,9 +237,9 @@ export class AdvisorService {
   private buildSystemPrompt(
     snapshot: Record<string, unknown>,
     request: AdvisorChatRequest,
-    mode: string
+    mode: AdvisorResponseMode
   ): string {
-    const modeHints: Record<string, string> = {
+    const modeHints: Record<AdvisorResponseMode, string> = {
       guided:
         'Provide thorough guidance. Include follow-up questions and actions when genuinely useful.',
       focused:

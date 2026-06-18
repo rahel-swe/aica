@@ -15,7 +15,12 @@ export const roadmapSetupWeeklyTimeEnum = [
   'intense',
 ] as const;
 
-export const roadmapSetupTimelineEnum = ['short', 'medium', 'long'] as const;
+export const roadmapSetupTimelineEnum = [
+  'sprint',
+  'short',
+  'medium',
+  'long',
+] as const;
 
 export const roadmapSetupConstraintEnum = [
   'low_budget',
@@ -51,7 +56,7 @@ export const roadmapSetupStyle = z.enum(roadmapSetupStyleEnum, {
 });
 
 export const roadmapSetupAssessmentFormSchema = z.object({
-  pickedPathwayId: z.string().optional(),
+  pickedPathwaySlug: z.string().optional(),
 
   currentStage: roadmapSetupCurrentStage,
 

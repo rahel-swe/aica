@@ -9,9 +9,15 @@ export const strengthsEnum = [
   'hands_on',
   'fast_learning',
   'organized',
-];
+] as const;
 
-export const subjectsEnum = ['math', 'science', 'writing', 'arts', 'social'];
+export const subjectsEnum = [
+  'math',
+  'science',
+  'writing',
+  'arts',
+  'social',
+] as const;
 
 export const passionsEnum = [
   'tech',
@@ -23,15 +29,15 @@ export const passionsEnum = [
   'nature',
   'building',
   'ideas',
-];
+] as const;
 
-export const freeTimeEnum = [
-  'build',
-  'outdoor',
-  'socialize',
-  'consume',
-  'learn',
-];
+export const learningPreferenceEnum = [
+  'practice',
+  'courses',
+  'research',
+  'watching',
+  'teaching',
+] as const;
 
 export const workEnvironmentEnum = [
   'office',
@@ -39,9 +45,23 @@ export const workEnvironmentEnum = [
   'outdoor',
   'lab',
   'mixed',
-];
+] as const;
 
-export const workStyleEnum = ['analyze', 'help', 'build', 'create', 'routine'];
+export const workStyleEnum = [
+  'analyze',
+  'help',
+  'build',
+  'create',
+  'routine',
+] as const;
+
+export const collaborationStyleEnum = [
+  'solo',
+  'small_team',
+  'large_team',
+  'client_facing',
+  'community',
+] as const;
 
 export const impactEnum = [
   'create',
@@ -49,9 +69,15 @@ export const impactEnum = [
   'discover',
   'systems',
   'express',
-];
+] as const;
 
-export const goalsEnum = ['impact', 'money', 'balance', 'growth', 'variety'];
+export const goalsEnum = [
+  'impact',
+  'money',
+  'balance',
+  'growth',
+  'variety',
+] as const;
 
 export const pathwayAssessmentStrengthSchema = z.enum(strengthsEnum);
 
@@ -61,9 +87,9 @@ export const pathwayAssessmentSubjectSchema = z.enum(subjectsEnum, {
 
 export const pathwayAssessmentPassionSchema = z.enum(passionsEnum);
 
-export const pathwayAssessmentFreeTimeSchema = z.enum(freeTimeEnum, {
-  error: 'Please choose what you spend your free time',
-});
+export const pathwayAssessmentLearningPreferenceSchema = z.enum(
+  learningPreferenceEnum
+);
 
 export const pathwayAssessmentWorkEnvironmentSchema = z.enum(
   workEnvironmentEnum,
@@ -75,6 +101,13 @@ export const pathwayAssessmentWorkEnvironmentSchema = z.enum(
 export const pathwayAssessmentWorkStyleSchema = z.enum(workStyleEnum, {
   error: 'Please choose your favorite work',
 });
+
+export const pathwayAssessmentCollaborationStyleSchema = z.enum(
+  collaborationStyleEnum,
+  {
+    error: 'Please choose how you prefer to work with others',
+  }
+);
 
 export const pathwayAssessmentImpactSchema = z.enum(impactEnum, {
   error: 'Please choose one impactfull thing to you',
@@ -88,16 +121,34 @@ export const pathwayAssessmentFormSchema = z.object({
   strengths: z
     .array(pathwayAssessmentStrengthSchema)
     .min(1, 'Select at least one strength.')
-    .max(4, 'Select up to four strengths.'),
+    .max(3, 'Select up to three strengths.'),
+
   subjects: pathwayAssessmentSubjectSchema,
+
   passions: z
     .array(pathwayAssessmentPassionSchema)
     .min(1, 'Select at least one interest.')
-    .max(4, 'Select up to four interests.'),
-  freeTime: pathwayAssessmentFreeTimeSchema,
+    .max(3, 'Select up to three interests.'),
+
+  learningPreference: z
+    .array(pathwayAssessmentLearningPreferenceSchema)
+    .min(1, 'Select at least one learning style.')
+    .max(3, 'Select up to three.'),
+
   workEnvironment: pathwayAssessmentWorkEnvironmentSchema,
-  workStyle: pathwayAssessmentWorkStyleSchema,
-  impact: pathwayAssessmentImpactSchema,
+
+  workStyle: z
+    .array(pathwayAssessmentWorkStyleSchema)
+    .min(1, 'Select at least one work style.')
+    .max(2, 'Select up to two work styles.'),
+
+  collaborationStyle: pathwayAssessmentCollaborationStyleSchema,
+
+  impact: z
+    .array(pathwayAssessmentImpactSchema)
+    .min(1, 'Select at least one impact area.')
+    .max(2, 'Select up to two impact areas.'),
+
   goals: pathwayAssessmentGoalSchema,
 });
 

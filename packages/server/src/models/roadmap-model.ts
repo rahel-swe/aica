@@ -39,9 +39,9 @@ export interface IRoadmap extends Document {
   title: string;
   summary: string;
 
-  currentLevel?: string;
+  currentLevel: string;
   timeBudgetPerWeek?: string;
-  roadmapStyle?: 'fast_track' | 'balanced' | 'deep';
+  roadmapStyle: 'fast_track' | 'balanced' | 'deep';
 
   phases: IRoadmapPhase[];
   steps: IRoadmapStep[];
@@ -191,7 +191,6 @@ const roadmapSchema = new Schema<IRoadmap>(
   { timestamps: true }
 );
 
-roadmapSchema.index({ userId: 1, createdAt: -1 });
 roadmapSchema.index({ userId: 1, pathwayId: 1, status: 1 });
 
 export const RoadmapModel = model<IRoadmap>('Roadmap', roadmapSchema);

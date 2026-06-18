@@ -23,9 +23,9 @@ export const getPathways = async (
 };
 
 export const getPathwayDetail = async (
-  id: string
+  slug: string
 ): Promise<PathwayDetailResponse> => {
-  const response = await apiClient.get(`/api/pathways/${id}`);
+  const response = await apiClient.get(`/api/pathways/${slug}`);
 
   return response.data;
 };

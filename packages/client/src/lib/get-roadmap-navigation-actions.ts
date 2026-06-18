@@ -1,10 +1,12 @@
 import {
   ChevronLeft,
   ChevronRight,
-  Sparkles,
   ClipboardPen,
   type LucideIcon,
+  Check,
 } from 'lucide-react';
+
+import { m } from '../paraglide/messages';
 
 type StepId = 'welcome' | 'finish' | string;
 
@@ -25,22 +27,22 @@ export function getRoadmapNavigationActions(stepId: StepId): NavigationActions {
   return {
     secondary: {
       label: isWelcome
-        ? 'Maybe later'
+        ? m.roadmap_navigation_maybe_later()
         : isFinish
-          ? 'Review answers'
-          : 'Go back',
+          ? m.roadmap_navigation_review_answers()
+          : m.roadmap_navigation_go_back(),
 
       icon: isWelcome ? undefined : isFinish ? ClipboardPen : ChevronLeft,
     },
 
     primary: {
       label: isWelcome
-        ? 'Let’s build it'
+        ? m.roadmap_navigation_lets_build_it()
         : isFinish
-          ? 'Create my roadmap'
-          : 'Keep going',
+          ? m.roadmap_navigation_submit_answers()
+          : m.roadmap_navigation_keep_going(),
 
-      icon: isFinish ? Sparkles : ChevronRight,
+      icon: isFinish ? Check : ChevronRight,
     },
   };
 }

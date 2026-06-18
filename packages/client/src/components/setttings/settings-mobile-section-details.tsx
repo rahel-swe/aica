@@ -5,6 +5,7 @@ import type {
 } from '@contracts/shared/types/settings-types';
 import NavigationBackButton from '../navigation-back-button';
 import SettingsDetail from './settings-details';
+import { m } from '../../paraglide/messages';
 
 const SettingsMobileSectionDetails = ({
   isMobileDetailOpen,
@@ -25,7 +26,7 @@ const SettingsMobileSectionDetails = ({
     <div className="md:hidden">
       <NavigationBackButton
         onClick={onBackNavigation}
-        title="Back"
+        title={m.common_back()}
         className="self-start"
       />
 

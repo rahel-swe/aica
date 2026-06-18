@@ -7,8 +7,8 @@ import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { usePathwayDetailQuery } from '@/queries/pathway-query';
 
 export default function PathwayDetailPage() {
-  const { pathwayId } = useParams();
-  const { data, isPending } = usePathwayDetailQuery(pathwayId ?? '');
+  const { pathwaySlug } = useParams();
+  const { data, isPending } = usePathwayDetailQuery(pathwaySlug ?? '');
 
   return (
     <div className="mx-auto flex max-w-7xl gap-6 p-6 md:py-0 md:pe-2 h-full">

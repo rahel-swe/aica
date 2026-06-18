@@ -12,6 +12,7 @@ export type RoadmapSetupOutletContext = {
   currentIndex: number;
   totalSteps: number;
   isSubmitting: boolean;
+  isRoadmapSetupSucceeded: boolean;
   submitRoadmapSetup: () => void;
 };
 
@@ -23,8 +24,13 @@ const RoadmapSetupLayout = () => {
     refetch,
   } = useProfileStatusQuery();
 
-  const { currentIndex, form, isRoadmapSetupCreating, submitRoadmapSetup } =
-    useRoadmapSetupAssessment();
+  const {
+    currentIndex,
+    form,
+    isRoadmapSetupCreating,
+    submitRoadmapSetup,
+    isRoadmapSetupSucceeded,
+  } = useRoadmapSetupAssessment();
 
   if (isPending)
     return (
@@ -58,6 +64,7 @@ const RoadmapSetupLayout = () => {
             currentIndex,
             totalSteps: ROADMAP_SETUP_STEPS.length,
             isSubmitting: isRoadmapSetupCreating,
+            isRoadmapSetupSucceeded,
             submitRoadmapSetup,
           }}
         />

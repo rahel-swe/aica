@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { Check, FlagTriangleRight } from 'lucide-react';
-import { roadmapStepFlagColors } from './roadmap-view-utils';
+import { roadmapStepFlagColors } from '../../lib/roadmap-view-utils';
 import { Button } from '../ui/button';
 
 const roadmapPreviewSteps = ['First', 'Second', 'Third'];

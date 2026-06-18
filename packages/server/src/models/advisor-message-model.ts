@@ -1,6 +1,6 @@
 import type {
   AdvisorMode,
-  AdvisorResponse,
+  AdvisorResponseMode,
   AdvisorSource,
 } from '@contracts/shared/types/advisor-types';
 import { Schema, model, type Document } from 'mongoose';
@@ -10,7 +10,7 @@ export interface IAdvisorMessage extends Document {
   message: string;
   mode: AdvisorMode;
   source: AdvisorSource;
-  response: AdvisorResponse;
+  response: AdvisorResponseMode;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -53,8 +53,6 @@ const advisorMessageSchema = new Schema<IAdvisorMessage>(
   },
   { timestamps: true }
 );
-
-advisorMessageSchema.index({ userId: 1, createdAt: -1 });
 
 export const AdvisorMessageModel = model<IAdvisorMessage>(
   'AdvisorMessage',

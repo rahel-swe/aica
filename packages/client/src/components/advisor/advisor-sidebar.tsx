@@ -54,7 +54,7 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
         <Separator />
 
         {/* Conversation list */}
-        <ScrollArea className="h-full overflow-auto w-full">
+        <ScrollArea className="h-full overflow-auto w-full" scrollFade>
           <div className="px-2 py-4">
             {isLoading ? (
               <div className="flex items-center justify-center py-8">

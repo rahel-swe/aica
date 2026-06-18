@@ -87,6 +87,7 @@ export const advisorStreamEventSchema = z.discriminatedUnion('type', [
     conversationId: z.string(),
     messageId: z.string(),
   }),
+
   // ← NEW: emitted before Tavily call, lets the UI show "Searching..."
   z.object({
     type: z.literal('searching'),

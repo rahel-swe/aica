@@ -1,0 +1,1836 @@
+[
+  {
+    "name": "Technology",
+    "description": "Build the software, infrastructure, and intelligent systems the modern world runs on. The widest, fastest-moving career domain of our time.",
+    "slug": "technology",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Healthcare",
+    "description": "Diagnose, treat, and protect human health — from individual patients in the clinic to entire populations in the field.",
+    "slug": "healthcare",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Business",
+    "description": "Build, run, and grow organizations. Every industry needs strategy, marketing, operations, and people.",
+    "slug": "business",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Finance",
+    "description": "Move, protect, and grow capital. Where mathematics, markets, and high-stakes decisions converge.",
+    "slug": "finance",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Creative Arts",
+    "description": "Design, produce, and perform work that shapes culture, communication, and the human experience.",
+    "slug": "creative-arts",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Sciences",
+    "description": "Study the natural world from molecules to galaxies. Discoveries here become the medicine, technology, and policy of tomorrow.",
+    "slug": "sciences",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "Social Sciences and Law",
+    "description": "Understand, govern, and improve human society — from individual psychology to international systems and the law that holds them together.",
+    "slug": "social-sciences-and-law",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "name": "Engineering",
+    "description": "Design and build the physical systems civilization depends on — from bridges to spacecraft to electric grids.",
+    "slug": "engineering",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 8,
+    "status": "active"
+  },
+  {
+    "name": "Trades, Vocational, and Emerging",
+    "description": "Hands-on, human-centered, and increasingly well-compensated. From licensed trades to frontier industries, these paths are building the next economy.",
+    "slug": "trades-vocational-and-emerging",
+    "kind": "domain",
+    "parentSlug": null,
+    "order": 9,
+    "status": "active"
+  },
+
+  {
+    "name": "Software Development",
+    "description": "Write the code that powers the apps, services, and platforms billions of people use every day.",
+    "slug": "software-development",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "AI and Data",
+    "description": "Build intelligent systems and extract insight from data — the engineering behind every machine that thinks, predicts, and recommends.",
+    "slug": "ai-and-data",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Infrastructure and Security",
+    "description": "Keep software running reliably, securely, and at scale. The discipline that separates production systems from demos.",
+    "slug": "infrastructure-and-security",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Product and Design",
+    "description": "Define what gets built, shape how it looks, and make sure it actually works for real people.",
+    "slug": "product-and-design",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Emerging Technology",
+    "description": "Robotics, immersive environments, decentralized systems — the categories that don't fully exist yet but will define the next decade.",
+    "slug": "emerging-technology",
+    "kind": "field",
+    "parentSlug": "technology",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "Frontend Development",
+    "description": "You build what people actually see and click. Every interface, interaction, and layout on the web starts with you.",
+    "slug": "frontend-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Backend Development",
+    "description": "The invisible engine behind every app. You design the APIs, services, and databases that make everything on the surface work.",
+    "slug": "backend-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Full-Stack Development",
+    "description": "You own the product from interface to infrastructure — the closest thing to building something completely on your own.",
+    "slug": "full-stack-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Mobile Development",
+    "description": "The apps people reach for first thing in the morning. You build experiences that live in someone's pocket, always within reach.",
+    "slug": "mobile-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Blockchain Development",
+    "description": "You build decentralized systems and smart contracts — the infrastructure for programmable, trustless digital transactions.",
+    "slug": "blockchain-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "AR / VR / XR Development",
+    "description": "You build immersive environments where digital and physical space merge — from training simulations to games to virtual workspaces.",
+    "slug": "ar-vr-xr-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "No-Code / Low-Code Development",
+    "description": "You build powerful apps, automations, and workflows without traditional code — making software creation accessible to entirely new groups of people.",
+    "slug": "no-code-low-code-development",
+    "kind": "specialization",
+    "parentSlug": "software-development",
+    "order": 7,
+    "status": "active"
+  },
+
+  {
+    "name": "AI / Machine Learning Engineering",
+    "description": "You teach machines to learn, recognize, and decide. The field reshaping every industry, actively, right now.",
+    "slug": "ai-machine-learning-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Prompt Engineering",
+    "description": "You design the inputs that shape AI outputs — the discipline of communicating with language models to build reliable, production-grade AI features.",
+    "slug": "prompt-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Data Science",
+    "description": "You find the signal in the noise. Patterns buried in millions of data points become decisions that change how organizations operate.",
+    "slug": "data-science",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Data Engineering",
+    "description": "You build the pipelines and infrastructure that make data usable in the first place. Without you, data science cannot exist.",
+    "slug": "data-engineering",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Data Analysis",
+    "description": "You turn raw numbers into decisions. Every business and government in the world runs on the clarity data analysts provide.",
+    "slug": "data-analysis",
+    "kind": "specialization",
+    "parentSlug": "ai-and-data",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "DevOps / Platform Engineering",
+    "description": "You make sure software ships reliably and runs at scale — the bridge between writing code and running it in production.",
+    "slug": "devops-platform-engineering",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Cloud Architecture",
+    "description": "You design the infrastructure modern software lives on. Scalable, resilient, and always available.",
+    "slug": "cloud-architecture",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Cybersecurity",
+    "description": "You defend systems, networks, and people from threats that grow more sophisticated every year. One of the most critical and understaffed roles in 2026.",
+    "slug": "cybersecurity",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Cybersecurity Analysis",
+    "description": "You investigate attacks, trace breaches, and protect infrastructure after threats get through. Equal parts detective and engineer.",
+    "slug": "cybersecurity-analysis",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "IT Systems Administration",
+    "description": "You keep the technology of organizations running. The expert everyone calls when everything stops working.",
+    "slug": "it-systems-administration",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Embedded Systems / IoT",
+    "description": "You write code that runs inside physical devices — cars, sensors, medical hardware, smart appliances. The software the world runs on invisibly.",
+    "slug": "embedded-systems-iot",
+    "kind": "specialization",
+    "parentSlug": "infrastructure-and-security",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "UI / UX Design",
+    "description": "You make digital products easier, more human, and more intuitive. Design is not decoration — it is the product.",
+    "slug": "ui-ux-design",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Product Management",
+    "description": "You decide what gets built and why. You connect user needs, business goals, and engineering reality into something real.",
+    "slug": "product-management",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "AI Product Management",
+    "description": "You bring AI-powered products from idea to launch — understanding both what the model can do and what users actually need.",
+    "slug": "ai-product-management",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Technical Writing",
+    "description": "You translate complexity into clarity. The person who makes powerful tools actually usable by real people.",
+    "slug": "technical-writing",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "QA / Test Engineering",
+    "description": "You find what breaks before users do. The discipline that separates professional software from amateur builds.",
+    "slug": "qa-test-engineering",
+    "kind": "specialization",
+    "parentSlug": "product-and-design",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "Game Development",
+    "description": "You build the worlds people escape into — writing the code behind physics, AI, rendering, and real-time interactivity.",
+    "slug": "game-development",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Robotics Engineering",
+    "description": "You build machines that sense, move, and act in the physical world. The field defining what the next economy looks like.",
+    "slug": "robotics-engineering",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Drone and UAV Technology",
+    "description": "You design, operate, or program unmanned systems used in delivery, agriculture, emergency response, and surveillance.",
+    "slug": "drone-uav-technology",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Mental Health Technology",
+    "description": "You build the apps and platforms that scale access to mental health support — where software engineering meets human empathy.",
+    "slug": "mental-health-technology",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Fintech Development",
+    "description": "You build the next generation of banking, payments, and financial tools — where software engineering meets the movement of money.",
+    "slug": "fintech-development",
+    "kind": "specialization",
+    "parentSlug": "emerging-technology",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "Clinical Medicine",
+    "description": "Direct patient care — diagnosis, treatment, and the relationship at the heart of medicine.",
+    "slug": "clinical-medicine",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Nursing and Allied Health",
+    "description": "The clinical professionals working closest to patients every day — from bedside care to rehabilitation, imaging, and nutrition.",
+    "slug": "nursing-and-allied-health",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Mental Health and Psychiatry",
+    "description": "The professionals who treat the mind — therapy, medication, and the science of human psychology working together.",
+    "slug": "mental-health-and-psychiatry",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Biomedical and Research",
+    "description": "The laboratory, research, and technology infrastructure that makes modern medicine possible.",
+    "slug": "biomedical-and-research",
+    "kind": "field",
+    "parentSlug": "healthcare",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "Medicine (General Practice)",
+    "description": "You are often the first person someone trusts with their health — long-term patient relationships and the weight of diagnosis, every day.",
+    "slug": "medicine-general-practice",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Pharmacy",
+    "description": "You are the expert on what goes into the body and why. Medication safety, precise dosing, and patient counseling at the point of care.",
+    "slug": "pharmacy",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Dentistry",
+    "description": "You give people something they use every day without thinking about: a healthy, functional, confident smile.",
+    "slug": "dentistry",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Optometry",
+    "description": "You protect and restore the sense people rely on most. The difference between struggling and seeing clearly.",
+    "slug": "optometry",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Veterinary Medicine",
+    "description": "You care for animals that cannot tell you where it hurts. Diagnostic skill and genuine compassion required in equal measure.",
+    "slug": "veterinary-medicine",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Emergency Medicine / Paramedicine",
+    "description": "You treat people in the worst moments of their lives — fast, in unpredictable conditions, when every minute matters.",
+    "slug": "emergency-medicine-paramedicine",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "name": "Midwifery",
+    "description": "You guide and protect one of the most significant experiences in a person's life — from pregnancy through birth and into early parenthood.",
+    "slug": "midwifery",
+    "kind": "specialization",
+    "parentSlug": "clinical-medicine",
+    "order": 7,
+    "status": "active"
+  },
+
+  {
+    "name": "Nursing",
+    "description": "You are the most constant presence in a patient's care — clinical skill, genuine emotional intelligence, and real human connection every single shift.",
+    "slug": "nursing",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Physiotherapy",
+    "description": "You help people move again after injury, illness, or surgery. Recovery is deeply personal, and you are at the center of it.",
+    "slug": "physiotherapy",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Occupational Therapy",
+    "description": "You help people reclaim independence in daily life after illness or disability. Practical, compassionate, and genuinely life-changing work.",
+    "slug": "occupational-therapy",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Radiography / Medical Imaging",
+    "description": "You see inside the body without opening it. Your images guide diagnoses and surgical decisions across every hospital, every day.",
+    "slug": "radiography-medical-imaging",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Nutrition and Dietetics",
+    "description": "You translate the science of food into personal guidance that changes how people feel and live. A field growing as health literacy deepens.",
+    "slug": "nutrition-and-dietetics",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Speech-Language Pathology",
+    "description": "You help people communicate and swallow again after stroke, injury, or developmental difficulty — a career that restores one of the most fundamental human connections.",
+    "slug": "speech-language-pathology",
+    "kind": "specialization",
+    "parentSlug": "nursing-and-allied-health",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "Clinical Psychology",
+    "description": "You help people understand and change their own minds. One of the most human and genuinely impactful disciplines there is.",
+    "slug": "clinical-psychology",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Psychiatry",
+    "description": "You treat mental illness with the full weight of medical science. Stigma is decreasing and demand is growing faster than the supply of practitioners.",
+    "slug": "psychiatry",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Mental Health and Addiction Counseling",
+    "description": "You support people navigating addiction, trauma, and mental health crisis — at the intersection of clinical skill and genuine human compassion.",
+    "slug": "mental-health-addiction-counseling",
+    "kind": "specialization",
+    "parentSlug": "mental-health-and-psychiatry",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "Biomedical Science",
+    "description": "You run the laboratory tests that underpin almost every clinical decision. Medicine would not function without you behind the scenes.",
+    "slug": "biomedical-science",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Neuroscience",
+    "description": "You study the most complex object in the known universe: the human brain. Biology, psychology, and technology converging in one field.",
+    "slug": "neuroscience",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Public Health",
+    "description": "You protect entire populations, not just individual patients — policy, prevention, and systems thinking at a scale most careers never reach.",
+    "slug": "public-health",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Biomedical Engineering",
+    "description": "You design and build the devices medicine depends on — pacemakers, prosthetics, imaging systems, and surgical tools.",
+    "slug": "biomedical-engineering",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Health Informatics",
+    "description": "You connect clinical knowledge with technology to make healthcare systems smarter, faster, and safer for everyone inside them.",
+    "slug": "health-informatics",
+    "kind": "specialization",
+    "parentSlug": "biomedical-and-research",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "Strategy and Consulting",
+    "description": "Shape what organizations do and how they do it. The highest-leverage thinking roles in business.",
+    "slug": "strategy-and-consulting",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Marketing and Growth",
+    "description": "Drive how people discover, feel about, and choose products and brands. Part science, part creativity, always people-focused.",
+    "slug": "marketing-and-growth",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Operations and Logistics",
+    "description": "Keep the systems of commerce functioning — supply chains, movement of goods, and the machinery of delivery at scale.",
+    "slug": "operations-and-logistics",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Entrepreneurship",
+    "description": "Build something from nothing. The most uncertain, most personal, and potentially most impactful path in business.",
+    "slug": "entrepreneurship",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "People and Organisation",
+    "description": "Hire, develop, and protect the culture and people that make organizations work.",
+    "slug": "people-and-organisation",
+    "kind": "field",
+    "parentSlug": "business",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "Business Analysis",
+    "description": "You translate between business problems and technical solutions — the person who asks the right questions before anything gets built.",
+    "slug": "business-analysis",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Management Consulting",
+    "description": "You solve complex business problems for organizations that cannot see their own blind spots. Every industry, every kind of challenge.",
+    "slug": "management-consulting",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Project Management",
+    "description": "You deliver things on time, within scope, and under budget. The discipline that turns ideas into real outcomes.",
+    "slug": "project-management",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Sustainability Consulting",
+    "description": "You help organizations reduce environmental and social impact in ways that are commercially viable. One of the fastest-growing advisory careers.",
+    "slug": "sustainability-consulting",
+    "kind": "specialization",
+    "parentSlug": "strategy-and-consulting",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "Marketing",
+    "description": "You shape how people discover, feel about, and connect with things that matter to them. Part science, part creativity, always people-focused.",
+    "slug": "marketing",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Digital Marketing",
+    "description": "SEO, paid media, content, social strategy — you drive how brands grow online. Measurable, always evolving, never the same twice.",
+    "slug": "digital-marketing",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Brand Strategy",
+    "description": "You define what an organization stands for and how it expresses that to the world — the thinking behind every brand that feels coherent and true.",
+    "slug": "brand-strategy",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "E-commerce and Retail Strategy",
+    "description": "You design and optimize how products move from warehouse to doorstep. One of the fastest-growing commercial sectors in the world.",
+    "slug": "e-commerce-retail-strategy",
+    "kind": "specialization",
+    "parentSlug": "marketing-and-growth",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "Supply Chain Management",
+    "description": "You keep the global flow of goods moving. A field that became visibly critical to the whole world when it broke down in 2020.",
+    "slug": "supply-chain-management",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Logistics and Operations",
+    "description": "You make sure the systems of commerce actually function. Behind every on-time delivery and every well-run business.",
+    "slug": "logistics-and-operations",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Real Estate",
+    "description": "Property as a business — investment, development, and the commercial strategy behind where people live, work, and spend money.",
+    "slug": "real-estate",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Sales and Business Development",
+    "description": "You open doors, build relationships, and bring in revenue — the role every organization needs and few do really well.",
+    "slug": "sales-and-business-development",
+    "kind": "specialization",
+    "parentSlug": "operations-and-logistics",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "General Entrepreneurship",
+    "description": "You build something from nothing. The most uncertain, most personal, and potentially most impactful path there is.",
+    "slug": "general-entrepreneurship",
+    "kind": "specialization",
+    "parentSlug": "entrepreneurship",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "E-commerce Entrepreneurship",
+    "description": "You build and run a product-based business in the digital-first economy. Lower barrier to entry than ever — still requires everything.",
+    "slug": "e-commerce-entrepreneurship",
+    "kind": "specialization",
+    "parentSlug": "entrepreneurship",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Human Resources",
+    "description": "You build and protect the culture and people of an organization — strategy, empathy, and genuinely difficult decisions in equal measure.",
+    "slug": "human-resources",
+    "kind": "specialization",
+    "parentSlug": "people-and-organisation",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "Investment and Markets",
+    "description": "Analyze, price, and move capital at the intersection of companies, markets, and high-stakes strategy.",
+    "slug": "investment-and-markets",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Financial Planning and Advisory",
+    "description": "Help individuals and organizations protect and grow their wealth across a lifetime.",
+    "slug": "financial-planning-and-advisory",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Risk and Insurance",
+    "description": "Quantify, price, and manage uncertainty — the mathematical backbone of financial stability.",
+    "slug": "risk-and-insurance",
+    "kind": "field",
+    "parentSlug": "finance",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "Investment Banking",
+    "description": "High-stakes deal-making at the intersection of capital, companies, and markets. Demanding, fast-moving, and highly impactful.",
+    "slug": "investment-banking",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Financial Analysis",
+    "description": "You make sense of numbers to guide investment, strategy, and critical decisions — where mathematics meets business judgment.",
+    "slug": "financial-analysis",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Actuarial Science",
+    "description": "You quantify risk using mathematics and probability — applied to insurance, pensions, and policy at the highest professional level.",
+    "slug": "actuarial-science",
+    "kind": "specialization",
+    "parentSlug": "investment-and-markets",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "Financial Planning and Wealth Management",
+    "description": "You help individuals and families build financial security over a lifetime — goal-setting, investing, tax strategy, and long-term trust.",
+    "slug": "financial-planning-wealth-management",
+    "kind": "specialization",
+    "parentSlug": "financial-planning-and-advisory",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "Insurance and Risk Management",
+    "description": "You help organizations understand and protect against what could go wrong — pricing uncertainty and building resilience into business strategy.",
+    "slug": "insurance-risk-management",
+    "kind": "specialization",
+    "parentSlug": "risk-and-insurance",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "Visual Design",
+    "description": "Shape how things look — from brand identities and illustrations to interfaces and product aesthetics.",
+    "slug": "visual-design",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Media and Production",
+    "description": "Create the content that fills screens, speakers, and feeds — video, audio, games, and the channels between.",
+    "slug": "media-and-production",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Architecture and Spatial Design",
+    "description": "Design the buildings, spaces, and objects people inhabit, use, and love every day.",
+    "slug": "architecture-and-spatial-design",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Writing and Content",
+    "description": "Communicate with words — journalism, storytelling, UX copy, and everything the written word can do.",
+    "slug": "writing-and-content",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Performing Arts",
+    "description": "Live performance, movement, and the stage. The oldest and most immediate form of human expression.",
+    "slug": "performing-arts",
+    "kind": "field",
+    "parentSlug": "creative-arts",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "Graphic Design",
+    "description": "You give ideas a visual form that communicates instantly. Every brand, campaign, and layout that has ever stopped someone in their tracks starts here.",
+    "slug": "graphic-design",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Illustration and Concept Art",
+    "description": "You create original visual worlds — from editorial illustration to the concept art that defines the look of games, films, and brands.",
+    "slug": "illustration-concept-art",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Animation and Motion Graphics",
+    "description": "You bring still things to life. Film, advertising, games, and education all depend on what you can make move.",
+    "slug": "animation-motion-graphics",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Photography",
+    "description": "You capture moments, people, products, and places in a frame that outlasts you. Artistic, commercial, and journalistic all at once.",
+    "slug": "photography",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "UI / UX Research",
+    "description": "You find out how real people actually experience technology and feed that truth back into the design process. Evidence-based creativity.",
+    "slug": "ui-ux-research",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Fashion Design",
+    "description": "You dress people and reflect culture back at itself — where craft, identity, commerce, and self-expression all meet.",
+    "slug": "fashion-design",
+    "kind": "specialization",
+    "parentSlug": "visual-design",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "Film and Video Production",
+    "description": "You tell stories through moving images — from documentary to short-form content, you control what people see and feel.",
+    "slug": "film-video-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Music Production",
+    "description": "You build the sound that sits underneath culture. Tracks, film scores, game audio, podcast beds — everything has a sound designer behind it.",
+    "slug": "music-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Sound Design and Audio Engineering",
+    "description": "You build the acoustic world — for film, music, live events, and games. Invisible work with enormous emotional impact.",
+    "slug": "sound-design-audio-engineering",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Podcast Production",
+    "description": "Long-form audio storytelling for audiences who choose to spend an hour with a voice they trust. An intimate, growing, and monetizable medium.",
+    "slug": "podcast-production",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Social Media Content Creation",
+    "description": "You communicate directly to audiences at scale, without intermediaries — a creative career that did not exist twenty years ago and now drives culture.",
+    "slug": "social-media-content-creation",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Game Design",
+    "description": "You design the systems and experiences of play — mechanics, narrative, and player psychology in a discipline that millions choose over everything else.",
+    "slug": "game-design",
+    "kind": "specialization",
+    "parentSlug": "media-and-production",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "Architecture",
+    "description": "You design buildings that will outlast you by a century. Shelter, beauty, function, and identity built into permanent physical structures.",
+    "slug": "architecture",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Interior Design",
+    "description": "You shape the spaces people live and work in every day. Every room someone loves is a room someone designed.",
+    "slug": "interior-design",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Industrial / Product Design",
+    "description": "You design the objects people hold, use, and love — from furniture to medical devices to the phone in everyone's hand.",
+    "slug": "industrial-product-design",
+    "kind": "specialization",
+    "parentSlug": "architecture-and-spatial-design",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "Journalism and Creative Writing",
+    "description": "You tell the stories that inform, challenge, and change how people think. A field that has never been more necessary or more contested.",
+    "slug": "journalism-creative-writing",
+    "kind": "specialization",
+    "parentSlug": "writing-and-content",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "UX Writing and Content Design",
+    "description": "You write the words inside products — buttons, onboarding flows, error messages, tooltips. The difference between an app that confuses and one that guides.",
+    "slug": "ux-writing-content-design",
+    "kind": "specialization",
+    "parentSlug": "writing-and-content",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Theatre and Performing Arts",
+    "description": "You perform live, in the room, for real people. The oldest human art form and still one of the most viscerally powerful.",
+    "slug": "theatre-performing-arts",
+    "kind": "specialization",
+    "parentSlug": "performing-arts",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Dance and Choreography",
+    "description": "You communicate through movement — in performance, education, film, and live events. Physical storytelling at its most direct.",
+    "slug": "dance-choreography",
+    "kind": "specialization",
+    "parentSlug": "performing-arts",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Life Sciences",
+    "description": "Study living organisms — from the genetics of a single cell to the ecology of entire ecosystems.",
+    "slug": "life-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Physical Sciences",
+    "description": "Understand matter, energy, and the universe itself at the most fundamental level.",
+    "slug": "physical-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Earth and Environmental Sciences",
+    "description": "Study the planet — its history, its systems, and the forces threatening them right now.",
+    "slug": "earth-and-environmental-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Applied Sciences",
+    "description": "Put scientific knowledge to practical use — in food, forensics, agriculture, and the systems that sustain civilization.",
+    "slug": "applied-sciences",
+    "kind": "field",
+    "parentSlug": "sciences",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "Marine Biology",
+    "description": "You study the ocean, which covers most of Earth and is least understood. Research that shapes conservation and policy for the entire planet.",
+    "slug": "marine-biology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Biotechnology",
+    "description": "You use living systems to solve problems in medicine, agriculture, and materials. The frontier of applied biology in 2026.",
+    "slug": "biotechnology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Genetics and Genomics",
+    "description": "You decode the instructions written into DNA — driving breakthroughs in medicine, agriculture, and our understanding of life itself.",
+    "slug": "genetics-and-genomics",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Ecology",
+    "description": "You study how living systems interact and depend on each other — the science behind conservation, climate response, and environmental policy.",
+    "slug": "ecology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Conservation Biology",
+    "description": "You fight for the survival of species and ecosystems — field work, research, and policy advocacy as a single professional life.",
+    "slug": "conservation-biology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Microbiology and Immunology",
+    "description": "You study the smallest organisms and the body's defenses against them — at the center of vaccine development, infectious disease, and drug discovery.",
+    "slug": "microbiology-and-immunology",
+    "kind": "specialization",
+    "parentSlug": "life-sciences",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "Chemistry",
+    "description": "You understand matter at its most fundamental level. Pharmaceuticals, materials, energy, and food all depend on chemists.",
+    "slug": "chemistry",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Physics",
+    "description": "You ask the deepest questions about reality and use mathematics to answer them — the foundation of all applied science and engineering.",
+    "slug": "physics",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Astronomy and Astrophysics",
+    "description": "You study the universe beyond Earth. One of the few careers where genuine wonder is a professional requirement.",
+    "slug": "astronomy-and-astrophysics",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Materials Science",
+    "description": "You discover and engineer new substances — lighter aircraft, faster chips, more flexible solar panels. Everything improves when materials do.",
+    "slug": "materials-science",
+    "kind": "specialization",
+    "parentSlug": "physical-sciences",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "Environmental Science",
+    "description": "You study and defend the systems all life depends on — climate, soil, water, air. This work has never mattered more in human history.",
+    "slug": "environmental-science",
+    "kind": "specialization",
+    "parentSlug": "earth-and-environmental-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Geology",
+    "description": "You read the history of Earth in rock and sediment — essential for energy, mining, natural disaster prediction, and climate science.",
+    "slug": "geology",
+    "kind": "specialization",
+    "parentSlug": "earth-and-environmental-sciences",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Forensic Science",
+    "description": "You bring scientific method to criminal justice. Evidence that determines outcomes in court — the stakes could not be higher.",
+    "slug": "forensic-science",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Food Science and Technology",
+    "description": "You improve how food is made, preserved, and delivered safely to billions of people. A deeply practical and growing field.",
+    "slug": "food-science-and-technology",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Agricultural Science",
+    "description": "You improve how we grow food in a changing climate. Feeding humanity without destroying the planet is the defining challenge of this century.",
+    "slug": "agricultural-science",
+    "kind": "specialization",
+    "parentSlug": "applied-sciences",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "Law and Governance",
+    "description": "The rules that hold society together — and the people who write, argue, enforce, and reform them.",
+    "slug": "law-and-governance",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Social and Behavioral Sciences",
+    "description": "Understand why people think, feel, behave, and form societies the way they do.",
+    "slug": "social-and-behavioral-sciences",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "International and Public Affairs",
+    "description": "Navigate the space between nations, governments, and global institutions.",
+    "slug": "international-and-public-affairs",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Education and Information",
+    "description": "Teach, guide, and organize knowledge — the infrastructure of human understanding.",
+    "slug": "education-and-information",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Humanities",
+    "description": "Study language, ideas, culture, and the past — the disciplines that ask the deepest questions about what it means to be human.",
+    "slug": "humanities",
+    "kind": "field",
+    "parentSlug": "social-sciences-and-law",
+    "order": 5,
+    "status": "active"
+  },
+
+  {
+    "name": "Law",
+    "description": "You understand, argue, and defend the rules that hold society together. Every major human conflict and every significant transaction has a legal dimension.",
+    "slug": "law",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Criminology",
+    "description": "You study crime, its causes, and how justice systems respond — connecting research, policy, and rehabilitation in one discipline.",
+    "slug": "criminology",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Urban Planning",
+    "description": "You design cities. Where people live, how they move, what they can afford — decisions made by urban planners, felt by everyone.",
+    "slug": "urban-planning",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Cybersecurity Policy and Law",
+    "description": "You work at the intersection of government, law, and technology — shaping how nations protect their digital infrastructure at a systemic level.",
+    "slug": "cybersecurity-policy-and-law",
+    "kind": "specialization",
+    "parentSlug": "law-and-governance",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "Psychology",
+    "description": "You study why people think, feel, and behave as they do. Applicable to every human field there is — nothing works better without it.",
+    "slug": "psychology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Sociology",
+    "description": "You study society as a system — how groups form, what norms sustain them, and what forces eventually break them down.",
+    "slug": "sociology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Economics",
+    "description": "You model how resources, incentives, and decisions shape the world. Policy, finance, research, and business all run on economic thinking.",
+    "slug": "economics",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Social Work",
+    "description": "You support people in the hardest moments of their lives. A demanding, essential, and deeply human profession.",
+    "slug": "social-work",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Counseling",
+    "description": "You create space for people to process, heal, and move forward — in schools, hospitals, community settings, and private practice.",
+    "slug": "counseling",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Anthropology",
+    "description": "You study what it means to be human across cultures, time periods, and societies — the broadest possible lens on the human story.",
+    "slug": "anthropology",
+    "kind": "specialization",
+    "parentSlug": "social-and-behavioral-sciences",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "Political Science and Policy",
+    "description": "You study power, governance, and the systems that organize societies. The foundation for careers in government, NGOs, and international affairs.",
+    "slug": "political-science-and-policy",
+    "kind": "specialization",
+    "parentSlug": "international-and-public-affairs",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "International Relations",
+    "description": "You navigate the space between nations, cultures, and global institutions — diplomacy, development, and geopolitics as a daily reality.",
+    "slug": "international-relations",
+    "kind": "specialization",
+    "parentSlug": "international-and-public-affairs",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Education and Teaching",
+    "description": "You shape how the next generation understands the world. One of the few careers where your impact multiplies through every person you teach.",
+    "slug": "education-and-teaching",
+    "kind": "specialization",
+    "parentSlug": "education-and-information",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Library and Information Science",
+    "description": "You organize, preserve, and connect people to knowledge — increasingly critical in an age of information overload and AI-generated content.",
+    "slug": "library-and-information-science",
+    "kind": "specialization",
+    "parentSlug": "education-and-information",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Linguistics",
+    "description": "You study language itself — how it works, evolves, and shapes thought. Applied to AI, translation, communication, and education.",
+    "slug": "linguistics",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Philosophy",
+    "description": "You study the foundations of knowledge, ethics, and reality — applied today to AI ethics, law, policy, and the hardest questions in science.",
+    "slug": "philosophy",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Archaeology",
+    "description": "You recover the physical record of human history — excavating the past to understand how civilizations rose, changed, and fell.",
+    "slug": "archaeology",
+    "kind": "specialization",
+    "parentSlug": "humanities",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "Civil and Structural",
+    "description": "Design and build the permanent physical infrastructure that cities and civilization depend on.",
+    "slug": "civil-and-structural",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Mechanical and Automotive",
+    "description": "Engineer the machines, vehicles, and physical systems that move people and power industry.",
+    "slug": "mechanical-and-automotive",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Electrical and Electronic Systems",
+    "description": "Work with electricity, electronics, and the systems that power everything from homes to satellites.",
+    "slug": "electrical-and-electronic-systems",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Chemical and Nuclear",
+    "description": "Transform matter and energy at industrial and molecular scales — from pharmaceuticals to power generation.",
+    "slug": "chemical-and-nuclear",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Aerospace",
+    "description": "Design aircraft and spacecraft — among the most technically demanding and highest-stakes work in any engineering discipline.",
+    "slug": "aerospace",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Environmental and Energy",
+    "description": "Engineer the systems that manage the planet's most critical resources — clean water, clean energy, and clean air.",
+    "slug": "environmental-and-energy",
+    "kind": "field",
+    "parentSlug": "engineering",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "Civil Engineering",
+    "description": "You build the infrastructure people depend on every day — bridges, roads, water systems, flood defenses. Permanent and visible impact.",
+    "slug": "civil-engineering",
+    "kind": "specialization",
+    "parentSlug": "civil-and-structural",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Structural Engineering",
+    "description": "You calculate whether buildings stand or fall. Safety, precision, and the literal weight of responsibility in every project.",
+    "slug": "structural-engineering",
+    "kind": "specialization",
+    "parentSlug": "civil-and-structural",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Mechanical Engineering",
+    "description": "You design machines and physical systems — from vehicle engines to manufacturing equipment to mechanisms inside medical devices.",
+    "slug": "mechanical-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Automotive and EV Engineering",
+    "description": "You design the vehicles and powertrains of the electric era. A century-old industry in the middle of its biggest transformation.",
+    "slug": "automotive-ev-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Industrial and Manufacturing Engineering",
+    "description": "You optimize the systems that make things at scale — cutting waste, improving output, and keeping production lines running.",
+    "slug": "industrial-manufacturing-engineering",
+    "kind": "specialization",
+    "parentSlug": "mechanical-and-automotive",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "Electrical Engineering",
+    "description": "You work with power, electronics, and the systems that run everything from homes to satellites to electric grids.",
+    "slug": "electrical-engineering",
+    "kind": "specialization",
+    "parentSlug": "electrical-and-electronic-systems",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "Chemical Engineering",
+    "description": "You scale up chemistry into industrial processes — energy, pharmaceuticals, food production, and materials manufacturing at real-world scale.",
+    "slug": "chemical-engineering",
+    "kind": "specialization",
+    "parentSlug": "chemical-and-nuclear",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Nuclear Engineering",
+    "description": "You design systems that harness nuclear energy — from power generation to medical imaging. A field in significant resurgence as clean energy demand grows.",
+    "slug": "nuclear-engineering",
+    "kind": "specialization",
+    "parentSlug": "chemical-and-nuclear",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Aerospace Engineering",
+    "description": "You design aircraft and spacecraft — one of the most technically demanding fields with among the highest stakes of any profession.",
+    "slug": "aerospace-engineering",
+    "kind": "specialization",
+    "parentSlug": "aerospace",
+    "order": 1,
+    "status": "active"
+  },
+
+  {
+    "name": "Environmental Engineering",
+    "description": "You engineer solutions to pollution, waste, and water quality — applying engineering discipline directly to the sustainability crisis.",
+    "slug": "environmental-engineering",
+    "kind": "specialization",
+    "parentSlug": "environmental-and-energy",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Renewable Energy Engineering",
+    "description": "You design solar, wind, battery, and grid systems. The engineering challenge and the commercial opportunity of the entire 21st century.",
+    "slug": "renewable-energy-engineering",
+    "kind": "specialization",
+    "parentSlug": "environmental-and-energy",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Food and Hospitality",
+    "description": "Create the experiences people plan months for and remember for years — from professional kitchens to global tourism.",
+    "slug": "food-and-hospitality",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Skilled Trades and Construction",
+    "description": "Build, install, and maintain the physical world — the licensed professionals every functioning building and city needs.",
+    "slug": "skilled-trades-and-construction",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Fitness and Wellness",
+    "description": "Guide people toward lasting physical and mental health through evidence-based training, coaching, and lifestyle support.",
+    "slug": "fitness-and-wellness",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Entertainment and Events",
+    "description": "Produce the moments, competitions, and live experiences that define how people spend their leisure time.",
+    "slug": "entertainment-and-events",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "name": "Education and Youth Development",
+    "description": "Shape the minds of the youngest learners and build the tools that make education more effective and accessible.",
+    "slug": "education-and-youth-development",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "name": "Emerging and Frontier",
+    "description": "The industries and technologies that barely existed a decade ago and will define the careers of the next generation.",
+    "slug": "emerging-and-frontier",
+    "kind": "field",
+    "parentSlug": "trades-vocational-and-emerging",
+    "order": 6,
+    "status": "active"
+  },
+
+  {
+    "name": "Culinary Arts",
+    "description": "You master fire, knife, flavor, and timing. Professional kitchens are among the most demanding environments in any field — and produce something beautiful.",
+    "slug": "culinary-arts",
+    "kind": "specialization",
+    "parentSlug": "food-and-hospitality",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Hospitality and Tourism Management",
+    "description": "You create the experiences people save money and plan months for. The world's largest service industry.",
+    "slug": "hospitality-tourism-management",
+    "kind": "specialization",
+    "parentSlug": "food-and-hospitality",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Skilled Trades (Electrician, Plumber, HVAC)",
+    "description": "You keep the physical world functioning. Skilled, licensed, essential, and increasingly well-compensated as shortages grow.",
+    "slug": "skilled-trades",
+    "kind": "specialization",
+    "parentSlug": "skilled-trades-and-construction",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Real Estate Agency",
+    "description": "You help people make one of the largest financial decisions of their lives — market knowledge, negotiation, and trust at the center.",
+    "slug": "real-estate-agency",
+    "kind": "specialization",
+    "parentSlug": "skilled-trades-and-construction",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Construction Management",
+    "description": "You oversee the projects that physically build cities — coordinating teams, budgets, timelines, and safety on everything from homes to skyscrapers.",
+    "slug": "construction-management",
+    "kind": "specialization",
+    "parentSlug": "skilled-trades-and-construction",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "name": "Beauty and Cosmetology",
+    "description": "You work directly with people to help them look and feel their best — a creative, client-centered, and deeply personal career.",
+    "slug": "beauty-and-cosmetology",
+    "kind": "specialization",
+    "parentSlug": "skilled-trades-and-construction",
+    "order": 4,
+    "status": "active"
+  },
+
+  {
+    "name": "Sports Science and Coaching",
+    "description": "You apply physiology, psychology, and biomechanics to athletic performance. Behind every elite result is a sports science team.",
+    "slug": "sports-science-and-coaching",
+    "kind": "specialization",
+    "parentSlug": "fitness-and-wellness",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Personal Training and Fitness",
+    "description": "You guide people through physical transformation — increasingly evidence-based, increasingly in demand, and deeply personal work.",
+    "slug": "personal-training-and-fitness",
+    "kind": "specialization",
+    "parentSlug": "fitness-and-wellness",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "name": "Health and Wellness Coaching",
+    "description": "You guide people toward sustainable changes in how they live, sleep, eat, and move. The line between coaching and healthcare is narrowing.",
+    "slug": "health-and-wellness-coaching",
+    "kind": "specialization",
+    "parentSlug": "fitness-and-wellness",
+    "order": 3,
+    "status": "active"
+  },
+
+  {
+    "name": "Event Management",
+    "description": "You produce the moments people remember for years — from concerts and corporate summits to weddings and sporting events.",
+    "slug": "event-management",
+    "kind": "specialization",
+    "parentSlug": "entertainment-and-events",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Esports and Gaming Industry",
+    "description": "You work in competition management, broadcasting, analytics, or event production in one of the world's fastest-growing entertainment sectors.",
+    "slug": "esports-and-gaming-industry",
+    "kind": "specialization",
+    "parentSlug": "entertainment-and-events",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Early Childhood Education",
+    "description": "You shape people at the age when they are most impressionable. Research consistently shows this is the highest-leverage point in human development.",
+    "slug": "early-childhood-education",
+    "kind": "specialization",
+    "parentSlug": "education-and-youth-development",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "EdTech and Learning Design",
+    "description": "You build the tools and curricula that change how people learn — technology-led education at a scale no classroom ever reached.",
+    "slug": "edtech-and-learning-design",
+    "kind": "specialization",
+    "parentSlug": "education-and-youth-development",
+    "order": 2,
+    "status": "active"
+  },
+
+  {
+    "name": "Space Technology",
+    "description": "You build systems for the new era of commercial spaceflight, satellite infrastructure, and deep-space exploration — a field accelerating faster than any other.",
+    "slug": "space-technology",
+    "kind": "specialization",
+    "parentSlug": "emerging-and-frontier",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "name": "Human-Computer Interaction (HCI)",
+    "description": "You research how people interact with technology and design systems that work with human cognition instead of against it.",
+    "slug": "human-computer-interaction",
+    "kind": "specialization",
+    "parentSlug": "emerging-and-frontier",
+    "order": 2,
+    "status": "active"
+  }
+]

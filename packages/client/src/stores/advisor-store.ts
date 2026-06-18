@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import type {
   AdvisorChatMessage,
-  AdvisorContextSource,
   AdvisorResponseMode,
   SearchResult,
 } from '@contracts/shared/types/advisor-types';

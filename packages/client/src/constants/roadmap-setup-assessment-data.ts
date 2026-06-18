@@ -29,7 +29,7 @@ import type {
 
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 
-// ─────────────────────────────────────────────────────────────────────────────
+import { m } from '../paraglide/messages';
 
 export const roadmapSetupDefaultValues: RoadmapSetupAssessmentFormValues = {
   constraints: ['beginner'],
@@ -52,6 +52,7 @@ export type RoadmapSetupStep = {
   id: RoadmapStepId;
   type: PathwayAssessmentStepType;
   title: string;
+  description?: string;
   helperText?: string;
   fieldName?: keyof RoadmapSetupAssessmentFormValues;
   minSelect?: number;
@@ -62,37 +63,32 @@ export type RoadmapSetupStep = {
 const currentStageOptions: PathwayAssessmentOption[] = [
   {
     value: 'high_school',
-    label: 'In school',
-    description:
-      'You are still in school and need a realistic starting direction.',
+    label: m.roadmap_setup_current_stage_high_school_label(),
+    description: m.roadmap_setup_current_stage_high_school_description(),
     icon: School,
   },
   {
     value: 'university',
-    label: 'University student',
-    description:
-      'You are studying now and want a clearer path, stronger skills, or both.',
+    label: m.roadmap_setup_current_stage_university_label(),
+    description: m.roadmap_setup_current_stage_university_description(),
     icon: GraduationCap,
   },
   {
     value: 'graduate',
-    label: 'Recent graduate',
-    description:
-      'You finished formal study and want to move into the next real step.',
+    label: m.roadmap_setup_current_stage_graduate_label(),
+    description: m.roadmap_setup_current_stage_graduate_description(),
     icon: Award,
   },
   {
     value: 'self_learning',
-    label: 'Self-learner',
-    description:
-      'You are learning on your own and need structure, focus, and proof of progress.',
+    label: m.roadmap_setup_current_stage_self_learning_label(),
+    description: m.roadmap_setup_current_stage_self_learning_description(),
     icon: Laptop,
   },
   {
     value: 'working',
-    label: 'Working now',
-    description:
-      'You are already working and want to grow, switch, or reposition carefully.',
+    label: m.roadmap_setup_current_stage_working_label(),
+    description: m.roadmap_setup_current_stage_working_description(),
     icon: Briefcase,
   },
 ];
@@ -100,27 +96,26 @@ const currentStageOptions: PathwayAssessmentOption[] = [
 const weeklyTimeOptions: PathwayAssessmentOption[] = [
   {
     value: 'low',
-    label: '2–4 hours / week',
-    description: 'Light pace for small consistent progress each week.',
+    label: m.roadmap_setup_weekly_time_low_label(),
+    description: m.roadmap_setup_weekly_time_low_description(),
     icon: Coffee,
   },
   {
     value: 'medium',
-    label: '5–8 hours / week',
-    description:
-      'Steady progress without burning out — fits most lifestyles and commitments.',
+    label: m.roadmap_setup_weekly_time_medium_label(),
+    description: m.roadmap_setup_weekly_time_medium_description(),
     icon: Clock,
   },
   {
     value: 'high',
-    label: '9–12 hours / week',
-    description: 'Focused effort with faster visible progress.',
+    label: m.roadmap_setup_weekly_time_high_label(),
+    description: m.roadmap_setup_weekly_time_high_description(),
     icon: Zap,
   },
   {
     value: 'intense',
-    label: '13+ hours / week',
-    description: 'An accelerated pace that needs strong weekly consistency.',
+    label: m.roadmap_setup_weekly_time_intense_label(),
+    description: m.roadmap_setup_weekly_time_intense_description(),
     icon: Flame,
   },
 ];
@@ -128,63 +123,60 @@ const weeklyTimeOptions: PathwayAssessmentOption[] = [
 const timelineOptions: PathwayAssessmentOption[] = [
   {
     value: 'sprint',
-    label: '4–8 weeks',
-    description:
-      'A quick-start window — fast clarity, first wins, and immediate momentum.',
+    label: m.roadmap_setup_timeline_sprint_label(),
+    description: m.roadmap_setup_timeline_sprint_description(),
     icon: Wind,
   },
   {
     value: 'short',
-    label: '2–3 months',
-    description:
-      'One structured quarter — meaningful progress you can measure and build on.',
+    label: m.roadmap_setup_timeline_short_label(),
+    description: m.roadmap_setup_timeline_short_description(),
     icon: CalendarDays,
   },
   {
     value: 'medium',
-    label: '6 months',
-    description:
-      'Half-year plan — a complete roadmap for most tech and creative paths.',
+    label: m.roadmap_setup_timeline_medium_label(),
+    description: m.roadmap_setup_timeline_medium_description(),
     icon: TrendingUp,
   },
   {
     value: 'long',
-    label: '12 months',
-    description:
-      'Full-year commitment — complete for self-contained paths, first major phase for complex careers.',
+    label: m.roadmap_setup_timeline_long_label(),
+    description: m.roadmap_setup_timeline_long_description(),
     icon: Map,
   },
-];
+] as const;
 
 const constraintOptions: PathwayAssessmentOption[] = [
   {
     value: 'low_budget',
-    label: 'Low budget',
-    description: 'Prefer free or low-cost learning resources.',
+    label: m.roadmap_setup_constraints_low_budget_label(),
+    description: m.roadmap_setup_constraints_low_budget_description(),
     icon: Wallet,
   },
   {
     value: 'weak_internet',
-    label: 'Limited internet',
-    description: 'Need offline-friendly or lightweight content.',
+    label: m.roadmap_setup_constraints_weak_internet_label(),
+    description: m.roadmap_setup_constraints_weak_internet_description(),
     icon: WifiOff,
   },
   {
     value: 'no_laptop',
-    label: 'No laptop access',
-    description: 'Must work with mobile or limited devices.',
+    label: m.roadmap_setup_constraints_no_laptop_label(),
+    description: m.roadmap_setup_constraints_no_laptop_description(),
     icon: Smartphone,
   },
   {
     value: 'beginner',
-    label: 'Start from basics',
-    description: 'Need beginner-friendly steps and explanations.',
+    label: m.roadmap_setup_constraints_beginner_label(),
+    description: m.roadmap_setup_constraints_beginner_description(),
     icon: Leaf,
   },
   {
     value: 'inconsistent_schedule',
-    label: 'Schedule changes often',
-    description: 'Need a roadmap that can survive busy or unpredictable weeks.',
+    label: m.roadmap_setup_constraints_inconsistent_schedule_label(),
+    description:
+      m.roadmap_setup_constraints_inconsistent_schedule_description(),
     icon: CalendarOff,
   },
 ];
@@ -192,24 +184,20 @@ const constraintOptions: PathwayAssessmentOption[] = [
 const roadmapStyleOptions: PathwayAssessmentOption[] = [
   {
     value: 'fast_track',
-    label: 'Fast practical progress',
-
-    description:
-      'Jump into projects early — learn by building, not by waiting to feel ready.',
+    label: m.roadmap_setup_roadmap_style_fast_track_label(),
+    description: m.roadmap_setup_roadmap_style_fast_track_description(),
     icon: Rocket,
   },
   {
     value: 'balanced',
-    label: 'Balanced growth',
-    description:
-      'Mix fundamentals and practical work in a steady, sustainable way.',
+    label: m.roadmap_setup_roadmap_style_balanced_label(),
+    description: m.roadmap_setup_roadmap_style_balanced_description(),
     icon: Scale,
   },
   {
     value: 'deep',
-    label: 'Strong foundations',
-    description:
-      'Go deeper on core understanding before pushing hard on speed.',
+    label: m.roadmap_setup_roadmap_style_deep_label(),
+    description: m.roadmap_setup_roadmap_style_deep_description(),
     icon: Brain,
   },
 ];
@@ -218,38 +206,35 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
   {
     id: 'welcome',
     type: 'intro',
-    title: "Let's set up your first action plan",
-    helperText:
-      'This will shape your next realistic roadmap window, not your full career timeline.',
+    title: m.roadmap_setup_welcome_title(),
+    helperText: m.roadmap_setup_welcome_helper(),
   },
   {
     id: 'current-stage',
     type: 'single-select',
-    title: 'Where are you starting from?',
+    title: m.roadmap_setup_current_stage_title(),
     fieldName: 'currentStage',
     options: currentStageOptions,
   },
   {
     id: 'weekly-time',
     type: 'single-select',
-    title: 'How much focused time can you realistically give each week?',
+    title: m.roadmap_setup_weekly_time_title(),
     fieldName: 'weeklyTime',
     options: weeklyTimeOptions,
   },
   {
     id: 'timeline',
     type: 'single-select',
-    title: 'How far should this roadmap plan ahead?',
-
-    helperText:
-      'For tech paths like frontend or backend development, 6–12 months can be your complete roadmap. For longer careers like civil engineering or medicine, the same window is your first major action phase — not your full timeline.',
+    title: m.roadmap_setup_timeline_title(),
+    helperText: m.roadmap_setup_timeline_helper(),
     fieldName: 'timeline',
     options: timelineOptions,
   },
   {
     id: 'constraints',
     type: 'multi-select',
-    title: 'What could make progress harder?',
+    title: m.roadmap_setup_constraints_title(),
     fieldName: 'constraints',
     minSelect: 0,
     maxSelect: 3,
@@ -258,14 +243,14 @@ export const ROADMAP_SETUP_STEPS: RoadmapSetupStep[] = [
   {
     id: 'roadmap-style',
     type: 'single-select',
-    title: 'What kind of plan fits you best?',
+    title: m.roadmap_setup_roadmap_style_title(),
     fieldName: 'roadmapStyle',
     options: roadmapStyleOptions,
   },
   {
     id: 'finish',
     type: 'cta',
-    title: 'Your roadmap setup is ready',
-    helperText: 'Submit to save your setup and continue.',
+    title: m.roadmap_setup_finish_title(),
+    description: m.roadmap_setup_finish_description(),
   },
 ] as const;

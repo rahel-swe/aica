@@ -53,7 +53,7 @@ export default function PathwaySidebar() {
             {pathways.map((item) => (
               <div
                 key={item._id}
-                onClick={() => navigate(`/app/pathways/${item._id}`)}
+                onClick={() => navigate(`/app/pathways/${item.slug}`)}
                 className="
                   cursor-pointer rounded-lg px-3 py-2 text-sm transition
                   hover:bg-muted

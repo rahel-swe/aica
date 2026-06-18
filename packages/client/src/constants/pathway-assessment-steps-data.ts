@@ -5,63 +5,82 @@ import {
   Users,
   BarChart3,
   MessageCircle,
-  Wrench,
-  Zap,
-  Target,
-  Calculator,
-  FlaskConical,
-  Pencil,
-  Paintbrush,
-  Globe,
-  Monitor,
-  Music,
-  Activity,
-  BookOpen,
-  Microscope,
-  Handshake,
-  Leaf,
-  Hammer,
-  Lightbulb,
-  Sun,
-  Gamepad2,
-  Brain,
-  Building2,
-  Home,
-  Trees,
-  Shuffle,
-  TrendingUp,
-  Heart,
-  Layers,
-  Sparkles,
-  Compass,
-  Star,
-  DollarSign,
-  Scale,
-  GraduationCap,
-  Rocket,
-  Network,
+  Wrench, // hands_on
+  Zap, // fast_learning (label: Quick adaptation)
+  Target, // organized
+  // ── Subjects
+  Calculator, // math
+  FlaskConical, // science
+  Pencil, // writing
+  Paintbrush, // arts
+  Globe, // social
+  // ── Passions
+  Monitor, // tech
+  Music, // music
+  Activity, // sports
+  Microscope, // science (passion)
+  Handshake, // social (passion)
+  Leaf, // nature
+  Hammer, // building
+  Lightbulb, // ideas
+  MousePointerClick, // practice
+  BookMarked, // courses
+  Search, // research
+  Play, // watching
+  Share2, // teaching
+  // ── Work Style
+  TrendingUp, // analyze
+  Heart, // help
+  Layers, // build
+  Sparkles, // create
+  Compass, // routine
+  // ── Work Environment
+  Building2, // office
+  Home, // remote
+  Trees, // outdoor
+  TestTube2, // lab (using TestTube2 since FlaskConical reused above)
+  Shuffle, // mixed
+  User, // small_team  (falls back to Users if not available)
+  Network, // large_team
+  UserCheck, // client_facing
+  Megaphone, // community
+  // ── Impact
+  Star, // create (impact)
+  Users as UsersImpact, // people (impact) — same icon, different context
+  BookOpen, // discover — same icon, different context
+  Settings2, // systems
+  PenLine, // express
+  // ── Goals
+  DollarSign, // money
+  Scale, // balance
+  GraduationCap, // growth
+  Rocket, // variety
 } from 'lucide-react';
 
 import type {
   PathwayAssessmentFormValues,
-  PathwayAssessmentFreeTime,
-  PathwayAssessmentGoal,
-  PathwayAssessmentImpact,
-  PathwayAssessmentPassion,
+  PathwayAssessmentLearningPreference,
+  PathwayAssessmentCollaborationStyle,
   PathwayAssessmentStrength,
   PathwayAssessmentSubject,
+  PathwayAssessmentPassion,
   PathwayAssessmentWorkEnvironment,
   PathwayAssessmentWorkStyle,
+  PathwayAssessmentImpact,
+  PathwayAssessmentGoal,
 } from '@contracts/shared/types/pathway-assessment-types';
+
+import { m } from '../paraglide/messages';
 
 export type PathwayAssessmentStepId =
   | 'welcome'
   | 'strengths'
-  | 'subjects'
   | 'passions'
-  | 'free-time'
-  | 'work-environment'
+  | 'subjects'
+  | 'learning-preference'
   | 'work-style'
+  | 'work-environment'
+  | 'collaboration-style'
   | 'impact'
   | 'goals'
   | 'finish';
@@ -76,7 +95,7 @@ export type PathwayAssessmentOption = {
   value: string;
   label: string;
   description: string;
-  icon: LucideIcon; // ← was: emoji: string
+  icon: LucideIcon;
 };
 
 export type PathwayAssessmentStep = {
@@ -94,443 +113,567 @@ export type PathwayAssessmentStep = {
 
 export const PATHWAY_ASSESSMENT_STORAGE_KEY = 'aica-onboarding-draft';
 
-export const pathwayAssessmentDefaultValues = {
+export const pathwayAssessmentDefaultValues: PathwayAssessmentFormValues = {
   strengths: [],
-  subjects: '',
   passions: [],
-  freeTime: '',
-  workEnvironment: '',
-  workStyle: '',
-  impact: '',
-  goals: '',
+  subjects: '' as PathwayAssessmentSubject,
+  learningPreference: [],
+  workStyle: [],
+  workEnvironment: '' as PathwayAssessmentWorkEnvironment,
+  collaborationStyle: '' as PathwayAssessmentCollaborationStyle,
+  impact: [],
+  goals: '' as PathwayAssessmentGoal,
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 1 — STRENGTHS
+// multi-select, 1–3
+//
+// Title framing: scenario-based — user imagines themselves working,
+// not abstractly describing personality.
+// Helper: "3" max is explicit to prevent checkbox-everything behavior.
+// ─────────────────────────────────────────────────────────────────────────────
 
 const strengthOptions: PathwayAssessmentOption[] = [
   {
     value: 'problem_solving' satisfies PathwayAssessmentStrength,
-    label: 'Problem solving',
-    description:
-      'You like breaking down hard problems and finding practical answers.',
+    label: m.pathway_assessment_strength_problem_solving_label(),
+    description: m.pathway_assessment_strength_problem_solving_description(),
     icon: Puzzle,
   },
   {
     value: 'creativity' satisfies PathwayAssessmentStrength,
-    label: 'Creative thinking',
-    description: 'You enjoy original ideas, design, and expressive work.',
+    label: m.pathway_assessment_strength_creativity_label(),
+    description: m.pathway_assessment_strength_creativity_description(),
     icon: Palette,
   },
   {
     value: 'people' satisfies PathwayAssessmentStrength,
-    label: 'People connection',
-    description: 'You naturally support, guide, or connect with others.',
+    label: m.pathway_assessment_strength_people_label(),
+    description: m.pathway_assessment_strength_people_description(),
     icon: Users,
   },
   {
     value: 'analytical' satisfies PathwayAssessmentStrength,
-    label: 'Analytical mind',
-    description: 'You notice patterns, structure, and logical detail quickly.',
+    label: m.pathway_assessment_strength_analytical_label(),
+    description: m.pathway_assessment_strength_analytical_description(),
     icon: BarChart3,
   },
   {
     value: 'communication' satisfies PathwayAssessmentStrength,
-    label: 'Communication',
-    description:
-      'You explain ideas clearly and make information easier to understand.',
+    label: m.pathway_assessment_strength_communication_label(),
+    description: m.pathway_assessment_strength_communication_description(),
     icon: MessageCircle,
   },
   {
     value: 'hands_on' satisfies PathwayAssessmentStrength,
-    label: 'Hands-on building',
-    description: 'You prefer making, fixing, and learning through action.',
+    label: m.pathway_assessment_strength_hands_on_label(),
+    description: m.pathway_assessment_strength_hands_on_description(),
     icon: Wrench,
   },
   {
     value: 'fast_learning' satisfies PathwayAssessmentStrength,
-    // REWRITE: "Fast learning" → more precise, less résumé-speak
-    label: 'Quick adaptation',
-    // REWRITE: original was passive ("when you are exposed to") and redundant
-    description:
-      'You get up to speed fast and hit your stride in unfamiliar territory.',
+    label: m.pathway_assessment_strength_fast_learning_label(),
+    description: m.pathway_assessment_strength_fast_learning_description(),
     icon: Zap,
   },
   {
     value: 'organized' satisfies PathwayAssessmentStrength,
-    label: 'Focus and structure',
-    // REWRITE: original ("planning, routine, and follow-through") was a list, not a behavior
-    description:
-      'You plan before you act and stay consistent until the job is done.',
+    label: m.pathway_assessment_strength_organized_label(),
+    description: m.pathway_assessment_strength_organized_description(),
     icon: Target,
   },
 ];
 
-export const subjectOptions: PathwayAssessmentOption[] = [
-  {
-    value: 'math' satisfies PathwayAssessmentSubject,
-    label: 'Math and numbers',
-    description:
-      'Best when the work involves logic, formulas, or numerical thinking.',
-    icon: Calculator,
-  },
-  {
-    value: 'science' satisfies PathwayAssessmentSubject,
-    label: 'Science and experiments',
-    description: 'Best when exploring systems, evidence, and how things work.',
-    icon: FlaskConical,
-  },
-  {
-    value: 'writing' satisfies PathwayAssessmentSubject,
-    label: 'Writing and language',
-    description:
-      'Best when explaining ideas through language and communication.',
-    icon: Pencil,
-  },
-  {
-    value: 'arts' satisfies PathwayAssessmentSubject,
-    label: 'Arts and creativity',
-    description: 'Best when creating visual, musical, or expressive work.',
-    icon: Paintbrush,
-  },
-  {
-    value: 'social' satisfies PathwayAssessmentSubject,
-    label: 'History and social studies',
-    description: 'Best when understanding people, society, and context.',
-    icon: Globe,
-  },
-];
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 2 — PASSIONS
+// multi-select, 1–3
+//
+// Title: "genuinely" is deliberate — pushes back against aspirational answers.
+// Max 3 reduced from 4 to force real prioritization.
+// ─────────────────────────────────────────────────────────────────────────────
 
 const passionOptions: PathwayAssessmentOption[] = [
   {
     value: 'tech' satisfies PathwayAssessmentPassion,
-    label: 'Gaming and tech',
-    description: 'You enjoy digital tools, systems, devices, or software.',
+    label: m.pathway_assessment_passion_tech_label(),
+    description: m.pathway_assessment_passion_tech_description(),
     icon: Monitor,
   },
   {
     value: 'music' satisfies PathwayAssessmentPassion,
-    label: 'Music and arts',
-    description: 'You enjoy creative expression and artistic output.',
+    label: m.pathway_assessment_passion_music_label(),
+    description: m.pathway_assessment_passion_music_description(),
     icon: Music,
   },
   {
     value: 'sports' satisfies PathwayAssessmentPassion,
-    label: 'Sports and action',
-    description: 'You enjoy movement, challenge, and active environments.',
+    label: m.pathway_assessment_passion_sports_label(),
+    description: m.pathway_assessment_passion_sports_description(),
     icon: Activity,
   },
   {
     value: 'reading' satisfies PathwayAssessmentPassion,
-    label: 'Reading and stories',
-    description: 'You enjoy ideas, reflection, and deeper content.',
+    label: m.pathway_assessment_passion_reading_label(),
+    description: m.pathway_assessment_passion_reading_description(),
     icon: BookOpen,
   },
   {
     value: 'science' satisfies PathwayAssessmentPassion,
-    label: 'Science and discovery',
-    description:
-      'You like curiosity, experimentation, and evidence-based learning.',
+    label: m.pathway_assessment_passion_science_label(),
+    description: m.pathway_assessment_passion_science_description(),
     icon: Microscope,
   },
   {
     value: 'social' satisfies PathwayAssessmentPassion,
-    label: 'Social and community',
-    description:
-      'You care about people, relationships, and community activity.',
+    label: m.pathway_assessment_passion_social_label(),
+    description: m.pathway_assessment_passion_social_description(),
     icon: Handshake,
   },
   {
     value: 'nature' satisfies PathwayAssessmentPassion,
-    label: 'Nature and animals',
-    description:
-      'You are drawn to environmental, outdoor, or life-related fields.',
+    label: m.pathway_assessment_passion_nature_label(),
+    description: m.pathway_assessment_passion_nature_description(),
     icon: Leaf,
   },
   {
     value: 'building' satisfies PathwayAssessmentPassion,
-    label: 'Building and creating',
-    description: 'You enjoy producing something useful and visible.',
+    label: m.pathway_assessment_passion_building_label(),
+    description: m.pathway_assessment_passion_building_description(),
     icon: Hammer,
   },
   {
     value: 'ideas' satisfies PathwayAssessmentPassion,
-    label: 'Ideas and innovation',
-    description:
-      'You enjoy new concepts, experimentation, and future-oriented thinking.',
+    label: m.pathway_assessment_passion_ideas_label(),
+    description: m.pathway_assessment_passion_ideas_description(),
     icon: Lightbulb,
   },
 ];
 
-// ─── Free Time ───────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 3 — SUBJECTS
+// single-select
+//
+// Title: "best at explaining" is deliberately scenario-based and forces ranking.
+// Users answer "what I actually know" not "what I wish I was good at."
+// Helper makes the distinction explicit.
+// ─────────────────────────────────────────────────────────────────────────────
 
-const freeTimeOptions: PathwayAssessmentOption[] = [
+export const subjectOptions: PathwayAssessmentOption[] = [
   {
-    value: 'build' satisfies PathwayAssessmentFreeTime,
-    label: 'Build or make something',
-    description: 'You recharge by creating, fixing, or assembling things.',
-    icon: Hammer,
+    value: 'math' satisfies PathwayAssessmentSubject,
+    label: m.pathway_assessment_subject_math_label(),
+    description: m.pathway_assessment_subject_math_description(),
+    icon: Calculator,
   },
   {
-    value: 'outdoor' satisfies PathwayAssessmentFreeTime,
-    label: 'Be outdoors',
-    description:
-      'You prefer movement, fresh environments, and active experience.',
-    icon: Sun,
-  },
-  {
-    value: 'socialize' satisfies PathwayAssessmentFreeTime,
-    label: 'Spend time with people',
-    description: 'You gain energy from interaction and shared experiences.',
-    icon: Users,
-  },
-  {
-    value: 'consume' satisfies PathwayAssessmentFreeTime,
-    label: 'Read, watch, or play',
-    description:
-      'You enjoy absorbing stories, content, and digital experiences.',
-    icon: Gamepad2,
-  },
-  {
-    value: 'learn' satisfies PathwayAssessmentFreeTime,
-    label: 'Learn something new',
-    description: 'You naturally spend time exploring new skills or ideas.',
-    icon: Brain,
-  },
-];
-
-// ─── Environment ─────────────────────────────────────────────────────────────
-
-const environmentOptions: PathwayAssessmentOption[] = [
-  {
-    value: 'office' satisfies PathwayAssessmentWorkEnvironment,
-    label: 'Office with a team',
-    description: 'You prefer structured collaboration and shared momentum.',
-    icon: Building2,
-  },
-  {
-    value: 'remote' satisfies PathwayAssessmentWorkEnvironment,
-    label: 'Remote and flexible',
-    description: 'You prefer autonomy and location flexibility.',
-    icon: Home,
-  },
-  {
-    value: 'outdoor' satisfies PathwayAssessmentWorkEnvironment,
-    label: 'Outdoor or on-site',
-    description: 'You prefer active, physical, or field-based environments.',
-    icon: Trees,
-  },
-  {
-    value: 'lab' satisfies PathwayAssessmentWorkEnvironment,
-    label: 'Lab or studio',
-    description:
-      'You prefer focused environments for technical or creative practice.',
+    value: 'science' satisfies PathwayAssessmentSubject,
+    label: m.pathway_assessment_subject_science_label(),
+    description: m.pathway_assessment_subject_science_description(),
     icon: FlaskConical,
   },
   {
-    value: 'mixed' satisfies PathwayAssessmentWorkEnvironment,
-    // REWRITE: "A mix of settings" was vague
-    label: 'Varied environments',
-    // REWRITE: original used negative construction ("do not want to stay") — reframed positively
-    description:
-      'No single setting defines you — you do your best work when the context shifts.',
-    icon: Shuffle,
+    value: 'writing' satisfies PathwayAssessmentSubject,
+    label: m.pathway_assessment_subject_writing_label(),
+    description: m.pathway_assessment_subject_writing_description(),
+    icon: Pencil,
+  },
+  {
+    value: 'arts' satisfies PathwayAssessmentSubject,
+    label: m.pathway_assessment_subject_arts_label(),
+    description: m.pathway_assessment_subject_arts_description(),
+    icon: Paintbrush,
+  },
+  {
+    value: 'social' satisfies PathwayAssessmentSubject,
+    label: m.pathway_assessment_subject_social_label(),
+    description: m.pathway_assessment_subject_social_description(),
+    icon: Globe,
   },
 ];
 
-// ─── Work Style ──────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 4 — LEARNING PREFERENCE  (replaces freeTime)
+// multi-select, 1–3
+// field name: learningPreference
+//
+
+//
+// These values feed into:
+//   a) Pathway matching (some careers demand specific learning modes)
+//   b) Roadmap generation (resource type weighting per step)
+//
+// Icon choices reflect the ACTION of each learning mode, not the output.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const learningPreferenceOptions: PathwayAssessmentOption[] = [
+  {
+    value: 'practice' satisfies PathwayAssessmentLearningPreference,
+    label: m.pathway_assessment_learning_pref_practice_label(),
+    description: m.pathway_assessment_learning_pref_practice_description(),
+    icon: MousePointerClick,
+  },
+  {
+    value: 'courses' satisfies PathwayAssessmentLearningPreference,
+    label: m.pathway_assessment_learning_pref_courses_label(),
+    description: m.pathway_assessment_learning_pref_courses_description(),
+    icon: BookMarked,
+  },
+  {
+    value: 'research' satisfies PathwayAssessmentLearningPreference,
+    label: m.pathway_assessment_learning_pref_research_label(),
+    description: m.pathway_assessment_learning_pref_research_description(),
+    icon: Search,
+  },
+  {
+    value: 'watching' satisfies PathwayAssessmentLearningPreference,
+    label: m.pathway_assessment_learning_pref_watching_label(),
+    description: m.pathway_assessment_learning_pref_watching_description(),
+    icon: Play,
+  },
+  {
+    value: 'teaching' satisfies PathwayAssessmentLearningPreference,
+    label: m.pathway_assessment_learning_pref_teaching_label(),
+    description: m.pathway_assessment_learning_pref_teaching_description(),
+    icon: Share2,
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 5 — WORK STYLE
+// multi-select, 1–2  (was single)
+//
+// Why 1–2 not 1–3:
+//   Work style is a focused signal — composite professional identity.
+//   Allowing 2 captures real hybrid roles (analyst-builder, helper-creator)
+//   without letting users describe everything.
+//
+// Title: scenario-based ("on a productive day") grounds the answer in
+// real behavior rather than abstract self-description.
+// ─────────────────────────────────────────────────────────────────────────────
 
 const workStyleOptions: PathwayAssessmentOption[] = [
   {
     value: 'analyze' satisfies PathwayAssessmentWorkStyle,
-    label: 'Analyzing information',
-    description:
-      'You enjoy logic, patterns, and decision-making based on information.',
+    label: m.pathway_assessment_workstyle_analyze_label(),
+    description: m.pathway_assessment_workstyle_analyze_description(),
     icon: TrendingUp,
   },
   {
     value: 'help' satisfies PathwayAssessmentWorkStyle,
-    label: 'Helping people',
-    description: 'You enjoy support, care, service, and direct human impact.',
+    label: m.pathway_assessment_workstyle_help_label(),
+    description: m.pathway_assessment_workstyle_help_description(),
     icon: Heart,
   },
   {
     value: 'build' satisfies PathwayAssessmentWorkStyle,
-    label: 'Building or fixing',
-    description: 'You enjoy practical execution and hands-on improvement.',
+    label: m.pathway_assessment_workstyle_build_label(),
+    description: m.pathway_assessment_workstyle_build_description(),
     icon: Layers,
   },
   {
     value: 'create' satisfies PathwayAssessmentWorkStyle,
-    label: 'Creating ideas or solutions',
-    description:
-      'You enjoy originality, invention, and solving open-ended problems.',
+    label: m.pathway_assessment_workstyle_create_label(),
+    description: m.pathway_assessment_workstyle_create_description(),
     icon: Sparkles,
   },
   {
     value: 'routine' satisfies PathwayAssessmentWorkStyle,
-    label: 'Clear structure and routine',
-    // REWRITE: original was passive and slightly implied a limitation
-    description:
-      "You're most effective when the path is defined and the process stays consistent.",
+    label: m.pathway_assessment_workstyle_routine_label(),
+    description: m.pathway_assessment_workstyle_routine_description(),
     icon: Compass,
   },
 ];
 
-// ─── Impact ──────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 6 — WORK ENVIRONMENT
+// single-select (unchanged)
+//
+// Title change: "best work" instead of "enjoy working" — performance framing
+// is more honest and produces better signal than preference framing.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const environmentOptions: PathwayAssessmentOption[] = [
+  {
+    value: 'office' satisfies PathwayAssessmentWorkEnvironment,
+    label: m.pathway_assessment_env_office_label(),
+    description: m.pathway_assessment_env_office_description(),
+    icon: Building2,
+  },
+  {
+    value: 'remote' satisfies PathwayAssessmentWorkEnvironment,
+    label: m.pathway_assessment_env_remote_label(),
+    description: m.pathway_assessment_env_remote_description(),
+    icon: Home,
+  },
+  {
+    value: 'outdoor' satisfies PathwayAssessmentWorkEnvironment,
+    label: m.pathway_assessment_env_outdoor_label(),
+    description: m.pathway_assessment_env_outdoor_description(),
+    icon: Trees,
+  },
+  {
+    value: 'lab' satisfies PathwayAssessmentWorkEnvironment,
+    label: m.pathway_assessment_env_lab_label(),
+    description: m.pathway_assessment_env_lab_description(),
+    icon: TestTube2,
+  },
+  {
+    value: 'mixed' satisfies PathwayAssessmentWorkEnvironment,
+    label: m.pathway_assessment_env_mixed_label(),
+    description: m.pathway_assessment_env_mixed_description(),
+    icon: Shuffle,
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 7 — COLLABORATION STYLE  (NEW DIMENSION)
+// single-select
+// field name: collaborationStyle
+//
+// Why this is new:
+//   workEnvironment captures location (office, remote, outdoor).
+//   This captures interaction density — a completely different signal.
+//   A remote worker can be in calls all day or alone all day.
+//   This distinction is critical for matching careers like researcher
+//   vs. consultant, or solo developer vs. team lead.
+//
+// DIMENSION_WEIGHT: 0.05 (conservative start — validate before raising)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const collaborationStyleOptions: PathwayAssessmentOption[] = [
+  {
+    value: 'solo' satisfies PathwayAssessmentCollaborationStyle,
+    label: m.pathway_assessment_collab_solo_label(),
+    description: m.pathway_assessment_collab_solo_description(),
+    icon: User,
+  },
+  {
+    value: 'small_team' satisfies PathwayAssessmentCollaborationStyle,
+    label: m.pathway_assessment_collab_small_team_label(),
+    description: m.pathway_assessment_collab_small_team_description(),
+    icon: Users,
+  },
+  {
+    value: 'large_team' satisfies PathwayAssessmentCollaborationStyle,
+    label: m.pathway_assessment_collab_large_team_label(),
+    description: m.pathway_assessment_collab_large_team_description(),
+    icon: Network,
+  },
+  {
+    value: 'client_facing' satisfies PathwayAssessmentCollaborationStyle,
+    label: m.pathway_assessment_collab_client_facing_label(),
+    description: m.pathway_assessment_collab_client_facing_description(),
+    icon: UserCheck,
+  },
+  {
+    value: 'community' satisfies PathwayAssessmentCollaborationStyle,
+    label: m.pathway_assessment_collab_community_label(),
+    description: m.pathway_assessment_collab_community_description(),
+    icon: Megaphone,
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 8 — IMPACT
+// multi-select, 1–2  (was single)
+//
+// Why 1–2:
+//   Values are naturally composite in professional life. A doctor values
+//   helping people AND discovering knowledge. A UX designer values creating
+//   useful things AND working with people. Single-select loses real signal.
+//
+// Title: "would feel missing" is stronger than "what matters" — it invites
+// the user to test the answer against absence, which is more reliable.
+// ─────────────────────────────────────────────────────────────────────────────
 
 const impactOptions: PathwayAssessmentOption[] = [
   {
     value: 'create' satisfies PathwayAssessmentImpact,
-    label: 'Create useful things',
-    description: 'You want your work to produce visible value for people.',
+    label: m.pathway_assessment_impact_create_label(),
+    description: m.pathway_assessment_impact_create_description(),
     icon: Lightbulb,
   },
   {
     value: 'people' satisfies PathwayAssessmentImpact,
-    label: 'Work directly with people',
-    description: 'You want daily human interaction and direct support roles.',
-    icon: Users,
+    label: m.pathway_assessment_impact_people_label(),
+    description: m.pathway_assessment_impact_people_description(),
+    icon: UsersImpact,
   },
   {
     value: 'discover' satisfies PathwayAssessmentImpact,
-    label: 'Discover new knowledge',
-    description: 'You want research, exploration, and learning to matter.',
+    label: m.pathway_assessment_impact_discover_label(),
+    description: m.pathway_assessment_impact_discover_description(),
     icon: Microscope,
   },
   {
     value: 'systems' satisfies PathwayAssessmentImpact,
-    label: 'Build important systems',
-    description: 'You want to keep critical things running and running well.',
+    label: m.pathway_assessment_impact_systems_label(),
+    description: m.pathway_assessment_impact_systems_description(),
     icon: Network,
   },
   {
     value: 'express' satisfies PathwayAssessmentImpact,
-    label: 'Express creativity through work',
-    description:
-      'You want imagination and expression to be central to your path.',
+    label: m.pathway_assessment_impact_express_label(),
+    description: m.pathway_assessment_impact_express_description(),
     icon: Palette,
   },
 ];
 
-// ─── Goals ───────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP 9 — GOALS
+// single-select (unchanged — INTENTIONALLY forced single)
+//
+// Keeping this single is a deliberate product decision.
+// Goals being multi-select reduces its differentiation power.
+// The forced choice surfaces real priority, not a wish list.
+// "What would make your career feel like a success?" is stronger than
+// "What matters?" because it asks the user to imagine a concrete outcome.
+// ─────────────────────────────────────────────────────────────────────────────
 
 const goalOptions: PathwayAssessmentOption[] = [
   {
     value: 'impact' satisfies PathwayAssessmentGoal,
-    label: 'Make a difference',
-    description: 'Meaning and contribution matter most to you.',
+    label: m.pathway_assessment_goal_impact_label(),
+    description: m.pathway_assessment_goal_impact_description(),
     icon: Star,
   },
   {
     value: 'money' satisfies PathwayAssessmentGoal,
-    label: 'Financial stability',
-    description: 'You want a path with strong income and long-term security.',
+    label: m.pathway_assessment_goal_money_label(),
+    description: m.pathway_assessment_goal_money_description(),
     icon: DollarSign,
   },
   {
     value: 'balance' satisfies PathwayAssessmentGoal,
-    label: 'Work-life balance',
-    // REWRITE: original listed values abstractly — rewritten as a memorable statement
-    description:
-      'You want work that fits your life — not a life that revolves around your work.',
+    label: m.pathway_assessment_goal_balance_label(),
+    description: m.pathway_assessment_goal_balance_description(),
     icon: Scale,
   },
   {
     value: 'growth' satisfies PathwayAssessmentGoal,
-    label: 'Continuous growth',
-    // REWRITE: original was a noun list — rewritten as an identity statement
-    description:
-      "You're not satisfied staying at the same level — growth is a requirement, not a bonus.",
+    label: m.pathway_assessment_goal_growth_label(),
+    description: m.pathway_assessment_goal_growth_description(),
     icon: GraduationCap,
   },
   {
     value: 'variety' satisfies PathwayAssessmentGoal,
-    label: 'Challenge and variety',
-    // REWRITE: original was vague ("keeps changing") — rewritten with a specific trade-off
-    description:
-      'Repetition slows you down — you need work that evolves and keeps you sharp.',
+    label: m.pathway_assessment_goal_variety_label(),
+    description: m.pathway_assessment_goal_variety_description(),
     icon: Rocket,
   },
 ];
 
-// ─── Steps ───────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// STEP DEFINITIONS
+// ─────────────────────────────────────────────────────────────────────────────
 
 export const PATHWAY_ASSESSMENT_STEPS: PathwayAssessmentStep[] = [
   {
     id: 'welcome',
     type: 'intro',
-    title: 'Find a study or career path that fits you',
-    description:
-      'Answer a few short questions about your strengths, interests, and goals. AICA will turn them into clear pathway matches, simple explanations, and a practical next-step roadmap.',
-    helperText:
-      'There are no right or wrong answers. Choose what feels most true to you right now.',
-    cta: 'Begin assessment',
+    title: m.pathway_assessment_welcome_title(),
+    description: m.pathway_assessment_welcome_description(),
+    helperText: m.pathway_assessment_welcome_helper(),
+    cta: m.pathway_assessment_welcome_cta(),
   },
   {
     id: 'strengths',
     type: 'multi-select',
-    title: 'What feels natural to you?',
+    title: m.pathway_assessment_strengths_title(),
+    helperText: m.pathway_assessment_strengths_helper(),
     fieldName: 'strengths',
     minSelect: 1,
-    maxSelect: 4,
+    maxSelect: 3,
     options: strengthOptions,
   },
-  {
-    id: 'subjects',
-    type: 'single-select',
-    title: 'Which subject are you best at explaining?',
-    fieldName: 'subjects',
-    options: subjectOptions,
-  },
+
   {
     id: 'passions',
     type: 'multi-select',
-    title: 'What do you enjoy the most?',
+    title: m.pathway_assessment_passions_title(),
+    helperText: m.pathway_assessment_passions_helper(),
     fieldName: 'passions',
     minSelect: 1,
-    maxSelect: 4,
+    maxSelect: 3,
     options: passionOptions,
   },
+
   {
-    id: 'free-time',
+    id: 'subjects',
     type: 'single-select',
-    title: 'On a free day, you usually:',
-    fieldName: 'freeTime',
-    options: freeTimeOptions,
+    title: m.pathway_assessment_subjects_title(),
+    helperText: m.pathway_assessment_subjects_helper(),
+    fieldName: 'subjects',
+    options: subjectOptions,
   },
+
+  {
+    id: 'learning-preference',
+    type: 'multi-select',
+    title: m.pathway_assessment_learning_preference_title(),
+    helperText: m.pathway_assessment_learning_preference_helper(),
+    fieldName: 'learningPreference',
+    minSelect: 1,
+    maxSelect: 3,
+    options: learningPreferenceOptions,
+  },
+
+  {
+    id: 'work-style',
+    type: 'multi-select',
+    title: m.pathway_assessment_work_style_title(),
+    helperText: m.pathway_assessment_work_style_helper(),
+    fieldName: 'workStyle',
+    minSelect: 1,
+    maxSelect: 2,
+    options: workStyleOptions,
+  },
+
   {
     id: 'work-environment',
     type: 'single-select',
-    title: 'Where would you enjoy working?',
+    title: m.pathway_assessment_environment_title(),
+    helperText: m.pathway_assessment_environment_helper(),
     fieldName: 'workEnvironment',
     options: environmentOptions,
   },
+
   {
-    id: 'work-style',
+    id: 'collaboration-style',
     type: 'single-select',
-    title: 'What kind of work do you enjoy?',
-    fieldName: 'workStyle',
-    options: workStyleOptions,
+    title: m.pathway_assessment_collaboration_title(),
+    helperText: m.pathway_assessment_collaboration_helper(),
+    fieldName: 'collaborationStyle',
+    options: collaborationStyleOptions,
   },
+
   {
     id: 'impact',
-    type: 'single-select',
-    title: 'What feels meaningful to you?',
+    type: 'multi-select',
+    title: m.pathway_assessment_impact_title(),
+    helperText: m.pathway_assessment_impact_helper(),
     fieldName: 'impact',
+    minSelect: 1,
+    maxSelect: 2,
     options: impactOptions,
   },
+
   {
     id: 'goals',
     type: 'single-select',
-    title: 'What matters most in your future?',
+    title: m.pathway_assessment_goals_title(),
+    helperText: m.pathway_assessment_goals_helper(),
     fieldName: 'goals',
     options: goalOptions,
   },
+
   {
     id: 'finish',
     type: 'cta',
-    title: 'Your profile is ready',
-    description:
-      'AICA can now turn your answers into ranked pathways, explainable matches, and roadmap-ready guidance.',
-    helperText: 'Submit your profile to continue to recommendations.',
-    cta: 'See my matches',
+    title: m.pathway_assessment_finish_title(),
+    description: m.pathway_assessment_finish_description(),
+    helperText: m.pathway_assessment_finish_helper(),
+    cta: m.pathway_assessment_finish_cta(),
   },
 ] as const;

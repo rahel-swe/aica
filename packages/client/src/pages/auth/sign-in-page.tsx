@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { authClient } from '@/lib/auth-client';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { m } from '../../paraglide/messages';
 import { ArrowUpRight, Loader } from 'lucide-react';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -113,7 +114,7 @@ export default function SignInPage() {
             disabled={isSubmitting}
             className="py-6.5 w-min mx-auto px-10"
           >
-            Sign in
+            {m.auth_sign_in_title()}
             {isSubmitting ? (
               <Loader className="animate-spin" />
             ) : (
@@ -124,9 +125,9 @@ export default function SignInPage() {
       </form>
 
       <p className="mt-4 text-sm text-muted-foreground">
-        Don’t have an account?{' '}
+        {m.auth_sign_up_have_account()}
         <Link className="font-medium text-primary" to="/auth/sign-up">
-          Sign up
+          {m.auth_sign_up_title()}
         </Link>
       </p>
     </div>

@@ -3,9 +3,11 @@ import { Trash } from 'lucide-react';
 import { Button } from '../ui/button';
 import SpinnerBars from '../shadcn-space/spinner/spinner-06';
 import ActionDialog from '../action-dialog';
+import { useState } from 'react';
 
 const RoadmapDeleteButton = ({ roadmapId }: { roadmapId: string }) => {
   const { mutateAsync, isPending } = useRoadmapDeleteMutation();
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleDelete = async () => {
     try {
@@ -17,11 +19,14 @@ const RoadmapDeleteButton = ({ roadmapId }: { roadmapId: string }) => {
 
   return (
     <ActionDialog
+      open={openDialog}
+      setOpen={setOpenDialog}
       trigger={
         <Button
           variant="destructive"
           className="w-min text-destructive px-4 relative text-xs sm:text-sm"
           disabled={isPending}
+          onClick={() => setOpenDialog(true)}
         >
           Delete Roadmap
           <Trash />
