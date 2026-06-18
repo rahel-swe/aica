@@ -26,7 +26,7 @@ export class DashboardService {
     const [onboarding, recommendations, roadmapSetup, roadmap] =
       await Promise.all([
         this.pathwayAssessmentRepo.findByUserId(user.id),
-        this.recommendationRepo.findByUserId(user.id),
+        this.recommendationRepo.findAllByUserId(user.id),
         this.roadmapSetupAssessmentRepo.findByUserId(user.id),
         this.roadmapRepo.findOneByUserId(user.id),
       ]);
