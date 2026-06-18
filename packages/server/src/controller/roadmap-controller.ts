@@ -8,9 +8,8 @@ export class RoadmapController {
 
   generateRoadmap = async (req: AuthRequest, res: Response) => {
     try {
-      const { pathwayId } = req.body as { pathwayId: string };
       const userId = req.user?.id || 'dummyUserId';
-      const result = await this.service.generateRoadmap(userId, pathwayId);
+      const result = await this.service.generateRoadmap(userId);
 
       res.json({
         success: true,

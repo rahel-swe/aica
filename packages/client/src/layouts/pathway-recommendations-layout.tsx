@@ -107,7 +107,7 @@ const PathwayRecommendationsLayout = () => {
   const pathwaysForDirection = pathways
     .filter((p) => p.fieldSlug === params.fieldSlug)
     .sort((a, b) => a.rank - b.rank)
-    .slice(0, 5);
+    .slice(0, 7);
 
   // ── Submit handler
 
@@ -144,7 +144,7 @@ const PathwayRecommendationsLayout = () => {
           />
         )}
 
-        {/* Stage 2 — pick a field within the selected domain */}
+        {/* Stage 2 — pick a field within the selected domain or continue with field */}
         {params.stage === 'field' && selectedFamily && (
           <FieldStage
             fields={directionsForFamily}

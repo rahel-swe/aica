@@ -81,7 +81,7 @@ export type AdvisorRoadmapData = {
   timeBudgetPerWeek: unknown;
   roadmapStyle: string;
   nextReviewAt: unknown;
-  pathwayId: string;
+  pathwaySlug: string;
   phases: Array<Record<string, unknown>>;
   steps: Array<Record<string, unknown>>;
 };

@@ -11,7 +11,7 @@ export class PathwayAssessmentRepository {
 
   async updateByUserId(userId: string, data: any) {
     return await PathwayAssessmentModel.findOneAndUpdate({ userId }, data, {
-      new: true,
+      returnDocument: 'after',
     });
   }
 

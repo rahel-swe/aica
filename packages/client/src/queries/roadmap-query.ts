@@ -4,7 +4,6 @@ import {
   generateRoadmap,
   getMyRoadmap,
 } from '@/services/roadmap-service';
-import type { RoadmapGenerateRequest } from '@contracts/shared/types/roadmap-types';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { dashboardQueryKey } from './dashboard-query';
 
@@ -21,7 +20,7 @@ export const useGenerateRoadmapMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (payload: RoadmapGenerateRequest) => generateRoadmap(payload),
+    mutationFn: generateRoadmap,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: roadmapQueryKey });
     },

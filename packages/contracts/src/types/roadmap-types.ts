@@ -47,18 +47,18 @@ export type RoadmapPhase = {
 };
 
 export type RoadmapGenerateRequest = {
-  pathwayId: string;
+  pathwaySlug: string;
 };
 
 export type RoadmapSourceRecommendation = {
-  pathwayId: string;
+  pathwaySlug: string;
   explanation?: string;
   totalScore: number;
 };
 
 export type PathwayRoadmap = {
   _id: string;
-  pathwayId: string;
+  pathwaySlug: string;
   version: number;
   status: RoadmapStatus;
   title: string;

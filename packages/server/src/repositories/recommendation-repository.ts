@@ -22,9 +22,13 @@ class RecommendationRepository {
   // ── Read ──────────────────────────────────────────────────────────────────
 
   /** All recommendations for a user, ordered by rank. */
-  async findAllByUserId(userId: string): Promise<IRecommendation[]> {
+  async findAllByUserId(
+    userId: string,
+    limit = 50
+  ): Promise<IRecommendation[]> {
     return RecommendationModel.find({ userId })
       .sort({ rank: 1 })
+      .limit(limit)
       .lean<IRecommendation[]>();
   }
 

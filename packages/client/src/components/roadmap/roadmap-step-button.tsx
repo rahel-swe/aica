@@ -20,7 +20,7 @@ const RoadmapStepButton = ({
     <Button
       variant={isCompleted ? 'default' : 'outline'}
       className={cn(
-        'relative text-2xl sm:text-3xl px-10 sm:py-6  w-min border-dashed border-2 font-heading',
+        'relative text-2xl sm:text-3xl px-10 py-5 sm:py-6  w-min border-dashed border-2 font-heading',
         className
       )}
       onClick={onClick}

@@ -1,6 +1,5 @@
 import apiClient from '@/lib/api-client';
 import type {
-  RoadmapGenerateRequest,
   RoadmapGenerateResponse,
   RoadmapResponse,
   RoadmapStepStatus,
@@ -11,10 +10,8 @@ export const getMyRoadmap = async (): Promise<RoadmapResponse> => {
   return response.data;
 };
 
-export const generateRoadmap = async (
-  payload: RoadmapGenerateRequest
-): Promise<RoadmapGenerateResponse> => {
-  const response = await apiClient.post('/api/roadmaps/generate', payload);
+export const generateRoadmap = async (): Promise<RoadmapGenerateResponse> => {
+  const response = await apiClient.post('/api/roadmaps/generate');
   return response.data;
 };
 

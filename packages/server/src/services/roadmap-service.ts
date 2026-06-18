@@ -1,7 +1,6 @@
 import type {
   PathwayDurationProfile,
   PathwayJourneyPhase,
-  RecommendationItem,
 } from '@contracts/shared/types/pathway-domain-types';
 import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/roadmap-setup-assessment-types';
 import { pathwayRepository } from '../repositories/pathway-repository';
@@ -33,22 +32,23 @@ export class RoadmapService {
     roadmapSetupAssessmentRepository;
   private readonly roadmapGenerationService = roadmapGenerationService;
 
-  async generateRoadmap(userId: string, pathwayId: string) {
-    const pathway =
-      await this.pathwayRepository.findActiveDetailByIdOrSlug(pathwayId);
-
-    if (!pathway) throw new Error('Pathway not found.');
-
+  async generateRoadmap(userId: string) {
     const roadmapSetup =
-      await this.roadmapSetupAssessmentRepository.findByUserId(userId);
+      await roadmapSetupAssessmentRepository.findByUserId(userId);
 
     if (!roadmapSetup)
       throw new Error(
         'Complete roadmap setup assessment before generating a roadmap.'
       );
 
+    const pathway = await this.pathwayRepository.findActiveDetailBySlug(
+      roadmapSetup!.pickedPathwaySlug
+    );
+
+    if (!pathway) throw new Error('Pathway not found.');
+
     const savedRecommendations =
-      await this.recommendationRepository.findByUserId(userId);
+      await this.recommendationRepository.findAllByUserId(userId);
     const recommendation = savedRecommendations.find(
       (recom) => String(recom.pathwayId) === String(pathway._id)
     );
@@ -59,7 +59,7 @@ export class RoadmapService {
       await this.roadmapGenerationService.generateStructuredRoadmap({
         pathway: pathwayContext,
         setup: roadmapSetup as unknown as RoadmapSetupAssessmentFormValues,
-        recommendation: recommendation as unknown as RecommendationItem,
+        recommendation: recommendation as unknown,
       });
 
     const currentLevel = this.mapCurrentLevel(

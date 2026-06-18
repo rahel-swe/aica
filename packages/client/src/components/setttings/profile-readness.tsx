@@ -1,3 +1,12 @@
+import { Separator } from '@/components/ui/separator';
+import { useProfileStatusQuery } from '@/queries/profile-query';
+import { useRoadmapQuery } from '@/queries/roadmap-query';
+import { Pencil, Play } from 'lucide-react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import ActionDialog from '../action-dialog';
+import ErrorState from '../error-state';
+import { Button } from '../ui/button';
 import {
   Card,
   CardContent,
@@ -5,24 +14,9 @@ import {
   CardHeader,
   CardTitle,
 } from '../ui/card';
-import { Separator } from '@/components/ui/separator';
 import { AssessmentStatusRow } from './assessment-status-row';
-import { useProfileStatusQuery } from '@/queries/profile-query';
-import {
-  useRoadmapDeleteMutation,
-  useRoadmapQuery,
-} from '@/queries/roadmap-query';
-import { Button } from '../ui/button';
-import { Pencil, Play } from 'lucide-react';
-import ErrorState from '../error-state';
-import ActionDialog from '../action-dialog';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 const ProfileReadness = () => {
-  const { mutateAsync: deleteRoadmap, isPending: isRoadmapDeleting } =
-    useRoadmapDeleteMutation();
-
   const { data: roadmapQueryResponse, isPending: isRoadmapPending } =
     useRoadmapQuery();
 
@@ -82,7 +76,6 @@ const ProfileReadness = () => {
                   <Button
                     variant="outline"
                     size="lg"
-                    disabled={isRoadmapDeleting}
                     onClick={() => setOpenPathwayAssessmentDialog(true)}
                   >
                     <Pencil />
@@ -90,22 +83,12 @@ const ProfileReadness = () => {
                   </Button>
                 }
                 title="Restart pathway profile?"
-                description="This will regenarate recommendations, and generated roadmap. You'll need to complete the assessment again."
-                actionLabel="Start over"
-                onAction={async () => {
-                  try {
-                    await Promise.all([
-                      roadmapData?._id
-                        ? deleteRoadmap(roadmapData._id)
-                        : Promise.resolve(),
-                    ]);
-
-                    navigate('/pathway-assessment', {
-                      viewTransition: true,
-                    });
-                  } catch (error) {
-                    console.log(error);
-                  }
+                description="This will regenarate your recommendations!"
+                actionLabel="Start"
+                onAction={() => {
+                  navigate('/pathway-assessment', {
+                    viewTransition: true,
+                  });
                 }}
               />
             )
@@ -133,7 +116,6 @@ const ProfileReadness = () => {
                     <Button
                       variant="outline"
                       size="lg"
-                      disabled={isRoadmapDeleting}
                       onClick={() => {
                         if (roadmapData) setOpenRoadmapAssessmentDialog(true);
                         else
@@ -147,17 +129,14 @@ const ProfileReadness = () => {
                     </Button>
                   }
                   title="Update roadmap setup?"
-                  description="This will delete your current roadmap and generate a new one using your updated preferences."
+                  description="May you need to regenerate your roadmap, and use your updated preferences."
                   actionLabel="Update Setup"
                   onAction={() => {
                     if (roadmapData) {
-                      deleteRoadmap(roadmapData!._id, {
-                        onSuccess: () => {
-                          navigate('/roadmap-setup-assessment', {
-                            viewTransition: true,
-                          });
-                        },
+                      navigate('/roadmap-setup-assessment', {
+                        viewTransition: true,
                       });
+
                       return;
                     }
 

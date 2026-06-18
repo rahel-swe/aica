@@ -54,14 +54,14 @@ export class AdvisorContextBuilder {
     const roadmapData = roadmap as PathwayRoadmap | null;
     const roadmapSetupData = roadmapSetup as Record<string, unknown> | null;
 
-    const selectedPathwayId =
-      roadmapData?.pathwayId ??
+    const selectedPathwaySlug =
+      roadmapData?.pathwaySlug ??
       (roadmapSetupData?.pickedPathwaySlug as string | undefined) ??
       recommendations[0]?.pathwayId;
 
-    const selectedPathwayRaw = selectedPathwayId
+    const selectedPathwayRaw = selectedPathwaySlug
       ? await pathwayRepository
-          .findActiveDetailBySlug(String(selectedPathwayId))
+          .findActiveDetailBySlug(String(selectedPathwaySlug))
           .then((p) => p as any)
       : null;
 
@@ -88,7 +88,7 @@ export class AdvisorContextBuilder {
           timeBudgetPerWeek: roadmapData.timeBudgetPerWeek,
           roadmapStyle: roadmapData.roadmapStyle,
           nextReviewAt: roadmapData.nextReviewAt,
-          pathwayId: String(roadmapData.pathwayId ?? ''),
+          pathwaySlug: String(roadmapData.pathwaySlug ?? ''),
           phases: (roadmapData.phases ?? []).map((p: RoadmapPhase) => ({
             id: p.id,
             phase: p.phase,
