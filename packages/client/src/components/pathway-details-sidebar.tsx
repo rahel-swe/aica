@@ -40,7 +40,7 @@ export default function PathwaySidebar() {
   const pathways = data?.pages.flatMap((page) => page.data.items) ?? [];
 
   return (
-    <aside className="hidden md:flex w-80 flex-col">
+    <aside className="hidden md:flex w-80 flex-col py-2">
       <div className="sticky top-20 flex flex-col rounded-4xl border bg-card h-[98%] min-h-0 pb-14 overflow-hidden">
         <div className="border-b p-4">
           <h2 className="text-sm font-semibold text-muted-foreground">

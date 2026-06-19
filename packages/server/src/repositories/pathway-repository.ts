@@ -95,17 +95,13 @@ class PathwayRepository {
       };
     }
 
-    if (type) {
-      query.type = type;
-    }
+    if (type) query.type = type;
 
-    if (cursor) {
-      query._id = { $lt: new mongoose.Types.ObjectId(cursor) };
-    }
+    if (cursor) query._id = { $lt: new mongoose.Types.ObjectId(cursor) };
 
     const raw = await PathwayModel.find(query)
       .populate('taxonomyNodeIds', TAXONOMY_SELECT)
-      .sort({ _id: -1 })
+      .sort({ _id: 1 })
       .limit(limit + 1)
       .lean<LeanPathwayListDoc[]>();
 
