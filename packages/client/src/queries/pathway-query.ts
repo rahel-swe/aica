@@ -21,10 +21,10 @@ export const usePathwaysQuery = () => {
   });
 };
 
-export const usePathwayDetailQuery = (id: string) => {
+export const usePathwayDetailQuery = (slug: string) => {
   return useQuery({
-    queryKey: ['pathway', id],
-    queryFn: () => getPathwayDetail(id),
-    enabled: !!id,
+    queryKey: ['pathway', slug],
+    queryFn: () => getPathwayDetail(slug),
+    enabled: !!slug,
   });
 };

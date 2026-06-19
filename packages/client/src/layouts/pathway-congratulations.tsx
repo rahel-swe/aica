@@ -9,17 +9,29 @@ import { Twemoji } from '@/components/twemoji';
 import { Link, Navigate } from 'react-router-dom';
 import { ChevronRight, PartyPopper } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { formatSlug } from '@/lib/slug-formatter';
+import { usePathwayDetailQuery } from '@/queries/pathway-query';
+import ErrorState from '@/components/error-state';
+import { m } from '../paraglide/messages';
 
 const PathwayCongratulations = () => {
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
 
   const {
-    data: roadmapSetupAssessmentResponse,
-    isPending: roadmapSetupAssessmentPending,
+    data: assessment,
+    isPending: assessmentLoading,
+    error: assessmentError,
   } = useRoadmapSetupAssessmentStatusQuery();
 
-  if (roadmapSetupAssessmentPending) {
+  const pickedSlug = assessment?.data?.pickedPathwaySlug;
+
+  const {
+    data: pathwayResponse,
+    isPending: pathwayLoading,
+    error: pathwayError,
+    refetch,
+  } = usePathwayDetailQuery(pickedSlug!);
+
+  if (assessmentLoading) {
     return (
       <div className="grid place-items-center min-h-dvh">
         <SpinnerBars />
@@ -27,14 +39,39 @@ const PathwayCongratulations = () => {
     );
   }
 
-  if (!roadmapSetupAssessmentResponse?.data)
-    return <Navigate to={'/pathway-recommendatoin'} />;
+  if (assessmentError) {
+    return (
+      <ErrorState
+        title="Failed to load assessment"
+        message={assessmentError.message}
+      />
+    );
+  }
 
-  const { pickedPathwaySlug } = roadmapSetupAssessmentResponse!.data;
+  if (!pickedSlug) {
+    return <Navigate to="/pathway-recommendation" replace />;
+  }
 
-  console.log(roadmapSetupAssessmentResponse);
+  if (pathwayError) {
+    return (
+      <ErrorState
+        title="Failed to load pathway"
+        message={pathwayError.message}
+        isRetrying={pathwayLoading}
+        onRetry={refetch}
+      />
+    );
+  }
 
-  const title = formatSlug(pickedPathwaySlug ?? 'your-pathway');
+  if (pathwayLoading || !pathwayResponse?.data) {
+    return (
+      <div className="grid place-items-center min-h-dvh">
+        <SpinnerBars />
+      </div>
+    );
+  }
+
+  const pathway = pathwayResponse.data;
 
   return (
     <div className="relative min-h-dvh border px-4 py-10 flex flex-col items-center justify-center">
@@ -53,24 +90,22 @@ const PathwayCongratulations = () => {
             variant={'outline'}
             className="font-medium tracking-[0.2em] uppercase"
           >
-            Great choice
+            {m.pathway_congratulations_badge()}
           </Badge>
         </div>
 
         <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-900 dark:text-slate-200 md:text-5xl uppercase mt-6 font-heading">
-          Congratulations
+          {m.pathway_congratulations_title()}
         </h1>
 
         <div className="mt-2 space-y-3">
-          <h2 className="text-balance text-4xl font-semibold text-slate-900 dark:text-slate-200 md:text-4xl font-heading">
-            {title}
-          </h2>
+          <p className="max-w-xl text-muted-foreground">
+            {m.pathway_congratulations_message()}
+          </p>
 
-          {/* {userPickedRecommendedPathway?.summary ? (
-            <p className="mx-auto max-w-lg text-sm leading-6 text-slate-600 dark:text-slate-300 md:text-base">
-              {userPickedRecommendedPathway.summary}
-            </p>
-          ) : null} */}
+          <h2 className="text-balance text-4xl font-semibold text-slate-900 dark:text-slate-200 md:text-4xl font-heading">
+            {pathway.title}
+          </h2>
         </div>
 
         <div className="mt-7 flex flex-col gap-4 justify-center">
@@ -79,13 +114,13 @@ const PathwayCongratulations = () => {
             className="rounded-full px-10 py-7 text-sm font-medium"
             onClick={() => lottieRef.current?.goToAndPlay(0, true)}
           >
-            Celebrate again
+            {m.pathway_congratulations_celebrate_again()}
             <PartyPopper />
           </Button>
           <Link to="/roadmap-setup-assessment">
             <Button className="rounded-full px-10 py-7 text-sm font-medium">
-              Continue App
-              <ChevronRight />
+              {m.pathway_congratulations_continue()}
+              <ChevronRight className="rtl:rotate-180" />
             </Button>
           </Link>
         </div>

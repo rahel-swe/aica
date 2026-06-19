@@ -27,13 +27,18 @@ const DomainStage = ({
       {/* Stage header */}
       <div className="space-y-2">
         <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-          Step 1 of 3
+          {m.pathway_recommendations_step({
+            current: 1,
+            total: 3,
+          })}
         </p>
+
         <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">
-          Find your world.
+          {m.pathway_recommendations_domain_stage_title()}
         </h1>
+
         <p className="max-w-lg text-base text-muted-foreground md:text-lg">
-          These domains matched your profile. Pick the one that pulls you.
+          {m.pathway_recommendations_domain_stage_description()}
         </p>
       </div>
 
@@ -90,13 +95,13 @@ const DomainStage = ({
               <span className="block text-2xl font-semibold tabular-nums text-foreground">
                 {selected.fieldCount}
               </span>
-              fields inside
+              {m.pathway_recommendations_domain_stage_fields_inside()}
             </div>
             <div>
               <span className="block text-2xl font-semibold tabular-nums text-foreground">
                 {selected.pathwayCount}
               </span>
-              pathways available
+              {m.pathway_recommendations_domain_stage_pathways_available()}
             </div>
           </div>
 
@@ -104,7 +109,7 @@ const DomainStage = ({
           {selected.topPathwaySlugs.length > 0 && (
             <div className="space-y-2">
               <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                Top pathways in this domain
+                {m.pathway_recommendations_domain_stage_top_pathways_title()}
               </p>
               <div className="flex flex-wrap gap-2">
                 {selected.topPathwaySlugs.map((slug) => (
@@ -125,7 +130,7 @@ const DomainStage = ({
           disabled={!selectedDomainSlug}
           onClick={onContinue}
         >
-          Explore fields
+          {m.pathway_recommendations_domain_stage_continue()}
           <ArrowRight className="transition-transform group-hover:translate-x-0.7 rtl:group-hover:-translate-x-0.7 rtl:rotate-180" />
         </Button>
       </div>

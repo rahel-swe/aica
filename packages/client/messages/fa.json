@@ -74,8 +74,43 @@
   "pathway_recommendations_select_cta": "این مسیر را انتخاب کنید",
   "pathway_recommendations_retake": "ارزیابی را دوباره انجام دهید",
   "pathway_recommendations_match_title": "مطابقت",
+  "pathway_recommendations_domain_stage_step": "مرحله ۱ از ۳",
+  "pathway_recommendations_domain_stage_title": "دنیای خود را پیدا کنید.",
+  "pathway_recommendations_domain_stage_description": "این حوزه‌ها با پروفایل شما مطابقت دارند. حوزه‌ای را انتخاب کنید که بیشتر شما را جذب می‌کند.",
+  "pathway_recommendations_domain_stage_match_suffix": "% تطبیق",
+  "pathway_recommendations_domain_stage_fields_inside": "حوزه در داخل",
+  "pathway_recommendations_domain_stage_pathways_available": "مسیر موجود",
+  "pathway_recommendations_domain_stage_top_pathways_title": "برترین مسیرها در این حوزه",
+  "pathway_recommendations_domain_stage_continue": "حوزه‌ها را بررسی کنید",
+  "pathway_recommendations_step": "مرحله {current} از {total}",
+  "pathway_recommendations_match": "{percent}% تطبیق",
+  "pathway_recommendations_fields_count": "{count} حوزه",
+  "pathway_recommendations_pathways_count": "{count} مسیر",
 
+  "pathway_recommendations_field_stage_title": "تمرکز را محدود کنید.",
+  "pathway_recommendations_field_stage_description": "حوزه‌های داخل {domain} بر اساس میزان تطبیق با شما رتبه‌بندی شده‌اند.",
+
+  "pathway_recommendations_field_stage_select_hint": "برای دیدن جزئیات، یکی از حوزه‌های بالا را انتخاب کنید.",
+  "pathway_recommendations_field_stage_loading_details": "در حال بارگذاری جزئیات حوزه…",
+  "pathway_recommendations_field_stage_starting": "در حال شروع…",
+  "pathway_recommendations_field_stage_start_in": "شروع از: {field}",
+  "pathway_recommendations_field_stage_pick_specialization": "یک تخصص انتخاب کنید",
+  "pathway_recommendations_field_stage_auto_pick_note": "\"شروع از {field}\" به‌صورت خودکار مناسب‌ترین تخصص شما را انتخاب می‌کند. بعداً همیشه می‌توانید آن را تغییر دهید.",
+
+  "pathway_recommendations_specialization_stage_title": "مسیر دقیق شما.",
+  "pathway_recommendations_specialization_stage_description": "تخصص‌های داخل {field} بر اساس پروفایل شما امتیازدهی شده‌اند.",
+
+  "pathway_recommendations_specialization_stage_select_hint": "برای دیدن جزئیات کامل، یک تخصص را از بالا انتخاب کنید.",
+
+  "pathway_recommendations_specialization_stage_loading_details": "در حال بارگذاری جزئیات تخصص…",
+
+  "pathway_recommendations_specialization_stage_locking": "مسیر شما در حال ثبت است…",
+
+  "pathway_recommendations_specialization_stage_choose": "{pathway} را انتخاب کنید",
   "pathway_congratulations_title": "تبریک!",
+  "pathway_congratulations_badge": "انتخاب عالی",
+  "pathway_congratulations_celebrate_again": "دوباره جشن بگیرید",
+  "pathway_congratulations_continue": "ادامه دهید",
   "pathway_congratulations_message": "شما مسیر یادگیری خود را انتخاب کرده‌اید. بیایید آن را تنظیم کنیم.",
   "pathway_congratulations_cta": "نقشه راه من را تنظیم کن",
 

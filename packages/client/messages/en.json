@@ -75,8 +75,41 @@
   "pathway_recommendations_retake": "Retake Assessment",
   "pathway_recommendations_match_title": "match",
 
+  "pathway_recommendations_step": "Step {current} of {total}",
+  "pathway_recommendations_domain_stage_title": "Find your world.",
+  "pathway_recommendations_domain_stage_description": "These domains matched your profile. Pick the one that pulls you.",
+  "pathway_recommendations_fields_count": "{count} fields",
+  "pathway_recommendations_pathways_count": "{count} pathways",
+  "pathway_recommendations_match": "{percent}% match",
+  "pathway_recommendations_domain_stage_fields_inside": "fields inside",
+  "pathway_recommendations_domain_stage_pathways_available": "pathways available",
+  "pathway_recommendations_domain_stage_top_pathways_title": "Top pathways in this domain",
+  "pathway_recommendations_domain_stage_continue": "Explore fields",
+
+  "pathway_recommendations_field_stage_title": "Narrow the focus.",
+  "pathway_recommendations_field_stage_description": "Fields within {domain}, ranked by how well they match you.",
+
+  "pathway_recommendations_field_stage_select_hint": "Select a field above to see the breakdown.",
+
+  "pathway_recommendations_field_stage_loading_details": "Loading field details…",
+  "pathway_recommendations_field_stage_starting": "Starting…",
+  "pathway_recommendations_field_stage_start_in": "Start in: {field}",
+  "pathway_recommendations_field_stage_pick_specialization": "Pick a specialization",
+  "pathway_recommendations_field_stage_auto_pick_note": "\"Start in {field}\" picks your highest-matching specialization automatically. You can always refine later.",
+
+  "pathway_recommendations_specialization_stage_title": "Your exact path.",
+  "pathway_recommendations_specialization_stage_description": "Specializations within {field}, scored to your profile.",
+  "pathway_recommendations_specialization_stage_select_hint": "Select a specialization above to see the full breakdown.",
+  "pathway_recommendations_specialization_stage_loading_details": "Loading specialization details…",
+  "pathway_recommendations_specialization_stage_locking": "Locking in your path…",
+  "pathway_recommendations_specialization_stage_choose": "Choose {pathway}",
+
   "pathway_congratulations_title": "Congratulations!",
   "pathway_congratulations_message": "You've selected your learning pathway. Let's get you set up.",
+  "pathway_congratulations_badge": "Great choice",
+  "pathway_congratulations_celebrate_again": "Celebrate again",
+  "pathway_congratulations_continue": "Continue",
+
   "pathway_congratulations_cta": "Set Up My Roadmap",
 
   "roadmap_setup_title": "Set Up Your Roadmap",

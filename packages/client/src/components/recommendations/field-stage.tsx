@@ -1,4 +1,4 @@
-import { ArrowRight, Loader2, Play } from 'lucide-react';
+import { ArrowRight, Loader, Loader2, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
@@ -10,6 +10,7 @@ import { usePathwayDetailQuery } from '@/queries/pathway-query';
 import { formatSlug } from '@/lib/slug-formatter';
 import PathwayDetailPanel from '@/components/recommendations/pathway-detail-panel';
 import RecommendationExplanationPanel from '@/components/recommendations/recommendation-explanation-panel';
+import { m } from '../../paraglide/messages';
 
 type Props = {
   fields: FieldRecommendation[];
@@ -17,7 +18,7 @@ type Props = {
   allPathways: PathwayRecommendation[];
   selectedFieldSlug: string;
   domainName: string;
-  onSelectDirection: (slug: string) => void;
+  onSelectField: (slug: string) => void;
   /**
    * User chose "Start in this field" — submit with the top pathway's document id.
    * The component resolves the id from the fetched PathwayDetailView.
@@ -32,7 +33,7 @@ const FieldStage = ({
   allPathways,
   selectedFieldSlug,
   domainName,
-  onSelectDirection,
+  onSelectField,
   onStartHere,
   onExploreDeeper,
   isSubmitting,
@@ -59,15 +60,19 @@ const FieldStage = ({
       {/* Stage header */}
       <div className="space-y-2">
         <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-          Step 2 of 3
+          {m.pathway_recommendations_step({
+            current: 2,
+            total: 3,
+          })}
         </p>
         <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">
-          Narrow the focus.
+          {m.pathway_recommendations_field_stage_title()}
         </h1>
+
         <p className="max-w-lg text-base text-muted-foreground md:text-lg">
-          Fields within{' '}
-          <span className="font-medium text-foreground">{domainName}</span>,
-          ranked by how well they match you.
+          {m.pathway_recommendations_field_stage_description({
+            domain: domainName,
+          })}
         </p>
       </div>
 
@@ -80,7 +85,7 @@ const FieldStage = ({
             <Button
               key={field.fieldSlug}
               onClick={() => {
-                onSelectDirection(field.fieldSlug);
+                onSelectField(field.fieldSlug);
                 console.log(field);
               }}
               className={cn(
@@ -100,7 +105,7 @@ const FieldStage = ({
       {/* Hint when nothing selected */}
       {!selectedField && (
         <p className="text-sm text-muted-foreground">
-          Select a field above to see the breakdown.
+          {m.pathway_recommendations_field_stage_select_hint()}
         </p>
       )}
 
@@ -112,8 +117,8 @@ const FieldStage = ({
           {/* Loading state */}
           {isDetailLoading && (
             <div className="flex items-center gap-2.5 py-4 text-sm text-muted-foreground">
-              <Loader2 className="size-4 animate-spin" />
-              Loading field details…
+              <Loader className="size-4 animate-spin" />
+              {m.pathway_recommendations_field_stage_loading_details()}
             </div>
           )}
 
@@ -151,13 +156,15 @@ const FieldStage = ({
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 size-4 animate-spin" />
-                  Starting…
+                  {m.pathway_recommendations_field_stage_starting()}
                 </>
               ) : (
                 <>
                   <Play />
-                  Start in:{' '}
-                  {selectedField.fieldName ?? formatSlug(selectedFieldSlug)}
+                  {m.pathway_recommendations_field_stage_start_in({
+                    field:
+                      selectedField.fieldName ?? formatSlug(selectedFieldSlug),
+                  })}
                 </>
               )}
             </Button>
@@ -169,15 +176,15 @@ const FieldStage = ({
               disabled={!selectedFieldSlug}
               onClick={onExploreDeeper}
             >
-              Pick a specialization
+              {m.pathway_recommendations_field_stage_pick_specialization()}
               <ArrowRight className="transition-transform group-hover:translate-x-0.7 rtl:group-hover:-translate-x-0.7 rtl:rotate-180" />
             </Button>
           </div>
 
           <p className="text-xs text-muted-foreground">
-            "Start in {formatSlug(selectedFieldSlug)}" picks your
-            highest-matching specialization automatically. You can always refine
-            later.
+            {m.pathway_recommendations_field_stage_auto_pick_note({
+              field: selectedField.fieldName!,
+            })}
           </p>
         </div>
       )}

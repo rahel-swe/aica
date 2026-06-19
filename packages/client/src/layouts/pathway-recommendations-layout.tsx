@@ -8,17 +8,17 @@ import SpecializationStage from '@/components/recommendations/specialization-sta
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 
 import NavigationBackButton from '@/components/navigation-back-button';
+import {
+  DOMAIN_ICONS,
+  type DomainSlug,
+} from '@/constants/recommendation-ui-data';
 import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-data';
-import { formatSlug } from '@/lib/slug-formatter';
+import { cn } from '@/lib/utils';
 import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
 import { useProfileStatusQuery } from '@/queries/profile-query';
 import { useRecommendationQuery } from '@/queries/recommendation-query';
 import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
 import { m } from '../paraglide/messages';
-import {
-  DOMAIN_ICONS,
-  type DomainSlug,
-} from '@/constants/recommendation-ui-data';
 
 const PathwayRecommendationsLayout = () => {
   const navigate = useNavigate();
@@ -84,8 +84,6 @@ const PathwayRecommendationsLayout = () => {
 
   const data = recResponse?.data;
 
-  console.log(data);
-
   if (!data || data.domains.length === 0) {
     return (
       <div className="grid min-h-dvh place-items-center p-6 text-center">
@@ -104,15 +102,19 @@ const PathwayRecommendationsLayout = () => {
   const { domains, pathways } = data;
 
   // Directions are embedded inside FamilyRecommendation — no extra filter needed
-  const selectedFamily = domains.find(
+  const selectedDomain = domains.find(
     (f) => f.domainSlug === params.domainSlug
   );
-  const directionsForFamily = selectedFamily?.fields ?? [];
+  const fieldsForDomain = selectedDomain?.fields ?? [];
+
+  const selectedField = fieldsForDomain.find(
+    (f) => f.fieldSlug === params.fieldSlug
+  );
 
   const Icon = DOMAIN_ICONS[params.domainSlug as DomainSlug];
 
   // Pathways for the selected direction, ranked ascending, capped at 5
-  const pathwaysForDirection = pathways
+  const pathwaysForFields = pathways
     .filter((p) => p.fieldSlug === params.fieldSlug)
     .sort((a, b) => a.rank - b.rank)
     .slice(0, 7);
@@ -129,7 +131,11 @@ const PathwayRecommendationsLayout = () => {
   return (
     <div className="min-h-dvh px-4 py-10 md:px-8 md:py-16 relative">
       {params.domainSlug && (
-        <Icon className="pointer-events-none absolute size-60 scale-180 opacity-10 inset-e-[25%] top-40 z-0" />
+        <Icon
+          className={cn(
+            'pointer-events-none absolute size-60 scale-180 opacity-10 inset-e-[25%] top-40 z-0'
+          )}
+        />
       )}
 
       <div className="mx-auto max-w-4xl space-y-12 relative z-10">
@@ -153,13 +159,13 @@ const PathwayRecommendationsLayout = () => {
         )}
 
         {/* Stage 2 — pick a field within the selected domain or continue with field */}
-        {params.stage === 'field' && selectedFamily && (
+        {params.stage === 'field' && selectedDomain && (
           <FieldStage
-            fields={directionsForFamily}
+            fields={fieldsForDomain}
             allPathways={pathways}
             selectedFieldSlug={params.fieldSlug}
-            domainName={formatSlug(params.domainSlug)}
-            onSelectDirection={selectField}
+            domainName={selectedDomain.domainName!}
+            onSelectField={selectField}
             onStartHere={handleSubmit}
             onExploreDeeper={goToSpecialization}
             isSubmitting={isSubmitting}
@@ -168,9 +174,9 @@ const PathwayRecommendationsLayout = () => {
 
         {params.stage === 'specialization' && (
           <SpecializationStage
-            pathways={pathwaysForDirection}
+            pathways={pathwaysForFields}
             selectedPathwaySlug={params.specializationSlug}
-            directionName={formatSlug(params.fieldSlug)}
+            fieldName={selectedField!.fieldName!}
             onSelectPathway={selectSpecialization}
             onSubmit={handleSubmit}
             isSubmitting={isSubmitting}

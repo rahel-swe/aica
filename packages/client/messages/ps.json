@@ -76,8 +76,46 @@
   "pathway_recommendations_retake": "ارزونه بیا ترسره کړئ",
   "pathway_recommendations_match_title": "برابروالی",
 
+  "pathway_recommendations_step": "له {total} څخه {current} پړاو",
+  "pathway_recommendations_match": "{percent}% سمون",
+  "pathway_recommendations_fields_count": "{count} ساحې",
+  "pathway_recommendations_pathways_count": "{count} لارې",
+
+  "pathway_recommendations_domain_stage_step": "له ۳ څخه ۱ پړاو",
+  "pathway_recommendations_domain_stage_title": "خپله نړۍ ومومئ.",
+  "pathway_recommendations_domain_stage_description": "دا ډومېنونه ستاسو له پروفایل سره سمون لري. هغه یو غوره کړئ چې تاسو ته تر ټولو نږدې ښکاري.",
+
+  "pathway_recommendations_domain_stage_match_suffix": "% سمون",
+  "pathway_recommendations_domain_stage_fields_inside": "اړوند ساحې",
+  "pathway_recommendations_domain_stage_pathways_available": "شته لارې",
+  "pathway_recommendations_domain_stage_top_pathways_title": "په دې ډومېن کې غوره لارې",
+  "pathway_recommendations_domain_stage_continue": "ساحې وپلټئ",
+  "pathway_recommendations_field_stage_title": "تمرکز محدود کړئ.",
+  "pathway_recommendations_field_stage_description": "په {domain} کې ساحې، ستاسو سره د سمون له مخې درجه‌بندي شوې دي.",
+
+  "pathway_recommendations_field_stage_select_hint": "د جزیاتو د لیدلو لپاره پورته یوه ساحه وټاکئ.",
+  "pathway_recommendations_field_stage_loading_details": "د ساحې معلومات بارېږي…",
+  "pathway_recommendations_field_stage_starting": "پیلېږي…",
+  "pathway_recommendations_field_stage_start_in": "پیل له: {field}",
+  "pathway_recommendations_field_stage_pick_specialization": "تخصص وټاکئ",
+  "pathway_recommendations_field_stage_auto_pick_note": "\"پیل له {field}\" به په اتومات ډول ستاسو تر ټولو مناسب تخصص وټاکي. وروسته یې هر وخت بدلولی شئ.",
+
+  "pathway_recommendations_specialization_stage_title": "ستاسو دقیق مسیر.",
+  "pathway_recommendations_specialization_stage_description": "په {field} کې تخصصونه، ستاسو د پروفایل له مخې ارزول شوي.",
+
+  "pathway_recommendations_specialization_stage_select_hint": "د بشپړو جزیاتو د لیدلو لپاره پورته یو تخصص وټاکئ.",
+
+  "pathway_recommendations_specialization_stage_loading_details": "د تخصص معلومات بارېږي…",
+
+  "pathway_recommendations_specialization_stage_locking": "ستاسو مسیر ثبتېږي…",
+
+  "pathway_recommendations_specialization_stage_choose": "{pathway} وټاکئ",
+
   "pathway_congratulations_title": "مبارک مو شه!",
   "pathway_congratulations_message": "تاسې خپله د زده کړې لاره وټاکله. راځئ چې تنظیم یې کړو.",
+  "pathway_congratulations_badge": "غوره انتخاب",
+  "pathway_congratulations_celebrate_again": "بیا ولمانځئ",
+  "pathway_congratulations_continue": "دوام ورکړئ",
   "pathway_congratulations_cta": "زما لارنقشه جوړه کړئ",
 
   "roadmap_setup_title": "خپله لارنقشه تنظیم کړئ",

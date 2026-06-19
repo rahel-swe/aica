@@ -1,4 +1,4 @@
-import { Loader2 } from 'lucide-react';
+import { Loader, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
@@ -7,12 +7,13 @@ import { usePathwayDetailQuery } from '@/queries/pathway-query';
 import { formatSlug } from '@/lib/slug-formatter';
 import PathwayDetailPanel from '@/components/recommendations/pathway-detail-panel';
 import RecommendationExplanationPanel from '@/components/recommendations/recommendation-explanation-panel';
+import { m } from '../../paraglide/messages';
 
 type Props = {
   /** Top specializations for the selected direction (pre-sorted by rank, max 5) */
   pathways: PathwayRecommendation[];
   selectedPathwaySlug: string;
-  directionName: string;
+  fieldName: string;
   onSelectPathway: (slug: string) => void;
   /**
    * Submits with the pathway document's MongoDB _id (from PathwayDetailView.id).
@@ -25,12 +26,12 @@ type Props = {
 const SpecializationStage = ({
   pathways,
   selectedPathwaySlug,
-  directionName,
+  fieldName,
   onSelectPathway,
   onSubmit,
   isSubmitting,
 }: Props) => {
-  const selectedRec = pathways.find(
+  const selectedPath = pathways.find(
     (p) => p.pathwaySlug === selectedPathwaySlug
   );
 
@@ -49,15 +50,19 @@ const SpecializationStage = ({
       {/* Stage header */}
       <div className="space-y-2">
         <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-          Step 3 of 3
+          {m.pathway_recommendations_step({
+            current: 3,
+            total: 3,
+          })}
         </p>
         <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">
-          Your exact path.
+          {m.pathway_recommendations_specialization_stage_title()}
         </h1>
+
         <p className="max-w-lg text-base text-muted-foreground md:text-lg">
-          Specializations within{' '}
-          <span className="font-medium text-foreground">{directionName}</span>,
-          scored to your profile.
+          {m.pathway_recommendations_specialization_stage_description({
+            field: fieldName,
+          })}
         </p>
       </div>
 
@@ -89,22 +94,22 @@ const SpecializationStage = ({
       </div>
 
       {/* Hint when nothing selected */}
-      {!selectedRec && (
+      {!selectedPath && (
         <p className="text-sm text-muted-foreground">
-          Select a specialization above to see the full breakdown.
+          {m.pathway_recommendations_specialization_stage_select_hint()}
         </p>
       )}
 
       {/* Full detail panel */}
-      {selectedRec && (
-        <div className="animate-in fade-in-0 slide-in-from-bottom-2 space-y-10 duration-300">
+      {selectedPath && (
+        <div className="animate-in fade-in-0 slide-in-from-bottom-2 flex flex-col gap-7 duration-300">
           <Separator />
 
           {/* Loading */}
           {isDetailLoading && (
             <div className="flex items-center gap-2.5 py-4 text-sm text-muted-foreground">
-              <Loader2 className="size-4 animate-spin" />
-              Loading specialization details…
+              <Loader className="size-4 animate-spin" />
+              {m.pathway_recommendations_specialization_stage_loading_details()}
             </div>
           )}
 
@@ -113,8 +118,8 @@ const SpecializationStage = ({
             <>
               <PathwayDetailPanel
                 detail={pathwayDetail}
-                matchPercent={selectedRec.matchPercent}
-                reasons={selectedRec.reasons}
+                matchPercent={selectedPath.matchPercent}
+                reasons={selectedPath.reasons}
                 compact={false}
               />
 
@@ -122,13 +127,13 @@ const SpecializationStage = ({
 
               {/* On-demand LLM explanation */}
               <RecommendationExplanationPanel
-                recommendationId={selectedRec.id}
+                recommendationId={selectedPath.id}
                 pathwayTitle={pathwayDetail.title}
-                isCached={selectedRec.hasExplanation}
+                isCached={selectedPath.hasExplanation}
               />
 
               {/* Final submit */}
-              <div className="pt-4">
+              <div>
                 <Button
                   className="px-8 py-7"
                   onClick={handleSubmit}
@@ -137,10 +142,12 @@ const SpecializationStage = ({
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 size-4 animate-spin" />
-                      Locking in your path…
+                      {m.pathway_recommendations_specialization_stage_locking()}
                     </>
                   ) : (
-                    `Choose ${pathwayDetail.title}`
+                    m.pathway_recommendations_specialization_stage_choose({
+                      pathway: pathwayDetail.title,
+                    })
                   )}
                 </Button>
               </div>
