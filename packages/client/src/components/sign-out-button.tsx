@@ -3,6 +3,7 @@ import { LogOut } from 'lucide-react';
 import { Button } from './ui/button';
 import { authClient } from '@/lib/auth-client';
 import { useNavigate } from 'react-router-dom';
+import { m } from '../paraglide/messages';
 
 const SignOutButton = ({ className }: { className?: string }) => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const SignOutButton = ({ className }: { className?: string }) => {
       }}
     >
       <LogOut className="size-5" />
-      <h2 className="font-medium text-md">Log Out</h2>
+      <h2 className="font-medium text-md">{m.settings_section_sign_out()}</h2>
     </Button>
   );
 };

@@ -15,6 +15,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { ScrollArea, ScrollBar } from '../ui/scroll-area';
+import { m } from '../../paraglide/messages';
 
 const DeleteAccountComfirmDialog = ({
   open,
@@ -32,7 +33,7 @@ const DeleteAccountComfirmDialog = ({
       <AlertDialogTrigger asChild>
         <Button variant="destructive" className={cn(className)}>
           <Trash />
-          Delete Account
+          {m.delete_account()}
         </Button>
       </AlertDialogTrigger>
 
@@ -43,50 +44,49 @@ const DeleteAccountComfirmDialog = ({
               <div className="flex items-center gap-2">
                 <AlertTriangle className="size-5 text-destructive" />
 
-                <AlertDialogTitle>Delete your AICA account?</AlertDialogTitle>
+                <AlertDialogTitle>
+                  {' '}
+                  {m.delete_account_dialog_title()}
+                </AlertDialogTitle>
               </div>
 
               <AlertDialogDescription className="pt-2">
-                Your account and all associated guidance data will be
-                permanently removed.
+                {m.delete_account_dialog_description()}
               </AlertDialogDescription>
             </AlertDialogHeader>
 
             <div className="rounded-lg border bg-muted/30 p-4">
-              <p className="text-sm font-medium">You will lose access to:</p>
+              <p className="text-sm font-medium">
+                {' '}
+                {m.delete_account_you_will_lose()}
+              </p>
 
               <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                <li>Your guidance profile and assessment results</li>
-
-                <li>Saved academic and career pathways</li>
-
-                <li>Personalized recommendations and match history</li>
-
-                <li>Roadmap progress and completed milestones</li>
-
-                <li>AI advisor conversations and generated insights</li>
+                <li>{m.delete_account_item_1()}</li>
+                <li>{m.delete_account_item_2()}</li>
+                <li>{m.delete_account_item_3()}</li>
+                <li>{m.delete_account_item_4()}</li>
+                <li>{m.delete_account_item_5()}</li>
               </ul>
             </div>
 
             <div className="rounded-lg border p-4">
               <p className="text-sm text-muted-foreground">
-                If your interests, goals, or career direction have changed, you
-                can retake your assessment and generate updated recommendations
-                instead of deleting your account.
+                {m.delete_account_alternative()}
               </p>
             </div>
 
             <AlertDialogFooter>
               <AlertDialogCancel>
                 <X className="size-4" />
-                Keep Account
+                {m.keep_account()}
               </AlertDialogCancel>
 
               <AlertDialogAction
                 variant="destructive"
                 onClick={() => navigate('/settings/delete-account')}
               >
-                Continue to Deletion
+                {m.continue_to_deletion()}
                 <Trash className="size-4" />
               </AlertDialogAction>
             </AlertDialogFooter>

@@ -8,6 +8,10 @@
   "common_required_field": "دا برخه ډکول اړین دي",
   "common_skip": "پرېښودل",
   "common_continue": "دوام",
+  "start": "پیل",
+  "edit": "سمول",
+  "update_setup": "تنظیمات تازه کړئ",
+  "pending": "د بارېدو په حال کې...",
 
   "nav_dashboard": "ډشبورډ",
   "nav_explore": "سپړنه",
@@ -139,8 +143,76 @@
   "settings_account_delete": "حساب ړنګ کړئ",
   "settings_account_delete_confirm": "ایا ډاډه یاست چې خپل حساب ړنګول غواړئ؟ دا عمل بېرته نه شي راګرځېدلی.",
   "settings_section_profile_description": "خپل نوم او ارزونې اداره کړئ.",
+  "settings_section_security": "امنیت",
+  "settings_section_appearance": "بڼه",
+  "settings_section_about": "د اپلیکیشن په اړه",
+  "settings_section_sign_out": "وتل",
+
   "profile_name_label": "نوم",
   "profile_name_placeholder": "خپل نوم دننه کړئ",
+  "profile_readiness_title": "چمتووالی",
+  "profile_readiness_description": "دا هغه پروفایل معلومات دي چې AICA یې د لا دقیقو لارښوونو وړاندې کولو لپاره کاروي.",
+
+  "account_panel_description": "خپل کارن نوم او تړلی برېښنالیک تازه کړئ.",
+
+  "account_username_label": "کارن نوم",
+  "account_username_placeholder": "کارن نوم",
+
+  "account_email_label": "برېښنالیک",
+  "account_email_placeholder": "name@example.com",
+
+  "account_danger_zone_title": "د خطر برخه",
+  "account_danger_zone_description": "خپل AICA حساب او ټول اړوند لارښوونیز معلومات په دایمي ډول حذف کړئ.",
+
+  "account_delete_item_1": "ستاسو د ارزونې ځوابونه او د لارښوونې پروفایل",
+  "account_delete_item_2": "خوندي شوي تحصیلي او مسلکي لارې",
+  "account_delete_item_3": "شخصي سپارښتنې او د سمون پایلې",
+  "account_delete_item_4": "نقشې، پړاوونه او د پرمختګ تعقیب",
+  "account_delete_item_5": "د AI سلاکار خبرې اترې او خوندي شوي معلومات",
+
+  "account_delete_warning": "د حساب حذف کول دایمي دي او بېرته نه شي راګرځېدلی.",
+
+  "delete_account": "حساب حذف کړئ",
+
+  "delete_account_dialog_title": "خپل AICA حساب حذف کړئ؟",
+  "delete_account_dialog_description": "ستاسو حساب او ټول اړوند لارښوونیز معلومات به په دایمي ډول حذف شي.",
+
+  "delete_account_you_will_lose": "تاسو به دې مواردو ته لاسرسی له لاسه ورکړئ:",
+
+  "delete_account_item_1": "ستاسو د لارښوونې پروفایل او د ارزونې پایلې",
+  "delete_account_item_2": "خوندي شوې تحصیلي او مسلکي لارې",
+  "delete_account_item_3": "شخصي سپارښتنې او د سمون تاریخچه",
+  "delete_account_item_4": "د نقشې پرمختګ او بشپړ شوي پړاوونه",
+  "delete_account_item_5": "د AI سلاکار خبرې اترې او تولید شوي معلومات",
+
+  "delete_account_alternative": "که ستاسو لېوالتیاوې، موخې یا د مسلک لوری بدل شوی وي، د حساب د حذف کولو پر ځای کولای شئ خپله ارزونه بیا ترسره کړئ او نوې سپارښتنې ترلاسه کړئ.",
+
+  "keep_account": "حساب وساتئ",
+  "continue_to_deletion": "د حذف کولو دوام",
+
+  "security_panel_description": "د خپل حساب امنیت او د ننوتلو غوره‌توبونه اداره کړئ.",
+
+  "security_login_alerts_title": "د ننوتلو خبرتیاوې",
+  "security_login_alerts_description": "کله چې نوی ننوتل تشخیص شي، خبرتیا ترلاسه کړئ.",
+
+  "security_two_factor_title": "دوه‌پړاوه تصدیق (Two-Factor Authentication)",
+  "security_two_factor_description": "د خپل حساب د خوندي کولو لپاره د امنیت یوه بله طبقه اضافه کړئ.",
+
+  "change_password": "پټنوم بدل کړئ",
+
+  "notifications_panel_description": "وټاکئ چې کوم تازه معلومات او یادونې ترلاسه کول غواړئ.",
+
+  "notifications_email_updates_title": "د برېښنالیک تازه معلومات",
+  "notifications_email_updates_description": "د حساب او محصول اړوند برېښنالیکونه ترلاسه کړئ.",
+
+  "notifications_roadmap_reminders_title": "د نقشې یادونې",
+  "notifications_roadmap_reminders_description": "کله چې د نقشې یو پړاو رارسېږي، یادونه ترلاسه کړئ.",
+
+  "notifications_recommendation_updates_title": "د سپارښتنو تازه معلومات",
+  "notifications_recommendation_updates_description": "کله چې نوې سپارښتنې جوړې شي، خبرتیا ترلاسه کړئ.",
+
+  "notifications_product_news_title": "د محصول خبرونه",
+  "notifications_product_news_description": "د نویو ځانګړتیاوو او محصول د خپرېدو خبرونه ترلاسه کړئ.",
 
   "saved_pathways_title": "خوندي شوې لارې",
   "saved_pathways_empty": "تاسې لا تر اوسه کومه لاره نه ده خوندي کړې.",
@@ -303,6 +375,12 @@
   "pathway_assessment_navigation_see_my_matches": "خپلې پایلې وګورئ",
   "pathway_assessment_navigation_keep_going": "دوام ورکړئ",
 
+  "pathway_profile_title": "د مسلک پروفایل",
+  "pathway_profile_description": "ستاسو وړتیاوې، لېوالتیاوې، موخې او د کار خوښې.",
+
+  "restart_pathway_profile_title": "د مسلک پروفایل بیا پیل کړئ؟",
+  "restart_pathway_profile_description": "دا به ستاسو سپارښتنې له سره تولید کړي.",
+
   "roadmap_setup_welcome_title": "راځئ ستاسو لومړنی عملي پلان تنظیم کړو",
   "roadmap_setup_welcome_helper": "دا به ستاسو راتلونکی واقعي د لارې نقشه بڼه کړي، نه ستاسو ټول مسلکي مهال‌وېش.",
 
@@ -367,5 +445,9 @@
   "roadmap_navigation_go_back": "شاته لاړ شئ",
   "roadmap_navigation_lets_build_it": "راځئ دا جوړ کړو",
   "roadmap_navigation_submit_answers": "ځوابونه وسپارئ",
-  "roadmap_navigation_keep_going": "دوام ورکړئ"
+  "roadmap_navigation_keep_going": "دوام ورکړئ",
+
+  "roadmap_setup_description": "د پیل کچه، اوونیز وخت، محدودیتونه او د پلان ډول.",
+  "update_roadmap_setup_title": "د نقشې تنظیمات تازه کړئ؟",
+  "update_roadmap_setup_description": "کېدای شي اړتیا وي چې د خپلو نوو غوره‌توبونو د پلي کولو لپاره خپله نقشه له سره تولید کړئ."
 }

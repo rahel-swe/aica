@@ -13,6 +13,7 @@ import { Label } from '../ui/label';
 import DeleteAccountComfirmDialog from './delete-account-comfirm-dialog';
 import SettingsPanelShell from './settings-panel-shell';
 import SettingsSaveButton from './settings-save-button';
+import { m } from '../../paraglide/messages';
 
 type AccountPanelProps = {
   data: SettingsData;
@@ -37,13 +38,13 @@ const AccountPanel = ({ data, onSave }: AccountPanelProps) => {
   return (
     <SettingsPanelShell
       icon={User}
-      title="Account"
-      description="Update your username and connected email address."
+      title={m.settings_section_account()}
+      description={m.account_panel_description()}
     >
       <div className="space-y-2 w-full">
-        <Label htmlFor="account-username">User Name</Label>
+        <Label htmlFor="account-username"> {m.account_username_label()}</Label>
         <div className="relative">
-          <AtSign className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
+          <AtSign className="pointer-events-none absolute inset-s-3 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
           <Input
             id="account-username"
             value={form.username}
@@ -54,15 +55,15 @@ const AccountPanel = ({ data, onSave }: AccountPanelProps) => {
               }))
             }
             className="ps-10"
-            placeholder="Username"
+            placeholder={m.account_username_placeholder()}
           />
         </div>
       </div>
 
       <div className="space-y-2 w-full">
-        <Label htmlFor="account-email">Email Address</Label>
+        <Label htmlFor="account-email"> {m.account_email_label()}</Label>
         <div className="relative">
-          <Mail className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
+          <Mail className="pointer-events-none absolute inset-s-3 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
           <Input
             id="account-email"
             type="email"
@@ -74,7 +75,7 @@ const AccountPanel = ({ data, onSave }: AccountPanelProps) => {
               }))
             }
             className="ps-10"
-            placeholder="name@example.com"
+            placeholder={m.account_email_placeholder()}
           />
         </div>
       </div>
@@ -95,27 +96,24 @@ const AccountPanel = ({ data, onSave }: AccountPanelProps) => {
             <AlertTriangle className="mt-0.5 size-5.5 text-destructive" />
 
             <div className="flex-1">
-              <h3 className="font-semibold text-destructive">Danger Zone</h3>
+              <h3 className="font-semibold text-destructive">
+                {m.account_danger_zone_title()}
+              </h3>
 
               <p className="mt-2 text-sm text-muted-foreground">
-                Permanently remove your AICA account and all guidance data
-                associated with it.
+                {m.account_danger_zone_description()}
               </p>
 
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                <li>Your assessment responses and guidance profile</li>
-
-                <li>Saved academic and career pathways</li>
-
-                <li>Personalized recommendations and match results</li>
-
-                <li>Roadmaps, milestones, and progress tracking</li>
-
-                <li>AI advisor conversations and saved insights</li>
+                <li>{m.account_delete_item_1()}</li>
+                <li>{m.account_delete_item_2()}</li>
+                <li>{m.account_delete_item_3()}</li>
+                <li>{m.account_delete_item_4()}</li>
+                <li>{m.account_delete_item_5()}</li>
               </ul>
 
               <p className="mt-4 text-sm font-medium text-destructive">
-                Account deletion is permanent and cannot be reversed.
+                {m.account_delete_warning()}
               </p>
 
               <DeleteAccountComfirmDialog className="mt-5" />

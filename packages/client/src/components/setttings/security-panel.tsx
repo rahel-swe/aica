@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import SettingsPanelShell from './settings-panel-shell';
 import SettingsSaveButton from './settings-save-button';
 import SettingToggleRow from './settings-toggle-row';
+import { m } from '../../paraglide/messages';
 
 type SecurityPanelProps = {
   data: SettingsData;
@@ -47,20 +48,20 @@ const SecurityPanel = ({ data, onSave }: SecurityPanelProps) => {
   return (
     <SettingsPanelShell
       icon={Lock}
-      title="Security"
-      description="Manage your account security and login preferences."
+      title={m.settings_section_security()}
+      description={m.security_panel_description()}
     >
       <SettingToggleRow
-        title="Login alerts"
-        description="Receive a notification when a new login is detected."
+        title={m.security_login_alerts_title()}
+        description={m.security_login_alerts_description()}
         checked={form.loginAlerts}
         onCheckedChange={(checked) =>
           setForm((prev) => ({ ...prev, loginAlerts: checked }))
         }
       />
       <SettingToggleRow
-        title="Two-factor authentication"
-        description="Add another layer of protection to your account."
+        title={m.security_two_factor_title()}
+        description={m.security_two_factor_description()}
         checked={form.twoFactorAuth}
         onCheckedChange={(checked) => {
           setForm((prev) => ({ ...prev, twoFactorAuth: checked }));
@@ -82,7 +83,7 @@ const SecurityPanel = ({ data, onSave }: SecurityPanelProps) => {
           className="p-6"
         >
           <Key />
-          Change password
+          {m.change_password()}
         </Button>
 
         <SignOutButton className="p-6" />

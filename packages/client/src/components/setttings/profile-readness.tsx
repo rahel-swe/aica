@@ -15,6 +15,7 @@ import {
   CardTitle,
 } from '../ui/card';
 import { AssessmentStatusRow } from './assessment-status-row';
+import { m } from '../../paraglide/messages';
 
 const ProfileReadness = () => {
   const { data: roadmapQueryResponse, isPending: isRoadmapPending } =
@@ -50,22 +51,21 @@ const ProfileReadness = () => {
   return (
     <Card className="shadow-none">
       <CardHeader>
-        <CardTitle className="text-lg">Readiness</CardTitle>
-        <CardDescription>
-          These are the profile inputs AICA uses before stronger guidance.
-        </CardDescription>
+        <CardTitle className="text-lg">{m.profile_readiness_title()}</CardTitle>
+
+        <CardDescription>{m.profile_readiness_description()}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <AssessmentStatusRow
-          title="Pathway profile"
-          description="Strengths, interests, goals, and work preferences."
+          title={m.pathway_profile_title()}
+          description={m.pathway_profile_description()}
           completed={pathwayAssessmentCompleted ?? false}
           actionTrigger={
             !pathwayAssessmentCompleted ? (
               <Button asChild variant="outline" size="lg">
                 <Link to="/pathway-assessment">
                   <Play />
-                  Start
+                  {m.start()}
                 </Link>
               </Button>
             ) : (
@@ -79,12 +79,12 @@ const ProfileReadness = () => {
                     onClick={() => setOpenPathwayAssessmentDialog(true)}
                   >
                     <Pencil />
-                    Edit
+                    {m.edit()}
                   </Button>
                 }
-                title="Restart pathway profile?"
-                description="This will regenarate your recommendations!"
-                actionLabel="Start"
+                title={m.restart_pathway_profile_title()}
+                description={m.restart_pathway_profile_description()}
+                actionLabel={m.start()}
                 onAction={() => {
                   navigate('/pathway-assessment', {
                     viewTransition: true,
@@ -96,8 +96,8 @@ const ProfileReadness = () => {
         />
         <Separator />
         <AssessmentStatusRow
-          title="Roadmap setup"
-          description="Starting point, weekly time, constraints, and plan style."
+          title={m.roadmap_setup_title()}
+          description={m.roadmap_setup_description()}
           completed={roadmapSetupCompleted ?? false}
           actionTrigger={
             <>
@@ -105,7 +105,7 @@ const ProfileReadness = () => {
                 <Button asChild variant="outline" size="lg">
                   <Link to="/roadmap-setup-assessment" viewTransition>
                     <Play />
-                    Start
+                    {m.start()}
                   </Link>
                 </Button>
               ) : (
@@ -125,12 +125,12 @@ const ProfileReadness = () => {
                       }}
                     >
                       <Pencil />
-                      Edit
+                      {m.edit()}
                     </Button>
                   }
-                  title="Update roadmap setup?"
-                  description="May you need to regenerate your roadmap, and use your updated preferences."
-                  actionLabel="Update Setup"
+                  title={m.update_roadmap_setup_title()}
+                  description={m.update_roadmap_setup_description()}
+                  actionLabel={m.update_setup()}
                   onAction={() => {
                     if (roadmapData) {
                       navigate('/roadmap-setup-assessment', {

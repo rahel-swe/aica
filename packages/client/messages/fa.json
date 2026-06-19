@@ -8,6 +8,10 @@
   "common_required_field": "این فیلد الزامی است",
   "common_skip": "رد کردن",
   "common_continue": "ادامه",
+  "start": "شروع",
+  "edit": "ویرایش",
+  "update_setup": "به‌روزرسانی تنظیمات",
+  "pending": "در حال بارگذاری...",
 
   "nav_dashboard": "داشبورد",
   "nav_explore": "کاوش",
@@ -137,10 +141,78 @@
   "settings_account_change_password": "تغییر رمز عبور",
   "settings_account_delete": "حذف حساب",
   "settings_account_delete_confirm": "آیا مطمئن هستید که می‌خواهید حساب خود را حذف کنید؟ این کار قابل بازگشت نیست.",
+  "settings_section_security": "امنیت",
+  "settings_section_appearance": "ظاهر",
+  "settings_section_about": "دربارهٔ برنامه",
+  "settings_section_sign_out": "خروج",
 
   "settings_section_profile_description": "نام و ارزیابی‌های خود را مدیریت کنید.",
+
+  "account_panel_description": "نام کاربری و آدرس ایمیل متصل خود را به‌روزرسانی کنید.",
+
+  "account_username_label": "نام کاربری",
+  "account_username_placeholder": "نام کاربری",
+
+  "account_email_label": "آدرس ایمیل",
+  "account_email_placeholder": "name@example.com",
+
+  "account_danger_zone_title": "بخش خطر",
+  "account_danger_zone_description": "حساب AICA و تمام اطلاعات راهنمایی مرتبط با آن را به‌صورت دائمی حذف کنید.",
+
+  "account_delete_item_1": "پاسخ‌های ارزیابی و پروفایل راهنمایی شما",
+  "account_delete_item_2": "مسیرهای تحصیلی و شغلی ذخیره‌شده",
+  "account_delete_item_3": "پیشنهادهای شخصی‌سازی‌شده و نتایج تطبیق",
+  "account_delete_item_4": "نقشه‌های راه، مراحل و پیگیری پیشرفت",
+  "account_delete_item_5": "گفتگوهای مشاور هوش مصنوعی و اطلاعات ذخیره‌شده",
+
+  "account_delete_warning": "حذف حساب دائمی است و قابل بازگردانی نیست.",
+
+  "delete_account": "حذف حساب",
+
+  "delete_account_dialog_title": "حساب AICA خود را حذف می‌کنید؟",
+  "delete_account_dialog_description": "حساب شما و تمام اطلاعات راهنمایی مرتبط با آن به‌صورت دائمی حذف خواهد شد.",
+
+  "delete_account_you_will_lose": "دسترسی خود را به موارد زیر از دست خواهید داد:",
+
+  "delete_account_item_1": "پروفایل راهنمایی و نتایج ارزیابی شما",
+  "delete_account_item_2": "مسیرهای تحصیلی و شغلی ذخیره‌شده",
+  "delete_account_item_3": "پیشنهادهای شخصی‌سازی‌شده و تاریخچه تطبیق",
+  "delete_account_item_4": "پیشرفت نقشه راه و مراحل تکمیل‌شده",
+  "delete_account_item_5": "گفتگوهای مشاور AI و اطلاعات تولیدشده",
+
+  "delete_account_alternative": "اگر علاقه‌مندی‌ها، اهداف یا مسیر شغلی شما تغییر کرده است، می‌توانید به‌جای حذف حساب، دوباره ارزیابی را انجام داده و پیشنهادهای به‌روزشده دریافت کنید.",
+
+  "keep_account": "حفظ حساب",
+  "continue_to_deletion": "ادامه حذف",
+
+  "security_panel_description": "امنیت حساب و تنظیمات ورود خود را مدیریت کنید.",
+
+  "security_login_alerts_title": "اعلان‌های ورود",
+  "security_login_alerts_description": "هنگامی که ورود جدیدی شناسایی شود، اعلان دریافت کنید.",
+
+  "security_two_factor_title": "تأیید هویت دومرحله‌ای",
+  "security_two_factor_description": "برای محافظت بیشتر از حساب خود، یک لایه امنیتی دیگر اضافه کنید.",
+
+  "change_password": "تغییر رمز عبور",
+
+  "notifications_panel_description": "انتخاب کنید که کدام به‌روزرسانی‌ها و یادآوری‌ها را دریافت کنید.",
+
+  "notifications_email_updates_title": "به‌روزرسانی‌های ایمیل",
+  "notifications_email_updates_description": "ایمیل‌های مربوط به حساب و محصول را دریافت کنید.",
+
+  "notifications_roadmap_reminders_title": "یادآوری‌های نقشه راه",
+  "notifications_roadmap_reminders_description": "هنگامی که زمان انجام یک مرحله از نقشه راه فرا برسد، یادآوری دریافت کنید.",
+
+  "notifications_recommendation_updates_title": "به‌روزرسانی‌های پیشنهادها",
+  "notifications_recommendation_updates_description": "هنگامی که پیشنهادهای جدید ایجاد شوند، اعلان دریافت کنید.",
+
+  "notifications_product_news_title": "اخبار محصول",
+  "notifications_product_news_description": "از ویژگی‌های جدید و انتشارهای محصول باخبر شوید.",
+
   "profile_name_label": "نام",
   "profile_name_placeholder": "نام خود را وارد کنید",
+  "profile_readiness_title": "آمادگی",
+  "profile_readiness_description": "این‌ها اطلاعات پروفایل هستند که AICA پیش از ارائهٔ راهنمایی دقیق‌تر از آن‌ها استفاده می‌کند.",
 
   "saved_pathways_title": "مسیرهای ذخیره‌شده",
   "saved_pathways_empty": "شما هنوز هیچ مسیری ذخیره نکرده‌اید.",
@@ -304,6 +376,12 @@
   "pathway_assessment_navigation_see_my_matches": "تطبیق‌های من را ببینید",
   "pathway_assessment_navigation_keep_going": "ادامه دهید",
 
+  "pathway_profile_title": "پروفایل مسیر شغلی",
+  "pathway_profile_description": "توانایی‌ها، علاقه‌مندی‌ها، اهداف و ترجیحات کاری شما.",
+
+  "restart_pathway_profile_title": "پروفایل مسیر شغلی دوباره آغاز شود؟",
+  "restart_pathway_profile_description": "این کار پیشنهادهای شما را دوباره ایجاد می‌کند.",
+
   "roadmap_setup_welcome_title": "بیایید اولین برنامه عملی شما را تنظیم کنیم",
   "roadmap_setup_welcome_helper": "این کار، بازه‌ی واقع‌بینانه‌ی مسیر بعدی شما را شکل می‌دهد، نه کلّ مسیر شغلی‌تان را.",
 
@@ -368,5 +446,9 @@
   "roadmap_navigation_go_back": "برگردید",
   "roadmap_navigation_lets_build_it": "بیایید بسازیم",
   "roadmap_navigation_submit_answers": "ارسال پاسخ‌ها",
-  "roadmap_navigation_keep_going": "ادامه دهید"
+  "roadmap_navigation_keep_going": "ادامه دهید",
+
+  "roadmap_setup_description": "نقطه شروع، زمان هفتگی، محدودیت‌ها و سبک برنامه.",
+  "update_roadmap_setup_title": "تنظیمات نقشه راه به‌روزرسانی شود؟",
+  "update_roadmap_setup_description": "ممکن است لازم باشد برای اعمال ترجیحات جدید، نقشه راه خود را دوباره ایجاد کنید."
 }

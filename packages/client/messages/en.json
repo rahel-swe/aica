@@ -8,6 +8,10 @@
   "common_required_field": "This field is required",
   "common_skip": "Skip",
   "common_continue": "Continue",
+  "start": "Start",
+  "edit": "Edit",
+  "update_setup": "Update Setup",
+  "pending": "Loading...",
 
   "nav_dashboard": "Dashboard",
   "nav_explore": "Explore",
@@ -139,8 +143,76 @@
   "settings_account_delete": "Delete Account",
   "settings_account_delete_confirm": "Are you sure you want to delete your account? This cannot be undone.",
   "settings_section_profile_description": "Manage your name and assessments.",
+  "settings_section_security": "Security",
+  "settings_section_appearance": "Appearance",
+  "settings_section_about": "About",
+  "settings_section_sign_out": "Log Out",
+
   "profile_name_label": "Name",
   "profile_name_placeholder": "Enter your name",
+  "profile_readiness_title": "Readiness",
+  "profile_readiness_description": "These are the profile inputs AICA uses before stronger guidance.",
+
+  "account_panel_description": "Update your username and connected email address.",
+
+  "account_username_label": "Username",
+  "account_username_placeholder": "Username",
+
+  "account_email_label": "Email Address",
+  "account_email_placeholder": "name@example.com",
+
+  "account_danger_zone_title": "Danger Zone",
+  "account_danger_zone_description": "Permanently remove your AICA account and all guidance data associated with it.",
+
+  "account_delete_item_1": "Your assessment responses and guidance profile",
+  "account_delete_item_2": "Saved academic and career pathways",
+  "account_delete_item_3": "Personalized recommendations and match results",
+  "account_delete_item_4": "Roadmaps, milestones, and progress tracking",
+  "account_delete_item_5": "AI advisor conversations and saved insights",
+
+  "account_delete_warning": "Account deletion is permanent and cannot be reversed.",
+
+  "delete_account": "Delete Account",
+
+  "delete_account_dialog_title": "Delete your AICA account?",
+  "delete_account_dialog_description": "Your account and all associated guidance data will be permanently removed.",
+
+  "delete_account_you_will_lose": "You will lose access to:",
+
+  "delete_account_item_1": "Your guidance profile and assessment results",
+  "delete_account_item_2": "Saved academic and career pathways",
+  "delete_account_item_3": "Personalized recommendations and match history",
+  "delete_account_item_4": "Roadmap progress and completed milestones",
+  "delete_account_item_5": "AI advisor conversations and generated insights",
+
+  "delete_account_alternative": "If your interests, goals, or career direction have changed, you can retake your assessment and generate updated recommendations instead of deleting your account.",
+
+  "keep_account": "Keep Account",
+  "continue_to_deletion": "Continue to Deletion",
+
+  "security_panel_description": "Manage your account security and login preferences.",
+
+  "security_login_alerts_title": "Login Alerts",
+  "security_login_alerts_description": "Receive a notification when a new login is detected.",
+
+  "security_two_factor_title": "Two-Factor Authentication",
+  "security_two_factor_description": "Add another layer of protection to your account.",
+
+  "change_password": "Change Password",
+
+  "notifications_panel_description": "Choose which updates and reminders you want to receive.",
+
+  "notifications_email_updates_title": "Email Updates",
+  "notifications_email_updates_description": "Receive account and product emails.",
+
+  "notifications_roadmap_reminders_title": "Roadmap Reminders",
+  "notifications_roadmap_reminders_description": "Get reminders when a roadmap step is due.",
+
+  "notifications_recommendation_updates_title": "Recommendation Updates",
+  "notifications_recommendation_updates_description": "Be notified when new recommendations are generated.",
+
+  "notifications_product_news_title": "Product News",
+  "notifications_product_news_description": "Receive news about new features and product launches.",
 
   "saved_pathways_title": "Saved Pathways",
   "saved_pathways_empty": "You haven't saved any pathways yet.",
@@ -304,6 +376,12 @@
   "pathway_assessment_navigation_see_my_matches": "See my matches",
   "pathway_assessment_navigation_keep_going": "Keep going",
 
+  "pathway_profile_title": "Pathway Profile",
+  "pathway_profile_description": "Strengths, interests, goals, and work preferences.",
+
+  "restart_pathway_profile_title": "Restart Pathway Profile?",
+  "restart_pathway_profile_description": "This will regenerate your recommendations!",
+
   "roadmap_setup_welcome_title": "Let's set up your first action plan",
   "roadmap_setup_welcome_helper": "This will shape your next realistic roadmap window, not your full career timeline.",
 
@@ -368,5 +446,9 @@
   "roadmap_navigation_go_back": "Go back",
   "roadmap_navigation_lets_build_it": "Let’s build it",
   "roadmap_navigation_submit_answers": "Submit answers",
-  "roadmap_navigation_keep_going": "Keep going"
+  "roadmap_navigation_keep_going": "Keep going",
+
+  "roadmap_setup_description": "Starting point, weekly time, constraints, and plan style.",
+  "update_roadmap_setup_title": "Update Roadmap Setup?",
+  "update_roadmap_setup_description": "You may need to regenerate your roadmap to use your updated preferences."
 }
