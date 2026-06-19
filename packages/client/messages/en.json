@@ -27,6 +27,135 @@
   "landing_cta_get_started": "Get Started",
   "landing_cta_sign_in": "Already have an account? Sign In",
 
+  "landing_stats_students_guided": "Students Guided",
+  "landing_stats_career_pathways": "Career Pathways",
+  "landing_stats_match_satisfaction": "Match Satisfaction",
+  "landing_stats_to_your_roadmap": "To Your Roadmap",
+
+  "landing_problem_heading": "The guidance gap is real.",
+  "landing_problem_subheading": "Every year, millions make critical decisions with generic advice that doesn't reflect who they truly are.",
+
+  "landing_problem_academic_mismatch_title": "Academic Mismatch",
+  "landing_problem_academic_mismatch_description": "Students choose faculties based on family pressure or surface-level tests — not on their actual strengths, interests, or long-term ambitions.",
+
+  "landing_problem_decision_paralysis_title": "Decision Paralysis",
+  "landing_problem_decision_paralysis_description": "With hundreds of pathways and conflicting advice, most people freeze. The options feel endless and the right answer invisible.",
+
+  "landing_problem_personalized_guidance_title": "No Personalized Guidance",
+  "landing_problem_personalized_guidance_description": "Traditional counseling can't scale. Most students never receive advice genuinely tailored to who they are — and what they could become.",
+
+  "landing_how_it_works_heading": "Three steps to clarity.",
+
+  "landing_how_it_works_step1_title": "Build Your Profile",
+  "landing_how_it_works_step1_description": "Complete a guided assessment covering interests, strengths, and goals. Designed for real alignment — not surface-level personality tests.",
+  "landing_how_it_works_step1_pill": "~5 min · Private",
+
+  "landing_how_it_works_step2_title": "AI-Powered Matching",
+  "landing_how_it_works_step2_description": "AICA maps your profile against 200+ curated pathways with full transparency. You always understand why a path was suggested.",
+  "landing_how_it_works_step2_pill": "Instant · Explainable",
+
+  "landing_how_it_works_step3_title": "Get Your Roadmap",
+  "landing_how_it_works_step3_description": "Receive a concrete action plan: faculties, courses, skills to build, and next steps — all tailored to your exact profile.",
+  "landing_how_it_works_step3_pill": "Full plan · Actionable",
+
+  "landing_roadmap_heading_line1": "Your roadmap,",
+  "landing_roadmap_heading_line2": "in minutes.",
+
+  "landing_roadmap_description": "After your assessment, AICA generates a step-by-step plan tailored to your exact profile — not a template, a personalized roadmap you can start following today.",
+
+  "landing_roadmap_feature_1": "Clear steps from where you are to where you want to be",
+  "landing_roadmap_feature_2": "Specific courses, certifications, and skills per step",
+  "landing_roadmap_feature_3": "Progress tracking as your goals evolve over time",
+
+  "landing_roadmap_button": "See My Roadmap",
+
+  "landing_features_heading_line1": "Everything to decide",
+  "landing_features_heading_line2": "with confidence.",
+
+  "landing_feature_profile_title": "Deep User Profiling",
+  "landing_feature_profile_description": "Structured inputs capturing interests, strengths, values, and goals — going far beyond surface-level personality tests.",
+
+  "landing_feature_matching_title": "Intelligent Matching",
+  "landing_feature_matching_description": "Profile-based rules compare you against 200+ pathways with full transparency — you always see why each path was recommended.",
+
+  "landing_feature_ai_explanation_title": "AI-Generated Explanations",
+  "landing_feature_ai_explanation_description": "Every recommendation comes with personalized reasoning, helping you understand and own your decision completely.",
+
+  "landing_feature_roadmaps_title": "Personalized Roadmaps",
+  "landing_feature_roadmaps_description": "Concrete next steps, suggested qualifications, and skill-building plans tailored to your specific chosen path.",
+
+  "landing_feature_learning_title": "Learning Pathway Curation",
+  "landing_feature_learning_description": "Discover relevant courses, certifications, and resources filtered to your level and available time commitment.",
+
+  "landing_feature_progress_title": "Progress Tracking",
+  "landing_feature_progress_description": "Monitor your exploration journey, revisit past assessments, and update your profile as your goals evolve.",
+
+  "for_who_title": "Built for people at crossroads.",
+
+  "for_who_students_label": "Students",
+  "for_who_students_title": "Choosing the Right Faculty",
+  "for_who_students_description": "You're entering higher education and the pressure to pick the right major is overwhelming. AICA helps you choose based on who you actually are.",
+  "for_who_students_b1": "Faculty and degree matching",
+  "for_who_students_b2": "Strength-based guidance",
+  "for_who_students_b3": "Long-term career alignment",
+
+  "for_who_graduates_label": "Graduates",
+  "for_who_graduates_title": "Exploring Your Career Path",
+  "for_who_graduates_description": "You've completed your studies. AICA maps your skills and interests to real career opportunities you can actually pursue.",
+  "for_who_graduates_b1": "Career pathway exploration",
+  "for_who_graduates_b2": "Skill gap identification",
+  "for_who_graduates_b3": "Industry direction clarity",
+
+  "for_who_career_label": "Career Changers",
+  "for_who_career_title": "Pivoting with Confidence",
+  "for_who_career_description": "Ready for a new direction but unsure where to start? AICA builds a transition plan from where you are to where you want to be.",
+  "for_who_career_b1": "Transition roadmaps",
+  "for_who_career_b2": "Transferable skill mapping",
+  "for_who_career_b3": "Short course recommendations",
+
+  "testimonials_heading": "Real people, real clarity.",
+
+  "testimonial_1_quote": "I was completely stuck between Engineering and Product Design for two years. AICA helped me see that my strengths pointed clearly toward HCI. Best decision I've made.",
+  "testimonial_1_name": "Sarah M.",
+  "testimonial_1_role": "Studying Human-Computer Interaction",
+
+  "testimonial_2_quote": "After 6 years in accounting I needed a change but had no idea where to start. The roadmap AICA gave me helped me transition into data analytics in under a year.",
+  "testimonial_2_name": "James K.",
+  "testimonial_2_role": "Data Analyst at a FinTech startup",
+
+  "testimonial_3_quote": "Every counselor told me to 'follow my passion' with no guidance. AICA showed me specific faculties, why they fit me, and exactly what skills to build first.",
+  "testimonial_3_name": "Nadia R.",
+  "testimonial_3_role": "Computer Science student, 2nd year",
+
+  "cta_title_line1": "Ready to find",
+  "cta_title_line2": "your path?",
+  "cta_description": "Take the 5-minute assessment and receive a personalized roadmap built around who you actually are.",
+  "cta_primary_button": "Start Free Assessment",
+  "cta_secondary_button": "Learn More",
+  "cta_footer_note": "No credit card, No account, 5 minutes",
+
+  "footer_brand_description": "AI-powered guidance for academic and career decisions.",
+
+  "footer_section_product": "Product",
+  "footer_product_features": "Features",
+  "footer_product_how_it_works": "How It Works",
+  "footer_product_pricing": "Pricing",
+  "footer_product_changelog": "Changelog",
+
+  "footer_section_company": "Company",
+  "footer_company_about": "About",
+  "footer_company_blog": "Blog",
+  "footer_company_careers": "Careers",
+  "footer_company_contact": "Contact",
+
+  "footer_section_legal": "Legal",
+  "footer_legal_privacy": "Privacy Policy",
+  "footer_legal_terms": "Terms of Service",
+  "footer_legal_cookies": "Cookie Policy",
+
+  "footer_copyright": "© {{year}} AICA. All rights reserved.",
+  "footer_tagline": "Built with TypeScript · Powered by AI",
+
   "auth_sign_in_title": "Sign In",
   "auth_sign_in_email_label": "Email",
   "auth_sign_in_email_placeholder": "Enter your email",
@@ -152,67 +281,73 @@
   "profile_name_placeholder": "Enter your name",
   "profile_readiness_title": "Readiness",
   "profile_readiness_description": "These are the profile inputs AICA uses before stronger guidance.",
-
   "account_panel_description": "Update your username and connected email address.",
-
   "account_username_label": "Username",
   "account_username_placeholder": "Username",
-
   "account_email_label": "Email Address",
   "account_email_placeholder": "name@example.com",
 
   "account_danger_zone_title": "Danger Zone",
   "account_danger_zone_description": "Permanently remove your AICA account and all guidance data associated with it.",
-
   "account_delete_item_1": "Your assessment responses and guidance profile",
   "account_delete_item_2": "Saved academic and career pathways",
   "account_delete_item_3": "Personalized recommendations and match results",
   "account_delete_item_4": "Roadmaps, milestones, and progress tracking",
   "account_delete_item_5": "AI advisor conversations and saved insights",
-
   "account_delete_warning": "Account deletion is permanent and cannot be reversed.",
-
   "delete_account": "Delete Account",
-
   "delete_account_dialog_title": "Delete your AICA account?",
   "delete_account_dialog_description": "Your account and all associated guidance data will be permanently removed.",
-
   "delete_account_you_will_lose": "You will lose access to:",
-
   "delete_account_item_1": "Your guidance profile and assessment results",
   "delete_account_item_2": "Saved academic and career pathways",
   "delete_account_item_3": "Personalized recommendations and match history",
   "delete_account_item_4": "Roadmap progress and completed milestones",
   "delete_account_item_5": "AI advisor conversations and generated insights",
-
   "delete_account_alternative": "If your interests, goals, or career direction have changed, you can retake your assessment and generate updated recommendations instead of deleting your account.",
-
   "keep_account": "Keep Account",
   "continue_to_deletion": "Continue to Deletion",
 
   "security_panel_description": "Manage your account security and login preferences.",
-
   "security_login_alerts_title": "Login Alerts",
   "security_login_alerts_description": "Receive a notification when a new login is detected.",
-
   "security_two_factor_title": "Two-Factor Authentication",
   "security_two_factor_description": "Add another layer of protection to your account.",
-
   "change_password": "Change Password",
 
   "notifications_panel_description": "Choose which updates and reminders you want to receive.",
-
   "notifications_email_updates_title": "Email Updates",
   "notifications_email_updates_description": "Receive account and product emails.",
-
   "notifications_roadmap_reminders_title": "Roadmap Reminders",
   "notifications_roadmap_reminders_description": "Get reminders when a roadmap step is due.",
-
   "notifications_recommendation_updates_title": "Recommendation Updates",
   "notifications_recommendation_updates_description": "Be notified when new recommendations are generated.",
-
   "notifications_product_news_title": "Product News",
   "notifications_product_news_description": "Receive news about new features and product launches.",
+
+  "language_panel_description": "Choose your preferred language and region.",
+  "app_language": "App Language",
+  "region": "Region",
+  "select_region": "Select Region",
+  "country_afghanistan": "Afghanistan",
+  "country_united_states": "United States",
+  "country_united_kingdom": "United Kingdom",
+  "country_other": "Other",
+
+  "appearance_panel_description": "Choose how AICA looks on your device.",
+  "theme_dark": "Dark",
+  "theme_light": "Light",
+  "theme_system": "System",
+
+  "about_title": "About AICA",
+  "about_description": "Learn more about the platform and legal information.",
+  "app_name": "AICA",
+  "about_app_description": "An AI-assisted academic and career guidance platform designed to help students, graduates, and career changers discover educational pathways and make more confident decisions.",
+  "source_code": "Source Code",
+  "license": "Apache 2.0 License",
+  "terms_of_service": "Terms of Service",
+  "privacy_policy": "Privacy Policy",
+  "version": "Version",
 
   "saved_pathways_title": "Saved Pathways",
   "saved_pathways_empty": "You haven't saved any pathways yet.",

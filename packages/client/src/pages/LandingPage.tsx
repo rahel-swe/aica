@@ -22,13 +22,30 @@ import {
   Users,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { m } from '../paraglide/messages';
 
 function StatsBar() {
   const stats = [
-    { value: '12,000+', label: 'Students Guided', color: 'text-emerald-500' },
-    { value: '200+', label: 'Career Pathways', color: 'text-sky-500' },
-    { value: '94%', label: 'Match Satisfaction', color: 'text-violet-500' },
-    { value: '5 min', label: 'To Your Roadmap', color: 'text-amber-500' },
+    {
+      value: '12,000+',
+      label: m.landing_stats_students_guided(),
+      color: 'text-emerald-500',
+    },
+    {
+      value: '200+',
+      label: m.landing_stats_career_pathways(),
+      color: 'text-sky-500',
+    },
+    {
+      value: '94%',
+      label: m.landing_stats_match_satisfaction(),
+      color: 'text-violet-500',
+    },
+    {
+      value: '5 min',
+      label: m.landing_stats_to_your_roadmap(),
+      color: 'text-amber-500',
+    },
   ];
 
   return (
@@ -64,25 +81,22 @@ function ProblemSection() {
       icon: GraduationCap,
       iconCls: 'text-rose-500',
       bgCls: 'bg-rose-400/10',
-      title: 'Academic Mismatch',
-      description:
-        'Students choose faculties based on family pressure or surface-level tests — not on their actual strengths, interests, or long-term ambitions.',
+      title: m.landing_problem_academic_mismatch_title(),
+      description: m.landing_problem_academic_mismatch_description(),
     },
     {
       icon: Brain,
       iconCls: 'text-violet-500',
       bgCls: 'bg-violet-400/10',
-      title: 'Decision Paralysis',
-      description:
-        'With hundreds of pathways and conflicting advice, most people freeze. The options feel endless and the right answer invisible.',
+      title: m.landing_problem_decision_paralysis_title(),
+      description: m.landing_problem_decision_paralysis_description(),
     },
     {
       icon: Users,
       iconCls: 'text-sky-500',
       bgCls: 'bg-sky-400/10',
-      title: 'No Personalized Guidance',
-      description:
-        "Traditional counseling can't scale. Most students never receive advice genuinely tailored to who they are — and what they could become.",
+      title: m.landing_problem_personalized_guidance_title(),
+      description: m.landing_problem_personalized_guidance_description(),
     },
   ];
 
@@ -91,11 +105,10 @@ function ProblemSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            The guidance gap is real.
+            {m.landing_problem_heading()}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-[500px] mx-auto font-heading">
-            Every year, millions make critical decisions with generic advice
-            that doesn't reflect who they truly are.
+            {m.landing_problem_subheading()}
           </p>
         </div>
 
@@ -110,12 +123,14 @@ function ProblemSection() {
               >
                 <p.icon className={cn('w-6 h-6', p.iconCls)} />
               </div>
+
               <h3
                 className="text-lg font-bold text-foreground mb-2"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {p.title}
               </h3>
+
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {p.description}
               </p>
@@ -135,30 +150,27 @@ function HowItWorksSection() {
       icon: UserCheck,
       iconCls: 'text-emerald-500',
       bgCls: 'bg-emerald-400/10',
-      title: 'Build Your Profile',
-      description:
-        'Complete a guided assessment covering interests, strengths, and goals. Designed for real alignment — not surface-level personality tests.',
-      pill: '~5 min · Private',
+      title: m.landing_how_it_works_step1_title(),
+      description: m.landing_how_it_works_step1_description(),
+      pill: m.landing_how_it_works_step1_pill(),
     },
     {
       num: '02',
       icon: Target,
       iconCls: 'text-sky-500',
       bgCls: 'bg-sky-300/10',
-      title: 'AI-Powered Matching',
-      description:
-        'AICA maps your profile against 200+ curated pathways with full transparency. You always understand why a path was suggested.',
-      pill: 'Instant · Explainable',
+      title: m.landing_how_it_works_step2_title(),
+      description: m.landing_how_it_works_step2_description(),
+      pill: m.landing_how_it_works_step2_pill(),
     },
     {
       num: '03',
       icon: Map,
       iconCls: 'text-violet-500',
       bgCls: 'bg-violet-400/10',
-      title: 'Get Your Roadmap',
-      description:
-        'Receive a concrete action plan: faculties, courses, skills to build, and next steps — all tailored to your exact profile.',
-      pill: 'Full plan · Actionable',
+      title: m.landing_how_it_works_step3_title(),
+      description: m.landing_how_it_works_step3_description(),
+      pill: m.landing_how_it_works_step3_pill(),
     },
   ];
 
@@ -170,7 +182,7 @@ function HowItWorksSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
           <h2 className="text-4xl md:text-5xl font-bold">
-            Three steps to clarity.
+            {m.landing_how_it_works_heading()}
           </h2>
         </div>
 
@@ -186,6 +198,7 @@ function HowItWorksSection() {
                 >
                   <step.icon className={cn('w-5 h-5', step.iconCls)} />
                 </div>
+
                 <span
                   className="text-5xl font-black leading-none select-none opacity-[0.07]"
                   style={{ fontFamily: 'var(--font-heading)' }}
@@ -200,6 +213,7 @@ function HowItWorksSection() {
               >
                 {step.title}
               </h3>
+
               <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                 {step.description}
               </p>
@@ -224,29 +238,28 @@ function RoadmapPreviewSection() {
           {/* Left: copy */}
           <div className="flex-1 max-w-[480px]">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">
-              Your roadmap,
+              {m.landing_roadmap_heading_line1()}
               <br />
-              in minutes.
+              {m.landing_roadmap_heading_line2()}
             </h2>
+
             <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-heading">
-              After your assessment, AICA generates a step-by-step plan tailored
-              to your exact profile — not a template, a personalized roadmap you
-              can start following today.
+              {m.landing_roadmap_description()}
             </p>
 
             <ul className="space-y-3 mb-8">
               {[
                 {
                   dot: 'bg-emerald-400',
-                  text: 'Clear steps from where you are to where you want to be',
+                  text: m.landing_roadmap_feature_1(),
                 },
                 {
                   dot: 'bg-sky-400',
-                  text: 'Specific courses, certifications, and skills per step',
+                  text: m.landing_roadmap_feature_2(),
                 },
                 {
                   dot: 'bg-violet-400',
-                  text: 'Progress tracking as your goals evolve over time',
+                  text: m.landing_roadmap_feature_3(),
                 },
               ].map((item, i) => (
                 <li
@@ -263,7 +276,7 @@ function RoadmapPreviewSection() {
 
             <Button asChild className="px-8 py-6 gap-2">
               <Link to="/app/roadmap" viewTransition>
-                See My Roadmap
+                {m.landing_roadmap_button()}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
@@ -286,49 +299,43 @@ function FeaturesSection() {
       icon: UserCheck,
       iconCls: 'text-emerald-500',
       bgCls: 'bg-emerald-400/10',
-      title: 'Deep User Profiling',
-      description:
-        'Structured inputs capturing interests, strengths, values, and goals — going far beyond surface-level personality tests.',
+      title: m.landing_feature_profile_title(),
+      description: m.landing_feature_profile_description(),
     },
     {
       icon: Target,
       iconCls: 'text-sky-500',
       bgCls: 'bg-sky-300/10',
-      title: 'Intelligent Matching',
-      description:
-        'Profile-based rules compare you against 200+ pathways with full transparency — you always see why each path was recommended.',
+      title: m.landing_feature_matching_title(),
+      description: m.landing_feature_matching_description(),
     },
     {
       icon: MessageCircle,
       iconCls: 'text-violet-500',
       bgCls: 'bg-violet-400/10',
-      title: 'AI-Generated Explanations',
-      description:
-        'Every recommendation comes with personalized reasoning, helping you understand and own your decision completely.',
+      title: m.landing_feature_ai_explanation_title(),
+      description: m.landing_feature_ai_explanation_description(),
     },
     {
       icon: Route,
       iconCls: 'text-amber-500',
       bgCls: 'bg-amber-300/10',
-      title: 'Personalized Roadmaps',
-      description:
-        'Concrete next steps, suggested qualifications, and skill-building plans tailored to your specific chosen path.',
+      title: m.landing_feature_roadmaps_title(),
+      description: m.landing_feature_roadmaps_description(),
     },
     {
       icon: BookOpen,
       iconCls: 'text-rose-500',
       bgCls: 'bg-rose-400/10',
-      title: 'Learning Pathway Curation',
-      description:
-        'Discover relevant courses, certifications, and resources filtered to your level and available time commitment.',
+      title: m.landing_feature_learning_title(),
+      description: m.landing_feature_learning_description(),
     },
     {
       icon: BarChart3,
       iconCls: 'text-cyan-500',
       bgCls: 'bg-cyan-300/10',
-      title: 'Progress Tracking',
-      description:
-        'Monitor your exploration journey, revisit past assessments, and update your profile as your goals evolve.',
+      title: m.landing_feature_progress_title(),
+      description: m.landing_feature_progress_description(),
     },
   ];
 
@@ -340,8 +347,9 @@ function FeaturesSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
           <h2 className="text-4xl md:text-5xl font-bold">
-            Everything to decide
-            <br className="hidden sm:block" /> with confidence.
+            {m.landing_features_heading_line1()}
+            <br className="hidden sm:block" />
+            {m.landing_features_heading_line2()}
           </h2>
         </div>
 
@@ -359,12 +367,14 @@ function FeaturesSection() {
               >
                 <f.icon className={cn('w-5 h-5', f.iconCls)} />
               </div>
+
               <h3
                 className="text-base font-bold text-foreground mb-1.5"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {f.title}
               </h3>
+
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {f.description}
               </p>
@@ -383,14 +393,13 @@ function ForWhoSection() {
       icon: GraduationCap,
       iconCls: 'text-emerald-500',
       bgCls: 'bg-emerald-400/10',
-      label: 'Students',
-      title: 'Choosing the Right Faculty',
-      description:
-        "You're entering higher education and the pressure to pick the right major is overwhelming. AICA helps you choose based on who you actually are.",
+      label: m.for_who_students_label(),
+      title: m.for_who_students_title(),
+      description: m.for_who_students_description(),
       bullets: [
-        'Faculty and degree matching',
-        'Strength-based guidance',
-        'Long-term career alignment',
+        m.for_who_students_b1(),
+        m.for_who_students_b2(),
+        m.for_who_students_b3(),
       ],
       checkCls: 'text-emerald-500',
     },
@@ -398,14 +407,13 @@ function ForWhoSection() {
       icon: Users,
       iconCls: 'text-sky-500',
       bgCls: 'bg-sky-300/10',
-      label: 'Graduates',
-      title: 'Exploring Your Career Path',
-      description:
-        "You've completed your studies. AICA maps your skills and interests to real career opportunities you can actually pursue.",
+      label: m.for_who_graduates_label(),
+      title: m.for_who_graduates_title(),
+      description: m.for_who_graduates_description(),
       bullets: [
-        'Career pathway exploration',
-        'Skill gap identification',
-        'Industry direction clarity',
+        m.for_who_graduates_b1(),
+        m.for_who_graduates_b2(),
+        m.for_who_graduates_b3(),
       ],
       checkCls: 'text-sky-500',
     },
@@ -413,14 +421,13 @@ function ForWhoSection() {
       icon: Briefcase,
       iconCls: 'text-violet-500',
       bgCls: 'bg-violet-400/10',
-      label: 'Career Changers',
-      title: 'Pivoting with Confidence',
-      description:
-        'Ready for a new direction but unsure where to start? AICA builds a transition plan from where you are to where you want to be.',
+      label: m.for_who_career_label(),
+      title: m.for_who_career_title(),
+      description: m.for_who_career_description(),
       bullets: [
-        'Transition roadmaps',
-        'Transferable skill mapping',
-        'Short course recommendations',
+        m.for_who_career_b1(),
+        m.for_who_career_b2(),
+        m.for_who_career_b3(),
       ],
       checkCls: 'text-violet-500',
     },
@@ -431,59 +438,59 @@ function ForWhoSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
           <h2 className="text-4xl md:text-5xl font-bold">
-            Built for people
-            <br className="hidden sm:block" /> at crossroads.
+            {m.for_who_title()}
           </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {audiences.map((a, i) => (
-            <div
-              key={i}
-              className="p-7 rounded-3xl border border-border bg-card hover:shadow-lg transition-all duration-200 flex flex-col"
-            >
-              <div className="flex items-center gap-3 mb-5">
-                <div
-                  className={cn(
-                    'w-11 h-11 rounded-2xl flex items-center justify-center',
-                    a.bgCls
-                  )}
-                >
-                  <a.icon className={cn('w-5 h-5', a.iconCls)} />
-                </div>
-                <Badge
-                  variant="secondary"
-                  className="rounded-full text-xs font-bold"
-                >
-                  {a.label}
-                </Badge>
-              </div>
+          {audiences.map((a, i) => {
+            const Icon = a.icon;
 
-              <h3
-                className="text-xl font-bold text-foreground mb-3 leading-snug"
-                style={{ fontFamily: 'var(--font-heading)' }}
+            return (
+              <div
+                key={i}
+                className="p-7 rounded-3xl border border-border bg-card hover:shadow-lg transition-all duration-200 flex flex-col"
               >
-                {a.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
-                {a.description}
-              </p>
-
-              <ul className="space-y-2.5 pt-4 border-t border-border">
-                {a.bullets.map((b, j) => (
-                  <li
-                    key={j}
-                    className="flex items-center gap-2.5 text-sm font-medium text-foreground"
+                <div className="flex items-center gap-3 mb-5">
+                  <div
+                    className={cn(
+                      'w-11 h-11 rounded-2xl flex items-center justify-center',
+                      a.bgCls
+                    )}
                   >
-                    <Check
-                      className={cn('w-4 h-4 flex-shrink-0', a.checkCls)}
-                    />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                    <Icon className={cn('w-5 h-5', a.iconCls)} />
+                  </div>
+
+                  <Badge
+                    variant="secondary"
+                    className="rounded-full text-xs font-bold"
+                  >
+                    {a.label}
+                  </Badge>
+                </div>
+
+                <h3 className="text-xl font-bold text-foreground mb-3 leading-snug">
+                  {a.title}
+                </h3>
+
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                  {a.description}
+                </p>
+
+                <ul className="space-y-2.5 pt-4 border-t border-border">
+                  {a.bullets.map((b, j) => (
+                    <li
+                      key={j}
+                      className="flex items-center gap-2.5 text-sm font-medium text-foreground"
+                    >
+                      <Check className={cn('w-4 h-4', a.checkCls)} />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -494,26 +501,23 @@ function ForWhoSection() {
 function TestimonialsSection() {
   const testimonials = [
     {
-      quote:
-        "I was completely stuck between Engineering and Product Design for two years. AICA helped me see that my strengths pointed clearly toward HCI. Best decision I've made.",
-      name: 'Sarah M.',
-      role: 'Studying Human-Computer Interaction',
+      quote: m.testimonial_1_quote(),
+      name: m.testimonial_1_name(),
+      role: m.testimonial_1_role(),
       initial: 'S',
       color: '#0ea5e9',
     },
     {
-      quote:
-        'After 6 years in accounting I needed a change but had no idea where to start. The roadmap AICA gave me helped me transition into data analytics in under a year.',
-      name: 'James K.',
-      role: 'Data Analyst at a FinTech startup',
+      quote: m.testimonial_2_quote(),
+      name: m.testimonial_2_name(),
+      role: m.testimonial_2_role(),
       initial: 'J',
       color: '#8b5cf6',
     },
     {
-      quote:
-        "Every counselor told me to 'follow my passion' with no guidance. AICA showed me specific faculties, why they fit me, and exactly what skills to build first.",
-      name: 'Nadia R.',
-      role: 'Computer Science student, 2nd year',
+      quote: m.testimonial_3_quote(),
+      name: m.testimonial_3_name(),
+      role: m.testimonial_3_role(),
       initial: 'N',
       color: '#10b981',
     },
@@ -524,8 +528,7 @@ function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
           <h2 className="text-4xl md:text-5xl font-bold">
-            Real people,
-            <br className="hidden sm:block" /> real clarity.
+            {m.testimonials_heading()}
           </h2>
         </div>
 
@@ -586,28 +589,28 @@ function CTASection() {
 
       <div className="relative max-w-3xl mx-auto px-5 sm:px-8 text-center">
         <h2 className="text-5xl md:text-6xl lg:text-[4rem] font-bold tracking-tight leading-[1.05] mb-5 text-background">
-          Ready to find
+          {m.cta_title_line1()}
           <br />
-          your path?
+          {m.cta_title_line2()}
         </h2>
 
         <p className="text-base mb-9 max-w-[480px] mx-auto text-background/85">
-          Take the 5-minute assessment and receive a personalized roadmap built
-          around who you actually are.
+          {m.cta_description()}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Button className="px-8 py-6 gap-2 bg-background text-foreground hover:bg-background/90">
-            Start Free Assessment
+            {m.cta_primary_button()}
             <ArrowRight className="w-4 h-4" />
           </Button>
+
           <Button variant="link" className="px-7 text-base text-background/60">
-            Learn More
+            {m.cta_secondary_button()}
           </Button>
         </div>
 
         <h3 className="mt-7 md:mt-10 text-base text-background/50 font-heading">
-          No credit card , No account , 5 minutes
+          {m.cta_footer_note()}
         </h3>
       </div>
     </section>
@@ -615,12 +618,39 @@ function CTASection() {
 }
 
 // ── Footer ─────────────────────────────────────────────────────────────────────
+
 function Footer() {
-  const cols: Record<string, string[]> = {
-    Product: ['Features', 'How It Works', 'Pricing', 'Changelog'],
-    Company: ['About', 'Blog', 'Careers', 'Contact'],
-    Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy'],
-  };
+  const cols = [
+    {
+      key: 'product',
+      title: m.footer_section_product,
+      items: [
+        m.footer_product_features,
+        m.footer_product_how_it_works,
+        m.footer_product_pricing,
+        m.footer_product_changelog,
+      ],
+    },
+    {
+      key: 'company',
+      title: m.footer_section_company,
+      items: [
+        m.footer_company_about,
+        m.footer_company_blog,
+        m.footer_company_careers,
+        m.footer_company_contact,
+      ],
+    },
+    {
+      key: 'legal',
+      title: m.footer_section_legal,
+      items: [
+        m.footer_legal_privacy,
+        m.footer_legal_terms,
+        m.footer_legal_cookies,
+      ],
+    },
+  ];
 
   return (
     <footer className="border-t border-border bg-card" id="about">
@@ -631,25 +661,27 @@ function Footer() {
             <div className="flex items-center gap-2.5 mb-3">
               <AppLogo />
             </div>
+
             <p className="text-sm text-muted-foreground leading-relaxed max-w-50">
-              AI-powered guidance for academic and career decisions.
+              {m.footer_brand_description()}
             </p>
           </div>
 
           {/* Link columns */}
-          {Object.entries(cols).map(([section, items]) => (
-            <div key={section}>
+          {cols.map((col, index) => (
+            <div key={index}>
               <p className="text-xs font-bold tracking-wider uppercase text-foreground mb-3.5">
-                {section}
+                {col.title()}
               </p>
+
               <ul className="space-y-2.5">
-                {items.map((item) => (
-                  <li key={item}>
+                {col.items.map((item, i) => (
+                  <li key={i}>
                     <a
                       href="#"
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
-                      {item}
+                      {item()}
                     </a>
                   </li>
                 ))}
@@ -660,11 +692,11 @@ function Footer() {
 
         <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} AICA. All rights reserved.
+            {' '}
+            © {new Date().getFullYear()} AICA. All rights reserved.{' '}
           </p>
-          <p className="text-xs text-muted-foreground">
-            Built with TypeScript · Powered by AI
-          </p>
+
+          <p className="text-xs text-muted-foreground">{m.footer_tagline()}</p>
         </div>
       </div>
     </footer>
