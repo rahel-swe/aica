@@ -33,17 +33,11 @@ const taxonomyNodeTranslationSchema =
 
 export interface TaxonomyNodeDbDocument {
   slug: string;
-
   kind: TaxonomyNodeKind;
-
   parentId: Types.ObjectId | null;
-
   order: number;
-
   status: ContentStatus;
-
   translations: Map<string, TaxonomyNodeTranslatableFields>;
-
   createdAt: Date;
   updatedAt: Date;
 }

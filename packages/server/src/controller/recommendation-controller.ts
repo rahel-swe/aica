@@ -27,7 +27,8 @@ class RecommendationController {
   getOverview = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
       const userId = req.user!.id;
-      const overview = await recommendationService.getOverview(userId);
+      const locale = req.locale ?? 'en';
+      const overview = await recommendationService.getOverview(userId, locale);
 
       const hasData =
         overview.domains.length > 0 || overview.pathways.length > 0;

@@ -73,6 +73,7 @@
   "pathway_recommendations_empty": "No recommendations found. Try retaking the assessment.",
   "pathway_recommendations_select_cta": "Choose This Pathway",
   "pathway_recommendations_retake": "Retake Assessment",
+  "pathway_recommendations_match_title": "match",
 
   "pathway_congratulations_title": "Congratulations!",
   "pathway_congratulations_message": "You've selected your learning pathway. Let's get you set up.",

@@ -66,38 +66,24 @@ const SpecializationStage = ({
         {pathways.map((pw, i) => {
           const isSelected = selectedPathwaySlug === pw.pathwaySlug;
           return (
-            <button
+            <Button
               key={pw.pathwaySlug}
               onClick={() => onSelectPathway(pw.pathwaySlug)}
               className={cn(
-                'flex items-center gap-3 rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                isSelected
-                  ? 'border-foreground bg-foreground text-background'
-                  : 'border-border bg-background text-foreground hover:border-foreground/40'
+                'gap-2 px-4 py-6 font-medium transition-all duration-150'
               )}
+              variant={isSelected ? 'default' : 'outline'}
             >
               {/* Rank number */}
-              <span
-                className={cn(
-                  'font-bold text-[10px]',
-                  isSelected ? 'text-background/40' : 'text-muted-foreground/60'
-                )}
-              >
-                #{i + 1}
-              </span>
+              <span className={cn('font-bold text-[10px]')}>#{i + 1}</span>
 
-              {formatSlug(pw.pathwaySlug)}
+              {pw.pathwayName ?? formatSlug(pw.pathwaySlug)}
 
               {/* Match % */}
-              <span
-                className={cn(
-                  'tabular-nums text-xs font-semibold',
-                  isSelected ? 'text-background/60' : 'text-muted-foreground'
-                )}
-              >
+              <span className={cn('tabular-nums text-sm font-semibold')}>
                 {pw.matchPercent}%
               </span>
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -144,8 +130,7 @@ const SpecializationStage = ({
               {/* Final submit */}
               <div className="pt-4">
                 <Button
-                  size="lg"
-                  className="px-8"
+                  className="px-8 py-7"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
                 >

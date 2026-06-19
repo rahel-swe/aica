@@ -19,10 +19,10 @@ import {
 import type { TranslationMap } from '../schemas/i18n';
 
 // Translatable fields on a taxonomy node
-export interface TaxonomyNodeTranslatableFields {
+export type TaxonomyNodeTranslatableFields = {
   name: string;
   description?: string;
-}
+};
 
 // MongoDB document shape
 export interface TaxonomyNodeDocument {

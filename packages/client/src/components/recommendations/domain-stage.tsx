@@ -5,21 +5,22 @@ import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import type { DomainRecommendation } from '@contracts/shared/schemas/recommendation-schema';
 import { formatSlug } from '@/lib/slug-formatter';
+import { m } from '../../paraglide/messages';
 
 type Props = {
-  families: DomainRecommendation[];
-  selectedFamilySlug: string;
-  onSelectFamily: (slug: string) => void;
+  domains: DomainRecommendation[];
+  selectedDomainSlug: string;
+  onSelectDomain: (slug: string) => void;
   onContinue: () => void;
 };
 
 const DomainStage = ({
-  families,
-  selectedFamilySlug,
-  onSelectFamily,
+  domains,
+  selectedDomainSlug,
+  onSelectDomain,
   onContinue,
 }: Props) => {
-  const selected = families.find((f) => f.domainSlug === selectedFamilySlug);
+  const selected = domains.find((f) => f.domainSlug === selectedDomainSlug);
 
   return (
     <section className="space-y-12">
@@ -38,34 +39,28 @@ const DomainStage = ({
 
       {/* Picker buttons — pill chips */}
       <div className="flex flex-wrap gap-3">
-        {families.map((family) => {
-          const isSelected = selectedFamilySlug === family.domainSlug;
+        {domains.map((domain) => {
+          const isSelected = selectedDomainSlug === domain.domainSlug;
+
           return (
-            <button
-              key={family.domainSlug}
-              onClick={() => onSelectFamily(family.domainSlug)}
+            <Button
+              key={domain.domainSlug}
+              onClick={() => onSelectDomain(domain.domainSlug)}
               className={cn(
-                'flex items-center gap-3 rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                isSelected
-                  ? 'border-foreground bg-foreground text-background'
-                  : 'border-border bg-background text-foreground hover:border-foreground/40'
+                'gap-2 px-4 py-6 font-medium transition-all duration-150'
               )}
+              variant={isSelected ? 'default' : 'outline'}
             >
-              {formatSlug(family.domainSlug)}
-              <span
-                className={cn(
-                  'tabular-nums text-xs font-semibold',
-                  isSelected ? 'text-background/60' : 'text-muted-foreground'
-                )}
-              >
-                {family.matchPercent}%
+              {domain.domainName ?? formatSlug(domain.domainSlug)}
+              <span className={cn('tabular-nums text-sm font-semibold')}>
+                {domain.matchPercent}%
               </span>
-            </button>
+            </Button>
           );
         })}
       </div>
 
-      {/* Detail panel — visible only after a family is selected */}
+      {/* Detail panel — visible only after a domain is selected */}
       {selected && (
         <div className="animate-in fade-in-0 slide-in-from-bottom-2 space-y-8 duration-300">
           <Separator />
@@ -73,15 +68,21 @@ const DomainStage = ({
           {/* Domain name + match score */}
           <div className="space-y-1">
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-              {formatSlug(selected.domainSlug)}
+              {selected.domainName ?? formatSlug(selected.domainSlug)}
             </h2>
             <div className="flex items-baseline gap-2">
               <span className="text-5xl font-bold tabular-nums tracking-tighter">
                 {selected.matchPercent}
               </span>
-              <span className="text-xl text-muted-foreground">% match</span>
+              <span className="text-xl text-muted-foreground">
+                % {m.pathway_recommendations_match_title()}
+              </span>
             </div>
           </div>
+
+          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+            {selected.description}
+          </p>
 
           {/* Stats */}
           <div className="flex flex-wrap gap-10 text-sm text-muted-foreground">
@@ -120,13 +121,12 @@ const DomainStage = ({
       {/* Action */}
       <div className="pt-2">
         <Button
-          size="lg"
-          className="group gap-2 px-8"
-          disabled={!selectedFamilySlug}
+          className="group gap-2 px-8 py-7"
+          disabled={!selectedDomainSlug}
           onClick={onContinue}
         >
           Explore fields
-          <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight className="transition-transform group-hover:translate-x-0.7 rtl:group-hover:-translate-x-0.7 rtl:rotate-180" />
         </Button>
       </div>
     </section>

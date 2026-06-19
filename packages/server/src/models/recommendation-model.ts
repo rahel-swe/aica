@@ -5,6 +5,8 @@ export interface IRecommendation {
   userId: Types.ObjectId;
   pathwayId: Types.ObjectId;
 
+  _id?: Types.ObjectId;
+
   pathwaySlug: string;
   fieldSlug?: string;
   domainSlug?: string;

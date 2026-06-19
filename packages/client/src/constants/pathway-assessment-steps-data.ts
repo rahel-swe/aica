@@ -629,7 +629,6 @@ export const PATHWAY_ASSESSMENT_STEPS: PathwayAssessmentStep[] = [
     maxSelect: 2,
     options: workStyleOptions,
   },
-
   {
     id: 'work-environment',
     type: 'single-select',
@@ -638,7 +637,6 @@ export const PATHWAY_ASSESSMENT_STEPS: PathwayAssessmentStep[] = [
     fieldName: 'workEnvironment',
     options: environmentOptions,
   },
-
   {
     id: 'collaboration-style',
     type: 'single-select',

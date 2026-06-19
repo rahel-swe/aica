@@ -9,6 +9,8 @@ export type PathwayRecommendation = {
   fieldSlug?: string; // use to call taxonomy service
   domainSlug?: string;
 
+  pathwayName?: string;
+  pathwayDescription?: string;
   totalScore: number; // weighted sum, clamped [0, 1]
   matchPercent: number; // Math.round(totalScore * 100)
   dimensionScores: RecommendationDimensionScores;
@@ -50,7 +52,8 @@ export const pathwayRecommendationSchema = z.object({
 export type FieldRecommendation = {
   fieldSlug: string; // use to call taxonomy service for localized name
   domainSlug?: string; // parent domain slug
-
+  fieldName?: string;
+  fieldDescription?: string;
   totalScore: number; // average of top-3 pathway scores in this direction
   matchPercent: number;
 
@@ -74,6 +77,8 @@ export const fieldRecommendationSchema = z.object({
 export type DomainRecommendation = {
   domainSlug: string; // use to call taxonomy service for localized name
 
+  domainName?: string;
+  description?: string;
   totalScore: number; // average of top-3 pathway scores in this domain
   matchPercent: number;
 

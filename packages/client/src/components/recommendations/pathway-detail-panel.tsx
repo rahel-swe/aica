@@ -8,6 +8,7 @@ import {
   formatDuration,
   formatRouteType,
 } from '@/lib/slug-formatter';
+import { m } from '../../paraglide/messages';
 
 type Props = {
   detail: PathwayDetailView;
@@ -37,17 +38,19 @@ const PathwayDetailPanel = ({
             <span className="text-5xl font-bold tabular-nums tracking-tighter">
               {matchPercent}
             </span>
-            <span className="text-xl text-muted-foreground">% match</span>
+            <span className="text-xl text-muted-foreground">
+              % {m.pathway_recommendations_match_title()}
+            </span>
           </div>
 
           {reasons && reasons.length > 0 && (
-            <div className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-2 list-disc ps-6">
               {reasons.map((reason) => (
-                <Badge key={reason} variant="secondary" className="font-normal">
+                <li key={reason} className="font-normal text-xs">
                   {reason}
-                </Badge>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </div>
       )}
@@ -99,13 +102,13 @@ const PathwayDetailPanel = ({
           <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
             Key skills
           </p>
-          <div className="flex flex-wrap gap-2">
+          <ul className="flex flex-wrap gap-2 list-decimal ps-6">
             {detail.keySkills.map((skill) => (
-              <Badge key={skill} variant="outline" className="font-normal">
+              <li key={skill} className="text-xs ">
                 {skill}
-              </Badge>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
 

@@ -1,4 +1,4 @@
-import { ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowRight, Loader2, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
@@ -37,15 +37,13 @@ const FieldStage = ({
   onExploreDeeper,
   isSubmitting,
 }: Props) => {
-  const selectedDirection = fields.find(
-    (d) => d.fieldSlug === selectedFieldSlug
-  );
+  const selectedField = fields.find((d) => d.fieldSlug === selectedFieldSlug);
 
   // Top pathway slug for the selected direction
-  const topSlug = selectedDirection?.topPathwaySlugs[0];
+  const topSlug = selectedField?.topPathwaySlugs[0];
 
   const { data: pathwayResponse, isLoading: isDetailLoading } =
-    usePathwayDetailQuery(selectedDirection?.fieldSlug ?? '');
+    usePathwayDetailQuery(selectedField?.fieldSlug ?? '');
 
   const pathwayDetail = pathwayResponse?.data;
 
@@ -75,45 +73,39 @@ const FieldStage = ({
 
       {/* Picker buttons */}
       <div className="flex flex-wrap gap-3">
-        {fields.map((dir) => {
-          const isSelected = selectedFieldSlug === dir.fieldSlug;
+        {fields.map((field) => {
+          const isSelected = selectedFieldSlug === field.fieldSlug;
+
           return (
-            <button
-              key={dir.fieldSlug}
+            <Button
+              key={field.fieldSlug}
               onClick={() => {
-                onSelectDirection(dir.fieldSlug);
-                console.log(dir);
+                onSelectDirection(field.fieldSlug);
+                console.log(field);
               }}
               className={cn(
-                'flex items-center gap-3 rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                isSelected
-                  ? 'border-foreground bg-foreground text-background'
-                  : 'border-border bg-background text-foreground hover:border-foreground/40'
+                'gap-2 px-4 py-6 font-medium transition-all duration-150'
               )}
+              variant={isSelected ? 'default' : 'outline'}
             >
-              {formatSlug(dir.fieldSlug)}
-              <span
-                className={cn(
-                  'tabular-nums text-xs font-semibold',
-                  isSelected ? 'text-background/60' : 'text-muted-foreground'
-                )}
-              >
-                {dir.matchPercent}%
+              {field.fieldName ?? formatSlug(field.fieldSlug)}
+              <span className={cn('tabular-nums text-sm font-semibold')}>
+                {field.matchPercent}%
               </span>
-            </button>
+            </Button>
           );
         })}
       </div>
 
       {/* Hint when nothing selected */}
-      {!selectedDirection && (
+      {!selectedField && (
         <p className="text-sm text-muted-foreground">
           Select a field above to see the breakdown.
         </p>
       )}
 
       {/* Detail panel + CTAs */}
-      {selectedDirection && (
+      {selectedField && (
         <div className="animate-in fade-in-0 slide-in-from-bottom-2 space-y-10 duration-300">
           <Separator />
 
@@ -130,7 +122,7 @@ const FieldStage = ({
             <>
               <PathwayDetailPanel
                 detail={pathwayDetail}
-                matchPercent={selectedDirection.matchPercent}
+                matchPercent={selectedField.matchPercent}
                 reasons={topRec?.reasons}
                 compact
               />
@@ -152,9 +144,9 @@ const FieldStage = ({
           {/* CTAs */}
           <div className="flex flex-wrap gap-3 pt-2">
             <Button
-              size="lg"
               onClick={handleStartHere}
               disabled={isSubmitting || !pathwayDetail}
+              className="group gap-2 py-6.5 px-5"
             >
               {isSubmitting ? (
                 <>
@@ -162,19 +154,23 @@ const FieldStage = ({
                   Starting…
                 </>
               ) : (
-                `Start in ${formatSlug(selectedFieldSlug)}`
+                <>
+                  <Play />
+                  Start in:{' '}
+                  {selectedField.fieldName ?? formatSlug(selectedFieldSlug)}
+                </>
               )}
             </Button>
 
             <Button
               size="lg"
               variant="outline"
-              className="group gap-2"
+              className="group gap-2 py-7 px-5"
               disabled={!selectedFieldSlug}
               onClick={onExploreDeeper}
             >
               Pick a specialization
-              <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="transition-transform group-hover:translate-x-0.7 rtl:group-hover:-translate-x-0.7 rtl:rotate-180" />
             </Button>
           </div>
 

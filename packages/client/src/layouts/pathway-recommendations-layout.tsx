@@ -1,20 +1,24 @@
 import { useEffect } from 'react';
-import { ChevronLeft } from 'lucide-react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-import { Button } from '@/components/ui/button';
-import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import ErrorState from '@/components/error-state';
 import DomainStage from '@/components/recommendations/domain-stage';
 import FieldStage from '@/components/recommendations/field-stage';
 import SpecializationStage from '@/components/recommendations/specialization-stage';
+import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 
-import { useRecommendationQuery } from '@/queries/recommendation-query';
-import { useProfileStatusQuery } from '@/queries/profile-query';
-import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
-import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
+import NavigationBackButton from '@/components/navigation-back-button';
 import { roadmapSetupDefaultValues } from '@/constants/roadmap-setup-assessment-data';
 import { formatSlug } from '@/lib/slug-formatter';
+import { usePathwayPickerParams } from '@/params/use-picker-pathway-params';
+import { useProfileStatusQuery } from '@/queries/profile-query';
+import { useRecommendationQuery } from '@/queries/recommendation-query';
+import { useRoadmapSetupAssessmentSubmitMutation } from '@/queries/roadmap-setup-assessment-queries';
+import { m } from '../paraglide/messages';
+import {
+  DOMAIN_ICONS,
+  type DomainSlug,
+} from '@/constants/recommendation-ui-data';
 
 const PathwayRecommendationsLayout = () => {
   const navigate = useNavigate();
@@ -80,6 +84,8 @@ const PathwayRecommendationsLayout = () => {
 
   const data = recResponse?.data;
 
+  console.log(data);
+
   if (!data || data.domains.length === 0) {
     return (
       <div className="grid min-h-dvh place-items-center p-6 text-center">
@@ -95,13 +101,15 @@ const PathwayRecommendationsLayout = () => {
 
   // ── Derived stage data ───────────────────────────────────────────────────
 
-  const { domains: families, pathways } = data;
+  const { domains, pathways } = data;
 
   // Directions are embedded inside FamilyRecommendation — no extra filter needed
-  const selectedFamily = families.find(
+  const selectedFamily = domains.find(
     (f) => f.domainSlug === params.domainSlug
   );
   const directionsForFamily = selectedFamily?.fields ?? [];
+
+  const Icon = DOMAIN_ICONS[params.domainSlug as DomainSlug];
 
   // Pathways for the selected direction, ranked ascending, capped at 5
   const pathwaysForDirection = pathways
@@ -119,27 +127,27 @@ const PathwayRecommendationsLayout = () => {
   // ── Render
 
   return (
-    <div className="min-h-dvh px-4 py-10 md:px-8 md:py-16">
-      <div className="mx-auto max-w-4xl space-y-12">
+    <div className="min-h-dvh px-4 py-10 md:px-8 md:py-16 relative">
+      {params.domainSlug && (
+        <Icon className="pointer-events-none absolute size-60 scale-180 opacity-10 inset-e-[25%] top-40 z-0" />
+      )}
+
+      <div className="mx-auto max-w-4xl space-y-12 relative z-10">
         {/* Back button — hidden on Stage 1 */}
         {isNavigatingBack && (
-          <Button
-            variant="ghost"
-            size="sm"
+          <NavigationBackButton
             onClick={goBack}
+            title={m.common_back()}
             className="group -ml-2 gap-1"
-          >
-            <ChevronLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-            Back
-          </Button>
+          />
         )}
 
         {/* Stage 1 — pick a domain */}
         {params.stage === 'domain' && (
           <DomainStage
-            families={families}
-            selectedFamilySlug={params.domainSlug}
-            onSelectFamily={selectDomain}
+            domains={domains}
+            selectedDomainSlug={params.domainSlug}
+            onSelectDomain={selectDomain}
             onContinue={goToField}
           />
         )}

@@ -18,6 +18,7 @@ import type {
   PathwayMatchProfile,
   RecommendationDimensionScores,
   TaxonomyNodeKind,
+  TaxonomyNodeTranslatableFields,
 } from '@contracts/shared/types/pathway-domain-types';
 import type {
   RecommendationOverview,
@@ -29,12 +30,20 @@ import type { RecommendationInsertDoc } from '../repositories/recommendation-rep
 import { PathwayAssessmentModel } from '../models/pathway-assessment-model';
 import { PathwayMatchProfileModel } from '../models/pathway-match-profile-model';
 import { PathwayModel } from '../models/pathway-model';
-import { TaxonomyNodeModel } from '../models/taxonomy-node-model';
+import {
+  TaxonomyNodeModel,
+  type TaxonomyNodeDbDocument,
+} from '../models/taxonomy-node-model';
 import {
   pathwayScoringEngine,
   CURRENT_MATCHING_VERSION,
 } from '../utils/pathway-scoring-engin';
 import { buildReasons } from '../utils/recommendation-reasons';
+import { pathwayRepository } from '../repositories/pathway-repository';
+import { resolveTranslation } from './pathway-service';
+import type { SupportedLocale } from '@contracts/shared/schemas/i18n';
+import type { IRecommendation } from '../models/recommendation-model';
+import { taxonomyNodeRepository } from '../repositories/taxonomy-node-repository';
 
 // ── Internal types
 interface ScoredPathway {
@@ -65,9 +74,8 @@ class RecommendationService {
       completed: true,
     }).lean();
 
-    if (!assessmentDoc) {
+    if (!assessmentDoc)
       throw new Error('No completed assessment found for this user.');
-    }
 
     const assessment = this.extractAssessmentValues(assessmentDoc);
     const profileVersion = assessmentDoc.version ?? 1;
@@ -209,12 +217,13 @@ class RecommendationService {
   /**
      Returns stored recommendations as a 3-layer overview.
    */
-  async getOverview(userId: string): Promise<RecommendationOverview> {
-    const stored = await recommendationRepository.findAllByUserId(userId);
+  async getOverview(
+    userId: string,
+    locale: SupportedLocale
+  ): Promise<RecommendationOverview> {
+    const stored = await recommendationRepository.findAllByUserId(userId, 189);
 
-    if (!stored.length) {
-      return { domains: [], fields: [], pathways: [] };
-    }
+    if (!stored.length) return { domains: [], fields: [], pathways: [] };
 
     // Map stored IRecommendation documents to ScoredPathway for buildOverview
     const asScored: ScoredPathway[] = stored.map((r) => ({
@@ -228,7 +237,7 @@ class RecommendationService {
       reasons: r.reasons,
     }));
 
-    return this.buildOverview(asScored, stored);
+    return this.buildOverview(asScored, stored, locale);
   }
 
   // ── Overview builder
@@ -239,31 +248,65 @@ class RecommendationService {
    * storedDocs is optional — when passed, hasExplanation and
    * recommendation ids are populated on Layer 3.
    */
-  private buildOverview(
+  private async buildOverview(
     scored: ScoredPathway[],
-    storedDocs?: {
-      _id: unknown;
-      pathwaySlug: string;
-      explanation?: string;
-      rank: number;
-    }[]
-  ): RecommendationOverview {
+    storedDocs?: IRecommendation[],
+    locale?: SupportedLocale
+  ): Promise<RecommendationOverview> {
     // ── Layer 3: pathways ──
     const storedBySlug = new Map(
       (storedDocs ?? []).map((d) => [d.pathwaySlug, d])
     );
 
-    const pathways: PathwayRecommendation[] = scored.map((s, i) => {
+    const taxonomySlugs = new Set<string>();
+
+    for (const s of scored) {
+      taxonomySlugs.add(s.pathwaySlug);
+
+      if (s.fieldSlug) taxonomySlugs.add(s.fieldSlug);
+
+      if (s.domainSlug) taxonomySlugs.add(s.domainSlug);
+    }
+
+    const taxonomyNodes = await taxonomyNodeRepository.findBySlugs([
+      ...taxonomySlugs,
+    ]);
+
+    const taxonomyBySlug = new Map(
+      taxonomyNodes.map((node) => [node.slug, node])
+    );
+
+    function getTranslation(
+      node: TaxonomyNodeDbDocument | null | undefined,
+      locale: SupportedLocale = 'en'
+    ) {
+      if (!node) return undefined;
+
+      return (
+        node.translations[locale] ??
+        node.translations['en'] ??
+        [...node.translations.values()][0]
+      );
+    }
+
+    const pathways: PathwayRecommendation[] = scored.map((s, index) => {
       const stored = storedBySlug.get(s.pathwaySlug);
+
+      const taxonomy = taxonomyBySlug.get(s.pathwaySlug);
+
+      const translated = getTranslation(taxonomy, locale);
+
       return {
         id: stored ? String(stored._id) : '',
         pathwaySlug: s.pathwaySlug,
+        pathwayName: translated?.name,
+        pathwayDescription: translated?.description,
         fieldSlug: s.fieldSlug,
         domainSlug: s.domainSlug,
         totalScore: s.totalScore,
         matchPercent: s.matchPercent,
         dimensionScores: s.dimensionScores,
-        rank: i + 1,
+        rank: index + 1,
         reasons: s.reasons,
         hasExplanation: Boolean(stored?.explanation),
         explanation: stored?.explanation,
@@ -285,14 +328,21 @@ class RecommendationService {
         const sorted = [...pathways].sort(
           (a, b) => b.totalScore - a.totalScore
         );
+
         const top3 = sorted.slice(0, 3);
+
         const avgScore =
-          top3.reduce((s, p) => s + p.totalScore, 0) / top3.length;
-        const domainSlug = pathways[0]?.domainSlug;
+          top3.reduce((sum, p) => sum + p.totalScore, 0) / top3.length;
+
+        const taxonomy = taxonomyBySlug.get(fieldSlug);
+
+        const translated = getTranslation(taxonomy, locale);
 
         return {
           fieldSlug,
-          domainSlug,
+          domainSlug: pathways[0]?.domainSlug,
+          fieldName: translated?.name ?? fieldSlug,
+          fieldDescription: translated?.description,
           totalScore: Number(avgScore.toFixed(4)),
           matchPercent: Math.round(avgScore * 100),
           pathwayCount: pathways.length,
@@ -302,41 +352,53 @@ class RecommendationService {
       .sort((a, b) => b.totalScore - a.totalScore);
 
     // ── Layer 1: domains (domain-level grouping)
-    const familyMap = new Map<string, ScoredPathway[]>();
+    const domainMap = new Map<string, ScoredPathway[]>();
 
     for (const s of scored) {
       if (!s.domainSlug) continue;
-      const existing = familyMap.get(s.domainSlug) ?? [];
+      const existing = domainMap.get(s.domainSlug) ?? [];
       existing.push(s);
-      familyMap.set(s.domainSlug, existing);
+      domainMap.set(s.domainSlug, existing);
     }
 
-    const domains: DomainRecommendation[] = Array.from(familyMap.entries())
+    const domains: DomainRecommendation[] = Array.from(domainMap.entries())
       .map(([domainSlug, pathways]) => {
         const sorted = [...pathways].sort(
           (a, b) => b.totalScore - a.totalScore
         );
-        const top3 = sorted.slice(0, 3);
-        const avgScore =
-          top3.reduce((s, p) => s + p.totalScore, 0) / top3.length;
 
-        const familyDirections = fields.filter(
-          (d) => d.domainSlug === domainSlug
+        const top3 = sorted.slice(0, 3);
+
+        const avgScore =
+          top3.reduce((sum, p) => sum + p.totalScore, 0) / top3.length;
+
+        const domainFields = fields.filter(
+          (field) => field.domainSlug === domainSlug
         );
+
+        const taxonomy = taxonomyBySlug.get(domainSlug);
+
+        const translated = getTranslation(taxonomy, locale);
 
         return {
           domainSlug,
+          domainName: translated?.name ?? domainSlug,
+          description: translated?.description,
           totalScore: Number(avgScore.toFixed(4)),
           matchPercent: Math.round(avgScore * 100),
           pathwayCount: pathways.length,
-          fieldCount: familyDirections.length,
+          fieldCount: domainFields.length,
           topPathwaySlugs: top3.map((p) => p.pathwaySlug),
-          fields: familyDirections,
+          fields: domainFields,
         };
       })
       .sort((a, b) => b.totalScore - a.totalScore);
 
-    return { domains, fields, pathways };
+    return {
+      domains,
+      fields,
+      pathways,
+    };
   }
 
   // ── Taxonomy resolution ────

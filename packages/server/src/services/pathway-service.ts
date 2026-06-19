@@ -34,7 +34,7 @@ import type {
  * Falls back to DEFAULT_LOCALE ('en') if the requested locale has no entry.
  * Throws if even the fallback is missing — that's a data problem, not a user problem.
  */
-function resolveTranslation<T>(
+export function resolveTranslation<T>(
   translations: Partial<Record<string, T>>,
   locale: SupportedLocale,
   context: string

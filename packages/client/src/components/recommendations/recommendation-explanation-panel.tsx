@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Loader2, Sparkles } from 'lucide-react';
+import { Loader, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useExplanationQuery } from '@/queries/recommendation-query';
 
@@ -32,8 +32,7 @@ const RecommendationExplanationPanel = ({
       <div className="flex items-center gap-3">
         <Button
           variant="outline"
-          size="sm"
-          className="gap-2"
+          className="gap-2 py-6 px-5"
           onClick={() => setTriggered(true)}
         >
           <Sparkles className="size-3.5" />
@@ -51,13 +50,13 @@ const RecommendationExplanationPanel = ({
   if (isPending) {
     return (
       <div className="flex items-center gap-2.5 text-sm text-muted-foreground">
-        <Loader2 className="size-3.5 animate-spin" />
+        <Loader className="size-3.5 animate-spin" />
         Generating your match explanation…
       </div>
     );
   }
 
-  if (isError || !explanation) {
+  if (isError || !explanation)
     return (
       <p className="text-sm text-muted-foreground">
         Couldn't generate explanation right now.{' '}
@@ -69,7 +68,6 @@ const RecommendationExplanationPanel = ({
         </button>
       </p>
     );
-  }
 
   return (
     <div className="space-y-3">

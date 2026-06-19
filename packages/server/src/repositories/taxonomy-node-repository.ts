@@ -13,8 +13,12 @@ export class TaxonomyNodeRepository {
     return await TaxonomyNodeModel.find().sort({ parentId: 1, order: 1 });
   }
 
+  async findBySlugs(slugs: string[]) {
+    return await TaxonomyNodeModel.find({ slug: { $in: slugs } }).lean();
+  }
+
   async findBySlug(slug: string) {
-    return await TaxonomyNodeModel.findOne({ slug });
+    return await TaxonomyNodeModel.findOne({ slug }).lean();
   }
 
   async deleteAll() {
