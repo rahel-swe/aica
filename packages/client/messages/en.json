@@ -160,6 +160,7 @@
 
   "settings_title": "Settings",
   "settings_section_profile": "Profile",
+
   "settings_section_account": "Account",
   "settings_section_language": "Language",
   "settings_section_notifications": "Notifications",
@@ -171,6 +172,9 @@
   "settings_account_change_password": "Change Password",
   "settings_account_delete": "Delete Account",
   "settings_account_delete_confirm": "Are you sure you want to delete your account? This cannot be undone.",
+  "settings_section_profile_description": "Manage your name and assessments.",
+  "profile_name_label": "Name",
+  "profile_name_placeholder": "Enter your name",
 
   "saved_pathways_title": "Saved Pathways",
   "saved_pathways_empty": "You haven't saved any pathways yet.",

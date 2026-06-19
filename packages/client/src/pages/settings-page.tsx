@@ -10,6 +10,7 @@ import type {
   SettingsData,
   SettingsSectionId,
 } from '@contracts/shared/types/settings-types';
+import { m } from '../paraglide/messages';
 
 const SettingsPage = () => {
   const [section, setSection] = useSettingsSectionParam();
@@ -17,7 +18,7 @@ const SettingsPage = () => {
   const [data, setData] = useState<SettingsData>({
     profile: {
       name: 'Rahel',
-      bio: 'Building AICA one step at a time.',
+      bio: m.advisor_title(),
     },
     account: {
       username: 'rahel',

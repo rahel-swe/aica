@@ -8,6 +8,7 @@ import {
   UserCircle,
 } from 'lucide-react';
 import { type SettingsSectionId } from '@contracts/shared/types/settings-types';
+import { m } from '../paraglide/messages';
 
 export const settingsSections: Array<{
   id: SettingsSectionId;
@@ -16,12 +17,12 @@ export const settingsSections: Array<{
 }> = [
   {
     id: 'profile',
-    title: 'Profile',
+    title: m.settings_section_profile(),
     icon: UserCircle,
   },
   {
     id: 'account',
-    title: 'Account',
+    title: m.settings_section_account(),
     icon: User,
   },
   {

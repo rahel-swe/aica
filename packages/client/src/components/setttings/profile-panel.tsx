@@ -9,6 +9,7 @@ import ProfileReadness from './profile-readness';
 import SettingsPanelShell from './settings-panel-shell';
 import SettingsSaveButton from './settings-save-button';
 import { useProfileStatusQuery } from '@/queries/profile-query';
+import { m } from '../../paraglide/messages';
 
 const ProfilePanel = () => {
   const [name, setName] = useState('');
@@ -45,20 +46,20 @@ const ProfilePanel = () => {
   return (
     <SettingsPanelShell
       icon={UserCircle}
-      title="Profile"
-      description="Manage your name and assessments."
+      title={m.settings_section_profile()}
+      description={m.settings_section_profile_description()}
     >
       <div className="flex flex-col md:flex-row items-center gap-3">
         <div className="space-y-2 w-full">
-          <Label htmlFor="profile-name">Name</Label>
+          <Label htmlFor="profile-name">{m.profile_name_label()}</Label>
           <div className="relative">
-            <User className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
+            <User className="pointer-events-none absolute inset-s-3 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
             <Input
               id="profile-name"
               value={name}
               onChange={(event) => setName(event.target.value)}
               className="ps-10"
-              placeholder="Your name"
+              placeholder={m.profile_name_placeholder()}
             />
           </div>
         </div>

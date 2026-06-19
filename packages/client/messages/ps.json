@@ -177,6 +177,9 @@
   "settings_account_change_password": "پټنوم بدل کړئ",
   "settings_account_delete": "حساب ړنګ کړئ",
   "settings_account_delete_confirm": "ایا ډاډه یاست چې خپل حساب ړنګول غواړئ؟ دا عمل بېرته نه شي راګرځېدلی.",
+  "settings_section_profile_description": "خپل نوم او ارزونې اداره کړئ.",
+  "profile_name_label": "نوم",
+  "profile_name_placeholder": "خپل نوم دننه کړئ",
 
   "saved_pathways_title": "خوندي شوې لارې",
   "saved_pathways_empty": "تاسې لا تر اوسه کومه لاره نه ده خوندي کړې.",
