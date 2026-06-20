@@ -14,6 +14,7 @@ import {
 import LocaleSelectItems from './locale-select-items';
 import SettingsPanelShell from './settings-panel-shell';
 import SettingsSaveButton from './settings-save-button';
+import { m } from '../../paraglide/messages';
 
 type AppLangaugeType = {
   locale?: SupportedLocale;
@@ -34,12 +35,12 @@ const LanguagePanel = () => {
   return (
     <SettingsPanelShell
       icon={Globe}
-      title="Language"
-      description="Choose your preferred language and region."
+      title={m.settings_section_language()}
+      description={m.language_panel_description()}
     >
       <div className="grid gap-2">
         <Label htmlFor="app-language" className="text-sm font-medium">
-          App language
+          {m.app_language()}
         </Label>
 
         <LocaleSelectItems
@@ -55,7 +56,7 @@ const LanguagePanel = () => {
 
       <div className="grid gap-2">
         <Label htmlFor="region" className="text-sm font-medium">
-          Region
+          {m.region()}
         </Label>
 
         <Select
@@ -68,14 +69,14 @@ const LanguagePanel = () => {
           }
         >
           <SelectTrigger id="region" className="w-full py-5">
-            <SelectValue placeholder="Select region" />
+            <SelectValue placeholder={m.select_region()} />
           </SelectTrigger>
 
           <SelectContent>
-            <SelectItem value="AF">Afghanistan</SelectItem>
-            <SelectItem value="US">United States</SelectItem>
-            <SelectItem value="UK">United Kingdom</SelectItem>
-            <SelectItem value="Other">Other</SelectItem>
+            <SelectItem value="AF">{m.country_afghanistan()}</SelectItem>
+            <SelectItem value="US">{m.country_united_states()}</SelectItem>
+            <SelectItem value="UK">{m.country_united_kingdom()}</SelectItem>
+            <SelectItem value="Other">{m.country_other()}</SelectItem>
           </SelectContent>
         </Select>
       </div>

@@ -8,6 +8,10 @@
   "common_required_field": "دا برخه ډکول اړین دي",
   "common_skip": "پرېښودل",
   "common_continue": "دوام",
+  "start": "پیل",
+  "edit": "سمول",
+  "update_setup": "تنظیمات تازه کړئ",
+  "pending": "د بارېدو په حال کې...",
 
   "nav_dashboard": "ډشبورډ",
   "nav_explore": "سپړنه",
@@ -22,6 +26,135 @@
   "landing_hero_subheading": "خپلو موخو ته مناسبې شخصي لارې ومومئ.",
   "landing_cta_get_started": "پیل وکړئ",
   "landing_cta_sign_in": "حساب لرئ؟ ننوتل",
+
+  "landing_stats_students_guided": "لارښوونه شوي زده‌کوونکي",
+  "landing_stats_career_pathways": "مسلکي لارې",
+  "landing_stats_match_satisfaction": "د مطابقت رضایت",
+  "landing_stats_to_your_roadmap": "ستاسو د نقشې تر ترلاسه کولو",
+
+  "landing_problem_heading": "د لارښوونې تشه رښتینې ده.",
+  "landing_problem_subheading": "هر کال میلیونونه کسان مهمې پرېکړې د داسې عمومي مشورو پر بنسټ کوي چې د دوی اصلي وړتیاوې، لېوالتیاوې او شخصیت نه منعکسوي.",
+
+  "landing_problem_academic_mismatch_title": "ناسم تحصیلي انتخاب",
+  "landing_problem_academic_mismatch_description": "زده‌کوونکي ډېری وخت د کورنۍ د فشار یا سطحي ازموینو پر بنسټ پوهنځي ټاکي، نه د خپلو واقعي وړتیاوو، لېوالتیاوو او اوږدمهالو موخو له مخې.",
+
+  "landing_problem_decision_paralysis_title": "د پرېکړې ناتواني",
+  "landing_problem_decision_paralysis_description": "د سلګونو انتخابونو او متضادو مشورو له امله ډېری خلک پرېکړه نه شي کولی. انتخابونه بې پایه ښکاري او سمه لاره نه څرګندیږي.",
+
+  "landing_problem_personalized_guidance_title": "د شخصي لارښوونې نشتوالی",
+  "landing_problem_personalized_guidance_description": "دودیزه مشاوره د ټولو اړتیاوې نه شي پوره کولی. ډېری زده‌کوونکي هېڅکله داسې لارښوونه نه ترلاسه کوي چې د دوی د شخصیت او راتلونکو وړتیاوو سره برابره وي.",
+
+  "landing_how_it_works_heading": "روښانتیا ته درې ګامونه.",
+
+  "landing_how_it_works_step1_title": "خپل پروفایل جوړ کړئ",
+  "landing_how_it_works_step1_description": "یوه لارښود شوې ارزونه بشپړه کړئ چې ستاسو لېوالتیاوې، وړتیاوې او موخې ارزوي. دا د حقیقي مطابقت لپاره جوړه شوې، نه د سطحي شخصیت ازموینو لپاره.",
+  "landing_how_it_works_step1_pill": "شاوخوا ۵ دقیقې · شخصي",
+
+  "landing_how_it_works_step2_title": "د مصنوعي ځیرکتیا پر بنسټ مطابقت",
+  "landing_how_it_works_step2_description": "AICA ستاسو پروفایل له ۲۰۰ څخه زیاتو ټاکل شویو مسلکي لارو سره په بشپړ شفافیت پرتله کوي. تاسو تل پوهېږئ چې ولې یوه لاره وړاندیز شوې ده.",
+  "landing_how_it_works_step2_pill": "سمدستي · د تشریح وړ",
+
+  "landing_how_it_works_step3_title": "خپله د لارې نقشه ترلاسه کړئ",
+  "landing_how_it_works_step3_description": "یو عملي پلان ترلاسه کړئ چې پکې پوهنځي، کورسونه، اړین مهارتونه او راتلونکي ګامونه شامل وي، ټول ستاسو د پروفایل له مخې جوړ شوي.",
+  "landing_how_it_works_step3_pill": "بشپړ پلان · عملي",
+
+  "landing_roadmap_heading_line1": "ستاسو د لارې نقشه،",
+  "landing_roadmap_heading_line2": "په څو دقیقو کې.",
+
+  "landing_roadmap_description": "ستاسو د ارزونې له بشپړېدو وروسته، AICA ستاسو د پروفایل له مخې یو پړاو په پړاو شخصي پلان جوړوي. دا یوازې یوه نمونه نه ده، بلکې داسې شخصي د لارې نقشه ده چې همدا نن یې عملي کول پیلولی شئ.",
+
+  "landing_roadmap_feature_1": "روښانه ګامونه له خپل اوسني حالت څخه تر خپلې موخې پورې",
+  "landing_roadmap_feature_2": "د هر پړاو لپاره ځانګړي کورسونه، تصدیق‌لیکونه او اړین مهارتونه",
+  "landing_roadmap_feature_3": "ستاسو د موخو له بدلون سره د پرمختګ دوامداره څارنه",
+
+  "landing_roadmap_button": "زما د لارې نقشه وګورئ",
+
+  "landing_features_heading_line1": "هر څه چې د پرېکړې لپاره",
+  "landing_features_heading_line2": "په ډاډ سره اړتیا لرئ.",
+
+  "landing_feature_profile_title": "ژوره د کارونکي پېژندنه",
+  "landing_feature_profile_description": "منظم معلومات چې ستاسو لېوالتیاوې، وړتیاوې، ارزښتونه او موخې ارزوي، او د عادي شخصیت ازموینو څخه ډېر ژور دي.",
+
+  "landing_feature_matching_title": "هوښیار مطابقت",
+  "landing_feature_matching_description": "ستاسو پروفایل له ۲۰۰ څخه زیاتو مسلکي لارو سره پرتله کېږي او د هر وړاندیز دلیل په بشپړ ډول درښودل کېږي.",
+
+  "landing_feature_ai_explanation_title": "د مصنوعي ځیرکتیا تشریحي سپارښتنې",
+  "landing_feature_ai_explanation_description": "هره سپارښتنه د شخصي وضاحت سره وړاندې کېږي ترڅو تاسو خپله پرېکړه په بشپړ باور درک او ترسره کړئ.",
+
+  "landing_feature_roadmaps_title": "شخصي د لارې نقشې",
+  "landing_feature_roadmaps_description": "عملي راتلونکي ګامونه، وړاندیز شوي تصدیق‌لیکونه او د مهارتونو د پراختیا پلانونه چې ستاسو له ټاکلې لارې سره برابر وي.",
+
+  "landing_feature_learning_title": "د زده کړې د لارې تنظیم",
+  "landing_feature_learning_description": "هغه کورسونه، تصدیق‌لیکونه او سرچینې ومومئ چې ستاسو د کچې او موجود وخت سره مناسب وي.",
+
+  "landing_feature_progress_title": "د پرمختګ څارنه",
+  "landing_feature_progress_description": "خپل پرمختګ وڅارئ، پخوانۍ ارزونې بیا وګورئ، او د موخو له بدلېدو سره خپل پروفایل تازه کړئ.",
+
+  "for_who_title": "د هغو کسانو لپاره جوړ شوی چې د تصمیم په څلور لارو کې دي.",
+
+  "for_who_students_label": "زده کوونکي",
+  "for_who_students_title": "د مناسبې څانګې انتخاب",
+  "for_who_students_description": "تاسو لوړو زده کړو ته ننوځئ او د سمې څانګې انتخاب دروند فشار لري. AICA ستاسو د واقعي شخصیت له مخې مرسته کوي.",
+  "for_who_students_b1": "د څانګې او درجې مطابقت",
+  "for_who_students_b2": "د قوتونو پر بنسټ لارښوونه",
+  "for_who_students_b3": "د اوږدمهاله مسلکي توازن",
+
+  "for_who_graduates_label": "فارغین",
+  "for_who_graduates_title": "د مسلکي لارې سپړنه",
+  "for_who_graduates_description": "تاسو زده کړې پای ته رسولي دي. AICA ستاسو مهارتونه د حقیقي دندو فرصتونو سره نښلوي.",
+  "for_who_graduates_b1": "د مسلکي لارو سپړنه",
+  "for_who_graduates_b2": "د مهارتونو د کمښت تشخیص",
+  "for_who_graduates_b3": "د صنعت روښانه لوری",
+
+  "for_who_career_label": "د مسلک بدلوونکي",
+  "for_who_career_title": "په ډاډ سره بدلون",
+  "for_who_career_description": "نوی لوری غواړئ خو نه پوهېږئ له کومه یې پیل کړئ؟ AICA تاسو ته د بدلون بشپړ پلان جوړوي.",
+  "for_who_career_b1": "د بدلون لارې نقشې",
+  "for_who_career_b2": "د انتقال وړ مهارتونو تحلیل",
+  "for_who_career_b3": "د لنډو کورسونو سپارښتنې",
+
+  "testimonials_heading": "ریښتیني خلک، ریښتینی وضاحت.",
+
+  "testimonial_1_quote": "زه دوه کاله د انجینرۍ او محصول ډیزاین ترمنځ بند پاتې وم. AICA راته وښوده چې زما وړتیاوې په څرګند ډول د HCI لور ته اشاره کوي. دا زما تر ټولو ښه پرېکړه وه.",
+  "testimonial_1_name": "سارا م.",
+  "testimonial_1_role": "د انسان-کمپیوټر تعامل زده کوونکې",
+
+  "testimonial_2_quote": "له ۶ کلونو محاسبې وروسته مې بدلون غوښت، خو نه پوهېدم له کومه پیل وکړم. د AICA لارې چارې راته مرسته وکړه چې په یوه کال کې د ډاټا انالیتیکس ته واوړم.",
+  "testimonial_2_name": "جیمز ک.",
+  "testimonial_2_role": "په فینټیک شرکت کې د ډاټا انالیسټ",
+
+  "testimonial_3_quote": "هر مشاور راته ویل چې یوازې خپل شوق تعقیب کړه، خو هېڅ لارښود نه و. AICA راته مشخصې پوهنځۍ وښودلې، دا چې ولې مناسبې دي، او کوم مهارتونه باید لومړی زده کړم.",
+  "testimonial_3_name": "نادیا ر.",
+  "testimonial_3_role": "د کمپیوټر ساینس دوهم کال زده کوونکې",
+
+  "cta_title_line1": "چمتو یاست چې",
+  "cta_title_line2": "خپل لوری ومومئ؟",
+  "cta_description": "۵ دقیقې ارزونه ترسره کړئ او یو شخصي لارښود ترلاسه کړئ چې ستاسو له شخصیت سره سم جوړ شوی وي.",
+  "cta_primary_button": "وړیا ارزونه پیل کړئ",
+  "cta_secondary_button": "نور معلومات",
+  "cta_footer_note": "نه کارت ته اړتیا شته، نه حساب، یوازې ۵ دقیقې",
+
+  "footer_brand_description": "د زده‌کړې او مسلک پرېکړو لپاره د مصنوعي ځیرکتیا پر بنسټ لارښود.",
+
+  "footer_section_product": "محصول",
+  "footer_product_features": "ځانګړتیاوې",
+  "footer_product_how_it_works": "څنګه کار کوي",
+  "footer_product_pricing": "بیې",
+  "footer_product_changelog": "تغییرات",
+
+  "footer_section_company": "شرکت",
+  "footer_company_about": "په اړه",
+  "footer_company_blog": "بلاګ",
+  "footer_company_careers": "کاري فرصتونه",
+  "footer_company_contact": "اړیکه",
+
+  "footer_section_legal": "قانوني",
+  "footer_legal_privacy": "د محرمیت تګلاره",
+  "footer_legal_terms": "د خدمتونو شرطونه",
+  "footer_legal_cookies": "د کوکي تګلاره",
+
+  "footer_copyright": "© {{year}} AICA. ټول حقوق خوندي دي.",
+  "footer_tagline": "په TypeScript جوړ شوی · د AI په مرسته",
 
   "auth_sign_in_title": "ننوتل",
   "auth_sign_in_email_label": "برېښنالیک",
@@ -178,8 +311,83 @@
   "settings_account_delete": "حساب ړنګ کړئ",
   "settings_account_delete_confirm": "ایا ډاډه یاست چې خپل حساب ړنګول غواړئ؟ دا عمل بېرته نه شي راګرځېدلی.",
   "settings_section_profile_description": "خپل نوم او ارزونې اداره کړئ.",
+  "settings_section_security": "امنیت",
+  "settings_section_appearance": "بڼه",
+  "settings_section_about": "د اپلیکیشن په اړه",
+  "settings_section_sign_out": "وتل",
+
   "profile_name_label": "نوم",
   "profile_name_placeholder": "خپل نوم دننه کړئ",
+  "profile_readiness_title": "چمتووالی",
+  "profile_readiness_description": "دا هغه پروفایل معلومات دي چې AICA یې د لا دقیقو لارښوونو وړاندې کولو لپاره کاروي.",
+
+  "account_panel_description": "خپل کارن نوم او تړلی برېښنالیک تازه کړئ.",
+  "account_username_label": "کارن نوم",
+  "account_username_placeholder": "کارن نوم",
+  "account_email_label": "برېښنالیک",
+  "account_email_placeholder": "name@example.com",
+  "account_danger_zone_title": "د خطر برخه",
+  "account_danger_zone_description": "خپل AICA حساب او ټول اړوند لارښوونیز معلومات په دایمي ډول حذف کړئ.",
+  "account_delete_item_1": "ستاسو د ارزونې ځوابونه او د لارښوونې پروفایل",
+  "account_delete_item_2": "خوندي شوي تحصیلي او مسلکي لارې",
+  "account_delete_item_3": "شخصي سپارښتنې او د سمون پایلې",
+  "account_delete_item_4": "نقشې، پړاوونه او د پرمختګ تعقیب",
+  "account_delete_item_5": "د AI سلاکار خبرې اترې او خوندي شوي معلومات",
+
+  "account_delete_warning": "د حساب حذف کول دایمي دي او بېرته نه شي راګرځېدلی.",
+  "delete_account": "حساب حذف کړئ",
+  "delete_account_dialog_title": "خپل AICA حساب حذف کړئ؟",
+  "delete_account_dialog_description": "ستاسو حساب او ټول اړوند لارښوونیز معلومات به په دایمي ډول حذف شي.",
+  "delete_account_you_will_lose": "تاسو به دې مواردو ته لاسرسی له لاسه ورکړئ:",
+  "delete_account_item_1": "ستاسو د لارښوونې پروفایل او د ارزونې پایلې",
+  "delete_account_item_2": "خوندي شوې تحصیلي او مسلکي لارې",
+  "delete_account_item_3": "شخصي سپارښتنې او د سمون تاریخچه",
+  "delete_account_item_4": "د نقشې پرمختګ او بشپړ شوي پړاوونه",
+  "delete_account_item_5": "د AI سلاکار خبرې اترې او تولید شوي معلومات",
+  "delete_account_alternative": "که ستاسو لېوالتیاوې، موخې یا د مسلک لوری بدل شوی وي، د حساب د حذف کولو پر ځای کولای شئ خپله ارزونه بیا ترسره کړئ او نوې سپارښتنې ترلاسه کړئ.",
+  "keep_account": "حساب وساتئ",
+  "continue_to_deletion": "د حذف کولو دوام",
+
+  "security_panel_description": "د خپل حساب امنیت او د ننوتلو غوره‌توبونه اداره کړئ.",
+  "security_login_alerts_title": "د ننوتلو خبرتیاوې",
+  "security_login_alerts_description": "کله چې نوی ننوتل تشخیص شي، خبرتیا ترلاسه کړئ.",
+  "security_two_factor_title": "دوه‌پړاوه تصدیق (Two-Factor Authentication)",
+  "security_two_factor_description": "د خپل حساب د خوندي کولو لپاره د امنیت یوه بله طبقه اضافه کړئ.",
+  "change_password": "پټنوم بدل کړئ",
+
+  "notifications_panel_description": "وټاکئ چې کوم تازه معلومات او یادونې ترلاسه کول غواړئ.",
+  "notifications_email_updates_title": "د برېښنالیک تازه معلومات",
+  "notifications_email_updates_description": "د حساب او محصول اړوند برېښنالیکونه ترلاسه کړئ.",
+  "notifications_roadmap_reminders_title": "د نقشې یادونې",
+  "notifications_roadmap_reminders_description": "کله چې د نقشې یو پړاو رارسېږي، یادونه ترلاسه کړئ.",
+  "notifications_recommendation_updates_title": "د سپارښتنو تازه معلومات",
+  "notifications_recommendation_updates_description": "کله چې نوې سپارښتنې جوړې شي، خبرتیا ترلاسه کړئ.",
+  "notifications_product_news_title": "د محصول خبرونه",
+  "notifications_product_news_description": "د نویو ځانګړتیاوو او محصول د خپرېدو خبرونه ترلاسه کړئ.",
+
+  "language_panel_description": "خپله خوښه ژبه او سیمه وټاکئ.",
+  "app_language": "د اپلیکیشن ژبه",
+  "region": "سیمه",
+  "select_region": "سیمه وټاکئ",
+  "country_afghanistan": "افغانستان",
+  "country_united_states": "متحده ایالات",
+  "country_united_kingdom": "متحده پاچاهي",
+  "country_other": "نور",
+
+  "appearance_panel_description": "وټاکئ چې AICA ستاسو په وسیله کې څنګه ښکاره شي.",
+  "theme_dark": "تیاره",
+  "theme_light": "روښانه",
+  "theme_system": "د سیستم له مخې",
+
+  "about_title": "د AICA په اړه",
+  "about_description": "د پلېټفارم او قانوني معلوماتو په اړه نور معلومات ترلاسه کړئ.",
+  "app_name": "AICA",
+  "about_app_description": "یوه د مصنوعي ځیرکتیا پر بنسټ تعلیمي او مسلکي لارښود پلېټفارم دی چې زده کوونکو، فارغانو او د مسلک بدلونکو سره مرسته کوي ترڅو تعلیمي لارې ومومي او غوره پرېکړې وکړي.",
+  "source_code": "د کوډ سرچینه",
+  "license": "Apache 2.0 جواز",
+  "terms_of_service": "د کارولو شرایط",
+  "privacy_policy": "د محرمیت تګلاره",
+  "version": "نسخه",
 
   "saved_pathways_title": "خوندي شوې لارې",
   "saved_pathways_empty": "تاسې لا تر اوسه کومه لاره نه ده خوندي کړې.",
@@ -342,6 +550,12 @@
   "pathway_assessment_navigation_see_my_matches": "خپلې پایلې وګورئ",
   "pathway_assessment_navigation_keep_going": "دوام ورکړئ",
 
+  "pathway_profile_title": "د مسلک پروفایل",
+  "pathway_profile_description": "ستاسو وړتیاوې، لېوالتیاوې، موخې او د کار خوښې.",
+
+  "restart_pathway_profile_title": "د مسلک پروفایل بیا پیل کړئ؟",
+  "restart_pathway_profile_description": "دا به ستاسو سپارښتنې له سره تولید کړي.",
+
   "roadmap_setup_welcome_title": "راځئ ستاسو لومړنی عملي پلان تنظیم کړو",
   "roadmap_setup_welcome_helper": "دا به ستاسو راتلونکی واقعي د لارې نقشه بڼه کړي، نه ستاسو ټول مسلکي مهال‌وېش.",
 
@@ -406,5 +620,9 @@
   "roadmap_navigation_go_back": "شاته لاړ شئ",
   "roadmap_navigation_lets_build_it": "راځئ دا جوړ کړو",
   "roadmap_navigation_submit_answers": "ځوابونه وسپارئ",
-  "roadmap_navigation_keep_going": "دوام ورکړئ"
+  "roadmap_navigation_keep_going": "دوام ورکړئ",
+
+  "roadmap_setup_description": "د پیل کچه، اوونیز وخت، محدودیتونه او د پلان ډول.",
+  "update_roadmap_setup_title": "د نقشې تنظیمات تازه کړئ؟",
+  "update_roadmap_setup_description": "کېدای شي اړتیا وي چې د خپلو نوو غوره‌توبونو د پلي کولو لپاره خپله نقشه له سره تولید کړئ."
 }

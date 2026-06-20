@@ -27,27 +27,27 @@ export const settingsSections: Array<{
   },
   {
     id: 'security',
-    title: 'Security',
+    title: m.settings_section_security(),
     icon: Lock,
   },
   {
     id: 'notifications',
-    title: 'Notifications',
+    title: m.settings_section_notifications(),
     icon: Bell,
   },
   {
     id: 'language',
-    title: 'Language',
+    title: m.settings_section_language(),
     icon: Globe,
   },
   {
     id: 'appearance',
-    title: 'Appearance',
+    title: m.settings_section_appearance(),
     icon: Monitor,
   },
   {
     id: 'about',
-    title: 'About',
+    title: m.settings_section_about(),
     icon: CircleHelp,
   },
 ];

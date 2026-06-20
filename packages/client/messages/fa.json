@@ -8,6 +8,10 @@
   "common_required_field": "این فیلد الزامی است",
   "common_skip": "رد کردن",
   "common_continue": "ادامه",
+  "start": "شروع",
+  "edit": "ویرایش",
+  "update_setup": "به‌روزرسانی تنظیمات",
+  "pending": "در حال بارگذاری...",
 
   "nav_dashboard": "داشبورد",
   "nav_explore": "کاوش",
@@ -22,6 +26,135 @@
   "landing_hero_subheading": "مسیرهای شخصی‌سازی‌شده متناسب با اهداف خود را کشف کنید.",
   "landing_cta_get_started": "شروع کنید",
   "landing_cta_sign_in": "حساب دارید؟ وارد شوید",
+
+  "landing_stats_students_guided": "دانشجویان راهنمایی‌شده",
+  "landing_stats_career_pathways": "مسیرهای شغلی",
+  "landing_stats_match_satisfaction": "رضایت از تطبیق",
+  "landing_stats_to_your_roadmap": "تا نقشه راه شما",
+
+  "landing_problem_heading": "شکاف در راهنمایی واقعی است.",
+  "landing_problem_subheading": "هر سال میلیون‌ها نفر تصمیم‌های مهم زندگی خود را بر اساس توصیه‌های عمومی می‌گیرند؛ توصیه‌هایی که بازتاب‌دهنده شخصیت و توانایی واقعی آن‌ها نیست.",
+
+  "landing_problem_academic_mismatch_title": "انتخاب نادرست رشته تحصیلی",
+  "landing_problem_academic_mismatch_description": "دانشجویان اغلب بر اساس فشار خانواده یا آزمون‌های سطحی رشته خود را انتخاب می‌کنند، نه بر اساس توانایی‌ها، علاقه‌مندی‌ها و اهداف بلندمدتشان.",
+
+  "landing_problem_decision_paralysis_title": "ناتوانی در تصمیم‌گیری",
+  "landing_problem_decision_paralysis_description": "با وجود صدها مسیر و توصیه‌های متناقض، بسیاری از افراد در تصمیم‌گیری دچار سردرگمی می‌شوند. گزینه‌ها بی‌پایان به نظر می‌رسند و یافتن بهترین انتخاب دشوار است.",
+
+  "landing_problem_personalized_guidance_title": "نبود راهنمایی شخصی‌سازی‌شده",
+  "landing_problem_personalized_guidance_description": "مشاوره سنتی پاسخگوی همه نیست. بسیاری از دانشجویان هرگز راهنمایی متناسب با شخصیت، توانایی‌ها و آینده خود دریافت نمی‌کنند.",
+
+  "landing_how_it_works_heading": "سه گام تا رسیدن به شفافیت.",
+
+  "landing_how_it_works_step1_title": "پروفایل خود را بسازید",
+  "landing_how_it_works_step1_description": "یک ارزیابی هدایت‌شده شامل علاقه‌مندی‌ها، توانایی‌ها و اهداف خود را تکمیل کنید. این ارزیابی برای ایجاد تطابق واقعی طراحی شده است، نه آزمون‌های سطحی شخصیت.",
+  "landing_how_it_works_step1_pill": "حدود ۵ دقیقه · خصوصی",
+
+  "landing_how_it_works_step2_title": "تطبیق مبتنی بر هوش مصنوعی",
+  "landing_how_it_works_step2_description": "AICA پروفایل شما را با بیش از ۲۰۰ مسیر منتخب مقایسه می‌کند و همه چیز را به‌صورت شفاف توضیح می‌دهد. همیشه می‌دانید چرا یک مسیر به شما پیشنهاد شده است.",
+  "landing_how_it_works_step2_pill": "فوری · قابل توضیح",
+
+  "landing_how_it_works_step3_title": "نقشه راه خود را دریافت کنید",
+  "landing_how_it_works_step3_description": "یک برنامه عملی شامل رشته‌ها، دوره‌ها، مهارت‌های موردنیاز و گام‌های بعدی دریافت کنید که کاملاً بر اساس پروفایل شما تهیه شده است.",
+  "landing_how_it_works_step3_pill": "برنامه کامل · قابل اجرا",
+
+  "landing_roadmap_heading_line1": "نقشه راه شما،",
+  "landing_roadmap_heading_line2": "در چند دقیقه.",
+
+  "landing_roadmap_description": "پس از تکمیل ارزیابی، AICA یک برنامه گام‌به‌گام متناسب با پروفایل شما ایجاد می‌کند. این فقط یک الگو نیست، بلکه یک نقشه راه شخصی است که می‌توانید از همین امروز آن را دنبال کنید.",
+
+  "landing_roadmap_feature_1": "گام‌های روشن از جایگاه فعلی شما تا مقصد مورد نظر",
+  "landing_roadmap_feature_2": "دوره‌ها، گواهی‌نامه‌ها و مهارت‌های موردنیاز برای هر مرحله",
+  "landing_roadmap_feature_3": "پیگیری پیشرفت همزمان با تغییر اهداف شما",
+
+  "landing_roadmap_button": "نقشه راه من را ببین",
+
+  "landing_features_heading_line1": "هر آنچه برای تصمیم‌گیری",
+  "landing_features_heading_line2": "با اطمینان نیاز دارید.",
+
+  "landing_feature_profile_title": "پروفایل‌سازی عمیق کاربر",
+  "landing_feature_profile_description": "اطلاعات ساختاریافته درباره علاقه‌مندی‌ها، توانایی‌ها، ارزش‌ها و اهداف شما، فراتر از آزمون‌های ساده شخصیت.",
+
+  "landing_feature_matching_title": "تطبیق هوشمند",
+  "landing_feature_matching_description": "پروفایل شما با بیش از ۲۰۰ مسیر شغلی مقایسه می‌شود و دلیل هر پیشنهاد به‌صورت شفاف نمایش داده می‌شود.",
+
+  "landing_feature_ai_explanation_title": "توضیحات تولیدشده توسط هوش مصنوعی",
+  "landing_feature_ai_explanation_description": "هر پیشنهاد همراه با توضیح شخصی ارائه می‌شود تا بتوانید تصمیم خود را کاملاً درک کرده و با اطمینان بگیرید.",
+
+  "landing_feature_roadmaps_title": "نقشه‌های راه شخصی‌سازی‌شده",
+  "landing_feature_roadmaps_description": "گام‌های عملی، مدارک پیشنهادی و برنامه‌های توسعه مهارت متناسب با مسیر انتخابی شما.",
+
+  "landing_feature_learning_title": "پیشنهاد مسیرهای یادگیری",
+  "landing_feature_learning_description": "دوره‌ها، گواهی‌نامه‌ها و منابع مناسب با سطح دانش و زمان در دسترس خود را پیدا کنید.",
+
+  "landing_feature_progress_title": "پیگیری پیشرفت",
+  "landing_feature_progress_description": "روند پیشرفت خود را دنبال کنید، ارزیابی‌های گذشته را مرور کنید و با تغییر اهداف، پروفایل خود را به‌روزرسانی کنید.",
+
+  "for_who_title": "برای افرادی ساخته شده که در نقطه تصمیم‌گیری هستند.",
+
+  "for_who_students_label": "دانش‌آموزان",
+  "for_who_students_title": "انتخاب رشته درست",
+  "for_who_students_description": "وارد آموزش عالی می‌شوید و انتخاب رشته مناسب دشوار است. AICA بر اساس شخصیت واقعی شما کمک می‌کند.",
+  "for_who_students_b1": "تطبیق رشته و تحصیل",
+  "for_who_students_b2": "راهنمایی بر اساس توانایی‌ها",
+  "for_who_students_b3": "هماهنگی شغلی بلندمدت",
+
+  "for_who_graduates_label": "فارغ‌التحصیلان",
+  "for_who_graduates_title": "کاوش مسیر شغلی",
+  "for_who_graduates_description": "تحصیلات خود را تکمیل کرده‌اید. AICA مهارت‌های شما را با فرصت‌های واقعی شغلی تطبیق می‌دهد.",
+  "for_who_graduates_b1": "بررسی مسیرهای شغلی",
+  "for_who_graduates_b2": "شناسایی کمبود مهارت‌ها",
+  "for_who_graduates_b3": "شفافیت مسیر صنعتی",
+
+  "for_who_career_label": "تغییر مسیر شغلی",
+  "for_who_career_title": "تغییر با اعتماد به نفس",
+  "for_who_career_description": "می‌خواهید مسیر جدیدی شروع کنید اما نمی‌دانید از کجا؟ AICA یک نقشه راه برای شما می‌سازد.",
+  "for_who_career_b1": "نقشه راه انتقال",
+  "for_who_career_b2": "تحلیل مهارت‌های قابل انتقال",
+  "for_who_career_b3": "پیشنهاد دوره‌های کوتاه",
+
+  "testimonials_heading": "افراد واقعی، وضاحت واقعی.",
+
+  "testimonial_1_quote": "من دو سال میان انجنیری و دیزاین محصول گیر مانده بودم. AICA به من نشان داد که توانایی‌هایم به‌وضوح به سوی HCI اشاره دارد. بهترین تصمیمی بود که گرفتم.",
+  "testimonial_1_name": "سارا م.",
+  "testimonial_1_role": "دانشجوی تعامل انسان و کمپیوتر",
+
+  "testimonial_2_quote": "بعد از ۶ سال کار در حسابداری نیاز به تغییر داشتم اما نمی‌دانستم از کجا شروع کنم. مسیر پیشنهادی AICA به من کمک کرد تا در کمتر از یک سال وارد تحلیل داده شوم.",
+  "testimonial_2_name": "جیمز ک.",
+  "testimonial_2_role": "تحلیل‌گر داده در یک شرکت فین‌تک",
+
+  "testimonial_3_quote": "هر مشاور فقط می‌گفت دنبال علاقه‌ات برو بدون هیچ راهنمایی. AICA به من دانشکده‌های مشخص، دلیل مناسب بودن‌شان و مهارت‌هایی که باید اول یاد بگیرم را نشان داد.",
+  "testimonial_3_name": "نادیا ر.",
+  "testimonial_3_role": "دانشجوی سال دوم علوم کمپیوتر",
+
+  "cta_title_line1": "آماده هستید که",
+  "cta_title_line2": "مسیر خود را پیدا کنید؟",
+  "cta_description": "ارزیابی ۵ دقیقه‌ای را انجام دهید و یک نقشه راه شخصی‌سازی‌شده بر اساس شخصیت واقعی خود دریافت کنید.",
+  "cta_primary_button": "شروع ارزیابی رایگان",
+  "cta_secondary_button": "بیشتر بدانید",
+  "cta_footer_note": "بدون کارت بانکی، بدون حساب، فقط ۵ دقیقه",
+
+  "footer_brand_description": "راهنمای مبتنی بر هوش مصنوعی برای تصمیم‌گیری‌های تحصیلی و شغلی.",
+
+  "footer_section_product": "محصول",
+  "footer_product_features": "ویژگی‌ها",
+  "footer_product_how_it_works": "چگونه کار می‌کند",
+  "footer_product_pricing": "قیمت‌ها",
+  "footer_product_changelog": "تغییرات",
+
+  "footer_section_company": "شرکت",
+  "footer_company_about": "درباره ما",
+  "footer_company_blog": "بلاگ",
+  "footer_company_careers": "فرصت‌های شغلی",
+  "footer_company_contact": "تماس",
+
+  "footer_section_legal": "قانونی",
+  "footer_legal_privacy": "حریم خصوصی",
+  "footer_legal_terms": "شرایط استفاده",
+  "footer_legal_cookies": "سیاست کوکی‌ها",
+
+  "footer_copyright": "© {{year}} AICA. همه حقوق محفوظ است.",
+  "footer_tagline": "ساخته شده با TypeScript · قدرت‌گرفته از AI",
 
   "auth_sign_in_title": "ورود",
   "auth_sign_in_email_label": "ایمیل",
@@ -173,10 +306,84 @@
   "settings_account_change_password": "تغییر رمز عبور",
   "settings_account_delete": "حذف حساب",
   "settings_account_delete_confirm": "آیا مطمئن هستید که می‌خواهید حساب خود را حذف کنید؟ این کار قابل بازگشت نیست.",
+  "settings_section_security": "امنیت",
+  "settings_section_appearance": "ظاهر",
+  "settings_section_about": "دربارهٔ برنامه",
+  "settings_section_sign_out": "خروج",
 
   "settings_section_profile_description": "نام و ارزیابی‌های خود را مدیریت کنید.",
+  "account_panel_description": "نام کاربری و آدرس ایمیل متصل خود را به‌روزرسانی کنید.",
+  "account_username_label": "نام کاربری",
+  "account_username_placeholder": "نام کاربری",
+  "account_email_label": "آدرس ایمیل",
+  "account_email_placeholder": "name@example.com",
+  "account_danger_zone_title": "بخش خطر",
+  "account_danger_zone_description": "حساب AICA و تمام اطلاعات راهنمایی مرتبط با آن را به‌صورت دائمی حذف کنید.",
+  "account_delete_item_1": "پاسخ‌های ارزیابی و پروفایل راهنمایی شما",
+  "account_delete_item_2": "مسیرهای تحصیلی و شغلی ذخیره‌شده",
+  "account_delete_item_3": "پیشنهادهای شخصی‌سازی‌شده و نتایج تطبیق",
+  "account_delete_item_4": "نقشه‌های راه، مراحل و پیگیری پیشرفت",
+  "account_delete_item_5": "گفتگوهای مشاور هوش مصنوعی و اطلاعات ذخیره‌شده",
+
+  "account_delete_warning": "حذف حساب دائمی است و قابل بازگردانی نیست.",
+  "delete_account": "حذف حساب",
+  "delete_account_dialog_title": "حساب AICA خود را حذف می‌کنید؟",
+  "delete_account_dialog_description": "حساب شما و تمام اطلاعات راهنمایی مرتبط با آن به‌صورت دائمی حذف خواهد شد.",
+  "delete_account_you_will_lose": "دسترسی خود را به موارد زیر از دست خواهید داد:",
+  "delete_account_item_1": "پروفایل راهنمایی و نتایج ارزیابی شما",
+  "delete_account_item_2": "مسیرهای تحصیلی و شغلی ذخیره‌شده",
+  "delete_account_item_3": "پیشنهادهای شخصی‌سازی‌شده و تاریخچه تطبیق",
+  "delete_account_item_4": "پیشرفت نقشه راه و مراحل تکمیل‌شده",
+  "delete_account_item_5": "گفتگوهای مشاور AI و اطلاعات تولیدشده",
+  "delete_account_alternative": "اگر علاقه‌مندی‌ها، اهداف یا مسیر شغلی شما تغییر کرده است، می‌توانید به‌جای حذف حساب، دوباره ارزیابی را انجام داده و پیشنهادهای به‌روزشده دریافت کنید.",
+  "keep_account": "حفظ حساب",
+  "continue_to_deletion": "ادامه حذف",
+
+  "security_panel_description": "امنیت حساب و تنظیمات ورود خود را مدیریت کنید.",
+  "security_login_alerts_title": "اعلان‌های ورود",
+  "security_login_alerts_description": "هنگامی که ورود جدیدی شناسایی شود، اعلان دریافت کنید.",
+  "security_two_factor_title": "تأیید هویت دومرحله‌ای",
+  "security_two_factor_description": "برای محافظت بیشتر از حساب خود، یک لایه امنیتی دیگر اضافه کنید.",
+  "change_password": "تغییر رمز عبور",
+
+  "notifications_panel_description": "انتخاب کنید که کدام به‌روزرسانی‌ها و یادآوری‌ها را دریافت کنید.",
+  "notifications_email_updates_title": "به‌روزرسانی‌های ایمیل",
+  "notifications_email_updates_description": "ایمیل‌های مربوط به حساب و محصول را دریافت کنید.",
+  "notifications_roadmap_reminders_title": "یادآوری‌های نقشه راه",
+  "notifications_roadmap_reminders_description": "هنگامی که زمان انجام یک مرحله از نقشه راه فرا برسد، یادآوری دریافت کنید.",
+  "notifications_recommendation_updates_title": "به‌روزرسانی‌های پیشنهادها",
+  "notifications_recommendation_updates_description": "هنگامی که پیشنهادهای جدید ایجاد شوند، اعلان دریافت کنید.",
+  "notifications_product_news_title": "اخبار محصول",
+  "notifications_product_news_description": "از ویژگی‌های جدید و انتشارهای محصول باخبر شوید.",
+
+  "language_panel_description": "زبان و منطقهٔ مورد نظر خود را انتخاب کنید.",
+  "app_language": "زبان برنامه",
+  "region": "منطقه",
+  "select_region": "منطقه را انتخاب کنید",
+  "country_afghanistan": "افغانستان",
+  "country_united_states": "ایالات متحده",
+  "country_united_kingdom": "بریتانیا",
+  "country_other": "سایر",
+
+  "appearance_panel_description": "انتخاب کنید که AICA در دستگاه شما چگونه نمایش داده شود.",
+  "theme_dark": "تیره",
+  "theme_light": "روشن",
+  "theme_system": "مطابق تنظیمات سیستم",
+
+  "about_title": "درباره AICA",
+  "about_description": "درباره پلتفرم و اطلاعات حقوقی بیشتر بدانید.",
+  "app_name": "AICA",
+  "about_app_description": "یک پلتفرم راهنمایی تحصیلی و شغلی مبتنی بر هوش مصنوعی است که به دانش‌آموزان، فارغ‌التحصیلان و تغییر دهندگان مسیر شغلی کمک می‌کند مسیرهای آموزشی را پیدا کنند و تصمیم‌های مطمئن‌تری بگیرند.",
+  "source_code": "کد منبع",
+  "license": "مجوز Apache 2.0",
+  "terms_of_service": "شرایط استفاده",
+  "privacy_policy": "سیاست حفظ حریم خصوصی",
+  "version": "نسخه",
+
   "profile_name_label": "نام",
   "profile_name_placeholder": "نام خود را وارد کنید",
+  "profile_readiness_title": "آمادگی",
+  "profile_readiness_description": "این‌ها اطلاعات پروفایل هستند که AICA پیش از ارائهٔ راهنمایی دقیق‌تر از آن‌ها استفاده می‌کند.",
 
   "saved_pathways_title": "مسیرهای ذخیره‌شده",
   "saved_pathways_empty": "شما هنوز هیچ مسیری ذخیره نکرده‌اید.",
@@ -340,6 +547,12 @@
   "pathway_assessment_navigation_see_my_matches": "تطبیق‌های من را ببینید",
   "pathway_assessment_navigation_keep_going": "ادامه دهید",
 
+  "pathway_profile_title": "پروفایل مسیر شغلی",
+  "pathway_profile_description": "توانایی‌ها، علاقه‌مندی‌ها، اهداف و ترجیحات کاری شما.",
+
+  "restart_pathway_profile_title": "پروفایل مسیر شغلی دوباره آغاز شود؟",
+  "restart_pathway_profile_description": "این کار پیشنهادهای شما را دوباره ایجاد می‌کند.",
+
   "roadmap_setup_welcome_title": "بیایید اولین برنامه عملی شما را تنظیم کنیم",
   "roadmap_setup_welcome_helper": "این کار، بازه‌ی واقع‌بینانه‌ی مسیر بعدی شما را شکل می‌دهد، نه کلّ مسیر شغلی‌تان را.",
 
@@ -404,5 +617,9 @@
   "roadmap_navigation_go_back": "برگردید",
   "roadmap_navigation_lets_build_it": "بیایید بسازیم",
   "roadmap_navigation_submit_answers": "ارسال پاسخ‌ها",
-  "roadmap_navigation_keep_going": "ادامه دهید"
+  "roadmap_navigation_keep_going": "ادامه دهید",
+
+  "roadmap_setup_description": "نقطه شروع، زمان هفتگی، محدودیت‌ها و سبک برنامه.",
+  "update_roadmap_setup_title": "تنظیمات نقشه راه به‌روزرسانی شود؟",
+  "update_roadmap_setup_description": "ممکن است لازم باشد برای اعمال ترجیحات جدید، نقشه راه خود را دوباره ایجاد کنید."
 }

@@ -1,23 +1,25 @@
 import { Monitor, Moon, Sun } from 'lucide-react';
 
-import SettingsPanelShell from './settings-panel-shell';
+import { m } from '../../paraglide/messages';
 import { useTheme } from '@/providers/theme-provider';
+
+import SettingsPanelShell from './settings-panel-shell';
 import { Button } from '../ui/button';
 
 const themes = [
   {
     value: 'dark',
-    label: 'Dark',
+    label: m.theme_dark(),
     icon: Moon,
   },
   {
     value: 'light',
-    label: 'Light',
+    label: m.theme_light(),
     icon: Sun,
   },
   {
     value: 'system',
-    label: 'System',
+    label: m.theme_system(),
     icon: Monitor,
   },
 ] as const;
@@ -28,8 +30,8 @@ const AppearancePanel = () => {
   return (
     <SettingsPanelShell
       icon={Monitor}
-      title="Appearance"
-      description="Choose how AICA looks on your device."
+      title={m.settings_section_appearance()}
+      description={m.appearance_panel_description()}
     >
       <div className="flex gap-4 flex-wrap">
         {themes.map((t) => {
