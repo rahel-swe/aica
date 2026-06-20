@@ -12,6 +12,8 @@
   "edit": "Edit",
   "update_setup": "Update Setup",
   "pending": "Loading...",
+  "common_close": "Close",
+  "common_delete": "Delete",
 
   "nav_dashboard": "Dashboard",
   "nav_home": "Home",
@@ -304,6 +306,18 @@
   "advisor_chat_placeholder": "Ask your advisor anything...",
   "advisor_chat_send": "Send",
   "advisor_empty_state": "Your advisor is here to help. Ask a question to get started.",
+
+  "advisor_new_chat": "New chat",
+  "advisor_close_chat": "Close chat",
+  "advisor_conversations": "Conversations",
+  "advisor_no_conversations_yet": "No conversations yet",
+
+  "advisor_delete_conversation_title": "Delete conversation?",
+  "advisor_delete_conversation_description": "This conversation and all its messages will be permanently removed.",
+
+  "advisor_ask_anything_placeholder": "Ask your advisor anything…",
+  "advisor_shift_enter_hint": "Shift + Enter for new line",
+  "advisor_mobile_nav": "Chat",
 
   "roadmap_title": "My Roadmap",
   "roadmap_empty_state_heading": "Your roadmap is empty.",

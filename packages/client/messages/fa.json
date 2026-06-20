@@ -12,6 +12,8 @@
   "edit": "ویرایش",
   "update_setup": "به‌روزرسانی تنظیمات",
   "pending": "در حال بارگذاری...",
+  "common_close": "بستن",
+  "common_delete": "حذف",
 
   "nav_dashboard": "داشبورد",
   "nav_explore": "کاوش",
@@ -306,6 +308,16 @@
   "advisor_chat_placeholder": "از مشاور خود هر چیزی بپرسید...",
   "advisor_chat_send": "ارسال",
   "advisor_empty_state": "مشاور شما اینجاست تا کمک کند. برای شروع یک سؤال بپرسید.",
+  "advisor_new_chat": "گفت‌وگوی جدید",
+  "advisor_close_chat": "گفت‌وگو را ببندید",
+  "advisor_conversations": "گفت‌وگوها",
+  "advisor_no_conversations_yet": "هنوز هیچ گفت‌وگویی وجود ندارد",
+
+  "advisor_delete_conversation_title": "گفت‌وگو حذف شود؟",
+  "advisor_delete_conversation_description": "این گفت‌وگو و تمام پیام‌های آن به‌صورت دائمی حذف خواهند شد.",
+  "advisor_ask_anything_placeholder": "از مشاور خود هر چیزی بپرسید…",
+  "advisor_shift_enter_hint": "Shift + Enter برای خط جدید",
+  "advisor_mobile_nav": "مشاور",
 
   "roadmap_title": "نقشه راه من",
   "roadmap_empty_state_heading": "نقشه راه شما خالی است.",

@@ -43,7 +43,7 @@ const AppearancePanel = () => {
               key={t.value}
               onClick={() => setTheme(t.value)}
               variant={active ? 'default' : 'outline'}
-              className="py-6 max-w-24 sm:max-w-40 w-full"
+              className="py-6 w-min px-4"
             >
               <Icon className="size-5" />
               <span>{t.label}</span>

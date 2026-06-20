@@ -67,12 +67,12 @@ function NavItem({ label, to, icon: Icon }: NavItemProps) {
                 animate={{
                   opacity: 1,
                   width: 'auto',
-                  marginLeft: 12,
+                  marginInlineStart: 12,
                 }}
                 exit={{
                   opacity: 0,
                   width: 0,
-                  marginLeft: 0,
+                  marginInlineStart: 0,
                 }}
                 transition={{
                   duration: 0.2,

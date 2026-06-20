@@ -9,6 +9,7 @@ import { MessageCircleX } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useNavigate } from 'react-router-dom';
+import { m } from '../../paraglide/messages';
 
 const CloseAdvisor = ({
   title,
@@ -30,7 +31,7 @@ const CloseAdvisor = ({
             variant="outline"
             size={'sm'}
             className={cn(
-              'text-muted-foreground hover:text-foreground',
+              'text-muted-foreground hover:text-foreground py-4',
               className
             )}
             onClick={() => navigate('/app/roadmap')}
@@ -40,7 +41,7 @@ const CloseAdvisor = ({
           </Button>
         </TooltipTrigger>
         <TooltipContent side="bottom" className="text-xs">
-          Close Chat
+          {m.advisor_close_chat()}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

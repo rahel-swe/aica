@@ -9,6 +9,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '../ui/alert-dialog';
+import { m } from '../../paraglide/messages';
 
 type DeleteDialogProps = {
   open: boolean;
@@ -27,14 +28,16 @@ function ConversationDeleteDialog({
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent className="rounded-2xl max-w-sm">
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete conversation?</AlertDialogTitle>
+          <AlertDialogTitle>
+            {m.advisor_delete_conversation_title()}
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            This conversation and all its messages will be permanently removed.
+            {m.advisor_delete_conversation_description()}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel disabled={isPending} variant={'secondary'}>
-            Cancel
+            {m.common_cancel()}
           </AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
@@ -44,7 +47,7 @@ function ConversationDeleteDialog({
             {isPending ? (
               <Loader className="size-3.5 animate-spin mr-1" />
             ) : null}
-            Delete
+            {m.common_delete()}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

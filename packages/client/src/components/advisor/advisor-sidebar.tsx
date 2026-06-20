@@ -13,6 +13,7 @@ import { useState } from 'react';
 import ConversationDeleteDialog from './conversation-delete-dialog';
 import ConversationItem from './conversation-item';
 import StartNewConversation from './start-new-conversation';
+import { m } from '../../paraglide/messages';
 
 type AdvisorSidebarProps = {
   className?: string;
@@ -45,10 +46,13 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-4">
-          <p className="font-heading text-base font-medium py-4">
-            Conversations
+          <p className="ltr:font-heading text-base font-medium py-4">
+            {m.advisor_conversations()}
           </p>
-          <StartNewConversation title="New chat" />
+          <StartNewConversation
+            title={m.advisor_new_chat()}
+            className="hidden md:flex"
+          />
         </div>
 
         <Separator />
@@ -64,7 +68,7 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
               <div className="flex flex-col items-center gap-2 py-12 text-center w-full flex-1">
                 <MessageCircleOff className="size-5 text-muted-foreground/50" />
                 <p className="text-xs text-muted-foreground">
-                  No conversations yet
+                  {m.advisor_no_conversations_yet()}
                 </p>
               </div>
             ) : (

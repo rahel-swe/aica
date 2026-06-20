@@ -9,6 +9,7 @@ import {
   TooltipTrigger,
 } from '../ui/tooltip';
 import { relativeTime } from '@/lib/relative-time';
+import { m } from '../../paraglide/messages';
 
 type ConversationItemProps = {
   conversation: AdvisorConversationSummary;
@@ -65,7 +66,7 @@ const ConversationItem = ({
             <Button
               variant="destructive"
               size="sm"
-              className={cn('shrink')}
+              className={cn('shrink py-2')}
               onClick={(e) => {
                 e.stopPropagation();
                 onDeleteRequest(conversationId);
@@ -75,7 +76,7 @@ const ConversationItem = ({
             </Button>
           </TooltipTrigger>
           <TooltipContent side="right" className="text-xs">
-            Delete
+            {m.common_delete()}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

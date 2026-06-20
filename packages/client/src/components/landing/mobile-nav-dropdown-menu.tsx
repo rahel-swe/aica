@@ -12,6 +12,7 @@ import ModeToggle from '../toggle-mode';
 import { navLinks } from '@/constants/app-tabs-data';
 import LocaleSelectItems from '../setttings/locale-select-items';
 import { m } from '../../paraglide/messages';
+import { Link } from 'react-router-dom';
 
 const MotionDropdownMenuContent = motion.create(DropdownMenuContent);
 
@@ -73,10 +74,17 @@ const MobileNavDropDownMenu = () => {
           <ModeToggle className="mr-0" />
           <LocaleSelectItems />
 
-          <Button variant="secondary" className="py-6">
-            {m.auth_sign_in_title()}
+          <Button variant="secondary" asChild className="py-6">
+            <Link to="/auth/sign-up" viewTransition>
+              {m.auth_sign_in_title()}
+            </Link>
           </Button>
-          <Button className="py-6">{m.landing_cta_get_started()}</Button>
+
+          <Button className="py-6" asChild>
+            <Link to="/auth/sign-up" viewTransition>
+              {m.landing_cta_get_started()}
+            </Link>
+          </Button>
         </motion.div>
       </MotionDropdownMenuContent>
     </DropdownMenu>

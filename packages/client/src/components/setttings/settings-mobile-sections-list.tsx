@@ -5,6 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import NavigationBackButton from '../navigation-back-button';
 import SignOutButton from '../sign-out-button';
 import UserAvatar from '../user-avatar';
+import { m } from '../../paraglide/messages';
 
 const SettingsMobileSectionsList = ({
   isMobileDetailOpen,
@@ -18,7 +19,7 @@ const SettingsMobileSectionsList = ({
   return (
     <div className="flex flex-col items-center gap-2 md:hidden max-w-xs mx-auto">
       <NavigationBackButton
-        title="Back"
+        title={m.common_back()}
         className="self-start absolute inset-s-6 top-6"
       />
       <div className="my-5 flex flex-col justify-center items-center gap-2">
@@ -44,7 +45,7 @@ const SettingsMobileSectionsList = ({
               <h2 className="font-medium">{sectionItem.title}</h2>
             </div>
 
-            <ChevronRight className="size-5 shrink-0 text-muted-foreground" />
+            <ChevronRight className="size-5 shrink-0 text-muted-foreground rtl:rotate-180" />
           </Button>
         );
       })}

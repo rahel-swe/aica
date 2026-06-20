@@ -12,6 +12,8 @@
   "edit": "سمول",
   "update_setup": "تنظیمات تازه کړئ",
   "pending": "د بارېدو په حال کې...",
+  "common_close": "بند کړئ",
+  "common_delete": "حذف کړئ",
 
   "nav_dashboard": "ډشبورډ",
   "nav_explore": "سپړنه",
@@ -310,6 +312,17 @@
   "advisor_chat_placeholder": "له خپل سلاکار څخه هر څه وپوښتئ...",
   "advisor_chat_send": "لېږل",
   "advisor_empty_state": "ستاسې سلاکار د مرستې لپاره چمتو دی. د پیل لپاره پوښتنه وکړئ.",
+  "advisor_new_chat": "نوې خبرې",
+  "advisor_close_chat": "سلاکار بند کړئ",
+  "advisor_conversations": "خبرې اترې",
+  "advisor_no_conversations_yet": "تر اوسه خبرې اترې نشته",
+  "advisor_mobile_nav": "سلاکار",
+
+  "advisor_delete_conversation_title": "خبرې اترې حذف کړئ؟",
+  "advisor_delete_conversation_description": "دا خبرې اترې او ټول پیغامونه به په دایمي ډول لېرې شي.",
+
+  "advisor_ask_anything_placeholder": "له خپل سلاکار څخه هر څه وپوښتئ…",
+  "advisor_shift_enter_hint": "Shift + Enter د نوې کرښې لپاره",
 
   "roadmap_title": "زما لارنقشه",
   "roadmap_empty_state_heading": "ستاسې لارنقشه تشه ده.",

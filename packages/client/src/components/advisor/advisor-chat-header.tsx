@@ -1,6 +1,7 @@
 import { AdvisorMobileDrawer } from './advisor-mobile-drawer';
 import CloseAdvisor from './close-advisor';
 import StartNewConversation from './start-new-conversation';
+import { m } from '../../paraglide/messages';
 
 export function AdvisorChatHeader() {
   return (
@@ -8,8 +9,8 @@ export function AdvisorChatHeader() {
       <AdvisorMobileDrawer />
 
       <div className="flex items-center gap-x-2">
-        <StartNewConversation title="New chat" />
-        <CloseAdvisor title="Close chat" />
+        <StartNewConversation title={m.advisor_new_chat()} />
+        <CloseAdvisor title={m.advisor_close_chat()} />
       </div>
     </header>
   );

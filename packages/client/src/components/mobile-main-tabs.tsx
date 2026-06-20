@@ -8,6 +8,7 @@ import { MessageCircleMore, type LucideIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Separator } from './ui/separator';
 import { useIsAdvisorOpen } from '@/hooks/use-is-advisor-open';
+import { m } from '../paraglide/messages';
 
 type TabItemProps = {
   label: string;
@@ -121,12 +122,12 @@ const MobileMainTabs = ({ className }: { className?: string }) => {
           <MessageCircleMore
             size={25}
             className={cn(
-              'relative z-10 transition-all duration-300 . roup-hover:scale-110 group-hover:rotate-40'
+              'relative z-10 transition-all duration-300  roup-hover:scale-110 group-hover:rotate-40 rtl:rotate-180 rtl:group-hover:rotate-220'
             )}
           />
 
           <span className={cn('relative z-10 text-sm font-semibold ms-2')}>
-            Chat
+            {m.advisor_mobile_nav()}
           </span>
         </motion.div>
       </Link>

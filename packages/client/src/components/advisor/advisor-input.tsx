@@ -6,6 +6,7 @@ import { useAdvisorStore } from '@/stores/advisor-store';
 import { ArrowUp, Square } from 'lucide-react';
 import { useCallback, useRef, useState, type KeyboardEvent } from 'react';
 import { AdvisorModeSelector } from './advisor-mode-selector';
+import { m } from '../../paraglide/messages';
 
 const MAX_CHARS = 2000;
 
@@ -77,7 +78,7 @@ export function AdvisorInput({
           value={value}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          placeholder="Ask your advisor anything…"
+          placeholder={m.advisor_chat_placeholder()}
           rows={1}
           disabled={isStreaming}
           className="resize-none bg-transparent px-4 pt-3.5 pb-2 text-sm leading-relaxed placeholder:text-muted-foreground focus:outline-none min-h-[52px] max-h-[200px] w-full no-scrollbar"
@@ -108,7 +109,6 @@ export function AdvisorInput({
 
           <Button
             size="icon"
-            type="button"
             onClick={handleSubmit}
             disabled={!canSubmit}
             className={cn(
@@ -124,7 +124,7 @@ export function AdvisorInput({
       </div>
 
       <p className="text-center text-[11px] sm:mt-1 text-muted-foreground hidden sm:block">
-        Shift + Enter for new line
+        {m.advisor_shift_enter_hint()}
       </p>
     </div>
   );

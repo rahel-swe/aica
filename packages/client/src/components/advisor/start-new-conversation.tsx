@@ -28,7 +28,7 @@ const StartNewConversation = ({
             variant="outline"
             size={'sm'}
             className={cn(
-              'text-muted-foreground hover:text-foreground',
+              'text-muted-foreground hover:text-foreground py-4',
               className
             )}
             onClick={startNewConversation}
