@@ -14,6 +14,7 @@
   "pending": "Loading...",
 
   "nav_dashboard": "Dashboard",
+  "nav_home": "Home",
   "nav_explore": "Explore",
   "nav_recommendations": "Recommendations",
   "nav_advisor": "Advisor",
@@ -21,10 +22,31 @@
   "nav_settings": "Settings",
   "nav_saved_pathways": "Saved Pathways",
   "nav_sign_out": "Sign Out",
+  "nav_about": "About",
+  "nav_notifications": "Notifications",
+  "nav_admin": "Admin",
+  "nav_features": "Features",
+  "nav_how_it_works": "How It Works",
+  "nav_for_you": "For You",
+
+  "landing_hero_title_line_1": "Discover your",
+  "landing_hero_title_line_2": "right path",
+
+  "landing_hero_description": "AICA analyzes your strengths, interests, and goals — delivering personalized academic and career guidance with a concrete roadmap you can act on today.",
+
+  "landing_hero_start_assessment": "Start Free Assessment",
+  "landing_hero_how_it_works": "See How It Works",
+
+  "landing_hero_students_guided": "students guided",
+
+  "landing_hero_top_match": "Top Match:",
+  "landing_hero_match_score": "Match Score",
+  "landing_assessment_card_title": "Profile Assessment",
+  "landing_hero_top_match_example": "UX Design",
 
   "landing_hero_heading": "Your Learning Journey Starts Here",
   "landing_hero_subheading": "Discover personalized pathways tailored to your goals.",
-  "landing_cta_get_started": "Get Started",
+  "landing_cta_get_started": "Get Started Free",
   "landing_cta_sign_in": "Already have an account? Sign In",
 
   "landing_stats_students_guided": "Students Guided",

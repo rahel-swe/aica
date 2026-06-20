@@ -8,13 +8,18 @@ import {
 
 import type { SupportedLocale } from '@contracts/shared/schemas/i18n';
 import { setLocale, getLocale } from '../../paraglide/runtime';
+import { cn } from '@/lib/utils';
 
 const LocaleSelectItems = ({
   value,
   onSelectChange,
+  className,
+  contentClassName,
 }: {
   value?: SupportedLocale;
   onSelectChange?: (value: SupportedLocale) => void;
+  className?: string;
+  contentClassName?: string;
 }) => {
   const onChangeLocale = (value: SupportedLocale) => {
     setLocale(value);
@@ -28,11 +33,11 @@ const LocaleSelectItems = ({
         else onChangeLocale(value);
       }}
     >
-      <SelectTrigger id="app-language" className="w-full py-5">
+      <SelectTrigger id="app-language" className={cn('w-full py-5', className)}>
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
 
-      <SelectContent>
+      <SelectContent className={cn(contentClassName)}>
         <SelectItem value="en">English</SelectItem>
         <SelectItem value="ps">Pashto</SelectItem>
         <SelectItem value="fa">Dari</SelectItem>

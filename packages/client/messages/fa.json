@@ -21,7 +21,29 @@
   "nav_settings": "تنظیمات",
   "nav_saved_pathways": "مسیرهای ذخیره‌شده",
   "nav_sign_out": "خروج",
+  "nav_home": "خانه",
+  "nav_about": "درباره",
+  "nav_notifications": "اعلان‌ها",
+  "nav_admin": "مدیریت",
+  "nav_features": "ویژگی‌ها",
+  "nav_how_it_works": "چگونه کار می‌کند",
+  "nav_for_you": "برای شما",
 
+  "landing_hero_title_line_1": "مسیر",
+  "landing_hero_title_line_2": "مناسب خود را پیدا کنید",
+
+  "landing_hero_description": "AICA توانایی‌ها، علاقه‌مندی‌ها و اهداف شما را تحلیل می‌کند و راهنمایی شخصی آموزشی و شغلی را همراه با یک نقشه راه عملی ارائه می‌دهد که از همین امروز می‌توانید آغاز کنید.",
+
+  "landing_hero_start_assessment": "ارزیابی رایگان را شروع کنید",
+  "landing_hero_how_it_works": "ببینید چگونه کار می‌کند",
+
+  "landing_hero_students_guided": "دانش‌آموز راهنمایی شده",
+  "landing_assessment_card_title": "ارزیابی پروفایل",
+
+  "landing_hero_top_match": "بهترین تطبیق:",
+  "landing_hero_match_score": "امتیاز تطبیق",
+
+  "landing_hero_top_match_example": "UX Design",
   "landing_hero_heading": "سفر یادگیری شما از اینجا آغاز می‌شود",
   "landing_hero_subheading": "مسیرهای شخصی‌سازی‌شده متناسب با اهداف خود را کشف کنید.",
   "landing_cta_get_started": "شروع کنید",

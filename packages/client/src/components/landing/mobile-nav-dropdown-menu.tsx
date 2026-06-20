@@ -10,6 +10,8 @@ import {
 } from '../ui/dropdown-menu';
 import ModeToggle from '../toggle-mode';
 import { navLinks } from '@/constants/app-tabs-data';
+import LocaleSelectItems from '../setttings/locale-select-items';
+import { m } from '../../paraglide/messages';
 
 const MotionDropdownMenuContent = motion.create(DropdownMenuContent);
 
@@ -32,7 +34,7 @@ const MobileNavDropDownMenu = () => {
         </Button>
       </DropdownMenuTrigger>
       <MotionDropdownMenuContent
-        className="backdrop-blur-sm inset-e-4 top-4 overflow-hidden md:hidden"
+        className="backdrop-blur-sm me-4 top-4 overflow-hidden md:hidden"
         initial="hidden"
         animate="show"
         variants={{
@@ -55,7 +57,7 @@ const MobileNavDropDownMenu = () => {
             >
               <DropdownMenuItem className="py-3 px-4 dark:hover:bg-muted rounded-full text-sm font-medium text-muted-foreground cursor-pointer w-full justify-between">
                 {l.label}
-                <ChevronRight className="w-4 h-4 opacity-40" />
+                <ChevronRight className="w-4 h-4 opacity-40 rtl:rotate-180" />
               </DropdownMenuItem>
             </motion.a>
           );
@@ -69,11 +71,12 @@ const MobileNavDropDownMenu = () => {
           transition={{ duration: 0.4, ease: 'easeOut' }}
         >
           <ModeToggle className="mr-0" />
+          <LocaleSelectItems />
 
           <Button variant="secondary" className="py-6">
-            Sign In
+            {m.auth_sign_in_title()}
           </Button>
-          <Button className="py-6">Get Started Free</Button>
+          <Button className="py-6">{m.landing_cta_get_started()}</Button>
         </motion.div>
       </MotionDropdownMenuContent>
     </DropdownMenu>

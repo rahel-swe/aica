@@ -21,7 +21,29 @@
   "nav_settings": "امستنې",
   "nav_saved_pathways": "خوندي شوې لارې",
   "nav_sign_out": "وتل",
+  "nav_home": "کور",
+  "nav_about": "په اړه",
+  "nav_notifications": "خبرتیاوې",
+  "nav_admin": "اداره",
+  "nav_features": "ځانګړتیاوې",
+  "nav_how_it_works": "څنګه کار کوي",
+  "nav_for_you": "ستاسو لپاره",
 
+  "landing_hero_title_line_1": "خپله",
+  "landing_hero_title_line_2": "سمه لاره ومومئ",
+
+  "landing_hero_description": "AICA ستاسو وړتیاوې، علاقې او موخې ارزوي او تاسو ته شخصي تعلیمي او مسلکي لارښوونه د عملي نقشې سره وړاندې کوي چې نن یې پیلولی شئ.",
+
+  "landing_hero_start_assessment": "وړیا ارزونه پیل کړئ",
+  "landing_hero_how_it_works": "وګورئ چې څنګه کار کوي",
+
+  "landing_hero_students_guided": "زده‌کوونکو ته لارښوونه شوې",
+  "landing_assessment_card_title": "د پروفایل ارزونه",
+
+  "landing_hero_top_match": "غوره سمون:",
+  "landing_hero_match_score": "د سمون نمره",
+
+  "landing_hero_top_match_example": "UX Design",
   "landing_hero_heading": "ستاسې د زده کړې سفر له همدې ځایه پیلېږي",
   "landing_hero_subheading": "خپلو موخو ته مناسبې شخصي لارې ومومئ.",
   "landing_cta_get_started": "پیل وکړئ",

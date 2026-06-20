@@ -51,7 +51,7 @@ export default function SignInPage() {
         password: data.password,
       },
       {
-        onSuccess: () => navigate('/pathway-assessment'),
+        onSuccess: () => navigate('/app/dashboard'),
         onError: ({ error }) => setError('root', { message: error.message }),
       }
     );

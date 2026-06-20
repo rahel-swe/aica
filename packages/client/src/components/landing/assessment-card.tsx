@@ -9,6 +9,8 @@ import { FieldContent, FieldTitle, FieldLabel, Field } from '../ui/field';
 import { RadioGroupItem } from '../ui/radio-group';
 import { Progress } from '../ui/progress';
 
+import { m } from '../../paraglide/messages';
+
 const AssessmentCard = () => {
   return (
     <div className="relative w-full max-w-[370px] rounded-3xl border border-border bg-card/70 backdrop-blur-xl overflow-hidden shadow-2xl dark:shadow-border">
@@ -17,10 +19,15 @@ const AssessmentCard = () => {
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <Database className="size-6 text-violet-500" />
-            <span className="text-sm mt-auto">Profile Assessment</span>
+            <span className="text-sm mt-auto">
+              {m.landing_assessment_card_title()}
+            </span>
           </div>
           <Badge variant="secondary" className="rounded-full text-[11px]">
-            Step 2 / 5
+            {m.pathway_recommendations_step({
+              current: 2,
+              total: 5,
+            })}
           </Badge>
         </div>
 
@@ -32,8 +39,8 @@ const AssessmentCard = () => {
 
       {/* Body */}
       <div className="px-5 py-4 backdrop-blur-xl">
-        <p className="text-base font-semibold text-foreground leading-relaxed mb-3.5">
-          Which subject are you best at explaining?
+        <p className="text-sm font-semibold text-foreground leading-relaxed mb-3.5">
+          {m.pathway_assessment_subjects_title()}
         </p>
 
         <div className="space-y-2">
@@ -43,13 +50,13 @@ const AssessmentCard = () => {
               .map(({ label, value, icon: Icon, description }, idx) => (
                 <FieldLabel
                   key={value}
-                  className="max-w-md mx-auto rounded-full backdrop-blur-xl relative"
+                  className="max-w-md mx-auto backdrop-blur-xl relative rounded-full"
                 >
                   <Field orientation="horizontal" className="items-center">
                     <RadioGroupItem
                       value={value}
                       id={value}
-                      className="size-5"
+                      className="size-5.5"
                     />
                     <FieldContent className="">
                       <FieldTitle className="flex gap-1 text-xs">
@@ -68,8 +75,9 @@ const AssessmentCard = () => {
           </RadioGroup>
         </div>
 
-        <Button className="mt-4 w-full rounded-full gap-1.5 py-5">
-          Next <ArrowRight className="w-3.5 h-3.5" />
+        <Button className="mt-4 w-full rounded-full gap-1.5 py-5.5">
+          {m.common_next()}{' '}
+          <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" />
         </Button>
       </div>
     </div>

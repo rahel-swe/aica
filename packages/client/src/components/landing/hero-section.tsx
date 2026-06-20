@@ -3,6 +3,7 @@ import { Button } from '../ui/button';
 import AssessmentCard from './assessment-card';
 import FloatingBadge from './floating-badge';
 import { Link } from 'react-router-dom';
+import { m } from '../../paraglide/messages';
 
 const HeroSection = () => {
   return (
@@ -30,28 +31,26 @@ const HeroSection = () => {
           {/* Left: copy */}
           <div className="flex-1 flex flex-col gap-8  text-center lg:mx-auto ">
             <h1 className="afu d2 text-6xl sm:text-7xl lg:text-[5rem] font-bold leading-[1.2] text-foreground font-heading">
-              Discover your
+              {m.landing_hero_title_line_1()}
               <br />
-              right path
+              {m.landing_hero_title_line_2()}
             </h1>
 
             <p className="afu d3 text-muted-foreground leading-relaxed mb-3">
-              AICA analyzes your strengths, interests, and goals — delivering
-              personalized academic and career guidance with a concrete roadmap
-              you can act on today.
+              {m.landing_hero_description()}
             </p>
 
             <div className="afu d4 flex flex-col sm:flex-row sm:items-center gap-3 mb-10 items-center mx-auto">
               <Button asChild className="px-8 py-6.5">
                 <Link to="/pathway-assessment" viewTransition>
-                  Start Free Assessment
-                  <ChevronRight className="w-4 h-4" />
+                  {m.landing_hero_start_assessment()}
+                  <ChevronRight className="w-4 h-4 rtl:rotate-180" />
                 </Link>
               </Button>
               <a href="#how-it-works">
                 <Button variant="outline" className="px-7 py-6.5">
-                  See How It Works
-                  <ChevronRight className="w-4 h-4" />
+                  {m.landing_hero_how_it_works()}
+                  <ChevronRight className="w-4 h-4 rtl:rotate-180" />
                 </Button>
               </a>
             </div>
@@ -75,7 +74,9 @@ const HeroSection = () => {
               </div>
               <div className="text-sm text-muted-foreground">
                 <span className="font-semibold text-foreground">12,000+</span>{' '}
-                students guided ·{' '}
+                <span className="font-semibold text-foreground pe-2">
+                  {m.landing_hero_students_guided()}
+                </span>
                 <span className="inline-flex gap-0.5 ml-0.5 align-middle">
                   {[1, 2, 3, 4, 5].map((s) => (
                     <Star
@@ -101,9 +102,9 @@ const HeroSection = () => {
               >
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                  Top Match:{' '}
+                  {m.landing_hero_top_match()}
                   <strong className="ml-0.5 text-emerald-600 dark:text-emerald-400">
-                    UX Design
+                    {m.landing_hero_top_match_example()}
                   </strong>
                 </div>
               </FloatingBadge>
@@ -117,7 +118,7 @@ const HeroSection = () => {
                   <span>
                     92%{' '}
                     <span className="text-muted-foreground font-normal">
-                      Match Score
+                      {m.landing_hero_match_score()}
                     </span>
                   </span>
                 </div>

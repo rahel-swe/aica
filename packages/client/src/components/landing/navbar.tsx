@@ -7,6 +7,7 @@ import MobileNavDropDownMenu from './mobile-nav-dropdown-menu';
 import ModeToggle from '../toggle-mode';
 import { Link } from 'react-router-dom';
 import { navLinks } from '@/constants/app-tabs-data';
+import { m } from '../../paraglide/messages';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,7 +40,7 @@ export function Navbar() {
             <a
               key={l.label}
               href={l.to}
-              className="text-sm  text-muted-foreground hover:text-foreground transition-colors font-heading bg-popover/45 rounded-4xl backdrop-blur-sm border  py-2 px-4 text-nowrap"
+              className="text-sm  text-muted-foreground hover:text-foreground transition-colors ltr:font-heading bg-popover/45 rounded-4xl backdrop-blur-sm border  py-2 px-4 text-nowrap"
             >
               {l.label}
             </a>
@@ -51,12 +52,13 @@ export function Navbar() {
           <ModeToggle className="mr-0" />
           <Button asChild variant="secondary" className="py-6 px-6">
             <Link to="/auth/sign-in" viewTransition>
-              Sign In
+              {m.auth_sign_in_title()}
             </Link>
           </Button>
           <Button asChild className="rounded-full px-4 py-6 gap-1.5">
             <Link to="/auth/sign-up" viewTransition>
-              Get Started <ChevronRight className="w-3.5 h-3.5" />
+              {m.landing_cta_get_started()}{' '}
+              <ChevronRight className="w-3.5 h-3.5 rtl:rotate-180" />
             </Link>
           </Button>
         </div>
