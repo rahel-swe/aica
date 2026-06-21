@@ -51,7 +51,9 @@ const ProfileReadness = () => {
   return (
     <Card className="shadow-none">
       <CardHeader>
-        <CardTitle className="text-lg">{m.profile_readiness_title()}</CardTitle>
+        <CardTitle className="text-lg rtl:font-sans">
+          {m.profile_readiness_title()}
+        </CardTitle>
 
         <CardDescription>{m.profile_readiness_description()}</CardDescription>
       </CardHeader>
