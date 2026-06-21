@@ -28,7 +28,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         <button
           type="button"
           onClick={() => setShowPassword((prev) => !prev)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+          className="absolute inset-e-4 top-1/2 -translate-y-1/2 text-muted-foreground"
           tabIndex={-1} // 👈 prevents stealing focus when tabbing
         >
           {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}

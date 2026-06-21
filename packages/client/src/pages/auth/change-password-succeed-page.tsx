@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { m } from '../../paraglide/messages';
 
 const ChangePasswordSucceedPage = () => {
   return (
@@ -12,19 +13,18 @@ const ChangePasswordSucceedPage = () => {
           </div>
 
           <h1 className="font-heading text-3xl font-bold tracking-tight">
-            Password Changed Successfully
+            {m.auth_password_changed_successfully()}
           </h1>
 
           <p className="mt-4 max-w-md text-muted-foreground">
-            Your password has been updated successfully. You can now sign in
-            using your new password and continue your journey with AICA.
+            {m.auth_password_changed_successfully_description()}
           </p>
         </div>
 
         <Link to="/auth/sign-in">
           <Button className="py-6.5 w-min mx-auto px-10">
-            Sign in
-            <ArrowUpRight />
+            {m.auth_sign_in_title()}
+            <ArrowUpRight className="rtl:rotate-270" />
           </Button>
         </Link>
       </div>

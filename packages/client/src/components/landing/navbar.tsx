@@ -8,6 +8,7 @@ import ModeToggle from '../toggle-mode';
 import { Link } from 'react-router-dom';
 import { navLinks } from '@/constants/app-tabs-data';
 import { m } from '../../paraglide/messages';
+import LocaleSelectItems from '../setttings/locale-select-items';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -50,6 +51,8 @@ export function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-2">
           <ModeToggle className="mr-0" />
+          <LocaleSelectItems />
+
           <Button asChild variant="secondary" className="py-6 px-6">
             <Link to="/auth/sign-in" viewTransition>
               {m.auth_sign_in_title()}

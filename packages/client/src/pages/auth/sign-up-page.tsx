@@ -10,6 +10,7 @@ import { ArrowUpRight, Loader } from 'lucide-react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
+import { m } from '../../paraglide/messages';
 
 type SignUpForm = z.infer<typeof signUpSchema>;
 
@@ -51,7 +52,7 @@ export default function SignUpPage() {
     <div className="min-h-screen flex items-center justify-center flex-col px-4 py-10 space-y-4 max-w-md w-full mx-auto">
       <div className="space-y-4 text-center px-10 mb-10">
         <h1 className="capitalize text-4xl font-semibold">
-          Start your guidance journey
+          {m.auth_sign_up_heading()}
         </h1>
         {/* <p className="text-sm text-balance text-muted-foreground">
           Tell us about your interests and goals. We’ll match you with the right
@@ -63,11 +64,11 @@ export default function SignUpPage() {
         <FieldGroup>
           {/* Name */}
           <Field>
-            <Label htmlFor="name">Full name</Label>
+            <Label htmlFor="name"> {m.auth_full_name_label()}</Label>
             <Input
               id="name"
               {...register('name')}
-              placeholder="How should we address you?"
+              placeholder={m.auth_full_name_placeholder()}
               disabled={isSubmitting}
               className="bg-background py-7 rounded-full"
             />
@@ -78,11 +79,11 @@ export default function SignUpPage() {
 
           {/* Email */}
           <Field>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email"> {m.auth_email_label()}</Label>
             <Input
               id="email"
               {...register('email')}
-              placeholder="you@example.com"
+              placeholder={m.auth_email_placeholder()}
               className="bg-background py-7 rounded-full"
               disabled={isSubmitting}
             />
@@ -93,14 +94,14 @@ export default function SignUpPage() {
 
           {/* Password */}
           <Field>
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password"> {m.auth_password_label()}</Label>
             <Controller
               control={control}
               name="password"
               render={({ field }) => (
                 <PasswordInput
                   {...field}
-                  placeholder="At least 8 characters"
+                  placeholder={m.auth_password_signup_placeholder()}
                   disabled={isSubmitting}
                 />
               )}
@@ -114,14 +115,17 @@ export default function SignUpPage() {
 
           {/* Confirm Password */}
           <Field>
-            <Label htmlFor="confirmPassword">Confirm password</Label>
+            <Label htmlFor="confirmPassword">
+              {' '}
+              {m.auth_confirm_password_label()}
+            </Label>
             <Controller
               control={control}
               name="confirmPassword"
               render={({ field }) => (
                 <PasswordInput
                   {...field}
-                  placeholder="Repeat your password to confirm"
+                  placeholder={m.auth_confirm_password_placeholder()}
                   disabled={isSubmitting}
                 />
               )}
@@ -143,20 +147,20 @@ export default function SignUpPage() {
             disabled={isSubmitting}
             className="py-6.5 w-min mx-auto px-10"
           >
-            Sign up
+            {m.auth_sign_up_title()}
             {isSubmitting ? (
               <Loader className="animate-spin" />
             ) : (
-              <ArrowUpRight />
+              <ArrowUpRight className="rtl:rotate-270" />
             )}
           </Button>
         </FieldGroup>
       </form>
 
       <p className="mt-4 text-sm text-muted-foreground">
-        Already started your journey?{' '}
+        {m.auth_sign_in_have_account()}{' '}
         <Link className="font-medium text-primary" to="/auth/sign-in">
-          Sign in
+          {m.auth_sign_in_title()}
         </Link>
       </p>
     </div>

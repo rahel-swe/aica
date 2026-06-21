@@ -191,6 +191,29 @@
   "auth_sign_in_go_to_sign_up": "ثبت‌نام کنید",
   "auth_sign_in_error_invalid_credentials": "ایمیل یا رمز عبور نامعتبر است.",
 
+  "auth_sign_in_welcome_back": "خوش آمدید",
+  "auth_sign_in_description": "ایمیل و رمز عبور خود را وارد کنید تا به مسیر خود ادامه دهید.",
+
+  "auth_email_label": "ایمیل",
+  "auth_email_placeholder": "you@example.com",
+
+  "auth_password_label": "رمز عبور",
+  "auth_password_placeholder": "رمز عبور خود را وارد کنید",
+  "auth_password_required": "رمز عبور الزامی است",
+
+  "auth_sign_up_heading": "سفر راهنمایی خود را آغاز کنید",
+  "auth_sign_up_description": "درباره علاقه‌مندی‌ها و اهداف خود برای ما بگویید. ما شما را با مسیرهای مناسب تحصیلی و شغلی مطابقت داده و یک نقشه راه روشن برایتان ایجاد می‌کنیم.",
+
+  "auth_full_name_label": "نام کامل",
+  "auth_full_name_placeholder": "مایل هستید شما را چگونه خطاب کنیم؟",
+
+  "auth_password_signup_placeholder": "حداقل ۸ نویسه",
+
+  "auth_confirm_password_label": "تأیید رمز عبور",
+  "auth_confirm_password_placeholder": "برای تأیید، رمز عبور خود را دوباره وارد کنید",
+
+  "auth_sign_in_have_account": "قبلاً سفر خود را آغاز کرده‌اید؟",
+
   "auth_sign_up_title": "ایجاد حساب",
   "auth_sign_up_name_label": "نام کامل",
   "auth_sign_up_name_placeholder": "نام خود را وارد کنید",
@@ -215,6 +238,27 @@
   "auth_change_password_succeed_title": "رمز عبور به‌روزرسانی شد",
   "auth_change_password_succeed_message": "رمز عبور شما با موفقیت تغییر کرد.",
   "auth_change_password_succeed_cta": "بازگشت به ورود",
+
+  "auth_change_password_title": "تغییر رمز عبور",
+
+  "auth_current_password_label": "رمز عبور فعلی",
+  "auth_current_password_placeholder": "رمز عبور فعلی خود را وارد کنید",
+
+  "auth_new_password_label": "رمز عبور جدید",
+  "auth_new_password_placeholder": "رمز عبور جدید خود را وارد کنید",
+
+  "auth_change_button": "تغییر",
+
+  "auth_forgot_password_question": "رمز عبور خود را فراموش کرده‌اید؟",
+  "auth_reset_password": "بازنشانی رمز عبور",
+
+  "auth_current_password_required": "لطفاً رمز عبور فعلی خود را وارد کنید.",
+  "auth_new_password_required": "لطفاً رمز عبور جدید خود را وارد کنید.",
+  "auth_new_password_min": "رمز عبور جدید باید حداقل ۸ نویسه داشته باشد.",
+
+  "auth_password_changed_successfully": "رمز عبور با موفقیت تغییر کرد",
+
+  "auth_password_changed_successfully_description": "رمز عبور شما با موفقیت تغییر یافت. اکنون می‌توانید با استفاده از رمز عبور جدید خود وارد شوید و سفر خود را با AICA ادامه دهید.",
 
   "pathway_assessment_title": "ارزیابی مسیر",
   "pathway_assessment_progress_label": "مرحله {current} از {total}",

@@ -205,12 +205,56 @@
   "auth_sign_up_error_email_taken": "An account with this email already exists.",
   "auth_sign_up_error_password_mismatch": "Passwords do not match.",
 
+  "auth_sign_up_heading": "Start Your Guidance Journey",
+  "auth_sign_up_description": "Tell us about your interests and goals. We'll match you with the right academic pathways and build a clear roadmap forward.",
+
+  "auth_full_name_label": "Full Name",
+  "auth_full_name_placeholder": "How should we address you?",
+
+  "auth_password_signup_placeholder": "At least 8 characters",
+
+  "auth_confirm_password_label": "Confirm Password",
+  "auth_confirm_password_placeholder": "Repeat your password to confirm",
+
+  "auth_sign_in_have_account": "Already started your journey?",
+
+  "auth_sign_in_welcome_back": "Welcome Back",
+  "auth_sign_in_description": "Enter your email and password to continue your journey.",
+
+  "auth_email_label": "Email",
+  "auth_email_placeholder": "you@example.com",
+
+  "auth_password_label": "Password",
+  "auth_password_placeholder": "Enter your password",
+  "auth_password_required": "Password is required",
+
   "auth_change_password_title": "Change Password",
   "auth_change_password_current_label": "Current Password",
   "auth_change_password_new_label": "New Password",
   "auth_change_password_confirm_label": "Confirm New Password",
   "auth_change_password_submit": "Update Password",
   "auth_change_password_error_incorrect_current": "Current password is incorrect.",
+
+  "auth_change_password_title": "Change Password",
+
+  "auth_current_password_label": "Current Password",
+  "auth_current_password_placeholder": "Enter your current password",
+
+  "auth_new_password_label": "New Password",
+  "auth_new_password_placeholder": "Enter your new password",
+
+  "auth_change_button": "Change",
+
+  "auth_forgot_password_question": "Forgot your password?",
+  "auth_reset_password": "Reset Password",
+
+  "auth_current_password_required": "Enter your current password.",
+  "auth_new_password_required": "Enter your new password.",
+  "auth_new_password_min": "Your new password must be at least 8 characters.",
+
+  "auth_password_changed_successfully": "Password Changed Successfully",
+
+  "auth_password_changed_successfully_description": "Your password has been updated successfully. You can now sign in using your new password and continue your journey with AICA.",
 
   "auth_change_password_succeed_title": "Password Updated",
   "auth_change_password_succeed_message": "Your password has been changed successfully.",

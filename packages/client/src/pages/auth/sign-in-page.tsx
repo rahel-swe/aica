@@ -60,22 +60,23 @@ export default function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center flex-col px-4 py-10 space-y-4 max-w-md w-full mx-auto">
       <div className="space-y-4 text-center px-10">
-        <h1 className="text-5xl font-semibold uppercase">Welcome back</h1>
-        {/* <p className="text-md">
-          Enter you password and email to continue your journey.
-        </p> */}
+        <h1 className="text-5xl font-semibold uppercase">
+          {' '}
+          {m.auth_sign_in_welcome_back()}
+        </h1>
+        <p className="text-md">{m.auth_sign_in_description()}</p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
         <FieldGroup>
           {/* Email */}
           <Field>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{m.auth_email_label()}</Label>
             <Input
               id="email"
               {...register('email')}
               disabled={isSubmitting}
-              placeholder="you@example.com"
+              placeholder={m.auth_email_placeholder()}
               className="bg-background py-7 rounded-full"
             />
             {errors.email && (
@@ -85,14 +86,14 @@ export default function SignInPage() {
 
           {/* Password (Reusable Component) */}
           <Field>
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password"> {m.auth_password_label()}</Label>
             <Controller
               control={control}
               name="password"
               render={({ field }) => (
                 <PasswordInput
                   {...field}
-                  placeholder="Enter your password"
+                  placeholder={m.auth_password_placeholder()}
                   disabled={isSubmitting}
                 />
               )}
@@ -118,7 +119,7 @@ export default function SignInPage() {
             {isSubmitting ? (
               <Loader className="animate-spin" />
             ) : (
-              <ArrowUpRight />
+              <ArrowUpRight className="rtl:rotate-270" />
             )}
           </Button>
         </FieldGroup>
