@@ -239,6 +239,27 @@
   "auth_change_password_succeed_message": "رمز عبور شما با موفقیت تغییر کرد.",
   "auth_change_password_succeed_cta": "بازگشت به ورود",
 
+  "auth_change_password_title": "تغییر رمز عبور",
+
+  "auth_current_password_label": "رمز عبور فعلی",
+  "auth_current_password_placeholder": "رمز عبور فعلی خود را وارد کنید",
+
+  "auth_new_password_label": "رمز عبور جدید",
+  "auth_new_password_placeholder": "رمز عبور جدید خود را وارد کنید",
+
+  "auth_change_button": "تغییر",
+
+  "auth_forgot_password_question": "رمز عبور خود را فراموش کرده‌اید؟",
+  "auth_reset_password": "بازنشانی رمز عبور",
+
+  "auth_current_password_required": "لطفاً رمز عبور فعلی خود را وارد کنید.",
+  "auth_new_password_required": "لطفاً رمز عبور جدید خود را وارد کنید.",
+  "auth_new_password_min": "رمز عبور جدید باید حداقل ۸ نویسه داشته باشد.",
+
+  "auth_password_changed_successfully": "رمز عبور با موفقیت تغییر کرد",
+
+  "auth_password_changed_successfully_description": "رمز عبور شما با موفقیت تغییر یافت. اکنون می‌توانید با استفاده از رمز عبور جدید خود وارد شوید و سفر خود را با AICA ادامه دهید.",
+
   "pathway_assessment_title": "ارزیابی مسیر",
   "pathway_assessment_progress_label": "مرحله {current} از {total}",
   "pathway_assessment_welcome_heading": "بیایید مسیر شما را پیدا کنیم",

@@ -235,6 +235,27 @@
   "auth_change_password_submit": "Update Password",
   "auth_change_password_error_incorrect_current": "Current password is incorrect.",
 
+  "auth_change_password_title": "Change Password",
+
+  "auth_current_password_label": "Current Password",
+  "auth_current_password_placeholder": "Enter your current password",
+
+  "auth_new_password_label": "New Password",
+  "auth_new_password_placeholder": "Enter your new password",
+
+  "auth_change_button": "Change",
+
+  "auth_forgot_password_question": "Forgot your password?",
+  "auth_reset_password": "Reset Password",
+
+  "auth_current_password_required": "Enter your current password.",
+  "auth_new_password_required": "Enter your new password.",
+  "auth_new_password_min": "Your new password must be at least 8 characters.",
+
+  "auth_password_changed_successfully": "Password Changed Successfully",
+
+  "auth_password_changed_successfully_description": "Your password has been updated successfully. You can now sign in using your new password and continue your journey with AICA.",
+
   "auth_change_password_succeed_title": "Password Updated",
   "auth_change_password_succeed_message": "Your password has been changed successfully.",
   "auth_change_password_succeed_cta": "Back to Sign In",

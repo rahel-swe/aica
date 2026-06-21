@@ -239,6 +239,27 @@
   "auth_change_password_succeed_message": "ستاسې پټنوم په بریالیتوب سره بدل شو.",
   "auth_change_password_succeed_cta": "بېرته ننوتلو ته",
 
+  "auth_change_password_title": "پټنوم بدل کړئ",
+
+  "auth_current_password_label": "اوسنی پټنوم",
+  "auth_current_password_placeholder": "خپل اوسنی پټنوم دننه کړئ",
+
+  "auth_new_password_label": "نوی پټنوم",
+  "auth_new_password_placeholder": "خپل نوی پټنوم دننه کړئ",
+
+  "auth_change_button": "بدل کړئ",
+
+  "auth_forgot_password_question": "پټنوم مو هېر شوی؟",
+  "auth_reset_password": "پټنوم بیا تنظیم کړئ",
+
+  "auth_current_password_required": "مهرباني وکړئ خپل اوسنی پټنوم دننه کړئ.",
+  "auth_new_password_required": "مهرباني وکړئ خپل نوی پټنوم دننه کړئ.",
+  "auth_new_password_min": "ستاسو نوی پټنوم باید لږ تر لږه ۸ توري ولري.",
+
+  "auth_password_changed_successfully": "پټنوم په بریالیتوب سره بدل شو",
+
+  "auth_password_changed_successfully_description": "ستاسو پټنوم په بریالیتوب سره بدل شو. اوس کولی شئ د خپل نوي پټنوم په کارولو سره ننوتنه وکړئ او له AICA سره خپل سفر ته دوام ورکړئ.",
+
   "pathway_assessment_title": "د لارې ارزونه",
   "pathway_assessment_progress_label": "پړاو {current} له {total}",
   "pathway_assessment_welcome_heading": "راځئ ستاسې لاره ومومو",

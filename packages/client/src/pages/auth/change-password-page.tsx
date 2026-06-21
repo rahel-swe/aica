@@ -10,13 +10,15 @@ import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import z from 'zod';
+import { m } from '../../paraglide/messages';
 
 const changePasswordSchema = z.object({
-  currentPassword: z.string().min(1, 'Enter your current password.'),
+  currentPassword: z.string().min(1, m.auth_current_password_required()),
+
   newPassword: z
     .string()
-    .nonempty('Enter your new password.')
-    .min(8, 'Your new password must be at least 8 character'),
+    .nonempty(m.auth_new_password_required())
+    .min(8, m.auth_new_password_min()),
 });
 
 type ChangePasswordForm = z.infer<typeof changePasswordSchema>;
@@ -75,21 +77,27 @@ const ChangePasswordPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center flex-col px-4 py-10 gap-7 max-w-md w-full mx-auto">
       <div className="space-y-4 text-center px-10">
-        <h1 className="text-5xl font-semibold uppercase">Change Password</h1>
+        <h1 className="text-5xl font-semibold uppercase">
+          {' '}
+          {m.auth_change_password_title()}
+        </h1>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
         <FieldGroup>
           {/* Email */}
           <Field>
-            <Label htmlFor="currentPassword">Current Password</Label>
+            <Label htmlFor="currentPassword">
+              {' '}
+              {m.auth_current_password_label()}
+            </Label>
             <Controller
               control={control}
               name="currentPassword"
               render={({ field }) => (
                 <PasswordInput
                   {...field}
-                  placeholder="Enter your current password"
+                  placeholder={m.auth_current_password_placeholder()}
                   disabled={isSubmitting}
                 />
               )}
@@ -103,14 +111,14 @@ const ChangePasswordPage = () => {
 
           {/* Password (Reusable Component) */}
           <Field>
-            <Label htmlFor="newPassword">New Password</Label>
+            <Label htmlFor="newPassword"> {m.auth_new_password_label()}</Label>
             <Controller
               control={control}
               name="newPassword"
               render={({ field }) => (
                 <PasswordInput
                   {...field}
-                  placeholder="Enter your new password"
+                  placeholder={m.auth_new_password_placeholder()}
                   disabled={isSubmitting}
                 />
               )}
@@ -132,7 +140,7 @@ const ChangePasswordPage = () => {
             disabled={isSubmitting}
             className="py-6.5 w-min mx-auto px-10"
           >
-            Change
+            {m.auth_change_button()}
             {isSubmitting ? (
               <Loader className="animate-spin" />
             ) : (
@@ -143,13 +151,13 @@ const ChangePasswordPage = () => {
       </form>
 
       <p className="text-sm text-muted-foreground">
-        Forgot your password?{' '}
+        {m.auth_forgot_password_question()}{' '}
         <Link
           className="font-medium text-primary border-b hover:border-primary"
           to="#"
           viewTransition
         >
-          Reset Password
+          {m.auth_reset_password()}
         </Link>
       </p>
     </div>
