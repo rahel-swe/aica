@@ -323,6 +323,12 @@
 
   "advisor_ask_anything_placeholder": "له خپل سلاکار څخه هر څه وپوښتئ…",
   "advisor_shift_enter_hint": "Shift + Enter د نوې کرښې لپاره",
+  "advisor_mode_focused_label": "متمرکز",
+  "advisor_mode_focused_tooltip": "یوازې مستقیم ځوابونه — سپارښتنې نشته، او د اړتیا په وخت کې ویب لټون",
+  "advisor_mode_guided_label": "لارښوول شوی",
+  "advisor_mode_guided_tooltip": "بشپړه لارښوونه — کړنې، سپارښتنې، او ویب لټون",
+  "advisor_mode_deep_label": "ژور",
+  "advisor_mode_deep_tooltip": "په عمل ولاړ — روښانه بل ګامونه، پرته له تعقیبي پوښتنو",
 
   "roadmap_title": "زما لارنقشه",
   "roadmap_empty_state_heading": "ستاسې لارنقشه تشه ده.",

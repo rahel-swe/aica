@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { MessageCirclePlus } from 'lucide-react';
 import { useAdvisorStore } from '@/stores/advisor-store';
 import { cn } from '@/lib/utils';
+import { m } from '../../paraglide/messages';
 
 const StartNewConversation = ({
   title,
@@ -38,7 +39,7 @@ const StartNewConversation = ({
           </Button>
         </TooltipTrigger>
         <TooltipContent side="bottom" className="text-xs">
-          New Chat
+          {m.advisor_new_chat()}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

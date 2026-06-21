@@ -6,6 +6,7 @@ import {
 import { cn } from '@/lib/utils';
 import type { AdvisorResponseMode } from '@contracts/shared/types/advisor-types';
 import { MessageCircleCheck, Target, Zap } from 'lucide-react';
+import { m } from '../../paraglide/messages';
 
 const colors = ['text-yellow-300', 'text-indigo-300', 'text-purple-400'];
 
@@ -17,20 +18,20 @@ const MODES: {
 }[] = [
   {
     value: 'focused',
-    label: 'Focused',
-    tooltip: 'Direct answers only — no suggestions, web search when needed',
+    label: m.advisor_mode_focused_label(),
+    tooltip: m.advisor_mode_focused_tooltip(),
     Icon: Target,
   },
   {
     value: 'guided',
-    label: 'Guided',
-    tooltip: 'Full guidance — actions, suggestions, and web search',
+    label: m.advisor_mode_guided_label(),
+    tooltip: m.advisor_mode_guided_tooltip(),
     Icon: MessageCircleCheck,
   },
   {
     value: 'deep',
-    label: 'Deep',
-    tooltip: 'Action-oriented — concrete next steps, no follow-up questions',
+    label: m.advisor_mode_deep_label(),
+    tooltip: m.advisor_mode_deep_tooltip(),
     Icon: Zap,
   },
 ];
@@ -49,7 +50,7 @@ export function AdvisorModeSelector({
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-0.5 rounded-xl bg-muted/60 p-0.5',
+        'inline-flex items-center gap-0.5 rounded-xl bg-muted/60',
         disabled && 'opacity-50 pointer-events-none'
       )}
     >
@@ -62,7 +63,7 @@ export function AdvisorModeSelector({
               className={cn(
                 'flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-medium transition-all',
                 value === mode
-                  ? 'bg-background text-foreground shadow-sm'
+                  ? 'bg-background/60 text-foreground'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >

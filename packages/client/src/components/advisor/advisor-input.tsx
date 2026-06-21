@@ -72,7 +72,7 @@ export function AdvisorInput({
         !isMobile && 'bottom-0'
       )}
     >
-      <div className="relative flex flex-col gap-1 rounded-4xl bg-card  focus-within:ring-ring transition-shadow md:w-[80%] mx-auto mb-4 sm:mb-0">
+      <div className="relative flex flex-col gap-1 rounded-3xl bg-card  focus-within:ring-ring transition-shadow md:w-[80%] mx-auto mb-4 sm:mb-0">
         <textarea
           ref={textareaRef}
           value={value}
@@ -95,31 +95,29 @@ export function AdvisorInput({
             onChange={setResponseMode}
             disabled={isStreaming}
           />
-          {isStreaming && onAbort && (
+          {isStreaming && onAbort ? (
             <Button
-              variant="ghost"
-              size="icon"
+              variant="outline"
               type="button"
               onClick={onAbort}
-              className="size-8 rounded-xl text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground rounded-full p-4"
             >
               <Square className="size-3.5 fill-current" />
             </Button>
+          ) : (
+            <Button
+              onClick={handleSubmit}
+              disabled={!canSubmit}
+              className={cn(
+                'transition-all p-4',
+                canSubmit
+                  ? 'bg-foreground text-background hover:bg-foreground/85'
+                  : 'bg-muted text-muted-foreground cursor-not-allowed'
+              )}
+            >
+              <ArrowUp className="size-4" />
+            </Button>
           )}
-
-          <Button
-            size="icon"
-            onClick={handleSubmit}
-            disabled={!canSubmit}
-            className={cn(
-              'size-8 rounded-xl transition-all',
-              canSubmit
-                ? 'bg-foreground text-background hover:bg-foreground/85'
-                : 'bg-muted text-muted-foreground cursor-not-allowed'
-            )}
-          >
-            <ArrowUp className="size-4" />
-          </Button>
         </div>
       </div>
 

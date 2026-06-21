@@ -318,6 +318,14 @@
   "advisor_ask_anything_placeholder": "از مشاور خود هر چیزی بپرسید…",
   "advisor_shift_enter_hint": "Shift + Enter برای خط جدید",
   "advisor_mobile_nav": "مشاور",
+  "advisor_mode_focused_label": "متمرکز",
+  "advisor_mode_focused_tooltip": "فقط پاسخ مستقیم — بدون پیشنهاد، و جست‌وجوی وب در صورت نیاز",
+
+  "advisor_mode_guided_label": "راهنما",
+  "advisor_mode_guided_tooltip": "راهنمایی کامل — اقدامات، پیشنهادها و جست‌وجوی وب",
+
+  "advisor_mode_deep_label": "عمیق",
+  "advisor_mode_deep_tooltip": "مبتنی بر اقدام — گام‌های بعدی مشخص، بدون پرسش‌های پیگیری",
 
   "roadmap_title": "نقشه راه من",
   "roadmap_empty_state_heading": "نقشه راه شما خالی است.",

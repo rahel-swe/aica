@@ -318,7 +318,14 @@
   "advisor_ask_anything_placeholder": "Ask your advisor anything…",
   "advisor_shift_enter_hint": "Shift + Enter for new line",
   "advisor_mobile_nav": "Chat",
+  "advisor_mode_focused_label": "Focused",
+  "advisor_mode_focused_tooltip": "Direct answers only — no suggestions, web search when needed",
 
+  "advisor_mode_guided_label": "Guided",
+  "advisor_mode_guided_tooltip": "Full guidance — actions, suggestions, and web search",
+
+  "advisor_mode_deep_label": "Deep",
+  "advisor_mode_deep_tooltip": "Action-oriented — concrete next steps, no follow-up questions",
   "roadmap_title": "My Roadmap",
   "roadmap_empty_state_heading": "Your roadmap is empty.",
   "roadmap_empty_state_cta": "Complete the assessment to build your roadmap.",
