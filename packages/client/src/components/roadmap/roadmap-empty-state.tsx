@@ -6,6 +6,7 @@ import { ArrowRight, ClipboardList } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import RoadmapStepsPreview from './roadmap-steps-preview';
 import { cn } from '@/lib/utils';
+import { m } from '../../paraglide/messages';
 
 export function RoadmapEmptyState({ className }: { className?: string }) {
   const { mutate, isPending: isGenerating } = useGenerateRoadmapMutation();
@@ -36,19 +37,18 @@ export function RoadmapEmptyState({ className }: { className?: string }) {
         className
       )}
     >
-      <div className="flex items-center justify-evenly flex-col-reverse lg:flex-row  w-full gap-10 lg:gap-0">
-        {/* Left Side */}
+      <div className="flex items-center justify-evenly flex-col-reverse lg:flex-row w-full gap-10 lg:gap-0">
         <div className="order-2 lg:order-1">
-          <h1 className="max-w-2xl text-4xl font-semibold md:text-6xl font-heading">
+          <h1 className="max-w-2xl text-4xl font-semibold md:text-6xl font-heading rtl:leading-12 rtl:md:leading-16">
             {hasSetup
-              ? 'Generate your next learning roadmap'
-              : 'Setup your roadmap journey first'}
+              ? m.roadmap_empty_state_generate_title()
+              : m.roadmap_empty_state_setup_title()}
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
             {hasSetup
-              ? 'Your assessment is ready. Generate a structured roadmap with milestones, projects, and progression steps tailored to your current skill level.'
-              : 'Complete the roadmap assessment first so we can understand your goals, current level, and build a personalized learning path for you.'}
+              ? m.roadmap_empty_state_generate_description()
+              : m.roadmap_empty_state_setup_description()}
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
@@ -60,7 +60,7 @@ export function RoadmapEmptyState({ className }: { className?: string }) {
               >
                 {isGenerating ? (
                   <>
-                    Generating Roadmap
+                    {m.roadmap_empty_state_generating_roadmap()}
                     <SpinnerBars
                       className="gap-1"
                       barClassName="w-1"
@@ -69,15 +69,15 @@ export function RoadmapEmptyState({ className }: { className?: string }) {
                   </>
                 ) : (
                   <>
-                    Generate Roadmap
-                    <ArrowRight className="size-4" />
+                    {m.roadmap_empty_state_generate_roadmap()}
+                    <ArrowRight className="size-4 rtl:rotate-180" />
                   </>
                 )}
               </Button>
             ) : (
               <Button asChild className="gap-2 px-6 py-7">
                 <Link to="/roadmap-setup-assessment">
-                  Start Assessment
+                  {m.roadmap_empty_state_start_assessment()}
                   <ClipboardList className="size-4" />
                 </Link>
               </Button>
@@ -85,13 +85,12 @@ export function RoadmapEmptyState({ className }: { className?: string }) {
 
             <p className="text-sm text-muted-foreground">
               {hasSetup
-                ? 'Takes less than a minute'
-                : 'Personalized based on your goals'}
+                ? m.roadmap_empty_state_takes_less_than_a_minute()
+                : m.roadmap_empty_state_personalized_based_on_goals()}
             </p>
           </div>
         </div>
 
-        {/* Right Side */}
         <div className="relative order-1 flex items-center justify-center lg:order-2">
           <RoadmapStepsPreview />
         </div>

@@ -326,6 +326,7 @@
 
   "advisor_mode_deep_label": "Deep",
   "advisor_mode_deep_tooltip": "Action-oriented — concrete next steps, no follow-up questions",
+
   "roadmap_title": "My Roadmap",
   "roadmap_empty_state_heading": "Your roadmap is empty.",
   "roadmap_empty_state_cta": "Complete the assessment to build your roadmap.",
@@ -333,6 +334,20 @@
   "roadmap_milestone_completed": "Completed",
   "roadmap_milestone_in_progress": "In Progress",
   "roadmap_milestone_locked": "Locked",
+  "roadmap_empty_state_generate_title": "Generate your next learning roadmap",
+  "roadmap_empty_state_setup_title": "Set up your roadmap journey first",
+  "roadmap_empty_state_generate_description": "Your assessment is ready. Generate a structured roadmap with milestones, projects, and progression steps tailored to your current skill level.",
+  "roadmap_empty_state_setup_description": "Complete the roadmap assessment first so we can understand your goals, current level, and build a personalized learning path for you.",
+  "roadmap_empty_state_generating_roadmap": "Generating Roadmap",
+  "roadmap_empty_state_generate_roadmap": "Generate Roadmap",
+  "roadmap_empty_state_start_assessment": "Start Assessment",
+  "roadmap_empty_state_takes_less_than_a_minute": "Takes less than a minute",
+  "roadmap_empty_state_personalized_based_on_goals": "Personalized based on your goals",
+  "roadmap_preview_completed_foundation": "Completed foundation",
+  "roadmap_preview_in_progress": "Currently in progress",
+  "roadmap_preview_upcoming_milestone": "Upcoming milestone",
+
+  "roadmap_preview_step": "Step {step}",
 
   "settings_title": "Settings",
   "settings_section_profile": "Profile",

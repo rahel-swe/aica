@@ -3,6 +3,8 @@ import { Check, FlagTriangleRight } from 'lucide-react';
 import { roadmapStepFlagColors } from '../../lib/roadmap-view-utils';
 import { Button } from '../ui/button';
 
+import { m } from '../../paraglide/messages';
+
 const roadmapPreviewSteps = ['First', 'Second', 'Third'];
 
 const RoadmapStepsPreview = () => {
@@ -60,15 +62,17 @@ const RoadmapStepsPreview = () => {
 
                   <p className="mt-1 text-sm text-muted-foreground">
                     {index === 0
-                      ? 'Completed foundation'
+                      ? m.roadmap_preview_completed_foundation()
                       : index === 1
-                        ? 'Currently in progress'
-                        : 'Upcoming milestone'}
+                        ? m.roadmap_preview_in_progress()
+                        : m.roadmap_preview_upcoming_milestone()}
                   </p>
                 </div>
 
                 <div className="hidden rounded-xl border px-3 py-1 text-sm text-muted-foreground sm:block">
-                  Step {index + 1}
+                  {m.roadmap_preview_step({
+                    step: index + 1,
+                  })}
                 </div>
               </div>
             </div>
