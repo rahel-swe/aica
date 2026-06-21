@@ -205,6 +205,29 @@
   "auth_sign_up_error_email_taken": "له دې برېښنالیک سره حساب مخکې موجود دی.",
   "auth_sign_up_error_password_mismatch": "پټنومونه سره نه سمون خوري.",
 
+  "auth_sign_up_heading": "د خپل لارښود سفر پیل کړئ",
+  "auth_sign_up_description": "موږ ته د خپلو لېوالتیاوو او موخو په اړه ووایئ. موږ به تاسو ته مناسبې تحصیلي او مسلکي لارې وړاندیز کړو او روښانه نقشه به درته جوړه کړو.",
+
+  "auth_full_name_label": "بشپړ نوم",
+  "auth_full_name_placeholder": "غواړئ تاسو ته څنګه خطاب وکړو؟",
+
+  "auth_password_signup_placeholder": "لږ تر لږه ۸ توري",
+
+  "auth_confirm_password_label": "د پټنوم تایید",
+  "auth_confirm_password_placeholder": "د تایید لپاره خپل پټنوم بیا دننه کړئ",
+
+  "auth_sign_in_have_account": "له مخکې مو خپل سفر پیل کړی؟",
+
+  "auth_sign_in_welcome_back": "بیا ښه راغلاست",
+  "auth_sign_in_description": "خپل برېښنالیک او پټنوم دننه کړئ ترڅو خپل سفر ته دوام ورکړئ.",
+
+  "auth_email_label": "برېښنالیک",
+  "auth_email_placeholder": "you@example.com",
+
+  "auth_password_label": "پټنوم",
+  "auth_password_placeholder": "خپل پټنوم دننه کړئ",
+  "auth_password_required": "پټنوم اړین دی",
+
   "auth_change_password_title": "پټنوم بدلول",
   "auth_change_password_current_label": "اوسنی پټنوم",
   "auth_change_password_new_label": "نوی پټنوم",
