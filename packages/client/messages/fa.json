@@ -352,6 +352,12 @@
   "dashboard_status_needs_roadmap_setup": "یک مسیر را انتخاب کنید.",
   "dashboard_status_needs_roadmap": "نقشه راه خود را بسازید.",
   "dashboard_status_active": "همه‌چیز در حال حرکت است.",
+  "dashboard_stats_profile_assessment": "ارزیابی پروفایل",
+  "dashboard_stats_roadmap_generation": "ساخت نقشه راه",
+  "dashboard_stats_pathway_recommendations": "پیشنهادهای مسیر",
+
+  "dashboard_stats_done": "تکمیل",
+  "dashboard_stats_pending": "در انتظار",
 
   "explore_title": "کاوش",
   "explore_search_placeholder": "جستجوی مسیرها، موضوعات...",
@@ -417,6 +423,22 @@
   "roadmap_preview_upcoming_milestone": "مرحله مهم بعدی",
 
   "roadmap_preview_step": "مرحله {step}",
+
+  "roadmap_progress_title": "پیشرفت نقشه راه",
+  "roadmap_steps_chart_description": "مراحل نقشه راه",
+  "roadmap_next_step_title": "گام بعدی",
+  "roadmap_no_roadmap_yet_title": "هنوز نقشه راهی وجود ندارد",
+  "roadmap_no_roadmap_yet_description": "یک نقشه راه تنظیم کنید تا پیشنهادها به یک برنامه روشن و قابل‌اندازه‌گیری تبدیل شوند.",
+  "roadmap_generate_roadmap": "ساخت نقشه راه",
+
+  "roadmap_progress_excellent": "عالی",
+  "roadmap_progress_good": "خوب",
+  "roadmap_progress_growing": "در حال رشد",
+  "roadmap_progress_getting_started": "شروع شده",
+
+  "roadmap_difficulty_easy": "آسان",
+  "roadmap_difficulty_medium": "متوسط",
+  "roadmap_difficulty_hard": "سخت",
 
   "settings_title": "تنظیمات",
   "settings_section_profile": "پروفایل",

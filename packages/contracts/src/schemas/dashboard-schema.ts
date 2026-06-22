@@ -30,10 +30,6 @@ export const dashboardResponseSchema = z.object({
     top: z.array(
       z.object({
         pathwaySlug: z.string(),
-        title: z.string(),
-        slug: z.string(),
-        type: z.enum(['study', 'career', 'hybrid']),
-        summary: z.string(),
         score: z.number(),
         rank: z.number(),
         reasons: z.array(z.string()),
@@ -62,13 +58,16 @@ export const dashboardResponseSchema = z.object({
       .optional(),
     nextReviewAt: z.string().optional(),
   }),
-  insights: z.array(
-    z.object({
-      label: z.string(),
-      value: z.string(),
-      helper: z.string(),
-    })
-  ),
+  insights: z.object({
+    profileAssessmentCompleted: z.boolean(),
+    roadmapSetupCompleted: z.boolean(),
+    topPathwaySlug: z.string(),
+    topRecommendedPathwayScore: z.number(),
+    roadmapProgressPercent: z.number(),
+    roadmapTotalSteps: z.number(),
+    hasRoadmap: z.boolean(),
+    roadmapCompletedSteps: z.number(),
+  }),
 });
 
 export const dashboardApiResponseSchema = z.object({

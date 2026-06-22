@@ -356,6 +356,12 @@
   "dashboard_status_needs_roadmap_setup": "یوه لاره وټاکئ.",
   "dashboard_status_needs_roadmap": "خپله د لارې نقشه جوړه کړئ.",
   "dashboard_status_active": "هر څه په حرکت کې دي.",
+  "dashboard_stats_profile_assessment": "د پروفایل ارزونه",
+  "dashboard_stats_roadmap_generation": "د لارې نقشې جوړول",
+  "dashboard_stats_pathway_recommendations": "د لارو سپارښتنې",
+
+  "dashboard_stats_done": "بشپړ",
+  "dashboard_stats_pending": "ناپوره",
 
   "explore_title": "سپړنه",
   "explore_search_placeholder": "لارې، موضوعات وپلټئ...",
@@ -420,6 +426,21 @@
   "roadmap_preview_upcoming_milestone": "راتلونکی مهم پړاو",
 
   "roadmap_preview_step": "پړاو {step}",
+  "roadmap_progress_title": "د لارې نقشې پرمختګ",
+  "roadmap_steps_chart_description": "د لارې نقشې پړاوونه",
+  "roadmap_next_step_title": "راتلونکی ګام",
+  "roadmap_no_roadmap_yet_title": "تر اوسه د لارې نقشه نشته",
+  "roadmap_no_roadmap_yet_description": "یوه د لارې نقشه تنظیم کړئ څو سپارښتنې په یوه روښانه او د اندازه کېدو وړ پلان بدلې شي.",
+  "roadmap_generate_roadmap": "د لارې نقشه جوړه کړئ",
+
+  "roadmap_progress_excellent": "ډېر ښه",
+  "roadmap_progress_good": "ښه",
+  "roadmap_progress_growing": "په وده کې",
+  "roadmap_progress_getting_started": "پیل شوی",
+
+  "roadmap_difficulty_easy": "اسانه",
+  "roadmap_difficulty_medium": "منځنۍ",
+  "roadmap_difficulty_hard": "سخته",
 
   "settings_title": "امستنې",
   "settings_section_profile": "پروفایل",

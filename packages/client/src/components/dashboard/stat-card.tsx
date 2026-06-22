@@ -4,25 +4,19 @@ import React from 'react';
 export function StatCard({
   label,
   value,
-  helper,
   icon: Icon,
 }: {
   label: string;
   value: string;
-  helper?: string;
   icon: React.ComponentType<{ className?: string }>;
 }) {
   return (
     <Card>
-      <CardContent>
-        <div className="flex justify-between">
-          <div>
-            <p className="text-sm text-muted-foreground">{label}</p>
-            <p className="text-xl font-semibold">{value}</p>
-            <p className="text-sm text-muted-foreground">{helper}</p>
-          </div>
-
-          <Icon className="h-5 w-5" />
+      <CardContent className="flex justify-between text-start rounded-4xl py-0">
+        <Icon className="size-6" />
+        <div className="text-end">
+          <p className="text-sm text-muted-foreground">{label}</p>
+          <p className="text-xl font-semibold">{value}</p>
         </div>
       </CardContent>
     </Card>

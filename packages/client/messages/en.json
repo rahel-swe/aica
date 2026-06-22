@@ -350,6 +350,12 @@
   "dashboard_status_needs_roadmap_setup": "Pick a pathway.",
   "dashboard_status_needs_roadmap": "Generate your roadmap.",
   "dashboard_status_active": "Everything is in motion.",
+  "dashboard_stats_profile_assessment": "Profile assessment",
+  "dashboard_stats_roadmap_generation": "Roadmap generation",
+  "dashboard_stats_pathway_recommendations": "Pathway recommendations",
+
+  "dashboard_stats_done": "Done",
+  "dashboard_stats_pending": "Pending",
 
   "explore_title": "Explore",
   "explore_search_placeholder": "Search pathways, topics...",
@@ -417,6 +423,21 @@
   "roadmap_preview_upcoming_milestone": "Upcoming milestone",
 
   "roadmap_preview_step": "Step {step}",
+  "roadmap_progress_title": "Roadmap progress",
+  "roadmap_steps_chart_description": "Roadmap Steps",
+  "roadmap_next_step_title": "Next step",
+  "roadmap_no_roadmap_yet_title": "No roadmap yet",
+  "roadmap_no_roadmap_yet_description": "Set up a roadmap to turn recommendations into a clear plan with measurable steps.",
+  "roadmap_generate_roadmap": "Generate roadmap",
+
+  "roadmap_progress_excellent": "Excellent",
+  "roadmap_progress_good": "Good",
+  "roadmap_progress_growing": "Growing",
+  "roadmap_progress_getting_started": "Getting started",
+
+  "roadmap_difficulty_easy": "Easy",
+  "roadmap_difficulty_medium": "Medium",
+  "roadmap_difficulty_hard": "Hard",
 
   "settings_title": "Settings",
   "settings_section_profile": "Profile",

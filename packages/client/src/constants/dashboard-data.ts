@@ -54,3 +54,15 @@ export const DASHBOARD_STATUS_META = {
   needs_roadmap: m.dashboard_status_needs_roadmap(),
   active: m.dashboard_status_active(),
 } as const;
+
+export const ROADMAP_PROGRESS_THRESHOLDS = {
+  excellent: 80,
+  good: 50,
+  growing: 20,
+} as const;
+
+export const DIFFICULTY_LABELS = {
+  easy: m.roadmap_difficulty_easy(),
+  medium: m.roadmap_difficulty_medium(),
+  hard: m.roadmap_difficulty_hard(),
+} as const;

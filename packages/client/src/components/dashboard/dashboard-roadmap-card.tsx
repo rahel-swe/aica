@@ -1,57 +1,48 @@
 import type { DashboardResponse } from '@contracts/shared/types/dashboard-types';
-import { Clock3, Rocket } from 'lucide-react';
+import { Rocket } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ChartRadialStacked from '../chart-radial-stacked';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
-import { Link } from 'react-router-dom';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '../ui/card';
 
-function getDifficultyLabel(difficulty?: 'easy' | 'medium' | 'hard') {
-  switch (difficulty) {
-    case 'easy':
-      return 'Easy';
-    case 'medium':
-      return 'Medium';
-    case 'hard':
-      return 'Hard';
-    default:
-      return null;
-  }
-}
+import { getRoadmapProgressTone } from '@/lib/dashboard-utils';
+import { m } from '../../paraglide/messages';
 
-function getProgressTone(progressPercent: number) {
-  if (progressPercent >= 80) return 'Excellent';
-  if (progressPercent >= 50) return 'Good';
-  if (progressPercent >= 20) return 'Growing';
-  return 'Getting started';
-}
-
-export function RoadmapCard({ dashboard }: { dashboard: DashboardResponse }) {
+export function DashboardRoadmapCard({
+  dashboard,
+}: {
+  dashboard: DashboardResponse;
+}) {
   const {
     roadmap: { notStartedSteps, completedSteps, inProgressSteps },
   } = dashboard;
+
   const progress = Math.max(
     0,
     Math.min(100, dashboard.roadmap.progressPercent)
   );
-  const progressTone = getProgressTone(progress);
+
+  const progressTone = getRoadmapProgressTone(progress);
 
   return (
     <Card className="rounded-3xl border-muted/60 shadow-sm">
       <CardHeader className="space-y-2">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <CardTitle className="text-xl">Roadmap progress</CardTitle>
+            <CardTitle className="text-xl rtl:font-sans">
+              {m.roadmap_progress_title()}
+            </CardTitle>
             <CardDescription>
               {dashboard.roadmap.hasRoadmap
-                ? (dashboard.roadmap.title ?? 'Your personalized roadmap')
-                : 'No roadmap yet'}
+                ? (dashboard.roadmap.title ?? m.roadmap_no_roadmap_yet_title())
+                : m.roadmap_no_roadmap_yet_title()}
             </CardDescription>
           </div>
           <Badge
@@ -62,10 +53,11 @@ export function RoadmapCard({ dashboard }: { dashboard: DashboardResponse }) {
           </Badge>
         </div>
       </CardHeader>
+
       <CardContent className="space-y-5">
         <ChartRadialStacked
-          title={dashboard.roadmap.progressPercent.toString() + '%'}
-          description="Roadmap Steps"
+          title={`${dashboard.roadmap.progressPercent}%`}
+          description={m.roadmap_steps_chart_description()}
           chartData={[
             {
               pending: notStartedSteps,
@@ -79,44 +71,24 @@ export function RoadmapCard({ dashboard }: { dashboard: DashboardResponse }) {
           <div className="rounded-2xl border bg-muted/30 p-4">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="space-y-1">
-                <p className="text-sm font-medium">Next step</p>
+                <p className="text-sm font-medium">
+                  {m.roadmap_next_step_title()}
+                </p>
                 <p className="text-sm text-muted-foreground">
                   {dashboard.roadmap.nextStep.title}
                 </p>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {dashboard.roadmap.nextStep.estimatedTime ? (
-                  <Badge variant="outline" className="rounded-full">
-                    <Clock3 className="mr-1.5 h-3.5 w-3.5" />
-                    {dashboard.roadmap.nextStep.estimatedTime}
-                  </Badge>
-                ) : null}
-                {dashboard.roadmap.nextStep.difficulty ? (
-                  <Badge variant="outline" className="rounded-full">
-                    {getDifficultyLabel(dashboard.roadmap.nextStep.difficulty)}
-                  </Badge>
-                ) : null}
               </div>
             </div>
           </div>
         ) : (
           <EmptyState
-            title="No roadmap yet"
-            description="Set up a roadmap to turn recommendations into a clear plan with measurable steps."
-            ctaLabel="Generate roadmap"
-            href={dashboard.nextAction.href}
+            title={m.roadmap_no_roadmap_yet_title()}
+            description={m.roadmap_no_roadmap_yet_description()}
+            ctaLabel={m.roadmap_generate_roadmap()}
+            href="/app/roadmap"
             icon={Rocket}
           />
         )}
-
-        {/* {dashboard.roadmap.nextReviewAt ? (
-          <p className="text-sm text-muted-foreground">
-            Next review:{' '}
-            <span className="font-medium text-foreground">
-              {formatRelativeDate(dashboard.roadmap.nextReviewAt)}
-            </span>
-          </p>
-        ) : null} */}
       </CardContent>
     </Card>
   );

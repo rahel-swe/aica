@@ -9,6 +9,7 @@ import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 import type { User } from 'better-auth';
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
+import type { IRecommendation } from '../models/recommendation-model';
 
 type DashboardNextAction = DashboardResponse['nextActionType'];
 type DashboardRoadmap = DashboardResponse['roadmap'];
@@ -65,13 +66,11 @@ export class DashboardService {
     };
   }
 
-  private buildRecommendation(recommendations: any[]): DashboardRecommendation {
+  private buildRecommendation(
+    recommendations: IRecommendation[]
+  ): DashboardRecommendation {
     const top = recommendations.slice(0, 3).map((item) => ({
-      pathwaySlug: String(item.pathwaySlug),
-      title: item.title,
-      slug: item.slug,
-      type: item.type,
-      summary: item.summary,
+      pathwaySlug: item.pathwaySlug,
       score: Number(item.totalScore.toFixed(2)),
       rank: item.rank,
       reasons: item.reasons.slice(0, 2),
@@ -181,33 +180,16 @@ export class DashboardService {
     recommendation: DashboardRecommendation;
     roadmap: DashboardRoadmap;
   }): DashboardResponse['insights'] {
-    return [
-      {
-        label: 'Direction status',
-        value: input.onboardingCompleted ? 'Profile ready' : 'Profile needed',
-        helper: input.onboardingCompleted
-          ? 'Recommendations can use your onboarding traits.'
-          : 'Complete onboarding to unlock useful pathway matching.',
-      },
-      {
-        label: 'Best match',
-        value: input.recommendation.top[0]?.title ?? 'Not generated',
-        helper: input.recommendation.top[0]
-          ? `${input.recommendation.top[0].score}% fit based on your current profile.`
-          : 'Generate recommendations after onboarding.',
-      },
-      {
-        label: 'Roadmap progress',
-        value: input.roadmap.hasRoadmap
-          ? `${input.roadmap.progressPercent}% complete`
-          : 'No roadmap yet',
-        helper: input.roadmap.hasRoadmap
-          ? `${input.roadmap.completedSteps} of ${input.roadmap.totalSteps} steps completed.`
-          : input.roadmapSetupCompleted
-            ? 'Setup is ready. Generate a roadmap next.'
-            : 'Roadmap setup is needed before generation.',
-      },
-    ];
+    return {
+      profileAssessmentCompleted: input.onboardingCompleted,
+      roadmapSetupCompleted: input.roadmapSetupCompleted,
+      topPathwaySlug: input.recommendation.top[0]!.pathwaySlug,
+      topRecommendedPathwayScore: input.recommendation.top[0]!.score,
+      roadmapCompletedSteps: input.roadmap.completedSteps,
+      roadmapTotalSteps: input.roadmap.totalSteps,
+      roadmapProgressPercent: input.roadmap.progressPercent,
+      hasRoadmap: input.roadmap.hasRoadmap,
+    };
   }
 }
 
