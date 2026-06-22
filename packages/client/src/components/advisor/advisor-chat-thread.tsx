@@ -30,7 +30,11 @@ export function AdvisorChatThread({
 
   return (
     <ScrollArea className={cn('flex-1 min-h-0', className)} scrollFade>
-      <div className="mx-auto px-4 space-y-6 w-full md:w-[80%] pt-6 pb-27 md:pt-6 md:pb-30">
+      <div
+        className="mx-auto px-4 space-y-6 w-full md:w-[80%] pt-6 pb-27 md:pt-6 md:pb-30"
+        dir="ltr"
+        lang="en"
+      >
         {isEmpty ? (
           <AdvisorEmptyState />
         ) : (
