@@ -1310,7 +1310,7 @@
     "type": "hybrid",
     "taxonomySlugs": ["creative-arts", "performing-arts", "performing-arts"],
     "summary": "Live performance, movement, and the stage. The oldest art forms and still the most immediately powerful — and careers built entirely on what you can do in front of a real audience.",
-    "description": "Performing arts covers the disciplines of live performance — theatre, acting, dance, and choreography. These careers are built entirely on demonstrated skill and the ability to hold attention in real time without a screen or edit between you and your audience. The career paths are predominantly portfolio and audition-based, with formal training available through conservatoires and drama schools but not mandatory for all routes. Most performing arts careers are portfolio-based and economically challenging — consistent full-time employment purely through performance is achieved by a minority of practitioners, and most build portfolio careers combining performance with teaching, directing, and other related work. The work itself is profoundly rewarding for those genuinely committed to it.",
+    "description": "Performing arts covers the disciplines of live performance — theatre, acting, and choreography. These careers are built entirely on demonstrated skill and the ability to hold attention in real time without a screen or edit between you and your audience. The career paths are predominantly portfolio and audition-based, with formal training available through conservatoires and drama schools but not mandatory for all routes. Most performing arts careers are portfolio-based and economically challenging — consistent full-time employment purely through performance is achieved by a minority of practitioners, and most build portfolio careers combining performance with teaching, directing, and other related work. The work itself is profoundly rewarding for those genuinely committed to it.",
     "keySkills": [
       "Technical skill in your performance discipline developed to a professional standard through consistent training",
       "Performing with presence, vulnerability, and authenticity in front of live audiences",
@@ -1343,7 +1343,7 @@
       {
         "name": "Field Orientation",
         "duration": "1–3 months",
-        "focus": "Understand the performing arts landscape — the difference between theatre, commercial performance, and dance, and the realistic career trajectories in each. Train with practitioners who work professionally, not just those who teach."
+        "focus": "Understand the performing arts landscape — the difference between theatre, commercial performance, and the realistic career trajectories in each. Train with practitioners who work professionally, not just those who teach."
       },
       {
         "name": "Training and Development",
@@ -1358,7 +1358,6 @@
     ],
     "relatedPathwaySlugs": [
       "theatre-performing-arts",
-      "dance-choreography",
       "film-video-production",
       "education-and-teaching"
     ]
@@ -8138,71 +8137,11 @@
     ],
     "relatedPathwaySlugs": [
       "film-video-production",
-      "dance-choreography",
       "journalism-creative-writing",
       "social-media-content-creation"
     ]
   },
-  {
-    "title": "Dance and Choreography",
-    "slug": "dance-choreography",
-    "type": "hybrid",
-    "taxonomySlugs": ["creative-arts", "performing-arts", "dance-choreography"],
-    "summary": "Communicate through movement — in performance, education, film, and live events. Physical storytelling at its most direct and its most demanding on the body.",
-    "description": "Dancers and choreographers create, perform, and teach movement as an art form — working in ballet, contemporary, commercial, hip-hop, musical theatre, film, live events, and education. Professional performance careers are physically intense and often shorter than other creative careers; many dancers transition into choreography, teaching, direction, or movement direction for theatre and film as their performing career evolves. Choreographers design the movement vocabulary and structure of performances, working with dancers and directors to create work for stage, screen, and event contexts. Day to day, a working dancer might be in morning class, rehearsing in the afternoon, and performing in the evening — or on a commercial shoot, a music video set, or teaching a masterclass.",
-    "keySkills": [
-      "Developing and maintaining technical proficiency across at least one dance form at a professional standard",
-      "Improvising and responding physically to music, direction, and spatial environments in rehearsal",
-      "Learning and retaining choreography quickly and accurately across extended rehearsal periods",
-      "Creating original movement sequences and structuring them into coherent choreographic work",
-      "Teaching dance technique and choreography to students at different levels of experience",
-      "Collaborating with musicians, directors, and visual artists in interdisciplinary performance contexts",
-      "Maintaining physical fitness, injury prevention practice, and recovery discipline throughout a career"
-    ],
-    "opportunities": [
-      "Performer with a contemporary or ballet dance company",
-      "Commercial dancer in music videos, advertising, and live entertainment",
-      "Choreographer creating works for stage, screen, or major events",
-      "Dance teacher or movement educator at a school, studio, or conservatoire",
-      "Movement director for theatre, film, or opera productions",
-      "Dance therapist combining movement with therapeutic practice (additional training required)"
-    ],
-    "status": "active",
-    "visibilityLayer": "specialized",
-    "durationProfile": {
-      "commitmentLevel": "medium",
-      "routeType": "hybrid_route",
-      "degreeRequirement": "optional",
-      "estimatedYearsMin": 3,
-      "estimatedYearsMax": 5,
-      "requiresLicense": false,
-      "localRulesRequired": false
-    },
-    "roadmapWindowLabel": "Next 6–12 months",
-    "journeyPhases": [
-      {
-        "name": "Foundation",
-        "duration": "Ongoing from childhood or entry",
-        "focus": "Train consistently in your chosen dance form with high-quality teachers. Technical foundation takes years — there are no shortcuts. Cross-train in multiple styles to develop range and versatility."
-      },
-      {
-        "name": "Core Training",
-        "duration": "2–3 years",
-        "focus": "Full-time training at a conservatoire or vocational dance school significantly accelerates professional readiness. Develop choreographic skills alongside performance. Build audition material and industry relationships."
-      },
-      {
-        "name": "Entry Transition",
-        "duration": "1–2 years",
-        "focus": "Audition intensively for companies, commercial work, and contracts. Build a performance CV and showreel. The commercial and company tracks diverge significantly — decide which suits your goals and physical style."
-      }
-    ],
-    "relatedPathwaySlugs": [
-      "theatre-performing-arts",
-      "film-video-production",
-      "sports-science-and-coaching",
-      "early-childhood-education"
-    ]
-  },
+
   {
     "title": "Marine Biology",
     "slug": "marine-biology",

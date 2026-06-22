@@ -1062,15 +1062,6 @@
     "status": "active"
   },
   {
-    "name": "نڅا او کوریوګرافي",
-    "description": "تاسو له حرکت سره خبرې کوئ — په اجرا، زده‌کړه، فلم او ژوندیو غونډو کې. فزیکي کیسه‌ویي په خپل تر ټولو مستقیم ډول.",
-    "slug": "dance-choreography",
-    "kind": "specialization",
-    "parentSlug": "performing-arts",
-    "order": 2,
-    "status": "active"
-  },
-  {
     "name": "حیاتي علوم",
     "description": "ژوندي موجودات وڅېړئ — له د یوې حجرې جینیاتي جوړښت څخه تر د ټول اکوسیستم د اړیکو پورې.",
     "slug": "life-sciences",

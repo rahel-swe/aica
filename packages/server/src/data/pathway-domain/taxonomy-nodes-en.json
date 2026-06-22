@@ -1088,15 +1088,6 @@
     "order": 1,
     "status": "active"
   },
-  {
-    "name": "Dance and Choreography",
-    "description": "You communicate through movement — in performance, education, film, and live events. Physical storytelling at its most direct.",
-    "slug": "dance-choreography",
-    "kind": "specialization",
-    "parentSlug": "performing-arts",
-    "order": 2,
-    "status": "active"
-  },
 
   {
     "name": "Life Sciences",

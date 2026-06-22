@@ -1062,15 +1062,6 @@
     "status": "active"
   },
   {
-    "name": "رقص و کوریوگرافی",
-    "description": "شما از طریق حرکت ارتباط برقرار می‌کنید — در اجرا، آموزش، فیلم، و رویدادهای زنده. داستان‌سرایی فیزیکی در مستقیم‌ترین شکل آن.",
-    "slug": "dance-choreography",
-    "kind": "specialization",
-    "parentSlug": "performing-arts",
-    "order": 2,
-    "status": "active"
-  },
-  {
     "name": "علوم حیاتی",
     "description": "مطالعه موجودات زنده — از ژنتیک یک سلول واحد تا بوم‌شناسی اکوسیستم‌های کامل.",
     "slug": "life-sciences",
