@@ -10,6 +10,8 @@ import {
 } from '../ui/card';
 import DashboardInsightsCard from './dashboard-insights-card';
 
+import { m } from '../../paraglide/messages';
+
 export function DashboardInsightsSection({
   dashboard,
 }: {
@@ -33,64 +35,75 @@ export function DashboardInsightsSection({
     refetch,
   } = usePathwayDetailQuery(topPathwaySlug);
 
-  if (isPending) return <p>Dashboard insights pending...</p>;
+  if (isPending) return <p>{m.dashboard_insights_loading()}</p>;
 
-  if (error)
+  if (error) {
     return (
       <ErrorState
         onRetry={refetch}
         isRetrying={isPending}
-        title="Dashboard insights failed"
+        title={m.dashboard_insights_error_title()}
         message={error.message}
       />
     );
+  }
 
   const { title } = pathwayDetailsResponse.data;
 
   return (
     <Card className="rounded-3xl border-muted/60 shadow-sm">
       <CardHeader className="space-y-2">
-        <CardTitle className="text-xl">Insights</CardTitle>
-        <CardDescription>
-          Compact signals that explain your current progress.
-        </CardDescription>
+        <CardTitle className="text-xl rtl:font-sans">
+          {m.dashboard_insights_title()}
+        </CardTitle>
+
+        <CardDescription>{m.dashboard_insights_description()}</CardDescription>
       </CardHeader>
       <CardContent className="flex gap-4 flex-wrap">
         <DashboardInsightsCard
-          label="Direction status"
+          label={m.dashboard_insights_direction_status()}
           value={
-            profileAssessmentCompleted ? 'Profile ready' : 'Profile needed'
+            profileAssessmentCompleted
+              ? m.dashboard_insights_profile_ready()
+              : m.dashboard_insights_profile_needed()
           }
           helper={
             profileAssessmentCompleted
-              ? 'Recommendations can use your onboarding traits.'
-              : 'Complete onboarding to unlock useful pathway matching.'
+              ? m.dashboard_insights_profile_ready_helper()
+              : m.dashboard_insights_profile_needed_helper()
           }
         />
 
         <DashboardInsightsCard
-          label="Best match"
-          value={title ?? 'Not generated'}
+          label={m.dashboard_insights_best_match()}
+          value={title ?? m.dashboard_insights_not_generated()}
           helper={
             topRecommendedPathwayScore
-              ? `${topRecommendedPathwayScore}% fit based on your current profile.`
-              : 'Generate recommendations after onboarding.'
+              ? m.dashboard_insights_best_match_helper({
+                  score: Math.round(topRecommendedPathwayScore * 100),
+                })
+              : m.dashboard_insights_generate_recommendations_helper()
           }
         />
 
         <DashboardInsightsCard
-          label="Roadmap progress"
+          label={m.dashboard_insights_roadmap_progress()}
           value={
             hasRoadmap
-              ? `${roadmapProgressPercent}% complete`
-              : 'No roadmap yet'
+              ? m.dashboard_insights_complete({
+                  progress: roadmapProgressPercent,
+                })
+              : m.dashboard_insights_no_roadmap()
           }
           helper={
             hasRoadmap
-              ? `${roadmapCompletedSteps} of ${roadmapTotalSteps} steps completed.`
+              ? m.dashboard_insights_steps_completed({
+                  completed: roadmapCompletedSteps,
+                  total: roadmapTotalSteps,
+                })
               : roadmapSetupCompleted
-                ? 'Setup is ready. Generate a roadmap next.'
-                : 'Roadmap setup is needed before generation.'
+                ? m.dashboard_insights_setup_ready()
+                : m.dashboard_insights_setup_needed()
           }
         />
       </CardContent>

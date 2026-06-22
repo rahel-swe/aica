@@ -356,6 +356,29 @@
 
   "dashboard_stats_done": "Done",
   "dashboard_stats_pending": "Pending",
+  "dashboard_insights_loading": "Dashboard insights pending...",
+  "dashboard_insights_error_title": "Dashboard insights failed",
+
+  "dashboard_insights_title": "Insights",
+  "dashboard_insights_description": "Compact signals that explain your current progress.",
+
+  "dashboard_insights_direction_status": "Direction status",
+  "dashboard_insights_profile_ready": "Profile ready",
+  "dashboard_insights_profile_needed": "Profile needed",
+  "dashboard_insights_profile_ready_helper": "Recommendations can use your onboarding traits.",
+  "dashboard_insights_profile_needed_helper": "Complete onboarding to unlock useful pathway matching.",
+
+  "dashboard_insights_best_match": "Best match",
+  "dashboard_insights_not_generated": "Not generated",
+  "dashboard_insights_best_match_helper": "{score}% fit based on your current profile.",
+  "dashboard_insights_generate_recommendations_helper": "Generate recommendations after onboarding.",
+
+  "dashboard_insights_roadmap_progress": "Roadmap progress",
+  "dashboard_insights_complete": "{progress}% complete",
+  "dashboard_insights_no_roadmap": "No roadmap yet",
+  "dashboard_insights_steps_completed": "{completed} of {total} steps completed.",
+  "dashboard_insights_setup_ready": "Setup is ready. Generate a roadmap next.",
+  "dashboard_insights_setup_needed": "Roadmap setup is needed before generation.",
 
   "explore_title": "Explore",
   "explore_search_placeholder": "Search pathways, topics...",

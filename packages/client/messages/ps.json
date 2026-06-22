@@ -362,6 +362,29 @@
 
   "dashboard_stats_done": "بشپړ",
   "dashboard_stats_pending": "ناپوره",
+  "dashboard_insights_loading": "د ډشبورډ معلومات بارېږي...",
+  "dashboard_insights_error_title": "د ډشبورډ معلوماتو په ترلاسه کولو کې ستونزه رامنځته شوه",
+
+  "dashboard_insights_title": "مهم معلومات",
+  "dashboard_insights_description": "لنډې نښې چې ستاسو اوسنی پرمختګ تشریح کوي.",
+
+  "dashboard_insights_direction_status": "د مسیر حالت",
+  "dashboard_insights_profile_ready": "پروفایل چمتو دی",
+  "dashboard_insights_profile_needed": "پروفایل ته اړتیا ده",
+  "dashboard_insights_profile_ready_helper": "سپارښتنې کولی شي ستاسو د ارزونې معلومات وکاروي.",
+  "dashboard_insights_profile_needed_helper": "د ګټورو سپارښتنو لپاره لومړی ارزونه بشپړه کړئ.",
+
+  "dashboard_insights_best_match": "غوره مطابقت",
+  "dashboard_insights_not_generated": "لا نه دی جوړ شوی",
+  "dashboard_insights_best_match_helper": "ستاسو د اوسني پروفایل پر بنسټ {score}% مطابقت.",
+  "dashboard_insights_generate_recommendations_helper": "له ارزونې وروسته سپارښتنې جوړې کړئ.",
+
+  "dashboard_insights_roadmap_progress": "د لارې نقشې پرمختګ",
+  "dashboard_insights_complete": "{progress}% بشپړ شوی",
+  "dashboard_insights_no_roadmap": "تر اوسه د لارې نقشه نشته",
+  "dashboard_insights_steps_completed": "له {total} ګامونو څخه {completed} بشپړ شوي دي.",
+  "dashboard_insights_setup_ready": "تنظیمات چمتو دي. اوس د لارې نقشه جوړه کړئ.",
+  "dashboard_insights_setup_needed": "د جوړولو څخه مخکې د لارې نقشې تنظیم ته اړتیا ده.",
 
   "explore_title": "سپړنه",
   "explore_search_placeholder": "لارې، موضوعات وپلټئ...",

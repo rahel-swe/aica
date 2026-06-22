@@ -358,6 +358,29 @@
 
   "dashboard_stats_done": "تکمیل",
   "dashboard_stats_pending": "در انتظار",
+  "dashboard_insights_loading": "اطلاعات داشبورد در حال بارگذاری است...",
+  "dashboard_insights_error_title": "بارگذاری اطلاعات داشبورد ناموفق بود",
+
+  "dashboard_insights_title": "بینش‌ها",
+  "dashboard_insights_description": "نشانه‌های کوتاه که وضعیت فعلی پیشرفت شما را توضیح می‌دهند.",
+
+  "dashboard_insights_direction_status": "وضعیت مسیر",
+  "dashboard_insights_profile_ready": "پروفایل آماده است",
+  "dashboard_insights_profile_needed": "پروفایل مورد نیاز است",
+  "dashboard_insights_profile_ready_helper": "پیشنهادها می‌توانند از اطلاعات ارزیابی شما استفاده کنند.",
+  "dashboard_insights_profile_needed_helper": "برای دریافت پیشنهادهای مفید، ابتدا ارزیابی را تکمیل کنید.",
+
+  "dashboard_insights_best_match": "بهترین مطابقت",
+  "dashboard_insights_not_generated": "هنوز ایجاد نشده",
+  "dashboard_insights_best_match_helper": "{score}% مطابقت بر اساس پروفایل فعلی شما.",
+  "dashboard_insights_generate_recommendations_helper": "پس از تکمیل ارزیابی، پیشنهادها را ایجاد کنید.",
+
+  "dashboard_insights_roadmap_progress": "پیشرفت نقشه راه",
+  "dashboard_insights_complete": "{progress}% تکمیل شده",
+  "dashboard_insights_no_roadmap": "هنوز نقشه راهی وجود ندارد",
+  "dashboard_insights_steps_completed": "{completed} از {total} مرحله تکمیل شده است.",
+  "dashboard_insights_setup_ready": "تنظیمات آماده است. اکنون نقشه راه را ایجاد کنید.",
+  "dashboard_insights_setup_needed": "پیش از ایجاد، تنظیم نقشه راه ضروری است.",
 
   "explore_title": "کاوش",
   "explore_search_placeholder": "جستجوی مسیرها، موضوعات...",
