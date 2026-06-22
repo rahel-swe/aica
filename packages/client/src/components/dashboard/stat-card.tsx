@@ -9,7 +9,7 @@ export function StatCard({
 }: {
   label: string;
   value: string;
-  helper: string;
+  helper?: string;
   icon: React.ComponentType<{ className?: string }>;
 }) {
   return (

@@ -327,6 +327,31 @@
   "dashboard_continue_cta": "ادامه یادگیری",
   "dashboard_empty_state_heading": "شما هنوز هیچ مسیری را شروع نکرده‌اید.",
   "dashboard_empty_state_cta": "مسیر خود را پیدا کنید",
+  "dashboard_next_action_complete_onboarding_title": "پروفایل مسیر خود را تکمیل کنید",
+  "dashboard_next_action_complete_onboarding_description": "AICA پیش از آن‌که بتواند مسیرهای مفید را پیشنهاد کند، به توانایی‌ها، علاقه‌مندی‌ها و ترجیحات کاری شما نیاز دارد.",
+  "dashboard_next_action_complete_onboarding_cta": "شروع",
+
+  "dashboard_next_action_review_recommendations_title": "پیشنهادهای مسیر خود را بسازید",
+  "dashboard_next_action_review_recommendations_description": "پروفایل شما آماده است. پیشنهادها را بسازید تا AICA بهترین گزینه‌های مسیر را به شما نشان دهد.",
+  "dashboard_next_action_review_recommendations_cta": "دیدن پیشنهادها",
+
+  "dashboard_next_action_complete_roadmap_setup_title": "ترجیحات نقشه راه خود را تنظیم کنید",
+  "dashboard_next_action_complete_roadmap_setup_description": "پیش از ساختن برنامه، سطح شروع، زمان هفتگی، محدودیت‌ها و سبک نقشه راه خود را انتخاب کنید.",
+  "dashboard_next_action_complete_roadmap_setup_cta": "تنظیم نقشه راه",
+
+  "dashboard_next_action_generate_roadmap_title": "نقشه راه بسازید",
+  "dashboard_next_action_generate_roadmap_description": "ترجیحات مسیر و برنامه‌ریزی شما آماده است. گام مفید بعدی یک نقشه راه عملی و واقع‌بینانه است.",
+  "dashboard_next_action_generate_roadmap_cta": "ساخت نقشه راه",
+
+  "dashboard_next_action_continue_roadmap_title": "پیشرفت نقشه راه خود را مرور کنید",
+  "dashboard_next_action_continue_roadmap_description": "کار را از گام بعدیِ ناتمام ادامه دهید.",
+  "dashboard_next_action_continue_roadmap_cta": "باز کردن نقشه راه",
+
+  "dashboard_status_needs_onboarding": "برای فعال شدن پیشنهادها، تنظیمات را کامل کنید.",
+  "dashboard_status_needs_recommendations": "پروفایل شما آماده است.",
+  "dashboard_status_needs_roadmap_setup": "یک مسیر را انتخاب کنید.",
+  "dashboard_status_needs_roadmap": "نقشه راه خود را بسازید.",
+  "dashboard_status_active": "همه‌چیز در حال حرکت است.",
 
   "explore_title": "کاوش",
   "explore_search_placeholder": "جستجوی مسیرها، موضوعات...",

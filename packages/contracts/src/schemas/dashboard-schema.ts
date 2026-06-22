@@ -24,18 +24,12 @@ export const dashboardResponseSchema = z.object({
     roadmapSetupCompleted: z.boolean(),
   }),
   status: dashboardStatusSchema,
-  nextAction: z.object({
-    type: dashboardNextActionTypeSchema,
-    title: z.string(),
-    description: z.string(),
-    ctaLabel: z.string(),
-    href: z.string(),
-  }),
+  nextActionType: dashboardNextActionTypeSchema,
   recommendation: z.object({
     hasRecommendations: z.boolean(),
     top: z.array(
       z.object({
-        pathwayId: z.string(),
+        pathwaySlug: z.string(),
         title: z.string(),
         slug: z.string(),
         type: z.enum(['study', 'career', 'hybrid']),
@@ -49,7 +43,7 @@ export const dashboardResponseSchema = z.object({
   roadmap: z.object({
     hasRoadmap: z.boolean(),
     roadmapId: z.string().optional(),
-    pathwayId: z.string().optional(),
+    pathwaySlug: z.string().optional(),
     title: z.string().optional(),
     summary: z.string().optional(),
     progressPercent: z.number(),

@@ -31,7 +31,7 @@ export interface IRoadmapPhase {
 
 export interface IRoadmap extends Document {
   userId: Schema.Types.ObjectId | string;
-  pathwayId: Schema.Types.ObjectId;
+  pathwaySlug: string;
 
   version: number;
   status: 'draft' | 'active' | 'archived';
@@ -122,9 +122,8 @@ const roadmapSchema = new Schema<IRoadmap>(
       required: true,
       index: true,
     },
-    pathwayId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Pathway',
+    pathwaySlug: {
+      type: String,
       required: true,
       index: true,
     },

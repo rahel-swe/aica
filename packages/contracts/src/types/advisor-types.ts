@@ -53,12 +53,11 @@ export type AdvisorContext = {
 };
 
 export type AdvisorRecommendationItem = {
-  title: string;
   slug: string;
+  explaination?: string;
   rank: number;
   totalScore: number;
   reasons: string[];
-  pathwayId: string;
 };
 
 export type AdvisorPathwayData = {

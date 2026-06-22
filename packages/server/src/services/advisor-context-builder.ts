@@ -1,3 +1,4 @@
+import type { IRecommendation } from '../models/recommendation-model';
 import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 import { pathwayRepository } from '../repositories/pathway-repository';
 import { recommendationRepository } from '../repositories/recommendation-repository';
@@ -14,7 +15,6 @@ import type {
   RoadmapStep,
   PathwayRoadmap,
 } from '@contracts/shared/types/roadmap-types';
-import type { RecommendationItem } from '@contracts/shared/types/pathway-domain-types';
 
 export class AdvisorContextBuilder {
   // ─── Building fresh context from DB ────────────────────────────────────────────
@@ -27,28 +27,26 @@ export class AdvisorContextBuilder {
     const [onboardingRaw, recommendationsRaw, roadmapSetup, roadmap] =
       await Promise.all([
         pathwayAssessmentRepository.findByUserId(userId),
-        recommendationRepository.findByUserId(userId),
+        recommendationRepository.findAllByUserId(userId),
         roadmapSetupAssessmentRepository.findByUserId(userId),
         roadmapRepository.findOneByUserId(userId),
       ]);
 
     // Strip Mongoose document wrapper without casting every type
     const onboarding = onboardingRaw
-      ? (onboardingRaw.toObject?.() ??
-        (onboardingRaw as Record<string, unknown>))
+      ? (onboardingRaw.toObject?.() ?? onboardingRaw)
       : null;
 
     const recommendations = (
-      (recommendationsRaw as unknown as RecommendationItem[]) ?? []
+      (recommendationsRaw as unknown as IRecommendation[]) ?? []
     )
       .slice(0, 3)
       .map((r) => ({
-        title: r.title,
-        slug: r.slug,
+        slug: r.pathwaySlug,
+        explaination: r.explanation,
         rank: r.rank,
         totalScore: r.totalScore,
         reasons: r.reasons ?? [],
-        pathwayId: String(r.pathwayId),
       }));
 
     const roadmapData = roadmap as PathwayRoadmap | null;
@@ -56,8 +54,8 @@ export class AdvisorContextBuilder {
 
     const selectedPathwaySlug =
       roadmapData?.pathwaySlug ??
-      (roadmapSetupData?.pickedPathwaySlug as string | undefined) ??
-      recommendations[0]?.pathwayId;
+      roadmapSetupData?.pickedPathwaySlug ??
+      recommendations[0]?.slug;
 
     const selectedPathwayRaw = selectedPathwaySlug
       ? await pathwayRepository

@@ -16,40 +16,7 @@ import { PathwayModel } from '../models/pathway-model';
 import { recommendationRepository } from '../repositories/recommendation-repository';
 
 import type { RecommendationExplanationResponse } from '@contracts/shared/schemas/recommendation-schema';
-
-// ── Retry utility ─────────────────────────────────────────────────────────────
-// Exponential backoff: 700ms → 1400ms → 2800ms
-// Retries transient failures (network, 5xx, rate-limit).
-// Does NOT retry 4xx — those indicate a bad prompt or auth issue.
-
-type RetryOptions = { attempts: number; baseDelayMs: number };
-
-async function withRetry<T>(
-  fn: () => Promise<T>,
-  { attempts, baseDelayMs }: RetryOptions
-): Promise<T> {
-  let lastError: Error = new Error('Unknown error');
-
-  for (let i = 1; i <= attempts; i++) {
-    try {
-      return await fn();
-    } catch (err) {
-      lastError = err instanceof Error ? err : new Error(String(err));
-
-      const isClientError =
-        lastError.message.includes('400') ||
-        lastError.message.includes('401') ||
-        lastError.message.includes('403');
-
-      if (isClientError || i === attempts) throw lastError;
-
-      // Exponential backoff: 700ms, 1400ms, 2800ms
-      await new Promise((r) => setTimeout(r, baseDelayMs * i));
-    }
-  }
-
-  throw lastError;
-}
+import { withRetry } from '../utils/retry-utility';
 
 // ── Prompt template ───────────────────────────────────────────────────────────
 // Lean and focused. No filler. The model's job is to connect
@@ -134,12 +101,10 @@ class RecommendationExplanationService {
       userId
     );
 
-    if (!rec) {
-      throw new Error('Recommendation not found.');
-    }
+    if (!rec) throw new Error('Recommendation not found.');
 
     // ── 2. Return cached explanation if available ─────────────────────────
-    if (rec.explanation && rec.explanationGeneratedAt) {
+    if (rec.explanation && rec.explanationGeneratedAt)
       return {
         success: true,
         message: 'Explanation retrieved from cache.',
@@ -151,7 +116,6 @@ class RecommendationExplanationService {
           generatedByModel: rec.explanationModel ?? LLM_MODEL,
         },
       };
-    }
 
     // ── 3. Load pathway English content for prompt context ─────────────────
     const pathway = await PathwayModel.findOne(
@@ -164,7 +128,7 @@ class RecommendationExplanationService {
     const summaryEn = pathway?.translations?.get?.('en')?.summary ?? '';
 
     // ── 4. Extract profile values from snapshot ────────────────────────────
-    const snapshot = rec.sourceProfileSnapshot as Record<string, unknown>;
+    const snapshot = rec.sourceProfileSnapshot;
 
     const prompt = buildExplanationPrompt({
       pathwayTitle: titleEn,
@@ -181,7 +145,7 @@ class RecommendationExplanationService {
     });
 
     // ── 5. Call LLM with retry ─────────────────────────────────────────────
-    let explanation: string;
+    let explanation: string | null | undefined;
 
     try {
       explanation = await withRetry(
@@ -196,9 +160,7 @@ class RecommendationExplanationService {
       );
     }
 
-    if (!explanation.trim()) {
-      throw new Error('LLM returned an empty explanation.');
-    }
+    if (!explanation) throw new Error('LLM returned an empty explanation.');
 
     // ── 6. Cache in DB ─────────────────────────────────────────────────────
     await recommendationRepository.updateExplanation(
@@ -225,4 +187,3 @@ class RecommendationExplanationService {
 
 export const recommendationExplanationService =
   new RecommendationExplanationService();
-// NOTE: withRetry was added inline above the class definition

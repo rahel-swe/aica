@@ -1,6 +1,7 @@
 import { ArrowRight, BrainCircuit, Rocket, Target, Users } from 'lucide-react';
 
 import type { DashboardNextActionType } from '@contracts/shared/types/dashboard-types';
+import { cn } from '@/lib/utils';
 
 export function NextActionIcon({
   type,
@@ -23,6 +24,11 @@ export function NextActionIcon({
       return <Rocket className={className} />;
 
     default:
-      return <ArrowRight className={className} />;
+      return (
+        <ArrowRight
+          strokeWidth={2.9}
+          className={cn('rtl:rotate-180', className)}
+        />
+      );
   }
 }

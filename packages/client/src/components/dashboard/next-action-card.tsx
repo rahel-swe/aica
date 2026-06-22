@@ -7,29 +7,32 @@ import {
 } from '@/components/ui/card';
 import { Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { NextActionIcon } from './next-action-icon';
+
 import type { DashboardResponse } from '@contracts/shared/types/dashboard-types';
+
+import { m } from '../../paraglide/messages';
+
+import {
+  DASHBOARD_NEXT_ACTION_DATA,
+  DASHBOARD_STATUS_META,
+} from '@/constants/dashboard-data';
+import { NextActionIcon } from './next-action-icon';
 
 export function NextActionCard({
   dashboard,
 }: {
   dashboard: DashboardResponse;
 }) {
-  const meta = {
-    needs_onboarding: 'Finish setup to unlock recommendations.',
-    needs_recommendations: 'Your profile is ready.',
-    needs_roadmap_setup: 'Pick a pathway.',
-    needs_roadmap: 'Generate your roadmap.',
-    active: 'Everything is in motion.',
-  }[dashboard.status];
+  const nextAction = DASHBOARD_NEXT_ACTION_DATA[dashboard.nextActionType];
+  const meta = DASHBOARD_STATUS_META[dashboard.status];
 
   return (
     <Card className="rounded-3xl">
       <CardHeader className="space-y-4">
-        <CardTitle>
-          {dashboard.profile.name
-            ? `Welcome back, ${dashboard.profile.name}`
-            : 'Welcome back'}
+        <CardTitle className="rtl:font-sans md:text-xl">
+          {m.dashboard_welcome_heading({
+            name: dashboard?.profile?.name ?? '',
+          })}
         </CardTitle>
 
         <CardDescription>{meta}</CardDescription>
@@ -37,20 +40,23 @@ export function NextActionCard({
         <div className="rounded-2xl border p-4">
           <div className="flex items-start gap-3">
             <Sparkles />
+
             <div>
-              <p>{dashboard.nextAction.title}</p>
+              <p>{nextAction.title}</p>
+
               <p className="text-sm text-muted-foreground">
-                {dashboard.nextAction.description}
+                {nextAction.description}
               </p>
             </div>
           </div>
         </div>
 
-        <Button asChild>
-          <Link to={dashboard.nextAction.href}>
-            {dashboard.nextAction.ctaLabel}
+        <Button asChild className="py-6 w-min mx-auto px-8">
+          <Link to={nextAction.href}>
+            {nextAction.ctaLabel}
+
             <NextActionIcon
-              type={dashboard.nextAction.type}
+              type={dashboard.nextActionType}
               className="ml-2 h-4 w-4"
             />
           </Link>

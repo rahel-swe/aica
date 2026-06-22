@@ -325,6 +325,31 @@
   "dashboard_continue_cta": "Continue Learning",
   "dashboard_empty_state_heading": "You haven't started a pathway yet.",
   "dashboard_empty_state_cta": "Find Your Pathway",
+  "dashboard_next_action_complete_onboarding_title": "Complete your direction profile",
+  "dashboard_next_action_complete_onboarding_description": "AICA needs your strengths, interests, and work preferences before it can recommend useful pathways.",
+  "dashboard_next_action_complete_onboarding_cta": "Start onboarding",
+
+  "dashboard_next_action_review_recommendations_title": "Generate your pathway recommendations",
+  "dashboard_next_action_review_recommendations_description": "Your profile is ready. Generate recommendations so AICA can show your strongest pathway options.",
+  "dashboard_next_action_review_recommendations_cta": "View recommendations",
+
+  "dashboard_next_action_complete_roadmap_setup_title": "Set up your roadmap preferences",
+  "dashboard_next_action_complete_roadmap_setup_description": "Choose your starting level, weekly time, constraints, and roadmap style before generating a plan.",
+  "dashboard_next_action_complete_roadmap_setup_cta": "Set up roadmap",
+
+  "dashboard_next_action_generate_roadmap_title": "Generate a roadmap",
+  "dashboard_next_action_generate_roadmap_description": "Your pathway and planning preferences are ready. The next useful step is a realistic action roadmap.",
+  "dashboard_next_action_generate_roadmap_cta": "Generate roadmap",
+
+  "dashboard_next_action_continue_roadmap_title": "Review your roadmap progress",
+  "dashboard_next_action_continue_roadmap_description": "Continue with the next incomplete roadmap step.",
+  "dashboard_next_action_continue_roadmap_cta": "Open roadmap",
+
+  "dashboard_status_needs_onboarding": "Finish setup to unlock recommendations.",
+  "dashboard_status_needs_recommendations": "Your profile is ready.",
+  "dashboard_status_needs_roadmap_setup": "Pick a pathway.",
+  "dashboard_status_needs_roadmap": "Generate your roadmap.",
+  "dashboard_status_active": "Everything is in motion.",
 
   "explore_title": "Explore",
   "explore_search_placeholder": "Search pathways, topics...",

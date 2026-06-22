@@ -3,7 +3,6 @@ import type {
   DashboardResponse,
   DashboardStatus,
 } from '@contracts/shared/types/dashboard-types';
-import { UserModel } from '../models/user-model';
 import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 import { recommendationRepository } from '../repositories/recommendation-repository';
 import { roadmapRepository } from '../repositories/roadmap-repository';
@@ -11,7 +10,7 @@ import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-
 import type { User } from 'better-auth';
 import type { PathwayRoadmap } from '@contracts/shared/types/roadmap-types';
 
-type DashboardNextAction = DashboardResponse['nextAction'];
+type DashboardNextAction = DashboardResponse['nextActionType'];
 type DashboardRoadmap = DashboardResponse['roadmap'];
 type DashboardRecommendation = DashboardResponse['recommendation'];
 
@@ -50,7 +49,11 @@ export class DashboardService {
         roadmapSetupCompleted,
       },
       status,
-      nextAction: this.buildNextAction(status, recommendation, roadmapSummary),
+      nextActionType: this.buildNextActionType(
+        status,
+        recommendation,
+        roadmapSummary
+      ),
       recommendation,
       roadmap: roadmapSummary,
       insights: this.buildInsights({
@@ -64,7 +67,7 @@ export class DashboardService {
 
   private buildRecommendation(recommendations: any[]): DashboardRecommendation {
     const top = recommendations.slice(0, 3).map((item) => ({
-      pathwayId: String(item.pathwayId),
+      pathwaySlug: String(item.pathwaySlug),
       title: item.title,
       slug: item.slug,
       type: item.type,
@@ -101,7 +104,6 @@ export class DashboardService {
     const notStartedSteps = steps.filter(
       (step) => step.status === 'pending'
     ).length;
-
     const inProgressSteps = steps.filter(
       (step) => step.status === 'in_progress'
     ).length;
@@ -117,7 +119,7 @@ export class DashboardService {
     return {
       hasRoadmap: true,
       roadmapId: String(roadmap._id),
-      pathwayId: String(roadmap.pathwayId),
+      pathwaySlug: String(roadmap.pathwaySlug),
       title: roadmap.title,
       summary: roadmap.summary,
       progressPercent,
@@ -153,68 +155,24 @@ export class DashboardService {
     return 'active';
   }
 
-  private buildNextAction(
+  private buildNextActionType(
     status: DashboardStatus,
     recommendation: DashboardRecommendation,
     roadmap: DashboardRoadmap
   ): DashboardNextAction {
     const actions: Record<DashboardStatus, DashboardNextAction> = {
-      needs_onboarding: this.nextAction(
-        'complete_onboarding',
-        'Complete your direction profile',
-        'AICA needs your strengths, interests, and work preferences before it can recommend useful pathways.',
-        'Start onboarding',
-        '/pathway-assessment'
-      ),
-      needs_recommendations: this.nextAction(
-        'review_recommendations',
-        'Generate your pathway recommendations',
-        'Your profile is ready. Generate recommendations so AICA can show your strongest pathway options.',
-        'View recommendations',
-        '/pathway-recommendations'
-      ),
-      needs_roadmap_setup: this.nextAction(
-        'complete_roadmap_setup',
-        'Set up your roadmap preferences',
-        'Choose your starting level, weekly time, constraints, and roadmap style before generating a plan.',
-        'Set up roadmap',
-        '/roadmap-setup-assessment'
-      ),
-      needs_roadmap: this.nextAction(
-        'generate_roadmap',
-        `Generate a roadmap for ${recommendation.top[0]?.title ?? 'your top pathway'}`,
-        'Your pathway and planning preferences are ready. The next useful step is a realistic action roadmap.',
-        'Generate roadmap',
-        '/app/roadmap'
-      ),
-      active: this.nextAction(
-        'continue_roadmap',
-        roadmap.nextStep?.title ?? 'Review your roadmap progress',
-        roadmap.nextStep
-          ? 'Continue with the next incomplete roadmap step.'
-          : 'Your roadmap has no pending steps. Review progress and decide whether to refresh the plan.',
-        'Open roadmap',
-        '/app/roadmap'
-      ),
+      needs_onboarding: this.nextAction('complete_onboarding'),
+      needs_recommendations: this.nextAction('review_recommendations'),
+      needs_roadmap_setup: this.nextAction('complete_roadmap_setup'),
+      needs_roadmap: this.nextAction('generate_roadmap'),
+      active: this.nextAction('continue_roadmap'),
     };
 
     return actions[status];
   }
 
-  private nextAction(
-    type: DashboardNextActionType,
-    title: string,
-    description: string,
-    ctaLabel: string,
-    href: string
-  ): DashboardNextAction {
-    return {
-      type,
-      title,
-      description,
-      ctaLabel,
-      href,
-    };
+  private nextAction(type: DashboardNextActionType): DashboardNextAction {
+    return type;
   }
 
   private buildInsights(input: {

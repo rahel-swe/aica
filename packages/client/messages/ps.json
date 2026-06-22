@@ -331,6 +331,31 @@
   "dashboard_continue_cta": "زده کړه دوام ورکړئ",
   "dashboard_empty_state_heading": "تاسې لا تر اوسه کومه لاره نه ده پیل کړې.",
   "dashboard_empty_state_cta": "خپله لاره ومومئ",
+  "dashboard_next_action_complete_onboarding_title": "خپل د لوري پروفایل بشپړ کړئ",
+  "dashboard_next_action_complete_onboarding_description": "AICA ته ستاسو قوتونه، لېوالتیاوې، او د کار ترجیحات پکار دي، څو ګټورې لارې درته وړاندیز کړي.",
+  "dashboard_next_action_complete_onboarding_cta": "پیل وکړئ",
+
+  "dashboard_next_action_review_recommendations_title": "خپلې لارې سپارښتنې جوړې کړئ",
+  "dashboard_next_action_review_recommendations_description": "ستاسو پروفایل چمتو دی. سپارښتنې جوړې کړئ څو AICA ستاسو تر ټولو پیاوړې لارې درته وښيي.",
+  "dashboard_next_action_review_recommendations_cta": "سپارښتنې وګورئ",
+
+  "dashboard_next_action_complete_roadmap_setup_title": "د خپلې لارې نقشې غوره توبونه تنظیم کړئ",
+  "dashboard_next_action_complete_roadmap_setup_description": "د پلان د جوړولو مخکې خپل د پیل کچه، اوونیز وخت، محدودیتونه، او د لارې نقشې طرز وټاکئ.",
+  "dashboard_next_action_complete_roadmap_setup_cta": "د لارې نقشه تنظیم کړئ",
+
+  "dashboard_next_action_generate_roadmap_title": "د لارې نقشه جوړه کړئ",
+  "dashboard_next_action_generate_roadmap_description": "ستاسو د لارې او پلان غوره توبونه چمتو دي. بل ګټور ګام یوه واقعي عملي د لارې نقشه ده.",
+  "dashboard_next_action_generate_roadmap_cta": "د لارې نقشه جوړه کړئ",
+
+  "dashboard_next_action_continue_roadmap_title": "د خپلې لارې نقشې پرمختګ وڅېړئ",
+  "dashboard_next_action_continue_roadmap_description": "له راتلونکي نیمګړي ګام څخه دوام ورکړئ.",
+  "dashboard_next_action_continue_roadmap_cta": "د لارې نقشه پرانیزئ",
+
+  "dashboard_status_needs_onboarding": "د سپارښتنو د خلاصولو لپاره تنظیم بشپړ کړئ.",
+  "dashboard_status_needs_recommendations": "ستاسو پروفایل چمتو دی.",
+  "dashboard_status_needs_roadmap_setup": "یوه لاره وټاکئ.",
+  "dashboard_status_needs_roadmap": "خپله د لارې نقشه جوړه کړئ.",
+  "dashboard_status_active": "هر څه په حرکت کې دي.",
 
   "explore_title": "سپړنه",
   "explore_search_placeholder": "لارې، موضوعات وپلټئ...",
