@@ -37,7 +37,7 @@ export function DashboardInsightsSection({
 
   if (isPending) return <p>{m.dashboard_insights_loading()}</p>;
 
-  if (error) {
+  if (error)
     return (
       <ErrorState
         onRetry={refetch}
@@ -46,12 +46,11 @@ export function DashboardInsightsSection({
         message={error.message}
       />
     );
-  }
 
   const { title } = pathwayDetailsResponse.data;
 
   return (
-    <Card className="rounded-3xl border-muted/60 shadow-sm">
+    <Card>
       <CardHeader className="space-y-2">
         <CardTitle className="text-xl rtl:font-sans">
           {m.dashboard_insights_title()}
