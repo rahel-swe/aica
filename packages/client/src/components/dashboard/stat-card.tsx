@@ -11,7 +11,7 @@ export function StatCard({
   icon: React.ComponentType<{ className?: string }>;
 }) {
   return (
-    <Card>
+    <Card className="rounded-2xl py-4">
       <CardContent className="flex justify-between text-start rounded-4xl py-0">
         <Icon className="size-6" />
         <div className="text-end">

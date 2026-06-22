@@ -32,7 +32,7 @@ export function DashboardRoadmapCard({
   const progressTone = getRoadmapProgressTone(progress);
 
   return (
-    <Card className="rounded-3xl border-muted/60 shadow-sm">
+    <Card className="">
       <CardHeader className="space-y-2">
         <div className="flex items-center justify-between gap-3">
           <div>
@@ -68,7 +68,7 @@ export function DashboardRoadmapCard({
         />
 
         {dashboard.roadmap.hasRoadmap && dashboard.roadmap.nextStep ? (
-          <div className="rounded-2xl border bg-muted/30 p-4">
+          <div className="rounded-4xl bg-muted p-4">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="space-y-1">
                 <p className="text-sm font-medium">

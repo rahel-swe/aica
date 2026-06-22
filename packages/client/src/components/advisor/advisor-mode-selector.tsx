@@ -50,7 +50,7 @@ export function AdvisorModeSelector({
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-0.5 rounded-xl bg-muted/60',
+        'inline-flex items-center gap-0.5 rounded-xl bg-muted/60 border border-border/70',
         disabled && 'opacity-50 pointer-events-none'
       )}
     >

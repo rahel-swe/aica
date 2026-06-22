@@ -4,7 +4,7 @@ import { CheckCircle2, Clock3, CircleDashed } from 'lucide-react';
 import { StatCard } from './stat-card';
 import { m } from '../../paraglide/messages';
 
-export function DashboardStats({
+export function DashboardStatsCard({
   dashboard,
 }: {
   dashboard: DashboardResponse;

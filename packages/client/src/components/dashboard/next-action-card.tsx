@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Sparkles } from 'lucide-react';
+import { Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import type { DashboardResponse } from '@contracts/shared/types/dashboard-types';
@@ -27,7 +27,7 @@ export function NextActionCard({
   const meta = DASHBOARD_STATUS_META[dashboard.status];
 
   return (
-    <Card className="rounded-3xl">
+    <Card className="">
       <CardHeader className="space-y-4">
         <CardTitle className="rtl:font-sans md:text-xl">
           {m.dashboard_welcome_heading({
@@ -39,7 +39,7 @@ export function NextActionCard({
 
         <div className="rounded-2xl border p-4">
           <div className="flex items-start gap-3">
-            <Sparkles />
+            <Activity />
 
             <div>
               <p>{nextAction.title}</p>

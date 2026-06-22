@@ -3,7 +3,7 @@ import { DashboardErrorState } from '@/components/dashboard/dashboard-error-stat
 import { DashboardSkeleton } from '@/components/dashboard/dashboard-skeleton';
 import { DashboardInsightsSection } from '@/components/dashboard/dashboard-insights-section';
 import { DashboardRoadmapCard } from '@/components/dashboard/dashboard-roadmap-card';
-import { DashboardStats } from '@/components/dashboard/dashboard-stats';
+import { DashboardStatsCard } from '@/components/dashboard/dashboard-stats';
 import { NextActionCard } from '@/components/dashboard/next-action-card';
 
 export default function DashboardPage() {
@@ -22,7 +22,7 @@ export default function DashboardPage() {
         <div className="grid gap-6 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-8">
             <NextActionCard dashboard={dashboard} />
-            <DashboardStats dashboard={dashboard} />
+            <DashboardStatsCard dashboard={dashboard} />
           </div>
 
           <div className="space-y-6 lg:col-span-4">

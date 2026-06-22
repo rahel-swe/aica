@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import Lottie, { type LottieRefCurrentProps } from 'lottie-react';
 
-import confettiAnimation from '../../public/animations/confetti on transparent background.json';
+import confettiAnimation from '@/animations/confetti on transparent background.json';
 import { Button } from '@/components/ui/button';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 import { useRoadmapSetupAssessmentStatusQuery } from '@/queries/roadmap-setup-assessment-queries';
