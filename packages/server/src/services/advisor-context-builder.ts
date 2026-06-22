@@ -27,7 +27,7 @@ export class AdvisorContextBuilder {
     const [onboardingRaw, recommendationsRaw, roadmapSetup, roadmap] =
       await Promise.all([
         pathwayAssessmentRepository.findByUserId(userId),
-        recommendationRepository.findByUserId(userId),
+        recommendationRepository.findAllByUserId(userId),
         roadmapSetupAssessmentRepository.findByUserId(userId),
         roadmapRepository.findOneByUserId(userId),
       ]);
