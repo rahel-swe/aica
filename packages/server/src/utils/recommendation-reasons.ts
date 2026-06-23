@@ -146,7 +146,15 @@ const DIMENSION_REASON_BUILDERS: Partial<
   },
 
   workEnvironment: (a) => {
-    return `Your preferred ${label('workEnvironment', a.workEnvironment)} is common and realistic in this path`;
+    if (!a.workEnvironment.length) return null;
+
+    const top = a.workEnvironment
+      .slice(0, 2)
+      .map((v) => label('workEnvironment', v));
+
+    return top.length === 1
+      ? `Your preference for ${top[0]} fits this path well`
+      : `Your preference for ${top[0]} and ${top[1]} fits this path well`;
   },
 
   impact: (a) => {

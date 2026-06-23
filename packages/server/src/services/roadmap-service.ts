@@ -55,8 +55,6 @@ export class RoadmapService {
 
     const pathwayContext = pathway as unknown as PathwayDetailRecord;
 
-    console.log('it works');
-
     const generated =
       await this.roadmapGenerationService.generateStructuredRoadmap({
         pathway: pathwayContext,

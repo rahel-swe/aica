@@ -221,7 +221,7 @@ class RecommendationService {
     userId: string,
     locale: SupportedLocale
   ): Promise<RecommendationOverview> {
-    const stored = await recommendationRepository.findAllByUserId(userId, 189);
+    const stored = await recommendationRepository.findAllByUserId(userId, 188);
 
     if (!stored.length) return { domains: [], fields: [], pathways: [] };
 
@@ -454,7 +454,8 @@ class RecommendationService {
       subjects: doc.subjects as PathwayAssessmentSubject,
       learningPreference:
         doc.learningPreference as PathwayAssessmentLearningPreference[],
-      workEnvironment: doc.workEnvironment as PathwayAssessmentWorkEnvironment,
+      workEnvironment:
+        doc.workEnvironment as PathwayAssessmentWorkEnvironment[],
       workStyle: doc.workStyle as PathwayAssessmentWorkStyle[],
       collaborationStyle:
         doc.collaborationStyle as PathwayAssessmentCollaborationStyle,
