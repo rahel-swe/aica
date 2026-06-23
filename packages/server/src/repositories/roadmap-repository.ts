@@ -3,18 +3,18 @@ import { RoadmapModel } from '../models/roadmap-model';
 
 export class RoadmapRepository {
   async create(data: any) {
-    return await RoadmapModel.create(data);
+    return RoadmapModel.create(data);
   }
 
   async replaceActiveForUserPathway(
     userId: string,
-    pathwayId: string,
+    pathwaySlug: string,
     data: any
   ) {
-    return await RoadmapModel.findOneAndUpdate(
+    return RoadmapModel.findOneAndUpdate(
       {
         userId,
-        pathwayId,
+        pathwaySlug,
         status: 'active',
       },
       {
@@ -22,24 +22,23 @@ export class RoadmapRepository {
       },
       {
         upsert: true,
-        returnDocument: 'after',
+        new: true,
+        runValidators: true,
         setDefaultsOnInsert: true,
       }
     );
   }
 
   async findByUserId(userId: string) {
-    return await RoadmapModel.find({ userId }).sort({ createdAt: -1 }).lean();
+    return RoadmapModel.find({ userId }).sort({ createdAt: -1 }).lean();
   }
 
   async findOneByUserId(userId: string) {
-    return await RoadmapModel.findOne({ userId })
-      .sort({ createdAt: -1 })
-      .lean();
+    return RoadmapModel.findOne({ userId }).sort({ createdAt: -1 }).lean();
   }
 
   async delete(roadmapId: string, userId: string) {
-    return await RoadmapModel.findOneAndDelete({ _id: roadmapId, userId });
+    return RoadmapModel.findOneAndDelete({ _id: roadmapId, userId });
   }
 
   async changeStepStatus(
@@ -48,7 +47,7 @@ export class RoadmapRepository {
     stepId: string,
     status: RoadmapStepStatus
   ) {
-    return await RoadmapModel.findOneAndUpdate(
+    return RoadmapModel.findOneAndUpdate(
       {
         _id: roadmapId,
         userId,
@@ -61,6 +60,7 @@ export class RoadmapRepository {
       },
       {
         returnDocument: 'after',
+        runValidators: true,
       }
     );
   }
@@ -71,7 +71,7 @@ export class RoadmapRepository {
     phaseId: string,
     status: RoadmapStepStatus
   ) {
-    return await RoadmapModel.findOneAndUpdate(
+    return RoadmapModel.findOneAndUpdate(
       {
         _id: roadmapId,
         userId,
@@ -84,6 +84,7 @@ export class RoadmapRepository {
       },
       {
         returnDocument: 'after',
+        runValidators: true,
       }
     );
   }

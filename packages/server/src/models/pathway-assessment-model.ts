@@ -25,20 +25,20 @@ const pathwayAssessmentSchema = new Schema(
       type: [String],
       enum: strengthsEnum,
       required: true,
-      validate: [
-        (val: string[]) => val.length >= 1 && val.length <= 3,
-        'Select 1 to 3 strengths',
-      ],
+      // validate: [
+      //   (val: string[]) => val.length >= 1 && val.length <= 3,
+      //   'Select 1 to 3 strengths',
+      // ],
     },
 
     passions: {
       type: [String],
       enum: passionsEnum,
       required: true,
-      validate: [
-        (val: string[]) => val.length >= 1 && val.length <= 3,
-        'Select 1 to 3 passions',
-      ],
+      // validate: [
+      //   (val: string[]) => val.length >= 1 && val.length <= 3,
+      //   'Select 1 to 3 passions',
+      // ],
     },
 
     subjects: {
@@ -51,24 +51,24 @@ const pathwayAssessmentSchema = new Schema(
       type: [String],
       enum: learningPreferenceEnum,
       required: true,
-      validate: [
-        (val: string[]) => val.length >= 1 && val.length <= 3,
-        'Select 1 to 3 learning preferences',
-      ],
+      // validate: [
+      //   (val: string[]) => val.length >= 1 && val.length <= 3,
+      //   'Select 1 to 3 learning preferences',
+      // ],
     },
 
     workStyle: {
       type: [String],
       enum: workStyleEnum,
       required: true,
-      validate: [
-        (val: string[]) => val.length >= 1 && val.length <= 2,
-        'Select 1 to 2 work styles',
-      ],
+      // validate: [
+      //   (val: string[]) => val.length >= 1 && val.length <= 2,
+      //   'Select 1 to 2 work styles',
+      // ],
     },
 
     workEnvironment: {
-      type: String,
+      type: [String],
       enum: workEnvironmentEnum,
       required: true,
     },

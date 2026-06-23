@@ -121,21 +121,24 @@ export const pathwayAssessmentFormSchema = z.object({
   strengths: z
     .array(pathwayAssessmentStrengthSchema)
     .min(1, 'Select at least one strength.')
-    .max(3, 'Select up to three strengths.'),
+    .max(5, 'Select up to five strengths.'),
 
   subjects: pathwayAssessmentSubjectSchema,
 
   passions: z
     .array(pathwayAssessmentPassionSchema)
     .min(1, 'Select at least one interest.')
-    .max(3, 'Select up to three interests.'),
+    .max(5, 'Select up to five interests.'),
 
   learningPreference: z
     .array(pathwayAssessmentLearningPreferenceSchema)
     .min(1, 'Select at least one learning style.')
     .max(3, 'Select up to three.'),
 
-  workEnvironment: pathwayAssessmentWorkEnvironmentSchema,
+  workEnvironment: z
+    .array(pathwayAssessmentWorkEnvironmentSchema)
+    .min(1, 'Select at least one learning style.')
+    .max(2, 'Select up to two.'),
 
   workStyle: z
     .array(pathwayAssessmentWorkStyleSchema)

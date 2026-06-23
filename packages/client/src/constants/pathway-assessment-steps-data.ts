@@ -119,7 +119,7 @@ export const pathwayAssessmentDefaultValues: PathwayAssessmentFormValues = {
   subjects: '' as PathwayAssessmentSubject,
   learningPreference: [],
   workStyle: [],
-  workEnvironment: '' as PathwayAssessmentWorkEnvironment,
+  workEnvironment: [],
   collaborationStyle: '' as PathwayAssessmentCollaborationStyle,
   impact: [],
   goals: '' as PathwayAssessmentGoal,
@@ -631,7 +631,7 @@ export const PATHWAY_ASSESSMENT_STEPS: PathwayAssessmentStep[] = [
   },
   {
     id: 'work-environment',
-    type: 'single-select',
+    type: 'multi-select',
     title: m.pathway_assessment_environment_title(),
     helperText: m.pathway_assessment_environment_helper(),
     fieldName: 'workEnvironment',

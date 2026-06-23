@@ -14,10 +14,6 @@ type Props = {
   detail: PathwayDetailView;
   matchPercent?: number;
   reasons?: string[];
-  /**
-   * compact = true in DirectionStage (preview of top pathway).
-   * compact = false in PathwayStage (full breakdown with journey + opportunities).
-   */
   compact?: boolean;
 };
 
@@ -44,7 +40,7 @@ const PathwayDetailPanel = ({
           </div>
 
           {reasons && reasons.length > 0 && (
-            <ul className="flex flex-wrap gap-2 list-disc ps-6">
+            <ul className="flex flex-col gap-2 list-disc ps-6" dir="ltr">
               {reasons.map((reason) => (
                 <li key={reason} className="font-normal text-xs">
                   {reason}
@@ -102,7 +98,7 @@ const PathwayDetailPanel = ({
           <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
             Key skills
           </p>
-          <ul className="flex flex-wrap gap-2 list-decimal ps-6">
+          <ul className="flex flex-col gap-2 list-decimal ps-6">
             {detail.keySkills.map((skill) => (
               <li key={skill} className="text-xs ">
                 {skill}

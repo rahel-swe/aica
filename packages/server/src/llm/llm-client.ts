@@ -17,11 +17,12 @@ export type LLMMessage = { role: 'user' | 'assistant'; content: string };
 
 export async function createTextCompletion(
   prompt: string,
+  model?: string,
   options: { maxTokens?: number; model?: string } = {}
 ) {
   try {
     const response = await openaiClient.chat.completions.create({
-      model: LLM_MODEL,
+      model: model || LLM_MODEL,
       messages: [{ role: 'user', content: prompt }],
     });
 

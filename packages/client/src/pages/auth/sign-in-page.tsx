@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
+import { useProfileStatusQuery } from '@/queries/profile-query';
 
 const signInSchema = z.object({
   email: z.string().email(),
@@ -22,6 +23,8 @@ type SignInForm = z.infer<typeof signInSchema>;
 
 export default function SignInPage() {
   const navigate = useNavigate();
+  const { isPending: profileStatusPending, data: profileStatusResponse } =
+    useProfileStatusQuery();
 
   const {
     handleSubmit,
@@ -44,6 +47,8 @@ export default function SignInPage() {
       clearErrors('root');
   }, [clearErrors, isSubmitting, watch('email'), watch('password')]);
 
+  if (profileStatusPending) return <p>Loading...</p>;
+
   const onSubmit = async (data: SignInForm) => {
     await authClient.signIn.email(
       {
@@ -51,7 +56,10 @@ export default function SignInPage() {
         password: data.password,
       },
       {
-        onSuccess: () => navigate('/app/dashboard'),
+        onSuccess: () =>
+          profileStatusResponse?.data.assessments.pathwayAssessmentCompleted
+            ? navigate('/app/dashboard')
+            : navigate('/pathway-assessment'),
         onError: ({ error }) => setError('root', { message: error.message }),
       }
     );

@@ -65,7 +65,8 @@ export class RoadmapGenerationService {
     );
 
     const response = await createTextCompletion(
-      this.renderPrompt({ ...input, targetContext, sourceNotes })
+      this.renderPrompt({ ...input, targetContext, sourceNotes }),
+      'openai/gpt-oss-20b:nscale'
     );
 
     if (!response) throw new Error('Roadmap generation faild');

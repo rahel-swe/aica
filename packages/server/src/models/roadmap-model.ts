@@ -190,6 +190,6 @@ const roadmapSchema = new Schema<IRoadmap>(
   { timestamps: true }
 );
 
-roadmapSchema.index({ userId: 1, pathwayId: 1, status: 1 });
+roadmapSchema.index({ userId: 1, status: 1 });
 
 export const RoadmapModel = model<IRoadmap>('Roadmap', roadmapSchema);
