@@ -161,7 +161,7 @@ class PathwayScoringEngine {
         assessment.learningPreference,
         profile.learningPreference
       ),
-      workEnvironment: this.scoreSingleValueDimension(
+      workEnvironment: this.scoreMultiValueDimension(
         assessment.workEnvironment,
         profile.workEnvironment
       ),
