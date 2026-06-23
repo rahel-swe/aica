@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import ErrorState from '@/components/error-state';
 import DomainStage from '@/components/recommendations/domain-stage';
@@ -8,6 +8,7 @@ import SpecializationStage from '@/components/recommendations/specialization-sta
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 
 import NavigationBackButton from '@/components/navigation-back-button';
+import RecommendationsEmptyState from '@/components/recommendations/recommendations-empty-state';
 import {
   DOMAIN_ICONS,
   type DomainSlug,
@@ -27,11 +28,14 @@ const PathwayRecommendationsLayout = () => {
     data: recResponse,
     isPending: isRecPending,
     error,
-    refetch,
+    refetch: refetchRecommendations,
   } = useRecommendationQuery();
 
-  const { data: profileStatus, isPending: isProfilePending } =
-    useProfileStatusQuery();
+  const {
+    data: profileStatus,
+    isPending: isProfilePending,
+    refetch: refetchProfileStatus,
+  } = useProfileStatusQuery();
 
   const {
     mutate,
@@ -54,31 +58,35 @@ const PathwayRecommendationsLayout = () => {
 
   // ── Loading───────
 
-  if (isProfilePending || isRecPending) {
+  if (isProfilePending || isRecPending)
     return (
       <div className="grid min-h-dvh place-items-center">
         <SpinnerBars />
       </div>
     );
-  }
 
-  // ── Auth guard────
-
-  if (!profileStatus?.data.assessments.pathwayAssessmentCompleted) {
-    return <Navigate to="/pathway-assessment" />;
-  }
-
-  // ── Error─────────
-
-  if (error) {
+  if (error || !profileStatus?.data) {
     return (
       <ErrorState
-        onRetry={refetch}
+        onRetry={() => {
+          refetchRecommendations();
+          refetchProfileStatus();
+        }}
         title="Couldn't load recommendations"
-        message={error.message}
+        message={
+          error?.message ?? "Couldn'n load data, please refetch the data"
+        }
       />
     );
   }
+
+  const {
+    assessments: { pathwayAssessmentCompleted },
+  } = profileStatus.data;
+
+  // if (!profileStatus?.data.assessments.pathwayAssessmentCompleted) {
+  //   return <Navigate to="/pathway-assessment" />;
+  // }
 
   // ── Empty state───
 
@@ -86,14 +94,9 @@ const PathwayRecommendationsLayout = () => {
 
   if (!data || data.domains.length === 0) {
     return (
-      <div className="grid min-h-dvh place-items-center p-6 text-center">
-        <div className="space-y-2">
-          <p className="text-lg font-medium">No recommendations yet.</p>
-          <p className="text-sm text-muted-foreground">
-            Complete your pathway assessment to unlock matches.
-          </p>
-        </div>
-      </div>
+      <RecommendationsEmptyState
+        pathwayAssessmentCompleted={pathwayAssessmentCompleted}
+      />
     );
   }
 

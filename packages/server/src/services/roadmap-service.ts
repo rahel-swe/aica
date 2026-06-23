@@ -48,7 +48,7 @@ export class RoadmapService {
     if (!pathway) throw new Error('Pathway not found.');
 
     const savedRecommendations =
-      await this.recommendationRepository.findAllByUserId(userId);
+      await this.recommendationRepository.findAllByUserId(userId, 27);
     const recommendation = savedRecommendations.find(
       (recom) => String(recom.pathwayId) === String(pathway._id)
     );
@@ -59,7 +59,7 @@ export class RoadmapService {
       await this.roadmapGenerationService.generateStructuredRoadmap({
         pathway: pathwayContext,
         setup: roadmapSetup as unknown as RoadmapSetupAssessmentFormValues,
-        recommendation: recommendation as unknown,
+        recommendation: recommendation,
       });
 
     const currentLevel = this.mapCurrentLevel(

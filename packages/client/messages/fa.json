@@ -308,6 +308,16 @@
   "pathway_recommendations_specialization_stage_locking": "مسیر شما در حال ثبت است…",
 
   "pathway_recommendations_specialization_stage_choose": "{pathway} را انتخاب کنید",
+  "pathway_recommendations_empty_no_recommendations_title": "هنوز هیچ پیشنهادی ایجاد نشده است.",
+  "pathway_recommendations_empty_complete_assessment_title": "ابتدا ارزیابی مسیر خود را تکمیل کنید.",
+
+  "pathway_recommendations_empty_no_recommendations_description": "بر اساس نتایج ارزیابی خود، پیشنهادهای شخصی‌سازی‌شده ایجاد کنید.",
+  "pathway_recommendations_empty_complete_assessment_description": "برای دریافت پیشنهادهای شخصی‌سازی‌شده، ارزیابی خود را تکمیل کنید.",
+
+  "pathway_recommendations_empty_generate_button": "ایجاد پیشنهادها",
+  "pathway_recommendations_empty_generating_button": "در حال ایجاد پیشنهادها...",
+  "pathway_recommendations_empty_start_assessment_button": "شروع ارزیابی",
+
   "pathway_congratulations_title": "تبریک!",
   "pathway_congratulations_badge": "انتخاب عالی",
   "pathway_congratulations_celebrate_again": "دوباره جشن بگیرید",

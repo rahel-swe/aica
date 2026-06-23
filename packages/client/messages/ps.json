@@ -311,6 +311,15 @@
   "pathway_recommendations_specialization_stage_locking": "ستاسو مسیر ثبتېږي…",
 
   "pathway_recommendations_specialization_stage_choose": "{pathway} وټاکئ",
+  "pathway_recommendations_empty_no_recommendations_title": "تر اوسه هېڅ سپارښتنې نه دي جوړې شوې.",
+  "pathway_recommendations_empty_complete_assessment_title": "لومړی خپله د مسیر ارزونه بشپړه کړئ.",
+
+  "pathway_recommendations_empty_no_recommendations_description": "د خپلې ارزونې د پایلو پر بنسټ شخصي سپارښتنې جوړې کړئ.",
+  "pathway_recommendations_empty_complete_assessment_description": "د شخصي سپارښتنو د ترلاسه کولو لپاره خپله ارزونه بشپړه کړئ.",
+
+  "pathway_recommendations_empty_generate_button": "سپارښتنې جوړې کړئ",
+  "pathway_recommendations_empty_generating_button": "سپارښتنې جوړېږي...",
+  "pathway_recommendations_empty_start_assessment_button": "ارزونه پیل کړئ",
 
   "pathway_congratulations_title": "مبارک مو شه!",
   "pathway_congratulations_message": "تاسې خپله د زده کړې لاره وټاکله. راځئ چې تنظیم یې کړو.",

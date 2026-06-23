@@ -30,7 +30,7 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
           damping: 20,
         }}
         className={cn(
-          'group relative  flex items-center rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 ',
+          'group relative  flex items-center rounded-full px-3 py-2 text-xs font-medium transition-all duration-200',
           isActive
             ? 'text-primary-foreground shadow-lg shadow-primary/20'
             : 'text-muted-foreground hover:text-foreground'
@@ -58,7 +58,9 @@ function TabItem({ label, to, icon: Icon }: TabItemProps) {
         />
 
         {isActive && (
-          <span className={cn('relative z-10 text-sm ms-2')}>{label}</span>
+          <span className={cn('relative z-10 text-sm ms-2 whitespace-nowrap')}>
+            {label}
+          </span>
         )}
       </motion.div>
     </Link>

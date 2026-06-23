@@ -1,7 +1,6 @@
 import type {
   PathwayDurationProfile,
   PathwayJourneyPhase,
-  RecommendationItem,
 } from '@contracts/shared/types/pathway-domain-types';
 import type {
   RoadmapPhase,
@@ -15,6 +14,7 @@ import {
   type RoadmapSourceNote,
 } from './roadmap-source-refresh-service';
 import { createTextCompletion } from '../llm/llm-client';
+import type { IRecommendation } from '../models/recommendation-model';
 
 type PathwayRoadmapContext = {
   title: string;
@@ -38,19 +38,18 @@ type GeneratedRoadmap = {
 type RoadmapGenerationInput = {
   pathway: PathwayRoadmapContext;
   setup: RoadmapSetupAssessmentFormValues;
-  recommendation?: RecommendationItem;
+  recommendation?: IRecommendation;
 };
 
 type RoadmapTargetContext = {
   level: 'pathway';
   title: string;
   slug: string;
-  timelineType: PathwayDurationProfile['timelineType'];
+  routeType: PathwayDurationProfile['routeType'];
   commitmentLevel: PathwayDurationProfile['commitmentLevel'];
   degreeRequirement: PathwayDurationProfile['degreeRequirement'];
   requiresLicense: boolean;
   localRulesRequired: boolean;
-  roadmapWindowLabel: string;
 };
 
 export class RoadmapGenerationService {
@@ -111,12 +110,11 @@ export class RoadmapGenerationService {
       level: 'pathway',
       title: pathway.title,
       slug: pathway.slug,
-      timelineType: pathway.durationProfile.timelineType,
+      routeType: pathway.durationProfile.routeType,
       commitmentLevel: pathway.durationProfile.commitmentLevel,
       degreeRequirement: pathway.durationProfile.degreeRequirement,
       requiresLicense: pathway.durationProfile.requiresLicense,
       localRulesRequired: pathway.durationProfile.localRulesRequired,
-      roadmapWindowLabel: pathway.durationProfile.roadmapWindowLabel,
     };
   }
 
@@ -180,7 +178,7 @@ export class RoadmapGenerationService {
             status: 'pending',
           } satisfies RoadmapPhase;
         })
-        .filter((phase): phase is RoadmapPhase => phase !== null);
+        .filter((phase) => phase !== null);
 
       const phaseIds = new Set(phases.map((phase) => phase.id));
       const steps = parsed.steps
@@ -209,7 +207,7 @@ export class RoadmapGenerationService {
             order: step.order ?? stepIndex + 1,
           } satisfies RoadmapStep;
         })
-        .filter((step): step is RoadmapStep => step !== null);
+        .filter((step) => step !== null);
 
       if (phases.length !== 3 || !steps.length) return null;
 

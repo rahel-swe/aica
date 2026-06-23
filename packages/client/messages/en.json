@@ -304,6 +304,15 @@
   "pathway_recommendations_specialization_stage_loading_details": "Loading specialization details…",
   "pathway_recommendations_specialization_stage_locking": "Locking in your path…",
   "pathway_recommendations_specialization_stage_choose": "Choose {pathway}",
+  "pahtway_recommendations_empty_no_recommendations_title": "No recommendations generated yet.",
+  "pahtway_recommendations_empty_complete_assessment_title": "Complete your pathway assessment first.",
+
+  "pahtway_recommendations_empty_no_recommendations_description": "Generate personalized recommendations based on your assessment results.",
+  "pahtway_recommendations_empty_complete_assessment_description": "Complete your assessment to unlock personalized recommendations.",
+
+  "pahtway_recommendations_empty_generate_button": "Generate Recommendations",
+  "pahtway_recommendations_empty_generating_button": "Generating...",
+  "pahtway_recommendations_empty_start_assessment_button": "Start Assessment",
 
   "pathway_congratulations_title": "Congratulations!",
   "pathway_congratulations_message": "You've selected your learning pathway. Let's get you set up.",

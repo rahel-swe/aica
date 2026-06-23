@@ -9,8 +9,14 @@ export function AdvisorChatHeader() {
       <AdvisorMobileDrawer />
 
       <div className="flex items-center gap-x-2">
-        <StartNewConversation title={m.advisor_new_chat()} />
-        <CloseAdvisor title={m.advisor_close_chat()} />
+        <StartNewConversation
+
+        // title={m.advisor_new_chat()}
+        />
+        <CloseAdvisor
+
+        // title={m.advisor_close_chat()}
+        />
       </div>
     </header>
   );
