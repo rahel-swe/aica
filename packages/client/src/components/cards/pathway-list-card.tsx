@@ -21,10 +21,9 @@ type Props = {
 export default function PathwayListCard({ pathway }: Props) {
   const navigate = useNavigate();
 
-  const savedIds = useSavedStore((s) => s.savedIds);
-  const toggleSave = useSavedStore((s) => s.toggleSave);
+  const { savedIds, toggleSave } = useSavedStore();
 
-  const isSaved = savedIds.includes(pathway.slug);
+  const isSaved = savedIds.includes(pathway.id);
 
   const handleClick = () => {
     navigate(`/app/pathways/${pathway.slug}`);
@@ -35,9 +34,6 @@ export default function PathwayListCard({ pathway }: Props) {
       role="button"
       tabIndex={0}
       onClick={handleClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') handleClick();
-      }}
       className="group flex-1"
     >
       <CardContent className="space-y-5">
@@ -55,18 +51,16 @@ export default function PathwayListCard({ pathway }: Props) {
 
           <Badge className="shrink-0 capitalize">{pathway.type}</Badge>
         </div>
-
-        {/* TAXONOMY */}
+        TAXONOMY
         {pathway.taxonomyNodes?.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {pathway.taxonomyNodes.slice(0, 3).map((node) => (
-              <Badge key={node.id} variant="outline" className="text-xs">
+              <Badge key={node.slug} variant="outline" className="text-xs">
                 {node.name}
               </Badge>
             ))}
           </div>
         )}
-
         {/* SKILLS */}
         {pathway.keySkills?.length > 0 && (
           <div className="flex flex-wrap gap-2 capitalize">
@@ -77,7 +71,6 @@ export default function PathwayListCard({ pathway }: Props) {
             ))}
           </div>
         )}
-
         {/* FOOTER */}
         <div className="flex items-center justify-between border-t pt-4">
           {/* LEFT INFO */}

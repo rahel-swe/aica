@@ -124,7 +124,7 @@ export default function ExplorePage() {
           <>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {pathways.map((pathway) => (
-                <PathwayListCard key={pathway.slug} pathway={pathway} />
+                <PathwayListCard key={pathway.id} pathway={pathway} />
               ))}
             </div>
 

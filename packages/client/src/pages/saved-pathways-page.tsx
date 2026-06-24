@@ -1,7 +1,7 @@
 import PathwayListCard from '@/components/cards/pathway-list-card';
 import SpinnerBars from '@/components/shadcn-space/spinner/spinner-06';
 
-import type { PathwayListItem } from '@contracts/shared/types/pathway-domain-types';
+import type { PathwayListView } from '@contracts/shared/types/pathway-domain-types';
 import { usePathwaysQuery } from '@/queries/pathway-query';
 import { useSavedStore } from '@/stores/saved-resource-store';
 
@@ -16,7 +16,7 @@ export default function SavedPathwaysPage() {
     return <div className="p-6 text-red-500">Failed to load pathways.</div>;
   }
 
-  const allPathways: PathwayListItem[] =
+  const allPathways: PathwayListView[] =
     data?.pages.flatMap((page) => page.data.items) ?? [];
 
   const savedPathways = allPathways.filter((p) => savedIds.includes(p._id));
