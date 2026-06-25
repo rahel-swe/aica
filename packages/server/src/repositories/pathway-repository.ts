@@ -101,7 +101,7 @@ class PathwayRepository {
 
     const raw = await PathwayModel.find(query)
       .populate('taxonomyNodeIds', TAXONOMY_SELECT)
-      .sort({ _id: 1 })
+      .sort({ _id: -1 })
       .limit(limit + 1)
       .lean<LeanPathwayListDoc[]>();
 

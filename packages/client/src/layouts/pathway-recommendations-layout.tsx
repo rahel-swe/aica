@@ -84,21 +84,14 @@ const PathwayRecommendationsLayout = () => {
     assessments: { pathwayAssessmentCompleted },
   } = profileStatus.data;
 
-  // if (!profileStatus?.data.assessments.pathwayAssessmentCompleted) {
-  //   return <Navigate to="/pathway-assessment" />;
-  // }
-
-  // ── Empty state───
-
   const data = recResponse?.data;
 
-  if (!data || data.domains.length === 0) {
+  if (!data || data.domains.length === 0)
     return (
       <RecommendationsEmptyState
         pathwayAssessmentCompleted={pathwayAssessmentCompleted}
       />
     );
-  }
 
   // ── Derived stage data ───────────────────────────────────────────────────
 

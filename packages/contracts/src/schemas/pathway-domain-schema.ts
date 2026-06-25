@@ -128,10 +128,16 @@ export const pathwayListViewSchema = z.object({
   roadmapWindowLabel: z.string(),
 });
 
+export const pathwayListPayloadSchema = z.object({
+  items: z.array(pathwayListViewSchema),
+  nextCursor: z.string().nullable(),
+  hasMore: z.boolean(),
+});
+
 export const pathwaysListResponseSchema = z.object({
   success: z.boolean(),
   message: z.string(),
-  data: z.array(pathwayListViewSchema),
+  data: pathwayListPayloadSchema,
 });
 
 export const pathwayDetailResponseSchema = z.object({
