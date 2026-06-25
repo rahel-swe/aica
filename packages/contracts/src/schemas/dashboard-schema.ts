@@ -29,7 +29,7 @@ export const dashboardResponseSchema = z.object({
     hasRecommendations: z.boolean(),
     top: z.array(
       z.object({
-        pathwaySlug: z.string(),
+        pathwaySlug: z.string().optional(),
         score: z.number(),
         rank: z.number(),
         reasons: z.array(z.string()),
@@ -61,8 +61,8 @@ export const dashboardResponseSchema = z.object({
   insights: z.object({
     profileAssessmentCompleted: z.boolean(),
     roadmapSetupCompleted: z.boolean(),
-    topPathwaySlug: z.string(),
-    topRecommendedPathwayScore: z.number(),
+    topPathwaySlug: z.string().optional(),
+    topRecommendedPathwayScore: z.number().optional(),
     roadmapProgressPercent: z.number(),
     roadmapTotalSteps: z.number(),
     hasRoadmap: z.boolean(),

@@ -23,7 +23,7 @@ export const getPathways = async (
 };
 
 export const getPathwayDetail = async (
-  slug: string
+  slug?: string
 ): Promise<PathwayDetailResponse> => {
   const response = await apiClient.get(`/api/pathways/${slug}`);
 

@@ -1,6 +1,5 @@
 import { usePathwayDetailQuery } from '@/queries/pathway-query';
 import type { DashboardResponse } from '@contracts/shared/types/dashboard-types';
-import ErrorState from '../error-state';
 import {
   Card,
   CardContent,
@@ -28,26 +27,13 @@ export function DashboardInsightsSection({
     hasRoadmap,
   } = dashboard.insights;
 
-  const {
-    isPending,
-    data: pathwayDetailsResponse,
-    error,
-    refetch,
-  } = usePathwayDetailQuery(topPathwaySlug);
+  const { data: pathwayDetailsResponse, isPending } =
+    usePathwayDetailQuery(topPathwaySlug);
 
-  if (isPending) return <p>{m.dashboard_insights_loading()}</p>;
+  if (isPending && topPathwaySlug)
+    return <p>{m.dashboard_insights_loading()}</p>;
 
-  if (error)
-    return (
-      <ErrorState
-        onRetry={refetch}
-        isRetrying={isPending}
-        title={m.dashboard_insights_error_title()}
-        message={error.message}
-      />
-    );
-
-  const { title } = pathwayDetailsResponse.data;
+  const title = pathwayDetailsResponse?.data.title ?? undefined;
 
   return (
     <Card>

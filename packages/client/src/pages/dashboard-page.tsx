@@ -10,6 +10,7 @@ export default function DashboardPage() {
   const { data, isPending, isError, refetch } = useDashboardQuery();
 
   if (isPending) return <DashboardSkeleton />;
+
   if (isError) return <DashboardErrorState onRetry={refetch} />;
 
   const dashboard = data?.data;

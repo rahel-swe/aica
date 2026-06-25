@@ -62,18 +62,6 @@ export default function ExplorePage() {
   return (
     <div className="flex flex-col flex-1 md:min-h-0 md:h-full gap-6 pt-18 pb-20 md:pt-0 md:pb-0">
       <ScrollArea className="p-4 md:p-0 md:pe-4">
-        {/* HEADER */}
-        <div className="space-y-2">
-          <h1 className="text-3xl font-semibold tracking-tight">
-            Browse aligned pathways
-          </h1>
-
-          <p className="max-w-3xl text-muted-foreground">
-            Use explore to review faculties and careers before entering
-            recommendation mode.
-          </p>
-        </div>
-
         {/* SEARCH + FILTER */}
         <div className="flex flex-wrap gap-3 items-center my-4">
           <Input

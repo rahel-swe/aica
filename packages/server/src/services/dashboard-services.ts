@@ -33,12 +33,14 @@ export class DashboardService {
 
     const onboardingCompleted = Boolean(onboarding?.completed);
     const roadmapSetupCompleted = Boolean(roadmapSetup?.completed);
+
     const recommendation = this.buildRecommendation(recommendations);
     const roadmapSummary = this.buildRoadmapSummary(roadmap);
+
     const status = this.resolveStatus({
       onboardingCompleted,
-      hasRecommendations: recommendation.hasRecommendations,
       roadmapSetupCompleted,
+      hasRecommendations: recommendation.hasRecommendations,
       hasRoadmap: roadmapSummary.hasRoadmap,
     });
 
@@ -183,8 +185,9 @@ export class DashboardService {
     return {
       profileAssessmentCompleted: input.onboardingCompleted,
       roadmapSetupCompleted: input.roadmapSetupCompleted,
-      topPathwaySlug: input.recommendation.top[0]!.pathwaySlug,
-      topRecommendedPathwayScore: input.recommendation.top[0]!.score,
+      topPathwaySlug: input.recommendation.top[0]?.pathwaySlug ?? undefined,
+      topRecommendedPathwayScore:
+        input.recommendation.top[0]?.score ?? undefined,
       roadmapCompletedSteps: input.roadmap.completedSteps,
       roadmapTotalSteps: input.roadmap.totalSteps,
       roadmapProgressPercent: input.roadmap.progressPercent,
