@@ -28,7 +28,7 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@/paraglide/*": ["./src/pragalide/*"],
+      "@/paraglide/*": ["./src/paraglide/*"],
       "@contracts/shared/*": ["../contracts/src/*"]
     }
   },
