@@ -29,3 +29,11 @@ export const removeSavedResource = async (data: {
 
   return res.data;
 };
+
+export const getSavedPathways = async (cursor?: string | null, limit = 12) => {
+  const res = await apiClient.get('/api/saved-resources/pathways', {
+    params: { cursor, limit },
+  });
+
+  return res.data;
+};

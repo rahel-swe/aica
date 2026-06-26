@@ -89,7 +89,7 @@ function toRelatedSummary(
   };
 }
 
-function toListView(
+export function toListView(
   doc: LeanPathwayListDoc,
   locale: SupportedLocale
 ): PathwayListView {

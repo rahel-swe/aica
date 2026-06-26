@@ -1,12 +1,19 @@
 import { Router } from 'express';
+import { authorize } from '../middleware/auth-middleware';
 import { savedResourceController } from '../controller/saved-resource-controller';
 
 const router = Router();
 
-router.post('/', savedResourceController.saveResource);
+router.post('/', authorize, savedResourceController.saveResource);
 
-router.get('/', savedResourceController.getSavedResources);
+router.get('/', authorize, savedResourceController.getSavedResources);
 
-router.delete('/:resourceId', savedResourceController.removeResource);
+router.get('/pathways', authorize, savedResourceController.getSavedPathways);
+
+router.delete(
+  '/:resourceId',
+  authorize,
+  savedResourceController.removeResource
+);
 
 export default router;

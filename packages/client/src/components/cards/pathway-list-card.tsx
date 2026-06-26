@@ -51,24 +51,34 @@ export default function PathwayListCard({ pathway }: Props) {
 
           <Badge className="shrink-0 capitalize">{pathway.type}</Badge>
         </div>
-        TAXONOMY
+
         {pathway.taxonomyNodes?.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {pathway.taxonomyNodes.slice(0, 3).map((node) => (
-              <Badge key={node.slug} variant="outline" className="text-xs">
-                {node.name}
-              </Badge>
-            ))}
+          <div className="space-y-3">
+            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              TAXONOMY
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {pathway.taxonomyNodes.slice(0, 3).map((node) => (
+                <Badge key={node.slug} variant="outline" className="text-xs">
+                  {node.name}
+                </Badge>
+              ))}
+            </div>
           </div>
         )}
         {/* SKILLS */}
-        {pathway.keySkills?.length > 0 && (
-          <div className="flex flex-wrap gap-2 capitalize">
-            {pathway.keySkills.slice(0, 4).map((skill) => (
-              <Badge key={skill} variant="secondary" className="rounded-full">
-                {skill}
-              </Badge>
-            ))}
+        {pathway.keySkills.length > 0 && (
+          <div className="space-y-3">
+            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              Key skills
+            </p>
+            <ul className="flex flex-col gap-2 list-decimal ps-6">
+              {pathway.keySkills.slice(0, 3).map((skill) => (
+                <li key={skill} className="text-xs ">
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         {/* FOOTER */}
@@ -102,6 +112,7 @@ export default function PathwayListCard({ pathway }: Props) {
                 e.stopPropagation();
                 toggleSave(pathway.id);
               }}
+              aria-label={isSaved ? 'Unsave pathway' : 'Save pathway'}
             >
               <Bookmark
                 className={`size-5 ${

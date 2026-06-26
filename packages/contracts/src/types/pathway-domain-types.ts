@@ -136,6 +136,8 @@ export type PathwayListView = {
   taxonomyNodes: TaxonomyNodeRef[];
 } & PathwayResolvedFields;
 
+export type PathwayListItem = PathwayListView;
+
 // Full detail — pathway detail page
 export type PathwayDetailView = PathwayListView & {
   description: string;
