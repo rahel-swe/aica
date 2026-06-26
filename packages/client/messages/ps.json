@@ -566,6 +566,29 @@
   "privacy_policy": "د محرمیت تګلاره",
   "version": "نسخه",
 
+  "pathway_card_taxonomy_label": "طبقه‌بندي",
+  "pathway_card_key_skills_label": "اړین مهارتونه",
+  "pathway_card_license_label": "جواز",
+  "pathway_card_save_aria_label": "لاره خوندي کړئ",
+  "pathway_card_unsave_aria_label": "له خوندي شوو څخه لرې کړئ",
+
+  "pathway_detail_license_required_label": "جواز اړین دی",
+  "pathway_detail_key_skills_label": "اړین مهارتونه",
+  "pathway_detail_journey_label": "د زده کړې مسیر",
+  "pathway_detail_opportunities_label": "راتلونکې فرصتونه",
+
+  "pathway_type_career": "مسلک",
+  "pathway_type_study": "زده کړه",
+  "pathway_type_hybrid": "ګډ",
+
+  "explore_type_placeholder": "ډول",
+  "explore_reset_cta": "بیا تنظیم",
+  "explore_view_saved_pathways_cta": "خوندي شوې لارې وګورئ",
+  "explore_failed_to_load": "د لارو په بارولو کې ستونزه رامنځته شوه.",
+  "explore_no_results": "هیڅ لاره ونه موندل شوه.",
+  "explore_load_more": "نور ښکاره کړئ",
+  "explore_loading_more": "بارېږي...",
+
   "saved_pathways_title": "خوندي شوې لارې",
   "saved_pathways_empty": "تاسې لا تر اوسه کومه لاره نه ده خوندي کړې.",
   "saved_pathways_explore_cta": "لارې وپلټئ",

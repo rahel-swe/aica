@@ -82,11 +82,13 @@ export class SavedResourceController {
     try {
       const userId = req.user?.id || (req.query.userId as string) || '';
       const { cursor, limit } = req.query as Record<string, string | undefined>;
+      const locale = req.locale ?? 'en';
 
       const pageLimit = limit !== undefined ? Number(limit) : 12;
 
       const result = await this.service.getSavedPathways(
         userId,
+        locale,
         cursor,
         pageLimit
       );

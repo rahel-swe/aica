@@ -78,7 +78,7 @@ const PathwayDetailPanel = ({
         </span>
         {durationProfile.requiresLicense && (
           <Badge variant="outline" className="text-xs font-normal">
-            License required
+            {m.pathway_detail_license_required_label()}
           </Badge>
         )}
       </div>
@@ -96,7 +96,7 @@ const PathwayDetailPanel = ({
       {detail.keySkills.length > 0 && (
         <div className="space-y-3">
           <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Key skills
+            {m.pathway_detail_key_skills_label()}
           </p>
           <ul className="flex flex-col gap-2 list-decimal ps-6">
             {detail.keySkills.map((skill) => (
@@ -112,7 +112,7 @@ const PathwayDetailPanel = ({
       {!compact && detail.journeyPhases.length > 0 && (
         <div className="space-y-4">
           <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Journey — {detail.roadmapWindowLabel}
+            {m.pathway_detail_journey_label()} — {detail.roadmapWindowLabel}
           </p>
           <div className="space-y-0">
             {detail.journeyPhases.map((phase, i) => (
@@ -150,7 +150,7 @@ const PathwayDetailPanel = ({
       {!compact && detail.opportunities.length > 0 && (
         <div className="space-y-3">
           <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Where this leads
+            {m.pathway_detail_opportunities_label()}
           </p>
           <ul className="space-y-1.5">
             {detail.opportunities.map((op) => (

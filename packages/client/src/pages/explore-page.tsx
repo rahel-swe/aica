@@ -19,6 +19,7 @@ import { usePathwaysQuery } from '@/queries/pathway-query';
 import { usePathwaysStore } from '@/stores/pathways-store';
 import { useSavedStore } from '@/stores/saved-resource-store';
 import { useNavigate } from 'react-router-dom';
+import { m } from '@/paraglide/messages';
 
 export default function ExplorePage() {
   const { search, type, setSearch, setType } = usePathwaysStore();
@@ -52,7 +53,7 @@ export default function ExplorePage() {
   if (isError) {
     return (
       <div className="flex items-center justify-center py-20">
-        Failed to load pathways.
+        {m.explore_failed_to_load()}
       </div>
     );
   }
@@ -65,7 +66,7 @@ export default function ExplorePage() {
         {/* SEARCH + FILTER */}
         <div className="flex flex-wrap gap-3 items-center my-4">
           <Input
-            placeholder="Search pathways..."
+            placeholder={m.explore_search_placeholder()}
             className="max-w-xs"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -73,13 +74,13 @@ export default function ExplorePage() {
 
           <Select value={type} onValueChange={setType}>
             <SelectTrigger className="w-45">
-              <SelectValue placeholder="Type" />
+              <SelectValue placeholder={m.explore_type_placeholder()} />
             </SelectTrigger>
 
             <SelectContent>
-              <SelectItem value="career">Career</SelectItem>
-              <SelectItem value="study">Study</SelectItem>
-              <SelectItem value="hybrid">Hybrid</SelectItem>
+              <SelectItem value="career">{m.pathway_type_career()}</SelectItem>
+              <SelectItem value="study">{m.pathway_type_study()}</SelectItem>
+              <SelectItem value="hybrid">{m.pathway_type_hybrid()}</SelectItem>
             </SelectContent>
           </Select>
 
@@ -91,11 +92,11 @@ export default function ExplorePage() {
               setInputValue('');
             }}
           >
-            Reset
+            {m.explore_reset_cta()}
           </Button>
 
           <Button onClick={() => navigate('/app/saved-pathways')}>
-            View Saved Pathways
+            {m.explore_view_saved_pathways_cta()}
           </Button>
         </div>
 
@@ -106,7 +107,7 @@ export default function ExplorePage() {
           </div>
         ) : pathways.length === 0 ? (
           <div className="flex items-center justify-center py-20 text-muted-foreground">
-            No pathways found.
+            {m.explore_no_results()}
           </div>
         ) : (
           <>
@@ -122,7 +123,9 @@ export default function ExplorePage() {
                   onClick={() => fetchNextPage()}
                   disabled={isFetchingNextPage}
                 >
-                  {isFetchingNextPage ? 'Loading...' : 'Load More'}
+                  {isFetchingNextPage
+                    ? m.explore_loading_more()
+                    : m.explore_load_more()}
                 </Button>
               </div>
             )}

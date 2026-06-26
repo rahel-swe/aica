@@ -12,6 +12,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { useSavedStore } from '@/stores/saved-resource-store';
+import { m } from '@/paraglide/messages';
 
 import type { PathwayListView } from '@contracts/shared/types/pathway-domain-types';
 
@@ -57,7 +58,7 @@ export default function PathwayListCard({ pathway }: Props) {
         {pathway.taxonomyNodes?.length > 0 && (
           <div className="space-y-3">
             <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              TAXONOMY
+              {m.pathway_card_taxonomy_label()}
             </p>
             <div className="flex flex-wrap gap-2">
               {pathway.taxonomyNodes.slice(0, 3).map((node) => (
@@ -72,7 +73,7 @@ export default function PathwayListCard({ pathway }: Props) {
         {pathway.keySkills.length > 0 && (
           <div className="space-y-3">
             <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              Key skills
+              {m.pathway_card_key_skills_label()}
             </p>
             <ul className="flex flex-col gap-2 list-decimal ps-6">
               {pathway.keySkills.slice(0, 3).map((skill) => (
@@ -115,7 +116,11 @@ export default function PathwayListCard({ pathway }: Props) {
                 await toggleSave(pathway.id);
                 queryClient.invalidateQueries({ queryKey: ['saved-pathways'] });
               }}
-              aria-label={isSaved ? 'Unsave pathway' : 'Save pathway'}
+              aria-label={
+                isSaved
+                  ? m.pathway_card_unsave_aria_label()
+                  : m.pathway_card_save_aria_label()
+              }
             >
               <Bookmark
                 className={`size-5 ${
@@ -130,7 +135,9 @@ export default function PathwayListCard({ pathway }: Props) {
             {pathway.durationProfile.requiresLicense && (
               <div className="flex items-center gap-1 text-amber-600">
                 <ShieldAlert className="size-4" />
-                <span className="text-xs">License</span>
+                <span className="text-xs">
+                  {m.pathway_card_license_label()}
+                </span>
               </div>
             )}
 

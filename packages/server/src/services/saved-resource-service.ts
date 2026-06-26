@@ -2,6 +2,7 @@ import { savedResourceRepository } from '../repositories/saved-resource-reposito
 import { toListView } from './pathway-service';
 
 import type { PathwayListView } from '../../../contracts/src/types/pathway-domain-types';
+import type { SupportedLocale } from '@contracts/shared/schemas/i18n';
 
 export class SavedResourceService {
   private readonly repository = savedResourceRepository;
@@ -30,6 +31,7 @@ export class SavedResourceService {
 
   async getSavedPathways(
     userId: string,
+    locale: SupportedLocale,
     cursor?: string,
     limit = 12
   ): Promise<{
@@ -44,7 +46,7 @@ export class SavedResourceService {
     );
 
     const items: PathwayListView[] = docs.items.map((d) =>
-      toListView(d.resourceId as any, 'en')
+      toListView(d.resourceId as any, locale)
     );
 
     return { items, nextCursor: docs.nextCursor, hasMore: docs.hasMore };
