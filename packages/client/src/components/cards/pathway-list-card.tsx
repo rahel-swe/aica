@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 
 import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { useSavedStore } from '@/stores/saved-resource-store';
 
 import type { PathwayListView } from '@contracts/shared/types/pathway-domain-types';
@@ -21,6 +22,7 @@ type Props = {
 export default function PathwayListCard({ pathway }: Props) {
   const navigate = useNavigate();
 
+  const queryClient = useQueryClient();
   const { savedIds, toggleSave } = useSavedStore();
 
   const isSaved = savedIds.includes(pathway.id);
@@ -108,9 +110,10 @@ export default function PathwayListCard({ pathway }: Props) {
           <div className="flex items-center gap-3">
             {/* SAVE BUTTON */}
             <button
-              onClick={(e) => {
+              onClick={async (e) => {
                 e.stopPropagation();
-                toggleSave(pathway.id);
+                await toggleSave(pathway.id);
+                queryClient.invalidateQueries({ queryKey: ['saved-pathways'] });
               }}
               aria-label={isSaved ? 'Unsave pathway' : 'Save pathway'}
             >
