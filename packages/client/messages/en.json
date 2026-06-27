@@ -235,8 +235,6 @@
   "auth_change_password_submit": "Update Password",
   "auth_change_password_error_incorrect_current": "Current password is incorrect.",
 
-  "auth_change_password_title": "Change Password",
-
   "auth_current_password_label": "Current Password",
   "auth_current_password_placeholder": "Enter your current password",
 
@@ -255,6 +253,22 @@
   "auth_password_changed_successfully": "Password Changed Successfully",
 
   "auth_password_changed_successfully_description": "Your password has been updated successfully. You can now sign in using your new password and continue your journey with AICA.",
+  "auth_delete_account_title": "Delete Account",
+  "auth_delete_account_description": "Deleting your account is permanent. All your data will be permanently removed and cannot be recovered.",
+  "auth_delete_account_button": "Delete Account",
+
+  "auth_delete_password_label": "Password",
+  "auth_delete_password_placeholder": "Enter your password",
+  "auth_delete_password_required": "Password is required",
+  "auth_delete_account_success_title": "Account Deleted",
+  "auth_delete_account_success_description": "Your account and personal data have been permanently deleted.",
+
+  "auth_delete_account_feedback_label": "Would you mind telling us why you left?",
+  "auth_delete_account_feedback_placeholder": "Your feedback helps us improve the product.",
+  "auth_delete_account_feedback_hint": "Optional • We appreciate your feedback.",
+  "auth_delete_account_feedback_button": "Send Feedback",
+
+  "auth_delete_account_cancel": "Cancel",
 
   "auth_change_password_succeed_title": "Password Updated",
   "auth_change_password_succeed_message": "Your password has been changed successfully.",

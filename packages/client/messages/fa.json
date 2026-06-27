@@ -239,7 +239,22 @@
   "auth_change_password_succeed_message": "رمز عبور شما با موفقیت تغییر کرد.",
   "auth_change_password_succeed_cta": "بازگشت به ورود",
 
-  "auth_change_password_title": "تغییر رمز عبور",
+  "auth_delete_account_title": "حذف حساب کاربری",
+  "auth_delete_account_description": "حذف حساب کاربری دائمی است. تمام اطلاعات شما برای همیشه حذف خواهد شد و قابل بازیابی نیست.",
+  "auth_delete_account_button": "حذف حساب کاربری",
+
+  "auth_delete_password_label": "رمز عبور",
+  "auth_delete_password_placeholder": "رمز عبور خود را وارد کنید",
+  "auth_delete_password_required": "رمز عبور الزامی است",
+
+  "auth_delete_account_cancel": "انصراف",
+  "auth_delete_account_success_title": "حساب کاربری حذف شد",
+  "auth_delete_account_success_description": "حساب کاربری و اطلاعات شخصی شما به صورت دائمی حذف شد.",
+
+  "auth_delete_account_feedback_label": "مایل هستید دلیل حذف حساب خود را با ما در میان بگذارید؟",
+  "auth_delete_account_feedback_placeholder": "بازخورد شما به ما در بهبود محصول کمک می‌کند.",
+  "auth_delete_account_feedback_hint": "اختیاری • از بازخورد شما سپاسگزاریم.",
+  "auth_delete_account_feedback_button": "ارسال بازخورد",
 
   "auth_current_password_label": "رمز عبور فعلی",
   "auth_current_password_placeholder": "رمز عبور فعلی خود را وارد کنید",

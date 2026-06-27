@@ -239,8 +239,6 @@
   "auth_change_password_succeed_message": "ستاسې پټنوم په بریالیتوب سره بدل شو.",
   "auth_change_password_succeed_cta": "بېرته ننوتلو ته",
 
-  "auth_change_password_title": "پټنوم بدل کړئ",
-
   "auth_current_password_label": "اوسنی پټنوم",
   "auth_current_password_placeholder": "خپل اوسنی پټنوم دننه کړئ",
 
@@ -255,6 +253,24 @@
   "auth_current_password_required": "مهرباني وکړئ خپل اوسنی پټنوم دننه کړئ.",
   "auth_new_password_required": "مهرباني وکړئ خپل نوی پټنوم دننه کړئ.",
   "auth_new_password_min": "ستاسو نوی پټنوم باید لږ تر لږه ۸ توري ولري.",
+
+  "auth_delete_account_title": "حساب ړنګول",
+  "auth_delete_account_description": "د حساب ړنګول دایمي دي. ستاسو ټول معلومات به د تل لپاره حذف شي او بیا به بېرته ترلاسه نشي.",
+  "auth_delete_account_button": "حساب ړنګ کړئ",
+
+  "auth_delete_password_label": "پټنوم",
+  "auth_delete_password_placeholder": "خپل پټنوم دننه کړئ",
+  "auth_delete_password_required": "پټنوم اړین دی",
+
+  "auth_delete_account_success_title": "حساب ړنګ شو",
+
+  "auth_delete_account_cancel": "لغوه",
+  "auth_delete_account_success_description": "ستاسو حساب او شخصي معلومات په بشپړ ډول ړنګ شول.",
+
+  "auth_delete_account_feedback_label": "که وغواړئ، د حساب د ړنګولو دلیل راسره شریک کړئ.",
+  "auth_delete_account_feedback_placeholder": "ستاسو نظر زموږ سره د محصول په ښه کولو کې مرسته کوي.",
+  "auth_delete_account_feedback_hint": "اختیاري • ستاسو د نظر څخه مننه.",
+  "auth_delete_account_feedback_button": "نظر ولېږئ",
 
   "auth_password_changed_successfully": "پټنوم په بریالیتوب سره بدل شو",
 

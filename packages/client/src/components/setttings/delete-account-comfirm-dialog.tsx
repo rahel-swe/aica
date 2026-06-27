@@ -84,7 +84,7 @@ const DeleteAccountComfirmDialog = ({
 
               <AlertDialogAction
                 variant="destructive"
-                onClick={() => navigate('/settings/delete-account')}
+                onClick={() => navigate('/auth/delete-account')}
               >
                 {m.continue_to_deletion()}
                 <Trash className="size-4" />

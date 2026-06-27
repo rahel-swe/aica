@@ -23,6 +23,8 @@ import ChangePasswordPage from './pages/auth/change-password-page.tsx';
 import ChangePasswordSucceedPage from './pages/auth/change-password-succeed-page.tsx';
 import LandingPage from './pages/landing-page.tsx';
 import SavedPathwaysPage from './pages/saved-pathways-page.tsx';
+import DeleteAccountPage from './pages/auth/delete-account-page.tsx';
+import DeleteAccountSuccessPage from './pages/auth/delete-account-succeed-page.tsx';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,18 @@ const router = createBrowserRouter([
           {
             path: 'change-password-succeed',
             element: <ChangePasswordSucceedPage />,
+          },
+          {
+            path: 'delete-account',
+            element: (
+              <RouterProtector>
+                <DeleteAccountPage />
+              </RouterProtector>
+            ),
+          },
+          {
+            path: 'delete-account-succeed',
+            element: <DeleteAccountSuccessPage />,
           },
         ],
       },
