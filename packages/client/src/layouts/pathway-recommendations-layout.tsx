@@ -111,7 +111,10 @@ const PathwayRecommendationsLayout = () => {
 
   // Pathways for the selected direction, ranked ascending, capped at 5
   const pathwaysForFields = pathways
-    .filter((p) => p.fieldSlug === params.fieldSlug)
+    .filter(
+      (p) =>
+        p.fieldSlug === params.fieldSlug && p.pathwaySlug !== params.fieldSlug
+    )
     .sort((a, b) => a.rank - b.rank)
     .slice(0, 7);
 
