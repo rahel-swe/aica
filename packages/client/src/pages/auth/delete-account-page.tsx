@@ -126,7 +126,7 @@ const DeleteAccountPage = () => {
           className="py-6 mx-auto px-10 max-w-46 w-full"
           asChild
         >
-          <Link to="/profile" viewTransition>
+          <Link to="/app/settings" viewTransition>
             {m.auth_delete_account_cancel()}
           </Link>
         </Button>
