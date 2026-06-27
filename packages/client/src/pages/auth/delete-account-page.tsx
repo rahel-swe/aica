@@ -74,7 +74,10 @@ const DeleteAccountPage = () => {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-4 items-center w-full"
+      >
         <FieldGroup>
           <Field>
             <Label htmlFor="password">{m.auth_delete_password_label()}</Label>
@@ -106,7 +109,7 @@ const DeleteAccountPage = () => {
             type="submit"
             variant="destructive"
             disabled={isSubmitting}
-            className="py-6.5 w-min mx-auto px-10"
+            className="py-6.5 mx-auto px-10 max-w-46 w-full"
           >
             {m.auth_delete_account_button()}
             {isSubmitting ? (
@@ -116,17 +119,18 @@ const DeleteAccountPage = () => {
             )}
           </Button>
         </FieldGroup>
-      </form>
 
-      <p className="text-sm text-muted-foreground">
-        <Link
-          to="/profile"
-          viewTransition
-          className="font-medium text-primary border-b hover:border-primary"
+        <Button
+          variant={'outline'}
+          disabled={isSubmitting}
+          className="py-6 mx-auto px-10 max-w-46 w-full"
+          asChild
         >
-          {m.auth_delete_account_cancel()}
-        </Link>
-      </p>
+          <Link to="/profile" viewTransition>
+            {m.auth_delete_account_cancel()}
+          </Link>
+        </Button>
+      </form>
     </div>
   );
 };

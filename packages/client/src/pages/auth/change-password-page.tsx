@@ -61,7 +61,7 @@ const ChangePasswordPage = () => {
       {
         onSuccess: async () => {
           await authClient.signOut();
-          navigate('/auth/change-password-succeed', {
+          navigate('/auth/change-password-success', {
             replace: true,
             viewTransition: true,
           });

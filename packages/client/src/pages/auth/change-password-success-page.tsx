@@ -3,7 +3,7 @@ import { ArrowUpRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { m } from '../../paraglide/messages';
 
-const ChangePasswordSucceedPage = () => {
+const ChangePasswordSuccessPage = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="relative w-full max-w-lg p-10 flex flex-col gap-6 items-center justify-center">
@@ -32,4 +32,4 @@ const ChangePasswordSucceedPage = () => {
   );
 };
 
-export default ChangePasswordSucceedPage;
+export default ChangePasswordSuccessPage;

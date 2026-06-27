@@ -20,11 +20,11 @@ import RoadmapSetupLayout from './layouts/roadmap-setup-assessment-layout';
 import RoadmapSetupAssesmentStepsPage from './pages/roadmap-setup-assessment-steps-page.tsx';
 import RouterProtector from './router-protector.tsx';
 import ChangePasswordPage from './pages/auth/change-password-page.tsx';
-import ChangePasswordSucceedPage from './pages/auth/change-password-succeed-page.tsx';
+import ChangePasswordSuccessPage from './pages/auth/change-password-success-page.tsx';
 import LandingPage from './pages/landing-page.tsx';
 import SavedPathwaysPage from './pages/saved-pathways-page.tsx';
 import DeleteAccountPage from './pages/auth/delete-account-page.tsx';
-import DeleteAccountSuccessPage from './pages/auth/delete-account-succeed-page.tsx';
+import DeleteAccountSuccessPage from './pages/auth/delete-account-success-page.tsx';
 
 const router = createBrowserRouter([
   {
@@ -52,8 +52,8 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: 'change-password-succeed',
-            element: <ChangePasswordSucceedPage />,
+            path: 'change-password-success',
+            element: <ChangePasswordSuccessPage />,
           },
           {
             path: 'delete-account',
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: 'delete-account-succeed',
+            path: 'delete-account-success',
             element: <DeleteAccountSuccessPage />,
           },
         ],
