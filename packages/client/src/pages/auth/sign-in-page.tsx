@@ -133,8 +133,19 @@ export default function SignInPage() {
         </FieldGroup>
       </form>
 
+      <p className="text-sm text-muted-foreground">
+        {m.auth_forgot_password_question()}{' '}
+        <Link
+          className="font-medium text-primary border-b hover:border-primary"
+          to="#"
+          viewTransition
+        >
+          {m.auth_reset_password()}
+        </Link>
+      </p>
+
       <p className="mt-4 text-sm text-muted-foreground">
-        {m.auth_sign_up_have_account()}
+        {m.auth_sign_up_have_account()}{' '}
         <Link className="font-medium text-primary" to="/auth/sign-up">
           {m.auth_sign_up_title()}
         </Link>

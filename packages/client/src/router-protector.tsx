@@ -3,10 +3,10 @@ import type { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import ErrorState from './components/error-state';
 import SpinnerBars from './components/shadcn-space/spinner/spinner-06';
-import { useProfileStatusQuery } from './queries/profile-query';
+import { authClient } from './lib/auth-client';
 
 const RouterProtector = ({ children }: { children: ReactNode }) => {
-  const { isPending, error, isError, refetch } = useProfileStatusQuery();
+  const { isPending, error, refetch } = authClient.useSession();
 
   if (isPending)
     return (
@@ -15,7 +15,7 @@ const RouterProtector = ({ children }: { children: ReactNode }) => {
       </div>
     );
 
-  if (isError) {
+  if (error) {
     const status = (error as any)?.response?.status;
 
     if (status === 401) return <Navigate to="/auth/sign-in" replace />;
