@@ -24,8 +24,12 @@ export class AdvisorService {
     res: Response
   ): Promise<void> {
     try {
-      const conversationId = await this.resolveConversation(userId, request);
-      await this.appendUserMessage(conversationId, request.message);
+      const { conversationId, isNewConversation } =
+        await this.resolveConversation(userId, request);
+
+      if (!isNewConversation) {
+        await this.appendUserMessage(conversationId, request.message);
+      }
 
       const conversation = await this.conversations.findByIdAndUserId(
         conversationId,
@@ -195,7 +199,11 @@ export class AdvisorService {
         request.conversationId,
         userId
       );
-      if (existing) return String((existing as any)._id);
+      if (existing)
+        return {
+          conversationId: String((existing as any)._id),
+          isNewConversation: false,
+        };
     }
 
     const context = await advisorContextBuilder.build(userId, request);
@@ -217,7 +225,10 @@ export class AdvisorService {
       },
     });
 
-    return String(newConv._id);
+    return {
+      conversationId: String(newConv._id),
+      isNewConversation: true,
+    };
   }
 
   private async appendUserMessage(conversationId: string, message: string) {

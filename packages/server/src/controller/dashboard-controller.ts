@@ -12,25 +12,31 @@ export class DashboardController {
       const user = req.user;
 
       if (!user) {
-        return res.status(401).json({
+        res.status(401).json({
           success: false,
           message: 'You are not logged in.',
         });
+
+        return;
       }
 
       const data = await dashboardService.getDashboardData(user);
 
-      return res.json({
+      res.json({
         success: true,
         data,
         message: 'Dashboard data fetched successfully.',
       });
+
+      return;
     } catch (error: any) {
       console.log(error);
-      return res.status(400).json({
+      res.status(400).json({
         success: false,
         message: error.message,
       });
+
+      return;
     }
   };
 }
