@@ -27,9 +27,8 @@ export class AdvisorService {
       const { conversationId, isNewConversation } =
         await this.resolveConversation(userId, request);
 
-      if (!isNewConversation) {
+      if (!isNewConversation)
         await this.appendUserMessage(conversationId, request.message);
-      }
 
       const conversation = await this.conversations.findByIdAndUserId(
         conversationId,

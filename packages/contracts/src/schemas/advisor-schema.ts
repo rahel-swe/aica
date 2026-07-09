@@ -26,8 +26,12 @@ export const searchResultSchema = z.object({
 
 // ─── Conversation message ──────────────────────────────────────────────────────
 
+export const advisorMessageRoleArray = ['user', 'assistant'] as const;
+
+export const adviosrMessageRoleEnum = z.enum(advisorMessageRoleArray);
+
 export const advisorChatMessageSchema = z.object({
-  role: z.enum(['user', 'assistant']),
+  role: adviosrMessageRoleEnum,
   content: z.string().min(1),
   actions: z.array(z.string()).max(5).default([]),
   followUps: z.array(z.string()).max(3).default([]),

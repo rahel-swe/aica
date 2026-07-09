@@ -1,15 +1,16 @@
-import type { z } from 'zod';
-import type {
-  advisorResponseModeSchema,
-  advisorContextSourceSchema,
-  searchResultSchema,
-  advisorChatMessageSchema,
-  advisorConversationSchema,
-  advisorConversationSummarySchema,
-  advisorChatRequestSchema,
-  advisorStreamEventSchema,
-  advisorConversationListResponseSchema,
-  advisorConversationDetailResponseSchema,
+import { z } from 'zod';
+import {
+  type advisorResponseModeSchema,
+  type advisorContextSourceSchema,
+  type searchResultSchema,
+  type advisorChatMessageSchema,
+  type advisorConversationSchema,
+  type advisorConversationSummarySchema,
+  type advisorChatRequestSchema,
+  type advisorStreamEventSchema,
+  type advisorConversationListResponseSchema,
+  type advisorConversationDetailResponseSchema,
+  adviosrMessageRoleEnum,
 } from '../schemas/advisor-schema';
 
 // ─── Public contract types ─────────────────────────────────────────────────────
@@ -30,6 +31,8 @@ export type AdvisorConversationListResponse = z.infer<
 export type AdvisorConversationDetailResponse = z.infer<
   typeof advisorConversationDetailResponseSchema
 >;
+
+export type AdviosrMessageRole = z.infer<typeof adviosrMessageRoleEnum>;
 
 // ─── LLM tool call types ───────────────────────────────────────────────────────
 

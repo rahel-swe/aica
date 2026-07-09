@@ -6,7 +6,7 @@ import SpinnerBars from './components/shadcn-space/spinner/spinner-06';
 import { authClient } from './lib/auth-client';
 
 const RouterProtector = ({ children }: { children: ReactNode }) => {
-  const { isPending, error, refetch } = authClient.useSession();
+  const { isPending, error, refetch, data } = authClient.useSession();
 
   if (isPending)
     return (
@@ -22,6 +22,9 @@ const RouterProtector = ({ children }: { children: ReactNode }) => {
 
     return <ErrorState onRetry={refetch} />;
   }
+
+  if (data === null || data?.user === null)
+    return <Navigate to="/auth/sign-in" replace />;
 
   return <>{children}</>;
 };

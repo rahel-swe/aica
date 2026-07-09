@@ -5,8 +5,7 @@ import { AdvisorResources, SearchingIndicator } from './advisor-resource-card';
 import type { AdvisorChatMessage } from '@contracts/shared/types/advisor-types';
 import { Streamdown } from 'streamdown';
 import SpinnerBars from '../shadcn-space/spinner/spinner-06';
-
-// ─── Committed message ──────────────────────────────────────────────────────────
+import MessageActions from './message-actions';
 
 type MessageBubbleProps = {
   message: AdvisorChatMessage;
@@ -19,19 +18,21 @@ export function AdvisorMessageBubble({
 }: MessageBubbleProps) {
   if (message.role === 'user') {
     return (
-      <div className="flex justify-end">
+      <div className="flex items-end justify-end flex-col gap-2">
         <p className="max-w-[78%] bg-card rounded-4xl px-4 py-3 text-sm">
           {message.content}
         </p>
+        <MessageActions message={message} />
       </div>
     );
   }
 
   return (
     <div className="flex gap-3 items-start">
-      <div className="flex-1 min-w-0 space-y-3">
-        <div className="px-4 py-3">
+      <div className="flex-1 min-w-0 flex flex-col gap-3">
+        <div className="px-4 py-3 gap-2 flex flex-col">
           <MessageContent content={message.content} />
+          <MessageActions message={message} />
         </div>
 
         {/* Cautions */}
