@@ -20,7 +20,7 @@ app.use(
 app.all('/api/auth/*splat', toNodeHandler(auth));
 
 app.use(express.json());
-// app.use(arcjetMiddleware);
+app.use(arcjetMiddleware);
 
 app.use('/api', apiRouter);
 
@@ -28,7 +28,7 @@ app.get('/health', (_req: Request, res: Response) => {
   res.send({ success: true, message: 'AICA server is healthy.' });
 });
 
-// app.use(errorMiddleware);
+app.use(errorMiddleware);
 
 app.listen(Bun.env.PORT, () => {
   console.log(`Server is running on http://localhost:${Bun.env.PORT}`);

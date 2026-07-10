@@ -11,6 +11,7 @@ import { advisorConversationRepository } from '../repositories/advisor-conversat
 import { advisorContextBuilder } from './advisor-context-builder';
 import advisorSystemPromptTemplate from '@/src/llm/prompts/advisor-guidance-prompt.txt';
 import { runAdvisorCompletion } from '../llm/advisor-chat-completion';
+import { randomUUID } from 'node:crypto';
 
 const LLM_HISTORY_WINDOW = 20;
 const TITLE_MAX_LENGTH = 60;
@@ -40,7 +41,9 @@ export class AdvisorService {
           type: 'error',
           message: 'Conversation not found.',
         });
+
         this.sendEvent(res, { type: 'done' });
+
         res.end();
         return;
       }
@@ -48,7 +51,7 @@ export class AdvisorService {
       this.sendEvent(res, {
         type: 'start',
         conversationId,
-        messageId: new Date().toISOString(),
+        messageId: randomUUID(),
       });
 
       const historyMessages = (conversation.messages ?? [])

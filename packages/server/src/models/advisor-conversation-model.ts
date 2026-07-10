@@ -1,30 +1,22 @@
 import { Schema, model, type Document } from 'mongoose';
-import type { AdvisorContextSource } from '@contracts/shared/types/advisor-types';
+import type {
+  AdvisorChatMessage,
+  AdvisorContextSource,
+} from '@contracts/shared/types/advisor-types';
+import { advisorMessageRoleArray } from '@contracts/shared/schemas/advisor-schema';
+import { randomUUID } from 'node:crypto';
 
-export interface IAdvisorChatMessage {
-  role: 'user' | 'assistant';
-  content: string;
-  actions: string[];
-  followUps: string[];
-  cautions: string[];
-  contextUsed: AdvisorContextSource[];
-  resources: Array<{
-    // ← new field: persisted search results
-    title: string;
-    url: string;
-    content: string;
-    source: string;
-    score?: number;
-  }>;
-  createdAt: Date;
-}
-
-const advisorChatMessageSubSchema = new Schema<IAdvisorChatMessage>(
+const advisorChatMessageSubSchema = new Schema<AdvisorChatMessage>(
   {
     role: {
       type: String,
-      enum: ['user', 'assistant'],
+      enum: advisorMessageRoleArray,
       required: true,
+    },
+    id: {
+      type: String,
+      required: true,
+      default: () => randomUUID(),
     },
     content: { type: String, required: true },
     actions: { type: [String], default: [] },
@@ -51,7 +43,7 @@ const advisorChatMessageSubSchema = new Schema<IAdvisorChatMessage>(
 export interface IAdvisorConversation extends Document {
   userId: Schema.Types.ObjectId | string;
   title: string;
-  messages: IAdvisorChatMessage[];
+  messages: AdvisorChatMessage[];
   contextSnapshot: Record<string, unknown>;
   createdAt: Date;
   updatedAt: Date;
