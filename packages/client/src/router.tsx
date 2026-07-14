@@ -188,7 +188,11 @@ const router = createBrowserRouter([
           },
           {
             path: '/app/saved-pathways',
-            element: <SavedPathwaysPage />,
+            element: (
+              <RouterProtector>
+                <SavedPathwaysPage />
+              </RouterProtector>
+            ),
           },
         ],
       },

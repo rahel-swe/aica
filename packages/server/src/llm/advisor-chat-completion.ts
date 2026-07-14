@@ -20,6 +20,15 @@ export type AdvisorCompletionResult = {
   searchResults: SearchResult[];
 };
 
+type ToolCall = {
+  function: {
+    name: string;
+    arguments: string;
+  };
+  id: string;
+  type: 'function' | 'custome';
+};
+
 //
 // Phase 1 (non-streaming, fast, ~100 token budget):
 //   Ask the LLM: "do you need to search?" with only web_search tool available.
@@ -68,12 +77,15 @@ export async function runAdvisorCompletion(
         // Append the assistant's tool_call decision to the conversation
         messages.push(detectionMessage);
 
-        for (const tc of detectionMessage.tool_calls) {
-          if (tc.function.name !== 'web_search') continue;
+        const toolCalls = detectionMessage?.tool_calls as ToolCall[];
+
+        for (const toolCall of toolCalls) {
+          if (toolCall.function.name !== 'web_search') continue;
 
           let query = '';
+
           try {
-            query = JSON.parse(tc.function.arguments).query ?? '';
+            query = JSON.parse(toolCall.function.arguments).query ?? '';
           } catch {
             continue;
           }
@@ -86,7 +98,7 @@ export async function runAdvisorCompletion(
           // Inject results as tool response — LLM will use this in Phase 2
           messages.push({
             role: 'tool',
-            tool_call_id: tc.id,
+            tool_call_id: toolCall.id,
             content: JSON.stringify(toSearchContext(raw)),
           });
         }

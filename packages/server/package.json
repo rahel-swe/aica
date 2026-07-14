@@ -20,7 +20,7 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mongoose": "^9.4.1",
-    "openai": "^6.34.0",
+    "openai": "^6.46.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {
