@@ -1,7 +1,8 @@
 import type { Request, Response } from 'express';
-import { advisorService } from '../services/advisor-service';
+import { advisorService } from '../services/advisor/advisor-chat-service';
 import { advisorChatRequestSchema } from '@contracts/shared/schemas/advisor-schema';
 import { ZodError } from 'zod';
+import { advisorConversationService } from '../services/advisor/advisor-conversation-service';
 
 class AdvisorController {
   // POST /chat
@@ -23,13 +24,13 @@ class AdvisorController {
     } catch (err) {
       if (err instanceof ZodError) {
         // Headers may not be sent yet if Zod threw before we flushed
-        if (!res.headersSent) {
+        if (!res.headersSent)
           res.status(400).json({
             success: false,
             message: 'Invalid request',
             errors: err.flatten().fieldErrors,
           });
-        }
+
         return;
       }
 
@@ -42,11 +43,10 @@ class AdvisorController {
     }
   };
 
-  // Get all conversation conversations
   listConversations = async (req: Request, res: Response): Promise<void> => {
     try {
       const userId = (req as any).user?.id as string;
-      const data = await advisorService.listConversations(userId);
+      const data = await advisorConversationService.listConversations(userId);
       res.json({ success: true, data });
     } catch {
       res
@@ -55,11 +55,10 @@ class AdvisorController {
     }
   };
 
-  // Get conversation by id
   getConversation = async (req: Request, res: Response): Promise<void> => {
     try {
       const userId = (req as any).user?.id as string;
-      const conversation = await advisorService.getConversation(
+      const conversation = await advisorConversationService.getConversation(
         req.params.id as string,
         userId
       );
@@ -68,6 +67,7 @@ class AdvisorController {
         res
           .status(404)
           .json({ success: false, message: 'Conversation not found' });
+
         return;
       }
 
@@ -79,11 +79,10 @@ class AdvisorController {
     }
   };
 
-  // DELETE /conversations/:id
   deleteConversation = async (req: Request, res: Response): Promise<void> => {
     try {
       const userId = (req as any).user?.id as string;
-      const deleted = await advisorService.deleteConversation(
+      const deleted = await advisorConversationService.deleteConversation(
         req.params.id as string,
         userId
       );
@@ -92,6 +91,7 @@ class AdvisorController {
         res
           .status(404)
           .json({ success: false, message: 'Conversation not found' });
+
         return;
       }
 

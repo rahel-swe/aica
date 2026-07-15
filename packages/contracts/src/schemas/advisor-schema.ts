@@ -20,8 +20,9 @@ export const searchResultSchema = z.object({
   title: z.string(),
   url: z.string(),
   content: z.string(),
-  source: z.string(), // domain name, e.g. "bls.gov"
+  source: z.string(),
   score: z.number().optional(),
+  favicon: z.string(),
 });
 
 // ─── Conversation message ──────────────────────────────────────────────────────

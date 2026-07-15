@@ -1,18 +1,19 @@
-import {
-  AdvisorConversationModel,
-  type IAdvisorChatMessage,
-} from '../models/advisor-conversation-model';
+import type { AdvisorChatMessage } from '@contracts/shared/types/advisor-types';
+import { AdvisorConversationModel } from '../models/advisor-conversation-model';
 
 const MAX_HISTORY_FOR_LIST = 20;
 
+type AdvisorFirtsMessage = Omit<AdvisorChatMessage, 'id'> &
+  Partial<Pick<AdvisorChatMessage, 'id'>>;
+
 export class AdvisorConversationRepository {
-  // ─── Write ──────────────────────────────────────────────────────────────────
+  // ─── Write
 
   async create(data: {
     userId: string;
     title: string;
     contextSnapshot: Record<string, unknown>;
-    firstMessage: IAdvisorChatMessage;
+    firstMessage: AdvisorFirtsMessage;
   }) {
     return AdvisorConversationModel.create({
       userId: data.userId,
@@ -22,7 +23,7 @@ export class AdvisorConversationRepository {
     });
   }
 
-  async appendMessage(conversationId: string, message: IAdvisorChatMessage) {
+  async appendMessage(conversationId: string, message: AdvisorFirtsMessage) {
     // $push is atomic — safe for concurrent requests (though the UX shouldn't allow that)
     return AdvisorConversationModel.findByIdAndUpdate(
       conversationId,
@@ -31,7 +32,7 @@ export class AdvisorConversationRepository {
     );
   }
 
-  // ─── Read ────────────────────────────────────────────────────────────────────
+  // ─── Read
 
   async findByIdAndUserId(conversationId: string, userId: string) {
     return AdvisorConversationModel.findOne({
@@ -42,7 +43,6 @@ export class AdvisorConversationRepository {
 
   // Returns summaries for the sidebar/conversation list.
   // Uses $slice on messages to grab only the last message for preview.
-  // Does NOT return the full messages array — that would be expensive at list scale.
   async findRecentByUserId(userId: string, limit = MAX_HISTORY_FOR_LIST) {
     return AdvisorConversationModel.find({ userId })
       .sort({ updatedAt: -1 })

@@ -1,9 +1,10 @@
-import type { IRecommendation } from '../models/recommendation-model';
-import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
-import { pathwayRepository } from '../repositories/pathway-repository';
-import { recommendationRepository } from '../repositories/recommendation-repository';
-import { roadmapRepository } from '../repositories/roadmap-repository';
-import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
+import type { IRecommendation } from '@/src/models/recommendation-model';
+import { pathwayAssessmentRepository } from '@/src/repositories/pathway-assessment-repository';
+import { pathwayRepository } from '@/src/repositories/pathway-repository';
+import { recommendationRepository } from '@/src/repositories/recommendation-repository';
+import { roadmapRepository } from '@/src/repositories/roadmap-repository';
+import { roadmapSetupAssessmentRepository } from '@/src/repositories/roadmap-setup-assessment-repository';
+
 import type {
   AdvisorContext,
   AdvisorContextSource,
@@ -37,17 +38,13 @@ export class AdvisorContextBuilder {
       ? (onboardingRaw.toObject?.() ?? onboardingRaw)
       : null;
 
-    const recommendations = (
-      (recommendationsRaw as unknown as IRecommendation[]) ?? []
-    )
-      .slice(0, 3)
-      .map((r) => ({
-        slug: r.pathwaySlug,
-        explaination: r.explanation,
-        rank: r.rank,
-        totalScore: r.totalScore,
-        reasons: r.reasons ?? [],
-      }));
+    const recommendations = (recommendationsRaw ?? []).slice(0, 3).map((r) => ({
+      slug: r.pathwaySlug,
+      explaination: r.explanation,
+      rank: r.rank,
+      totalScore: r.totalScore,
+      reasons: r.reasons ?? [],
+    }));
 
     const roadmapData = roadmap as PathwayRoadmap | null;
     const roadmapSetupData = roadmapSetup as Record<string, unknown> | null;
@@ -60,7 +57,7 @@ export class AdvisorContextBuilder {
     const selectedPathwayRaw = selectedPathwaySlug
       ? await pathwayRepository
           .findActiveDetailBySlug(String(selectedPathwaySlug))
-          .then((p) => p as any)
+          .then((p) => p)
       : null;
 
     const selectedPathway = selectedPathwayRaw
@@ -119,12 +116,11 @@ export class AdvisorContextBuilder {
     };
 
     // If the request targets a specific step, resolve it now so it's in the snapshot
-    if (request.roadmapStep) {
+    if (request.roadmapStep)
       context.selectedRoadmapStep = this.resolveStep(
         request.roadmapStep,
         roadmapNormalized
       );
-    }
 
     return context;
   }
@@ -138,26 +134,31 @@ export class AdvisorContextBuilder {
     if (!roadmap) return null;
 
     const matchedStep = roadmap.steps.find(
-      (s: any) => s.id === step.stepId && s.phaseId === step.phaseId
+      (s) => s.id === step.stepId && s.phaseId === step.phaseId
     );
     if (!matchedStep) return null;
 
-    const phase =
-      roadmap.phases.find((p: any) => p.id === step.phaseId) ?? null;
+    const phase = roadmap.phases.find((p) => p.id === step.phaseId) ?? null;
 
     return { phase, step: matchedStep };
   }
 
   resolveSources(context: AdvisorContext): AdvisorContextSource[] {
     const sources: AdvisorContextSource[] = [];
+
     if (context.onboarding) sources.push('onboarding');
+
     if (context.recommendations.length) sources.push('recommendations');
+
     if (context.selectedPathway) {
       sources.push('pathway');
       sources.push('pathwayKnowledge');
     }
+
     if (context.roadmapSetup) sources.push('roadmapSetup');
+
     if (context.roadmap) sources.push('roadmap');
+
     return sources;
   }
 

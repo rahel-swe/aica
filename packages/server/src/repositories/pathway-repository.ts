@@ -34,6 +34,13 @@ export interface LeanRelatedPathwayRef {
 export interface LeanPathwayDoc {
   _id: Types.ObjectId;
   slug: string;
+  title: string;
+  summary: string;
+  description: string;
+  keySkills: string[];
+  opportunities: string[];
+  journeyPhases: string[];
+  verificationNote: string;
   version: number;
   type: PathwayType;
   status: string;

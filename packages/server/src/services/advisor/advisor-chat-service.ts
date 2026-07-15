@@ -7,10 +7,10 @@ import type {
   SearchResult,
   AdvisorResponseMode,
 } from '@contracts/shared/types/advisor-types';
-import { advisorConversationRepository } from '../repositories/advisor-conversation-repository';
+import { advisorConversationRepository } from '../../repositories/advisor-conversation-repository';
 import { advisorContextBuilder } from './advisor-context-builder';
 import advisorSystemPromptTemplate from '@/src/llm/prompts/advisor-guidance-prompt.txt';
-import { runAdvisorCompletion } from '../llm/advisor-chat-completion';
+import { runAdvisorCompletion } from '../../llm/advisor-chat-completion';
 import { randomUUID } from 'node:crypto';
 
 const LLM_HISTORY_WINDOW = 20;
@@ -157,58 +157,29 @@ export class AdvisorService {
     }
   }
 
-  // ─── Conversation management (unchanged) ─────────────────────────────────────
-
-  async listConversations(userId: string) {
-    const docs = await this.conversations.findRecentByUserId(userId);
-    return docs.map((doc: any) => ({
-      _id: String(doc._id),
-      title: doc.title,
-      lastMessage: (doc.messages?.[0]?.content ?? '').slice(0, 120),
-      messageCount: doc.messages?.length ?? 0,
-      createdAt: doc.createdAt?.toISOString(),
-      updatedAt: doc.updatedAt?.toISOString(),
-    }));
-  }
-
-  async getConversation(conversationId: string, userId: string) {
-    const doc = await this.conversations.findByIdAndUserId(
-      conversationId,
-      userId
-    );
-    if (!doc) return null;
-    return {
-      _id: String((doc as any)._id),
-      title: (doc as any).title,
-      messages: (doc as any).messages ?? [],
-      createdAt: (doc as any).createdAt?.toISOString(),
-      updatedAt: (doc as any).updatedAt?.toISOString(),
-    };
-  }
-
-  async deleteConversation(conversationId: string, userId: string) {
-    return this.conversations.deleteByIdAndUserId(conversationId, userId);
-  }
-
   // ─── Internals ────────────────────────────────────────────────────────────────
 
   private async resolveConversation(
     userId: string,
     request: AdvisorChatRequest
   ) {
+    // Check for exist conversation
+
     if (request.conversationId) {
       const existing = await this.conversations.findByIdAndUserId(
         request.conversationId,
         userId
       );
+
       if (existing)
         return {
-          conversationId: String((existing as any)._id),
+          conversationId: String(existing._id),
           isNewConversation: false,
         };
     }
 
     const context = await advisorContextBuilder.build(userId, request);
+
     const snapshot = advisorContextBuilder.toSnapshot(context);
 
     const newConv = await this.conversations.create({
@@ -274,6 +245,7 @@ export class AdvisorService {
     const actions: string[] = [];
     const followUps: string[] = [];
     const cautions: string[] = [];
+
     for (const call of toolCalls) {
       switch (call.name) {
         case 'surface_actions':
@@ -295,22 +267,28 @@ export class AdvisorService {
   ): AdvisorContextSource[] {
     const sources: AdvisorContextSource[] = [];
     if (snapshot.onboarding) sources.push('onboarding');
+
     if (
       Array.isArray(snapshot.recommendations) &&
       snapshot.recommendations.length
     )
       sources.push('recommendations');
+
     if (snapshot.selectedPathway) {
       sources.push('pathway');
       sources.push('pathwayKnowledge');
     }
+
     if (snapshot.roadmapSetup) sources.push('roadmapSetup');
+
     if (snapshot.roadmap) sources.push('roadmap');
+
     return sources;
   }
 
   private generateTitle(message: string): string {
     const clean = message.trim().replace(/[^\w\s''\-,.?]/g, '');
+
     return clean.length <= TITLE_MAX_LENGTH
       ? clean
       : clean.slice(0, TITLE_MAX_LENGTH).trim() + '…';
