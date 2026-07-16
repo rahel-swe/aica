@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import type { AdvisorConversationSummary } from '@contracts/shared/types/advisor-types';
-import { Trash2 } from 'lucide-react';
+import { Loader, Trash2 } from 'lucide-react';
 import {
   Tooltip,
   TooltipContent,
@@ -14,6 +14,8 @@ import { m } from '../../paraglide/messages';
 type ConversationItemProps = {
   conversation: AdvisorConversationSummary;
   isActive: boolean;
+  isStreaming: boolean;
+  activeConversationId: string | null;
   onSelect: () => void;
   onDeleteRequest: (id: string) => void;
 };
@@ -21,6 +23,7 @@ type ConversationItemProps = {
 const ConversationItem = ({
   conversation,
   isActive,
+  isStreaming,
   onSelect,
   onDeleteRequest,
 }: ConversationItemProps) => {
@@ -63,20 +66,24 @@ const ConversationItem = ({
       <TooltipProvider delayDuration={300}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button
-              variant="destructive"
-              size="sm"
-              className={cn('shrink py-2')}
-              onClick={(e) => {
-                e.stopPropagation();
-                onDeleteRequest(conversationId);
-              }}
-            >
-              <Trash2 className="size-3" />
-            </Button>
+            {isStreaming ? (
+              <Loader className="animate-spin size-4" />
+            ) : (
+              <Button
+                variant="destructive"
+                size="sm"
+                className={cn('shrink py-2')}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDeleteRequest(conversationId);
+                }}
+              >
+                <Trash2 className="size-3" />
+              </Button>
+            )}
           </TooltipTrigger>
           <TooltipContent side="right" className="text-xs">
-            {m.common_delete()}
+            {isStreaming ? m.pending() : m.common_delete()}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

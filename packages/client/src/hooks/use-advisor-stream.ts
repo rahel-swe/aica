@@ -13,6 +13,7 @@ export function useAdvisorStream() {
     (message: string, roadmapStep?: AdvisorChatRequest['roadmapStep']) => {
       if (abortControllerRef.current) {
         abortControllerRef.current.abort();
+
         useAdvisorStore.getState().cancelStream();
       }
 
@@ -21,6 +22,7 @@ export function useAdvisorStream() {
 
       const store = useAdvisorStore.getState();
       store.appendUserMessage(message);
+
       store.beginStream();
 
       const request: AdvisorChatRequest = {
@@ -33,32 +35,32 @@ export function useAdvisorStream() {
       streamAdvisorChat(
         request,
         {
-          onStart: (conversationId) => {
-            useAdvisorStore.getState().confirmConversationId(conversationId);
+          onStart: (conversationId, messageId) => {
+            useAdvisorStore
+              .getState()
+              .attachStreamMeta(conversationId, messageId);
           },
           // ← surface "searching" state to the streaming bubble
-          onSearching: (query) => {
-            useAdvisorStore.getState().setSearchingQuery(query);
-          },
-          onDelta: (content) => {
-            useAdvisorStore.getState().pushDelta(content);
-          },
+          onSearching: (query) =>
+            useAdvisorStore.getState().setSearchingQuery(query),
+
+          onDelta: (content) => useAdvisorStore.getState().pushDelta(content),
+
           // commit resources before metadata
-          onResources: (items) => {
-            useAdvisorStore.getState().applyResources(items);
-          },
-          onMetadata: (meta) => {
-            useAdvisorStore.getState().applyMetadata(meta);
-          },
+          onResources: (items) =>
+            useAdvisorStore.getState().applyResources(items),
+
+          onMetadata: (meta) => useAdvisorStore.getState().applyMetadata(meta),
+
           onDone: () => {
             useAdvisorStore.getState().commitStream();
             queryClient.invalidateQueries({
               queryKey: advisorKeys.conversations(),
             });
           },
-          onError: (errorMessage) => {
-            useAdvisorStore.getState().failStream(errorMessage);
-          },
+
+          onError: (errorMessage) =>
+            useAdvisorStore.getState().failStream(errorMessage),
         },
         controller.signal
       );
@@ -69,6 +71,7 @@ export function useAdvisorStream() {
   const abort = useCallback(() => {
     abortControllerRef.current?.abort();
     abortControllerRef.current = null;
+
     useAdvisorStore.getState().cancelStream();
   }, []);
 

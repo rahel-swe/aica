@@ -6,38 +6,45 @@ import type {
 } from '@contracts/shared/types/advisor-types';
 import type { AdvisorStreamMetadata } from '@/services/advisor-service';
 
-// ─── Types ─────────────────────────────────────────────────────────────────────
+// ─── Types
 
-type StreamingState = {
+export type StreamingState = {
   content: string;
+  messageId: string | null;
+  conversationId: string | null;
   searchingQuery: string | null; // ← set while Tavily search is running
   resources: SearchResult[]; // ← populated after search completes
   metadata: AdvisorStreamMetadata | null;
   error: string | null;
 };
 
+type AdvisorFirtsMessage = Omit<AdvisorChatMessage, 'id'> &
+  Partial<Pick<AdvisorChatMessage, 'id'>>;
+
 type AdvisorStoreState = {
   activeConversationId: string | null;
   activeConversationTitle: string | null;
-  messages: AdvisorChatMessage[];
+  messages: AdvisorFirtsMessage[];
   streaming: StreamingState | null;
+  streamingConversationIds: string[];
   responseMode: AdvisorResponseMode; // ← user-selected, persisted across messages
 
+  setStreamingConversationIds: (id: string) => void;
   startNewConversation: () => void;
   loadConversation: (
     id: string,
     title: string,
-    messages: AdvisorChatMessage[]
+    messages: AdvisorFirtsMessage[]
   ) => void;
   appendUserMessage: (content: string) => void;
   setResponseMode: (mode: AdvisorResponseMode) => void;
-
   // Stream state machine
   beginStream: () => void;
-  confirmConversationId: (id: string) => void;
-  setSearchingQuery: (query: string) => void; // ← NEW: onSearching handler
+  attachStreamMeta: (conversationId: string, messageId: string) => void;
+
+  setSearchingQuery: (query: string) => void;
   pushDelta: (delta: string) => void;
-  applyResources: (items: SearchResult[]) => void; // ← NEW: onResources handler
+  applyResources: (items: SearchResult[]) => void;
   applyMetadata: (meta: AdvisorStreamMetadata) => void;
   commitStream: () => void;
   failStream: (error: string) => void;
@@ -52,14 +59,20 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
   messages: [],
   streaming: null,
   responseMode: 'focused',
+  streamingConversationIds: [],
 
   startNewConversation: () =>
     set({
       activeConversationId: null,
       activeConversationTitle: null,
       messages: [],
-      streaming: null,
     }),
+
+  setStreamingConversationIds: (id) => {
+    set((state) => ({
+      streamingConversationIds: [...state.streamingConversationIds, id],
+    }));
+  },
 
   loadConversation: (id, title, messages) =>
     set({
@@ -85,24 +98,36 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
           contextUsed: [],
           resources: [],
           createdAt: new Date(),
-        } satisfies AdvisorChatMessage,
+        } satisfies AdvisorFirtsMessage,
       ],
     })),
 
   setResponseMode: (mode) => set({ responseMode: mode }),
 
   beginStream: () =>
-    set({
+    set((state) => ({
       streaming: {
         content: '',
         searchingQuery: null,
         resources: [],
         metadata: null,
         error: null,
+        conversationId: null,
+        messageId: null,
       },
-    }),
+      streamingConversationIds: [
+        ...state.streamingConversationIds,
+        state.activeConversationId!,
+      ],
+    })),
 
-  confirmConversationId: (id) => set({ activeConversationId: id }),
+  attachStreamMeta: (conversationId, messageId) =>
+    set((state) => ({
+      activeConversationId: state.activeConversationId ?? conversationId,
+      streaming: state.streaming
+        ? { ...state.streaming, conversationId, messageId }
+        : state.streaming,
+    })),
 
   setSearchingQuery: (query) =>
     set((s) => ({
@@ -136,12 +161,20 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
 
   commitStream: () => {
     const { streaming, messages } = get();
+
     if (!streaming || !streaming.content) {
       set({ streaming: null });
       return;
     }
 
-    const assistantMessage: AdvisorChatMessage = {
+    if (!streaming.messageId || !streaming.conversationId) {
+      console.log(
+        'commitStream: missing IDs - backend "start" event never arrived'
+      );
+    }
+
+    const assistantMessage: AdvisorFirtsMessage = {
+      id: streaming.messageId ?? crypto.randomUUID(),
       role: 'assistant',
       content: streaming.content,
       actions: streaming.metadata?.actions ?? [],

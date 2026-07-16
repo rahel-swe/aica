@@ -1,4 +1,4 @@
-import apiClient from '@/lib/api-client';
+import apiClient, { API_BASE_URL } from '@/lib/api-client';
 import type {
   AdvisorChatRequest,
   AdvisorConversation,
@@ -19,24 +19,22 @@ export type AdvisorStreamMetadata = {
 
 type StreamHandlers = {
   onStart: (conversationId: string, messageId: string) => void;
-  onSearching: (query: string) => void; // ← NEW
+  onSearching: (query: string) => void;
   onDelta: (content: string) => void;
-  onResources: (items: SearchResult[]) => void; // ← NEW
+  onResources: (items: SearchResult[]) => void;
   onMetadata: (meta: AdvisorStreamMetadata) => void;
   onDone: () => void;
   onError: (message: string) => void;
 };
 
-// ─── Streaming chat ─────────────────────────────────────────────────────────────
+// ─── Streaming chat
 
 export function streamAdvisorChat(
   payload: AdvisorChatRequest,
   handlers: StreamHandlers,
   signal: AbortSignal
 ): void {
-  const baseUrl = import.meta.env?.VITE_API_URL ?? '';
-
-  fetch(`${baseUrl}/api/advisor/chat`, {
+  fetch(`${API_BASE_URL}/api/advisor/chat`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -48,6 +46,7 @@ export function streamAdvisorChat(
     .then(async (res) => {
       if (!res.ok || !res.body) {
         handlers.onError('Could not connect to the advisor. Please try again.');
+
         return;
       }
 
@@ -60,26 +59,32 @@ export function streamAdvisorChat(
         if (done) break;
 
         buffer += decoder.decode(value, { stream: true });
+
         const parts = buffer.split('\n\n');
         buffer = parts.pop() ?? '';
 
         for (const part of parts) {
           if (!part.startsWith('data: ')) continue;
+
           try {
             const event = JSON.parse(part.slice(6)) as AdvisorStreamEvent;
             switch (event.type) {
               case 'start':
                 handlers.onStart(event.conversationId, event.messageId);
                 break;
-              case 'searching': // ← NEW
+
+              case 'searching':
                 handlers.onSearching(event.query);
                 break;
+
               case 'delta':
                 handlers.onDelta(event.content);
                 break;
-              case 'resources': // ← NEW
-                handlers.onResources(event.items as SearchResult[]);
+
+              case 'resources':
+                handlers.onResources(event.items);
                 break;
+
               case 'metadata':
                 handlers.onMetadata({
                   actions: event.actions,
@@ -88,9 +93,11 @@ export function streamAdvisorChat(
                   contextUsed: event.contextUsed,
                 });
                 break;
+
               case 'done':
                 handlers.onDone();
                 break;
+
               case 'error':
                 handlers.onError(event.message);
                 break;
@@ -101,18 +108,20 @@ export function streamAdvisorChat(
         }
       }
     })
-    .catch((err: unknown) => {
+    .catch((err) => {
       if (err instanceof DOMException && err.name === 'AbortError') return;
+
       handlers.onError('Connection lost. Your context is saved — try again.');
     });
 }
 
-// ─── REST endpoints ─────────────────────────────────────────────────────────────
+// ─── REST endpoints
 
 export async function listConversations(): Promise<
   AdvisorConversationSummary[]
 > {
   const res = await apiClient.get('/api/advisor/conversations');
+
   return res.data.data;
 }
 
@@ -120,6 +129,7 @@ export async function getConversation(
   id: string
 ): Promise<AdvisorConversation> {
   const res = await apiClient.get(`/api/advisor/conversations/${id}`);
+
   return res.data.data;
 }
 

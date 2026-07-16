@@ -25,7 +25,7 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
   const { mutate: deleteConv, isPending: isDeleting } =
     useDeleteConversationMutation();
   const loadConversation = useLoadConversation();
-  const { activeConversationId } = useAdvisorStore();
+  const { activeConversationId, streaming } = useAdvisorStore();
 
   const handleSelect = (conv: AdvisorConversationSummary) => {
     if (conv._id === activeConversationId) return;
@@ -78,6 +78,10 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
                     key={conv._id}
                     conversation={conv}
                     isActive={conv._id === activeConversationId}
+                    isStreaming={Boolean(
+                      conv._id === streaming?.conversationId
+                    )}
+                    activeConversationId={activeConversationId}
                     onSelect={() => handleSelect(conv)}
                     onDeleteRequest={setPendingDeleteId}
                   />

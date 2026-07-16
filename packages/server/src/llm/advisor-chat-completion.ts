@@ -133,6 +133,7 @@ export async function runAdvisorCompletion(
 
   for await (const chunk of stream) {
     const delta = chunk.choices[0]?.delta;
+
     if (delta?.content) {
       fullContent += delta.content;
       callbacks.onDelta(delta.content);
