@@ -40,6 +40,7 @@ export function useAdvisorStream() {
               .getState()
               .attachStreamMeta(conversationId, messageId);
           },
+
           // ← surface "searching" state to the streaming bubble
           onSearching: (query) =>
             useAdvisorStore.getState().setSearchingQuery(query),

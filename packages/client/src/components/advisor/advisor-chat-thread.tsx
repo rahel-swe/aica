@@ -7,6 +7,7 @@ import {
 } from './advisor-message-bubble';
 import { AdvisorEmptyState } from './advisor-empty-state';
 import { cn } from '@/lib/utils';
+import type { AdvisorChatMessage } from '@contracts/shared/types/advisor-types';
 
 type AdvisorChatThreadProps = {
   onSend: (message: string) => void;
@@ -17,8 +18,7 @@ export function AdvisorChatThread({
   onSend,
   className,
 }: AdvisorChatThreadProps) {
-  const messages = useAdvisorStore((s) => s.messages);
-  const streaming = useAdvisorStore((s) => s.streaming);
+  const { messages, streaming, activeConversationId } = useAdvisorStore();
   const bottomRef = useRef<HTMLDivElement>(null);
   const isStreaming = streaming !== null;
 
@@ -35,26 +35,27 @@ export function AdvisorChatThread({
         dir="ltr"
         lang="en"
       >
-        {isEmpty ? (
+        {(isStreaming && !activeConversationId) || isEmpty ? (
           <AdvisorEmptyState />
         ) : (
           <>
             {messages.map((message, i) => (
               <AdvisorMessageBubble
                 key={i}
-                message={message}
+                message={message as AdvisorChatMessage}
                 onFollowUp={onSend}
               />
             ))}
 
-            {isStreaming && (
-              <StreamingBubble
-                content={streaming.content}
-                searchingQuery={streaming.searchingQuery}
-                resources={streaming.resources}
-                error={streaming.error}
-              />
-            )}
+            {isStreaming &&
+              streaming.conversationId === activeConversationId && (
+                <StreamingBubble
+                  content={streaming.content}
+                  searchingQuery={streaming.searchingQuery}
+                  resources={streaming.resources}
+                  error={streaming.error}
+                />
+              )}
           </>
         )}
         <div ref={bottomRef} className="h-1" />

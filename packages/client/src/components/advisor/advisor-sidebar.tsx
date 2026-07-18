@@ -24,7 +24,9 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
   const { data: conversations = [], isLoading } = useConversationsQuery();
   const { mutate: deleteConv, isPending: isDeleting } =
     useDeleteConversationMutation();
+
   const loadConversation = useLoadConversation();
+
   const { activeConversationId, streaming } = useAdvisorStore();
 
   const handleSelect = (conv: AdvisorConversationSummary) => {

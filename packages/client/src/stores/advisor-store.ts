@@ -26,10 +26,8 @@ type AdvisorStoreState = {
   activeConversationTitle: string | null;
   messages: AdvisorFirtsMessage[];
   streaming: StreamingState | null;
-  streamingConversationIds: string[];
   responseMode: AdvisorResponseMode; // ← user-selected, persisted across messages
 
-  setStreamingConversationIds: (id: string) => void;
   startNewConversation: () => void;
   loadConversation: (
     id: string,
@@ -51,7 +49,7 @@ type AdvisorStoreState = {
   cancelStream: () => void;
 };
 
-// ─── Store ─────────────────────────────────────────────────────────────────────
+// ─── Store
 
 export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
   activeConversationId: null,
@@ -68,12 +66,6 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
       messages: [],
     }),
 
-  setStreamingConversationIds: (id) => {
-    set((state) => ({
-      streamingConversationIds: [...state.streamingConversationIds, id],
-    }));
-  },
-
   loadConversation: (id, title, messages) =>
     set({
       activeConversationId: id,
@@ -82,7 +74,6 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
         ...m,
         createdAt: new Date(m.createdAt),
       })),
-      streaming: null,
     }),
 
   appendUserMessage: (content) =>
@@ -105,7 +96,7 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
   setResponseMode: (mode) => set({ responseMode: mode }),
 
   beginStream: () =>
-    set((state) => ({
+    set(() => ({
       streaming: {
         content: '',
         searchingQuery: null,
@@ -115,10 +106,6 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
         conversationId: null,
         messageId: null,
       },
-      streamingConversationIds: [
-        ...state.streamingConversationIds,
-        state.activeConversationId!,
-      ],
     })),
 
   attachStreamMeta: (conversationId, messageId) =>
@@ -164,11 +151,12 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
 
     if (!streaming || !streaming.content) {
       set({ streaming: null });
+
       return;
     }
 
     if (!streaming.messageId || !streaming.conversationId) {
-      console.log(
+      console.error(
         'commitStream: missing IDs - backend "start" event never arrived'
       );
     }
