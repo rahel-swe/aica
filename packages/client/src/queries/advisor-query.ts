@@ -32,17 +32,11 @@ export const useLoadConversation = () => {
   const { loadConversation } = useAdvisorStore();
 
   return async (id: string, title: string) => {
-    queryClient.invalidateQueries({ queryKey: advisorKeys.conversation(id) });
-
-    // Use cached data if available, otherwise fetch
-    const cached = queryClient.getQueryData(advisorKeys.conversation(id));
-    const conversation =
-      (cached as Awaited<ReturnType<typeof getConversation>> | undefined) ??
-      (await queryClient.fetchQuery({
-        queryKey: advisorKeys.conversation(id),
-        queryFn: () => getConversation(id),
-        staleTime: 60_000,
-      }));
+    const conversation = await queryClient.fetchQuery({
+      queryKey: advisorKeys.conversation(id),
+      queryFn: () => getConversation(id),
+      staleTime: 60_000,
+    });
 
     loadConversation(id, title, conversation?.messages ?? []);
   };

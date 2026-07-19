@@ -31,6 +31,7 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
 
   const handleSelect = (conv: AdvisorConversationSummary) => {
     if (conv._id === activeConversationId) return;
+
     loadConversation(conv._id, conv.title);
   };
 
