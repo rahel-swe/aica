@@ -1,9 +1,10 @@
 import { formatAdvisorMessage } from '@/lib/format-advisor-message';
 import type { AdvisorChatMessage } from '@contracts/shared/types/advisor-types';
-import { PencilLine, RefreshCcw } from 'lucide-react';
+import { PencilLine } from 'lucide-react';
 import CopyTextButton from '../copy-text-button';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
+import RegenerateMessageButton from './regenerate-message-button';
 
 const MessageActions = ({ message }: { message: AdvisorChatMessage }) => {
   const isMessageUser = message.role === 'user' ? true : false;
@@ -18,13 +19,7 @@ const MessageActions = ({ message }: { message: AdvisorChatMessage }) => {
       )}
     >
       <div className="flex items-center">
-        <Button
-          size="icon-xs"
-          variant={'ghost'}
-          className="py-0 rounded-sm text-muted-foreground"
-        >
-          <RefreshCcw />
-        </Button>
+        <RegenerateMessageButton message={message} />
 
         {isMessageUser && (
           <Button
