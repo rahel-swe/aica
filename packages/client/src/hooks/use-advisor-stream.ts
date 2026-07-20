@@ -36,6 +36,7 @@ export function useAdvisorStream() {
         request,
         {
           onStart: (conversationId, messageId) => {
+            console.log('conv Id', conversationId, 'msg Id', messageId);
             useAdvisorStore
               .getState()
               .attachStreamMeta(conversationId, messageId);

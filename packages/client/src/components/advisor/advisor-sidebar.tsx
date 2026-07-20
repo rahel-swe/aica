@@ -13,17 +13,24 @@ import { useState } from 'react';
 import ConversationDeleteDialog from './conversation-delete-dialog';
 import ConversationItem from './conversation-item';
 import StartNewConversation from './start-new-conversation';
-import { m } from '../../paraglide/messages';
+import { m } from '@/paraglide/messages';
+import StopGeneratingDialog from './stop-generating-dialog';
 
 type AdvisorSidebarProps = {
+  onAbort?: () => void;
   className?: string;
 };
 
-export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
+export function AdvisorSidebar({ className, onAbort }: AdvisorSidebarProps) {
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
   const { data: conversations = [], isLoading } = useConversationsQuery();
   const { mutate: deleteConv, isPending: isDeleting } =
     useDeleteConversationMutation();
+  const [open, setOpen] = useState(false);
+  const [clickedConversation, setSelectedConversation] = useState<{
+    conversationId: string;
+    conversationTitle: string;
+  }>();
 
   const loadConversation = useLoadConversation();
 
@@ -31,6 +38,16 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
 
   const handleSelect = (conv: AdvisorConversationSummary) => {
     if (conv._id === activeConversationId) return;
+
+    setSelectedConversation({
+      conversationId: conv._id,
+      conversationTitle: conv.title,
+    });
+
+    if (streaming?.conversationId) {
+      setOpen(true);
+      return;
+    }
 
     loadConversation(conv._id, conv.title);
   };
@@ -77,22 +94,39 @@ export function AdvisorSidebar({ className }: AdvisorSidebarProps) {
             ) : (
               <div className="space-y-0.5">
                 {conversations.map((conv) => (
-                  <ConversationItem
-                    key={conv._id}
-                    conversation={conv}
-                    isActive={conv._id === activeConversationId}
-                    isStreaming={Boolean(
-                      conv._id === streaming?.conversationId
-                    )}
-                    activeConversationId={activeConversationId}
-                    onSelect={() => handleSelect(conv)}
-                    onDeleteRequest={setPendingDeleteId}
-                  />
+                  <>
+                    <ConversationItem
+                      key={conv._id}
+                      conversation={conv}
+                      isActive={conv._id === activeConversationId}
+                      isStreaming={Boolean(
+                        conv._id === streaming?.conversationId
+                      )}
+                      activeConversationId={activeConversationId}
+                      onSelect={() => handleSelect(conv)}
+                      onDeleteRequest={setPendingDeleteId}
+                    />
+                  </>
                 ))}
               </div>
             )}
           </div>
         </ScrollArea>
+
+        <StopGeneratingDialog
+          open={open}
+          setOpen={setOpen}
+          onAction={() => {
+            if (onAbort) onAbort();
+
+            loadConversation(
+              clickedConversation!.conversationId,
+              clickedConversation!.conversationTitle
+            );
+
+            setOpen(false);
+          }}
+        />
 
         {/* Delete dialog */}
         <ConversationDeleteDialog

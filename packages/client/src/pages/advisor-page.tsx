@@ -12,7 +12,9 @@ export default function AdvisorPage() {
   return (
     <div className="flex h-full overflow-hidden bg-background min-h-0 md:overflow-hidden">
       {/* Desktop sidebar — hidden on mobile */}
-      {!isMobile && <AdvisorSidebar className="hidden md:flex" />}
+      {!isMobile && (
+        <AdvisorSidebar className="hidden md:flex" onAbort={abort} />
+      )}
 
       {/* Chat area */}
       <main className="flex flex-col flex-1 max-w-dvw min-w-0 min-h-0 relative">
