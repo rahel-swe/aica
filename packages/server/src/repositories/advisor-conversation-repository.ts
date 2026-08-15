@@ -34,7 +34,7 @@ export class AdvisorConversationRepository {
 
   // ─── Read
 
-  async findByIdAndUserId(conversationId: string, userId: string) {
+  async findByIdAndUserId(userId: string, conversationId?: string) {
     return AdvisorConversationModel.findOne({
       _id: conversationId,
       userId,
@@ -63,6 +63,34 @@ export class AdvisorConversationRepository {
       _id: conversationId,
       userId,
     });
+  }
+
+  async removeMessagesAfterCurrentMessage(
+    conversationId: string,
+    messageId: string
+  ) {
+    const conversation =
+      await AdvisorConversationModel.findById(conversationId);
+
+    if (!conversation) throw new Error('Not found conversation with that id');
+
+    const messageIndex = conversation?.messages.findIndex(
+      (m) => m.id === messageId
+    );
+
+    if (messageIndex === -1) throw new Error('Not found message with that id');
+
+    const messages = conversation?.messages.slice(0, messageIndex + 1);
+
+    return AdvisorConversationModel.findByIdAndUpdate(
+      conversationId,
+      {
+        $set: {
+          messages,
+        },
+      },
+      { returnDocument: 'after', lean: true }
+    );
   }
 }
 

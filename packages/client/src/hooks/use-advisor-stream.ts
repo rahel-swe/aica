@@ -28,7 +28,9 @@ export function useAdvisorStream() {
       const request: AdvisorChatRequest = {
         message,
         conversationId: store.activeConversationId ?? undefined,
+        requestMode: store.requestMode,
         responseMode: store.responseMode, // ← pass selected mode
+        messageId: store.messageId,
         ...(roadmapStep ? { roadmapStep } : {}),
       };
 

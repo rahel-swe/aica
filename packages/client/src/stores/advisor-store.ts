@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type {
   AdvisorChatMessage,
+  AdvisorRequestMode,
   AdvisorResponseMode,
   SearchResult,
 } from '@contracts/shared/types/advisor-types';
@@ -26,6 +27,8 @@ type AdvisorStoreState = {
   activeConversationTitle: string | null;
   messages: AdvisorFirtsMessage[];
   streaming: StreamingState | null;
+  messageId: string | null;
+  requestMode: AdvisorRequestMode; // ← base on action selected (new, edit, retry)
   responseMode: AdvisorResponseMode; // ← user-selected, persisted across messages
 
   startNewConversation: () => void;
@@ -35,7 +38,11 @@ type AdvisorStoreState = {
     messages: AdvisorFirtsMessage[]
   ) => void;
   appendUserMessage: (content: string) => void;
+  setRequestMode: (mode: AdvisorRequestMode) => void;
   setResponseMode: (mode: AdvisorResponseMode) => void;
+
+  setMessageId: (id: string) => void;
+
   // Stream state machine
   beginStream: () => void;
   attachStreamMeta: (conversationId: string, messageId: string) => void;
@@ -56,8 +63,10 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
   activeConversationTitle: null,
   messages: [],
   streaming: null,
+  requestMode: 'new',
   responseMode: 'focused',
   streamingConversationIds: [],
+  messageId: null,
 
   startNewConversation: () =>
     set({
@@ -93,7 +102,9 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
       ],
     })),
 
+  setRequestMode: (mode) => set({ requestMode: mode }),
   setResponseMode: (mode) => set({ responseMode: mode }),
+  setMessageId: (id) => set({ messageId: id }),
 
   beginStream: () =>
     set(() => ({
@@ -147,7 +158,7 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
     })),
 
   commitStream: () => {
-    const { streaming, messages } = get();
+    const { streaming, messages, messageId } = get();
 
     if (!streaming || !streaming.content) {
       set({ streaming: null });
@@ -162,7 +173,7 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
     }
 
     const assistantMessage: AdvisorFirtsMessage = {
-      id: streaming.messageId ?? crypto.randomUUID(),
+      id: streaming.messageId ?? messageId ?? crypto.randomUUID(),
       role: 'assistant',
       content: streaming.content,
       actions: streaming.metadata?.actions ?? [],

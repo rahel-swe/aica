@@ -38,13 +38,21 @@ export const DIMENSION_WEIGHTS = {
 // ── Dimension type registry ───────────────────────────────────────────────────
 // Determines which scoring method is used per dimension.
 // Update this when assessment structure changes — never hardcode in service layer.
+
 export const MULTI_VALUE_DIMENSIONS = new Set<
   keyof RecommendationDimensionScores
->(['strengths', 'passions', 'learningPreference', 'workStyle', 'impact']);
+>([
+  'strengths',
+  'passions',
+  'learningPreference',
+  'workStyle',
+  'impact',
+  'workEnvironment',
+]);
 
 export const SINGLE_VALUE_DIMENSIONS = new Set<
   keyof RecommendationDimensionScores
->(['subjects', 'workEnvironment', 'collaborationStyle', 'goals']);
+>(['subjects', 'collaborationStyle', 'goals']);
 
 // ── Band multipliers
 // penalty is negative — it actively reduces the dimension score

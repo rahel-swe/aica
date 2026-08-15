@@ -18,7 +18,7 @@ import type {
 } from '@contracts/shared/types/roadmap-types';
 
 export class AdvisorContextBuilder {
-  // ─── Building fresh context from DB ────────────────────────────────────────────
+  // ─── Building fresh context from DB
   // Calling once per conversation creation only — not every message.
 
   async build(

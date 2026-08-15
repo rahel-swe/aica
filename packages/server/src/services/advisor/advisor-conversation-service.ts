@@ -5,6 +5,7 @@ export class AdvisorConversationService {
 
   async listConversations(userId: string) {
     const docs = await this.conversations.findRecentByUserId(userId);
+
     return docs.map((doc) => ({
       _id: String(doc._id),
       title: doc.title,
@@ -17,8 +18,8 @@ export class AdvisorConversationService {
 
   async getConversation(conversationId: string, userId: string) {
     const doc = await this.conversations.findByIdAndUserId(
-      conversationId,
-      userId
+      userId,
+      conversationId
     );
 
     if (!doc) return null;
@@ -34,6 +35,22 @@ export class AdvisorConversationService {
 
   async deleteConversation(conversationId: string, userId: string) {
     return this.conversations.deleteByIdAndUserId(conversationId, userId);
+  }
+
+  // Remove all messages after current edited or retry message
+  removeMessagesAfterCurrentMessage(conversationId: string, messageId: string) {
+    if (!conversationId) {
+      throw new Error('Conversation Id is not valid');
+    }
+
+    if (!messageId) {
+      throw new Error('Message Id is not valid');
+    }
+
+    return this.conversations.removeMessagesAfterCurrentMessage(
+      conversationId,
+      messageId
+    );
   }
 }
 

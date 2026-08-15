@@ -2,8 +2,13 @@ import { z } from 'zod';
 
 // ─── Enums ──────────
 
-// What the USER picks — controls which tools are active and how the LLM responds
-export const advisorResponseModeSchema = z.enum(['guided', 'focused', 'deep']);
+export const advisorRequestModeArray = ['edit', 'retry', 'new'] as const;
+
+export const advisorResponseModeArray = ['guided', 'focused', 'deep'] as const;
+
+export const advisorRequestModeSchema = z.enum(advisorRequestModeArray);
+
+export const advisorResponseModeSchema = z.enum(advisorResponseModeArray);
 
 export const advisorContextSourceSchema = z.enum([
   'onboarding',
@@ -14,7 +19,7 @@ export const advisorContextSourceSchema = z.enum([
   'roadmap',
 ]);
 
-// ─── Search result ─────────────────────────────────────────────────────────────
+// ─── Search result
 
 export const searchResultSchema = z.object({
   title: z.string(),
@@ -25,7 +30,7 @@ export const searchResultSchema = z.object({
   favicon: z.string(),
 });
 
-// ─── Conversation message ──────────────────────────────────────────────────────
+// ─── Conversation message
 
 export const advisorMessageRoleArray = ['user', 'assistant'] as const;
 
@@ -43,7 +48,7 @@ export const advisorChatMessageSchema = z.object({
   createdAt: z.coerce.date(),
 });
 
-// ─── Conversation ──────────────────────────────────────────────────────────────
+// ─── Conversation ─
 
 export const advisorConversationSchema = z.object({
   _id: z.string(),
@@ -64,11 +69,13 @@ export const advisorConversationSummarySchema = z.object({
   updatedAt: z.coerce.date(),
 });
 
-// ─── Request ───────────────────────────────────────────────────────────────────
+// ─── Request
 
 export const advisorChatRequestSchema = z.object({
   conversationId: z.string().optional(),
   message: z.string().trim().min(1).max(2000),
+  messageId: z.string().nullable(),
+  requestMode: advisorRequestModeSchema.default('new'),
   responseMode: advisorResponseModeSchema.optional().default('guided'),
   roadmapStep: z
     .object({
@@ -79,7 +86,7 @@ export const advisorChatRequestSchema = z.object({
     .optional(),
 });
 
-// ─── SSE stream events ─────────────────────────────────────────────────────────
+// ─── SSE stream events ───
 //
 // Full event sequence with search:
 //   start → searching → delta(n) → resources → metadata → done
@@ -119,7 +126,7 @@ export const advisorStreamEventSchema = z.discriminatedUnion('type', [
   z.object({ type: z.literal('error'), message: z.string() }),
 ]);
 
-// ─── HTTP envelopes ────────────────────────────────────────────────────────────
+// ─── HTTP envelopes ──────
 
 export const advisorConversationListResponseSchema = z.object({
   success: z.boolean(),

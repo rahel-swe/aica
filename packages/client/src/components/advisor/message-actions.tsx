@@ -4,7 +4,7 @@ import { PencilLine } from 'lucide-react';
 import CopyTextButton from '../copy-text-button';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
-import RegenerateMessageButton from './regenerate-message-button';
+import RetryMessageButton from './retry-message-button';
 
 const MessageActions = ({ message }: { message: AdvisorChatMessage }) => {
   const isMessageUser = message.role === 'user' ? true : false;
@@ -19,7 +19,7 @@ const MessageActions = ({ message }: { message: AdvisorChatMessage }) => {
       )}
     >
       <div className="flex items-center">
-        <RegenerateMessageButton message={message} />
+        <RetryMessageButton message={message} />
 
         {isMessageUser && (
           <Button

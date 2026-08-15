@@ -11,23 +11,35 @@ import {
   type advisorConversationListResponseSchema,
   type advisorConversationDetailResponseSchema,
   adviosrMessageRoleEnum,
+  advisorRequestModeSchema,
 } from '../schemas/advisor-schema';
 
 // ─── Public contract types ─────────────────────────────────────────────────────
 
+export type AdvisorRequestMode = z.infer<typeof advisorRequestModeSchema>;
+
 export type AdvisorResponseMode = z.infer<typeof advisorResponseModeSchema>;
+
 export type AdvisorContextSource = z.infer<typeof advisorContextSourceSchema>;
+
 export type SearchResult = z.infer<typeof searchResultSchema>;
+
 export type AdvisorChatMessage = z.infer<typeof advisorChatMessageSchema>;
+
 export type AdvisorConversation = z.infer<typeof advisorConversationSchema>;
+
 export type AdvisorConversationSummary = z.infer<
   typeof advisorConversationSummarySchema
 >;
+
 export type AdvisorChatRequest = z.infer<typeof advisorChatRequestSchema>;
+
 export type AdvisorStreamEvent = z.infer<typeof advisorStreamEventSchema>;
+
 export type AdvisorConversationListResponse = z.infer<
   typeof advisorConversationListResponseSchema
 >;
+
 export type AdvisorConversationDetailResponse = z.infer<
   typeof advisorConversationDetailResponseSchema
 >;

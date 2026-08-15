@@ -16,7 +16,7 @@ import { randomUUID } from 'node:crypto';
 const LLM_HISTORY_WINDOW = 20;
 const TITLE_MAX_LENGTH = 60;
 
-export class AdvisorService {
+export class AdvisoChatrService {
   private readonly conversations = advisorConversationRepository;
 
   async chat(
@@ -25,15 +25,17 @@ export class AdvisorService {
     res: Response
   ): Promise<void> {
     try {
-      const { conversationId, isNewConversation } =
-        await this.resolveConversation(userId, request);
+      const { conversationId, isNewConversation } = await this.resolveRequest(
+        userId,
+        request
+      );
 
       if (!isNewConversation)
         await this.appendUserMessage(conversationId, request.message);
 
       const conversation = await this.conversations.findByIdAndUserId(
-        conversationId,
-        userId
+        userId,
+        conversationId
       );
 
       if (!conversation) {
@@ -157,18 +159,28 @@ export class AdvisorService {
     }
   }
 
-  // ─── Internals ────────────────────────────────────────────────────────────────
+  // ─── Internals
 
-  private async resolveConversation(
-    userId: string,
-    request: AdvisorChatRequest
-  ) {
+  private async resolveRequest(userId: string, request: AdvisorChatRequest) {
+    const { conversationId, messageId, requestMode, message } = request;
+
+    if (requestMode === 'edit' || requestMode === 'retry') {
+      if (!conversationId || !messageId) {
+        throw new Error('Conversation id or message id is not valid');
+      }
+
+      await this.conversations.removeMessagesAfterCurrentMessage(
+        conversationId,
+        messageId
+      );
+    }
+
     // Check for exist conversation
 
-    if (request.conversationId) {
+    if (conversationId) {
       const existing = await this.conversations.findByIdAndUserId(
-        request.conversationId,
-        userId
+        userId,
+        conversationId
       );
 
       if (existing)
@@ -178,17 +190,18 @@ export class AdvisorService {
         };
     }
 
+    // If conversation was not exist then create context for it
     const context = await advisorContextBuilder.build(userId, request);
 
     const snapshot = advisorContextBuilder.toSnapshot(context);
 
     const newConv = await this.conversations.create({
       userId,
-      title: this.generateTitle(request.message),
+      title: this.generateTitle(message),
       contextSnapshot: snapshot,
       firstMessage: {
         role: 'user',
-        content: request.message,
+        content: message,
         actions: [],
         followUps: [],
         cautions: [],
@@ -299,4 +312,4 @@ export class AdvisorService {
   }
 }
 
-export const advisorService = new AdvisorService();
+export const advisorService = new AdvisoChatrService();
