@@ -20,7 +20,8 @@ app.use(
 app.all('/api/auth/*splat', toNodeHandler(auth));
 
 app.use(express.json());
-// app.use(arcjetMiddleware);
+
+if (Bun.env.environment === 'production') app.use(arcjetMiddleware);
 
 app.use('/api', apiRouter);
 

@@ -3,7 +3,7 @@ import { AdvisorConversationModel } from '../models/advisor-conversation-model';
 
 const MAX_HISTORY_FOR_LIST = 20;
 
-type AdvisorFirtsMessage = Omit<AdvisorChatMessage, 'id'> &
+type AdvisorConversationMessage = Omit<AdvisorChatMessage, 'id'> &
   Partial<Pick<AdvisorChatMessage, 'id'>>;
 
 export class AdvisorConversationRepository {
@@ -13,7 +13,7 @@ export class AdvisorConversationRepository {
     userId: string;
     title: string;
     contextSnapshot: Record<string, unknown>;
-    firstMessage: AdvisorFirtsMessage;
+    firstMessage: AdvisorConversationMessage;
   }) {
     return AdvisorConversationModel.create({
       userId: data.userId,
@@ -23,7 +23,10 @@ export class AdvisorConversationRepository {
     });
   }
 
-  async appendMessage(conversationId: string, message: AdvisorFirtsMessage) {
+  async appendMessage(
+    conversationId: string,
+    message: AdvisorConversationMessage
+  ) {
     // $push is atomic — safe for concurrent requests (though the UX shouldn't allow that)
     return AdvisorConversationModel.findByIdAndUpdate(
       conversationId,
@@ -56,7 +59,7 @@ export class AdvisorConversationRepository {
       .lean();
   }
 
-  // ─── Delete ──────────────────────────────────────────────────────────────────
+  // ─── Delete
 
   async deleteByIdAndUserId(conversationId: string, userId: string) {
     return AdvisorConversationModel.findOneAndDelete({

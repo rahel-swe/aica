@@ -7,7 +7,9 @@ import { cn } from '@/lib/utils';
 import RetryMessageButton from './retry-message-button';
 
 const MessageActions = ({ message }: { message: AdvisorChatMessage }) => {
-  const isMessageUser = message.role === 'user' ? true : false;
+  const isUserMessage = message.role === 'user';
+  const canRetry =
+    isUserMessage && message.id && !message.id.startsWith('temp-');
 
   const creationDate = new Date(message.createdAt);
 
@@ -15,13 +17,13 @@ const MessageActions = ({ message }: { message: AdvisorChatMessage }) => {
     <div
       className={cn(
         'flex items-center gap-2',
-        isMessageUser && 'flex-row-reverse me-2'
+        isUserMessage && 'flex-row-reverse me-2'
       )}
     >
       <div className="flex items-center">
-        <RetryMessageButton message={message} />
+        {canRetry && <RetryMessageButton message={message} />}
 
-        {isMessageUser && (
+        {isUserMessage && (
           <Button
             size="icon-xs"
             variant={'ghost'}

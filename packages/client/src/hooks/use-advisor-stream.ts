@@ -21,7 +21,17 @@ export function useAdvisorStream() {
       abortControllerRef.current = controller;
 
       const store = useAdvisorStore.getState();
-      store.appendUserMessage(message);
+      const currentMessageId = store.messageId;
+      const shouldReplacePastMessages =
+        store.requestMode === 'edit' || store.requestMode === 'retry';
+
+      if (shouldReplacePastMessages && currentMessageId) {
+        store.removeMessagesAfterCurrentMessage(currentMessageId);
+      }
+
+      if (store.requestMode !== 'retry') {
+        store.appendUserMessage(message);
+      }
 
       store.beginStream();
 
@@ -33,6 +43,8 @@ export function useAdvisorStream() {
         messageId: store.messageId,
         ...(roadmapStep ? { roadmapStep } : {}),
       };
+
+      store.resetRequestState();
 
       streamAdvisorChat(
         request,

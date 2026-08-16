@@ -6,6 +6,7 @@ import type {
   SearchResult,
 } from '@contracts/shared/types/advisor-types';
 import type { AdvisorStreamMetadata } from '@/services/advisor-service';
+import { generateTempId } from '@/lib/temp-id-generator';
 
 // ─── Types
 
@@ -19,13 +20,13 @@ export type StreamingState = {
   error: string | null;
 };
 
-type AdvisorFirtsMessage = Omit<AdvisorChatMessage, 'id'> &
+type AdvisorStoreMessage = Omit<AdvisorChatMessage, 'id'> &
   Partial<Pick<AdvisorChatMessage, 'id'>>;
 
 type AdvisorStoreState = {
   activeConversationId: string | null;
   activeConversationTitle: string | null;
-  messages: AdvisorFirtsMessage[];
+  messages: AdvisorStoreMessage[];
   streaming: StreamingState | null;
   messageId: string | null;
   requestMode: AdvisorRequestMode; // ← base on action selected (new, edit, retry)
@@ -35,13 +36,15 @@ type AdvisorStoreState = {
   loadConversation: (
     id: string,
     title: string,
-    messages: AdvisorFirtsMessage[]
+    messages: AdvisorStoreMessage[]
   ) => void;
   appendUserMessage: (content: string) => void;
+  removeMessagesAfterCurrentMessage: (messageId: string) => void;
   setRequestMode: (mode: AdvisorRequestMode) => void;
   setResponseMode: (mode: AdvisorResponseMode) => void;
 
-  setMessageId: (id: string) => void;
+  setMessageId: (id: string | null) => void;
+  resetRequestState: () => void;
 
   // Stream state machine
   beginStream: () => void;
@@ -98,13 +101,25 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
           contextUsed: [],
           resources: [],
           createdAt: new Date(),
-        } satisfies AdvisorFirtsMessage,
+        } satisfies AdvisorStoreMessage,
       ],
     })),
+
+  removeMessagesAfterCurrentMessage: (messageId) =>
+    set((s) => {
+      const messageIndex = s.messages.findIndex((m) => m.id === messageId);
+
+      if (messageIndex === -1) return s;
+
+      return {
+        messages: s.messages.slice(0, messageIndex + 1),
+      };
+    }),
 
   setRequestMode: (mode) => set({ requestMode: mode }),
   setResponseMode: (mode) => set({ responseMode: mode }),
   setMessageId: (id) => set({ messageId: id }),
+  resetRequestState: () => set({ requestMode: 'new', messageId: null }),
 
   beginStream: () =>
     set(() => ({
@@ -172,8 +187,8 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
       );
     }
 
-    const assistantMessage: AdvisorFirtsMessage = {
-      id: streaming.messageId ?? messageId ?? crypto.randomUUID(),
+    const assistantMessage: AdvisorStoreMessage = {
+      id: streaming.messageId ?? messageId ?? generateTempId(),
       role: 'assistant',
       content: streaming.content,
       actions: streaming.metadata?.actions ?? [],

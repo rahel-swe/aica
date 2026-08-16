@@ -30,7 +30,7 @@ export class AdvisoChatrService {
         request
       );
 
-      if (!isNewConversation)
+      if (!isNewConversation && request.requestMode !== 'retry')
         await this.appendUserMessage(conversationId, request.message);
 
       const conversation = await this.conversations.findByIdAndUserId(
