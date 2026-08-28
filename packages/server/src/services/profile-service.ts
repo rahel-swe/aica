@@ -1,15 +1,15 @@
 import type { User } from 'better-auth';
-import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
+import { PathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 
 export class ProfileService {
-  private readonly pathwayAssessmentRepository = pathwayAssessmentRepository;
+  private readonly pathwayAssessmentRepo = PathwayAssessmentRepository;
   private readonly roadmapSetupAssessmentRepository =
     roadmapSetupAssessmentRepository;
 
   async getProfileStatus(user: User) {
     const [pathwayAssessment, roadmapSetupAssessment] = await Promise.all([
-      this.pathwayAssessmentRepository.findByUserId(user.id),
+      this.pathwayAssessmentRepo.findByUserId(user.id),
       this.roadmapSetupAssessmentRepository.findByUserId(user.id),
     ]);
 

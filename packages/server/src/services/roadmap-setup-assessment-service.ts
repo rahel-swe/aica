@@ -2,23 +2,23 @@ import type { RoadmapSetupAssessmentFormValues } from '@contracts/shared/types/r
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
 
 export class RoadmapSetupAssessmentService {
-  private readonly roadmapSetupRepository = roadmapSetupAssessmentRepository;
+  private static readonly roadmapSetupRepo = roadmapSetupAssessmentRepository;
 
-  async submitRoadmapSetupAssessment(
+  static async submitRoadmapSetupAssessment(
     userId: string,
     data: RoadmapSetupAssessmentFormValues
   ) {
-    const existing = await this.roadmapSetupRepository.findByUserId(userId);
+    const existing = await this.roadmapSetupRepo.findByUserId(userId);
 
     if (existing) {
-      return await this.roadmapSetupRepository.updateByUserId(userId, {
+      return await this.roadmapSetupRepo.updateByUserId(userId, {
         ...data,
         completed: true,
         stepsCompleted: 8,
       });
     }
 
-    return await this.roadmapSetupRepository.create({
+    return await this.roadmapSetupRepo.create({
       userId,
       ...data,
       completed: true,
@@ -26,14 +26,11 @@ export class RoadmapSetupAssessmentService {
     });
   }
 
-  async getRoadmapSetupStatus(userId: string) {
-    return await this.roadmapSetupRepository.findByUserId(userId);
+  static async getRoadmapSetupStatus(userId: string) {
+    return await this.roadmapSetupRepo.findByUserId(userId);
   }
 
-  async deleteRoadmapSetup(roadmapSetupId: string, userId: string) {
-    return await this.roadmapSetupRepository.deleteByUserId(
-      roadmapSetupId,
-      userId
-    );
+  static async deleteRoadmapSetup(roadmapSetupId: string, userId: string) {
+    return await this.roadmapSetupRepo.deleteByUserId(roadmapSetupId, userId);
   }
 }

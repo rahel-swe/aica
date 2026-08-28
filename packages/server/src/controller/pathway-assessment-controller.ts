@@ -4,7 +4,7 @@ import { PathwayAssessmentService } from '../services/pathway-assessment-service
 import type { AuthRequest } from '../middleware/auth-middleware';
 
 export class PathwayAssessmentController {
-  private readonly service = new PathwayAssessmentService();
+  private readonly service = PathwayAssessmentService;
 
   submitPathwayAssessment = async (req: AuthRequest, res: Response) => {
     try {

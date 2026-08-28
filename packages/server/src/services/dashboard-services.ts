@@ -3,7 +3,7 @@ import type {
   DashboardResponse,
   DashboardStatus,
 } from '@contracts/shared/types/dashboard-types';
-import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
+import { PathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 import { recommendationRepository } from '../repositories/recommendation-repository';
 import { roadmapRepository } from '../repositories/roadmap-repository';
 import { roadmapSetupAssessmentRepository } from '../repositories/roadmap-setup-assessment-repository';
@@ -16,7 +16,7 @@ type DashboardRoadmap = DashboardResponse['roadmap'];
 type DashboardRecommendation = DashboardResponse['recommendation'];
 
 export class DashboardService {
-  private readonly pathwayAssessmentRepo = pathwayAssessmentRepository;
+  private readonly pathwayAssessmentRepo = PathwayAssessmentRepository;
   private readonly recommendationRepo = recommendationRepository;
   private readonly roadmapRepo = roadmapRepository;
   private readonly roadmapSetupAssessmentRepo =

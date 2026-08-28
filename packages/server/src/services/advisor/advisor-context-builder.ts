@@ -1,5 +1,5 @@
 import type { IRecommendation } from '@/src/models/recommendation-model';
-import { pathwayAssessmentRepository } from '@/src/repositories/pathway-assessment-repository';
+import { PathwayAssessmentRepository } from '@/src/repositories/pathway-assessment-repository';
 import { pathwayRepository } from '@/src/repositories/pathway-repository';
 import { recommendationRepository } from '@/src/repositories/recommendation-repository';
 import { roadmapRepository } from '@/src/repositories/roadmap-repository';
@@ -27,7 +27,7 @@ export class AdvisorContextBuilder {
   ): Promise<AdvisorContext> {
     const [onboardingRaw, recommendationsRaw, roadmapSetup, roadmap] =
       await Promise.all([
-        pathwayAssessmentRepository.findByUserId(userId),
+        PathwayAssessmentRepository.findByUserId(userId),
         recommendationRepository.findAllByUserId(userId),
         roadmapSetupAssessmentRepository.findByUserId(userId),
         roadmapRepository.findOneByUserId(userId),

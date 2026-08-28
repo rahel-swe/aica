@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { dashboardController } from '../controller/dashboard-controller';
 import { authorize } from '../middleware/auth-middleware';
+import { DashboardController } from '../controller/dashboard-controller';
 
 const dashboardRouter = Router();
 
-dashboardRouter.get('/', authorize, dashboardController.getDashboardData);
+dashboardRouter.get('/', authorize, DashboardController.getDashboardData);
 
 export default dashboardRouter;

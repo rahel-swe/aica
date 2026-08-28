@@ -1,10 +1,10 @@
-import { pathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
+import { PathwayAssessmentRepository } from '../repositories/pathway-assessment-repository';
 
 export class PathwayAssessmentService {
-  private readonly repository = pathwayAssessmentRepository;
+  private static readonly repository = PathwayAssessmentRepository;
 
-  async submitPathwayAssessment(userId: string, data: any) {
-    const existing = await this.repository.findByUserId(userId);
+  static async submitPathwayAssessment(userId: string, data: any) {
+    const existing = await PathwayAssessmentRepository.findByUserId(userId);
 
     if (existing) {
       return await this.repository.updateByUserId(userId, {
@@ -22,11 +22,14 @@ export class PathwayAssessmentService {
       stepsCompleted: 8,
     });
   }
-  getPathwayAssessmentStatus(userId: string) {
+  static getPathwayAssessmentStatus(userId: string) {
     return this.repository.findByUserId(userId);
   }
 
-  async deletePathwayAssessment(pathwayAssessmentId: string, userId: string) {
+  static async deletePathwayAssessment(
+    pathwayAssessmentId: string,
+    userId: string
+  ) {
     return await this.repository.deleteByUserId(pathwayAssessmentId, userId);
   }
 }

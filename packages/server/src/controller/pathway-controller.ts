@@ -20,10 +20,10 @@ import type { SupportedLocale } from '@contracts/shared/schemas/i18n';
 import type { AuthRequest } from '../middleware/auth-middleware';
 
 function getLocale(req: AuthRequest): SupportedLocale {
-  return req.locale;
+  return req.locale ?? 'en';
 }
 
-// ── Typed error narrowing ─────────────────────────────────────────────────────
+// ── Typed error narrowing
 
 function resolveStatusCode(err: unknown): number {
   if (
@@ -41,7 +41,7 @@ function resolveMessage(err: unknown): string {
   return err instanceof Error ? err.message : 'An unexpected error occurred.';
 }
 
-// ── Controller ────────────────────────────────────────────────────────────────
+// ── Controller ───────────
 
 class PathwayController {
   getPathways = async (

@@ -1,11 +1,10 @@
 // controllers/roadmap-setup-assessment-controller.ts
 import type { Response } from 'express';
 import type { AuthRequest } from '../middleware/auth-middleware';
-import { roadmapSetupAssessmentFormSchema } from '@contracts/shared/schemas/roadmap-setup-assessment-schema';
 import { RoadmapSetupAssessmentService } from '../services/roadmap-setup-assessment-service';
 
 export class RoadmapSetupAssessmentController {
-  private readonly service = new RoadmapSetupAssessmentService();
+  private readonly service = RoadmapSetupAssessmentService;
 
   submitRoadmapSetupAssessment = async (req: AuthRequest, res: Response) => {
     try {

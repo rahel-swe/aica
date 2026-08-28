@@ -4,10 +4,10 @@ import type { AuthRequest } from '../middleware/auth-middleware';
 import { dashboardService } from '../services/dashboard-services';
 
 export class DashboardController {
-  getDashboardData = async (
+  static getDashboardData = async (
     req: AuthRequest,
     res: Response<DashboardApiResponse | { success: false; message: string }>
-  ) => {
+  ): Promise<void> => {
     try {
       const user = req.user;
 
@@ -40,5 +40,3 @@ export class DashboardController {
     }
   };
 }
-
-export const dashboardController = new DashboardController();
