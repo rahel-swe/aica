@@ -3,8 +3,8 @@ import type { AdvisorResponseMode } from '@contracts/shared/types/advisor-types'
 
 // ─── Tool definitions ────────────
 // These are the only two categories of tools:
-//   1. web_search  — executed by the service (calls Tavily), runs in Phase 1
-//   2. metadata    — declared to the LLM, collected from stream, never executed
+//   1. web_search — executed through Tavily before the answer is streamed
+//   2. metadata — extracted from the written answer in a separate request
 //
 // The LLM decides when to call metadata tools. We decide when to allow search.
 

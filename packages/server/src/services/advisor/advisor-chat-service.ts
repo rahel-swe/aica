@@ -24,6 +24,11 @@ export class AdvisoChatrService {
     request: AdvisorChatRequest,
     res: Response
   ): Promise<void> {
+    const controller = new AbortController();
+    const onClose = () => {
+      if (!res.writableEnded) controller.abort();
+    };
+    res.once('close', onClose);
     try {
       const { conversationId, isNewConversation } = await this.resolveRequest(
         userId,
@@ -37,6 +42,7 @@ export class AdvisoChatrService {
         userId,
         conversationId
       );
+      controller.signal.throwIfAborted();
 
       if (!conversation) {
         this.sendEvent(res, {
@@ -50,10 +56,11 @@ export class AdvisoChatrService {
         return;
       }
 
+      const assistantMessageId = randomUUID();
       this.sendEvent(res, {
         type: 'start',
         conversationId,
-        messageId: randomUUID(),
+        messageId: assistantMessageId,
       });
 
       const historyMessages = (conversation.messages ?? [])
@@ -63,7 +70,7 @@ export class AdvisoChatrService {
           content: m.content,
         }));
 
-      const responseMode = request.responseMode ?? 'focus';
+      const responseMode = request.responseMode ?? 'focused';
 
       const systemPrompt = this.buildSystemPrompt(
         conversation.contextSnapshot,
@@ -89,23 +96,24 @@ export class AdvisoChatrService {
               fullContent += delta;
               this.sendEvent(res, { type: 'delta', content: delta });
             },
-          }
+          },
+          { signal: controller.signal }
         );
 
         toolCalls = result.toolCalls;
         searchResults = result.searchResults;
       } catch (llmErr) {
+        if (controller.signal.aborted) return;
         console.error('[AdvisorService] LLM completion failed:', llmErr);
-        if (!fullContent) {
-          this.sendEvent(res, {
-            type: 'error',
-            message:
-              'Advisor is temporarily unavailable. Your context is saved — try again shortly.',
-          });
-          this.sendEvent(res, { type: 'done' });
-          res.end();
-          return;
-        }
+        this.sendEvent(res, {
+          type: 'error',
+          message: fullContent
+            ? 'The reply was interrupted. Please try again for a complete answer.'
+            : 'Advisor is temporarily unavailable. Your context is saved — try again shortly.',
+        });
+        this.sendEvent(res, { type: 'done' });
+        res.end();
+        return;
       }
 
       //  emit resources before metadata so UI can render them together
@@ -115,8 +123,23 @@ export class AdvisoChatrService {
       const { actions, followUps, cautions } =
         this.extractToolResults(toolCalls);
       const contextUsed = this.resolveContextSources(
-        (conversation as any).contextSnapshot
+        conversation.contextSnapshot
       );
+
+      controller.signal.throwIfAborted();
+      // Confirm persistence before reporting completion to the client.
+      await this.conversations.appendMessage(conversationId, {
+        id: assistantMessageId,
+        role: 'assistant',
+        content: fullContent,
+        actions,
+        followUps,
+        cautions,
+        contextUsed,
+        resources: searchResults,
+        createdAt: new Date(),
+      });
+      controller.signal.throwIfAborted();
 
       this.sendEvent(res, {
         type: 'metadata',
@@ -127,26 +150,8 @@ export class AdvisoChatrService {
       });
       this.sendEvent(res, { type: 'done' });
       res.end();
-
-      // Persist assistant message — fire and forget, never blocks the stream
-      this.conversations
-        .appendMessage(conversationId, {
-          role: 'assistant',
-          content: fullContent,
-          actions,
-          followUps,
-          cautions,
-          contextUsed,
-          resources: searchResults, // ← persisted alongside the message
-          createdAt: new Date(),
-        })
-        .catch((err) =>
-          console.error(
-            '[AdvisorService] Failed to persist assistant message:',
-            err
-          )
-        );
     } catch (err) {
+      if (controller.signal.aborted) return;
       console.error('[AdvisorService] Unhandled error in chat:', err);
       try {
         this.sendEvent(res, {
@@ -156,6 +161,8 @@ export class AdvisoChatrService {
         this.sendEvent(res, { type: 'done' });
         res.end();
       } catch {}
+    } finally {
+      res.off('close', onClose);
     }
   }
 
@@ -308,6 +315,7 @@ export class AdvisoChatrService {
   }
 
   private sendEvent(res: Response, event: AdvisorStreamEvent): void {
+    if (res.destroyed || res.writableEnded) return;
     res.write(`data: ${JSON.stringify(event)}\n\n`);
   }
 }
