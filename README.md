@@ -43,6 +43,14 @@ cp packages/client/.env.example packages/client/.env
 
 Update the values in those local `.env` files. Do not commit secrets.
 
+The server uses Cloudflare Workers AI for Advisor chat, recommendation explanations,
+and roadmap generation. Set `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` in
+`packages/server/.env`. Use a token with Workers AI access to that account. You can
+copy both values from **Workers AI → Use REST API** in the Cloudflare dashboard.
+`CLOUDFLARE_AI_MODEL` optionally overrides the default
+`@cf/meta/llama-3.3-70b-instruct-fp8-fast`; choose a model supporting streaming and
+function calling for Advisor chat.
+
 Seed pathway data when needed:
 
 ```bash

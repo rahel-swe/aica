@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "test": "bun test ./tests",
     "dev": "bun run --watch server.ts",
     "start": "bun run server.ts",
     "build": "bun build server.ts --outdir ./build --target=bun",

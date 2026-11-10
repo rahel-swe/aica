@@ -13,6 +13,8 @@ declare module 'bun' {
     BETTER_AUTH_URL: string;
     GOOGLE_CLIENT_SECRET: string;
     GOOGLE_CLIENT_ID: string;
-    HF_TOKEN: string;
+    CLOUDFLARE_ACCOUNT_ID: string;
+    CLOUDFLARE_API_TOKEN: string;
+    CLOUDFLARE_AI_MODEL?: string;
   }
 }
