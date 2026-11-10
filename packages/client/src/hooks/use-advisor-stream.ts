@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { streamAdvisorChat } from '@/services/advisor-service';
 import { useAdvisorStore } from '@/stores/advisor-store';
@@ -6,20 +6,10 @@ import { advisorKeys } from '@/queries/advisor-query';
 import type { AdvisorChatRequest } from '@contracts/shared/types/advisor-types';
 
 export function useAdvisorStream() {
-  const abortControllerRef = useRef<AbortController | null>(null);
   const queryClient = useQueryClient();
 
   const send = useCallback(
     (message: string, roadmapStep?: AdvisorChatRequest['roadmapStep']) => {
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-
-        useAdvisorStore.getState().cancelStream();
-      }
-
-      const controller = new AbortController();
-      abortControllerRef.current = controller;
-
       const store = useAdvisorStore.getState();
       const currentMessageId = store.messageId;
       const shouldReplacePastMessages =
@@ -33,7 +23,7 @@ export function useAdvisorStream() {
         store.appendUserMessage(message);
       }
 
-      store.beginStream();
+      const controller = store.beginStream();
 
       const request: AdvisorChatRequest = {
         message,
@@ -50,7 +40,6 @@ export function useAdvisorStream() {
         request,
         {
           onStart: (conversationId, messageId) => {
-            console.log('conv Id', conversationId, 'msg Id', messageId);
             useAdvisorStore
               .getState()
               .attachStreamMeta(conversationId, messageId);
@@ -75,8 +64,12 @@ export function useAdvisorStream() {
             });
           },
 
-          onError: (errorMessage) =>
-            useAdvisorStore.getState().failStream(errorMessage),
+          onError: (errorMessage) => {
+            useAdvisorStore.getState().failStream(errorMessage);
+            queryClient.invalidateQueries({
+              queryKey: advisorKeys.conversations(),
+            });
+          },
         },
         controller.signal
       );
@@ -85,9 +78,6 @@ export function useAdvisorStream() {
   );
 
   const abort = useCallback(() => {
-    abortControllerRef.current?.abort();
-    abortControllerRef.current = null;
-
     useAdvisorStore.getState().cancelStream();
   }, []);
 

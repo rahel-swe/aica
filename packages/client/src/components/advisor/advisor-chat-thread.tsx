@@ -18,13 +18,14 @@ export function AdvisorChatThread({
   onSend,
   className,
 }: AdvisorChatThreadProps) {
-  const { messages, streaming, activeConversationId } = useAdvisorStore();
+  const { messages, streaming, activeConversationId, error } =
+    useAdvisorStore();
   const bottomRef = useRef<HTMLDivElement>(null);
   const isStreaming = streaming !== null;
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages.length, isStreaming]);
+  }, [messages.length, isStreaming, error]);
 
   const isEmpty = messages.length === 0 && !isStreaming;
 
@@ -35,7 +36,7 @@ export function AdvisorChatThread({
         dir="ltr"
         lang="en"
       >
-        {(isStreaming && !activeConversationId) || isEmpty ? (
+        {isEmpty && !error ? (
           <AdvisorEmptyState />
         ) : (
           <>
@@ -48,15 +49,23 @@ export function AdvisorChatThread({
             ))}
 
             {isStreaming &&
-              streaming.conversationId === activeConversationId && (
+              (!streaming.conversationId ||
+                streaming.conversationId === activeConversationId) && (
                 <StreamingBubble
                   content={streaming.content}
                   searchingQuery={streaming.searchingQuery}
                   resources={streaming.resources}
-                  error={streaming.error}
                 />
               )}
           </>
+        )}
+        {error && (
+          <div
+            role="alert"
+            className="bg-destructive/10 border border-destructive/20 rounded-2xl px-4 py-3 text-sm text-destructive"
+          >
+            {error}
+          </div>
         )}
         <div ref={bottomRef} className="h-1" />
       </div>

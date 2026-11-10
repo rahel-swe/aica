@@ -11,13 +11,13 @@ import { generateTempId } from '@/lib/temp-id-generator';
 // ─── Types
 
 export type StreamingState = {
+  controller: AbortController;
   content: string;
   messageId: string | null;
   conversationId: string | null;
   searchingQuery: string | null; // ← set while Tavily search is running
   resources: SearchResult[]; // ← populated after search completes
   metadata: AdvisorStreamMetadata | null;
-  error: string | null;
 };
 
 type AdvisorStoreMessage = Omit<AdvisorChatMessage, 'id'> &
@@ -28,6 +28,7 @@ type AdvisorStoreState = {
   activeConversationTitle: string | null;
   messages: AdvisorStoreMessage[];
   streaming: StreamingState | null;
+  error: string | null;
   messageId: string | null;
   requestMode: AdvisorRequestMode; // ← base on action selected (new, edit, retry)
   responseMode: AdvisorResponseMode; // ← user-selected, persisted across messages
@@ -47,7 +48,7 @@ type AdvisorStoreState = {
   resetRequestState: () => void;
 
   // Stream state machine
-  beginStream: () => void;
+  beginStream: () => AbortController;
   attachStreamMeta: (conversationId: string, messageId: string) => void;
 
   setSearchingQuery: (query: string) => void;
@@ -66,27 +67,33 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
   activeConversationTitle: null,
   messages: [],
   streaming: null,
+  error: null,
   requestMode: 'new',
   responseMode: 'focused',
-  streamingConversationIds: [],
   messageId: null,
 
-  startNewConversation: () =>
+  startNewConversation: () => {
+    get().cancelStream();
     set({
       activeConversationId: null,
       activeConversationTitle: null,
       messages: [],
-    }),
+      error: null,
+    });
+  },
 
-  loadConversation: (id, title, messages) =>
+  loadConversation: (id, title, messages) => {
+    get().cancelStream();
     set({
       activeConversationId: id,
       activeConversationTitle: title,
+      error: null,
       messages: messages.map((m) => ({
         ...m,
         createdAt: new Date(m.createdAt),
       })),
-    }),
+    });
+  },
 
   appendUserMessage: (content) =>
     set((s) => ({
@@ -121,18 +128,23 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
   setMessageId: (id) => set({ messageId: id }),
   resetRequestState: () => set({ requestMode: 'new', messageId: null }),
 
-  beginStream: () =>
-    set(() => ({
+  beginStream: () => {
+    get().streaming?.controller.abort();
+    const controller = new AbortController();
+    set({
+      error: null,
       streaming: {
+        controller,
         content: '',
         searchingQuery: null,
         resources: [],
         metadata: null,
-        error: null,
         conversationId: null,
         messageId: null,
       },
-    })),
+    });
+    return controller;
+  },
 
   attachStreamMeta: (conversationId, messageId) =>
     set((state) => ({
@@ -202,10 +214,15 @@ export const useAdvisorStore = create<AdvisorStoreState>((set, get) => ({
     set({ messages: [...messages, assistantMessage], streaming: null });
   },
 
-  failStream: (error) =>
-    set((s) => ({
-      streaming: s.streaming ? { ...s.streaming, error } : null,
-    })),
+  failStream: (error) => {
+    const controller = get().streaming?.controller;
+    if (get().streaming?.content) get().commitStream();
+    controller?.abort();
+    set({ streaming: null, error });
+  },
 
-  cancelStream: () => set({ streaming: null }),
+  cancelStream: () => {
+    get().streaming?.controller.abort();
+    set({ streaming: null });
+  },
 }));

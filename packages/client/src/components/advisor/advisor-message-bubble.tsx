@@ -2,7 +2,10 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { AlertCircle, ArrowRight, Lightbulb } from 'lucide-react';
 import { AdvisorResources, SearchingIndicator } from './advisor-resource-card';
-import type { AdvisorChatMessage } from '@contracts/shared/types/advisor-types';
+import type {
+  AdvisorChatMessage,
+  SearchResult,
+} from '@contracts/shared/types/advisor-types';
 import { Streamdown } from 'streamdown';
 import SpinnerBars from '../shadcn-space/spinner/spinner-06';
 import MessageActions from './message-actions';
@@ -108,26 +111,14 @@ export function AdvisorMessageBubble({
 type StreamingBubbleProps = {
   content: string;
   searchingQuery: string | null; // ← NEW: shown before text arrives
-  resources: { title: string; url: string; content: string; source: string }[];
-  error: string | null;
+  resources: SearchResult[];
 };
 
 export function StreamingBubble({
   content,
   searchingQuery,
   resources,
-  error,
 }: StreamingBubbleProps) {
-  if (error) {
-    return (
-      <div className="flex gap-3 items-start">
-        <div className="bg-destructive/10 border border-destructive/20 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-destructive max-w-[78%]">
-          {error}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="flex-1 min-w-0 space-y-3">
       <div className="px-4 py-3 text-sm leading-relaxed text-foreground">

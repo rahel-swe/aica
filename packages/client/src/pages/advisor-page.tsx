@@ -4,10 +4,12 @@ import { AdvisorInput } from '@/components/advisor/advisor-input';
 import { AdvisorChatHeader } from '@/components/advisor/advisor-chat-header';
 import { useAdvisorStream } from '@/hooks/use-advisor-stream';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useEffect } from 'react';
 
 export default function AdvisorPage() {
   const { send, abort, isStreaming } = useAdvisorStream();
   const isMobile = useIsMobile(768);
+  useEffect(() => () => abort(), [abort]);
 
   return (
     <div className="flex h-full overflow-hidden bg-background min-h-0 md:overflow-hidden">
